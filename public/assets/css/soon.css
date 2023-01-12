@@ -1,0 +1,141 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    background: url('../images/bg.svg') !important;
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+.navbar {
+    background: #E37048 !important;
+}
+
+.navbar-toggler-btn .fa-bars {
+    color: white !important;
+}
+
+.navbar-toggler {
+    border: none !important;
+}
+
+.nav-list .nav-item .nav-link,
+.nav-list .nav-item .nav-link:active,
+.nav-list .nav-item .nav-link:focus {
+    text-decoration: none;
+    color: white !important;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.nav-list .nav-item .nav-link:hover {
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+.nav-list .nav-item>.phone-number,
+.nav-list .nav-item>.phone-number:hover {
+    background: #FFFFFF;
+    border-radius: 7px;
+    color: #E37048 !important;
+    border-bottom: 0px;
+}
+
+/* navbar end */
+
+.workit-right-header h1 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.form-field label {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.form-field input,
+.form-field input:active,
+.form-field input:focus {
+    height: 50px;
+    background: white;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: #CBCBCB !important;
+    font-size: 0.9rem !important;
+}
+
+.form-field textarea,
+.form-field textarea:active,
+.form-field textarea:focus {
+    resize: none;
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+.form-field button,
+.form-field button:active,
+.form-field button:focus {
+    background: #E37048;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.8rem;
+    height: 50px;
+    box-shadow: none;
+    outline: none;
+    font-weight: 500;
+}
+
+.workit-left-header img {
+    width: 100%;
+}
+
+.workit-left-content h1 {
+    color: white;
+    font-style: italic;
+    font-size: 4.8rem;
+}
+
+.workit-left-content h3 {
+    color: white;
+    font-style: italic;
+}
+
+.workit-left-content h3 span {
+    color: #F58D1A;
+    font-style: italic;
+}
+
+@media only screen and (max-width:1199px) {
+    .workit-left-content h1 {
+        color: white;
+        font-style: italic;
+        font-size: 4.2rem;
+    }
+}
+
+@media only screen and (max-width:576px) {
+    .workit-left-content h1 {
+        color: white;
+        font-style: italic;
+        font-size: 2.5rem;
+    }
+
+    .navbar-brand img {
+        width: 200px;
+    }
+}

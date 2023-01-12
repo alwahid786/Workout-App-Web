@@ -1,0 +1,12 @@
+.errorInput{
+    border: 1px solid red !important;
+    background: #f8dede !important;
+    color: red !important;
+    font-weight: 600 !important;
+}
+.successInput{
+    border: 1px solid green !important;
+    color: green !important;
+    font-weight: 600 !important;
+    background: #eaf3cd !important;
+}
