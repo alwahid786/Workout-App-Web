@@ -21,11 +21,10 @@ Route::get('/', function () {
 });
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
-// Route::post('contact-us', [ContactController::class, 'contactUs'])->name('contactUs');
+Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
+Route::post('/verify/otp', [AuthController::class, 'verifyOTP'])->name('verifyOTP');
+Route::post('/update/password', [AuthController::class, 'updatePassword'])->name('updatePassword');
 
-// Route::get('/home', function () {
-//     return view('pages.website.index');
-// });
 Route::get('/trainers', function () {
     return view('pages.website.all-trainers-web');
 });

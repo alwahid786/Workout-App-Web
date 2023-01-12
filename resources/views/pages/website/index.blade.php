@@ -632,9 +632,8 @@
                     </div>
                     <input type="text" class="my-2 modal-input" placeholder="Email" id="forgot_email">
                     <div class="text-center">
-                        <input type="submit" class="w-50 btn my-4 login-btn" value="Send OTP" data-dismiss="modal" data-toggle="modal" data-target="#verifyOtpModal" id="forgot_submit">
+                        <input type="submit" class="w-50 btn my-4 login-btn" value="Send OTP" id="forgot_submit">
                     </div>
-
                 </div>
             </form>
         </div>
@@ -656,19 +655,19 @@
                     </div>
                     <div class="text-center">
 
-                        <input class="otp otp1 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
-                        <input class="otp otp2 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
-                        <input class="otp otp3 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
-                        <input class="otp otp4 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
-                        <input class="otp otp5 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(5)' maxlength=1>
-                        <input class="otp otp6 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(6)' maxlength=1>
+                        <input class="otp otp1 modal-input-otp" id="otp1" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
+                        <input class="otp otp2 modal-input-otp" id="otp2" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
+                        <input class="otp otp3 modal-input-otp" id="otp3" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
+                        <input class="otp otp4 modal-input-otp" id="otp4" type="text" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
+                        <input class="otp otp5 modal-input-otp" id="otp5" type="text" oninput='digitValidate(this)' onkeyup='tabChange(5)' maxlength=1>
+                        <input class="otp otp6 modal-input-otp" id="otp6" type="text" oninput='digitValidate(this)' onkeyup='tabChange(6)' maxlength=1>
                     </div>
                     <div class="resend-btn text-center pt-4  ">
                         <p id="demo" class="otp-seconds">00:00</p>
                         <a href="javascript:void(0)" id="resendCode_d">Resend Code</a>
                     </div>
                     <div class="text-center">
-                        <input type="submit" class="w-50 btn my-4 login-btn" value="Verify OTP" data-dismiss="modal" data-toggle="modal" data-target="#resetPassModal" placeholder="Confirm Password">
+                        <input type="submit" class="w-50 btn my-4 login-btn" id="otp_submit" value="Verify OTP" placeholder="Confirm Password">
 
                     </div>
                 </div>
@@ -689,31 +688,29 @@
             <form action="">
                 <div class="modalContent py-3 ">
                     <div class="my-3">
-                        <input type="text modal-input" class="mb-2" placeholder="Enter New Password">
-                        <input type="text modal-input" class="mb-2" placeholder="Confirm Password">
+                        <input type="text modal-input" id="new_password" class="mb-2" placeholder="Enter New Password">
+                        <input type="text modal-input" id="confirm_password_reset" class="mb-2" placeholder="Confirm Password">
                     </div>
-
-                    <input type="submit" class=" btn my-3 login-btn" value="Confirm" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" placeholder="Confirm Password">
+                    <input type="submit" class=" btn my-3 login-btn" value="Confirm" id="update_password" placeholder="Confirm Password">
 
                 </div>
             </form>
         </div>
     </div>
 </div>
-<form method="GET" action="" enctype="multipart/form-data">
+<!-- <form method="GET" action="" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="email" class="form-control" placeholder="Email" value="">
-</form>
+</form> -->
 @endsection
 @section('insertfooter')
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script>
-<!-- /// register///// -->
 <script>
     $(document).ready(function() {
-        ///....get data from in put and stor in variable........///
+        // Signup API Call 
         $('#sighnup_submit').on('click', function(e) {
             e.preventDefault();
             var first_name = $('#first_name').val();
@@ -758,7 +755,6 @@
                 toastr.error("Please Fill All Fields.");
             }
         });
-
         // Login API Call 
         $('#login_submit').on('click', function(e) {
             e.preventDefault();
@@ -791,7 +787,6 @@
                 // alert('Please fill all the field !');
             }
         });
-
         // Email Validation Signup
         $(document).on('keyup', "#email", function() {
             let value = $(this).val();
@@ -814,39 +809,129 @@
                 $("#login_email").addClass('errorInput');
             }
         });
-
-        ///....get data from in put and stor in variable........///
+        // Send OTP API Call 
         $('#forgot_submit').on('click', function(e) {
             e.preventDefault();
 
             var email = $('#forgot_email').val();
-
-            // console.log(email);
-
-
             if (email != "") {
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
 
-                    url: 'http://localhost/workitpt/api/verify/email',
+                    url: `{{route('verifyEmail')}}`,
                     type: "POST",
                     data: {
                         email: email,
+                    },
+                    cache: false,
+                    success: function(dataResult) {
+                        document.getElementById("resendCode_d").style.color = 'gray';
+                        document.getElementById("resendCode_d").style.cursor = 'default';
+                        document.getElementById("resendCode_d").classList.remove('forgot_submit');
+                        sessionStorage.setItem("email", email);
+                        $('#forgotPassModal').modal('hide');
+                        $('#verifyOtpModal').modal('show');
 
+                        // 4 minutes Countdown For resend Code 
+                        var deadline = new Date(+new Date() + 60000 * 4).getTime();
+                        var x = setInterval(function() {
+                            var now = new Date().getTime();
+                            var t = deadline - now;
+                            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+                            var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((t % (1000 * 60)) / 1000);
+                            document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+                            if (t < 0) {
+                                clearInterval(x);
+                                document.getElementById("demo").innerHTML = "00:00";
+                                document.getElementById("resendCode_d").style.color = '#E37048';
+                                document.getElementById("resendCode_d").style.cursor = 'pointer';
+                                document.getElementById("resendCode_d").classList.add('forgot_submit');
+                            }
+                        }, 1000);
+                    },
+                    error: function(jqXHR, exception) {
+                        toastr.error(jqXHR.responseJSON.message);
+                    }
+                });
+            } else {
+                // alert('Please fill all the field !');
+                toastr.error("Please Fill All Fields.");
+            }
+        });
+        // Verify OTP API Call 
+        $('#otp_submit').on('click', function(e) {
+            e.preventDefault();
+            var otp_code = $('#otp1').val() + $('#otp2').val() + $('#otp3').val() + $('#otp4').val() + $('#otp5').val() + $('#otp6').val();
+            var email = sessionStorage.getItem("email");
+
+            if (otp_code != "") {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: `{{route('verifyOTP')}}`,
+                    type: "POST",
+                    data: {
+                        email: email,
+                        otp_code: otp_code,
                     },
                     cache: false,
                     success: function(dataResult) {
                         console.log(dataResult);
-                        // window.location.href = '/workitpt/trainers';
-                        $('#forgotPassModal').modal('hide');
-                        $('#verifyOtpModal').modal('show');
-
-
+                        if (dataResult.success == true) {
+                            $('#verifyOtpModal').modal('hide');
+                            $('#resetPassModal').modal('show');
+                        } else if (dataResult.success == false) {
+                            toastr.error(dataResult.message);
+                        }
+                    },
+                    error: function(jqXHR, exception) {
+                        toastr.error(jqXHR.responseJSON.message);
                     }
                 });
             } else {
+                toastr.error('Please fill all fields!');
+            }
+        });
+        // Update Password API Call 
+        $('#update_password').on('click', function(e) {
+            e.preventDefault();
+            var password = $('#new_password').val();
+            var password_confirmation = $('#confirm_password_reset').val();
+            var email = sessionStorage.getItem("email");
+
+            if (password != "" && password_confirmation != "") {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: `{{route('updatePassword')}}`,
+                    type: "POST",
+                    data: {
+                        email: email,
+                        password: password,
+                        password_confirmation: password_confirmation,
+                    },
+                    cache: false,
+                    success: function(dataResult) {
+                        if (dataResult.success == true) {
+                            $('#resetPassModal').modal('hide');
+                            $('#loginModal').modal('show');
+                        } else if (dataResult.success == false) {
+                            toastr.error(dataResult.message);
+                        }
+                    },
+                    error: function(jqXHR, exception) {
+                        console.log(jqXHR);
+                        toastr.error(jqXHR.responseJSON.message);
+                    }
+                });
+            } else {
+                toastr.error('Please fill all fields!');
                 // alert('Please fill all the field !');
             }
         });
@@ -904,22 +989,6 @@
         }
     }
 
-    var deadline = new Date(+new Date() + 60000 * 4).getTime();
-    var x = setInterval(function() {
-        var now = new Date().getTime();
-        var t = deadline - now;
-        var days = Math.floor(t / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((t % (1000 * 60)) / 1000);
-        document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-        if (t < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "00:00";
-            document.getElementById("resendCode_d").style.color = '#2b52c2';
-            document.getElementById("resendCode_d").setAttribute('href', "");
-        }
-    }, 1000);
 
     // $('.js-slick-carousel').on('init', handleSlickInit);
     $('.js-slick-carousel').slick(slickSettings);
