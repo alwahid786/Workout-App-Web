@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\User\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.index');
-});
-
-Route::post('contact-us', [ContactController::class, 'contactUs'])->name('contactUs');
-
-Route::get('/home', function () {
+    // return view('pages.index');
     return view('pages.website.index');
 });
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// Route::post('contact-us', [ContactController::class, 'contactUs'])->name('contactUs');
+
+// Route::get('/home', function () {
+//     return view('pages.website.index');
+// });
 Route::get('/trainers', function () {
     return view('pages.website.all-trainers-web');
 });

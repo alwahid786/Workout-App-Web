@@ -718,9 +718,8 @@
             e.preventDefault();
             var first_name = $('#first_name').val();
             var last_name = $('#last_name').val();
-            var name = first_name + last_name
+            var name = first_name + last_name;
             var email = $('#email').val();
-            var user_type = 'user';
             var password = $('#password').val();
             var password_confirmation = $('#password_confirmation').val();
 
@@ -730,17 +729,18 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
 
-                    url: 'http://localhost/workitpt/api/register',
+                    url: `{{route('register')}}`,
                     type: "POST",
                     data: {
                         name: name,
                         email: email,
                         password: password,
                         password_confirmation: password_confirmation,
-                        user_type: user_type,
+
                     },
                     cache: false,
                     success: function(dataResult) {
+                        console.log(dataResult);
                         if (dataResult.success == true) {
                             $('#signupModal').modal('hide');
                             $('#loginModal').modal('show');

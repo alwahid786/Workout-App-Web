@@ -21,6 +21,24 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type',
+        'otp_code',
+        'profile_img',
+        'phone',
+        'date_of_birth',
+        'gender',
+        'country',
+        'state',
+        'weight',
+        'height',
+        'emergency_contact',
+        'about',
+        'relationship_emergency_contact',
+        'workout_location',
+        'madical_condition',
+        'google_id',
+        'insta_id',
+        'facebook_id'
     ];
 
     /**
