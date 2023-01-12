@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,15 +22,16 @@ Route::get('/', function () {
 });
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('/trainers');
 
 // Route::post('contact-us', [ContactController::class, 'contactUs'])->name('contactUs');
 
 // Route::get('/home', function () {
 //     return view('pages.website.index');
 // });
-Route::get('/trainers', function () {
-    return view('pages.website.all-trainers-web');
-});
+// Route::get('/trainers', function () {
+//     return view('pages.website.all-trainers-web');
+// });
 Route::get('/trainers/yoga', function () {
     return view('pages.website.specific-trainers-web');
 });

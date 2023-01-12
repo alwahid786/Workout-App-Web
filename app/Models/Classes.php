@@ -13,4 +13,9 @@ class Classes extends Model
         'trainer_id',
         'price'
     ];
+
+    public function trainer()
+    {
+        return $this->belongsTo(User::class, 'trainer_id');
+    }
 }

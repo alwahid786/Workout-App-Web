@@ -13,4 +13,9 @@ class Category extends Model
         'description',
         'image'
     ];
+
+    public function trainerCategory()
+    {
+        return $this->hasMany(Classes::class, 'category_id');
+    }
 }
