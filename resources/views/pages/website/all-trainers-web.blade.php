@@ -102,7 +102,31 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
     <div class="training-session-card-outer pb-3 pl-2 pl-sm-5">
+        @foreach($userdata as $data)
+
         <a href="{{url('/trainers/yoga')}}">
+            <div class="training-session-card mx-3" data-aos="flip-left">
+                <div class="card__overlay"></div>
+                <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+                <img src="{{asset('public/assets/images/trainer1.svg')}}" alt="image">
+                <div class="training-session-card-content px-3 pb-2">
+                    <div class="training-card-content-top">
+                        <div class="training-card-content-top-left">
+                            <h1>Yoga Trainers Yoga Trainers</h1>
+                        </div>
+                        <div class="training-card-content-top-right">
+                            <h1>31</h1>
+                        </div>
+                    </div>
+                    <div class="training-card-content-bottom">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        @endforeach
+        <!-- <a href="{{url('/trainers/yoga')}}">
             <div class="training-session-card mx-3" data-aos="flip-left">
                 <div class="card__overlay"></div>
                 <i class="fa fa-arrows-alt" aria-hidden="true"></i>
@@ -281,27 +305,7 @@
                     </div>
                 </div>
             </div>
-        </a>
-        <a href="{{url('/trainers/yoga')}}">
-            <div class="training-session-card mx-3" data-aos="flip-left">
-                <div class="card__overlay"></div>
-                <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                <img src="{{asset('public/assets/images/trainer1.svg')}}" alt="image">
-                <div class="training-session-card-content px-3 pb-2">
-                    <div class="training-card-content-top">
-                        <div class="training-card-content-top-left">
-                            <h1>Yoga Trainers Yoga Trainers</h1>
-                        </div>
-                        <div class="training-card-content-top-right">
-                            <h1>31</h1>
-                        </div>
-                    </div>
-                    <div class="training-card-content-bottom">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    </div>
-                </div>
-            </div>
-        </a>
+        </a> -->
 
     </div>
 
