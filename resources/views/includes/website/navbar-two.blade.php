@@ -186,6 +186,7 @@
                             <i class="fa fa-angle-down pl-3" aria-hidden="true"></i>
                         </button>
                         <div class="dropdown-menu logout-dropdown " aria-labelledby="dropdownMenuButton">
+                            <a href="{{url('/profile')}}" class="dropdown-item">Update Profile</a>
                             <a class="dropdown-item" href="#">Logout</a>
                         </div>
                     </div>
