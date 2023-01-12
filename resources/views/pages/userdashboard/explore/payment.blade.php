@@ -7,10 +7,7 @@
         font-weight: 600 !important;
     }
 
-    .main-form-section {
-        background: #fff;
-        border-radius: 10px;
-    }
+
 
     .main-form-section h2 {
         color: #E37048;
@@ -153,6 +150,205 @@
     .ui-datepicker-calendar th span {
         color: #FFA671;
     }
+
+    .credit-card-wrapper {
+        position: relative;
+        width: 400px;
+    }
+
+    .credit-card-wrapper img {
+        position: relative;
+        width: 400px;
+        border-radius: 25px;
+    }
+
+    .credit-card-upper-c {
+        position: absolute;
+        top: 18px;
+        left: 40px;
+
+    }
+
+    .credit-card-lower-c {
+        position: absolute;
+        bottom: 18px;
+        left: 40px;
+    }
+
+    .credit-card-upper-c h1 {
+        color: black;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .credit-card-upper-c {
+        color: black;
+        font-size: 0.8rem;
+        font-weight: 400;
+    }
+
+    .credit-card-lower-c h1 {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: black;
+    }
+
+    .credit-card-lower-c p {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: black;
+        margin-bottom: 5px;
+    }
+
+    .credit-card-lower-c h2 {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: black;
+
+    }
+
+    .credit-card-wrapper-right {
+        position: relative;
+        width: 400px;
+        height: 246px;
+        background: #F2F2F2;
+        border: 4px solid #BCBCBC;
+        border-radius: 25px;
+    }
+
+    .credit-card-wrapper-right-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .credit-card-wrapper-right-inner img {
+        width: 70%;
+    }
+
+    .credit-card-wrapper-right-inner p {
+        color: #747474;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .d-payment-card-wrapper {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width:576px) {
+        .credit-card-wrapper-right-inner img {
+            width: 50%;
+        }
+
+        .credit-card-wrapper-right {
+            position: relative;
+            width: 400px;
+            height: 175px;
+            background: #F2F2F2;
+            border: 4px solid #BCBCBC;
+            border-radius: 25px;
+        }
+
+        #payment-form-h {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        .payment-form-label {
+            color: #434343;
+            font-size: 1rem;
+        }
+
+        .credit-card-wrapper img {
+            position: relative;
+            width: 290px;
+            border-radius: 25px;
+        }
+
+        .credit-card-wrapper {
+            position: relative;
+            width: 290px;
+        }
+
+        .credit-card-wrapper-right {
+            position: relative;
+            width: 290px;
+        }
+
+        .credit-card-upper-c {
+            position: absolute;
+            top: 12px;
+            left: 28px;
+        }
+
+        .credit-card-lower-c {
+            position: absolute;
+            bottom: 6px;
+            left: 30px;
+        }
+
+        .credit-card-upper-c h1 {
+            color: black;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0px;
+        }
+
+        .credit-card-lower-c h1 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: black;
+        }
+
+        .credit-card-lower-c h2 {
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: black;
+        }
+    }
+
+    .profile-nxt-btn a,
+    .profile-nxt-btn a:hover,
+    .profile-nxt-btn a:focus,
+    .profile-nxt-btn a:active {
+        background: #E37048;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: white;
+        padding: 25px 0;
+        border-radius: 15px;
+        text-align: center;
+        width: 15%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        min-width: 200px;
+        height: 60px;
+    }
+
+    .update-profile-form-btn {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.5rem;
+
+    }
+
+    .update-profile-form-btn:hover {
+        text-decoration: none !important;
+        color: #FFBB00;
+    }
 </style>
 @section('content')
 @include('includes.userdashboard.navbar')
@@ -164,181 +360,92 @@
         </div>
         <div class="main-form-section">
             <div class="form-payment-heading mx-3 mt-3">
-                <h2 class="mx-3 py-3">Choose a payment Method</h2>
+                <h2 class="mx-3 pt-3 ">Choose a payment Method</h2>
             </div>
-            <div class="payment-form-tab">
-                <div class="container py-3 py-sm-5">
-                    <div class="row">
-                        <div class="col-lg-12 mx-auto">
-                            <div class=" ">
-                                <div class="card-header">
-                                    <div class="pt-4 pb-2 payment-tab-icon">
-                                        <!-- Credit card form tabs -->
-                                        <ul role="tablist" class="nav  nav-pills rounded nav-fill mb-3">
-                                            <li class="nav-item m-2 tab-btn-outer">
+            <div class="d-payment-card pb-5">
+                <div class="d-payment-card-wrapper">
+                    <div class="mt-4">
+                        <div class="credit-card-wrapper">
+                            <img src="{{asset('public/assets/images/payment-card-left.svg')}}" alt="">
 
-                                                <a data-toggle="pill" href="#credit-card" class="nav-link active tab-btn py-3 "><i class="fa fa-credit-card-alt"></i> <br> Credit Card </a>
-                                            </li>
-                                            <li class="nav-item m-2 tab-btn-outer">
-
-                                                <a data-toggle="pill" href="#paypal" class="nav-link tab-btn py-3 "><i class="fa fa-paypal"></i> <br> Paypal </a>
-
-                                            </li>
-                                        </ul>
-                                    </div> <!-- End -->
-                                    <!-- Credit card form content -->
-                                    <div class="tab-content">
-                                        <!-- credit card info-->
-                                        <div id="credit-card" class="tab-pane fade show active pt-3">
-                                            <form role="form" onsubmit="event.preventDefault()">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group pay-field">
-                                                            <input type="text" name="username" placeholder="John" required class="form-control ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group pay-field">
-                                                            <input type="text" name="username" placeholder="Smith" required class="form-control ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group pay-field">
-                                                            <div class="input-group">
-                                                                <input type="text" name="cardNumber" placeholder="1234-1234-1234-1234" class="form-control " required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group pay-field">
-                                                            <div class="input-group">
-                                                                <input type="text" name="cardNumber" placeholder="123456789" class="form-control " required>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group pay-field">
-                                                            <div class="input-group ">
-                                                                <input id="datepickerone" type="text" name="datepickerone" placeholder="Pick Date" class="form-control datepicker" required>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group pay-field">
-                                                            <div class="input-group ">
-                                                                <input name="datepickerone" id="datepickertwo" type="text" placeholder="Pick Date" class="form-control datepicker" required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class=" ml-auto mt-3 mr-2">
-                                                        <a class="pay-form-btn " href="#" data-toggle="modal" data-target="#sucessModal">Pay Now</a>
-                                                    </div>
-
-                                            </form>
-                                        </div>
-                                    </div> <!-- End -->
-                                    <!-- Paypal info -->
-                                    <div id="paypal" class="tab-pane fade pt-3">
-                                        <form role="form" onsubmit="event.preventDefault()">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group pay-field">
-                                                        <input type="text" name="username" placeholder="John" required class="form-control ">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group pay-field">
-                                                        <input type="text" name="username" placeholder="Smith" required class="form-control ">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group pay-field">
-                                                        <div class="input-group">
-                                                            <input type="text" name="cardNumber" placeholder="1234-1234-1234-1234" class="form-control " required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group pay-field">
-                                                        <div class="input-group">
-                                                            <input type="text" name="cardNumber" placeholder="123456789" class="form-control " required>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group pay-field">
-                                                        <div class="input-group ">
-                                                            <input id="datepickerthree" type="text" name="cardNumber" placeholder="Pick Date" class="form-control datepicker" required>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group pay-field">
-                                                        <div class="input-group ">
-                                                            <input id="datepickerfour" type="text" name="cardNumber" placeholder="Pick Date" class="form-control datepicker" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="ml-auto ml-auto mt-3 mr-2">
-                                                    <a class="pay-form-btn " href="#" data-toggle="modal" data-target="#sucessModal">Pay Now</a>
-                                                </div>
-
-                                        </form>
-                                    </div> <!-- End -->
-                                    <!-- bank transfer info -->
-                                    <!-- End -->
-                                </div>
+                            <div class="credit-card-upper-c">
+                                <h1>Bank Name</h1>
+                                <p>credit card</p>
                             </div>
+                            <div class="credit-card-lower-c">
+                                <h1>2345 6489 6340 7324</h1>
+                                <p>VALID THRU 12/25</p>
+                                <h2>CARDHOLDER NAME</h2>
+                            </div>
+
                         </div>
+
                     </div>
+                    <div class="mt-4">
+                        <a href="{{url('/payments')}}">
+                            <div class="credit-card-wrapper-right">
+                                <div class="credit-card-wrapper-right-inner text-center">
+                                    <img src="{{asset('public/assets/images/card-plus.svg')}}" alt="">
+                                    <p class="mt-3">Add New Card</p>
+                                </div>
+
+                            </div>
+                        </a>
+
+                    </div>
+
                 </div>
+            </div>
+            <div class=" profile-nxt-btn mt-5">
+                <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Pay Now</a>
             </div>
         </div>
     </div>
-    <!-- modal -->
-    <div class="modal fade" id="sucessModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content signupModalDialogue">
-                <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
-                <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-end align-items-center">
-                    <!-- <h2>Signup to <span>WORKITPT</span></h2> -->
-                    <img style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
-                </div>
-                <div class="modal-body text-center sucess-modal">
-                    <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
-                    <h1 class="mt-2">Success!</h1>
-                    <p>Your has been created<br>
-                        successfully</p>
-                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- modal -->
+<div class="modal fade" id="sucessModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content signupModalDialogue">
+            <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
+            <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-end align-items-center">
+                <!-- <h2>Signup to <span>WORKITPT</span></h2> -->
+                <img style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+            </div>
+            <div class="modal-body text-center sucess-modal">
+                <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
+                <h1 class="mt-2">Success!</h1>
+                <p>Your Request Has Been
+                    Send To the Trainer
+                    the money is held in escrow and will be released to the trainer after the workout session is complete.</p>
             </div>
         </div>
     </div>
+</div>
 
-    @endsection
-    @section('insertsfooter')
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-    <script>
-        $(function() {
-            $("#datepickerone").datepicker();
-        });
-        $(function() {
-            $("#datepickertwo").datepicker();
-        });
-        $(function() {
-            $("#datepickerthree").datepicker();
-        });
-        $(function() {
-            $("#datepickerfour").datepicker();
-        });
-    </script>
-    <script>
-        $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
-    </script>
+@endsection
+@section('insertsfooter')
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+    $(function() {
+        $("#datepickerone").datepicker();
+    });
+    $(function() {
+        $("#datepickertwo").datepicker();
+    });
+    $(function() {
+        $("#datepickerthree").datepicker();
+    });
+    $(function() {
+        $("#datepickerfour").datepicker();
+    });
+</script>
+<script>
+    $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+</script>
 
-    @endsection
+@endsection
