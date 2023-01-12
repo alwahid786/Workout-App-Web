@@ -920,6 +920,7 @@
                         if (dataResult.success == true) {
                             $('#resetPassModal').modal('hide');
                             $('#loginModal').modal('show');
+                            toastr.success('Password updated successfully!');
                         } else if (dataResult.success == false) {
                             toastr.error(dataResult.message);
                         }

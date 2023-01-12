@@ -7,11 +7,9 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\TrainerDetailRequest;
 use App\Http\Requests\TrainerSignupRequest;
-use App\Http\Requests\VerifyEmailRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
-use Illuminate\Support\Facades\Redis;
 use App\Mail\VerifyEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -60,7 +58,7 @@ class AuthController extends Controller
     }
 
     // Verify Email And Send OTP 
-    public function sendOtp(VerifyEmailRequest $request)
+    public function verifyEmail(Request $request)
     {
         $otp = rand(100000, 999999);
         if (!User::where('email', $request->email)->update(['otp_code' => $otp])) {
