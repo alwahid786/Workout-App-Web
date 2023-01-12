@@ -21,6 +21,8 @@ class UserController extends Controller
         if (!$trainer_category) {
             return $this->sendError('Category');
         }
-        return view('pages.website.all-trainers-web', compact('trainer_category'));
+        $responseBody = $trainer_category;
+        $userdata = json_decode($responseBody, true);
+        return view('pages.website.all-trainers-web', compact('userdata'));
     }
 }
