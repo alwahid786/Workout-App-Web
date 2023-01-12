@@ -608,7 +608,7 @@
                         <strong class="clr-orange">OR</strong>
                     </div>
                     <!-- <input type="submit" class=" btn my-3" value="Login" id="login_submit"> -->
-                    <a href="{{url('trainers')}}" class="btn my-3 login-btn form-control">Login</a>
+                    <a href="" class="btn my-3 login-btn form-control" id="login_submit">Login</a>
                     <p class="text-center mt-3">Don't have an account? <span data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Signup</span></p>
 
                 </div>
@@ -771,7 +771,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
 
-                    url: 'http://localhost/workitpt/api/login',
+                    url: `{{route('login')}}`,
                     type: "POST",
                     data: {
 
@@ -782,13 +782,12 @@
                     cache: false,
                     success: function(dataResult) {
                         console.log(dataResult);
-                        window.location.href = '/workitpt/trainers';
-
+                        window.location.href = `{{url('/trainers')}}`;
 
                     }
                 });
             } else {
-                // alert('Please fill all the field !');
+                alert('Please fill all the field !');
             }
         });
 

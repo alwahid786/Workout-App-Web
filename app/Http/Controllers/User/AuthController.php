@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,5 +30,19 @@ class AuthController extends Controller
         $userData  = User::find($registeredUser->id);
         $userData->token = $registeredUser->createToken('API Token')->accessToken;
         return $this->sendResponse($userData, 'User Registered Successfully!');
+    }
+    // user Login 
+    public function login(LoginRequest $request)
+    {
+        $UserData = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        if (!auth()->attempt($UserData)) {
+            return $this->sendError('Try again. Wrong password.Try again or click forget password to reset your password.');
+        }
+        $authUser = auth()->user();
+        $authUser->token = $authUser->createToken('API Token')->accessToken;
+        return $this->sendResponse($authUser, 'Login Successful!');
     }
 }

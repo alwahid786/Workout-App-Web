@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('pages.website.index');
 });
 Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Route::post('contact-us', [ContactController::class, 'contactUs'])->name('contactUs');
 
