@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,28 +26,26 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('/trainers');
 Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
 Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('update/profile');
-
 Route::post('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
-
 Route::post('/contact', [UserController::class, 'contactUs']);
-
 
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 Route::post('/verify/otp', [AuthController::class, 'verifyOTP'])->name('verifyOTP');
 Route::post('/update/password', [AuthController::class, 'updatePassword'])->name('updatePassword');
+// Google Social Signup/login Routes 
+Route::get('google', [SocialController::class, 'redirectToGoogle'])->name('redirectToGoogle');
+Route::get('google/callback', [SocialController::class, 'handleGoogleCallback']);
+// Facebook Social Signup/login Routes 
+Route::get('facebook', [SocialController::class, 'redirectToFacebook'])->name('redirectToFacebook');
+Route::get('facebook/callback', [SocialController::class, 'handleFacebookCallback']);
+// Instagram Social Signup/login Routes 
+Route::get('instagram', [SocialController::class, 'redirectToInstagram'])->name('redirectToInstagram');
+Route::get('instagram/callback', [SocialController::class, 'handleInstagramCallback']);
 
-// Route::get('/trainers', function () {
-//     return view('pages.website.all-trainers-web');
-// });
-// Route::get('/home', function () {
-//     return view('pages.website.index');
-// });
-// Route::get('/trainers', function () {
-//     return view('pages.website.all-trainers-web');
-// });
-// Route::get('/trainers/yoga', function () {
-//     return view('pages.website.specific-trainers-web');
-// });
+
+Route::get('/trainers/yoga', function () {
+    return view('pages.website.specific-trainers-web');
+});
 Route::get('/payments', function () {
     return view('pages.website.payment');
 });
