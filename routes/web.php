@@ -28,6 +28,8 @@ Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('u
 
 Route::post('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
 
+Route::post('/contact', [UserController::class, 'contactUs']);
+
 
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 Route::post('/verify/otp', [AuthController::class, 'verifyOTP'])->name('verifyOTP');

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactUsRequest;
 use App\Models\Category;
 use App\Models\User;
 use Dotenv\Validator;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
+use App\Models\ContactUs;
 use App\Models\Customer;
 use Stripe;
 
@@ -126,7 +128,7 @@ class UserController extends Controller
             ['stripe_version' => '2020-08-27']
         );
 
-       
+
 
         Customer::create([
             'customer_id' => $customer->id,
@@ -146,5 +148,19 @@ class UserController extends Controller
 
         // return $this->sendResponse($pay_int_res, 'Payment Intent');
         return view('pages.website.payment');
+    }
+    /////......contact........////
+    public function contactUs(ContactUsRequest $request)
+    {
+        $contact_us = new ContactUs();
+        $contact_us->name = $request->full_name;
+        $contact_us->email = $request->email;
+        $contact_us->phone = $request->phone_number;
+        $contact_us->message = $request->message;
+        if (!$contact_us) {
+            return $this->sendError('Contact');
+        }
+        $contact_us->save();
+        return $this->sendResponse([], 'Contact Submitted to Admin Successfully!');
     }
 }
