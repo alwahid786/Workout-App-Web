@@ -4,6 +4,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
 <style>
+    .loaderDiv {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75) url("../../../../workitpt_web/public/assets/images/loader.svg") no-repeat center center;
+        z-index: 99999;
+    }
+
     .right-inner-addon {
         position: relative;
     }
@@ -600,9 +612,9 @@
                         <a class="fnt-normal" href="javascript:void(0)" data-dismiss="modal" data-toggle="modal" data-target="#forgotPassModal">Forgot Password?</a>
                     </div>
                     <div class="d-flex justify-content-between align-items-center w-50 mx-auto mt-3 modal-social-icon">
-                        <a href="javascript:void(0)"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
-                        <a href="javascript:void(0)"><img src="{{asset('public/assets/images/google-color.svg')}}" alt=""></a>
-                        <a href="javascript:void(0)"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+                        <a href="{{route('redirectToInstagram')}}"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                        <a href="{{route('redirectToGoogle')}}"><img src="{{asset('public/assets/images/google-color.svg')}}" alt=""></a>
+                        <a href="{{route('redirectToFacebook')}}"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
                     </div>
                     <div class="my-3 text-center">
                         <strong class="clr-orange">OR</strong>
@@ -712,6 +724,8 @@
     $(document).ready(function() {
         // Signup API Call 
         $('#sighnup_submit').on('click', function(e) {
+            $('.loaderDiv').show();
+
             e.preventDefault();
             var first_name = $('#first_name').val();
             var last_name = $('#last_name').val();
@@ -739,24 +753,29 @@
                     success: function(dataResult) {
                         console.log(dataResult);
                         if (dataResult.success == true) {
+                            $('.loaderDiv').hide();
                             $('#signupModal').modal('hide');
                             $('#loginModal').modal('show');
                             toastr.success('Registration Successful!');
                         } else if (dataResult.success == false) {
+                            $('.loaderDiv').hide();
                             toastr.error(dataResult.message);
                         }
                     },
                     error: function(jqXHR, exception) {
+                        $('.loaderDiv').hide();
                         toastr.error(jqXHR.responseJSON.message);
                     }
 
                 });
             } else {
                 toastr.error("Please Fill All Fields.");
+                $('.loaderDiv').hide();
             }
         });
         // Login API Call 
         $('#login_submit').on('click', function(e) {
+            $('.loaderDiv').show();
             e.preventDefault();
             var email = $('#login_email').val();
             var password = $('#login_password').val();
@@ -780,10 +799,15 @@
                         console.log(dataResult);
                         window.location.href = `{{url('/trainers')}}`;
 
+                    },
+                    error: function(jqXHR, exception) {
+                        $('.loaderDiv').hide();
+                        toastr.error(jqXHR.responseJSON.message);
                     }
                 });
             } else {
-                alert('Please fill all the field !');
+                $('.loaderDiv').hide();
+                toastr.error('Please fill all the field !');
             }
         });
         // Email Validation Signup
@@ -810,6 +834,7 @@
         });
         // Send OTP API Call 
         $('#forgot_submit').on('click', function(e) {
+            $('.loaderDiv').show();
             e.preventDefault();
 
             var email = $('#forgot_email').val();
@@ -826,6 +851,7 @@
                     },
                     cache: false,
                     success: function(dataResult) {
+                        $('.loaderDiv').hide();
                         document.getElementById("resendCode_d").style.color = 'gray';
                         document.getElementById("resendCode_d").style.cursor = 'default';
                         document.getElementById("resendCode_d").classList.remove('forgot_submit');
@@ -853,16 +879,19 @@
                         }, 1000);
                     },
                     error: function(jqXHR, exception) {
+                        $('.loaderDiv').hide();
                         toastr.error(jqXHR.responseJSON.message);
                     }
                 });
             } else {
                 // alert('Please fill all the field !');
+                $('.loaderDiv').hide();
                 toastr.error("Please Fill All Fields.");
             }
         });
         // Verify OTP API Call 
         $('#otp_submit').on('click', function(e) {
+            $('.loaderDiv').show();
             e.preventDefault();
             var otp_code = $('#otp1').val() + $('#otp2').val() + $('#otp3').val() + $('#otp4').val() + $('#otp5').val() + $('#otp6').val();
             var email = sessionStorage.getItem("email");
@@ -882,22 +911,27 @@
                     success: function(dataResult) {
                         console.log(dataResult);
                         if (dataResult.success == true) {
+                            $('.loaderDiv').hide();
                             $('#verifyOtpModal').modal('hide');
                             $('#resetPassModal').modal('show');
                         } else if (dataResult.success == false) {
+                            $('.loaderDiv').hide();
                             toastr.error(dataResult.message);
                         }
                     },
                     error: function(jqXHR, exception) {
+                        $('.loaderDiv').hide();
                         toastr.error(jqXHR.responseJSON.message);
                     }
                 });
             } else {
+                $('.loaderDiv').hide();
                 toastr.error('Please fill all fields!');
             }
         });
         // Update Password API Call 
         $('#update_password').on('click', function(e) {
+            $('.loaderDiv').show();
             e.preventDefault();
             var password = $('#new_password').val();
             var password_confirmation = $('#confirm_password_reset').val();
@@ -918,19 +952,22 @@
                     cache: false,
                     success: function(dataResult) {
                         if (dataResult.success == true) {
+                            $('.loaderDiv').hide();
                             $('#resetPassModal').modal('hide');
                             $('#loginModal').modal('show');
                             toastr.success('Password updated successfully!');
                         } else if (dataResult.success == false) {
+                            $('.loaderDiv').hide();
                             toastr.error(dataResult.message);
                         }
                     },
                     error: function(jqXHR, exception) {
-                        console.log(jqXHR);
+                        $('.loaderDiv').hide();
                         toastr.error(jqXHR.responseJSON.message);
                     }
                 });
             } else {
+                $('.loaderDiv').hide();
                 toastr.error('Please fill all fields!');
                 // alert('Please fill all the field !');
             }
