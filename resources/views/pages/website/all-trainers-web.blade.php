@@ -103,8 +103,10 @@
     </div>
     <div class="training-session-card-outer pb-3 pl-2 pl-sm-5">
         @foreach($userdata as $data)
-
-        <a href="{{url('/trainers/yoga')}}">
+        <?php if (count($data['trainer_category']) == 0) {
+            continue;
+        } ?>
+        <a href="{{url('/trainers/'.$data['id'])}}">
             <div class="training-session-card mx-3" data-aos="flip-left">
                 <div class="card__overlay"></div>
                 <i class="fa fa-arrows-alt" aria-hidden="true"></i>
@@ -112,14 +114,14 @@
                 <div class="training-session-card-content px-3 pb-2">
                     <div class="training-card-content-top">
                         <div class="training-card-content-top-left">
-                            <h1>Yoga Trainers Yoga Trainers</h1>
+                            <h1>{{$data['title']}}</h1>
                         </div>
                         <div class="training-card-content-top-right">
-                            <h1>31</h1>
+                            <h1>{{count($data['trainer_category'])}}</h1>
                         </div>
                     </div>
                     <div class="training-card-content-bottom">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <p>{{$data['description']}} </p>
                     </div>
                 </div>
             </div>

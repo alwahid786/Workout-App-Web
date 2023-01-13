@@ -3,15 +3,24 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactUsRequest;
 use App\Models\Category;
+use App\Models\User;
+use Dotenv\Validator;
+use Exception;
 use Illuminate\Http\Request;
+use App\Http\Traits\ResponseTrait;
+use App\Models\ContactUs;
+use App\Models\Customer;
+use Stripe;
 
 class UserController extends Controller
 {
+    use ResponseTrait;
     ///////// category Trainer Api...../////////
     public function getTrainerCategory(Request $request)
     {
-       
+
         if ($request->has('id')) {
             $trainer_category = Category::where('id', $request->id)->with('trainerCategory.trainer')->first();
         } else {
@@ -24,5 +33,134 @@ class UserController extends Controller
         $responseBody = $trainer_category;
         $userdata = json_decode($responseBody, true);
         return view('pages.website.all-trainers-web', compact('userdata'));
+    }
+    /////.........spacific.........//////
+    public function getSpecificTrainer(Request $request, $id)
+    {
+
+
+        if ($id) {
+            $trainer_category = Category::where('id', $id)->with('trainerCategory.trainer')->first();
+        } else {
+            $trainer_category = Category::with('trainerCategory.trainer')->get();
+        }
+
+        if (!$trainer_category) {
+            return $this->sendError('Category');
+        }
+        $responseBody = $trainer_category;
+        $userdata = json_decode($responseBody, true);
+
+        return view('pages.website.specific-trainers-web', compact('userdata'));
+    }
+
+    ///....update profile.....////
+    public function updateProfile(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|integer|exists:users,id',
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+        if ($request->hasFile('files')) {
+            try {
+                $file = $request->file('files');
+                $name = time() . $file->getClientOriginalName();
+                $file->move(public_path('/files'), $name);
+                $fileNames = $name;
+            } catch (Exception $e) {
+                $message = $e->getMessage();
+                return $this->failure($message);
+            }
+            $image = url('public/files') . '/' .  $fileNames;
+            // return $this->sendResponse($image, 'URL');
+        }
+        $data = $request->all();
+        $data['image'] = $image;
+        $update = User::where('id', $request->id)->update([
+            'image' => $image,
+            $data
+        ]);
+
+        if (!$update) {
+            return $this->sendError('Your request could not be updated, try again later.');
+        }
+        $user = User::find($request->id);
+        return $this->sendResponse($user, 'Your profile has been updated!');
+    }
+
+    ///   stripe payment .....///////
+    public function paymentIntent(Request $request)
+    {
+        // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+
+        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // $userObj = User::where('id', $request->user_id)->first();
+
+        //Create Stripe Token
+        $response = \Stripe\Token::create(array(
+            "card" => array(
+                "number"    => $request->input('card_number'),
+                "exp_month" => $request->input('exp_month'),
+                "exp_year"  => $request->input('exp_year'),
+                "cvc"       => $request->input('cvc'),
+                "name"      => $request->input('first_name') . " " . $request->input('last_name')
+            )
+        ));
+
+        $card_token = $response->id;
+        $userId = auth()->user()->id;
+
+
+        $customer = $stripe->customers->create([
+            'description' => 'Customer create successfully',
+            'source' => $card_token
+        ]);
+
+        $ephemeralKey = \Stripe\EphemeralKey::create(
+            ['customer' => $customer->id],
+            ['stripe_version' => '2020-08-27']
+        );
+
+
+
+        Customer::create([
+            'customer_id' => $customer->id,
+            'user_id' => $userId,
+            'type' => 'user',
+        ]);
+
+        $pay_int_res = [
+            'result' => 'Success',
+            'message' => 'Customer create successfully',
+            'stripe_publish_key' => env('STRIPE_KEY'),
+            // 'payment_intent' => $paymentIntent->client_secret,
+            'ephemeral_key' => $ephemeralKey->secret,
+            'customer_id' => $customer->id
+        ];
+
+
+        // return $this->sendResponse($pay_int_res, 'Payment Intent');
+        return view('pages.website.payment');
+    }
+    /////......contact........////
+    public function contactUs(ContactUsRequest $request)
+    {
+        $contact_us = new ContactUs();
+        $contact_us->name = $request->full_name;
+        $contact_us->email = $request->email;
+        $contact_us->phone = $request->phone_number;
+        $contact_us->message = $request->message;
+        if (!$contact_us) {
+            return $this->sendError('Contact');
+        }
+        $contact_us->save();
+        return $this->sendResponse([], 'Contact Submitted to Admin Successfully!');
     }
 }
