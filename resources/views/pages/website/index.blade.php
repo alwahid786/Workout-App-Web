@@ -440,6 +440,7 @@
             <h1>Contact Us</h1>
         </div>
         <form action="{{url('contact')}}" method="post">
+            @csrf
             <div class="row pt-sm-4">
                 <div class="col-md-4">
                     <div class="form-group form-field" data-aos="fade-up" data-aos-delay="100">

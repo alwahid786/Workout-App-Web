@@ -161,6 +161,6 @@ class UserController extends Controller
             return $this->sendError('Contact');
         }
         $contact_us->save();
-        return $this->sendResponse([], 'Contact Submitted to Admin Successfully!');
+        return redirect()->back();
     }
 }
