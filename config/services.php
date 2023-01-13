@@ -32,12 +32,12 @@ return [
     'google' => [
         'client_id' => '61767070390-37imm0hi7ldh0okc5g7rnr9sac3cbann.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://localhost/workitpt_web/google/callback',
+        'redirect' => 'http://kodextech.net/workitpt_web/google/callback',
     ],
     'facebook' => [
         'client_id' => '1537761496722685',
         'client_secret' => 'd3471fa644673cd424000b08e3322eae',
-        'redirect' => 'http://localhost/workitpt_web/facebook/callback',
+        'redirect' => 'http://kodextech.net/workitpt_web/facebook/callback',
     ],
     'instagram' => [
         'client_id' => '883226096321815',
