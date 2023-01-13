@@ -39,7 +39,9 @@ class User extends Authenticatable
         'madical_condition',
         'google_id',
         'insta_id',
-        'facebook_id'
+        'facebook_id',
+        'weight_unit',
+        'hieght_unit'
     ];
 
     /**

@@ -480,6 +480,7 @@
 <!-- .................................Form Payment Method................................ -->
 
 <form>
+
     <!-- ..................................Form Payment Radio Button........................ -->
     <div class="container-fluid payment-radio-section py-4  my-5">
         <div class="container">
@@ -541,16 +542,16 @@
             </div>
             <div class="col-lg-6 mt-4 mt-lg-0">
                 <h1 class="mb-4 " id="payment-form-h">Payment Details</h1>
-                <form>
+                <form action="{{url('/payment_intent')}}" method="POST">
                     <div class="form-group payment-form">
                         <label for="exampleInputEmail1" class="payment-form-label">Card Holder</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John Smith">
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John Smith" name="name">
                     </div>
                     <div class="form-group payment-form ">
                         <label for="exampleInputPassword1" class="payment-form-label">Card Number</label>
                         <div class="form-wrapper">
 
-                            <input type="text" class="form-control" placeholder="1234 -5678-8123-1234">
+                            <input type="text" class="form-control" placeholder="1234 -5678-8123-1234" name="card_number">
                             <img src="{{asset('public/assets/images/credit-card.svg')}}" alt="">
                             <img src="{{asset('public/assets/images/visa.svg')}}" alt="">
                         </div>
@@ -559,26 +560,28 @@
                         <div class="col-6">
                             <div class="form-group payment-form">
                                 <label for="exampleInputPassword1" class="payment-form-label">Valid Through</label>
-                                <input type="text" id="datepickertwo" class="form-control" placeholder="2/22">
+                                <input type="text" id="datepickertwo" class="form-control" placeholder="2/22" name="valid_through">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group payment-form">
                                 <label for="exampleInputPassword1 " class="payment-form-label">CVV</label>
-                                <input type="text" class="form-control" placeholder="201">
+                                <input type="text" class="form-control" placeholder="201" name="cvc">
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
 
         </div>
         <div class="col-12 my-5">
             <div class=" profile-nxt-btn">
                 <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</a>
+                <!-- <button class="update-profile-form-btn" type="submit" name="submit">Complete</button> -->
             </div>
         </div>
     </div>
+</form>
+
 </form>
 <!-- modal -->
 <div class="modal fade" id="sucessModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
