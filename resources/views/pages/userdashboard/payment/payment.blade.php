@@ -185,7 +185,7 @@
                     <div class="table-heading text-center">Fee</div>
                     <div class="table-heading text-center">Date</div>
                     <div class="table-heading text-center">Trainer Name</div>
-                    <div class="table-heading text-center">Refund</div>
+                    <div class="table-heading text-center">Details</div>
                 </div>
 
                 <div class="payment-table">
@@ -230,11 +230,11 @@
 
                         <div class="table-cotent">
                             <div class="table-content-heading">
-                                <h1>Refund</h1>
+                                <h1>Details</h1>
                             </div>
                             <div class="table-content-value text-md-center">
                                 <a href="{{url('/payment/paymentdetail')}}" class="btn">
-                                    Refund
+                                    Details
                                 </a>
 
                             </div>
@@ -283,11 +283,11 @@
 
                         <div class="table-cotent">
                             <div class="table-content-heading">
-                                <h1>Refund</h1>
+                                <h1>Details</h1>
                             </div>
                             <div class="table-content-value text-md-center">
                                 <a href="{{url('/payment/paymentdetail')}}" class="btn">
-                                    Refund
+                                    Details
                                 </a>
 
                             </div>
@@ -336,11 +336,11 @@
 
                         <div class="table-cotent">
                             <div class="table-content-heading">
-                                <h1>Refund</h1>
+                                <h1>Details</h1>
                             </div>
                             <div class="table-content-value text-md-center">
                                 <a href="{{url('/payment/paymentdetail')}}" class="btn">
-                                    Refund
+                                    Details
                                 </a>
 
                             </div>
@@ -389,11 +389,11 @@
 
                         <div class="table-cotent">
                             <div class="table-content-heading">
-                                <h1>Refund</h1>
+                                <h1>Details</h1>
                             </div>
                             <div class="table-content-value text-md-center">
                                 <a href="{{url('/payment/paymentdetail')}}" class="btn">
-                                    Refund
+                                    Details
                                 </a>
 
                             </div>
