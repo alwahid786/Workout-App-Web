@@ -1993,6 +1993,7 @@ body {
 .sender-card {
     width: 70%;
     position: relative;
+    margin-bottom: 1.7rem !important;
 }
 
 .sender-card p {
