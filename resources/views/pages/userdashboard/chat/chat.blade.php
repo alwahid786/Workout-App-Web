@@ -199,8 +199,9 @@
                 </div>
 
                 <div class="chat-box-right ">
-                    <div class="chat-box-right-header pl-3 py-2">
+                    <div class="chat-box-right-header px-3 py-2">
                         <h1>John Smith</h1>
+                        <button id="chat-screen"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
                     <div class="chat-box-right-body px-5">
                         <div class="recevier-card my-2">
@@ -298,15 +299,22 @@
 @endsection
 @section('insertsfooter')
 <script>
+    $('.chat-card').click(function() {
+        $('.chat-box-right').css('display', 'block');
+        $('.chat-box-left').css('display', 'none');
+        $('.chat-area').css('height', '90vh');
+        $('.chat-box').css('height', '50vh');
+    });
+    $('#chat-screen').click(function() {
+        $('.chat-box-right').css('display', 'none');
+        $('.chat-box-left').css('display', 'block');
+        $('.chat-area').css('height', '90vh');
+        $('.chat-box').css('height', '65vh');
+    });
     const $window = $(window);
     $window.on('resize', () => {
         if ($window.width() <= 767) {
-            $('.chat-card').click(function() {
-                $('.chat-box-right').css('display', 'block');
-                $('.chat-box-left').css('display', 'none');
-                $('.chat-area').css('height', '90vh');
-                $('.chat-box').css('height', '50vh');
-            });
+
         }
     })
 </script>

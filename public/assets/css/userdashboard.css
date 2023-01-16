@@ -1924,6 +1924,19 @@ body {
 
 .chat-box-right-header {
     border-bottom: 1px solid #EAEAEA;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-box-right-header button {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.chat-box-right-header button i {
+    color: #E37048;
 }
 
 .chat-box-right-header h1 {
@@ -2059,9 +2072,15 @@ body {
     max-width: 600px;
 }
 
-
+.chat-box-right-header button {
+    display: none;
+}
 
 @media screen and (max-width:767px) {
+    .chat-box-right-header button {
+        display: block;
+    }
+
     .chat-box-right {
         display: none;
         width: 100%;
