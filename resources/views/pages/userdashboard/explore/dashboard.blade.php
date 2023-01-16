@@ -21,6 +21,7 @@
                 </div>
             </div>
         </div>
+
         <div class="dashboard-rated-trainer py-4 px-2">
             <div class="row">
                 <div class="col-xl-4 text-center text-xl-left">
@@ -34,7 +35,31 @@
                 </div>
                 <div class="col-xl-8">
                     <div class="row js-slick-carousel">
+                        @foreach($trainers as $trainer_data)
                         <div class="col ">
+                            <div class="trainer-card">
+                                <div class="trainer-card-left p-2">
+                                    <h1>{{$trainer_data['name']}}</h1>
+                                    <div class="rating-star pb-2">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>
+                                    <p>{{$trainer_data['country']}},{{$trainer_data['state']}}</p>
+                                    <p>{{$trainer_data['about']}} </p>
+                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="trainer-card-right">
+                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
+                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                        <!-- <div class="col ">
                             <div class="trainer-card">
                                 <div class="trainer-card-left p-2">
                                     <h1>Ahmad Zayn</h1>
@@ -187,29 +212,7 @@
                                     <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col ">
-                            <div class="trainer-card">
-                                <div class="trainer-card-left p-2">
-                                    <h1>Ahmad Zayn</h1>
-                                    <div class="rating-star pb-2">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>England,London</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="trainer-card-right">
-                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -463,12 +466,13 @@
 
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
+                    @foreach($category as $category_data)
                     <div class="col">
                         <a href="{{url('/dashboard/categories')}}">
                             <div class="catergory-card catergory-card-yellow p-2">
                                 <div class="category-left">
-                                    <h1>Yoga</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                                    <h1>{{$category_data['title']}}</h1>
+                                    <p>{{$category_data['description']}} </p>
                                 </div>
                                 <div class="category-right">
                                     <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
@@ -477,7 +481,8 @@
                         </a>
 
                     </div>
-                    <div class="col">
+                    @endforeach
+                    <!-- <div class="col">
                         <a href="{{url('/dashboard/categories')}}">
                             <div class="catergory-card catergory-card-blue p-2">
                                 <div class="category-left">
@@ -574,7 +579,7 @@
                             </div>
                         </a>
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

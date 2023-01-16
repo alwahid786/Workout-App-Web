@@ -29,6 +29,9 @@ Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('u
 Route::post('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
 Route::post('/contact', [UserController::class, 'contactUs']);
 
+Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
+
+
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 Route::post('/verify/otp', [AuthController::class, 'verifyOTP'])->name('verifyOTP');
 Route::post('/update/password', [AuthController::class, 'updatePassword'])->name('updatePassword');
@@ -53,9 +56,9 @@ Route::get('/profile', function () {
     return view('pages.website.update-profile');
 });
 //  user dashboard
-Route::get('/dashboard', function () {
-    return view('pages.userdashboard.explore.dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('pages.userdashboard.explore.dashboard');
+// });
 Route::get('/dashboard/map', function () {
     return view('pages.userdashboard.explore.map-view');
 });

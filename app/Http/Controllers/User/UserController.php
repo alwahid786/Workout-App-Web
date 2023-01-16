@@ -163,4 +163,20 @@ class UserController extends Controller
         $contact_us->save();
         return redirect()->back();
     }
+
+    /////.....get all trainer........./////
+    public function dashbord()
+    {
+        $all_trainer = User::where('user_type', '=', 'trainer')->get();
+
+        $all_category = Category::get();
+        if (!$all_trainer) {
+            return $this->sendError('Dashboard');
+        }
+        // $responseBody = $all_trainer;
+        $trainers = json_decode($all_trainer, true);
+        // dd($trainers);
+        $category = json_decode($all_category, true);
+        return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category'));
+    }
 }
