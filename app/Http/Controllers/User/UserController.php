@@ -173,10 +173,19 @@ class UserController extends Controller
         if (!$all_trainer) {
             return $this->sendError('Dashboard');
         }
-        // $responseBody = $all_trainer;
         $trainers = json_decode($all_trainer, true);
-        // dd($trainers);
         $category = json_decode($all_category, true);
         return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category'));
+    }
+    /////....user side trainer detail......../////
+    public function trainer_detail(Request $request, $id)
+    {
+        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session'])->get();
+        if (!$trainer) {
+            return $this->sendError('Trainer Detail');
+        }
+        $trainer_detail = json_decode($trainer, true);
+        // dd($trainer_detail);
+        return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
     }
 }

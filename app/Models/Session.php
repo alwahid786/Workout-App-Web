@@ -13,6 +13,9 @@ class Session extends Model
         'day',
         'class_id',
         'start_time',
-        'end_time'
+        'end_time',
+        'price',
+        'difficulty_level',
+        'type'
     ];
 }

@@ -211,9 +211,9 @@
                     </div>
                     <div class="sessions-profile-con text-center">
                         <div class="dashboard-header-left pt-3">
-                            <h1>Allen Smith</h1>
+                            <h1>{{$trainer_detail[0]['name']}}</h1>
                         </div>
-                        <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>Zone 6, Southwest US</p>
+                        <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>{{$trainer_detail[0]['workout_location']}},{{$trainer_detail[0]['state']}}, {{$trainer_detail[0]['country']}}</p>
                         <div class="rating-stars pb-5">
                             <i class="fa fa-star " aria-hidden="true"></i>
                             <i class="fa fa-star " aria-hidden="true"></i>
@@ -228,48 +228,54 @@
                             <h1>About Trainer</h1>
                         </div>
                         <div class="session-bottom-par">
-                            <p>Lorem ipsum is a placeholder text
+                            <p>{{$trainer_detail[0]['about']}}</p>
+                            <!-- <p>Lorem ipsum is a placeholder text
                                 commonly used to demonstrate the
                                 visual form of a document or a type
                                 face without relying on meaningful
                                 content. Lorem ipsum may be used
                                 as a placeholder before final copy
-                                is available.</p>
-                            <p>Lorem ipsum is a placeholder text
-                                commonly used to demonstrate the
-                                visual form of a document or a type
-                                face without relying on meaningful
-                                content. Lorem ipsum may be used
-                                as a placeholder before final copy
-                                is available.</p>
+                                is available.</p> -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8 col-xl-9">
                 <div class="dashboard-header-left">
-                    <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Allen's Sessions</h1>
+                    <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer_detail[0]['name']}}'s Sessions</h1>
                 </div>
                 <div class="card-grid-section">
+                    @foreach($trainer_detail[0]['class'] as $trainerData )
                     <div class="session-card p-3">
                         <div class="card-img ">
                             <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                         </div>
                         <div class="card-heading py-3">
-                            <h1>Yoga</h1>
+                            <h1>{{$trainerData['category']['title']}}</h1>
                             <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
                         </div>
+
                         <div class="card-content">
                             <p>John Smith </p>
-                            <p>9am-10am</p>
+                            <p>{{$trainerData['session']['start_time']}}-{{$trainerData['session']['end_time']}}</p>
                         </div>
                         <div class="session-left-divider"></div>
                         <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
+                            <p>${{$trainerData['session']['price']}}</p>
+                            <?php
+
+                            $a = new DateTime(($trainerData['session']['start_time']));
+                            $b = new DateTime($trainerData['session']['end_time']);
+                            $interval = $a->diff($b);
+
+                            $hour = $interval->format("%H:%I");
+
+                            ?>
+                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> {{$hour}} </p>
                         </div>
                     </div>
-                    <div class="session-card p-3">
+                    @endforeach
+                    <!-- <div class="session-card p-3">
                         <div class="card-img ">
                             <img src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
                         </div>
@@ -574,7 +580,7 @@
                             <p>$25</p>
                             <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

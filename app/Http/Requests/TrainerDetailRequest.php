@@ -31,7 +31,7 @@ class TrainerDetailRequest extends FormRequest
         return [
             'category_id' => 'required',
             'trainer_id' => 'required',
-            'price' => 'required',
+            
             'session*day' => 'required',
             'session*start_time' => 'required',
             'session*end_time' => 'required',
