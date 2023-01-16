@@ -182,7 +182,11 @@
                 <li class="nav-item mr-lg-4 ">
                     <div class="dropdown dropdown-logout">
                         <button class="p-0 btn btn-secondary dropdown-toggle log-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if(auth()->user()->profile_img == null)
                             <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            @else
+                            <img src="{{ auth()->user()->profile_img}}" alt="image">
+                            @endif
                             <i class="fa fa-angle-down pl-3" aria-hidden="true"></i>
                         </button>
                         <div class="dropdown-menu logout-dropdown " aria-labelledby="dropdownMenuButton">

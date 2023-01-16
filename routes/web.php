@@ -25,7 +25,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('/trainers');
 Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
-Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('update/profile');
+Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
 Route::post('/contact', [UserController::class, 'contactUs']);
 

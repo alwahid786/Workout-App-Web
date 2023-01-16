@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
 use App\Models\Category;
 use App\Models\User;
-use Dotenv\Validator;
+use Illuminate\Support\Facades\Validator;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Http\Traits\ResponseTrait;
 use App\Models\ContactUs;
 use App\Models\Customer;
@@ -37,8 +38,6 @@ class UserController extends Controller
     /////.........spacific.........//////
     public function getSpecificTrainer(Request $request, $id)
     {
-
-
         if ($id) {
             $trainer_category = Category::where('id', $id)->with('trainerCategory.trainer')->first();
         } else {
@@ -57,13 +56,7 @@ class UserController extends Controller
     ///....update profile.....////
     public function updateProfile(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required|integer|exists:users,id',
-        ]);
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
-        }
-        if ($request->hasFile('files')) {
+        if ($request->has('files')) {
             try {
                 $file = $request->file('files');
                 $name = time() . $file->getClientOriginalName();
@@ -76,18 +69,19 @@ class UserController extends Controller
             $image = url('public/files') . '/' .  $fileNames;
             // return $this->sendResponse($image, 'URL');
         }
-        $data = $request->all();
-        $data['image'] = $image;
-        $update = User::where('id', $request->id)->update([
-            'image' => $image,
-            $data
-        ]);
-
-        if (!$update) {
-            return $this->sendError('Your request could not be updated, try again later.');
+        $data = request()->except(['_token']);
+        if ($request->has('files')) {
+            unset($data['files']);
+            $data['profile_img'] = $image;
         }
-        $user = User::find($request->id);
-        return $this->sendResponse($user, 'Your profile has been updated!');
+        $update = User::findOrFail($request->user_id);
+        $updateUser = $update->fill($data)->save();
+        if (!$updateUser) {
+            Session::flash('error', 'Something went wrong, please try again later.');
+            return redirect()->back();
+        }
+        Session::flash('success', 'Profile Updated Successfuly!');
+        return view('pages.website.update-profile');
     }
 
     ///   stripe payment .....///////

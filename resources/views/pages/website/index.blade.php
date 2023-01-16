@@ -209,6 +209,20 @@
             display: none;
         }
     }
+
+    .errorInput {
+        border: 1px solid red !important;
+        background: #f8dede !important;
+        color: red !important;
+        font-weight: 600 !important;
+    }
+
+    .successInput {
+        border: 1px solid green !important;
+        color: green !important;
+        font-weight: 600 !important;
+        background: #eaf3cd !important;
+    }
 </style>
 @include('includes.website.navbar')
 <div class="container-fluid hero-section">
@@ -970,6 +984,28 @@
                 $('.loaderDiv').hide();
                 toastr.error('Please fill all fields!');
                 // alert('Please fill all the field !');
+            }
+        });
+        // Email Validation Signup
+        $(document).on('keyup', "#email", function() {
+            let value = $(this).val();
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+                $("#email").removeClass('errorInput');
+                $("#email").addClass('successInput');
+            } else {
+                $("#email").removeClass('successInput');
+                $("#email").addClass('errorInput');
+            }
+        });
+        // Email Validation Login
+        $(document).on('keyup', "#login_email", function() {
+            let value = $(this).val();
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+                $("#login_email").removeClass('errorInput');
+                $("#login_email").addClass('successInput');
+            } else {
+                $("#login_email").removeClass('successInput');
+                $("#login_email").addClass('errorInput');
             }
         });
 
