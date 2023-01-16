@@ -88,3 +88,7 @@ Route::get('/payment', function () {
 Route::get('/payment/paymentdetail', function () {
     return view('pages.userdashboard.payment.payment-detail');
 });
+//chat
+Route::get('/chat', function () {
+    return view('pages.userdashboard.chat.chat');
+});

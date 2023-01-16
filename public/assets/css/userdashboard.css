@@ -1360,8 +1360,9 @@ body {
     object-fit: cover;
     position: relative;
 }
+
 @media screen and (max-width:576px) {
-        .trainer-detail-profile-left img {
+    .trainer-detail-profile-left img {
         width: 130px;
     }
 }
@@ -1846,4 +1847,230 @@ body {
     font-size: 1.3rem;
     margin-bottom: 0px;
     color: #E37048;
+}
+
+/* chat */
+.chat-area {
+    background: white;
+    border-radius: 7px;
+
+    /* min-height: calc(100% - 1rem); */
+}
+
+.chat-box {
+    display: flex;
+    height: 65vh;
+    /* overflow-y: scroll; */
+}
+
+.chat-area-header h1 {
+    font-size: 1.7rem;
+    margin-bottom: 0px;
+    font-weight: 600;
+    color: #E37048;
+}
+
+.chat-area-header {
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* left */
+
+
+.chat-box-left {
+    overflow-y: scroll;
+    width: 300px !important;
+    min-width: 300px;
+}
+
+.chat-card {
+    display: flex;
+    align-items: center;
+}
+
+.chat-box-left-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #E37048;
+}
+
+.chat-box-left-content h1 {
+    font-size: 1rem;
+    color: #E37048;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-box-left-content p {
+    color: #A6A6A6;
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+}
+
+.chat-box-left-content p:nth-of-type(1) {
+    white-space: nowrap;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* right */
+
+
+.chat-box-right-header {
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.chat-box-right-header h1 {
+    color: #E37048;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+
+.chat-box-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.chat-box-right-body {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.recevier-card {
+    width: 70%;
+    position: relative;
+}
+
+.recevier-card p {
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+    width: fit-content;
+    background: #F2F2F2;
+    color: #393939;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 15px 20px;
+    /* width: 50%; */
+}
+
+.recevier-card img {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #E37048;
+    bottom: 0;
+    left: -40px;
+    object-fit: cover;
+}
+
+/* sender */
+.sender-card {
+    width: 70%;
+    position: relative;
+}
+
+.sender-card p {
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+    width: fit-content;
+    background: #E37048;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding: 15px 20px;
+    margin-left: auto;
+    /* width: 50%; */
+}
+
+.sender-card img {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #E37048;
+    bottom: 0;
+    right: -40px;
+}
+
+.sender-card span {
+    position: absolute;
+    bottom: -22px;
+    right: 10px;
+    color: #c4c4c4;
+    font-size: 0.8rem;
+}
+
+.chat-box-right-footer button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: relative;
+    background: #E37048;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.chat-box-right-footer button i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+}
+
+.chat-box-right-footer input {
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA !important;
+    border-radius: 10px;
+    height: 40px;
+    outline: none !important;
+    box-shadow: none !important;
+    width: 100% !important;
+}
+
+.chat-box-right-footer {
+    border-top: 1px solid #EAEAEA;
+}
+
+.chat-box-right-footer form {
+    justify-content: center;
+}
+
+.chat-box-right-footer form>div {
+    width: 80%;
+    max-width: 600px;
+}
+
+
+
+@media screen and (max-width:767px) {
+    .chat-box-right {
+        display: none;
+        width: 100%;
+    }
+
+    .chat-box-left {
+        width: 100% !important;
+    }
+
+
+
 }
