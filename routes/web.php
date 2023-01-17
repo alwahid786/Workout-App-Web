@@ -98,3 +98,9 @@ Route::get('/payment/paymentdetail', function () {
 Route::get('/chat', function () {
     return view('pages.userdashboard.chat.chat');
 });
+
+
+// trainerside
+Route::get('/trainer/login', function () {
+    return view('pages.trainerSide.auth.login');
+});
