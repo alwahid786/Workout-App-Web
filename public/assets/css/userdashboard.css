@@ -934,6 +934,10 @@ body {
     background: linear-gradient(180deg, #C200FF 0%, #53006D 100%);
 }
 
+.category-left {
+    width: 50%;
+}
+
 .category-left h1 {
     color: white;
     font-size: 1.5rem;
@@ -952,9 +956,14 @@ body {
     max-width: 200px;
 }
 
+.category-right {
+    width: 50%;
+}
+
 .category-right img {
     width: 100px;
     height: 180px;
+    margin-left: auto;
 }
 
 .ser-right-three {
@@ -1883,6 +1892,35 @@ body {
     min-width: 300px;
 }
 
+.chat-box-left::-webkit-scrollbar-thumb {
+    background: #E37048;
+    border-radius: 7px;
+    height: 7px;
+    width: 7px;
+}
+
+.chat-box-left::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    width: 7px;
+}
+
+
+.chat-box-left::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 7px;
+    height: 7px;
+    width: 7px;
+}
+
+
+.chat-box-left::-webkit-scrollbar-thumb {
+    background: #E37048;
+    border-radius: 7px;
+    height: 7px;
+    width: 7px;
+}
+
 .chat-card {
     display: flex;
     align-items: center;
@@ -2079,6 +2117,10 @@ body {
 
 
 @media screen and (max-width:767px) {
+    .chat-box-right-footer input {
+        width: 95% !important;
+    }
+
     .chat-box-right-header button {
         display: block;
     }
@@ -2100,6 +2142,54 @@ body {
         width: 100% !important;
     }
 
+    .chat-box-right-none {
+        display: none;
+    }
+
+    .chat-box-right-block {
+        display: block;
+    }
+
+    .height-add {
+        height: 90vh;
+    }
+
+    .height-adds {
+        height: 50vh;
+    }
+
+    .height-addss {
+        height: 65vh;
+    }
 
 
+}
+
+.chat-box-right-body::-webkit-scrollbar-thumb {
+    background: #E37048;
+    border-radius: 7px;
+    height: 7px;
+    width: 7px;
+}
+
+.chat-box-right-body::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    width: 7px;
+}
+
+
+.chat-box-right-body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 7px;
+    height: 7px;
+    width: 7px;
+}
+
+
+.chat-box-right-body::-webkit-scrollbar-thumb {
+    background: #E37048;
+    border-radius: 7px;
+    height: 7px;
+    width: 7px;
 }
