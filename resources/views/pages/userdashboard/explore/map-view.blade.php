@@ -107,18 +107,87 @@
             border-radius: 10px;
         }
     }
+
+    .filter-menu {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .filter-menu-inner {
+        flex: 20%;
+    }
+
+    @media screen and (max-width:576px) {
+        .filter-menu {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+    }
+
+    .dropbtn-s {
+        background-color: #F9F9FB;
+        color: black;
+        font-weight: 500;
+        padding: 5px;
+        font-size: 0.9rem;
+        height: 65px;
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .dropbtn-s i {
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    .dropdown-s {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .dropdown-content-s {
+        display: none;
+        position: absolute;
+        background-color: #F9F9FB;
+        min-width: 100px;
+        border: 1px solid gray;
+        padding: 5px;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .dropdown-content-s a {
+        color: black;
+        font-size: 0.8rem;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content-s a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown-s:hover .dropdown-content-s {
+        display: block;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header py-3">
-            <div class="row">
-                <div class="col-sm-4">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="">
                     <div class="dashboard-header-left">
                         <h1>Search <span>One to One Session</span></h1>
                     </div>
                 </div>
-                <div class="col-sm-8 text-right">
+                <div class="">
                     <div class="dashboard-header-right">
                         <a href="{{url('dashboard')}}">Grid View</a>
                         <a href="" class="active">Map View</a>
@@ -129,14 +198,14 @@
         <div class="filter-section py-4 px-2">
             <div class="row">
                 <div class="col-xl-6">
-                    <div class="row">
-                        <div class="col-sm-3 my-auto">
+                    <div class=" filter-menu">
+                        <div class="filter-menu-inner my-auto px-sm-2">
                             <div class="filter-left-heading">
                                 <h1>Sessions</h1>
                             </div>
 
                         </div>
-                        <div class="col-sm-3 mt-2 mt-sm-0">
+                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading">
                                 <h1>Workout Type</h1>
                                 <select class="form-control" id="exampleFormControlSelect1">
@@ -148,7 +217,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-3 mt-2 mt-sm-0">
+                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading">
                                 <h1>Location</h1>
                                 <select class="form-control" id="exampleFormControlSelect1">
@@ -160,7 +229,18 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-3 mt-2 mt-sm-0">
+                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                            <div class="filter-left-select-heading">
+                                <h1>Class Type</h1>
+                                <div class="dropdown-s">
+                                    <button class="dropbtn-s">One to One <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                                    <div class="dropdown-content-s">
+                                        <a href="{{url('/dashboard/mapgroup')}}">Group</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading">
                                 <h1>Price Range</h1>
                                 <select class="form-control" id="exampleFormControlSelect1">

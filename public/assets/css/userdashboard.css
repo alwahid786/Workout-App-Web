@@ -399,8 +399,11 @@ body {
 /* dashboard */
 .dashboard-header-left h1 {
     color: #E37048;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.7rem;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 .dashboard-header-right {
@@ -900,7 +903,8 @@ body {
 }
 
 .category-header h1 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
+    font-weight: 700;
     margin-bottom: 0px;
 }
 
