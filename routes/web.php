@@ -29,6 +29,11 @@ Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('u
 Route::post('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
 Route::post('/contact', [UserController::class, 'contactUs']);
 
+Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
+Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
+
+
+
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 Route::post('/verify/otp', [AuthController::class, 'verifyOTP'])->name('verifyOTP');
 Route::post('/update/password', [AuthController::class, 'updatePassword'])->name('updatePassword');
@@ -53,18 +58,18 @@ Route::get('/profile', function () {
     return view('pages.website.update-profile');
 });
 //  user dashboard
-Route::get('/dashboard', function () {
-    return view('pages.userdashboard.explore.dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('pages.userdashboard.explore.dashboard');
+// });
 Route::get('/dashboard/map', function () {
     return view('pages.userdashboard.explore.map-view');
 });
 Route::get('/dashboard/payment', function () {
     return view('pages.userdashboard.explore.payment');
 });
-Route::get('/dashboard/trainer-detail', function () {
-    return view('pages.userdashboard.explore.trainer-detail');
-});
+// Route::get('/dashboard/trainer-detail', function () {
+//     return view('pages.userdashboard.explore.trainer-detail');
+// });
 Route::get('/dashboard/categories', function () {
     return view('pages.userdashboard.explore.categories');
 });

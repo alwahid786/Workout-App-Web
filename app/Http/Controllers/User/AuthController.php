@@ -142,7 +142,7 @@ class AuthController extends Controller
             [
                 'category_id' => $request->category_id,
                 'trainer_id' => $request->trainer_id,
-                'price' => $request->price,
+
             ]
         );
         if (!$class) {
@@ -153,6 +153,9 @@ class AuthController extends Controller
             $session_data = new Session();
             $session_data->day = $sessions['day'];
             $session_data->class_id = $class->id;
+            $session_data->price = $sessions['price'];
+            $session_data->difficulty_level = $sessions['difficulty_level'];
+            $session_data->type = $sessions['type'];
             $session_data->start_time = $sessions['start_time'];
             $session_data->end_time = $sessions['end_time'];
             $session_data->save();

@@ -155,6 +155,31 @@ class UserController extends Controller
             return $this->sendError('Contact');
         }
         $contact_us->save();
-        return $this->sendResponse([], 'Contact Submitted to Admin Successfully!');
+        return redirect()->back();
+    }
+
+    /////.....get all trainer........./////
+    public function dashbord()
+    {
+        $all_trainer = User::where('user_type', '=', 'trainer')->get();
+
+        $all_category = Category::get();
+        if (!$all_trainer) {
+            return $this->sendError('Dashboard');
+        }
+        $trainers = json_decode($all_trainer, true);
+        $category = json_decode($all_category, true);
+        return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category'));
+    }
+    /////....user side trainer detail......../////
+    public function trainer_detail(Request $request, $id)
+    {
+        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session'])->get();
+        if (!$trainer) {
+            return $this->sendError('Trainer Detail');
+        }
+        $trainer_detail = json_decode($trainer, true);
+        // dd($trainer_detail);
+        return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
     }
 }

@@ -18,4 +18,12 @@ class Classes extends Model
     {
         return $this->belongsTo(User::class, 'trainer_id');
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+    public function session()
+    {
+        return $this->hasOne(Session::class, 'class_id')->latestOfMany();
+    }
 }
