@@ -10,8 +10,10 @@ use Dotenv\Validator;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
+use App\Models\Classes;
 use App\Models\ContactUs;
 use App\Models\Customer;
+use DateTime;
 use Stripe;
 
 class UserController extends Controller
@@ -94,24 +96,23 @@ class UserController extends Controller
     ///   stripe payment .....///////
     public function paymentIntent(Request $request)
     {
-        // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
 
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
 
-        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $month = date('m', strtotime($request->valid_through));
+        $year = date('Y', strtotime($request->valid_through));
 
-        // $userObj = User::where('id', $request->user_id)->first();
 
-        //Create Stripe Token
         $response = \Stripe\Token::create(array(
             "card" => array(
                 "number"    => $request->input('card_number'),
-                "exp_month" => $request->input('exp_month'),
-                "exp_year"  => $request->input('exp_year'),
+                "exp_month" => $month,
+                "exp_year"  => $year,
                 "cvc"       => $request->input('cvc'),
-                "name"      => $request->input('first_name') . " " . $request->input('last_name')
+                "name"      => $request->input('name')
             )
         ));
 
@@ -188,5 +189,17 @@ class UserController extends Controller
         $trainer_detail = json_decode($trainer, true);
         // dd($trainer_detail);
         return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
+    }
+
+    public function class_detail(Request $request, $id)
+    {
+
+        $class = Classes::where('id', '=', $id)->with('session', 'category')->get();
+        if (!$class) {
+            return $this->sendError('Session Detail');
+        }
+        $class_detail = json_decode($class, true);
+        // dd($class_detail);
+        return view('pages.userdashboard.explore.class-detail', compact('class_detail'));
     }
 }

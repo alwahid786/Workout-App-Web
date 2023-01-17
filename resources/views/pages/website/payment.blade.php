@@ -479,110 +479,111 @@
 
 <!-- .................................Form Payment Method................................ -->
 
-<form>
+<!-- <form> -->
 
-    <!-- ..................................Form Payment Radio Button........................ -->
-    <div class="container-fluid payment-radio-section py-4  my-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-check text-sm-center py-2 py-sm-3" data-aos="zoom-in">
-                        <div class="form-box">
-                            <label>
-                                <input type="radio" name="paymentradio">
-                                <div class="circle"></div>
-
-                                <span>Credit or Debit Card</span>
-                            </label>
-
-                        </div>
-                        <!-- <input class="form-check-input" id="color-radio" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label text-white ml-2 radio-label" for="flexRadioDefault1">Credit or Debit Card</label> -->
-                    </div>
-                </div>
-                <div class="col-md-6 mt-4 mt-md-0 ">
-
-                    <div class="form-check text-sm-center py-2 py-sm-3" data-aos="zoom-in">
-                        <div class="form-box">
-                            <label>
-                                <input type="radio" name="paymentradio">
-                                <div class="circle"></div>
-                                <span>Paypal</span>
-                            </label>
-
-                        </div>
-                        <!-- <input class="form-check-input" id="color-radio" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                        <label class="form-check-label text-white ml-2 radio-label" for="flexRadioDefault2">Paypal</label> -->
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- ................radio end.............. -->
-    <div class="container my-5">
+<!-- ..................................Form Payment Radio Button........................ -->
+<div class="container-fluid payment-radio-section py-4  my-5">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-6 my-auto">
-                <div class="credit-card-wrapper">
-                    <img src="{{asset('public/assets/images/payment-card-left.svg')}}" alt="">
+            <div class="col-md-6">
+                <div class="form-check text-sm-center py-2 py-sm-3" data-aos="zoom-in">
+                    <div class="form-box">
+                        <label>
+                            <input type="radio" name="paymentradio">
+                            <div class="circle"></div>
 
-                    <div class="credit-card-upper-c">
-                        <h1>Bank Name</h1>
-                        <p>credit card</p>
-                    </div>
-                    <div class="credit-card-lower-c">
-                        <h1>2345 6489 6340 7324</h1>
-                        <p>VALID THRU 12/25</p>
-                        <h2>CARDHOLDER NAME</h2>
-                    </div>
+                            <span>Credit or Debit Card</span>
+                        </label>
 
+                    </div>
+                    <!-- <input class="form-check-input" id="color-radio" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label text-white ml-2 radio-label" for="flexRadioDefault1">Credit or Debit Card</label> -->
+                </div>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0 ">
+
+                <div class="form-check text-sm-center py-2 py-sm-3" data-aos="zoom-in">
+                    <div class="form-box">
+                        <label>
+                            <input type="radio" name="paymentradio">
+                            <div class="circle"></div>
+                            <span>Paypal</span>
+                        </label>
+
+                    </div>
+                    <!-- <input class="form-check-input" id="color-radio" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label text-white ml-2 radio-label" for="flexRadioDefault2">Paypal</label> -->
                 </div>
 
             </div>
-            <div class="col-lg-6 mt-4 mt-lg-0">
-                <h1 class="mb-4 " id="payment-form-h">Payment Details</h1>
-                <form action="{{url('/payment_intent')}}" method="POST">
-                    <div class="form-group payment-form">
-                        <label for="exampleInputEmail1" class="payment-form-label">Card Holder</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John Smith" name="name">
-                    </div>
-                    <div class="form-group payment-form ">
-                        <label for="exampleInputPassword1" class="payment-form-label">Card Number</label>
-                        <div class="form-wrapper">
-
-                            <input type="text" class="form-control" placeholder="1234 -5678-8123-1234" name="card_number">
-                            <img src="{{asset('public/assets/images/credit-card.svg')}}" alt="">
-                            <img src="{{asset('public/assets/images/visa.svg')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group payment-form">
-                                <label for="exampleInputPassword1" class="payment-form-label">Valid Through</label>
-                                <input type="text" id="datepickertwo" class="form-control" placeholder="2/22" name="valid_through">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group payment-form">
-                                <label for="exampleInputPassword1 " class="payment-form-label">CVV</label>
-                                <input type="text" class="form-control" placeholder="201" name="cvc">
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-        </div>
-        <div class="col-12 my-5">
-            <div class=" profile-nxt-btn">
-                <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</a>
-                <!-- <button class="update-profile-form-btn" type="submit" name="submit">Complete</button> -->
-            </div>
         </div>
     </div>
+
+</div>
+<!-- ................radio end.............. -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-6 my-auto">
+            <div class="credit-card-wrapper">
+                <img src="{{asset('public/assets/images/payment-card-left.svg')}}" alt="">
+
+                <div class="credit-card-upper-c">
+                    <h1>Bank Name</h1>
+                    <p>credit card</p>
+                </div>
+                <div class="credit-card-lower-c">
+                    <h1>2345 6489 6340 7324</h1>
+                    <p>VALID THRU 12/25</p>
+                    <h2>CARDHOLDER NAME</h2>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-6 mt-4 mt-lg-0">
+            <h1 class="mb-4 " id="payment-form-h">Payment Details</h1>
+            <form action="{{url('/payment_intent')}}" method="POST">
+                @csrf
+                <div class="form-group payment-form">
+                    <label for="exampleInputEmail1" class="payment-form-label">Card Holder</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="John Smith" name="name">
+                </div>
+                <div class="form-group payment-form ">
+                    <label for="exampleInputPassword1" class="payment-form-label">Card Number</label>
+                    <div class="form-wrapper">
+
+                        <input type="text" class="form-control" placeholder="1234 -5678-8123-1234" name="card_number">
+                        <img src="{{asset('public/assets/images/credit-card.svg')}}" alt="">
+                        <img src="{{asset('public/assets/images/visa.svg')}}" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group payment-form">
+                            <label for="exampleInputPassword1" class="payment-form-label">Valid Through</label>
+                            <input type="text" id="datepickertwo" class="form-control" placeholder="2/22" name="valid_through">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group payment-form">
+                            <label for="exampleInputPassword1 " class="payment-form-label">CVV</label>
+                            <input type="text" class="form-control" placeholder="201" name="cvc">
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    <div class="col-12 my-5">
+        <div class=" profile-nxt-btn">
+            <!-- <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</a> -->
+            <button class="update-profile-form-btn" type="submit" name="submit">Complete</button>
+        </div>
+    </div>
+</div>
 </form>
 
-</form>
+<!-- </form> -->
 <!-- modal -->
 <div class="modal fade" id="sucessModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

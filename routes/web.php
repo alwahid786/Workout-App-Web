@@ -26,11 +26,12 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('/trainers');
 Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
 Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('update/profile');
-Route::post('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
+Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
 Route::post('/contact', [UserController::class, 'contactUs']);
 
 Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
 Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
+Route::any('/dashboard/class-detail/{id}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
 
 
 
@@ -73,9 +74,9 @@ Route::get('/dashboard/payment', function () {
 Route::get('/dashboard/categories', function () {
     return view('pages.userdashboard.explore.categories');
 });
-Route::get('/dashboard/class-detail', function () {
-    return view('pages.userdashboard.explore.class-detail');
-});
+// Route::get('/dashboard/class-detail', function () {
+//     return view('pages.userdashboard.explore.class-detail');
+// });
 //workout session
 Route::get('/userdashboard', function () {
     return view('pages.userdashboard.dashboard.user-dashboard');

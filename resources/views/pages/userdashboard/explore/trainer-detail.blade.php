@@ -252,7 +252,7 @@
                         </div>
                         <div class="card-heading py-3">
                             <h1>{{$trainerData['category']['title']}}</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            <a href="{{url('/dashboard/class-detail/'.$trainerData['id'])}}">Book Now</a>
                         </div>
 
                         <div class="card-content">
