@@ -277,6 +277,7 @@
                                 <h1 class="py-2">Wednesday 6, March</h1>
                             </div>
                             <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1">
+                                @foreach($class_detail as $class)
                                 <div class="trainer-class-time-card-box my-2">
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 ">
                                         <div class="trainer-class-time-card-left">
@@ -284,8 +285,8 @@
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
-                                                <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+                                                <h1>{{$class['category']['title']}} </h1>
+                                                <h2>{{$class['session']['start_time']}}-{{$class['session']['end_time']}}</h2>
                                             </div>
                                         </div>
                                         <div class="trainer-class-time-card-right">
@@ -315,6 +316,8 @@
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
+                                @endforeach
+                                <!-- end -->
                                 <div class="trainer-class-time-card-box my-2">
                                     <div class="trainer-class-time-card  px-2 py-2 pr-3 ">
                                         <div class="trainer-class-time-card-left">
