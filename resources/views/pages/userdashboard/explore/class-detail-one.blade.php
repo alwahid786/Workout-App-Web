@@ -194,17 +194,31 @@
         transform: translateX(-50%) translateY(-50%);
         z-index: 999;
     }
-    .dashboard-header-left h1>span{
+
+    .dashboard-header-left h1>span {
         color: #3F3F3F;
         font-size: 1rem;
         font-weight: 400;
+    }
+
+    @media screen and (max-width:576px) {
+        .trainer-class-time-card-left-content h2{
+            font-size: 0.6rem !important;
+        }
+
+        .trainer-class-time-card-left-content h1 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            color: #E37048;
+        }
+
     }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span>Group Session</span></h1>
+            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span>One to One Session</span></h1>
         </div>
         <div class="class-section">
             <div class="row">
@@ -417,18 +431,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img class="" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -455,17 +462,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -492,17 +493,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -521,17 +516,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/sessionfour.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -550,17 +539,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -579,17 +562,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -616,17 +593,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -645,17 +616,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -674,17 +639,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
@@ -703,17 +662,11 @@
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>Stretching </h1>
-                                                <h2>8am-8:30am</h2>
+
                                             </div>
                                         </div>
-                                        <div class="trainer-class-time-card-right">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <div class="trainer-class-time-card-right-counter">
-                                                <h1>+5</h1>
-                                            </div>
+                                        <div class="trainer-class-time-card-left-content">
+                                            <h2>8am-8:30am</h2>
                                         </div>
 
 
