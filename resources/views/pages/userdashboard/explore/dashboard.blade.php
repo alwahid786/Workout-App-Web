@@ -468,7 +468,7 @@
                             <div class="catergory-card catergory-card-yellow p-2">
                                 <div class="category-left">
                                     <h1>Yoga</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                                    <p>Lorem</p>
                                 </div>
                                 <div class="category-right">
                                     <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">

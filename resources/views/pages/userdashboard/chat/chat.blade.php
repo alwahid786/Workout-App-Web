@@ -300,22 +300,23 @@
 @section('insertsfooter')
 <script>
     $('.chat-card').click(function() {
-        $('.chat-box-right').css('display', 'block');
-        $('.chat-box-left').css('display', 'none');
-        $('.chat-area').css('height', '90vh');
-        $('.chat-box').css('height', '50vh');
+        $('.chat-box-right').addClass('chat-box-right-block');
+        $('.chat-box-left').addClass('chat-box-right-none');
+        $('.chat-area').addClass('height-add');
+        $('.chat-box').addClass('height-adds');
     });
     $('#chat-screen').click(function() {
-        $('.chat-box-right').css('display', 'none');
-        $('.chat-box-left').css('display', 'block');
-        $('.chat-area').css('height', '90vh');
-        $('.chat-box').css('height', '65vh');
+        $('.chat-box-right').addClass('chat-box-right-none');
+        $('.chat-box-right').removeClass('chat-box-right-block');
+        $('.chat-box-left').addClass('chat-box-right-block');
+        $('.chat-area').addClass('height-add');
+        $('.chat-box').addClass('height-addss');
     });
     const $window = $(window);
     $window.on('resize', () => {
-        if ($window.width() <= 767) {
-
-        }
+        // if ($window.width() > 767) {
+        //     $('.chat-box-right').css('display', 'block');
+        // }
     })
 </script>
 @endsection

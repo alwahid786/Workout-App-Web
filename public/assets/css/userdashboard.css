@@ -934,6 +934,10 @@ body {
     background: linear-gradient(180deg, #C200FF 0%, #53006D 100%);
 }
 
+.category-left {
+    width: 50%;
+}
+
 .category-left h1 {
     color: white;
     font-size: 1.5rem;
@@ -952,9 +956,14 @@ body {
     max-width: 200px;
 }
 
+.category-right {
+    width: 50%;
+}
+
 .category-right img {
     width: 100px;
     height: 180px;
+    margin-left: auto;
 }
 
 .ser-right-three {
@@ -2091,6 +2100,25 @@ body {
         width: 100% !important;
     }
 
+    .chat-box-right-none {
+        display: none;
+    }
+
+    .chat-box-right-block {
+        display: block;
+    }
+
+    .height-add {
+        height: 90vh;
+    }
+
+    .height-adds {
+        height: 50vh;
+    }
+
+    .height-addss {
+        height: 65vh;
+    }
 
 
 }
