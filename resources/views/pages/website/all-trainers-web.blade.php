@@ -102,6 +102,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
     <div class="training-session-card-outer pb-3 pl-2 pl-sm-5">
+        @if(isset($userdata) && !empty($userdata))
         @foreach($userdata as $data)
         <?php if (count($data['trainer_category']) == 0) {
             continue;
@@ -128,6 +129,7 @@
         </a>
 
         @endforeach
+        @endif
     </div>
 
 </div>
