@@ -2077,6 +2077,7 @@ body {
     display: none;
 }
 
+
 @media screen and (max-width:767px) {
     .chat-box-right-header button {
         display: block;
@@ -2085,6 +2086,14 @@ body {
     .chat-box-right {
         display: none;
         width: 100%;
+    }
+
+    .chat-box-right-block {
+        display: block;
+    }
+
+    .chat-box-right-none {
+        display: none;
     }
 
     .chat-box-left {
