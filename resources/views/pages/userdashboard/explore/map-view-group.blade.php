@@ -115,7 +115,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="dashboard-header-left">
-                        <h1>Search <span>One to One Session</span></h1>
+                        <h1>Search <span>Group Session</span></h1>
                     </div>
                 </div>
                 <div class="col-sm-8 text-right">
@@ -220,7 +220,7 @@
                                 <i class="fa fa-map-marker pr-2" aria-hidden="true"></i>
                                 <p>Park Gardens</p>
                             </div>
-                            <!-- <div class="image-counter">
+                            <div class="image-counter">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
@@ -228,7 +228,7 @@
                                 <div class="image-counter-div">
                                     <h1>+5</h1>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <div class="map-card-right">
@@ -242,6 +242,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
 
