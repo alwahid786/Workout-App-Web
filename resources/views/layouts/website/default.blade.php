@@ -17,6 +17,7 @@
     <div class="loaderDiv">
         <!-- <img src="{{asset('public/assets/images/loader.svg')}}" alt=""> -->
     </div>
+    @include ('flash::message')
     @yield('content')
 
     @include('includes.website.footer')
