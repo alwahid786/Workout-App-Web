@@ -32,9 +32,11 @@
             display: none;
         }
     }
+
     input[type="file"] {
         display: none;
     }
+
     .hero-section-upload {
         color: #fff;
         background: linear-gradient(180deg, #FFBB00 0%, #E37048 100%);
@@ -51,6 +53,7 @@
         justify-content: center;
         align-items: center;
     }
+
     @media screen and (max-width:576px) {
         .hero-section-upload {
             font-size: 0.9rem;

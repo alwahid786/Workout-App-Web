@@ -300,10 +300,12 @@
 @section('insertsfooter')
 <script>
     $('.chat-card').click(function() {
-        $('.chat-box-right').addClass('chat-box-right-block');
+        $('.chat-box-left').removeClass('chat-box-right-block');
         $('.chat-box-left').addClass('chat-box-right-none');
+        $('.chat-box-right').addClass('chat-box-right-block');
         $('.chat-area').addClass('height-add');
         $('.chat-box').addClass('height-adds');
+        $('.chat-box').removeClass('height-addss');
     });
     $('#chat-screen').click(function() {
         $('.chat-box-right').addClass('chat-box-right-none');
