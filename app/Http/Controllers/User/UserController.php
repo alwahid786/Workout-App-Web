@@ -33,7 +33,7 @@ class UserController extends Controller
         }
         $responseBody = $trainer_category;
         $userdata = json_decode($responseBody, true);
-        dd($userdata);
+        // dd($userdata);
         return view('pages.website.all-trainers-web', compact('userdata'));
     }
     /////.........spacific.........//////
