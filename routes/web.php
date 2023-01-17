@@ -42,6 +42,9 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/map', function () {
     return view('pages.userdashboard.explore.map-view');
 });
+Route::get('/dashboard/mapgroup', function () {
+    return view('pages.userdashboard.explore.map-view-group');
+});
 Route::get('/dashboard/payment', function () {
     return view('pages.userdashboard.explore.payment');
 });
