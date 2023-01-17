@@ -2188,3 +2188,34 @@ body {
     height: 7px;
     width: 7px;
 }
+
+
+/* custom calendar */
+.months {
+    text-align: center;
+}
+
+.months h1 {
+    font-size: 0.7rem;
+    color: black;
+    margin-bottom: 0px;
+}
+
+.day-number {
+    background: black;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.day-number h1 {
+    font-size: 0.6rem;
+    margin-bottom: 0px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
