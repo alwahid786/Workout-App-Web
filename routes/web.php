@@ -42,6 +42,9 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/map', function () {
     return view('pages.userdashboard.explore.map-view');
 });
+Route::get('/dashboard/mapgroup', function () {
+    return view('pages.userdashboard.explore.map-view-group');
+});
 Route::get('/dashboard/payment', function () {
     return view('pages.userdashboard.explore.payment');
 });
@@ -53,6 +56,12 @@ Route::get('/dashboard/categories', function () {
 });
 Route::get('/dashboard/class-detail', function () {
     return view('pages.userdashboard.explore.class-detail');
+});
+Route::get('/dashboard/class-detail-copy', function () {
+    return view('pages.userdashboard.explore.class-detail-copy');
+});
+Route::get('/dashboard/class-detail-one', function () {
+    return view('pages.userdashboard.explore.class-detail-one');
 });
 //workout session
 Route::get('/userdashboard', function () {
@@ -91,4 +100,10 @@ Route::get('/payment/paymentdetail', function () {
 //chat
 Route::get('/chat', function () {
     return view('pages.userdashboard.chat.chat');
+});
+
+
+// trainerside
+Route::get('/trainer/login', function () {
+    return view('pages.trainerSide.auth.login');
 });

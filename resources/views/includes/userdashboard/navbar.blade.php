@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="" class=" nav-link sidenav-item ">
+                <a href="{{url('/dashboard/mapgroup')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/images/search-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/search-w.svg')}}" alt="image">
@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="" class=" nav-link sidenav-item ">
+                <a href="{{url('/chat')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/images/message-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/message-w.svg')}}" alt="image">

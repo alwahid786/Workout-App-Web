@@ -143,12 +143,13 @@
         width: 145px;
         border-radius: 7px;
         height: 130px;
-        
+
         object-fit: cover;
         position: relative;
     }
+
     @media screen and (max-width:576px) {
-            .trainer-detail-profile-left img {
+        .trainer-detail-profile-left img {
             width: 130px;
         }
     }
@@ -373,6 +374,24 @@
             margin-bottom: 0px;
         }
     }
+
+    .trainer-detail-profile-left .rated-badge {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 135px;
+        top: 17px;
+    }
+
+    @media screen and (max-width:576px) {
+        .trainer-detail-profile-left .rated-badge {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 115px;
+            top: 17px;
+        }
+    }
 </style>
 
 @include('includes.userdashboard.navbar')
@@ -429,6 +448,7 @@
                                 <div class="trainer-detail-profile-left mt-0 d-flex">
                                     <div class="trainer-detail-profile-left-inner">
                                         <img class="mr-2" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                        <img class="rated-badge" src="{{asset('public/assets/images/badge-2.svg')}}" alt="">
                                         <div class="trainer-detail-profile-left-progress py-2 px-2">
                                             <h1>Level</h1>
                                             <progress id="file" value="72" max="100"> 32% </progress>
@@ -523,7 +543,7 @@
                     </div>
                     <div class="col pl-0 text-center">
                         <div class="detail-profile-button">
-                            <a href="" class="btn mr-sm-4 my-2">Message</a>
+                            <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
                             <!-- <a href="" class="btn my-2">Refund</a> -->
                         </div>
                     </div>

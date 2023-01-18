@@ -321,4 +321,7 @@
         // }
     })
 </script>
+<script>
+    $('.sidenav .nav-item:nth-of-type(5)').addClass('active')
+</script>
 @endsection
