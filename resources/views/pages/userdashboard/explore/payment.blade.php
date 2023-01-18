@@ -378,7 +378,7 @@
                                 <p>VALID THRU {{$card['valid_thru']}}</p>
                                 <h2>{{$card['card_name']}}</h2>
                             </div>
-                            <input type="text" id="card_id" value="{{$card['id']}}">
+                            <input type="hidden" id="card_id" value="{{$card['id']}}">
                         </div>
 
                     </div>
