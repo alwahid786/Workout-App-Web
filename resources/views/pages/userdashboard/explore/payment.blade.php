@@ -365,7 +365,7 @@
             <div class="d-payment-card pb-5">
                 <div class="d-payment-card-wrapper">
                     @foreach($card_detail as $card)
-                    <div class="mt-4">
+                    <div class="mt-4" id="sighnup_submit">
                         <div class="credit-card-wrapper">
                             <img src="{{asset('public/assets/images/payment-card-left.svg')}}" alt="">
 
@@ -378,7 +378,7 @@
                                 <p>VALID THRU {{$card['valid_thru']}}</p>
                                 <h2>{{$card['card_name']}}</h2>
                             </div>
-
+                            <input type="text" id="card_id" value="{{$card['id']}}">
                         </div>
 
                     </div>
@@ -399,7 +399,8 @@
                 </div>
             </div>
             <div class=" profile-nxt-btn mt-5">
-                <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Pay Now</a>
+                <!-- <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal" id="sighnup_submit">Pay Now</a> -->
+                <a href="#" class="update-profile-form-btn">Pay Now</a>
             </div>
         </div>
     </div>
@@ -448,6 +449,15 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+</script>
+<script>
+    document.ready(function() {
+        $('#sighnup_submit').on('click', function(e) {
+            var id = $('#card_id').val();
+            alert(id);
+
+        });
+    });
 </script>
 
 @endsection

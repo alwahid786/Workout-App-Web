@@ -132,7 +132,7 @@ class UserController extends Controller
             'customer_id' => $customer->id,
             'user_id' => $userId,
             'type' => 'CREDIT CARD',
-            'valid_thru' => $month .'/'. $year
+            'valid_thru' => $month . '/' . $year
         ]);
 
         $pay_int_res = [
@@ -211,5 +211,12 @@ class UserController extends Controller
         $card_detail = json_decode($card, true);
         // dd($card_detail);
         return view('pages.userdashboard.explore.payment', compact('card_detail'));
+    }
+
+    /////// card payment......///////
+    public function cardPayment(Request $request)
+    {
+        $payment = Customer::where('id', $request->id)->first();
+        dd($payment);
     }
 }
