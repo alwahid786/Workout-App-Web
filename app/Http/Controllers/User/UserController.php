@@ -11,11 +11,14 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Traits\ResponseTrait;
+use App\Models\BookedSession;
 use App\Models\Classes;
 use App\Models\ContactUs;
 use App\Models\Customer;
+use App\Models\Session as ModelsSession;
 use DateTime;
 use Stripe;
+use Throwable;
 
 class UserController extends Controller
 {
@@ -205,27 +208,50 @@ class UserController extends Controller
     {
 
         $card = Customer::where('user_id', auth()->user()->id)->get();
+        $session = ModelsSession::where('id', $id)->first();
 
         if (!$card) {
             return $this->sendError('Session Detail');
         }
         $card_detail = json_decode($card, true);
         // dd($card_detail);
-        return view('pages.userdashboard.explore.payment', compact('card_detail', 'id'));
+        return view('pages.userdashboard.explore.payment', compact('card_detail', 'session'));
     }
 
     /////// card payment......///////
     public function cardPayment(Request $request)
     {
-        $customerId = $request->customer_id;
+        $customerId = $request->customer;
+        // dd($customerId);
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         // $customer = 'cus_N4Sy4juVCKLQl4';
-        \Stripe\Charge::create(array(
-            "amount" => 200 * 100,
-            "currency" => "usd",
-            "customer" => $customerId
-        ));
 
-        return $this->sendResponse([], 'Payment successfully Done!');
+        try {
+            // dd(1);
+            $payment = \Stripe\Charge::create(array(
+                "amount" => $request->amount * 100,
+                "currency" => "usd",
+                "customer" => $customerId
+            ));
+
+            if ($payment['status'] = "succeeded") {
+                $status = true;
+            } else {
+                $status = false;
+            }
+
+            $booksession = BookedSession::create(array(
+                'session_id' => $request->session_id,
+                'user_id' => auth()->user()->id,
+                'customer_id' => $request->customer_id,
+                'is_completed' => $status,
+            ));
+        } catch (Throwable $e) {
+
+            return $this->sendError(false, $e);
+        }
+        return redirect()->route('/dashboard');
+
+        // return $this->sendResponse([], 'Payment successfully Done!');
     }
 }
