@@ -57,6 +57,9 @@ Route::get('/dashboard/categories', function () {
 Route::get('/dashboard/class-detail', function () {
     return view('pages.userdashboard.explore.class-detail');
 });
+Route::get('/dashboard/class-detail-copy', function () {
+    return view('pages.userdashboard.explore.class-detail-copy');
+});
 Route::get('/dashboard/class-detail-one', function () {
     return view('pages.userdashboard.explore.class-detail-one');
 });
