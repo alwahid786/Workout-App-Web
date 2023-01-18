@@ -184,7 +184,7 @@
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="">
                     <div class="dashboard-header-left">
-                        <h1>Search <span>One to One Session</span></h1>
+                        <h1>Search <span>Group Session</span></h1>
                     </div>
                 </div>
                 <div class="">
@@ -233,11 +233,16 @@
                             <div class="filter-left-select-heading">
                                 <h1>Class Type</h1>
                                 <div class="dropdown-s">
-                                    <button class="dropbtn-s">One to One <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                                    <button class="dropbtn-s">Group <i class="fa fa-angle-down" aria-hidden="true"></i></button>
                                     <div class="dropdown-content-s">
-                                        <a href="{{url('/dashboard/mapgroup')}}">Group</a>
+                                        <a href="{{url('/dashboard/map')}}">One to One</a>
                                     </div>
                                 </div>
+                                <!-- <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Group</option>
+                                    <option><a href="{{url('/dashboard/map')}}">One to One</a></option>
+
+                                </select> -->
                             </div>
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
@@ -300,7 +305,7 @@
                                 <i class="fa fa-map-marker pr-2" aria-hidden="true"></i>
                                 <p>Park Gardens</p>
                             </div>
-                            <!-- <div class="image-counter">
+                            <div class="image-counter">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
@@ -308,7 +313,7 @@
                                 <div class="image-counter-div">
                                     <h1>+5</h1>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <div class="map-card-right">

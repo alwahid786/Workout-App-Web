@@ -143,12 +143,13 @@
         width: 145px;
         border-radius: 7px;
         height: 130px;
-        
+
         object-fit: cover;
         position: relative;
     }
+
     @media screen and (max-width:576px) {
-            .trainer-detail-profile-left img {
+        .trainer-detail-profile-left img {
             width: 130px;
         }
     }
@@ -219,7 +220,7 @@
         font-weight: 500;
     }
 
-    .detail-profile-button a:first-of-type {
+    .detail-profile-button a:last-of-type {
         text-decoration: none;
         border: 1px solid #E37048;
         color: #E37048;
@@ -240,14 +241,14 @@
         flex-wrap: wrap;
     }
 
-    .detail-profile-button a:first-of-type:hover {
+    .detail-profile-button a:last-of-type:hover {
         background-color: #E37048;
         color: white;
         border: 1px solid #E37048;
         text-decoration: none;
     }
 
-    .detail-profile-button a:last-of-type {
+    .detail-profile-button a:first-of-type {
         text-decoration: none;
         border: 1px solid #FF6E6E;
         color: #FF6E6E;
@@ -263,7 +264,7 @@
         outline: none !important;
     }
 
-    .detail-profile-button a:last-of-type:hover {
+    .detail-profile-button a:first-of-type:hover {
         background-color: #FF6E6E;
         color: white;
         border: 1px solid #FF6E6E;
@@ -376,12 +377,33 @@
         width: 7px;
     }
 
+    .past-session-header {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .past-session-header h1 {
+        color: #E37048;
+        font-size: 1.7rem;
+        margin-bottom: 0px;
+    }
+
+    @media screen and (max-width:576px) {
+        .past-session-header h1 {
+            color: #E37048;
+            font-size: 1.3rem;
+            margin-bottom: 0px;
+        }
+    }
+
     /* modal */
     .modal-field textarea {
         resize: none;
         background: #EDEDED;
         color: #B4B4B4;
         border-radius: 10px;
+        box-shadow: none !important;
+        outline: none !important;
     }
 
     .modalHeader {
@@ -396,10 +418,10 @@
     }
 
     .review-modal h1 {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
         margin-bottom: 0;
         font-weight: 700;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
     }
 
     .modal-btn button {
@@ -434,6 +456,29 @@
     .modal-content {
         border-radius: 10px;
         border: none;
+    }
+
+    .modal-rating-star i {
+        color: gold;
+        font-size: 1.8rem;
+    }
+
+    .trainer-detail-profile-left .rated-badge {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 135px;
+        top: 17px;
+    }
+
+    @media screen and (max-width:576px) {
+        .trainer-detail-profile-left .rated-badge {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 115px;
+            top: 17px;
+        }
     }
 </style>
 
@@ -491,6 +536,7 @@
                                 <div class="trainer-detail-profile-left mt-0 d-flex">
                                     <div class="trainer-detail-profile-left-inner">
                                         <img class="mr-2" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                        <img class="rated-badge" src="{{asset('public/assets/images/badge-2.svg')}}" alt="">
                                         <div class="trainer-detail-profile-left-progress py-2 px-2">
                                             <h1>Level</h1>
                                             <progress id="file" value="72" max="100"> 32% </progress>
@@ -585,7 +631,7 @@
                     </div>
                     <div class="col pl-0 text-center">
                         <div class="detail-profile-button">
-                            <a href="" class="btn mr-sm-4 my-2">Message</a>
+                            <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
                             <!-- <a href="" class="btn my-2">Refund</a> -->
                         </div>
                     </div>
@@ -669,4 +715,47 @@
 
     @endsection
     @section('insertsfooter')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script>
+    <script>
+        const slickSettings = {
+            arrows: true,
+            infinite: true,
+            prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session ' aria-hidden='true'></i> ",
+            nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session' aria-hidden='true'></i>",
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            // responsive: [{
+            //         breakpoint: 2000,
+            //         settings: {
+            //             slidesToShow: 2,
+            //             slidesToScroll: 1
+            //         }
+            //     },
+            //     {
+            //          breakpoint: 1490,
+            //         settings: {
+            //             slidesToShow: 1,
+            //             slidesToScroll: 1
+            //         }
+            //     },
+
+
+            // ]
+        }
+
+
+        // $('.js-slick-carousel').on('init', handleSlickInit);
+        $('.js-slick-carousel').slick(slickSettings);
+
+        // reinitialization
+        $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+
+
+        $(window).resize(handleResize);
+    </script>
+    <script>
+        $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
+    </script>
     @endsection
