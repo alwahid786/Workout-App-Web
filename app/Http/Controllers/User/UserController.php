@@ -127,9 +127,12 @@ class UserController extends Controller
 
 
         Customer::create([
+            "card_name"      => $request->input('name'),
+            "card_number"    => $request->input('card_number'),
             'customer_id' => $customer->id,
             'user_id' => $userId,
-            'type' => 'user',
+            'type' => 'CREDIT CARD',
+            'valid_thru' => $month .'/'. $year
         ]);
 
         $pay_int_res = [
@@ -193,7 +196,20 @@ class UserController extends Controller
             return $this->sendError('Session Detail');
         }
         $class_detail = json_decode($class, true);
-        // dd($class_detail);
+
         return view('pages.userdashboard.explore.class-detail', compact('class_detail'));
+    }
+    //////customer card detail........./////////
+
+    public function showCard()
+    {
+        $card = Customer::where('user_id', auth()->user()->id)->get();
+
+        if (!$card) {
+            return $this->sendError('Session Detail');
+        }
+        $card_detail = json_decode($card, true);
+        // dd($card_detail);
+        return view('pages.userdashboard.explore.payment', compact('card_detail'));
     }
 }

@@ -12,7 +12,10 @@ class Customer extends Model
         'customer_id',
         'user_id',
         'type',
-        'status'
+        'status',
+        'card_name',
+        'card_number',
+        'valid_thru'
 
     ];
 }

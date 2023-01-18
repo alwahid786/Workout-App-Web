@@ -32,6 +32,7 @@ Route::post('/contact', [UserController::class, 'contactUs']);
 Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
 Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
 Route::any('/dashboard/class-detail/{id}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
+Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('/dashboard/payment');
 
 
 
@@ -65,9 +66,10 @@ Route::get('/profile', function () {
 Route::get('/dashboard/map', function () {
     return view('pages.userdashboard.explore.map-view');
 });
-Route::get('/dashboard/payment', function () {
-    return view('pages.userdashboard.explore.payment');
-});
+
+// Route::get('/dashboard/payment', function () {
+//     return view('pages.userdashboard.explore.payment');
+// });
 // Route::get('/dashboard/trainer-detail', function () {
 //     return view('pages.userdashboard.explore.trainer-detail');
 // });

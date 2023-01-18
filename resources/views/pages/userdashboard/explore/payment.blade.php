@@ -364,23 +364,25 @@
             </div>
             <div class="d-payment-card pb-5">
                 <div class="d-payment-card-wrapper">
+                    @foreach($card_detail as $card)
                     <div class="mt-4">
                         <div class="credit-card-wrapper">
                             <img src="{{asset('public/assets/images/payment-card-left.svg')}}" alt="">
 
                             <div class="credit-card-upper-c">
-                                <h1>Bank Name</h1>
-                                <p>credit card</p>
+                                <h1>{{$card['type']}}</h1>
+                                <!-- <p>credit card</p> -->
                             </div>
                             <div class="credit-card-lower-c">
-                                <h1>2345 6489 6340 7324</h1>
-                                <p>VALID THRU 12/25</p>
-                                <h2>CARDHOLDER NAME</h2>
+                                <h1>{{$card['card_number']}}</h1>
+                                <p>VALID THRU {{$card['valid_thru']}}</p>
+                                <h2>{{$card['card_name']}}</h2>
                             </div>
 
                         </div>
 
                     </div>
+                    @endforeach
                     <div class="mt-4">
                         <a href="{{url('/payments')}}">
                             <div class="credit-card-wrapper-right">
