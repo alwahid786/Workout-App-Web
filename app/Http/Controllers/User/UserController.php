@@ -201,8 +201,9 @@ class UserController extends Controller
     }
     //////customer card detail........./////////
 
-    public function showCard()
+    public function showCard($id)
     {
+
         $card = Customer::where('user_id', auth()->user()->id)->get();
 
         if (!$card) {
@@ -210,13 +211,21 @@ class UserController extends Controller
         }
         $card_detail = json_decode($card, true);
         // dd($card_detail);
-        return view('pages.userdashboard.explore.payment', compact('card_detail'));
+        return view('pages.userdashboard.explore.payment', compact('card_detail', 'id'));
     }
 
     /////// card payment......///////
     public function cardPayment(Request $request)
     {
-        $payment = Customer::where('id', $request->id)->first();
-        dd($payment);
+        $customerId = $request->customer_id;
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        // $customer = 'cus_N4Sy4juVCKLQl4';
+        \Stripe\Charge::create(array(
+            "amount" => 200 * 100,
+            "currency" => "usd",
+            "customer" => $customerId
+        ));
+
+        return $this->sendResponse([], 'Payment successfully Done!');
     }
 }

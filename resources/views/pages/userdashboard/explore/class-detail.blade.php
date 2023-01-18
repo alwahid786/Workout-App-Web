@@ -276,8 +276,8 @@
                             <div class="trainer-class-time-header pt-4 pl-5">
                                 <h1 class="py-2">Wednesday 6, March</h1>
                             </div>
+                            @foreach($class_detail as $class)
                             <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1">
-                                @foreach($class_detail as $class)
                                 <div class="trainer-class-time-card-box my-2">
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 ">
                                         <div class="trainer-class-time-card-left">
@@ -316,9 +316,8 @@
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
-                                @endforeach
                                 <!-- end -->
-                                <div class="trainer-class-time-card-box my-2">
+                                <!-- <div class="trainer-class-time-card-box my-2">
                                     <div class="trainer-class-time-card  px-2 py-2 pr-3 ">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
@@ -594,11 +593,13 @@
 
                                     </div>
                                     <div class="trainer-class-time-border"></div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="trainer-class-time-btn pt-4 pb-3">
-                                <a href="{{url('/dashboard/payment')}}" class="btn">Confirm Booking</a>
+                                <a href="{{url('/dashboard/payment/'.$class['session']['id'])}}" class="btn">Confirm Booking</a>
                             </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>

@@ -365,7 +365,7 @@
             <div class="d-payment-card pb-5">
                 <div class="d-payment-card-wrapper">
                     @foreach($card_detail as $card)
-                    <div class="mt-4" id="sighnup_submit">
+                    <div class="mt-4 credit_card" id="sighnup_submit">
                         <div class="credit-card-wrapper">
                             <img src="{{asset('public/assets/images/payment-card-left.svg')}}" alt="">
 
@@ -378,9 +378,9 @@
                                 <p>VALID THRU {{$card['valid_thru']}}</p>
                                 <h2>{{$card['card_name']}}</h2>
                             </div>
-                            <input type="hidden" id="card_id" value="{{$card['id']}}">
                         </div>
 
+                        <input type="text" class="customer_id" value="{{$card['customer_id']}}">
                     </div>
                     @endforeach
                     <div class="mt-4">
@@ -400,7 +400,11 @@
             </div>
             <div class=" profile-nxt-btn mt-5">
                 <!-- <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal" id="sighnup_submit">Pay Now</a> -->
-                <a href="#" class="update-profile-form-btn">Pay Now</a>
+                <form action="">
+                    <input type="text" id="customer">
+                    <a href="#" class="update-profile-form-btn">Pay Now</a>
+                    <!-- <button class="update-profile-form-btn">Pay Now</button> -->
+                </form>
             </div>
         </div>
     </div>
@@ -451,13 +455,18 @@
     $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
 </script>
 <script>
-    document.ready(function() {
-        $('#sighnup_submit').on('click', function(e) {
-            var id = $('#card_id').val();
-            alert(id);
+    // document.ready(function() {
 
-        });
+    $('.credit_card').click(function() {
+        alert('comming')
+        // $('.credit_card').css("border", "4px solid black");
+        var id = $(this).find('.customer_id').val();
+        alert(id);
+        $("#customer").val(id);
+
+
     });
+    // });
 </script>
 
 @endsection
