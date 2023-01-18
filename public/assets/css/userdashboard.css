@@ -33,9 +33,9 @@ body {
 }
 
 
-.content-wrapper {
+/* .content-wrapper {
     margin-top: 90px;
-}
+} */
 
 .sidenav .nav-item .nav-link {
     color: #BDBDBD !important;
@@ -281,6 +281,12 @@ body {
 }
 
 @media (min-width: 992px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
 
     .sidenav {
         background: white;
