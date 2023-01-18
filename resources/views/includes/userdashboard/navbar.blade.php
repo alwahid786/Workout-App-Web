@@ -1,7 +1,7 @@
 <style>
 
 </style>
-<nav class="navbar navbar-z navbar-expand-lg navbar-dark fixed-top navbar-header px-4 px-lg-0">
+<nav class="navbar navbar-z navbar-expand-lg navbar-dark  navbar-header px-4 px-lg-0">
     <a class="navbar-brand logo-header pl-lg-3" data-aos="fade-right" href="{{url('dashboard')}}">
         <img src="{{asset('public/assets/images/d-logo.svg')}}" alt="image">
     </a>
@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="" class=" nav-link sidenav-item ">
+                <a href="{{url('/dashboard/mapgroup')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/images/search-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/search-w.svg')}}" alt="image">
@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="" class=" nav-link sidenav-item ">
+                <a href="{{url('/chat')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/images/message-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/message-w.svg')}}" alt="image">
@@ -87,7 +87,7 @@
             <i class="fa fa-search" aria-hidden="true"></i>
         </div>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item mr-lg-4 chat-link">
+            <li class="nav-item my-2 my-lg-0 mr-lg-4 chat-link">
                 <a class="nav-link px-2" href="#"> <img src="{{asset('public/assets/images/chat-icon-w.svg')}}" alt="image"></a>
             </li>
             <li class="nav-item mr-lg-4 my-2 my-lg-0">

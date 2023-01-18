@@ -581,7 +581,7 @@
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
-            <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div>
+            <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Signup to <span>WORKITPT</span></h2>
                 <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
@@ -592,8 +592,16 @@
                     <input type="text" class="mb-2 modal-input" placeholder="First Name" id="first_name">
                     <input type="text" class="mb-2 modal-input" placeholder="Last Name" id="last_name">
                     <input type="text" class="mb-2 modal-input" placeholder="Email" id="email">
-                    <input type="text" class="mb-2 modal-input" placeholder="Password" id="password">
-                    <input type="text" class="mb-2 modal-input" placeholder="Confirm Password" id="password_confirmation">
+                    <div class="right-inner-addon mb-2">
+                        <input type="password" class=" modal-input passInput" placeholder="Password" id="password">
+                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                    </div>
+                    <div class="right-inner-addon mb-2">
+                        <input type="password" class=" modal-input passInput" placeholder="Confirm Password" id="password_confirmation">
+                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                    </div>
                     <p>Already have an account? <span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</span></p>
                     <input type="button" class=" btn my-3 login-btn" value="Sign Up" id="sighnup_submit">
                 </div>
@@ -605,7 +613,7 @@
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
-            <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div>
+            <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Login to <span>WORKITPT</span></h2>
                 <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
@@ -647,7 +655,7 @@
 <div class="modal fade" id="forgotPassModal" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
-            <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div>
+            <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Forget <span>Password</span></h2>
                 <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
@@ -670,7 +678,7 @@
 <div class="modal fade" id="verifyOtpModal" tabindex="-1" role="dialog" aria-labelledby="verifyOtpModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
-            <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div>
+            <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Forget <span>Password</span></h2>
                 <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
@@ -706,7 +714,7 @@
 <div class="modal fade" id="resetPassModal" tabindex="-1" role="dialog" aria-labelledby="resetPassModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
-            <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div>
+            <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Reset <span>Password</span></h2>
                 <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
