@@ -46,6 +46,7 @@
         font-weight: 600;
         /* width: 50%; */
         margin: 0 auto;
+        cursor: pointer;
         width: 100%;
         max-width: 204px;
         height: 50px;
@@ -79,11 +80,11 @@
                     <p class="pb-4 pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nisi ratione esse qui, explicabo fugit voluptatum eum quae obcaecati in?</p>
                 </div>
             </div>
-            <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0">
+            <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0 ">
                 <img src="{{asset('public/assets/images/payment-hero.webp')}}" alt="image">
-                <label class="hero-section-upload my-4"> Upload Image
+                <!-- <label class="hero-section-upload my-4"> Upload Image
                     <input type="file" size="60">
-                </label>
+                </label> -->
             </div>
         </div>
     </div>
