@@ -403,7 +403,7 @@
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="session-detail-right-wrapper px-2 py-3">
                         <div class="col session-detail-calendar px-2">
-                            <!-- <div class="row js-slick-carousels">
+                            <div class="row js-slick-carousels">
                                 <div class="col">
                                     <div class="months month-active">
                                         <h1>January</h1>
@@ -646,8 +646,8 @@
                                         <h2>Mon</h2>
                                     </div>
                                 </div>
-                            </div> -->
-                            <div id="demo-1-week"></div>
+                            </div>
+                            <!-- <div id="demo-1-week"></div> -->
                         </div>
                         <div class="trainer-class-time ">
                             <div class="trainer-class-time-header pt-4 pl-5">
