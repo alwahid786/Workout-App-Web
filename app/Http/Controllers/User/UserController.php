@@ -208,17 +208,19 @@ class UserController extends Controller
     }
     //////customer card detail........./////////
 
-    public function showCard($id)
+    public function showCard(Request $request)
     {
-
+        // dd($request->session_id);
         $card = Customer::where('user_id', auth()->user()->id)->get();
-        $session = ModelsSession::where('id', $id)->first();
+        $session_detail = ModelsSession::where('id', $request->session_id)->first();
 
         if (!$card) {
             return $this->sendError('Session Detail');
         }
         $card_detail = json_decode($card, true);
-        // dd($card_detail);
+        $session = json_decode($session_detail, true);
+        // dd($session);
+
         return view('pages.userdashboard.explore.payment', compact('card_detail', 'session'));
     }
 
@@ -227,11 +229,12 @@ class UserController extends Controller
     {
         $customerId = $request->customer;
         // dd($customerId);
+        dd($request->amount);
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // $customer = 'cus_N4Sy4juVCKLQl4';
+
 
         try {
-            // dd(1);
+            
             $payment = \Stripe\Charge::create(array(
                 "amount" => $request->amount * 100,
                 "currency" => "usd",

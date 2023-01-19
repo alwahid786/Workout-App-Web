@@ -248,7 +248,7 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="session-card-inner-link my-3">
-                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                                <a href="{{url('/dashboard/class-detail/'.$classes['id'])}}">Book Now</a>
                             </div>
                         </div>
                         <p class="session-card-text">{{$classes['trainer']['about']}}</p>
@@ -741,5 +741,10 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+</script>
+<script>
+    $('.credit_card').click(function() {
+        
+    });
 </script>
 @endsection
