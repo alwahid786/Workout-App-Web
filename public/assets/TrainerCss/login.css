@@ -65,6 +65,7 @@
 .form-check{
     display: flex !important;
     justify-content: space-between;
+    
 }
 .form-check label {
     color: #8c8c8c !important;
