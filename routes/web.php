@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
+    Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');
+
     Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
     Route::any('/dashboard/class-detail/{id}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
     Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('/dashboard/payment');
@@ -122,9 +124,9 @@ Route::get('/userdashboard/pastsessiondetail', function () {
     return view('pages.userdashboard.dashboard.user-past-session-detail');
 });
 
-Route::get('/userdashboard/sessionone', function () {
-    return view('pages.userdashboard.dashboard.user-session-one');
-});
+// Route::get('/userdashboard/sessionone', function () {
+//     return view('pages.userdashboard.dashboard.user-session-one');
+// });
 Route::get('/userdashboard/sessiongroup', function () {
     return view('pages.userdashboard.dashboard.user-session-group');
 });

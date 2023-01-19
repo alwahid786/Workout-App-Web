@@ -215,7 +215,7 @@ class UserController extends Controller
         $session_detail = ModelsSession::where('id', $request->session_id)->first();
 
         if (!$card) {
-            return $this->sendError('Session Detail');
+            return $this->sendError('Card');
         }
         $card_detail = json_decode($card, true);
         $session = json_decode($session_detail, true);
@@ -260,6 +260,7 @@ class UserController extends Controller
 
         // return $this->sendResponse([], 'Payment successfully Done!');
     }
+    //////////.......get all booked session .......///////
     public function getBookedSession()
     {
         $booksession = BookedSession::where('user_id', auth()->user()->id)->with('session.class.trainer', 'session.class.category')->get();
@@ -267,7 +268,19 @@ class UserController extends Controller
             return $this->sendError('Session Detail');
         }
         $booksession_detail = json_decode($booksession, true);
-        
+
         return view('pages.userdashboard.dashboard.user-session', compact('booksession_detail'));
+    }
+    //////// view booked session.........//////
+    public function viewSession($id)
+    {
+        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category')->first();
+        if (!$session_detail) {
+            return $this->sendError('Session Detail');
+        }
+        $bookedsession = json_decode($session_detail, true);
+        // dd($bookedsession);
+
+        return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession'));
     }
 }
