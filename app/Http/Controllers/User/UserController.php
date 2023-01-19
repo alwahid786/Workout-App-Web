@@ -179,7 +179,7 @@ class UserController extends Controller
         }
         $trainers = json_decode($all_trainer, true);
         $class = json_decode($class_detail, true);
-        // dd($class);
+        
         $category = json_decode($all_category, true);
         return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class'));
     }
@@ -191,7 +191,7 @@ class UserController extends Controller
             return $this->sendError('Trainer Detail');
         }
         $trainer_detail = json_decode($trainer, true);
-        // dd($trainer_detail);
+        
         return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
     }
 
@@ -210,7 +210,7 @@ class UserController extends Controller
 
     public function showCard(Request $request)
     {
-        // dd($request->session_id);
+        
         $card = Customer::where('user_id', auth()->user()->id)->get();
         $session_detail = ModelsSession::where('id', $request->session_id)->first();
 
@@ -219,7 +219,7 @@ class UserController extends Controller
         }
         $card_detail = json_decode($card, true);
         $session = json_decode($session_detail, true);
-        // dd($session);
+        
 
         return view('pages.userdashboard.explore.payment', compact('card_detail', 'session'));
     }
@@ -228,13 +228,12 @@ class UserController extends Controller
     public function cardPayment(Request $request)
     {
         $customerId = $request->customer;
-        // dd($customerId);
-        dd($request->amount);
+       
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
 
         try {
-            
+
             $payment = \Stripe\Charge::create(array(
                 "amount" => $request->amount * 100,
                 "currency" => "usd",
