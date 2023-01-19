@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
     Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('update/profile');
     Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
+    Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
+
 
     Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
     Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
@@ -109,9 +111,9 @@ Route::get('/dashboard/class-detail-one', function () {
 Route::get('/userdashboard', function () {
     return view('pages.userdashboard.dashboard.user-dashboard');
 });
-Route::get('/userdashboard/session', function () {
-    return view('pages.userdashboard.dashboard.user-session');
-});
+// Route::get('/userdashboard/session', function () {
+//     return view('pages.userdashboard.dashboard.user-session');
+// });
 
 Route::get('/userdashboard/pastsession', function () {
     return view('pages.userdashboard.dashboard.user-past-session');

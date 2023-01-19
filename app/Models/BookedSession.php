@@ -15,4 +15,8 @@ class BookedSession extends Model
         'customer_id',
         'is_completed'
     ];
+    public function session()
+    {
+        return $this->belongsTo(Session::class, 'session_id');
+    }
 }

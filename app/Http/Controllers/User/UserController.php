@@ -179,7 +179,7 @@ class UserController extends Controller
         }
         $trainers = json_decode($all_trainer, true);
         $class = json_decode($class_detail, true);
-        
+
         $category = json_decode($all_category, true);
         return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class'));
     }
@@ -191,7 +191,7 @@ class UserController extends Controller
             return $this->sendError('Trainer Detail');
         }
         $trainer_detail = json_decode($trainer, true);
-        
+
         return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
     }
 
@@ -210,7 +210,7 @@ class UserController extends Controller
 
     public function showCard(Request $request)
     {
-        
+
         $card = Customer::where('user_id', auth()->user()->id)->get();
         $session_detail = ModelsSession::where('id', $request->session_id)->first();
 
@@ -219,7 +219,7 @@ class UserController extends Controller
         }
         $card_detail = json_decode($card, true);
         $session = json_decode($session_detail, true);
-        
+
 
         return view('pages.userdashboard.explore.payment', compact('card_detail', 'session'));
     }
@@ -228,7 +228,7 @@ class UserController extends Controller
     public function cardPayment(Request $request)
     {
         $customerId = $request->customer;
-       
+
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
 
@@ -259,5 +259,15 @@ class UserController extends Controller
         return redirect()->route('/dashboard');
 
         // return $this->sendResponse([], 'Payment successfully Done!');
+    }
+    public function getBookedSession()
+    {
+        $booksession = BookedSession::where('user_id', auth()->user()->id)->with('session.class.trainer', 'session.class.category')->get();
+        if (!$booksession) {
+            return $this->sendError('Session Detail');
+        }
+        $booksession_detail = json_decode($booksession, true);
+        
+        return view('pages.userdashboard.dashboard.user-session', compact('booksession_detail'));
     }
 }

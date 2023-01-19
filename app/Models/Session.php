@@ -18,4 +18,8 @@ class Session extends Model
         'difficulty_level',
         'type'
     ];
+    public function class()
+    {
+        return $this->belongsTo(Classes::class, 'class_id');
+    }
 }
