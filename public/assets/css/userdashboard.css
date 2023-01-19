@@ -33,9 +33,9 @@ body {
 }
 
 
-.content-wrapper {
+/* .content-wrapper {
     margin-top: 90px;
-}
+} */
 
 .sidenav .nav-item .nav-link {
     color: #BDBDBD !important;
@@ -281,6 +281,12 @@ body {
 }
 
 @media (min-width: 992px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
 
     .sidenav {
         background: white;
@@ -2119,6 +2125,7 @@ body {
     display: none;
 }
 
+
 @media screen and (max-width:767px) {
     .chat-box-right-footer input {
         width: 95% !important;
@@ -2131,6 +2138,14 @@ body {
     .chat-box-right {
         display: none;
         width: 100%;
+    }
+
+    .chat-box-right-block {
+        display: block;
+    }
+
+    .chat-box-right-none {
+        display: none;
     }
 
     .chat-box-left {
@@ -2187,4 +2202,64 @@ body {
     border-radius: 7px;
     height: 7px;
     width: 7px;
+}
+
+
+/* custom calendar */
+.months {
+    text-align: center;
+}
+
+.months h1 {
+    font-size: 0.7rem;
+    color: #BDBDBD;
+    margin-bottom: 0px;
+}
+
+.month-active h1 {
+    color: black !important;
+    font-weight: bold;
+}
+
+.day-number {
+    background: rgba(0, 0, 0, 0.1);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.day-active {
+    background: black;
+}
+
+.day-active h1 {
+    color: white !important;
+}
+
+.day-number h1 {
+    font-size: 0.6rem;
+    margin-bottom: 0px;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.day-number h2 {
+    color: #BDBDBD;
+    font-size: 0.6rem;
+    margin-bottom: 0px;
+    padding-bottom: 2px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.day-active h2 {
+    border-bottom: 1px solid black !important;
+    color: black;
 }

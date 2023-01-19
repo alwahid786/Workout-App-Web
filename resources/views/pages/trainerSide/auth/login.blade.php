@@ -1,5 +1,5 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/TrainerCss/login.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/login.css')}}">
 @section('content')
 <div class="row login-section">
     <div class="col-md-6 px-0 login-left-side-wrapper">
@@ -15,12 +15,12 @@
                 <img class="d-block d-md-none" src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
             </div>
             <form class="mt-5">
-                <div class="form-group">
+                <div class="form-group form-field">
                     <input type="email" class="form-control pl-sm-4 pl-2" id="email" placeholder="Email">
                 </div>
-                <div class="form-group">
+                <div class="form-group form-field">
                     <div class="login-password-field">
-                        <input type="password" class="form-control pl-sm-4 pl-2" id="pwd" placeholder="Password">
+                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" placeholder="Password">
                         <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
@@ -29,7 +29,7 @@
                     <label><input type="checkbox"> Remember me</label>
                     <a href="#">Forgot Password?</a>
                 </div>
-                <div class="login-btn pt-5">
+                <div class="form-field pt-5 text-center">
                     <button type="submit" class="btn btn-default text-center">Login</button>
                 </div>
             </form>
@@ -42,4 +42,27 @@
 </div>
 @endsection
 @section('insertsfooter')
+<script>
+    $('#hidePass').hide();
+    $('#showPass').click(function() {
+        $('#showPass').hide();
+        $('#hidePass').show();
+        var passInput = $("#passInput");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+    $('#hidePass').on('click', function() {
+        $('#hidePass').hide();
+        $('#showPass').show();
+        var passInput = $("#passInput");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+</script>
 @endsection
