@@ -365,9 +365,9 @@
             <div class="d-payment-card pb-5">
                 <div class="d-payment-card-wrapper">
                     @foreach($card_detail as $card)
-                    <div class="mt-4" id="sighnup_submit">
+                    <div class="mt-4 credit_card" id="credit_card">
                         <div class="credit-card-wrapper">
-                            <img src="{{asset('public/assets/images/payment-card-left.svg')}}" alt="">
+                            <img class="card_img" src="{{asset('public/assets/images/payment-card-left.svg')}}" alt="">
 
                             <div class="credit-card-upper-c">
                                 <h1>{{$card['type']}}</h1>
@@ -378,9 +378,10 @@
                                 <p>VALID THRU {{$card['valid_thru']}}</p>
                                 <h2>{{$card['card_name']}}</h2>
                             </div>
-                            <input type="hidden" id="card_id" value="{{$card['id']}}">
                         </div>
 
+                        <input type="hidden" class="customer_id" value="{{$card['customer_id']}}">
+                        <input type="hidden" class="id" value="{{$card['id']}}">
                     </div>
                     @endforeach
                     <div class="mt-4">
@@ -400,7 +401,18 @@
             </div>
             <div class=" profile-nxt-btn mt-5">
                 <!-- <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal" id="sighnup_submit">Pay Now</a> -->
-                <a href="#" class="update-profile-form-btn">Pay Now</a>
+                <form action="{{route('/stripe/payment')}}" method="post">
+                    @csrf
+                    <input type="hidden" id="customer" name="customer">
+                    <input type="hidden" id="customer_id" name="customer_id">
+
+                    <input type="hidden" id="session" name="session_id" value="{{$session['id']}}">
+                    <input type="hidden" id="session" name="amount" value="{{$session['price']}}">
+
+
+                    <!-- <a href="#" class="update-profile-form-btn"></a> -->
+                    <button class="update-profile-form-btn" type="submit">Pay Now</button>
+                </form>
             </div>
         </div>
     </div>
@@ -451,12 +463,21 @@
     $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
 </script>
 <script>
-    document.ready(function() {
-        $('#sighnup_submit').on('click', function(e) {
-            var id = $('#card_id').val();
-            alert(id);
+    $('.credit_card').click(function() {
 
-        });
+        $('.credit_card').find('.card_img').css("border", "none");
+        $(this).find('.card_img').css("border", "4px solid black");
+
+
+        var customer_id = $(this).find('.customer_id').val();
+        var id = $(this).find('.id').val();
+
+        // alert(id);
+        $("#customer").val(customer_id);
+        $("#customer_id").val(id);
+
+
+
     });
 </script>
 
