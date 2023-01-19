@@ -15,7 +15,7 @@
 
 <body>
     @yield('content')
-
+    @include('includes.trainerSide.footer')
     @yield('insertsfooter')
 </body>
 
