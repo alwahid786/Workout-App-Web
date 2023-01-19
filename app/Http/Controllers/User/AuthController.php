@@ -17,6 +17,10 @@ use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Session;
 use App\Models\TrainerProfile;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session as FacadesSession;
+// use HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 
 class AuthController extends Controller
 {
@@ -98,6 +102,18 @@ class AuthController extends Controller
             return $this->sendError('Unable to process. Please try again later.');
         }
         return $this->sendResponse([], 'Password updated successfully.');
+    }
+    ////////........logout....../////////
+    public function logout(Request $request)
+    {
+        // $token = auth()->user()->token()
+
+        // dd($token);
+        // $token->revoke();
+        // $response = 'You have been successfully logged out!';
+        FacadesSession::flush();
+        Auth::logout();
+        return redirect()->url('/');
     }
     ////// trainer sign up.......///////
     public function trainerSignup(TrainerSignupRequest $request)

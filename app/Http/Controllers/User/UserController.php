@@ -170,14 +170,18 @@ class UserController extends Controller
     public function dashbord()
     {
         $all_trainer = User::where('user_type', '=', 'trainer')->get();
+        // Classes::with('session', 'category')->get();
+        $class_detail = Classes::with(['category', 'session', 'trainer'])->get();
 
         $all_category = Category::get();
         if (!$all_trainer) {
             return $this->sendError('Dashboard');
         }
         $trainers = json_decode($all_trainer, true);
+        $class = json_decode($class_detail, true);
+        // dd($class);
         $category = json_decode($all_category, true);
-        return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category'));
+        return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class'));
     }
     /////....user side trainer detail......../////
     public function trainer_detail(Request $request, $id)
