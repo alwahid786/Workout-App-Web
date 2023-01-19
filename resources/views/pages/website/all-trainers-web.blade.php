@@ -393,7 +393,7 @@
             <div class="col-xl-2 col-md-6 mt-md-0 mt-5 text-md-left text-center" data-aos="fade-up" data-aos-delay="200">
                 <ul class="quickLinks mx-auto">
                     <!-- <li class="mb-3 text-md-white"><strong>Quick Links</strong></li> -->
-                    <li class="mb-2"><a href=" javascript:void(0)">About Us</a></li>
+                    <li class="mb-2"><a href=" {{url('/about')}}">About Us</a></li>
                     <li class="mb-2"><a href=" javascript:void(0)">Services</a></li>
                     <li class="mb-2"><a href=" javascript:void(0)">Terms and Conditions</a></li>
 

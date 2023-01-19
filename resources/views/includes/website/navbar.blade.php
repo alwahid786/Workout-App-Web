@@ -1,3 +1,31 @@
+<style>
+  @media screen and (min-width:992px) {
+    .nav-list .nav-item .nav-link {
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-list .nav-item .nav-link:hover {
+      border-bottom: 2px solid #E37048;
+      color: #E37048;
+    }
+
+    .nav-list .nav-item.active {
+      border-bottom: 2px solid #E37048;
+
+    }
+
+
+
+    .nav-list .nav-item .login-link:hover {
+      border-bottom: 2px solid transparent;
+      color: white;
+    }
+
+    .nav-list .nav-item .trainer-link:hover {
+      border-bottom: 2px solid #E37048;
+    }
+  }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid px-sm-5" data-aos="fade-right">
     <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo.svg')}}" alt="image"></a>
@@ -10,7 +38,7 @@
           <a class="nav-link px-2 trainer-link" href="#"> <span>Bec</span>ome a trainer</a>
         </li>
         <li class="nav-item mr-lg-4 ">
-          <a class="nav-link px-2" href="#">ABOUT US</a>
+          <a class="nav-link px-2" href="{{url('/about')}}">ABOUT US</a>
         </li>
         <li class="nav-item nav-item-block">
           <a class="nav-link login-link px-2  px-lg-4 text-center modal-view" href="javascript:void(0)" data-toggle="modal" data-target="#loginModal">Login</a>

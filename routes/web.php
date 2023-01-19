@@ -35,6 +35,9 @@ Route::get('/payments', function () {
 Route::get('/profile', function () {
     return view('pages.website.update-profile');
 });
+Route::get('/about', function () {
+    return view('pages.website.about');
+});
 //  user dashboard
 Route::get('/dashboard', function () {
     return view('pages.userdashboard.explore.dashboard');

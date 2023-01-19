@@ -1,4 +1,33 @@
 <style>
+    @media screen and (min-width:992px) {
+        .nav-list .nav-item .nav-link {
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-list .nav-item .nav-link:hover {
+            border-bottom: 2px solid #E37048;
+            color: #E37048;
+        }
+
+
+
+        .nav-list .nav-item.active {
+            border-bottom: 2px solid #E37048;
+
+        }
+
+
+
+        .nav-list .nav-item .login-link:hover {
+            border-bottom: 2px solid transparent;
+            color: white;
+        }
+
+        .nav-list .nav-item .trainer-link:hover {
+            border-bottom: 2px solid #E37048;
+        }
+    }
+
     .notification-dropdown {
         left: -320px !important;
         border-radius: 10px;
@@ -127,15 +156,15 @@
             <span class="navbar-toggler-btn"><i class="fa fa-bars" aria-hidden="true"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto nav-list ">
+            <ul class="navbar-nav ml-auto nav-list nav-lists ">
                 <li class="nav-item mr-lg-4">
                     <a class="nav-link px-2" href="{{url('dashboard')}}">Dashboard</a>
                 </li>
-                <li class="nav-item mr-lg-4 ">
-                    <a class="nav-link px-2" href="#">List Of Trainer</a>
+                <li class="nav-item mr-lg-4 list-trainer">
+                    <a class="nav-link px-2" href="{{url('/trainers')}}">List Of Trainer</a>
                 </li>
                 <li class="nav-item mr-lg-4 ">
-                    <a class="nav-link px-2" href="#">About Us</a>
+                    <a class="nav-link px-2" href="{{url('/about')}}">About Us</a>
                 </li>
                 <li class="nav-item mr-lg-4 chat-link">
                     <a class="nav-link px-2" href="#"> <img src="{{asset('public/assets/images/chat-icon.svg')}}" alt="image"></a>
