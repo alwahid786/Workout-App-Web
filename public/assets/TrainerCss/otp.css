@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.login-section {
+    height: 100%;
+}
+
+.login-left-side {
+    background-image:
+    linear-gradient(360deg, #F2623D -62.23%, rgba(242, 98, 61, 0) 102.26%), url('../trainerimages/forget-pass.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    position: relative;
+}
+
+.login-left-side img {
+    width: 84%;
+    position: absolute;
+    bottom: 10%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+.right-parent {
+    position: relative;
+}
+
+
+.heading-area h3 {
+    color: black;
+    font-size: 1.4rem;
+    overflow-y: hidden;
+}
+.heading-area h3 span{
+    color: #E37048;
+    font-weight: bold;
+}
+
+/* .heading-area img{
+    width: 200px;
+} */
+
+
+
+.login-password-field {
+    position: relative;
+}
+
+.login-password-field i {
+    color: #B5B5B5;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+/*..............OTP Field..................*/
+.verification-code {
+    width: 100%;
+    /* max-width: 500px; */
+    position: relative;
+    margin:50px auto;
+    
+}
+.control-label{
+  display:block;
+  margin:40px auto;
+  font-weight:900;
+}
+.verification-code--inputs input[type=text] {
+    border: 1px solid #E37048;
+    width: 55px;
+    height: 58px;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 7px;
+    margin: 0 5px;
+}
+
+.form-field button {
+    color: #E37048;
+    background: white;
+    border: 1px solid #E37048;
+    height: 50px;
+    width: 100%;
+    font-weight: 500;
+    max-width: 400px;
+    outline: none !important;
+    box-shadow: none !important;
+
+}
+
+.form-field button:hover {
+    color: white;
+    border: 1px solid #E37048;
+    background: #E37048;
+
+}
+.otp-content p:nth-of-type(1){
+    color: #E37048;
+    font-size: 0.8rem;
+}
+.otp-content p:nth-of-type(2){
+    color: #A8A8A8;
+    font-size: 0.8rem;
+}
+
+@media screen and (min-width:992px){
+    .login-right-side{
+        max-width: 415px;
+        width: 100%;
+    }
+}
+@media screen and (max-width:991px){
+    .verification-code--inputs input[type=text] {
+        border: 1px solid #E37048;
+        width: 50px;
+        height: 53px;
+        padding: 10px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 7px;
+        margin: 0 2px;
+    }
+}
+@media screen and (max-width:850px){
+    .verification-code--inputs input[type=text] {
+        border: 1px solid #E37048;
+        width: 45px;
+        height: 48px;
+        padding: 10px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 7px;
+        margin: 0 1px;
+    }
+}
+
+@media screen and (max-width:1366px) {
+    .form-field input {
+        height: 60px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .login-left-side-wrapper {
+        display: none;
+    }
+
+    .right-parent {
+        background-image:
+        linear-gradient(360deg, #F2623D -62.23%, rgba(242, 98, 61, 0) 102.26%), url('../trainerimages/forget-pass.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    position: relative;
+    }
+    .heading-area{
+        text-align: center;
+    }
+
+    .login-right-side {
+        width: 80%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .heading-area img:nth-of-type(2) {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .heading-area h3 {
+        color: white;
+    }
+
+    .form-field input {
+        height: 50px;
+    }
+
+    .form-field button {
+        height: 45px;
+        max-width: 300px;
+    }
+
+}
+
+@media screen and (max-width:576px){
+    .verification-code--inputs input[type=text] {
+        border: 1px solid #E37048;
+        width: 40px;
+        height: 43px;
+        padding: 10px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 7px;
+        margin: 0 1px;
+    }
+}

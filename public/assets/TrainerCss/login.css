@@ -73,6 +73,7 @@
 .form-check {
     display: flex !important;
     justify-content: space-between;
+    
 }
 
 .form-check label {
