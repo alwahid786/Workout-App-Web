@@ -195,7 +195,7 @@ class UserController extends Controller
 
         return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
     }
-
+    ///////// .....class detail .............////////
     public function class_detail(Request $request, $id)
     {
 
@@ -283,7 +283,7 @@ class UserController extends Controller
 
         return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession'));
     }
-    ///////................//////
+    ///////.........user dashboard upcoming , current , past session .......//////
     public function UserBookedSession()
     {
         $user_detail = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();

@@ -16,7 +16,9 @@ class Session extends Model
         'end_time',
         'price',
         'difficulty_level',
-        'type'
+        'type',
+        'start_meridiem',
+        'end_meridiem'
     ];
     public function class()
     {
