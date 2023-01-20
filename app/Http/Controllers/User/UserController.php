@@ -19,6 +19,7 @@ use App\Models\Session as ModelsSession;
 use DateTime;
 use Stripe;
 use Throwable;
+use DB;
 
 class UserController extends Controller
 {
@@ -279,8 +280,45 @@ class UserController extends Controller
             return $this->sendError('Session Detail');
         }
         $bookedsession = json_decode($session_detail, true);
-        // dd($bookedsession);
 
         return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession'));
+    }
+    ///////................//////
+    public function UserBookedSession()
+    {
+        $user_detail = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();
+
+        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('created_at', '=', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        // $total_currentsession = $currentsession->count();
+
+        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('created_at', '<', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        $total_upcomingsession = $upcomingsession->count();
+
+        $pastsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('created_at', '>', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        $total_pastsession = $pastsession->count();
+
+
+        $rawQuery = DB::table('booked_sessions')
+            ->join('sessions', 'booked_sessions.session_id', '=', 'sessions.id')
+            ->join('classes', 'sessions.class_id', '=', 'classes.id')
+            ->join('users', 'classes.trainer_id', '=', 'users.id')
+            ->select(DB::raw("(classes.trainer_id) as stocks_quantity"))
+            ->groupBy('stocks_quantity')
+            ->get();
+        // dd($rawQuery->count());
+        $total_trainer = $rawQuery->count();
+
+        if (!$currentsession) {
+            return $this->sendError('Session Detail');
+        }
+        $current_session = json_decode($currentsession, true);
+        $upcoming_session = json_decode($upcomingsession, true);
+        $past_session = json_decode($pastsession, true);
+        $user = json_decode($user_detail, true);
+
+
+
+
+        return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
     }
 }

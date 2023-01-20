@@ -19,4 +19,8 @@ class BookedSession extends Model
     {
         return $this->belongsTo(Session::class, 'session_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

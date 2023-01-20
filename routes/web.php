@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('update/profile');
     Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
     Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
+    Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
 
 
     Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
@@ -110,9 +111,9 @@ Route::get('/dashboard/class-detail-one', function () {
     return view('pages.userdashboard.explore.class-detail-one');
 });
 //workout session
-Route::get('/userdashboard', function () {
-    return view('pages.userdashboard.dashboard.user-dashboard');
-});
+// Route::get('/userdashboard', function () {
+//     return view('pages.userdashboard.dashboard.user-dashboard');
+// });
 // Route::get('/userdashboard/session', function () {
 //     return view('pages.userdashboard.dashboard.user-session');
 // });
