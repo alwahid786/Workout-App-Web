@@ -70,6 +70,9 @@ Route::get('/dashboard/class-detail-one', function () {
 Route::get('/userdashboard', function () {
     return view('pages.userdashboard.dashboard.user-dashboard');
 });
+Route::get('/userdashboard-copy', function () {
+    return view('pages.userdashboard.dashboard.user-dashboard-copy');
+});
 Route::get('/userdashboard/session', function () {
     return view('pages.userdashboard.dashboard.user-session');
 });
