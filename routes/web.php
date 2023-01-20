@@ -104,6 +104,17 @@ Route::get('/chat', function () {
 
 
 // trainerside
+
+//Login
 Route::get('/trainer/login', function () {
     return view('pages.trainerSide.auth.login');
+});
+Route::get('/trainer/forgetpassword', function () {
+    return view('pages.trainerSide.auth.forgetpassword');
+});
+Route::get('/trainer/otp', function () {
+    return view('pages.trainerSide.auth.otp');
+});
+Route::get('/trainer/newpassword', function () {
+    return view('pages.trainerSide.auth.newpassword');
 });
