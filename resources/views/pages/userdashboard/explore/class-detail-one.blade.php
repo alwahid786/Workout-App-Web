@@ -202,7 +202,7 @@
     }
 
     @media screen and (max-width:576px) {
-        .trainer-class-time-card-left-content h2{
+        .trainer-class-time-card-left-content h2 {
             font-size: 0.6rem !important;
         }
 
@@ -416,7 +416,251 @@
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="session-detail-right-wrapper px-2 py-3">
                         <div class="col session-detail-calendar px-0">
-                            <div id="demo-1-week"></div>
+                            <div class="row js-slick-carousels">
+                                <div class="col">
+                                    <div class="months month-active">
+                                        <h1>January</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>February</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>March</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>April</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>May</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>June</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>July</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>August</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>September</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>October</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>November</h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="months">
+                                        <h1>December</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row js-slick-carouselss mt-3">
+                                <div class="col pb-3">
+                                    <div class="day-number day-active">
+                                        <h1>1</h1>
+                                        <h2>Mon</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>2</h1>
+                                        <h2>Tue</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>3</h1>
+                                        <h2>Wed</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>4</h1>
+                                        <h2>Thu</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>5</h1>
+                                        <h2>Fri</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>6</h1>
+                                        <h2>Sat</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>7</h1>
+                                        <h2>Sun</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>8</h1>
+                                        <h2>Mon</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>9</h1>
+                                        <h2>Tue</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>10</h1>
+                                        <h2>Wed</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>11</h1>
+                                        <h2>Thu</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>12</h1>
+                                        <h2>Fri</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>13</h1>
+                                        <h2>Sat</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>14</h1>
+                                        <h2>Sun</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>15</h1>
+                                        <h2>Mon</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>16</h1>
+                                        <h2>Tue</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>17</h1>
+                                        <h2>Wed</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>18</h1>
+                                        <h2>Thu</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>19</h1>
+                                        <h2>Fri</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>20</h1>
+                                        <h2>Sat</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>21</h1>
+                                        <h2>Sun</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>22</h1>
+                                        <h2>Mon</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>23</h1>
+                                        <h2>Tue</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>24</h1>
+                                        <h2>Thu</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>25</h1>
+                                        <h2>Fri</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>26</h1>
+                                        <h2>Sat</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>27</h1>
+                                        <h2>Fri</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>28</h1>
+                                        <h2>Sat</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>29</h1>
+                                        <h2>Sun</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="day-number">
+                                        <h1>30</h1>
+                                        <h2>Mon</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div id="demo-1-week"></div> -->
                         </div>
                         <div class="trainer-class-time ">
                             <div class="trainer-class-time-header pt-4 pl-5">
@@ -726,6 +970,104 @@
 
     // reinitialization
     $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+    // two
+    const slickSetting = {
+        arrows: true,
+        infinite: true,
+        prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
+        nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
+        slidesToShow: 7,
+        slidesToScroll: 7,
+        responsive: [{
+                breakpoint: 1160,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 5
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 8,
+                    slidesToScroll: 8
+                }
+            },
+            {
+                breakpoint: 650,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 6
+                }
+            },
+            {
+                breakpoint: 400,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+
+
+
+        ]
+    }
+
+
+    // $('.js-slick-carousel').on('init', handleSlickInit);
+    $('.js-slick-carousels').slick(slickSetting);
+
+    // reinitialization
+    $('.js-slick-carousels').on('reInit', () => console.log('slick re-init fired'));
+
+    // two
+    const slickSettingss = {
+        arrows: true,
+        infinite: true,
+        prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
+        nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
+        slidesToShow: 8,
+        slidesToScroll: 8,
+        responsive: [{
+                breakpoint: 1160,
+                settings: {
+                    slidesToShow: 7,
+                    slidesToScroll: 7
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 14,
+                    slidesToScroll: 14
+                }
+            },
+            {
+                breakpoint: 650,
+                settings: {
+                    slidesToShow: 8,
+                    slidesToScroll: 8
+                }
+            },
+            {
+                breakpoint: 400,
+                settings: {
+                    slidesToShow: 5,
+                    slidesToScroll: 5
+                }
+            },
+
+
+
+
+        ]
+    }
+
+
+    // $('.js-slick-carousel').on('init', handleSlickInit);
+    $('.js-slick-carouselss').slick(slickSettingss);
+
+    // reinitialization
+    $('.js-slick-carouselss').on('reInit', () => console.log('slick re-init fired'));
 
 
     $(window).resize(handleResize);

@@ -82,13 +82,13 @@
             <h1>Welcome, John Smith </h1>
             <p>Wed, 23 Nov 2022</p>
         </div>
-        <div class="m-lg-auto left-inner-addon ">
+        <div class="m-lg-auto left-inner-addon user-search-box">
             <input class="form-control" type="search" placeholder="Search">
             <i class="fa fa-search" aria-hidden="true"></i>
         </div>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto py-2">
             <li class="nav-item my-2 my-lg-0 mr-lg-4 chat-link">
-                <a class="nav-link px-2" href="#"> <img src="{{asset('public/assets/images/chat-icon-w.svg')}}" alt="image"></a>
+                <a class="nav-link px-2" href="{{(url('chat'))}}"> <img src="{{asset('public/assets/images/chat-icon-w.svg')}}" alt="image"></a>
             </li>
             <li class="nav-item mr-lg-4 my-2 my-lg-0">
                 <div class="dropdown chat-link">
@@ -128,7 +128,7 @@
                 </div>
 
             </li>
-            <li class="nav-item mr-lg-4 ">
+            <li class="nav-item mr-lg-4 my-2 my-lg-0">
                 <div class="dropdown dropdown-logout">
                     <button class="p-0 btn  dropdown-toggle log-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
@@ -136,6 +136,7 @@
                     </button>
                     <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="#">Payment</a>
                     </div>
                 </div>
             </li>

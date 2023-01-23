@@ -24,6 +24,7 @@
         font-size: 1rem;
         font-weight: 600;
         /* width: 50%; */
+        cursor: pointer;
         margin: 0 auto;
         width: 100%;
         max-width: 204px;
@@ -63,9 +64,9 @@
             </div>
             <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0">
                 <img src="{{asset('public/assets/images/payment-hero.webp')}}" alt="image">
-                <label class="hero-section-upload my-4"> Upload Image
+                <!-- <label class="hero-section-upload my-4"> Upload Image
                     <input type="file" size="60">
-                </label>
+                </label> -->
             </div>
         </div>
     </div>
@@ -200,6 +201,30 @@
 
                     </ul>
                 </div>
+            </div>
+            <div class="col-xl-2 col-md-6 mt-md-0 mt-5 text-md-left text-center" data-aos="fade-up" data-aos-delay="200">
+                <ul class="quickLinks mx-auto">
+                    <!-- <li class="mb-3 text-md-white"><strong>Quick Links</strong></li> -->
+                    <li class="mb-2"><a href="{{url('/about')}}">About Us</a></li>
+                    <li class="mb-2"><a href=" javascript:void(0)">Services</a></li>
+                    <li class="mb-2"><a href=" javascript:void(0)">Terms and Conditions</a></li>
+
+                </ul>
+            </div>
+            <div class="col-xl-2 col-md-6 order-xl-3 order-md-4 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="300">
+                <ul class="quickLinks mx-auto">
+                    <!-- <li class="mb-3 text-md-white"><strong>Customer Area</strong></li> -->
+                    <li class="mb-2"><a href=" javascript:void(0)">Our Approach</a></li>
+                    <li class="mb-2"><a href=" javascript:void(0)" class="modal-view invisible" data-toggle="modal" data-target="#loginModal">Get Started</a></li>
+
+                </ul>
+            </div>
+            <div class="col-xl-4 col-md-6 order-xl-4 order-md-3 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="400">
+                <ul class="quickLinks mx-auto">
+                    <li class="mb-3 text-md-white"><strong>Questions?</strong></li>
+                    <li class="mb-2"><a href="#contact-us">Contact Us</a></li>
+
+                </ul>
             </div>
         </div>
         <div class="container-fluid">

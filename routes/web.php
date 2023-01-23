@@ -69,6 +69,30 @@ Route::get('/payments', function () {
 Route::get('/profile', function () {
     return view('pages.website.update-profile');
 });
+Route::get('/about', function () {
+    return view('pages.website.about');
+});
+Route::get('/services', function () {
+    return view('pages.website.services');
+});
+Route::get('/approach', function () {
+    return view('pages.website.our-approach');
+});
+Route::get('/term', function () {
+    return view('pages.website.terms');
+});
+Route::get('/about-l', function () {
+    return view('pages.website.about-l');
+});
+Route::get('/services-l', function () {
+    return view('pages.website.services-l');
+});
+Route::get('/approach-l', function () {
+    return view('pages.website.our-approach-l');
+});
+Route::get('/term-l', function () {
+    return view('pages.website.terms-l');
+});
 //  user dashboard
 // Route::get('/dashboard', function () {
 //     return view('pages.userdashboard.explore.dashboard');
@@ -151,6 +175,17 @@ Route::get('/chat', function () {
 
 
 // trainerside
+
+//Login
 Route::get('/trainer/login', function () {
     return view('pages.trainerSide.auth.login');
+});
+Route::get('/trainer/forgetpassword', function () {
+    return view('pages.trainerSide.auth.forgetpassword');
+});
+Route::get('/trainer/otp', function () {
+    return view('pages.trainerSide.auth.otp');
+});
+Route::get('/trainer/newpassword', function () {
+    return view('pages.trainerSide.auth.newpassword');
 });

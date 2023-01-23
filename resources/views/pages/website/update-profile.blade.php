@@ -19,6 +19,7 @@
         /* width: 40%; */
         /* min-width: 50%; */
         margin: 0 auto;
+        cursor: pointer;
         width: 100%;
         max-width: 204px;
         height: 50px;

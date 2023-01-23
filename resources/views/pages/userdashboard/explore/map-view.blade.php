@@ -2,6 +2,10 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('public/assets/css/mobiscroll.javascript.min.css')}}">
 <style>
+    .user-search-box {
+        display: block;
+    }
+
     .dashboard-header-left span {
         color: #3F3F3F;
         font-weight: 300;
@@ -322,8 +326,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 

@@ -625,8 +625,8 @@
     const slickSettingss = {
         arrows: true,
         infinite: true,
-        prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-two ' aria-hidden='true'></i> ",
-        nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-two' aria-hidden='true'></i>",
+        prevArrow: "<i class='fa fa-angle-double-left slick-prev arrow ser-left-two ' aria-hidden='true'></i> ",
+        nextArrow: "<i class='fa fa-angle-double-right slick-next arrow ser-right-two' aria-hidden='true'></i>",
         slidesToShow: 6,
         slidesToScroll: 1,
         responsive: [{
@@ -740,7 +740,7 @@
     $(window).resize(handleResize);
 </script>
 <script>
-    $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+    $('.left-inner-addon').css('display', 'none');
 </script>
 <script>
     $('.credit_card').click(function() {

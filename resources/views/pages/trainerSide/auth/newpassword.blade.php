@@ -1,42 +1,42 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/login.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/newpassword.css')}}">
 @section('content')
 <div class="row login-section">
-    <div class="col-md-6 px-0 login-left-side-wrapper">
-        <div class="login-left-side">
-            <img src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
-        </div>
-    </div>
-    <div class="col-12 col-md-6 right-parent my-auto px-5 ">
+    <div class="col-12 col-md-6 right-parent  pt-5 px-5 mt-md-5">
         <div class="login-right-side ">
-            <div class="heading-area pb-3">
-                <h3 class="py-2">Login to</h3>
+            <div class="heading-area">
                 <img class="d-none d-md-block" src="{{asset('public/assets/images/logo.svg')}}" alt="">
                 <img class="d-block d-md-none" src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
+                <h3 class="pt-5 pb-0">Enter <br> <span>New Password</span> </h3>
             </div>
-            <form class="mt-5">
+            <form class="mt-3">
                 <div class="form-group form-field">
-                    <input type="email" class="form-control pl-sm-4 pl-2" id="email" placeholder="Email">
-                </div>
-                <div class="form-group form-field">
+                    <label for="">Password</label>
                     <div class="login-password-field">
-                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" placeholder="Password">
+
+                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" >
                         <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                 </div>
-                <div class="form-check checkbox pl-0 pt-2">
-                    <label><input type="checkbox"> Remember me</label>
-                    <a href="#">Forgot Password?</a>
+                <div class="form-group form-field">
+                    <label for="">Confirm Password</label>
+                    <div class="login-password-field">
+                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" >
+                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                    </div>
                 </div>
                 <div class="form-field pt-5 text-center">
-                    <button type="submit" class="btn btn-default text-center">Login</button>
+                    <button type="submit" class="btn btn-default text-center">Confirm</button>
                 </div>
             </form>
-            <div class="trainer-btn text-center col">
-                <a href="#">Become a <strong>Trainer?</strong> </a>
-            </div>
 
+        </div>
+    </div>
+    <div class="col-md-6 px-0 login-left-side-wrapper">
+        <div class="login-left-side">
+            <img src="{{asset('public/assets/trainerimages/logo-trans.svg')}}" alt="">
         </div>
     </div>
 </div>
