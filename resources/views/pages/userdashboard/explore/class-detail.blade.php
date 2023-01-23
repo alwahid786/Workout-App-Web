@@ -2,7 +2,11 @@
 @section('content')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
-<link rel="stylesheet" href="{{asset('public/assets/css/mobiscroll.javascript.min.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('public/assets/css/mobiscroll.javascript.min.css')}}"> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
 <style>
     .mbsc-calendar-controls {
         position: relative;
@@ -200,6 +204,10 @@
         font-size: 1rem;
         font-weight: 400;
     }
+
+    .months {
+        cursor: pointer;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -218,7 +226,7 @@
 
                         </div>
                     </div>
-                    <div class="row js-slick-carousel">
+                    <div class="row js-slick-carousels">
 
                         <div class="col">
                             <div class="class-left-banner px-2 py-3">
@@ -280,6 +288,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="dashboard-header-left trainer-detail-header-left pt-3 pb-5">
                         <h1>Trainer’s Detail</h1>
@@ -403,256 +412,78 @@
                 <div class="col-lg-6 mt-4 mt-lg-0">
                     <div class="session-detail-right-wrapper px-2 py-3">
                         <div class="col session-detail-calendar px-2">
-                            <!-- <div class="row js-slick-carousels">
+                            <div class="row js-slick-carousel">
                                 <div class="col">
-                                    <div class="months month-active">
+                                    <div id="0" class="months month-active">
                                         <h1>January</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="1" class="months">
                                         <h1>February</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="2" class="months">
                                         <h1>March</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="3" class="months">
                                         <h1>April</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="4" class="months">
                                         <h1>May</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="5" class="months">
                                         <h1>June</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="6" class="months">
                                         <h1>July</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="7" class="months">
                                         <h1>August</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="8" class="months">
                                         <h1>September</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="9" class="months">
                                         <h1>October</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="10" class="months">
                                         <h1>November</h1>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="months">
+                                    <div id="11" class="months">
                                         <h1>December</h1>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row js-slick-carouselss mt-3">
-                                <div class="col pb-3">
-                                    <div class="day-number day-active">
-                                        <h1>1</h1>
-                                        <h2>Mon</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>2</h1>
-                                        <h2>Tue</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>3</h1>
-                                        <h2>Wed</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>4</h1>
-                                        <h2>Thu</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>5</h1>
-                                        <h2>Fri</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>6</h1>
-                                        <h2>Sat</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>7</h1>
-                                        <h2>Sun</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>8</h1>
-                                        <h2>Mon</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>9</h1>
-                                        <h2>Tue</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>10</h1>
-                                        <h2>Wed</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>11</h1>
-                                        <h2>Thu</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>12</h1>
-                                        <h2>Fri</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>13</h1>
-                                        <h2>Sat</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>14</h1>
-                                        <h2>Sun</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>15</h1>
-                                        <h2>Mon</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>16</h1>
-                                        <h2>Tue</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>17</h1>
-                                        <h2>Wed</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>18</h1>
-                                        <h2>Thu</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>19</h1>
-                                        <h2>Fri</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>20</h1>
-                                        <h2>Sat</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>21</h1>
-                                        <h2>Sun</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>22</h1>
-                                        <h2>Mon</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>23</h1>
-                                        <h2>Tue</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>24</h1>
-                                        <h2>Thu</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>25</h1>
-                                        <h2>Fri</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>26</h1>
-                                        <h2>Sat</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>27</h1>
-                                        <h2>Fri</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>28</h1>
-                                        <h2>Sat</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>29</h1>
-                                        <h2>Sun</h2>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="day-number">
-                                        <h1>30</h1>
-                                        <h2>Mon</h2>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div id="demo-1-week"></div>
+                            <div class="row owl-carousel mt-3 appendDays">
+
+                            </div>
+                            <!-- <div id="demo-1-week"></div> -->
                         </div>
                         <div class="trainer-class-time ">
                             <div class="trainer-class-time-header pt-4 pl-5">
                                 <h1 class="py-2">Wednesday 6, March</h1>
                             </div>
+                            @if(isset($class_detail) && !empty($class_detail))
                             @foreach($class_detail as $class)
                             <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1">
                                 <div class="trainer-class-time-card-box my-2">
@@ -976,6 +807,7 @@
                                 <a href="{{url('/dashboard/payment/'.$class['session']['id'])}}" class="btn">Confirm Booking</a>
                             </div>
                             @endforeach
+                            @endif
 
                         </div>
                     </div>
@@ -988,8 +820,160 @@
 @section('insertsfooter')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 <script>
+    // window.addEventListener('load', () => {
+    //     $(document).ready(function() {
+    //         // two
+    //         const slickSettingss = {
+    //             arrows: true,
+    //             infinite: true,
+    //             prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
+    //             nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
+    //             slidesToShow: 8,
+    //             slidesToScroll: 8,
+    //             responsive: [{
+    //                     breakpoint: 1160,
+    //                     settings: {
+    //                         slidesToShow: 7,
+    //                         slidesToScroll: 7
+    //                     }
+    //                 },
+    //                 {
+    //                     breakpoint: 991,
+    //                     settings: {
+    //                         slidesToShow: 14,
+    //                         slidesToScroll: 14
+    //                     }
+    //                 },
+    //                 {
+    //                     breakpoint: 650,
+    //                     settings: {
+    //                         slidesToShow: 8,
+    //                         slidesToScroll: 8
+    //                     }
+    //                 },
+    //                 {
+    //                     breakpoint: 400,
+    //                     settings: {
+    //                         slidesToShow: 5,
+    //                         slidesToScroll: 5
+    //                     }
+    //                 },
+
+
+
+
+    //             ]
+    //         }
+
+    //         // $('.js-slick-carousel').on('init', handleSlickInit);
+    //         // $('.js-slick-carouselss').slick(slickSettingss);
+
+    //         // reinitialization
+    //         // $('.js-slick-carouselss').on('reInit', () => console.log('slick re-init fired'));
+    //         // $(window).resize(handleResize);
+
+    //     });
+    // });
+    // const slickSettingss = {
+    //     arrows: true,
+    //     infinite: true,
+    //     prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
+    //     nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
+    //     slidesToShow: 8,
+    //     slidesToScroll: 8,
+    //     responsive: [{
+    //             breakpoint: 1160,
+    //             settings: {
+    //                 slidesToShow: 7,
+    //                 slidesToScroll: 7
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 991,
+    //             settings: {
+    //                 slidesToShow: 14,
+    //                 slidesToScroll: 14
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 650,
+    //             settings: {
+    //                 slidesToShow: 8,
+    //                 slidesToScroll: 8
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 400,
+    //             settings: {
+    //                 slidesToShow: 5,
+    //                 slidesToScroll: 5
+    //             }
+    //         },
+
+
+
+
+    //     ]
+    // }
+    // $('.js-slick-carouselss').slick(slickSettingss);
+
+
+    // Owl Carousel Code Starts here 
+    $(document).ready(function() {
+        // $('.owl-carousel').owlCarousel({
+        //     items: 1
+        // });
+        $('.owl-carousel').owlCarousel();
+        var Year = new Date().getFullYear();
+        var Month = new Date().getMonth();
+        // Custom Calendar Code 
+        getDaysInMonth(Month, Year);
+
+        function getDaysInMonth(month, year) {
+            var date = new Date(year, month, 1);
+            var days = [];
+            while (date.getMonth() === month) {
+                days.push(new Date(date));
+                date.setDate(date.getDate() + 1);
+            }
+            $(".appendDays").empty();
+            $(days).each(function(i, e) {
+                var weekdays = new Array(7);
+                weekdays[0] = "Sun";
+                weekdays[1] = "Mon";
+                weekdays[2] = "Tues";
+                weekdays[3] = "Wed";
+                weekdays[4] = "Thur";
+                weekdays[5] = "Fri";
+                weekdays[6] = "Sat";
+                let div = `<div class="col pb-3">
+                                    <div class="day-number">
+                                        <h1>${e.getDate()}</h1>
+                                        <h2>${weekdays[e.getDay()]}</h2>
+                                    </div>
+                                </div>`;
+                $(".appendDays").append(div);
+            });
+            $('.owl-carousel').trigger('destroy.owl.carousel');
+            $('.owl-carousel').owlCarousel({
+                items: 10,
+                autoWidth: true
+            });
+
+            // $('.owl-carousel').trigger('refresh.owl.carousel');
+        }
+        $(document).on('click', '.months', function() {
+            var monthIndex = $(this).attr('id');
+            getDaysInMonth(parseInt(monthIndex), Year)
+
+        });
+    });
+
+
     const slickSettings = {
         arrows: true,
         infinite: true,
@@ -998,13 +982,7 @@
         slidesToShow: 1,
         slidesToScroll: 1,
     }
-
-
-    // $('.js-slick-carousel').on('init', handleSlickInit);
-    $('.js-slick-carousel').slick(slickSettings);
-
-    // reinitialization
-    $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+    $('.js-slick-carousels').slick(slickSettings);
 
     // two
     const slickSetting = {
@@ -1047,64 +1025,9 @@
 
         ]
     }
+    $('.js-slick-carousel').slick(slickSetting);
 
 
-    // $('.js-slick-carousel').on('init', handleSlickInit);
-    $('.js-slick-carousels').slick(slickSetting);
-
-    // reinitialization
-    $('.js-slick-carousels').on('reInit', () => console.log('slick re-init fired'));
-
-    // two
-    const slickSettingss = {
-        arrows: true,
-        infinite: true,
-        prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
-        nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
-        slidesToShow: 8,
-        slidesToScroll: 8,
-        responsive: [{
-                breakpoint: 1160,
-                settings: {
-                    slidesToShow: 7,
-                    slidesToScroll: 7
-                }
-            },
-            {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 14,
-                    slidesToScroll: 14
-                }
-            },
-            {
-                breakpoint: 650,
-                settings: {
-                    slidesToShow: 8,
-                    slidesToScroll: 8
-                }
-            },
-            {
-                breakpoint: 400,
-                settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5
-                }
-            },
-
-
-
-
-        ]
-    }
-
-
-    // $('.js-slick-carousel').on('init', handleSlickInit);
-    $('.js-slick-carouselss').slick(slickSettingss);
-
-    // reinitialization
-    $('.js-slick-carouselss').on('reInit', () => console.log('slick re-init fired'));
-    $(window).resize(handleResize);
 </script>
 <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script>
 <script>
