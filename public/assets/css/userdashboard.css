@@ -271,6 +271,10 @@ body {
     outline: none;
 }
 
+.user-search-box {
+    display: none;
+}
+
 .left-inner-addon i {
     color: #E37048;
     position: absolute;

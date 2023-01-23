@@ -82,7 +82,7 @@
             <h1>Welcome, John Smith </h1>
             <p>Wed, 23 Nov 2022</p>
         </div>
-        <div class="m-lg-auto left-inner-addon ">
+        <div class="m-lg-auto left-inner-addon user-search-box">
             <input class="form-control" type="search" placeholder="Search">
             <i class="fa fa-search" aria-hidden="true"></i>
         </div>
@@ -136,6 +136,7 @@
                     </button>
                     <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="#">Payment</a>
                     </div>
                 </div>
             </li>
