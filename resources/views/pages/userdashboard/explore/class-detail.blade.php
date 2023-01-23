@@ -507,6 +507,7 @@
                                                 <h1>+5</h1>
                                             </div>
                                         </div>
+                                        <input type="text" class='session_id' value="{{$class['session']['id']}}">
 
 
                                     </div>
@@ -524,6 +525,7 @@
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
+                                @endforeach
                                 <!-- end -->
                                 <!-- <div class="trainer-class-time-card-box my-2">
                                     <div class="trainer-class-time-card  px-2 py-2 pr-3 ">
@@ -808,6 +810,14 @@
                             </div>
                             @endforeach
                             @endif
+                            <form action="{{route('/dashboard/payment')}}" method="post">
+                                @csrf
+                                <input type="text" value="" id="session" name="session_id">
+                                <div class="trainer-class-time-btn pt-4 pb-3">
+                                    <!-- <a href="{{url('/dashboard/payment/'.$class['session']['id'])}}" class="btn">Confirm Booking</a> -->
+                                    <button class="btn" type="submit">Confirm Booking</button>
+                                </div>
+                            </form>
 
                         </div>
                     </div>
@@ -1046,5 +1056,12 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+</script>
+<script>
+    $('.session').click(function() {
+        var session_id = $(this).find('.session_id').val();
+        $("#session").val(session_id);
+
+    });
 </script>
 @endsection

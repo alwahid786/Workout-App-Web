@@ -19,6 +19,7 @@ use App\Models\Session as ModelsSession;
 use DateTime;
 use Stripe;
 use Throwable;
+use DB;
 
 class UserController extends Controller
 {
@@ -170,14 +171,18 @@ class UserController extends Controller
     public function dashbord()
     {
         $all_trainer = User::where('user_type', '=', 'trainer')->get();
+        // Classes::with('session', 'category')->get();
+        $class_detail = Classes::with(['category', 'session', 'trainer'])->get();
 
         $all_category = Category::get();
         if (!$all_trainer) {
             return $this->sendError('Dashboard');
         }
         $trainers = json_decode($all_trainer, true);
+        $class = json_decode($class_detail, true);
+
         $category = json_decode($all_category, true);
-        return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category'));
+        return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class'));
     }
     /////....user side trainer detail......../////
     public function trainer_detail(Request $request, $id)
@@ -187,10 +192,10 @@ class UserController extends Controller
             return $this->sendError('Trainer Detail');
         }
         $trainer_detail = json_decode($trainer, true);
-        // dd($trainer_detail);
+
         return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
     }
-
+    ///////// .....class detail .............////////
     public function class_detail(Request $request, $id)
     {
 
@@ -204,17 +209,19 @@ class UserController extends Controller
     }
     //////customer card detail........./////////
 
-    public function showCard($id)
+    public function showCard(Request $request)
     {
 
         $card = Customer::where('user_id', auth()->user()->id)->get();
-        $session = ModelsSession::where('id', $id)->first();
+        $session_detail = ModelsSession::where('id', $request->session_id)->first();
 
         if (!$card) {
-            return $this->sendError('Session Detail');
+            return $this->sendError('Card');
         }
         $card_detail = json_decode($card, true);
-        // dd($card_detail);
+        $session = json_decode($session_detail, true);
+
+
         return view('pages.userdashboard.explore.payment', compact('card_detail', 'session'));
     }
 
@@ -222,12 +229,12 @@ class UserController extends Controller
     public function cardPayment(Request $request)
     {
         $customerId = $request->customer;
-        // dd($customerId);
+
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // $customer = 'cus_N4Sy4juVCKLQl4';
+
 
         try {
-            // dd(1);
+
             $payment = \Stripe\Charge::create(array(
                 "amount" => $request->amount * 100,
                 "currency" => "usd",
@@ -253,5 +260,65 @@ class UserController extends Controller
         return redirect()->route('/dashboard');
 
         // return $this->sendResponse([], 'Payment successfully Done!');
+    }
+    //////////.......get all booked session .......///////
+    public function getBookedSession()
+    {
+        $booksession = BookedSession::where('user_id', auth()->user()->id)->with('session.class.trainer', 'session.class.category')->get();
+        if (!$booksession) {
+            return $this->sendError('Session Detail');
+        }
+        $booksession_detail = json_decode($booksession, true);
+
+        return view('pages.userdashboard.dashboard.user-session', compact('booksession_detail'));
+    }
+    //////// view booked session.........//////
+    public function viewSession($id)
+    {
+        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category')->first();
+        if (!$session_detail) {
+            return $this->sendError('Session Detail');
+        }
+        $bookedsession = json_decode($session_detail, true);
+
+        return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession'));
+    }
+    ///////.........user dashboard upcoming , current , past session .......//////
+    public function UserBookedSession()
+    {
+        $user_detail = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();
+
+        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('created_at', '=', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        // $total_currentsession = $currentsession->count();
+
+        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('created_at', '<', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        $total_upcomingsession = $upcomingsession->count();
+
+        $pastsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('created_at', '>', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        $total_pastsession = $pastsession->count();
+
+
+        $rawQuery = DB::table('booked_sessions')
+            ->join('sessions', 'booked_sessions.session_id', '=', 'sessions.id')
+            ->join('classes', 'sessions.class_id', '=', 'classes.id')
+            ->join('users', 'classes.trainer_id', '=', 'users.id')
+            ->select(DB::raw("(classes.trainer_id) as stocks_quantity"))
+            ->groupBy('stocks_quantity')
+            ->get();
+        // dd($rawQuery->count());
+        $total_trainer = $rawQuery->count();
+
+        if (!$currentsession) {
+            return $this->sendError('Session Detail');
+        }
+        $current_session = json_decode($currentsession, true);
+        $upcoming_session = json_decode($upcomingsession, true);
+        $past_session = json_decode($pastsession, true);
+        $user = json_decode($user_detail, true);
+
+
+
+
+        return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
     }
 }

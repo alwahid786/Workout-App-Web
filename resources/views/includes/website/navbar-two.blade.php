@@ -191,7 +191,7 @@
                         </button>
                         <div class="dropdown-menu logout-dropdown " aria-labelledby="dropdownMenuButton">
                             <a href="{{url('/profile')}}" class="dropdown-item">Update Profile</a>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                         </div>
                     </div>
                 </li>

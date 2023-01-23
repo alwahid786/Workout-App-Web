@@ -17,6 +17,11 @@ use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Session;
 use App\Models\TrainerProfile;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session as FacadesSession;
+// use HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 
 class AuthController extends Controller
 {
@@ -99,6 +104,18 @@ class AuthController extends Controller
         }
         return $this->sendResponse([], 'Password updated successfully.');
     }
+    ////////........logout....../////////
+    public function logout(Request $request)
+    {
+        // $token = auth()->user()->token()
+
+        // dd($token);
+        // $token->revoke();
+        // $response = 'You have been successfully logged out!';
+        FacadesSession::flush();
+        Auth::logout();
+        return redirect()->url('/');
+    }
     ////// trainer sign up.......///////
     public function trainerSignup(TrainerSignupRequest $request)
     {
@@ -145,12 +162,17 @@ class AuthController extends Controller
 
             ]
         );
+
         if (!$class) {
             return $this->sendError('Trainer');
         }
+
         $session = $request->session;
         foreach ($session as $sessions) {
+
             $session_data = new Session();
+            // $meridium = preg_match('/^[A-Z]+$/i', $sessions['start_time']);
+            // dd($meridium);
             $session_data->day = $sessions['day'];
             $session_data->class_id = $class->id;
             $session_data->price = $sessions['price'];

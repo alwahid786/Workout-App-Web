@@ -54,31 +54,42 @@
             <h1>My Sessions</h1>
         </div>
         <div class="row ">
+            @foreach($booksession_detail as $bookedsession)
             <div class="col-lg-6 my-2">
                 <div class="class-left-banner px-2 py-3">
                     <img class="class-banner-img" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
                     <div class="class-banner-content pt-3">
-                        <h1>Stretching outdoors</h1>
+                        <h1>{{$bookedsession['session']['class']['category']['title']}}</h1>
                         <div class="class-banner-content-right">
-                            <h1>$100</h1>
+                            <h1>${{$bookedsession['session']['price']}}</h1>
                             <div class="class-banner-content-right-time">
                                 <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
-                                <p>25min</p>
+                                <?php
+
+                                $a = new DateTime(($bookedsession['session']['start_time']));
+                                $b = new DateTime($bookedsession['session']['end_time']);
+                                $interval = $a->diff($b);
+
+                                $hour = $interval->format("%H:%I");
+
+                                ?>
+                                <p>{{$hour}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="session-card-content">
                         <div class="session-profile-left py-2">
                             <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                            <p class="pl-3">John Smith </p>
+                            <p class="pl-3">{{$bookedsession['session']['class']['trainer']['name']}} </p>
                         </div>
                         <div class="session-anchor-right">
-                            <a href="{{url('/userdashboard/sessionone')}}">View</a>
+                            <a href="{{url('/userdashboard/sessionone/'.$bookedsession['id'])}}">View</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 my-2 ">
+            @endforeach
+            <!-- <div class="col-lg-6 my-2 ">
                 <div class="class-left-banner px-2 py-3">
                     <img class="class-banner-img" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                     <div class="class-banner-content pt-3">
@@ -149,7 +160,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>

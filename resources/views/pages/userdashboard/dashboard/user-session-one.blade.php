@@ -532,10 +532,11 @@
                                     </div>
                                     <div class="trainer-detail-profile-left-inner-right">
                                         <div class="col trainer-detail-profile-name px-0 pt-2">
-                                            <h1>John Smith</h1>
+                                            <h1>{{$bookedsession['session']['class']['trainer']['name']}}</h1>
                                             <div class="trainer-detail-profile-gender">
+
                                                 <img class="mr-2" src="{{asset('public/assets/images/profile-icon.svg')}}" alt="">
-                                                <p>Male , 5’11”</p>
+                                                <p>{{$bookedsession['session']['class']['trainer']['gender']}} , {{$bookedsession['session']['class']['trainer']['height']}}</p>
                                             </div>
                                         </div>
                                         <div class="rating-star">
@@ -580,7 +581,7 @@
                             </div>
                             <div class="col-sm-6 my-4 pl-0">
                                 <div class="trainer-detail-profile-right-price">
-                                    <h1>$100</h1>
+                                    <h1>${{$bookedsession['session']['price']}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -590,13 +591,13 @@
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Session</h1>
-                                    <p>Yoga</p>
+                                    <p>{{$bookedsession['session']['class']['category']['title']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Date</h1>
-                                    <p>20-Dec-2022</p>
+                                    <p>{{date('d-m-Y', strtotime($bookedsession['created_at']));}}</p>
                                 </div>
                             </div>
                         </div>
@@ -606,13 +607,13 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Start Time</h1>
-                                    <p>02:00 Pm</p>
+                                    <p>{{$bookedsession['session']['start_time']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>End Time</h1>
-                                    <p>03:00 Pm</p>
+                                    <p>{{$bookedsession['session']['end_time']}}</p>
                                 </div>
                             </div>
                         </div>

@@ -23,21 +23,6 @@ Route::get('/', function () {
 });
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('/trainers');
-Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
-Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('update/profile');
-Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
-Route::post('/contact', [UserController::class, 'contactUs']);
-
-Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
-Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
-Route::any('/dashboard/class-detail/{id}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
-Route::any('/dashboard/payment/{id}', [UserController::class, 'showCard'])->name('/dashboard/payment');
-Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
-
-
-
-
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
 Route::post('/verify/otp', [AuthController::class, 'verifyOTP'])->name('verifyOTP');
 Route::post('/update/password', [AuthController::class, 'updatePassword'])->name('updatePassword');
@@ -50,6 +35,29 @@ Route::get('facebook/callback', [SocialController::class, 'handleFacebookCallbac
 // Instagram Social Signup/login Routes 
 Route::get('instagram', [SocialController::class, 'redirectToInstagram'])->name('redirectToInstagram');
 Route::get('instagram/callback', [SocialController::class, 'handleInstagramCallback']);
+Route::post('/contact', [UserController::class, 'contactUs']);
+
+Route::middleware('auth')->group(function () {
+    Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('/trainers');
+    Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
+    Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('update/profile');
+    Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
+    Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
+    Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
+
+
+    Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
+    Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');
+
+    Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
+    Route::any('/dashboard/class-detail/{id}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
+    Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('/dashboard/payment');
+    Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
+});
+
+
 
 
 Route::get('/trainers/yoga', function () {
@@ -103,12 +111,12 @@ Route::get('/dashboard/class-detail-one', function () {
     return view('pages.userdashboard.explore.class-detail-one');
 });
 //workout session
-Route::get('/userdashboard', function () {
-    return view('pages.userdashboard.dashboard.user-dashboard');
-});
-Route::get('/userdashboard/session', function () {
-    return view('pages.userdashboard.dashboard.user-session');
-});
+// Route::get('/userdashboard', function () {
+//     return view('pages.userdashboard.dashboard.user-dashboard');
+// });
+// Route::get('/userdashboard/session', function () {
+//     return view('pages.userdashboard.dashboard.user-session');
+// });
 
 Route::get('/userdashboard/pastsession', function () {
     return view('pages.userdashboard.dashboard.user-past-session');
@@ -117,9 +125,9 @@ Route::get('/userdashboard/pastsessiondetail', function () {
     return view('pages.userdashboard.dashboard.user-past-session-detail');
 });
 
-Route::get('/userdashboard/sessionone', function () {
-    return view('pages.userdashboard.dashboard.user-session-one');
-});
+// Route::get('/userdashboard/sessionone', function () {
+//     return view('pages.userdashboard.dashboard.user-session-one');
+// });
 Route::get('/userdashboard/sessiongroup', function () {
     return view('pages.userdashboard.dashboard.user-session-group');
 });

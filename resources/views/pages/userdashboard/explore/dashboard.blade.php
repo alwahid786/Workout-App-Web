@@ -224,7 +224,38 @@
                 <h1>Sessions</h1>
             </div>
             <div class="row js-slick-carousels px-sm-5">
+
+                @foreach($class as $classes)
                 <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>{{$classes['session']['price']}}</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>{{$classes['category']['title']}}</h1>
+                                <p>{{$classes['trainer']['name']}}</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail/'.$classes['id'])}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">{{$classes['trainer']['about']}}</p>
+                    </div>
+                </div>
+                @endforeach
+                <!-- <div class="col">
                     <div class="session-card p-2">
                         <div class="session-card-img">
                             <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
@@ -419,35 +450,7 @@
                         </div>
                         <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="session-card p-2">
-                        <div class="session-card-img">
-                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                            <div class="session-card-amount">
-                                <h1>$100</h1>
-                            </div>
-                        </div>
-
-                        <div class="session-card-inner">
-                            <div class="session-card-inner-name my-3">
-                                <h1>Yoga</h1>
-                                <p>John Smith</p>
-                            </div>
-                            <div class="rating-star my-3">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="session-card-inner-link my-3">
-                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                            </div>
-                        </div>
-                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="category-section">
@@ -738,5 +741,10 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+</script>
+<script>
+    $('.credit_card').click(function() {
+        
+    });
 </script>
 @endsection
