@@ -327,7 +327,7 @@
                                 <p class="">Canada (ontario)</p>
                             </div>
                             <div class="trainer-price pb-2">
-                                <h1>$15,63 <sup>Per Month</sup></h1>
+                                <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
                             </div>
                             <a href="" class="btn px-5 modal-view" data-toggle="modal" data-target="#loginModal">View</a>
                         </div>
@@ -355,7 +355,7 @@
                                 <p>Canada (ontario) </p>
                             </div>
                             <div class="trainer-price pb-2">
-                                <h1>$15,63 <sup>Per Month</sup></h1>
+                                <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
                             </div>
                             <a href="" class="btn px-5 modal-view" data-toggle="modal" data-target="#loginModal">View</a>
                         </div>
@@ -383,7 +383,7 @@
                                 <p>Canada (ontario)</p>
                             </div>
                             <div class="trainer-price pb-2">
-                                <h1>$15,63 <sup>Per Month</sup></h1>
+                                <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
                             </div>
                             <a href="" class="btn px-5 modal-view" data-toggle="modal" data-target="#loginModal">View</a>
                         </div>
@@ -519,15 +519,15 @@
                 <ul class="quickLinks mx-auto">
                     <!-- <li class="mb-3 text-md-white"><strong>Quick Links</strong></li> -->
                     <li class="mb-2"><a href="{{url('/about')}}">About Us</a></li>
-                    <li class="mb-2"><a href=" javascript:void(0)">Services</a></li>
-                    <li class="mb-2"><a href=" javascript:void(0)">Terms and Conditions</a></li>
+                    <li class="mb-2"><a href=" {{url('/services')}}">Services</a></li>
+                    <li class="mb-2"><a href=" {{url('/term')}}">Terms and Conditions</a></li>
 
                 </ul>
             </div>
             <div class="col-xl-2 col-md-6 order-xl-3 order-md-4 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="300">
                 <ul class="quickLinks mx-auto">
                     <!-- <li class="mb-3 text-md-white"><strong>Customer Area</strong></li> -->
-                    <li class="mb-2"><a href=" javascript:void(0)">Our Approach</a></li>
+                    <li class="mb-2"><a href=" {{url('/approach')}}">Our Approach</a></li>
                     <li class="mb-2"><a href=" javascript:void(0)" class="modal-view" data-toggle="modal" data-target="#loginModal">Get Started</a></li>
 
                 </ul>

@@ -164,10 +164,10 @@
                     <a class="nav-link px-2" href="{{url('/trainers')}}">List Of Trainer</a>
                 </li>
                 <li class="nav-item mr-lg-4 ">
-                    <a class="nav-link px-2" href="{{url('/about')}}">About Us</a>
+                    <a class="nav-link px-2" href="{{url('/about-l')}}">About Us</a>
                 </li>
                 <li class="nav-item mr-lg-4 chat-link">
-                    <a class="nav-link px-2" href="#"> <img src="{{asset('public/assets/images/chat-icon.svg')}}" alt="image"></a>
+                    <a class="nav-link px-2" href="{{url('chat')}}"> <img src="{{asset('public/assets/images/chat-icon.svg')}}" alt="image"></a>
                 </li>
                 <li class="nav-item mr-lg-4 my-2 my-lg-0">
                     <div class="dropdown chat-link">
@@ -216,7 +216,7 @@
                         </button>
                         <div class="dropdown-menu logout-dropdown " aria-labelledby="dropdownMenuButton">
                             <a href="{{url('/profile')}}" class="dropdown-item">Update Profile</a>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <a class="dropdown-item" href="{{url('home')}}">Logout</a>
                         </div>
                     </div>
                 </li>

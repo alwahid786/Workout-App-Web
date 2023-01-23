@@ -88,7 +88,7 @@
         </div>
         <ul class="navbar-nav ml-auto py-2">
             <li class="nav-item my-2 my-lg-0 mr-lg-4 chat-link">
-                <a class="nav-link px-2" href="#"> <img src="{{asset('public/assets/images/chat-icon-w.svg')}}" alt="image"></a>
+                <a class="nav-link px-2" href="{{(url('chat'))}}"> <img src="{{asset('public/assets/images/chat-icon-w.svg')}}" alt="image"></a>
             </li>
             <li class="nav-item mr-lg-4 my-2 my-lg-0">
                 <div class="dropdown chat-link">

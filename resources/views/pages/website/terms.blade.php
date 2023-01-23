@@ -230,7 +230,7 @@
         <div class="row">
             <div class="col- hero-left text-center text-md-left">
                 <div class="hero-left-content">
-                    <h1>About Us</h1>
+                    <h1>Terms and Condition</h1>
                 </div>
             </div>
         </div>

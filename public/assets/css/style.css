@@ -304,7 +304,7 @@ body {
 	display: none;
 }
 
-.card-wrapper .icon-wrapper>img {
+/* .card-wrapper .icon-wrapper>img {
 	animation: flip-icon 1.5s infinite;
 }
 
@@ -316,7 +316,7 @@ body {
 	100% {
 		transform: rotateY(0deg);
 	}
-}
+} */
 
 .card-wrapper:hover .icon-wrapper>.active-image {
 	display: none !important;
