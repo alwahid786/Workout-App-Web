@@ -1071,8 +1071,9 @@ body {
     background: #F9F9FB;
     min-height: 65px;
     height: 65px;
-    padding-left: 0px;
+    padding-left: 5px;
     font-size: 0.9rem;
+    /* max-width: fit-content; */
 }
 
 
