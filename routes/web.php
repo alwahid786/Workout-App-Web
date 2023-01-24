@@ -49,12 +49,16 @@ Route::middleware('auth')->group(function () {
 
 
     Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
+    // Route::post('categories/trainer/{id}', [UserController::class, 'category_trainer'])->name('categories/trainer');
+    Route::any('/dashboard/categories', [UserController::class, 'categoryDetail'])->name('/dashboard/categories');
     Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');
 
     Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
     Route::any('/dashboard/class-detail/{id}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
     Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('/dashboard/payment');
     Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
+
+    Route::any('dashboard/get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('/get_sessions_list');
 });
 
 
@@ -107,9 +111,9 @@ Route::get('/dashboard/map', function () {
 // Route::get('/dashboard/trainer-detail', function () {
 //     return view('pages.userdashboard.explore.trainer-detail');
 // });
-Route::get('/dashboard/categories', function () {
-    return view('pages.userdashboard.explore.categories');
-});
+// Route::get('/dashboard/categories', function () {
+//     return view('pages.userdashboard.explore.categories');
+// });
 // Route::get('/dashboard/class-detail', function () {
 //     return view('pages.userdashboard.explore.class-detail');
 // });
@@ -122,9 +126,9 @@ Route::get('/dashboard/payment', function () {
 Route::get('/dashboard/trainer-detail', function () {
     return view('pages.userdashboard.explore.trainer-detail');
 });
-Route::get('/dashboard/categories', function () {
-    return view('pages.userdashboard.explore.categories');
-});
+// Route::get('/dashboard/categories', function () {
+//     return view('pages.userdashboard.explore.categories');
+// });
 Route::get('/dashboard/class-detail', function () {
     return view('pages.userdashboard.explore.class-detail');
 });
