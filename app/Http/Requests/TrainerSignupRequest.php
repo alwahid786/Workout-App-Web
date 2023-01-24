@@ -38,7 +38,7 @@ class TrainerSignupRequest extends FormRequest
             'about' => 'required',
             'emergency_contact' => 'required',
             'relation_emergency' => 'required',
-            'date_of_birth' => 'requird',
+            'date_of_birth' => 'required',
             'gender' => 'required',
             'country' => 'required',
             'state' => 'required',

@@ -224,7 +224,6 @@
                 <h1>Sessions</h1>
             </div>
             <div class="row js-slick-carousels px-sm-5">
-
                 @foreach($class as $classes)
                 <div class="col">
                     <div class="session-card p-2">

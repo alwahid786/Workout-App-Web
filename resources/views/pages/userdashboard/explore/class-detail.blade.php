@@ -414,7 +414,7 @@
                         <div class="col session-detail-calendar px-2">
                             <div class="row js-slick-carousel">
                                 <div class="col">
-                                    <div id="0" class="months month-active">
+                                    <div id="0" class="months ">
                                         <h1>January</h1>
                                     </div>
                                 </div>
@@ -479,12 +479,11 @@
                             </div>
                             <!-- <div id="demo-1-week"></div> -->
                         </div>
+
                         <div class="trainer-class-time ">
                             <div class="trainer-class-time-header pt-4 pl-5">
                                 <h1 class="py-2">Wednesday 6, March</h1>
                             </div>
-                            @if(isset($class_detail) && !empty($class_detail))
-                            @foreach($class_detail as $class)
                             <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1">
                                 <div class="trainer-class-time-card-box my-2">
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 ">
@@ -493,8 +492,8 @@
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
-                                                <h1>{{$class['category']['title']}} </h1>
-                                                <h2>{{$class['session']['start_time']}}-{{$class['session']['end_time']}}</h2>
+                                                <h1>Stretching </h1>
+                                                <h2>8am-8:30am</h2>
                                             </div>
                                         </div>
                                         <div class="trainer-class-time-card-right">
@@ -507,7 +506,6 @@
                                                 <h1>+5</h1>
                                             </div>
                                         </div>
-                                        <input type="text" class='session_id' value="{{$class['session']['id']}}">
 
 
                                     </div>
@@ -525,9 +523,7 @@
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
-                                @endforeach
-                                <!-- end -->
-                                <!-- <div class="trainer-class-time-card-box my-2">
+                                <div class="trainer-class-time-card-box my-2">
                                     <div class="trainer-class-time-card  px-2 py-2 pr-3 ">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
@@ -803,22 +799,11 @@
 
                                     </div>
                                     <div class="trainer-class-time-border"></div>
-                                </div> -->
+                                </div>
                             </div>
                             <div class="trainer-class-time-btn pt-4 pb-3">
-                                <a href="{{url('/dashboard/payment/'.$class['session']['id'])}}" class="btn">Confirm Booking</a>
+                                <a href="{{url('/dashboard/payment')}}" class="btn">Confirm Booking</a>
                             </div>
-                            @endforeach
-                            @endif
-                            <form action="{{route('/dashboard/payment')}}" method="post">
-                                @csrf
-                                <input type="text" value="" id="session" name="session_id">
-                                <div class="trainer-class-time-btn pt-4 pb-3">
-                                    <!-- <a href="{{url('/dashboard/payment/'.$class['session']['id'])}}" class="btn">Confirm Booking</a> -->
-                                    <button class="btn" type="submit">Confirm Booking</button>
-                                </div>
-                            </form>
-
                         </div>
                     </div>
                 </div>
@@ -942,6 +927,7 @@
         var Month = new Date().getMonth();
         // Custom Calendar Code 
         getDaysInMonth(Month, Year);
+        $("#" + Month).addClass('month-active');
 
         function getDaysInMonth(month, year) {
             var date = new Date(year, month, 1);
@@ -1036,8 +1022,6 @@
         ]
     }
     $('.js-slick-carousel').slick(slickSetting);
-
-
 </script>
 <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script>
 <script>
