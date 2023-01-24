@@ -1071,8 +1071,9 @@ body {
     background: #F9F9FB;
     min-height: 65px;
     height: 65px;
-    padding-left: 0px;
+    padding-left: 5px;
     font-size: 0.9rem;
+    /* max-width: fit-content; */
 }
 
 
@@ -1317,7 +1318,7 @@ body {
 /* class detail */
 .class-left-banner {
     background: white;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .class-left-banner .class-banner-img {
@@ -1330,6 +1331,7 @@ body {
 .class-banner-content {
     display: flex;
     justify-content: space-between;
+    
 }
 
 .class-banner-content>h1 {

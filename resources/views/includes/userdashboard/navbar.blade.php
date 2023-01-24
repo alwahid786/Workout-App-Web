@@ -69,7 +69,7 @@
                         <img class="nav-w" src="{{asset('public/assets/images/payment-w.svg')}}" alt="image">
                     </div>
 
-                    Payment
+                    Setting
                 </a>
             </li>
 
@@ -135,8 +135,9 @@
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{(url('/payments'))}}">Payment</a>
                         <a class="dropdown-item" href="#">Logout</a>
-                        <a class="dropdown-item" href="#">Payment</a>
+
                     </div>
                 </div>
             </li>

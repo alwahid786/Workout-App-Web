@@ -41,7 +41,7 @@
 
     .pro-form input {
         height: 65px !important;
-        color: gray !important;
+        /* color: #fff !important; */
 
     }
 

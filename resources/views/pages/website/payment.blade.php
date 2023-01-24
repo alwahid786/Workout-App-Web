@@ -426,7 +426,7 @@
         <div class="row">
             <div class="col-md-6 order-2 order-md-1  text-center text-md-left">
                 <div class="hero-left-content heroText">
-                    <h1>Hello <span>John Smith,</span></h1>
+                    <h1>Setup Payment Details</h1>
                     <p class="pb-4 pt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero nisi ratione esse qui, explicabo fugit voluptatum eum quae obcaecati in?</p>
                 </div>
                 <div class="col-lg-10 col-xl-8">

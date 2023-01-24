@@ -199,6 +199,9 @@
         height: 30px;
         width: 30px;
     }
+    .trainer-name h1{
+        display: block !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -210,7 +213,7 @@
                         <img src="{{asset('public/assets/images/detail-trainer.jpg')}}" alt="">
                     </div>
                     <div class="sessions-profile-con text-center">
-                        <div class="dashboard-header-left pt-3">
+                        <div class="dashboard-header-left pt-3 trainer-name">
                             <h1>{{$trainer_detail[0]['name']}}</h1>
                         </div>
                         <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>{{$trainer_detail[0]['workout_location']}},{{$trainer_detail[0]['state']}}, {{$trainer_detail[0]['country']}}</p>
