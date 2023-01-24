@@ -492,6 +492,9 @@
         outline: none;
         box-shadow: none;
     }
+    .workout-session-card a:hover{
+        text-decoration: none;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -504,7 +507,7 @@
                             <div class="workout-banner-content px-3 py-3 text-center text-md-left">
                                 <h1>Welcome John Smith</h1>
                                 <p class="pt-3 pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                <a class="btn" href="#">Read More</a>
+                                <a class="btn" href="{{url('/about')}}">Read More</a>
                             </div>
                         </div>
                         <div class="col-md-5 align-self-end">
@@ -517,26 +520,31 @@
                 <div class="workout-session-card my-4">
                     <div class="row">
                         <div class="col-sm-6 col-md-4 my-2">
-                            <div class="work-session-card red-session-card py-4 px-1">
-                                <div class="work-session-card-left py-1 pl-3">
-                                    <h1>Your Upcoming <span>Session</span> </h1>
-                                    <p>15</p>
+                            <a href="{{url('/userdashboard/upcomingsessionone')}}">
+                                <div class="work-session-card red-session-card py-4 px-1">
+                                    <div class="work-session-card-left py-1 pl-3">
+                                        <h1>Your Upcoming <span>Session</span> </h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="work-session-card-right">
+                                        <img src="{{asset('public/assets/images/red-card-icon.svg')}}" alt="">
+                                    </div>
                                 </div>
-                                <div class="work-session-card-right">
-                                    <img src="{{asset('public/assets/images/red-card-icon.svg')}}" alt="">
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
-                            <div class="work-session-card blue-session-card py-4 px-1">
-                                <div class="work-session-card-left py-1 pl-3">
-                                    <h1>Your Past <span>Session</span> </h1>
-                                    <p>20</p>
+                            <a href="{{url('/userdashboard/pastsession')}}">
+                                <div class="work-session-card blue-session-card py-4 px-1">
+                                    <div class="work-session-card-left py-1 pl-3">
+                                        <h1>Your Past <span>Session</span> </h1>
+                                        <p>20</p>
+                                    </div>
+                                    <div class="work-session-card-right">
+                                        <img src="{{asset('public/assets/images/blue-card-icon.svg')}}" alt="">
+                                    </div>
                                 </div>
-                                <div class="work-session-card-right">
-                                    <img src="{{asset('public/assets/images/blue-card-icon.svg')}}" alt="">
-                                </div>
-                            </div>
+                            </a>
+
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
                             <div class="work-session-card yellow-session-card py-4 px-1 ">
@@ -554,7 +562,7 @@
                 </div>
                 <div class="workout-today-section">
                     <div class="workout-today-header pt-2 pb-1">
-                        <h1>Your Today’s Session</h1>
+                        <h1>Todays Booked Sessions</h1>
                     </div>
 
                     <div class="workout-today-wrapper">

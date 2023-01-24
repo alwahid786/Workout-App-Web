@@ -200,6 +200,24 @@
         font-size: 1rem;
         font-weight: 400;
     }
+
+    .class-banner-content {
+        background-color: #fff !important;
+        padding: 10px;
+    }
+
+    .class-left-banner {
+        border-top-left-radius: 10px !important;
+        border-top-right-radius: 10px !important;
+    }
+
+    .class-banner-content {
+        background-color: #fff !important;
+        padding: 10px;
+        margin-top: -11px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -223,7 +241,7 @@
                         <div class="col">
                             <div class="class-left-banner px-2 py-3">
                                 <img class="class-banner-img" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                <div class="class-banner-content pt-3">
+                                <!-- <div class="class-banner-content pt-3">
                                     <h1>Yoga</h1>
                                     <div class="class-banner-content-right">
                                         <h1>$100</h1>
@@ -232,13 +250,13 @@
                                             <p>25min</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col">
                             <div class="class-left-banner px-2 py-3">
                                 <img class="class-banner-img" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                <div class="class-banner-content pt-3">
+                                <!-- <div class="class-banner-content pt-3">
                                     <h1>Stretching outdoors</h1>
                                     <div class="class-banner-content-right">
                                         <h1>$100</h1>
@@ -247,13 +265,13 @@
                                             <p>25min</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col">
                             <div class="class-left-banner px-2 py-3">
                                 <img class="class-banner-img" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <div class="class-banner-content pt-3">
+                                <!-- <div class="class-banner-content pt-3">
                                     <h1>Gymnastics</h1>
                                     <div class="class-banner-content-right">
                                         <h1>$100</h1>
@@ -262,13 +280,13 @@
                                             <p>25min</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="col">
                             <div class="class-left-banner px-2 py-3">
                                 <img class="class-banner-img" src="{{asset('public/assets/images/sessionseven.jpg')}}" alt="">
-                                <div class="class-banner-content pt-3">
+                                <!-- <div class="class-banner-content pt-3">
                                     <h1>Body Building</h1>
                                     <div class="class-banner-content-right">
                                         <h1>$100</h1>
@@ -277,7 +295,17 @@
                                             <p>25min</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="class-banner-content">
+                        <h1>Yoga</h1>
+                        <div class="class-banner-content-right">
+                            <h1>$100</h1>
+                            <div class="class-banner-content-right-time">
+                                <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
+                                <p>25min</p>
                             </div>
                         </div>
                     </div>
