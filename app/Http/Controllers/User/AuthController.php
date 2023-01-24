@@ -169,10 +169,10 @@ class AuthController extends Controller
 
         $session = $request->session;
         foreach ($session as $sessions) {
-
+            $startMeridiem = date('a', strtotime($sessions['start_time']));
+            $endMeridiem = date('a', strtotime($sessions['end_time']));
             $session_data = new Session();
-            // $meridium = preg_match('/^[A-Z]+$/i', $sessions['start_time']);
-            // dd($meridium);
+
             $session_data->day = $sessions['day'];
             $session_data->class_id = $class->id;
             $session_data->price = $sessions['price'];
@@ -180,6 +180,8 @@ class AuthController extends Controller
             $session_data->type = $sessions['type'];
             $session_data->start_time = $sessions['start_time'];
             $session_data->end_time = $sessions['end_time'];
+            $session_data->start_meridiem = $startMeridiem;
+            $session_data->end_meridiem = $endMeridiem;
             $session_data->save();
         }
         $class_image = $request->class_images;

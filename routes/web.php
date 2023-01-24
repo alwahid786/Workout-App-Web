@@ -47,7 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
     Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
 
-
     Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
     Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');
 

@@ -479,11 +479,11 @@
                             </div>
                             <!-- <div id="demo-1-week"></div> -->
                         </div>
-
                         <div class="trainer-class-time ">
                             <div class="trainer-class-time-header pt-4 pl-5">
-                                <h1 class="py-2">Wednesday 6, March</h1>
+                                <h1 class="py-2 selectedDate"><?php echo date('D d, F'); ?></h1>
                             </div>
+                            @dd($class_detail);
                             <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1">
                                 <div class="trainer-class-time-card-box my-2">
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 ">
@@ -667,12 +667,9 @@
                                                 <h1>+5</h1>
                                             </div>
                                         </div>
-
-
                                     </div>
                                     <div class="trainer-class-times">
                                         <h3>10am</h3>
-
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
@@ -680,7 +677,6 @@
                                     <div class="no-class-border mt-3"></div>
                                     <div class="trainer-class-times">
                                         <h3>11am</h3>
-
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
@@ -819,112 +815,13 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
 <script>
-    // window.addEventListener('load', () => {
-    //     $(document).ready(function() {
-    //         // two
-    //         const slickSettingss = {
-    //             arrows: true,
-    //             infinite: true,
-    //             prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
-    //             nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
-    //             slidesToShow: 8,
-    //             slidesToScroll: 8,
-    //             responsive: [{
-    //                     breakpoint: 1160,
-    //                     settings: {
-    //                         slidesToShow: 7,
-    //                         slidesToScroll: 7
-    //                     }
-    //                 },
-    //                 {
-    //                     breakpoint: 991,
-    //                     settings: {
-    //                         slidesToShow: 14,
-    //                         slidesToScroll: 14
-    //                     }
-    //                 },
-    //                 {
-    //                     breakpoint: 650,
-    //                     settings: {
-    //                         slidesToShow: 8,
-    //                         slidesToScroll: 8
-    //                     }
-    //                 },
-    //                 {
-    //                     breakpoint: 400,
-    //                     settings: {
-    //                         slidesToShow: 5,
-    //                         slidesToScroll: 5
-    //                     }
-    //                 },
-
-
-
-
-    //             ]
-    //         }
-
-    //         // $('.js-slick-carousel').on('init', handleSlickInit);
-    //         // $('.js-slick-carouselss').slick(slickSettingss);
-
-    //         // reinitialization
-    //         // $('.js-slick-carouselss').on('reInit', () => console.log('slick re-init fired'));
-    //         // $(window).resize(handleResize);
-
-    //     });
-    // });
-    // const slickSettingss = {
-    //     arrows: true,
-    //     infinite: true,
-    //     prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
-    //     nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
-    //     slidesToShow: 8,
-    //     slidesToScroll: 8,
-    //     responsive: [{
-    //             breakpoint: 1160,
-    //             settings: {
-    //                 slidesToShow: 7,
-    //                 slidesToScroll: 7
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 991,
-    //             settings: {
-    //                 slidesToShow: 14,
-    //                 slidesToScroll: 14
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 650,
-    //             settings: {
-    //                 slidesToShow: 8,
-    //                 slidesToScroll: 8
-    //             }
-    //         },
-    //         {
-    //             breakpoint: 400,
-    //             settings: {
-    //                 slidesToShow: 5,
-    //                 slidesToScroll: 5
-    //             }
-    //         },
-
-
-
-
-    //     ]
-    // }
-    // $('.js-slick-carouselss').slick(slickSettingss);
-
-
     // Owl Carousel Code Starts here 
     $(document).ready(function() {
-        // $('.owl-carousel').owlCarousel({
-        //     items: 1
-        // });
+
         $('.owl-carousel').owlCarousel();
         var Year = new Date().getFullYear();
         var Month = new Date().getMonth();
+        var dd = String(new Date().getDate()).padStart(2, '0');
         // Custom Calendar Code 
         getDaysInMonth(Month, Year);
         $("#" + Month).addClass('month-active');
@@ -938,6 +835,10 @@
             }
             $(".appendDays").empty();
             $(days).each(function(i, e) {
+                var active;
+                if (e.getDate() == dd) {
+                    active = 'day-active';
+                }
                 var weekdays = new Array(7);
                 weekdays[0] = "Sun";
                 weekdays[1] = "Mon";
@@ -947,7 +848,7 @@
                 weekdays[5] = "Fri";
                 weekdays[6] = "Sat";
                 let div = `<div class="col pb-3">
-                                    <div class="day-number">
+                                    <div class="day-number ${active}">
                                         <h1>${e.getDate()}</h1>
                                         <h2>${weekdays[e.getDay()]}</h2>
                                     </div>
@@ -959,11 +860,13 @@
                 items: 10,
                 autoWidth: true
             });
+            $('.owl-carousel').trigger('to.owl.carousel', dd - 8)
 
-            // $('.owl-carousel').trigger('refresh.owl.carousel');
         }
         $(document).on('click', '.months', function() {
             var monthIndex = $(this).attr('id');
+            $(".months").removeClass('month-active');
+            $("#" + monthIndex).addClass('month-active');
             getDaysInMonth(parseInt(monthIndex), Year)
 
         });
