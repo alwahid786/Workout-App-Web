@@ -180,6 +180,34 @@
     .dropdown-s:hover .dropdown-content-s {
         display: block;
     }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+    }
+
+    .drop-icon {
+        position: relative;
+    }
+
+    .drop-icon-parent i {
+        position: absolute;
+        top: 45%;
+        right: 0;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .drop-icon-thre i {
+        padding-right: 2px !important;
+    }
+
+    .drop-icon-parent select {
+        padding-left: 10px;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -210,50 +238,79 @@
 
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                            <div class="filter-left-select-heading">
+                            <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Workout Type</h1>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Yoga</option>
-                                    <option>Yoga</option>
-                                    <option>Yoga</option>
-                                    <option>Yoga</option>
-                                    <option>Yoga</option>
-                                </select>
+                                <div class="drop-icon">
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Yoga</option>
+                                        <option>Yoga</option>
+                                        <option>Yoga</option>
+                                        <option>Yoga</option>
+                                        <option>Yoga</option>
+                                    </select>
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+
+                                </div>
+
+
                             </div>
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                            <div class="filter-left-select-heading">
+                            <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Location</h1>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>London</option>
-                                    <option>London</option>
-                                    <option>London</option>
-                                    <option>London</option>
-                                    <option>London</option>
-                                </select>
+                                <div class="drop-icon">
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>London</option>
+                                        <option>London</option>
+                                        <option>London</option>
+                                        <option>London</option>
+                                        <option>London</option>
+                                    </select>
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+
+                                </div>
+
                             </div>
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                            <div class="filter-left-select-heading">
+                            <div class="filter-left-select-heading ">
                                 <h1>Class Type</h1>
                                 <div class="dropdown-s">
-                                    <button class="dropbtn-s">One to One <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                                    <button class="dropbtn-s">Group <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+                                    </button>
                                     <div class="dropdown-content-s">
-                                        <a href="{{url('/dashboard/mapgroup')}}">Group</a>
+                                        <a href="{{url('/dashboard/map')}}">One to One</a>
                                     </div>
                                 </div>
+                                <!-- <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>Group</option>
+                                    <option><a href="{{url('/dashboard/map')}}">One to One</a></option>
+
+                                </select> -->
                             </div>
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                            <div class="filter-left-select-heading">
+                            <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Price Range</h1>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>$20to$100</option>
-                                    <option>$20 to $100</option>
-                                    <option>$20 to $100</option>
-                                    <option>$20 to $100</option>
-                                    <option>$20 to $100</option>
-                                </select>
+                                <div class="drop-icon drop-icon-thre">
+                                    <select class="form-control" id="exampleFormControlSelect1" class="drop-icon">
+
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+
+                                    </select>
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -264,15 +321,22 @@
                             <div id="demo-1-week"></div>
                         </div>
                         <div class="col-sm-3 mt-2 mt-sm-0">
-                            <div class="filter-left-select-heading mt-2 mt-xl-0">
+                            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                                 <h1>Range</h1>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1-3KM</option>
-                                    <option>1-3KM</option>
-                                    <option>1-3KM</option>
-                                    <option>1-3KM</option>
-                                    <option>1-3KM</option>
-                                </select>
+                                <div class="drop-icon">
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>1-3KM</option>
+                                        <option>1-3KM</option>
+                                        <option>1-3KM</option>
+                                        <option>1-3KM</option>
+                                        <option>1-3KM</option>
+                                    </select>
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

@@ -194,17 +194,18 @@
 
     .drop-icon-parent i {
         position: absolute;
-        top: 50%;
+        top: 45%;
         right: 0;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         font-weight: bold;
         padding-right: 10px;
     }
-    .drop-icon-thre i{
+
+    .drop-icon-thre i {
         padding-right: 2px !important;
     }
-    
-    .drop-icon-parent select{
+
+    .drop-icon-parent select {
         padding-left: 10px;
     }
 </style>
@@ -247,9 +248,11 @@
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                     </select>
-                                    <i class="fa fa-angle-down " aria-hidden="true"></i>
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+
                                 </div>
-                                
+
 
                             </div>
                         </div>
@@ -264,16 +267,20 @@
                                         <option>London</option>
                                         <option>London</option>
                                     </select>
-                                    <i class="fa fa-angle-down " aria-hidden="true"></i>
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading ">
                                 <h1>Class Type</h1>
                                 <div class="dropdown-s">
-                                    <button class="dropbtn-s">Group <i class="fa fa-angle-down pr-2" aria-hidden="true"></i></button>
+                                    <button class="dropbtn-s">Group <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+                                        </i></button>
                                     <div class="dropdown-content-s">
                                         <a href="{{url('/dashboard/map')}}">One to One</a>
                                     </div>
@@ -298,9 +305,11 @@
                                         <option>$20 to $100</option>
 
                                     </select>
-                                    <i class="fa fa-angle-down " aria-hidden="true"></i>
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+
                                 </div>
-                                
+
 
                             </div>
                         </div>
@@ -315,16 +324,18 @@
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                                 <h1>Range</h1>
                                 <div class="drop-icon">
-                                    <select class="form-control" id="exampleFormControlSelect1" >
+                                    <select class="form-control" id="exampleFormControlSelect1">
                                         <option>1-3KM</option>
                                         <option>1-3KM</option>
                                         <option>1-3KM</option>
                                         <option>1-3KM</option>
                                         <option>1-3KM</option>
                                     </select>
-                                    <i class="fa fa-angle-down " aria-hidden="true"></i>
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+
+
                                 </div>
-                                
+
 
                             </div>
                         </div>
