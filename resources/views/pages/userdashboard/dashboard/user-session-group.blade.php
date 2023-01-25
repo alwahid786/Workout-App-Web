@@ -602,6 +602,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-6 my-4 pl-0">
+                                <div class="session-inner-content">
+                                    <h1>Location</h1>
+                                    <p>London</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col pl-0 text-center">
                         <div class="detail-profile-button">
                             <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>

@@ -252,6 +252,7 @@
         box-shadow: none !important;
         outline: none !important;
     }
+
     .detail-profile-button a:nth-of-type(2) {
         text-decoration: none;
         border: 1px solid #E37048;
@@ -279,6 +280,7 @@
         border: 1px solid #E37048;
         text-decoration: none;
     }
+
     .detail-profile-button a:nth-of-type(2):hover {
         background-color: #E37048;
         color: white;
@@ -548,7 +550,7 @@
                             <div class="trainer-detail-profile-inner-left">
                                 <div class="trainer-detail-profile-left mt-0 d-flex">
                                     <div class="trainer-detail-profile-left-inner">
-                                        <a href="{{url('/dashboard/trainer-detail')}}"><img class="mr-2" src="{{asset('public/assets/images/session-one.jpg')}}" alt=""></a> 
+                                        <a href="{{url('/dashboard/trainer-detail')}}"><img class="mr-2" src="{{asset('public/assets/images/session-one.jpg')}}" alt=""></a>
                                         <img class="rated-badge" src="{{asset('public/assets/images/badge-2.svg')}}" alt="">
                                         <div class="trainer-detail-profile-left-progress py-2 px-2">
                                             <h1>Level</h1>
@@ -557,7 +559,9 @@
                                     </div>
                                     <div class="trainer-detail-profile-left-inner-right">
                                         <div class="col trainer-detail-profile-name px-0 pt-2">
-                                            <a href="{{url('/dashboard/trainer-detail')}}"><h1>John Smith</h1></a> 
+                                            <a href="{{url('/dashboard/trainer-detail')}}">
+                                                <h1>John Smith</h1>
+                                            </a>
                                             <div class="trainer-detail-profile-gender">
                                                 <img class="mr-2" src="{{asset('public/assets/images/profile-icon.svg')}}" alt="">
                                                 <p>Male , 5’11”</p>
@@ -660,8 +664,8 @@
                             <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
                             <a href="{{url('/dashboard/class-detail')}}" class="btn mr-sm-4 my-2">Book Again</a>
                             <a href="" class="btn my-2" data-toggle="modal" data-target="#refundModal">Refund</a>
-                            
-                            
+
+
                         </div>
                     </div>
 
