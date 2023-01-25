@@ -10,7 +10,7 @@
     </div>
     <div class="categories-card-heading py-3">
         <div class="heading-left-section">
-            <p>{{$trainerDetail['trainer']['state']}} {{$trainerDetail['trainer']['country']}}o</p>
+            <p>{{$trainerDetail['trainer']['state']}} {{$trainerDetail['trainer']['country']}}</p>
             <h1>{{$trainerDetail['trainer']['name']}}</h1>
             <p>{{$category}} Sepcialist</p>
         </div>

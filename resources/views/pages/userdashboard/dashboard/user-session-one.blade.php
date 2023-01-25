@@ -538,7 +538,6 @@
                         <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
                     </div>
                 </div>
-
             </div>
 
         </div>

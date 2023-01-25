@@ -211,7 +211,7 @@
             <div class="col-lg-4 col-xl-3">
                 <div class="sessions-left-section py-5 px-2">
                     <div class="session-profile-image text-center">
-                        <img src="{{asset('public/assets/images/detail-trainer.jpg')}}" alt="">
+                        <img src="{{$trainer_detail[0]['profile_img']}}" alt="">
                     </div>
                     <div class="sessions-profile-con text-center">
                         <div class="dashboard-header-left pt-3 trainer-name">
@@ -254,7 +254,7 @@
                     @foreach($trainer_detail[0]['class'] as $trainerData )
                     <div class="session-card p-3">
                         <div class="card-img ">
-                            <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                            <img src="{{$trainerData['class_image'][0]['image']}}" alt="">
                         </div>
                         <div class="card-heading py-3">
                             <h1>{{$trainerData['category']['title']}}</h1>

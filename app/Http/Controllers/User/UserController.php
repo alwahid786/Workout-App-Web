@@ -188,12 +188,12 @@ class UserController extends Controller
     /////....user side trainer detail......../////
     public function trainer_detail(Request $request, $id)
     {
-        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session'])->get();
+        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session', 'class.classImage'])->get();
         if (!$trainer) {
             return $this->sendError('Trainer Detail');
         }
         $trainer_detail = json_decode($trainer, true);
-
+        // dd($trainer_detail);
         return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
     }
     ///////// .....class detail .............////////
