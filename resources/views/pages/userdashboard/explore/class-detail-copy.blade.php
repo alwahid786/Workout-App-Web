@@ -106,6 +106,18 @@
         font-size: 1rem;
         font-weight: 400;
     }
+
+    @media screen and (max-width:576px) {
+
+        .fc-toolbar .fc-state-active,
+        .fc-toolbar .ui-state-active {
+            z-index: 4;
+            background-color: #E37048 !important;
+            color: white !important;
+            border-radius: 7px !important;
+            padding: 5px 10px !important;
+        }
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">

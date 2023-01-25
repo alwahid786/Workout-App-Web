@@ -302,7 +302,7 @@
                     <div class="class-banner-content">
                         <h1>Yoga</h1>
                         <div class="class-banner-content-right">
-                            <h1>$100</h1>
+                            <h1>$25</h1>
                             <div class="class-banner-content-right-time">
                                 <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
                                 <p>25min</p>

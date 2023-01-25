@@ -458,7 +458,7 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left pt-2">
-            <h1>My Sessions Detail </h1>
+            <h1>Payment Detail </h1>
         </div>
         <div class="row pt-4">
             <div class="col-xl-7">
