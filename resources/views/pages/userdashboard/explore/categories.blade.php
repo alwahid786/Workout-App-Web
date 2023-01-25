@@ -183,6 +183,64 @@
                     <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Categories</h1>
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
+                    @foreach($class as $categories)
+                    <div class="col">
+                        <!-- <a href=""> -->
+                        <div class="catergory-card catergory-card-yellow p-2" data-id="{{$categories['id']}}">
+                            <div class="category-left">
+                                <h1>{{$categories['title']}}</h1>
+                                <p>{{$categories['description']}}</p>
+                            </div>
+                            <div class="category-right">
+                                <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
+                            </div>
+                        </div>
+                        <!-- </a> -->
+
+                    </div>
+                    @endforeach
+                    <!-- <div class="col">
+                        <a href="">
+                            <div class="catergory-card catergory-card-blue p-2">
+                                <div class="category-left">
+                                    <h1>Gymnastic</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                                </div>
+                                <div class="category-right">
+                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="col">
+                        <a href="">
+                            <div class="catergory-card catergory-card-green p-2">
+                                <div class="category-left">
+                                    <h1>Fitness</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                                </div>
+                                <div class="category-right">
+                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="col">
+                        <a href="">
+                            <div class="catergory-card catergory-card-purple p-2">
+                                <div class="category-left">
+                                    <h1>Bodybuilding</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                                </div>
+                                <div class="category-right">
+                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
                     <div class="col">
                         <a href="">
                             <div class="catergory-card catergory-card-yellow p-2">
@@ -238,371 +296,14 @@
                             </div>
                         </a>
 
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-yellow p-2">
-                                <div class="category-left">
-                                    <h1>Yoga</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-blue p-2">
-                                <div class="category-left">
-                                    <h1>Gymnastic</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-green p-2">
-                                <div class="category-left">
-                                    <h1>Fitness</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-purple p-2">
-                                <div class="category-left">
-                                    <h1>Bodybuilding</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="dashboard-header-left categories-heading my-4 ">
-                <h1>Yoga Trainers</h1>
+                <h1>{{$class['0']['title']}} Trainers</h1>
             </div>
-            <div class="categories-grid-section pb-3">
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-                <div class="categories-card p-3">
-                    <div class="card-img-section ">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        <p>$100</p>
-                    </div>
-                    <div class="categories-card-heading py-3">
-                        <div class="heading-left-section">
-                            <p>Canada Ontario</p>
-                            <h1>Ahmad Zayn</h1>
-                            <p>Yoga Sepcialist</p>
-                        </div>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="categories-card-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                    </div>
-                    <div class="categories-card-exp">
-                        <p class="text-center">Available 4 hrs/day</p>
-                        <p class="text-center">5+ Years Experience</p>
-                    </div>
-                    <div class="text-center my-4">
-                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail')}}">View Detail</a>
-                    </div>
-                </div>
-
+            <div id="trainerList" class="categories-grid-section pb-3">
+                <?= $trainersView; ?>
             </div>
         </div>
     </div>
@@ -673,5 +374,34 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+</script>
+<script>
+    $(".catergory-card-yellow").click(function(e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        e.preventDefault();
+        id = $(this).attr('data-id');
+        // var formData = {
+        //     company_name: $(this).attr('data-id'),
+        // };
+        var type = "POST";
+        var ajaxurl = 'add_company';
+        $.ajax({
+            type: type,
+            url: 'get_sessions_list/'+id,
+            // data: formData,
+            dataType: 'json',
+            success: function(data) {
+                console.log(data.data);
+                $("#trainerList").html(data.data);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    });
 </script>
 @endsection

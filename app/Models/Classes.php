@@ -26,7 +26,10 @@ class Classes extends Model
     {
         return $this->hasOne(Session::class, 'class_id')->latestOfMany();
     }
-
+    public function classSession()
+    {
+        return $this->hasMany(Session::class, 'class_id');
+    }
     // public function trainer()
     // {
     //     return $this->belongsTo(User::class, 'user_id');

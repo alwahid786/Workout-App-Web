@@ -224,13 +224,14 @@
                 <h1>Sessions</h1>
             </div>
             <div class="row js-slick-carousels px-sm-5">
+
                 @foreach($class as $classes)
                 <div class="col">
                     <div class="session-card p-2">
                         <div class="session-card-img">
                             <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
                             <div class="session-card-amount">
-                                <h1>{{$classes['session']['price']}}</h1>
+                                <h1>{{$classes['session']['day']}}</h1>
                             </div>
                         </div>
 
@@ -743,7 +744,7 @@
 </script>
 <script>
     $('.credit_card').click(function() {
-        
+
     });
 </script>
 @endsection
