@@ -199,7 +199,8 @@
         height: 30px;
         width: 30px;
     }
-    .trainer-name h1{
+
+    .trainer-name h1 {
         display: block !important;
     }
 </style>
@@ -248,6 +249,8 @@
                     <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer_detail[0]['name']}}'s Sessions</h1>
                 </div>
                 <div class="card-grid-section">
+                    @if($trainer_detail[0]['class']!= null)
+
                     @foreach($trainer_detail[0]['class'] as $trainerData )
                     <div class="session-card p-3">
                         <div class="card-img ">
@@ -278,6 +281,9 @@
                         </div>
                     </div>
                     @endforeach
+                    @else
+                    <p> Data not found</p>
+                    @endif
                     <!-- <div class="session-card p-3">
                         <div class="card-img ">
                             <img src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">

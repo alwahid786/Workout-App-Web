@@ -323,7 +323,7 @@ class UserController extends Controller
         return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
     }
     //// get all category ...........//////////
-    public function categoryDetail()
+    public function categoryDetail($id)
     {
 
         $class_detail = Category::all();
@@ -332,8 +332,10 @@ class UserController extends Controller
             return $this->sendError('Dashboard');
         }
 
-        $trainersView = $this->category_trainer($class_detail[0]['id']);
-        // dd($class_detail);
+        // $trainersView = $this->category_trainer($class_detail[0]['id']);
+        $trainersView = $this->category_trainer($id);
+
+       
         $class = json_decode($class_detail, true);
         // echo '<pre>';
         // print_r($trainerDetails);
@@ -349,20 +351,29 @@ class UserController extends Controller
             'trainerCategory.classSession:id,class_id,start_time,end_time,price',
             'trainerCategory.trainer'
         ])->get();
+
         $trainerDetails = json_decode($trainerDetails, true);
-        // echo '<pre>';print_r($trainerDetails);
-        // exit;
+
         $trainersView = View::make('pages.userdashboard.explore.trainers_list', [
             'trainerDetails' =>         $trainerDetails[0]['trainer_category'],
             'category' => $trainerDetails[0]['title']
         ])->render();
 
-        return $trainersView;
+        return [
+            'trainersView' => $trainersView,
+            'category' => $trainerDetails[0]['title']
+        ];
     }
-
+    /////..render view to categories.blad. php......../////
     public function get_sessions_list($id)
     {
+
         $trainersView = $this->category_trainer($id);
-        return $this->sendResponse($trainersView, 'Trainer Detail insert Successfully!');
+
+        return $this->sendResponse(
+            $trainersView,
+            'Trainer Detail insert Successfully!'
+        );
     }
+    
 }

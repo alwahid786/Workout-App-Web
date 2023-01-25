@@ -25,6 +25,17 @@
     <div class="categories-card-text">
         <p>{{$trainerDetail['trainer']['about']}} </p>
     </div>
+    <?php
+    foreach ($trainerDetail['class_session'] as $session) {
+        // $price += $session['price'];
+        $a = new DateTime(($session['start_time']));
+        $b = new DateTime($session['end_time']);
+        $interval = $a->diff($b);
+
+        $hour = $interval->format("%H:%I");
+    }
+
+    ?>
     <div class="categories-card-exp">
         <p class="text-center">Available 4 hrs/day</p>
         <p class="text-center">5+ Years Experience</p>

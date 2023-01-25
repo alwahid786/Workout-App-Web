@@ -184,7 +184,7 @@
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
                     @foreach($class as $categories)
-                    <div class="col">
+                    <div class="col catergory-card-img">
                         <!-- <a href=""> -->
                         <div class="catergory-card catergory-card-yellow p-2" data-id="{{$categories['id']}}">
                             <div class="category-left">
@@ -300,10 +300,11 @@
                 </div>
             </div>
             <div class="dashboard-header-left categories-heading my-4 ">
-                <h1>{{$class['0']['title']}} Trainers</h1>
+                <h1 id="trainerCategory">{{$trainersView['category']}} Trainers</h1>
             </div>
             <div id="trainerList" class="categories-grid-section pb-3">
-                <?= $trainersView; ?>
+                <?= $trainersView['trainersView']; ?>
+                
             </div>
         </div>
     </div>
@@ -377,31 +378,43 @@
 </script>
 <script>
     $(".catergory-card-yellow").click(function(e) {
+
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         e.preventDefault();
-        id = $(this).attr('data-id');
+        var id = $(this).attr('data-id');
         // var formData = {
         //     company_name: $(this).attr('data-id'),
         // };
         var type = "POST";
-        var ajaxurl = 'add_company';
+        var url = "{{ route('get_sessions_list', ':id') }}";
+        url = url.replace(':id', id);
         $.ajax({
             type: type,
-            url: 'get_sessions_list/'+id,
+            url: url,
             // data: formData,
             dataType: 'json',
             success: function(data) {
-                console.log(data.data);
-                $("#trainerList").html(data.data);
+                console.log(`${data.data['category']} here`);
+                $("#trainerList").html(data.data['trainersView']);
+                $("#trainerCategory").html(`${data.data['category']}  Trainers`);
             },
             error: function(data) {
                 console.log(data);
             }
         });
+    });
+
+    $('.catergory-card-img').click(function() {
+
+        $('.catergory-card-img').find('.catergory-card-yellow').css("border", "none");
+        $(this).find('.catergory-card-yellow').css("border", "4px solid black");
+
+
     });
 </script>
 @endsection
