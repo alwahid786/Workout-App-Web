@@ -593,7 +593,8 @@
                         <!-- table -->
                         @foreach($current_session as $current)
 
-                        <a href="{{url('/userdashboard/upcomingsessionone')}}">
+                        <!-- <a href="{{url('/userdashboard/upcomingsessionone')}}"> -->
+                        <a href="{{url('/userdashboard/sessionone/'.$current['id'])}}">
                             <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
@@ -640,7 +641,9 @@
                         @if($upcoming_session != null)
                         @foreach($upcoming_session as $upcoming)
                         <!-- table -->
-                        <a href="{{url('/userdashboard/upcomingsessiongroup')}}">
+                        <!-- <a href="{{url('/userdashboard/upcomingsessiongroup')}}"> -->
+                        <a href="{{url('/userdashboard/sessionone/'.$upcoming['id'])}}">
+
                             <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
@@ -830,7 +833,9 @@
                     <div class="workout-right-inner-session pr-2">
                         @if($past_session != null)
                         @foreach($past_session as $past)
-                        <a href="{{url('/userdashboard/pastsessiondetail')}}">
+                        <!-- <a href="{{url('/userdashboard/pastsessiondetail')}}"> -->
+                        <a href="{{url('/userdashboard/sessionone/'.$past['id'])}}">
+
                             <div class="workout-right-session-card workout-card-right-active px-3 py-4 my-3">
                                 <div class="workout-card-left-section ">
                                     <div class="workout-card-inner-img pr-2">

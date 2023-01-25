@@ -30,6 +30,10 @@ class Classes extends Model
     {
         return $this->hasMany(Session::class, 'class_id');
     }
+    public function classImage()
+    {
+        return $this->hasMany(ClassImage::class, 'class_id');
+    }
     // public function trainer()
     // {
     //     return $this->belongsTo(User::class, 'user_id');

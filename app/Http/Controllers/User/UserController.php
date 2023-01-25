@@ -265,7 +265,7 @@ class UserController extends Controller
     //////////.......get all booked session .......///////
     public function getBookedSession()
     {
-        $booksession = BookedSession::where('user_id', auth()->user()->id)->with('session.class.trainer', 'session.class.category')->get();
+        $booksession = BookedSession::where('user_id', auth()->user()->id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->get();
         if (!$booksession) {
             return $this->sendError('Session Detail');
         }
@@ -276,11 +276,12 @@ class UserController extends Controller
     //////// view booked session.........//////
     public function viewSession($id)
     {
-        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category')->first();
+        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
         if (!$session_detail) {
             return $this->sendError('Session Detail');
         }
         $bookedsession = json_decode($session_detail, true);
+        // dd($bookedsession);
 
         return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession'));
     }
@@ -335,7 +336,7 @@ class UserController extends Controller
         // $trainersView = $this->category_trainer($class_detail[0]['id']);
         $trainersView = $this->category_trainer($id);
 
-       
+
         $class = json_decode($class_detail, true);
         // echo '<pre>';
         // print_r($trainerDetails);
@@ -375,5 +376,4 @@ class UserController extends Controller
             'Trainer Detail insert Successfully!'
         );
     }
-    
 }
