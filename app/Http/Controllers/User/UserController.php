@@ -210,8 +210,10 @@ class UserController extends Controller
         foreach ($class as $c) {
             $c['classSession'] = ModelsSession::where('class_id', $c['id'])->get()->groupBy('day');
         }
-        $class = json_decode($class, true);
-        echo '<pre>';print_r($class);exit;
+        $class_detail = json_decode($class, true);
+        // echo '<pre>';
+        // print_r($class);
+        // exit;
         return view('pages.userdashboard.explore.class-detail', compact('class_detail'));
     }
     //////customer card detail........./////////
@@ -391,8 +393,7 @@ class UserController extends Controller
             return $this->sendError('No class found against ID');
         }
         $trainerClasses = Classes::where('trainer_id', $class['trainer_id'])->get();
-        if(count($trainerClasses)>0){
-            
+        if (count($trainerClasses) > 0) {
         }
         $class_detail = json_decode($class, true);
         // Calculate time difference 
