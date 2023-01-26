@@ -145,3 +145,11 @@ Route::get('/trainer/otp', function () {
 Route::get('/trainer/newpassword', function () {
     return view('pages.trainerSide.auth.newpassword');
 });
+
+
+
+//Setup New Trainer Profile
+
+Route::get('/trainer/updateinfo', function () {
+    return view('pages.trainerSide.updateinfo');
+});
