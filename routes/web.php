@@ -145,6 +145,22 @@ Route::get('/trainer/forgetpassword', function () {
 Route::get('/trainer/otp', function () {
     return view('pages.trainerSide.auth.otp');
 });
-Route::get('/trainer/newpassword', function () {
+// Route::get('/trainer/newpassword', function () {
+//     return view('pages.trainerSide.auth.newpassword');
+// });
+
+Route::get('/trainer/new_password', function () {
     return view('pages.trainerSide.auth.newpassword');
 });
+
+Route::get('/trainer/myroute', function () {
+    dd('hi');
+});
+
+
+
+//Setup New Trainer Profile
+
+// Route::get('/trainer/updateinfo', function () {
+//     return view('pages.trainerSide.updateinfo');
+// });
