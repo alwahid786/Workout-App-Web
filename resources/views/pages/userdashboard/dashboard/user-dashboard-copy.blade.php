@@ -1,8 +1,6 @@
 @extends('layouts.userdashboard.default')
 @section('content')
-<link rel="stylesheet" href="{{asset('public/assets/css/calendar.css')}}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css">
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="{{asset('public/assets/AS/css/mobiscroll.jquery.min.css')}}">
 <style>
     .workout-banner-card {
         background: #FDD9CE;
@@ -494,6 +492,10 @@
         outline: none;
         box-shadow: none;
     }
+
+    .workout-session-card a:hover {
+        text-decoration: none;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -506,7 +508,7 @@
                             <div class="workout-banner-content px-3 py-3 text-center text-md-left">
                                 <h1>Welcome John Smith</h1>
                                 <p class="pt-3 pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                <a class="btn" href="#">Read More</a>
+                                <a class="btn" href="{{url('/about')}}">Read More</a>
                             </div>
                         </div>
                         <div class="col-md-5 align-self-end">
@@ -519,26 +521,31 @@
                 <div class="workout-session-card my-4">
                     <div class="row">
                         <div class="col-sm-6 col-md-4 my-2">
-                            <div class="work-session-card red-session-card py-4 px-1">
-                                <div class="work-session-card-left py-1 pl-3">
-                                    <h1>Your Upcoming <span>Session</span> </h1>
-                                    <p>15</p>
+                            <a href="{{url('/userdashboard/upcomingsessionone')}}">
+                                <div class="work-session-card red-session-card py-4 px-1">
+                                    <div class="work-session-card-left py-1 pl-3">
+                                        <h1>Your Upcoming <span>Session</span> </h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="work-session-card-right">
+                                        <img src="{{asset('public/assets/images/red-card-icon.svg')}}" alt="">
+                                    </div>
                                 </div>
-                                <div class="work-session-card-right">
-                                    <img src="{{asset('public/assets/images/red-card-icon.svg')}}" alt="">
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
-                            <div class="work-session-card blue-session-card py-4 px-1">
-                                <div class="work-session-card-left py-1 pl-3">
-                                    <h1>Your Past <span>Session</span> </h1>
-                                    <p>20</p>
+                            <a href="{{url('/userdashboard/pastsession')}}">
+                                <div class="work-session-card blue-session-card py-4 px-1">
+                                    <div class="work-session-card-left py-1 pl-3">
+                                        <h1>Your Past <span>Session</span> </h1>
+                                        <p>20</p>
+                                    </div>
+                                    <div class="work-session-card-right">
+                                        <img src="{{asset('public/assets/images/blue-card-icon.svg')}}" alt="">
+                                    </div>
                                 </div>
-                                <div class="work-session-card-right">
-                                    <img src="{{asset('public/assets/images/blue-card-icon.svg')}}" alt="">
-                                </div>
-                            </div>
+                            </a>
+
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
                             <div class="work-session-card yellow-session-card py-4 px-1 ">
@@ -556,7 +563,7 @@
                 </div>
                 <div class="workout-today-section">
                     <div class="workout-today-header pt-2 pb-1">
-                        <h1>Your Today’s Session</h1>
+                        <h1>Todays Booked Sessions</h1>
                     </div>
 
                     <div class="workout-today-wrapper">
@@ -774,81 +781,12 @@
 
 
             </div>
-            <div class="col-xl-4 mt-4 mt-xl-0">
+            <div class="col-xl-4">
                 <div class="workout-calendar p-3">
-                    <!-- <div id="demo"></div> -->
-                    <div class=" card-bg ">
-                        <h2 class="mb-4 text-left cal-head">Calendar</h2>
-                        <div class="card">
-                            <div class="card-body p-0">
-                                <div id="calendar"></div>
-                            </div>
-                        </div>
+                    <div class="calendar-header">
+                        <h1>Calendar</h1>
                     </div>
-
-                    <!-- calendar modal -->
-                    <div id="modal-view-event" class="modal modal-top fade calendar-modal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span>
-                                    </h4>
-                                    <div class="event-body"></div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <form id="add-event">
-                                    <div class="modal-body">
-                                        <h4>Add Event Detail</h4>
-                                        <div class="form-group">
-                                            <label>Event name</label>
-                                            <input type="text" class="form-control" name="ename">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Event Date</label>
-                                            <input type='text' class="datetimepicker form-control" name="edate">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Event Description</label>
-                                            <textarea class="form-control" name="edesc"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Event Color</label>
-                                            <select class="form-control" name="ecolor">
-                                                <option value="fc-bg-default">fc-bg-default</option>
-                                                <option value="fc-bg-blue">fc-bg-blue</option>
-                                                <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
-                                                <option value="fc-bg-pinkred">fc-bg-pinkred</option>
-                                                <option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Event Icon</label>
-                                            <select class="form-control" name="eicon">
-                                                <option value="circle">circle</option>
-                                                <option value="cog">cog</option>
-                                                <option value="group">group</option>
-                                                <option value="suitcase">suitcase</option>
-                                                <option value="calendar">calendar</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="demo"></div>
                 </div>
                 <div class="workout-right-session">
                     <h2 class="my-4">Past Session</h2>
@@ -1005,176 +943,6 @@
             }
         });
     });
-</script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
-<script>
-    jQuery(document).ready(function() {
-        jQuery('.datetimepicker').datepicker({
-            timepicker: true,
-            language: 'en',
-            range: true,
-            multipleDates: true,
-            multipleDatesSeparator: " - "
-        });
-        jQuery("#add-event").submit(function() {
-            alert("Submitted");
-            var values = {};
-            $.each($('#add-event').serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-            console.log(
-                values
-            );
-        });
-    });
-
-    (function() {
-        'use strict';
-        // ------------------------------------------------------- //
-        // Calendar
-        // ------------------------------------------------------ //
-        jQuery(function() {
-            // page is ready
-            jQuery('#calendar').fullCalendar({
-                themeSystem: '',
-                // emphasizes business hours
-                businessHours: false,
-                defaultView: 'month',
-                // event dragging & resizing
-                editable: true,
-                // header
-                header: {
-
-                    left: 'prev',
-                    center: 'title,,agendaWeek,month,agendaDay',
-                    right: 'next'
-                },
-                events: [{
-                        title: 'Barber',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-07-07',
-                        end: '2019-07-07',
-                        className: 'fc-bg-default',
-                        icon: "circle"
-                    },
-                    {
-                        title: 'Flight Paris',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-08T14:00:00',
-                        end: '2019-08-08T20:00:00',
-                        className: 'fc-bg-deepskyblue',
-                        icon: "cog",
-                        allDay: false
-                    },
-                    {
-                        title: 'Team Meeting',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-07-10T13:00:00',
-                        end: '2019-07-10T16:00:00',
-                        className: 'fc-bg-pinkred',
-                        icon: "group",
-                        allDay: false
-                    },
-                    {
-                        title: 'Meeting',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-12',
-                        className: 'fc-bg-lightgreen',
-                        icon: "suitcase"
-                    },
-                    {
-                        title: 'Conference',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-13',
-                        end: '2019-08-15',
-                        className: 'fc-bg-blue',
-                        icon: "calendar"
-                    },
-                    {
-                        title: 'Baby Shower',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-13',
-                        end: '2019-08-14',
-                        className: 'fc-bg-default',
-                        icon: "child"
-                    },
-                    {
-                        title: 'Birthday',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-09-13',
-                        end: '2019-09-14',
-                        className: 'fc-bg-default',
-                        icon: "birthday-cake"
-                    },
-                    {
-                        title: 'Restaurant',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-10-15T09:30:00',
-                        end: '2019-10-15T11:45:00',
-                        className: 'fc-bg-default',
-                        icon: "glass",
-                        allDay: false
-                    },
-                    {
-                        title: 'Dinner',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-11-15T20:00:00',
-                        end: '2019-11-15T22:30:00',
-                        className: 'fc-bg-default',
-                        icon: "cutlery",
-                        allDay: false
-                    },
-                    {
-                        title: 'Shooting',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-25',
-                        end: '2019-08-25',
-                        className: 'fc-bg-blue',
-                        icon: "camera"
-                    },
-                    {
-                        title: 'Go Space :)',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-12-27',
-                        end: '2019-12-27',
-                        className: 'fc-bg-default',
-                        icon: "rocket"
-                    },
-                    {
-                        title: 'Dentist',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-12-29T11:30:00',
-                        end: '2019-12-29T012:30:00',
-                        className: 'fc-bg-blue',
-                        icon: "medkit",
-                        allDay: false
-                    }
-                ],
-                eventRender: function(event, element) {
-                    if (event.icon) {
-                        element.find(".fc-title").prepend("<i class='fa fa-" + event.icon + "'></i>");
-                    }
-                },
-                dayClick: function() {
-                    jQuery('#modal-view-event-add').modal();
-                },
-                eventClick: function(event, jsEvent, view) {
-                    jQuery('.event-icon').html("<i class='fa fa-" + event.icon + "'></i>");
-                    jQuery('.event-title').html(event.title);
-                    jQuery('.event-body').html(event.description);
-                    jQuery('.eventUrl').attr('href', event.url);
-                    jQuery('#modal-view-event').modal();
-                },
-            })
-        });
-
-    })(jQuery);
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(2)').addClass('active')
