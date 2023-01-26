@@ -16,6 +16,7 @@ use App\Models\Classes;
 use App\Models\ContactUs;
 use App\Models\Customer;
 use App\Models\Session as ModelsSession;
+use Carbon\Carbon;
 use DateTime;
 use Stripe;
 use Throwable;
@@ -193,19 +194,23 @@ class UserController extends Controller
             return $this->sendError('Trainer Detail');
         }
         $trainer_detail = json_decode($trainer, true);
-        // dd($trainer_detail);
+
         return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
     }
     ///////// .....class detail .............////////
     public function class_detail(Request $request, $id)
     {
 
-        $class = Classes::where('id', '=', $id)->with('session', 'category')->get();
+        $class = Classes::where('id', '=', $id)->with('category')->get();
         if (!$class) {
             return $this->sendError('Session Detail');
         }
-        $class_detail = json_decode($class, true);
-
+        // $class = json_decode($class, true);
+        foreach ($class as $c) {
+            $c['classSession'] = ModelsSession::where('class_id', $c['id'])->get()->groupBy('day');
+        }
+        $class = json_decode($class, true);
+        echo '<pre>';print_r($class);exit;
         return view('pages.userdashboard.explore.class-detail', compact('class_detail'));
     }
     //////customer card detail........./////////
