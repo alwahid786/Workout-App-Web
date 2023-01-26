@@ -199,7 +199,8 @@
         height: 30px;
         width: 30px;
     }
-    .trainer-name h1{
+
+    .trainer-name h1 {
         display: block !important;
     }
 </style>
@@ -210,7 +211,7 @@
             <div class="col-lg-4 col-xl-3">
                 <div class="sessions-left-section py-5 px-2">
                     <div class="session-profile-image text-center">
-                        <img src="{{asset('public/assets/images/detail-trainer.jpg')}}" alt="">
+                        <img src="{{$trainer_detail[0]['profile_img']}}" alt="">
                     </div>
                     <div class="sessions-profile-con text-center">
                         <div class="dashboard-header-left pt-3 trainer-name">
@@ -248,10 +249,12 @@
                     <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer_detail[0]['name']}}'s Sessions</h1>
                 </div>
                 <div class="card-grid-section">
+                    @if($trainer_detail[0]['class']!= null)
+
                     @foreach($trainer_detail[0]['class'] as $trainerData )
                     <div class="session-card p-3">
                         <div class="card-img ">
-                            <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                            <img src="{{$trainerData['class_image'][0]['image']}}" alt="">
                         </div>
                         <div class="card-heading py-3">
                             <h1>{{$trainerData['category']['title']}}</h1>
@@ -278,6 +281,9 @@
                         </div>
                     </div>
                     @endforeach
+                    @else
+                    <p> Data not found</p>
+                    @endif
                     <!-- <div class="session-card p-3">
                         <div class="card-img ">
                             <img src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">

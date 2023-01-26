@@ -471,7 +471,7 @@
                 <div class="row js-slick-carouselss px-1 category-slider">
                     @foreach($category as $category_data)
                     <div class="col">
-                        <a href="{{url('/dashboard/categories')}}">
+                        <a href="{{url('/dashboard/categories/'.$category_data['id'])}}">
                             <div class="catergory-card catergory-card-yellow p-2">
                                 <div class="category-left">
                                     <h1>{{$category_data['title']}}</h1>

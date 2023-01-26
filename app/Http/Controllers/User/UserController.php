@@ -16,6 +16,7 @@ use App\Models\Classes;
 use App\Models\ContactUs;
 use App\Models\Customer;
 use App\Models\Session as ModelsSession;
+use Carbon\Carbon;
 use DateTime;
 use Stripe;
 use Throwable;
@@ -188,7 +189,7 @@ class UserController extends Controller
     /////....user side trainer detail......../////
     public function trainer_detail(Request $request, $id)
     {
-        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session'])->get();
+        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session', 'class.classImage'])->get();
         if (!$trainer) {
             return $this->sendError('Trainer Detail');
         }
@@ -201,11 +202,16 @@ class UserController extends Controller
     {
 
         $class = Classes::where('id', '=', $id)->with('session', 'category', 'classImages')->get();
+        // $class = Classes::where('id', '=', $id)->with('category')->get();
         if (!$class) {
             return $this->sendError('Session Detail');
         }
-        $class_detail = json_decode($class, true);
-
+        // $class = json_decode($class, true);
+        foreach ($class as $c) {
+            $c['classSession'] = ModelsSession::where('class_id', $c['id'])->get()->groupBy('day');
+        }
+        $class = json_decode($class, true);
+        echo '<pre>';print_r($class);exit;
         return view('pages.userdashboard.explore.class-detail', compact('class_detail'));
     }
     //////customer card detail........./////////
@@ -265,7 +271,7 @@ class UserController extends Controller
     //////////.......get all booked session .......///////
     public function getBookedSession()
     {
-        $booksession = BookedSession::where('user_id', auth()->user()->id)->with('session.class.trainer', 'session.class.category')->get();
+        $booksession = BookedSession::where('user_id', auth()->user()->id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->get();
         if (!$booksession) {
             return $this->sendError('Session Detail');
         }
@@ -276,11 +282,12 @@ class UserController extends Controller
     //////// view booked session.........//////
     public function viewSession($id)
     {
-        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category')->first();
+        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
         if (!$session_detail) {
             return $this->sendError('Session Detail');
         }
         $bookedsession = json_decode($session_detail, true);
+        // dd($bookedsession);
 
         return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession'));
     }
@@ -323,7 +330,7 @@ class UserController extends Controller
         return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
     }
     //// get all category ...........//////////
-    public function categoryDetail()
+    public function categoryDetail($id)
     {
 
         $class_detail = Category::all();
@@ -332,8 +339,10 @@ class UserController extends Controller
             return $this->sendError('Dashboard');
         }
 
-        $trainersView = $this->category_trainer($class_detail[0]['id']);
-        // dd($class_detail);
+        // $trainersView = $this->category_trainer($class_detail[0]['id']);
+        $trainersView = $this->category_trainer($id);
+
+
         $class = json_decode($class_detail, true);
         // echo '<pre>';
         // print_r($trainerDetails);
@@ -349,21 +358,29 @@ class UserController extends Controller
             'trainerCategory.classSession:id,class_id,start_time,end_time,price',
             'trainerCategory.trainer'
         ])->get();
+
         $trainerDetails = json_decode($trainerDetails, true);
-        // echo '<pre>';print_r($trainerDetails);
-        // exit;
+
         $trainersView = View::make('pages.userdashboard.explore.trainers_list', [
             'trainerDetails' =>         $trainerDetails[0]['trainer_category'],
             'category' => $trainerDetails[0]['title']
         ])->render();
 
-        return $trainersView;
+        return [
+            'trainersView' => $trainersView,
+            'category' => $trainerDetails[0]['title']
+        ];
     }
-
+    /////..render view to categories.blad. php......../////
     public function get_sessions_list($id)
     {
+
         $trainersView = $this->category_trainer($id);
-        return $this->sendResponse($trainersView, 'Trainer Detail insert Successfully!');
+
+        return $this->sendResponse(
+            $trainersView,
+            'Trainer Detail insert Successfully!'
+        );
     }
 
     // get class details 
