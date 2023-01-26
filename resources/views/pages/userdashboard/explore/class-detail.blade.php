@@ -8,6 +8,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css">
 <style>
+    .loaderDiv {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75) url("../../../../workitpt_web/public/assets/images/loader.svg") no-repeat center center;
+        z-index: 99999;
+    }
+
     .mbsc-calendar-controls {
         position: relative;
         justify-content: center;
@@ -231,7 +243,7 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span>Group Session</span></h1>
+            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">{{$class_detail[0]['session']['type']}}</span></h1>
         </div>
         <div class="class-section">
             <div class="row">
@@ -244,11 +256,11 @@
 
                         </div>
                     </div>
-                    <div class="row js-slick-carousels">
-
+                    <div id="owl-carousel-images" class="row owl-carousel">
+                        @foreach($class_detail[0]['class_images'] as $image)
                         <div class="col">
                             <div class="class-left-banner px-2 py-3">
-                                <img class="class-banner-img" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                <img class="class-banner-img" src="{{$image['image']}}" alt="">
                                 <!-- <div class="class-banner-content pt-3">
                                     <h1>Yoga</h1>
                                     <div class="class-banner-content-right">
@@ -261,59 +273,30 @@
                                 </div> -->
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="class-left-banner px-2 py-3">
-                                <img class="class-banner-img" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                <!-- <div class="class-banner-content pt-3">
-                                    <h1>Stretching outdoors</h1>
-                                    <div class="class-banner-content-right">
-                                        <h1>$100</h1>
-                                        <div class="class-banner-content-right-time">
-                                            <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
-                                            <p>25min</p>
-                                        </div>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="class-left-banner px-2 py-3">
-                                <img class="class-banner-img" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <!-- <div class="class-banner-content pt-3">
-                                    <h1>Gymnastics</h1>
-                                    <div class="class-banner-content-right">
-                                        <h1>$100</h1>
-                                        <div class="class-banner-content-right-time">
-                                            <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
-                                            <p>25min</p>
-                                        </div>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="class-left-banner px-2 py-3">
-                                <img class="class-banner-img" src="{{asset('public/assets/images/sessionseven.jpg')}}" alt="">
-                                <!-- <div class="class-banner-content pt-3">
-                                    <h1>Body Building</h1>
-                                    <div class="class-banner-content-right">
-                                        <h1>$100</h1>
-                                        <div class="class-banner-content-right-time">
-                                            <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
-                                            <p>25min</p>
-                                        </div>
-                                    </div>
-                                </div> -->
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="class-banner-content">
-                        <h1>Yoga</h1>
+                        <h1 id="sessionTitle_d">{{$class_detail[0]['category']['title']}}</h1>
                         <div class="class-banner-content-right">
-                            <h1>$100</h1>
+                            <h1 id="sessionPrice_d">${{$class_detail[0]['session']['price']}}</h1>
                             <div class="class-banner-content-right-time">
+                                <?php $start_time = $class_detail[0]['session']['start_time'];
+                                $end_time = $class_detail[0]['session']['end_time'];
+                                $start_datetime = new DateTime(date('Y-m-d') . ' ' . $start_time);
+                                $end_datetime = new DateTime(date('Y-m-d') . ' ' . $end_time);
+                                $timeDiff = $start_datetime->diff($end_datetime);
+                                $hours = $timeDiff->format('%h');
+                                $mins = $timeDiff->format('%i');
+                                ?>
                                 <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
-                                <p>25min</p>
+                                <p id="sessionTime_d">
+                                    @if($hours != 0)
+                                    {{$hours}} hr
+                                    @endif
+                                    @if($mins != 0)
+                                    {{$mins}} mins
+                                    @endif
+                                </p>
                             </div>
                         </div>
 
@@ -502,7 +485,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row owl-carousel mt-3 appendDays">
+                            <div id="owl-cal" class="row owl-carousel mt-3 appendDays">
 
                             </div>
                             <!-- <div id="demo-1-week"></div> -->
@@ -515,15 +498,15 @@
                                 @if(isset($class_detail) && !empty($class_detail))
                                 <!-- Loop div starts here  -->
                                 @foreach($class_detail as $class)
-                                <div class="trainer-class-time-card-box my-2">
-                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 ">
+                                <div class="trainer-class-time-card-box my-2 " style="cursor: pointer;">
+                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$class['id']}}">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h1>{{$class['category']['title']}} </h1>
-                                                <h2>{{date('h',strtotime($class['session']['start_time']))}} {{$class['session']['start_meridiem']}}-{{date('h',strtotime($class['session']['end_time']))}} {{$class['session']['end_meridiem']}}</h2>
+                                                <h2>{{date('h:i',strtotime($class['session']['start_time']))}} {{$class['session']['start_meridiem']}}-{{date('h:i',strtotime($class['session']['end_time']))}} {{$class['session']['end_meridiem']}}</h2>
                                             </div>
                                         </div>
                                         <div class="trainer-class-time-card-right">
@@ -575,8 +558,10 @@
 <script>
     // Owl Carousel Code Starts here 
     $(document).ready(function() {
-
-        $('.owl-carousel').owlCarousel();
+        $("#owl-carousel-images").owlCarousel({
+            items: 1,
+            loop: true
+        });
         var Year = new Date().getFullYear();
         var Month = new Date().getMonth();
         var dd = String(new Date().getDate()).padStart(2, '0');
@@ -613,12 +598,12 @@
                                 </div>`;
                 $(".appendDays").append(div);
             });
-            $('.owl-carousel').trigger('destroy.owl.carousel');
-            $('.owl-carousel').owlCarousel({
+            $('#owl-cal').trigger('destroy.owl.carousel');
+            $('#owl-cal').owlCarousel({
                 items: 10,
                 autoWidth: true
             });
-            $('.owl-carousel').trigger('to.owl.carousel', dd - 8)
+            $('#owl-cal').trigger('to.owl.carousel', dd - 8)
 
         }
         $(document).on('click', '.months', function() {
@@ -628,8 +613,69 @@
             getDaysInMonth(parseInt(monthIndex), Year)
 
         });
-    });
 
+
+        // Get Session detail in Card on Left 
+        $(document).on('click', '.sessionDiv_d', function() {
+            $('.loaderDiv').show();
+            classId = $(this).attr('data-src');
+            $('.sessionDiv_d').removeClass('trainer-class-active');
+            $(this).addClass('trainer-class-active');
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                url: `{{route('classDetails')}}`,
+                type: "POST",
+                data: {
+                    class_id: classId
+                },
+                cache: false,
+                success: function(response) {
+                    console.log(response);
+                    if (response.success == true) {
+                        $("#sessionTitle_d").text(response.data[0].category['title']);
+                        $("#sessionPrice_d").text('$' + response.data[0].session['price']);
+                        $("#sessionType_d").text(response.data[0].session['type']);
+                        var hrs = response.data.hours;
+                        var mins = response.data.minutes;
+                        var actualHours, actualMinutes = '';
+                        if (hrs != '0') {
+                            actualHours = hrs + ' hr';
+                        }
+                        if (mins != '0') {
+                            actualMinutes = mins + ' mins';
+                        }
+                        $("#sessionTime_d").text(actualHours + ' ' + actualMinutes);
+                        var classImages = response.data[0].class_images;
+                        $('#owl-carousel-images').empty();
+                        $(classImages).each(function(i, e) {
+                            let div = `<div class="col">
+                            <div class="class-left-banner px-2 py-3">
+                                <img class="class-banner-img" src="${e.image}" alt="">
+                            </div>
+                        </div>`;
+                            $("#owl-carousel-images").append(div);
+                        });
+                        $("#owl-carousel-images").trigger('destroy.owl.carousel');
+                        $("#owl-carousel-images").owlCarousel({
+                            items: 1,
+                            loop: true
+                        });
+                    } else if (response.success == false) {
+                        toastr.error(dataResult.message);
+                    }
+                },
+                error: function(jqXHR, exception) {
+                    // $('.loaderDiv').hide();
+                    toastr.error(jqXHR.responseJSON.message);
+                }
+
+            });
+        })
+    });
 
     const slickSettings = {
         arrows: true,

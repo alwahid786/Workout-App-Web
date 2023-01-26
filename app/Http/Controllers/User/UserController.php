@@ -200,7 +200,7 @@ class UserController extends Controller
     public function class_detail(Request $request, $id)
     {
 
-        $class = Classes::where('id', '=', $id)->with('session', 'category')->get();
+        $class = Classes::where('id', '=', $id)->with('session', 'category', 'classImages')->get();
         if (!$class) {
             return $this->sendError('Session Detail');
         }
@@ -364,5 +364,30 @@ class UserController extends Controller
     {
         $trainersView = $this->category_trainer($id);
         return $this->sendResponse($trainersView, 'Trainer Detail insert Successfully!');
+    }
+
+    // get class details 
+    public function classDetails(Request $request)
+    {
+        $class = Classes::where('id', '=', $request->class_id)->with('session', 'category', 'classImages')->get();
+        if (!$class) {
+            return $this->sendError('No class found against ID');
+        }
+        $trainerClasses = Classes::where('trainer_id', $class['trainer_id'])->get();
+        if(count($trainerClasses)>0){
+            
+        }
+        $class_detail = json_decode($class, true);
+        // Calculate time difference 
+        $start_time = $class_detail[0]['session']['start_time'];
+        $end_time = $class_detail[0]['session']['end_time'];
+        $start_datetime = new DateTime(date('Y-m-d') . ' ' . $start_time);
+        $end_datetime = new DateTime(date('Y-m-d') . ' ' . $end_time);
+        $timeDiff = $start_datetime->diff($end_datetime);
+        $hours = $timeDiff->format('%h');
+        $mins = $timeDiff->format('%i');
+        $class_detail['hours'] = $hours;
+        $class_detail['minutes'] = $mins;
+        return $this->sendResponse($class_detail, 'Class details found Successfully!');
     }
 }
