@@ -1,5 +1,5 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/updateinfo.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/updateinfotwo.css')}}">
 <style>
 
 </style>
@@ -85,11 +85,44 @@
                     <input type="text" class="form-control py-4" id="inputCity">
                 </div>
             </div>
-            <div class="col-12" data-aos="fade-up">
-                <div class="form-outline pro-form">
-                    <label class="form-label" for="textAreaExample">Tell Us About yourself <span>(256)</span></label>
-                    <textarea class="form-control" id="textAreaExample1" rows="4"></textarea>
+            <div class="col-md-4" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Add Facebook URL</label>
+                    <div class="input-container">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                        <input type="url" class="form-control py-4" id="inputCity">
+                    </div>
+
                 </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Add Insta URL</label>
+                    <div class="input-container">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                        <input type="url" class="form-control py-4" id="inputCity">
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Add Linkedin URL</label>
+                    <div class="input-container">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                        <input type="url" class="form-control py-4" id="inputCity">
+                    </div>
+
+                </div>
+            </div>
+            <div class="updateinfo-qualification my-4 px-3">
+                <h1 class="mb-4">Upload Qualification</h1>
+                <div class="update-info-qualification-image">
+                    <img class="pl-0" src="{{asset('public/assets/trainerimages/uploadimg.svg')}}" alt="">
+                    <img src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
+                    <img src="{{asset('public/assets/trainerimages/certificate2.svg')}}" alt="">
+                </div>
+                
             </div>
             <div class="col-12 my-5">
                 <div class=" profile-nxt-btn">

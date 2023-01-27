@@ -536,7 +536,7 @@
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
-                            <a href="{{url('/userdashboard/pastsession')}}">
+                            <a href="">
                                 <div class="work-session-card blue-session-card py-4 px-1">
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your Past <span>Session</span> </h1>
