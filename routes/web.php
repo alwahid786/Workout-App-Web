@@ -153,3 +153,7 @@ Route::get('/trainer/newpassword', function () {
 Route::get('/trainer/update_info', function () {
     return view('pages.trainerSide.update_info');
 });
+
+Route::get('/trainer/update_info_two', function () {
+    return view('pages.trainerSide.update_info_two');
+});

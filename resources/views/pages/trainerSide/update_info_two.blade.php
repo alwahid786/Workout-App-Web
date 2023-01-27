@@ -1,5 +1,8 @@
 @extends('layouts.trainerSide.default')
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/updateinfo.css')}}">
+<style>
+
+</style>
 @section('content')
 
 <div class="container-fluid update-info-header">
@@ -18,53 +21,68 @@
 <div class="container pt-5">
     <form>
         <div class="row">
-            <div class="col-md-6 text-center text-lg-left mb-5 mb-md-0 upload-image py-5">
-                <img src="{{asset('public/assets/trainerimages/update-info-left.svg')}}" alt="image">
-                <label class="hero-section-upload my-4"> Upload Image
-                    <input type="file" size="60">
-                </label>
-            </div>
-            <div class="col-md-6 text-center form-image">
-                <img src="{{asset('public/assets/trainerimages/update-info-right.svg')}}" alt="">
-            </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">First Name</label>
+                    <label for="inputAddress" class=" ">Contact</label>
                     <input type="text" class="form-control py-4" id="inputAddress">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Last Name</label>
+                    <label for="inputAddress" class=" ">Emergency Contact</label>
                     <input type="text" class="form-control py-4" id="inputAddress">
                 </div>
             </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Email</label>
-                    <input type="text" class="form-control py-4" id="inputAddress2">
-                </div>
-            </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Contact Number</label>
+                    <label for="inputAddress2" class=" ">Date of Birth</label>
                     <input type="text" class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form right-inner-addon mb-2">
-                    <label for="inputAddress2" class=" ">Password</label>
-                    <input type="password" class=" modal-input passInput"  id="password" aria-autocomplete="list">
-                    <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true" style="display: none;"></i>
-                    <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Gender</label>
+                    <input type="text" class="form-control py-4" id="inputCity">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
-                <div class="form-group pro-form right-inner-addon mb-2">
-                    <label for="inputAddress2" class=" ">Confirm Password</label>
-                    <input type="password" class=" modal-input passInput"  id="password_confirmation">
-                    <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                    <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                <div class="form-group pro-form">
+                    <label for="inputAddress2" class=" ">Country</label>
+                    <input type="text" class="form-control py-4" id="inputAddress2">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">State</label>
+                    <input type="text" class="form-control py-4" id="inputCity">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="form-group pro-form">
+                    <label for="inputAddress2" class=" ">Workout Location</label>
+                    <input type="text" class="form-control py-4" id="inputAddress2">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Weight</label>
+
+
+                    <input type="text" class="form-control py-4" id="inputCity">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="form-group pro-form">
+                    <label for="inputAddress2" class=" ">Height</label>
+
+
+                    <input type="text" class="form-control py-4" id="inputAddress2">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
+                    <input type="text" class="form-control py-4" id="inputCity">
                 </div>
             </div>
             <div class="col-12" data-aos="fade-up">
