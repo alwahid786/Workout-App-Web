@@ -199,7 +199,8 @@
         height: 30px;
         width: 30px;
     }
-    .trainer-name h1{
+
+    .trainer-name h1 {
         display: block !important;
     }
 </style>
