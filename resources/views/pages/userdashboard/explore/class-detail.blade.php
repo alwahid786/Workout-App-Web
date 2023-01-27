@@ -428,8 +428,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-6 mt-4 mt-lg-0">
-                    <div class="session-detail-right-wrapper px-2 py-3">
+                <div class="col-lg-6 mt-4 mt-lg-0">                         <div class="session-detail-right-wrapper px-2 py-3">
                         <div class="col session-detail-calendar px-2">
                             <div class="row js-slick-carousels">
                                 <div class="col">
