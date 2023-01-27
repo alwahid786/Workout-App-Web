@@ -211,6 +211,113 @@
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);;
 }
+.filter-menu {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .filter-menu-inner {
+        flex: 20%;
+    }
+
+    @media screen and (max-width:576px) {
+        .filter-menu {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+    }
+
+    .dropbtn-s {
+        background-color: #F9F9FB;
+        color: black;
+        font-weight: 500;
+        padding: 5px;
+        font-size: 0.9rem;
+        height: 65px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .dropbtn-s i {
+        position: absolute;
+        top: 52%;
+        right: -28px;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .dropdown-s {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .dropdown-content-s {
+        display: none;
+        position: absolute;
+        background-color: #F9F9FB;
+        min-width: 100px;
+        border: 1px solid gray;
+        padding: 5px;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .dropdown-content-s a {
+        color: black;
+        font-size: 0.8rem;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content-s a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown-s:hover .dropdown-content-s {
+        display: block;
+    }
+
+    /* select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+    } */
+
+    .drop-icon {
+        position: relative;
+        cursor: pointer;
+        
+    }
+    .drop-icon:hover{
+        cursor: pointer;
+    }
+
+    .drop-icon-parent i {
+        position: absolute;
+        top: 45%;
+        right: 0;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .drop-icon-thre i {
+        padding-right: 2px !important;
+    }
+
+    .drop-icon-parent select {
+        padding: 0px 15px;
+        cursor: pointer;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 
@@ -220,25 +327,19 @@
             <div class="row">
                 <div class="col-lg-6 my-2">
 
-                    <div class=" filter-menu">
-                        <!-- <div class="filter-menu-inner my-auto px-sm-2">
-                        <div class="filter-left-heading">
-                            <h1>Sessions</h1>
-                        </div>
-
-                    </div> -->
+                <div class=" filter-menu">
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Workout Type</h1>
                                 <div class="drop-icon">
-                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1">
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                     </select>
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
 
                                 </div>
@@ -250,14 +351,14 @@
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Location</h1>
                                 <div class="drop-icon">
-                                    <select class="form-control" id="exampleFormControlSelect1">
+                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1">
                                         <option>London</option>
                                         <option>London</option>
                                         <option>London</option>
                                         <option>London</option>
                                         <option>London</option>
                                     </select>
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
 
                                 </div>
@@ -268,11 +369,11 @@
                             <div class="filter-left-select-heading ">
                                 <h1>Class Type</h1>
                                 <div class="dropdown-s">
-                                    <button class="dropbtn-s">Group <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                    <button class="dropbtn-s  ">One to One <i class="fa fa-angle-down pr-3 " aria-hidden="true"></i>
 
-                                        </i></button>
+                                    </button>
                                     <div class="dropdown-content-s">
-                                        <a href="{{url('/dashboard/map')}}">One to One</a>
+                                        <a href="{{url('/dashboard/mapgroup')}}">Group</a>
                                     </div>
                                 </div>
                                 <!-- <select class="form-control" id="exampleFormControlSelect1">
@@ -286,16 +387,16 @@
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Price Range</h1>
                                 <div class="drop-icon drop-icon-thre">
-                                    <select class="form-control" id="exampleFormControlSelect1" class="drop-icon">
+                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1" class="drop-icon">
 
-                                        <option>$20 to $100</option>
-                                        <option>$20 to $100</option>
-                                        <option>$20 to $100</option>
-                                        <option>$20 to $100</option>
-                                        <option>$20 to $100</option>
+                                        <option>$20to$100</option>
+                                        <option>$20to$100</option>
+                                        <option>$20to$100</option>
+                                        <option>$20to$100</option>
+                                        <option>$20to$100</option>
 
                                     </select>
-                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
 
                                 </div>
@@ -665,6 +766,7 @@
 
     </div>
 </div>
+
 
 
 @endsection

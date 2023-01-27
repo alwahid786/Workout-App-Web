@@ -492,7 +492,8 @@
         outline: none;
         box-shadow: none;
     }
-    .workout-session-card a:hover{
+
+    .workout-session-card a:hover {
         text-decoration: none;
     }
 </style>
@@ -520,7 +521,7 @@
                 <div class="workout-session-card my-4">
                     <div class="row">
                         <div class="col-sm-6 col-md-4 my-2">
-                            <a href="{{url('/userdashboard/upcomingsessionone')}}">
+                            <a href="">
                                 <div class="work-session-card red-session-card py-4 px-1">
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your Upcoming <span>Session</span> </h1>
@@ -547,15 +548,18 @@
 
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
-                            <div class="work-session-card yellow-session-card py-4 px-1 ">
-                                <div class="work-session-card-left py-1 pl-3">
-                                    <h1>Your<span>Trainer</span> </h1>
-                                    <p>15</p>
+                            <a href="">
+                                <div class="work-session-card yellow-session-card py-4 px-1 ">
+                                    <div class="work-session-card-left py-1 pl-3">
+                                        <h1>Your<span>Trainer</span> </h1>
+                                        <p>15</p>
+                                    </div>
+                                    <div class="work-session-card-right">
+                                        <img src="{{asset('public/assets/images/yellow-card-icon.svg')}}" alt="">
+                                    </div>
                                 </div>
-                                <div class="work-session-card-right">
-                                    <img src="{{asset('public/assets/images/yellow-card-icon.svg')}}" alt="">
-                                </div>
-                            </div>
+                            </a>
+
                         </div>
 
                     </div>

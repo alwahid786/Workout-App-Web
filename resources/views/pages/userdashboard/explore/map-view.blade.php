@@ -148,7 +148,7 @@
     .dropbtn-s i {
         position: absolute;
         top: 52%;
-        right: 0;
+        right: -28px;
         transform: translate(-50%, -50%);
         font-weight: bold;
         font-size: 1.1rem;
@@ -195,6 +195,11 @@
 
     .drop-icon {
         position: relative;
+        cursor: pointer;
+        
+    }
+    .drop-icon:hover{
+        cursor: pointer;
     }
 
     .drop-icon-parent i {
@@ -211,7 +216,8 @@
     }
 
     .drop-icon-parent select {
-        padding-left: 10px;
+        padding: 0px 15px;
+        cursor: pointer;
     }
 </style>
 @include('includes.userdashboard.navbar')
@@ -283,7 +289,7 @@
                             <div class="filter-left-select-heading ">
                                 <h1>Class Type</h1>
                                 <div class="dropdown-s">
-                                    <button class="dropbtn-s px-sm-4">One to One <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                    <button class="dropbtn-s  ">One to One <i class="fa fa-angle-down pr-3 " aria-hidden="true"></i>
 
                                     </button>
                                     <div class="dropdown-content-s">
