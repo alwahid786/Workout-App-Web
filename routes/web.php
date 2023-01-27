@@ -90,7 +90,7 @@ Route::get('/dashboard/class-detail-copy', function () {
 Route::get('/dashboard/class-detail-one', function () {
     return view('pages.userdashboard.explore.class-detail-one');
 });
-//workout session
+//workout 
 Route::get('/userdashboard', function () {
     return view('pages.userdashboard.dashboard.user-dashboard');
 });

@@ -110,6 +110,7 @@
         border-bottom: 1px solid black !important;
         color: black;
     }
+
     .filter-menu {
         display: flex;
         flex-wrap: wrap;
@@ -179,12 +180,12 @@
         display: block;
     }
 
-    select {
+    /* select {
         -webkit-appearance: none;
         -moz-appearance: none;
         text-indent: 1px;
         text-overflow: '';
-    }
+    } */
 
     .drop-icon {
         position: relative;
@@ -206,12 +207,233 @@
     .drop-icon-parent select {
         padding-left: 10px;
     }
+
     .class-left-banner {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);;
-}
-.filter-menu {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+        ;
+    }
+
+    .filter-menu {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .filter-menu-inner {
+        flex: 20%;
+    }
+
+    @media screen and (max-width:576px) {
+        .filter-menu {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+    }
+
+    .dropbtn-s {
+        background-color: #F9F9FB;
+        color: black;
+        font-weight: 500;
+        padding: 5px;
+        font-size: 0.9rem;
+        height: 65px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .dropbtn-s i {
+        position: absolute;
+        top: 52%;
+        right: -28px;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .dropdown-s {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .dropdown-content-s {
+        display: none;
+        position: absolute;
+        background-color: #F9F9FB;
+        min-width: 100px;
+        border: 1px solid gray;
+        padding: 5px;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .dropdown-content-s a {
+        color: black;
+        font-size: 0.8rem;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content-s a:hover {
+        background-color: #ddd;
+    }
+
+    .dropdown-s:hover .dropdown-content-s {
+        display: block;
+    }
+
+    /* select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+    } */
+
+    .drop-icon {
+        position: relative;
+        cursor: pointer;
+
+    }
+
+    .drop-icon:hover {
+        cursor: pointer;
+    }
+
+    .drop-icon-parent i {
+        position: absolute;
+        top: 45%;
+        right: 0;
+        transform: translate(-50%, -50%);
+        font-weight: bold;
+        padding-right: 10px;
+    }
+
+    .drop-icon-thre i {
+        padding-right: 2px !important;
+    }
+
+    .drop-icon-parent select {
+        padding: 0px 15px;
+        cursor: pointer;
+    }
+    .user-search-box {
+        display: block;
+    }
+
+    .dashboard-header-left span {
+        color: #3F3F3F;
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    .mbsc-calendar-controls {
+        position: relative;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .mbsc-calendar-title-wrapper {
+        justify-content: center;
+    }
+
+    .mbsc-calendar-title-wrapper button {
+        position: relative !important;
+    }
+
+    .mbsc-calendar-controls .mbsc-calendar-button-prev {
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translateX(0%) translateY(-50%);
+    }
+
+    .mbsc-calendar-controls .mbsc-calendar-button-next {
+        position: absolute;
+        top: 50%;
+        right: 20%;
+        transform: translateX(0%) translateY(-50%);
+    }
+
+    .mbsc-calendar-controls {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .mbsc-ios.mbsc-selected .mbsc-calendar-cell-text {
+        background: #E37048;
+        border: none;
+        border-radius: 5px;
+
+    }
+
+    .mbsc-calendar-cell>div:first-of-type {
+        visibility: hidden;
+    }
+
+    .mbsc-calendar-week-day {
+        color: #C1C1C1;
+    }
+
+    .mbsc-calendar-table,
+    .mbsc-calendar-row,
+    .mbsc-calendar-cell {
+        background-color: #F9F9FB !important;
+        border-radius: 4px;
+
+        padding-bottom: 0px;
+    }
+
+    .mbsc-calendar-row,
+    .mbsc-calendar-table {
+        padding-top: 5px;
+    }
+
+    .mbsc-calendar-title {
+        color: #E37048;
+        font-size: 1rem;
+        font-weight: 500 !important;
+    }
+
+    .mbsc-button-icon path {
+        fill: black;
+    }
+
+    .mbsc-icon>svg {
+        width: 60%;
+    }
+
+    .mbsc-ios.mbsc-datepicker-inline {
+        border: none;
+    }
+
+    @media screen and (min-width:1200px) {
+        .week-calendar {
+            margin-top: -10px !important;
+        }
+    }
+
+    #map {
+        height: 500px;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    @media screen and (max-width:576px) {
+        #map {
+            height: 350px;
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+
+    .filter-menu {
         display: flex;
         flex-wrap: wrap;
     }
@@ -327,7 +549,7 @@
             <div class="row">
                 <div class="col-lg-6 my-2">
 
-                <div class=" filter-menu">
+                    <div class="filter-menu">
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Workout Type</h1>
@@ -337,14 +559,10 @@
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                         <option>Yoga</option>
-                                        <option>Yoga</option>
+                                        <option>Yoga</option>   
                                     </select>
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-
-
                                 </div>
-
-
                             </div>
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
