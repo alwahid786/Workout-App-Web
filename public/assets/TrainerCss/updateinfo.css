@@ -3,3 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+.update-info-header{
+    background-color: #F8F8F8;
+}
+.update-info-content h1{
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+
