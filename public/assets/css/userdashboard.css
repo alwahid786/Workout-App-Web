@@ -2237,7 +2237,7 @@ body {
 }
 
 .day-active {
-    background: black;
+    background: black !important;
 }
 
 .day-active h1 {

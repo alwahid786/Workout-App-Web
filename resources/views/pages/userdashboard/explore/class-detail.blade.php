@@ -562,10 +562,10 @@
     // Owl Carousel Code Starts here 
     $(document).ready(function() {
         var daysData = @json($classSession);
-        console.log(daysData);
+        var startTimeOfSession = @json($class_detail[0]['class_session'][0]['start_time']);
+        var sessionDay = @json($class_detail[0]['class_session'][0]['day']);
         var active;
 
-        console.log(active)
         $("#owl-carousel-images").owlCarousel({
             items: 1,
             loop: true
@@ -573,6 +573,42 @@
         var Year = new Date().getFullYear();
         var Month = new Date().getMonth();
         var dd = String(new Date().getDate()).padStart(2, '0');
+        var today = new Date();
+        var timeHours = today.getHours();
+        var timeMin = today.getMinutes();
+
+        var currentTime = timeHours + ":" + timeMin + ":00";
+        var weekdays = new Array(7);
+        weekdays[0] = "Sun";
+        weekdays[1] = "Mon";
+        weekdays[2] = "Tues";
+        weekdays[3] = "Wed";
+        weekdays[4] = "Thur";
+        weekdays[5] = "Fri";
+        weekdays[6] = "Sat";
+
+        var reverseWeekdays = new Array(7);
+        reverseWeekdays["Sun"] = 0;
+        reverseWeekdays["Mon"] = 1;
+        reverseWeekdays["Tues"] = 2;
+        reverseWeekdays["Wed"] = 3;
+        reverseWeekdays["Thur"] = 4;
+        reverseWeekdays["Fri"] = 5;
+        reverseWeekdays["Sat"] = 6;
+        debugger;
+        if (today.getDay() == reverseWeekdays[sessionDay]) {
+            if (currentTime > startTimeOfSession) {
+                dd = parseInt(dd) + 7 + parseInt(daysDifference);
+            } else {
+                dd = parseInt(dd) + parseInt(daysDifference);
+            }
+        } else if (today.getDay() < reverseWeekdays[sessionDay]) {
+            daysDifference = reverseWeekdays[sessionDay] - today.getDay();
+
+        } else {
+            daysDifference = (7 - today.getDay()) + reverseWeekdays[sessionDay] + 1;
+        }
+        console.log(dd);
         // Custom Calendar Code 
         getDaysInMonth(Month, Year);
         $("#" + Month).addClass('month-active');
@@ -583,6 +619,9 @@
             while (date.getMonth() === month) {
                 days.push(new Date(date));
                 date.setDate(date.getDate() + 1);
+            }
+            if (dd > days.length) {
+                dd = dd - days.length;
             }
             $(".appendDays").empty();
             $(days).each(function(i, e) {
@@ -595,11 +634,14 @@
                 weekdays[5] = "Fri";
                 weekdays[6] = "Sat";
 
-
                 if (daysData.includes(weekdays[e.getDay()])) {
                     active = 'day-class';
                 } else {
                     active = "";
+                }
+                console.log(dd);
+                if (e.getDate() === dd) {
+                    active = 'day-active';
                 }
                 let div = `<div class="col pb-3">
                                     <div class="day-number ${active}">
@@ -612,8 +654,10 @@
             $('#owl-cal').trigger('destroy.owl.carousel');
             $('#owl-cal').owlCarousel({
                 items: 10,
-                autoWidth: true
+                autoWidth: true,
+                loop: true
             });
+
             $('#owl-cal').trigger('to.owl.carousel', dd - 8)
 
         }
