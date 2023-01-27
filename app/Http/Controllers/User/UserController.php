@@ -201,7 +201,7 @@ class UserController extends Controller
     ///////// .....class detail .............////////
     public function class_detail(Request $request, $id)
     {
-        $class = Classes::where('id', '=', $id)->with('session', 'category', 'classImages')->get();
+        $class = Classes::where('id', '=', $id)->with('classSession', 'classSession.Category', 'category', 'classImages')->get();
         // $class = Classes::where('id', '=', $id)->with('category')->get();
         if (!$class) {
             return $this->sendError('Session Detail');

@@ -24,4 +24,8 @@ class Session extends Model
     {
         return $this->belongsTo(Classes::class, 'class_id');
     }
+    public function Category()
+    {
+        return $this->hasOne(Category::class, 'id');
+    }
 }

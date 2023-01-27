@@ -247,7 +247,7 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">{{$class_detail[0]['session']['type']}}</span></h1>
+            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">{{$class_detail[0]['class_session'][0]['type']}}</span></h1>
         </div>
         <div class="class-section">
             <div class="row">
@@ -282,10 +282,10 @@
                     <div class="class-banner-content">
                         <h1 id="sessionTitle_d">{{$class_detail[0]['category']['title']}}</h1>
                         <div class="class-banner-content-right">
-                            <h1 id="sessionPrice_d">${{$class_detail[0]['session']['price']}}</h1>
+                            <h1 id="sessionPrice_d">${{$class_detail[0]['class_session'][0]['price']}}</h1>
                             <div class="class-banner-content-right-time">
-                                <?php $start_time = $class_detail[0]['session']['start_time'];
-                                $end_time = $class_detail[0]['session']['end_time'];
+                                <?php $start_time = $class_detail[0]['class_session'][0]['start_time'];
+                                $end_time = $class_detail[0]['class_session'][0]['end_time'];
                                 $start_datetime = new DateTime(date('Y-m-d') . ' ' . $start_time);
                                 $end_datetime = new DateTime(date('Y-m-d') . ' ' . $end_time);
                                 $timeDiff = $start_datetime->diff($end_datetime);
@@ -501,7 +501,7 @@
                             <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1">
                                 @if(isset($class_detail) && !empty($class_detail))
                                 <!-- Loop div starts here  -->
-                                @foreach($class_detail as $class)
+                                @foreach($class_detail[0]['class_session'] as $class)
                                 <div class="trainer-class-time-card-box my-2 " style="cursor: pointer;">
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$class['id']}}">
                                         <div class="trainer-class-time-card-left">
@@ -509,8 +509,7 @@
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
-                                                <h1>{{$class['category']['title']}} </h1>
-                                                <h2>{{date('h:i',strtotime($class['session']['start_time']))}} {{$class['session']['start_meridiem']}}-{{date('h:i',strtotime($class['session']['end_time']))}} {{$class['session']['end_meridiem']}}</h2>
+                                                <h2>{{date('h:i',strtotime($class['start_time']))}} {{$class['start_meridiem']}}-{{date('h:i',strtotime($class['end_time']))}} {{$class['end_meridiem']}}</h2>
                                             </div>
                                         </div>
                                         <div class="trainer-class-time-card-right">
@@ -525,7 +524,7 @@
                                         </div>
                                     </div>
                                     <div class="trainer-class-times">
-                                        <h3>{{date('h',strtotime($class['session']['start_time']))}} {{$class['session']['start_meridiem']}}</h3>
+                                        <h3>{{date('h',strtotime($class['start_time']))}} {{$class['start_meridiem']}}</h3>
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
