@@ -238,6 +238,10 @@
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
     }
+
+    .day-class {
+        background-color: #F6CD8B;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -558,6 +562,11 @@
 <script>
     // Owl Carousel Code Starts here 
     $(document).ready(function() {
+        var daysData = @json($classSession);
+        console.log(daysData);
+        var active;
+
+        console.log(active)
         $("#owl-carousel-images").owlCarousel({
             items: 1,
             loop: true
@@ -578,10 +587,6 @@
             }
             $(".appendDays").empty();
             $(days).each(function(i, e) {
-                var active;
-                if (e.getDate() == dd) {
-                    active = 'day-active';
-                }
                 var weekdays = new Array(7);
                 weekdays[0] = "Sun";
                 weekdays[1] = "Mon";
@@ -590,6 +595,13 @@
                 weekdays[4] = "Thur";
                 weekdays[5] = "Fri";
                 weekdays[6] = "Sat";
+
+
+                if (daysData.includes(weekdays[e.getDay()])) {
+                    active = 'day-class';
+                } else {
+                    active = "";
+                }
                 let div = `<div class="col pb-3">
                                     <div class="day-number ${active}">
                                         <h1>${e.getDate()}</h1>
