@@ -219,6 +219,6 @@
 @endsection
 @section('insertsfooter')
 <script>
-
+    // $("#imageuploadmodal").modal('show');
 </script>
 @endsection
