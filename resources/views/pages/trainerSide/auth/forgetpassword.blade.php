@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/forgetpassword.css')}}">
 @section('content')
 <div class="row login-section">
-    <div class="col-12 col-md-6 right-parent  pt-5 px-5 ">
+    <div class="col-12 col-md-6 right-parent  my-auto px-5 ">
         <div class="login-right-side ">
             <div class="heading-area">
                 <img class="d-none d-md-block" src="{{asset('public/assets/images/logo.svg')}}" alt="">
@@ -12,10 +12,11 @@
             <form class="mt-5">
                 <div class="form-group form-field">
                     <label for="">Email</label>
-                    <input type="email" class="form-control pl-sm-4 pl-2" id="email" >
+                    <input type="email" class="form-control pl-sm-4 pl-2" id="email">
                 </div>
                 <div class="form-field pt-5 text-center">
-                    <button type="submit" class="btn btn-default text-center">Send</button>
+                    <!-- <button type="submit" class="btn btn-default text-center">Send</button> -->
+                    <a class="btn btn-default text-center" href="{{url('/trainer/otp')}}">Send</a>
                 </div>
             </form>
 

@@ -27,14 +27,14 @@
                 </div>
                 <div class="form-check checkbox pl-0 pt-2">
                     <label><input type="checkbox"> Remember me</label>
-                    <a href="#">Forgot Password?</a>
+                    <a href="{{url('/trainer/forgetpassword')}}">Forgot Password?</a>
                 </div>
                 <div class="form-field pt-5 text-center">
                     <button type="submit" class="btn btn-default text-center">Login</button>
                 </div>
             </form>
             <div class="trainer-btn text-center col">
-                <a href="#">Become a <strong>Trainer?</strong> </a>
+                <a href="{{url('/trainer/stepone')}}">Become a <strong>Trainer?</strong> </a>
             </div>
 
         </div>
