@@ -174,7 +174,42 @@
 
 </div>
 
+<!-- ..............Modal....................... -->
+<div class="modal fade" id="imageuploadmodal" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content signupModalDialogue">
+            <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
+            <div class="modalHeader text-right">
+                <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+            </div>
+            <div class="container">
+                <form action="">
+                    <div class="modalContent py-3 px-4">
 
+                        <div class="modal-img">
+                            <img src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
+                            <div class="progress">
+                                <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-outline pro-form my-5">
+                            <label class="form-label" for="textAreaExample">Add Description</label>
+                            <textarea class="form-control" id="textAreaExample1" rows="4" placeholder="Type Here"></textarea>
+                        </div>
+                        <div class=" modal-btn my-5 text-right">
+                            <a href="#" class="update-profile-form-btn">Upload Image</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 @endsection
 @section('insertsfooter')

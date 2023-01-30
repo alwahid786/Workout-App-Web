@@ -215,3 +215,46 @@ input[type="file"] {
     }
 }
 
+/* ................Modal............ */
+
+.modal-img img{
+    width: 100%;
+    max-width: 180px;
+}
+.progress-light-grey{
+    color:#000!important;
+    background-color:#f1f1f1!important
+}
+.progress-round-xlarge{
+    border-radius:16px
+}
+.progress-container{
+    padding:0.01em 16px
+}
+.progress-blue{
+    color:#fff!important;background-color:#2196F3!important
+}
+.modal-img{
+    display: flex;
+}
+.pro-form textarea{
+    border: 1px solid #BDBDBD;
+    background: #F2F2F2;
+}
+.modal-btn a{
+    background: #E37048;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 10px;
+    width: 25%;
+    font-size: 1.5rem;
+    min-width: 200px;
+    height: 50px;
+}
+
+.modal-btn{
+    height: 20px;
+}
