@@ -23,7 +23,7 @@
                     <h1>1</h1>
                     <p>Personal Information</p>
                 </div>
-                <div class="pagination-box">
+                <div class="pagination-box active-pagination">
                     <h1>2</h1>
                     <p>Other Information</p>
                 </div>
