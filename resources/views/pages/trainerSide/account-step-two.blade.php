@@ -186,9 +186,16 @@
 
                         <div class="modal-img">
                             <img src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
-                            <div class="progress">
-                                <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-cotent">
+                                <div class="progress-par">
+                                    <p>Uploading</p>
+                                    <p>50%</p>
+                                </div>
+                                <div class="progress mt-1">
+                                    <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                             </div>
+
                         </div>
 
 
