@@ -1,12 +1,15 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/updateinfo.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/stepone.css')}}">
 @section('content')
 
 <div class="container-fluid update-info-header">
-    <div class="update-info-content mx-5 py-4">
-        <h1>Create Account</h1>
-        <img src="{{asset('public/assets/images/logo.svg')}}" alt="">
+    <div class="container">
+        <div class="update-info-content py-4">
+            <h1>Create Account</h1>
+            <img src="{{asset('public/assets/images/logo.svg')}}" alt="">
+        </div>
     </div>
+
 </div>
 
 <div class="container-fluid update-info-header">
@@ -52,19 +55,25 @@
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form right-inner-addon mb-2">
+                <div class="form-group pro-form  mb-2">
                     <label for="inputAddress2" class=" ">Password</label>
-                    <input type="password" class=" modal-input passInput"  id="password" aria-autocomplete="list">
-                    <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true" style="display: none;"></i>
-                    <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                    <div class="right-inner-addon">
+                        <input type="password" class=" modal-input passInput pl-4" id="password" aria-autocomplete="list">
+                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true" style="display: none;"></i>
+                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                    </div>
+
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form right-inner-addon mb-2">
                     <label for="inputAddress2" class=" ">Confirm Password</label>
-                    <input type="password" class=" modal-input passInput"  id="password_confirmation">
-                    <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                    <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                    <div class="right-inner-addon">
+                        <input type="password" class=" modal-input passInput pl-4" id="password_confirmation">
+                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                    </div>
+
                 </div>
             </div>
             <div class="col-12" data-aos="fade-up">

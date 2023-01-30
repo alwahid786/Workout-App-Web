@@ -1,14 +1,16 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/updateinfotwo.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/steptwo.css')}}">
 <style>
 
 </style>
 @section('content')
 
 <div class="container-fluid update-info-header">
-    <div class="update-info-content mx-5 py-4">
-        <h1>Create Account</h1>
-        <img src="{{asset('public/assets/images/logo.svg')}}" alt="">
+    <div class="container">
+        <div class="update-info-content py-4">
+            <h1>Create Account</h1>
+            <img src="{{asset('public/assets/images/logo.svg')}}" alt="">
+        </div>
     </div>
 </div>
 

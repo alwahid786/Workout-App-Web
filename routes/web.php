@@ -153,10 +153,10 @@ Route::get('/trainer/newpassword', function () {
 
 //Setup New Trainer Profile
 
-Route::get('/trainer/update_info', function () {
-    return view('pages.trainerSide.update_info');
+Route::get('/trainer/stepone', function () {
+    return view('pages.trainerSide.account-step-one');
 });
 
-Route::get('/trainer/update_info_two', function () {
-    return view('pages.trainerSide.update_info_two');
+Route::get('/trainer/steptwo', function () {
+    return view('pages.trainerSide.account-step-two');
 });
