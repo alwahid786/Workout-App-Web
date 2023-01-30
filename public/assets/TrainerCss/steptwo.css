@@ -96,7 +96,7 @@
 
 .update-profile-form-btn:hover {
     text-decoration: none !important;
-    color: #FFBB00;
+    color: #fff;
 }
 
 .input-container {
@@ -217,4 +217,59 @@ input[type="file"] {
         top: -5px;
         right: -5px;
     }
+}
+
+/* ................Modal............ */
+.modal-img {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    align-items: end;
+    grid-gap: 20px;
+}
+
+.modal-img img {
+    width: 100%;
+
+}
+
+.progress {
+    height: 0.4rem !important;
+}
+
+.progress-bar {
+    background-color: #E37048 !important;
+}
+
+.progress-par {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-par p {
+    margin-bottom: 0 !important;
+    font-size: 0.8rem;
+}
+
+
+.pro-form textarea {
+    border: 1px solid #BDBDBD;
+    background: #F2F2F2;
+}
+
+.modal-btn a {
+    background: #E37048;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 10px;
+    width: 25%;
+    font-size: 1.4rem;
+    min-width: 200px;
+    height: 50px;
+}
+
+.modal-content {
+    border-radius: 10px;
 }
