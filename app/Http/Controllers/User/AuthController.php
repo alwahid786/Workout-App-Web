@@ -172,6 +172,8 @@ class AuthController extends Controller
             $startMeridiem = date('a', strtotime($sessions['start_time']));
             $endMeridiem = date('a', strtotime($sessions['end_time']));
             $session_data = new Session();
+            $session_data->trainer_id = $request->trainer_id;
+            $session_data->category_id = $request->category_id;
 
             $session_data->day = $sessions['day'];
             $session_data->class_id = $class->id;

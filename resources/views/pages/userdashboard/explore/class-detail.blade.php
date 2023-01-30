@@ -595,7 +595,7 @@
         reverseWeekdays["Thur"] = 4;
         reverseWeekdays["Fri"] = 5;
         reverseWeekdays["Sat"] = 6;
-        debugger;
+
         if (today.getDay() == reverseWeekdays[sessionDay]) {
             if (currentTime > startTimeOfSession) {
                 dd = parseInt(dd) + 7 + parseInt(daysDifference);
@@ -608,7 +608,7 @@
         } else {
             daysDifference = (7 - today.getDay()) + reverseWeekdays[sessionDay] + 1;
         }
-        console.log(dd);
+        // console.log(dd);
         // Custom Calendar Code 
         getDaysInMonth(Month, Year);
         $("#" + Month).addClass('month-active');

@@ -201,7 +201,7 @@ class UserController extends Controller
     ///////// .....class detail .............////////
     public function class_detail(Request $request, $id)
     {
-        $class = Classes::where('id', '=', $id)->with('classSession', 'classSession.Category', 'category', 'classImages')->get();
+        $class = Classes::where('id', '=', $id)->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
         // $class = Classes::where('id', '=', $id)->with('category')->get();
         if (!$class) {
             return $this->sendError('Session Detail');
@@ -209,6 +209,7 @@ class UserController extends Controller
         $classSession = ModelsSession::where('class_id', $id)->groupBy('day')->pluck('day');
 
         $class_detail = json_decode($class, true);
+        // dd($class_detail);
         return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession'));
     }
     //////customer card detail........./////////
@@ -224,7 +225,7 @@ class UserController extends Controller
         }
         $card_detail = json_decode($card, true);
         $session = json_decode($session_detail, true);
-
+        dd($session_detail);
 
         return view('pages.userdashboard.explore.payment', compact('card_detail', 'session'));
     }
@@ -401,6 +402,10 @@ class UserController extends Controller
         $mins = $timeDiff->format('%i');
         $class_detail['hours'] = $hours;
         $class_detail['minutes'] = $mins;
+
         return $this->sendResponse($class_detail, 'Class details found Successfully!');
     }
+
+    ////////........get seasion by day.....////////
+
 }
