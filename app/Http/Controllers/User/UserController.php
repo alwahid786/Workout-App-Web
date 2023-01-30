@@ -408,4 +408,13 @@ class UserController extends Controller
 
     ////////........get seasion by day.....////////
 
+    public function getDaySession(Request $request)
+    {
+        $session = ModelsSession::where(['trainer_id' => $request->trainer, 'day' => $request->day])->with('category', 'class.classImage')->get();
+        if (!$session) {
+            return $this->sendError('No Data found against ID');
+        }
+
+        return $this->sendResponse($session, 'Trainer Registered Successfully!');
+    }
 }
