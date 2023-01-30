@@ -22,11 +22,8 @@ input[type="file"] {
     color: white;
     background: #E37048;
     border-radius: 7px;
-    /* padding: 15px 40px; */
     font-size: 1rem;
     font-weight: 600;
-    /* width: 40%; */
-    /* min-width: 50%; */
     margin: 0 20px;
     cursor: pointer;
     width: 100%;
@@ -120,34 +117,6 @@ input[type="file"] {
     color: #FFBB00;
 }
 
-@media screen and (max-width:576px) {
-    .pro-form input {
-        height: 55px !important;
-    }
-
-    .update-profile-form-btn {
-        font-size: 1.5rem;
-    }
-
-    .hero-right img {
-        width: 250px !important;
-        height: 250px !important;
-    }
-
-    .hero-section-upload {
-        font-size: 0.9rem;
-        width: 100%;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (max-width:991px) {
-    .hero-section-upload {
-        width: 70%;
-        margin: 0 auto;
-    }
-}
-
 .right-inner-addon {
     position: relative;
 }
@@ -180,4 +149,32 @@ input[type="file"] {
 .update-info-content img {
     width: 100%;
     max-width: 300px;
+}
+
+@media screen and (max-width:576px) {
+    .pro-form input {
+        height: 55px !important;
+    }
+
+    .update-profile-form-btn {
+        font-size: 1.5rem;
+    }
+
+    .hero-right img {
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+    .hero-section-upload {
+        font-size: 0.9rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .hero-section-upload {
+        width: 70%;
+        margin: 0 auto;
+    }
 }

@@ -1,10 +1,9 @@
 @extends('layouts.trainerSide.default')
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/steptwo.css')}}">
-<style>
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
 
-</style>
 @section('content')
-
+<!-- header-section -->
 <div class="container-fluid update-info-header">
     <div class="container">
         <div class="update-info-content py-4">
@@ -14,8 +13,36 @@
     </div>
 </div>
 
-<div class="container-fluid update-info-header">
-    <div class="pagination-section">
+<!-- pagination-section -->
+<div class="container-fluid pt-5">
+    <div class="container px-0">
+        <div class="pagination-wrapper px-sm-3">
+            <div class="pagination-container">
+                <div class="pagination-border"></div>
+                <div class="pagination-box active-pagination">
+                    <h1>1</h1>
+                    <p>Personal Information</p>
+                </div>
+                <div class="pagination-box">
+                    <h1>2</h1>
+                    <p>Other Information</p>
+                </div>
+                <div class="pagination-box">
+                    <h1>3</h1>
+                    <p>Specialty </p>
+                </div>
+                <div class="pagination-box">
+                    <h1>4</h1>
+                    <p>Payment Method</p>
+                </div>
+                <div class="pagination-box">
+                    <h1>5</h1>
+                    <p>View Profile</p>
+                </div>
+            </div>
+
+
+        </div>
     </div>
 </div>
 
