@@ -115,21 +115,31 @@
 
                 </div>
             </div>
-            <div class="updateinfo-qualification my-4 px-3">
-                <h1 class="mb-4">Upload Qualification</h1>
-                <div class="update-info-qualification-image">
-                    <img class="pl-0" src="{{asset('public/assets/trainerimages/uploadimg.svg')}}" alt="">
+
+
+        </div>
+        <div class="updateinfo-qualification my-4 px-3 ">
+            <h1 class="mb-4">Upload Qualification</h1>
+            <div class="update-info-qualification-image">
+                <label>
+                    <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
+                    <input type="file" name="myfile" style="display:none">
+                </label>
+                <div class="grid-item py-2 py-sm-0">
+                    <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
                     <img src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
+                </div>
+                <div class="grid-item py-2 py-sm-0">
+                    <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
                     <img src="{{asset('public/assets/trainerimages/certificate2.svg')}}" alt="">
                 </div>
-                
-            </div>
-            <div class="col-12 my-5">
-                <div class=" profile-nxt-btn">
-                    <a href="#" class="update-profile-form-btn">Next</a>
-                </div>
-            </div>
 
+            </div>
+        </div>
+        <div class="col-12 my-5">
+            <div class=" profile-nxt-btn">
+                <a href="#" class="update-profile-form-btn">Next</a>
+            </div>
         </div>
     </form>
 

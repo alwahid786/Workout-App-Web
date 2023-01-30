@@ -126,12 +126,30 @@
     letter-spacing: 0.3;
 }
 .update-info-qualification-image{
-    display: flex;
+    display: grid ;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) ;
+    grid-gap: 10px ;
+    align-items: stretch;
 }
 .update-info-qualification-image img{
-    padding: 0 7px;
+    /* padding: 0 7px; */
     width: 100%;
     max-width: 200px;
+}
+input[type="file"] {
+    display: none;
+    /* background-image: url(../trainerimages/uploadimg.svg); */
+}
+.grid-item{
+    position: relative;
+}
+.grid-item img:nth-of-type(1){
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    right: -5px;
+    top: -10px;
+
 }
 @media screen and (max-width:576px) {
     .pro-form input {
@@ -152,6 +170,30 @@
         width: 100%;
         margin: 0 auto;
     }
+    .update-info-qualification-image{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .grid-item img:nth-of-type(1){
+        position: absolute;
+        height: 22px;
+        width: 22px;
+        right: -5px;
+        top: -7px;
+    
+    }
+}
+@media screen and (max-width:768px) and (min-width:576px){
+    .grid-item img:nth-of-type(1){
+        position: absolute;
+        height: 22px;
+        width: 22px;
+        right: 20px;
+        top: -10px;
+    
+    }
 }
 
 @media screen and (max-width:991px) {
@@ -171,23 +213,4 @@
     margin: 0 auto;
 }
 
-input[type=radio] {
-    height: 10px !important;
-    border: 1px solid #E37048;
-}
 
-input[type=radio]:not() {}
-
-input[type=radio].color-radio {
-    accent-color: #E37048;
-    border: 1px solid #E37048;
-    transform: scale(1.5);
-    background: transparent !important;
-}
-
-@media screen and (min-width:768px) {
-    input[type=radio].color-radio {
-        transform: scale(1.5);
-    }
-
-}
