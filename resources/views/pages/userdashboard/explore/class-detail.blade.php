@@ -595,18 +595,18 @@
         reverseWeekdays["Thur"] = 4;
         reverseWeekdays["Fri"] = 5;
         reverseWeekdays["Sat"] = 6;
-
         if (today.getDay() == reverseWeekdays[sessionDay]) {
             if (currentTime > startTimeOfSession) {
-                dd = parseInt(dd) + 7 + parseInt(daysDifference);
+                dd = parseInt(dd) + 7;
             } else {
-                dd = parseInt(dd) + parseInt(daysDifference);
+                dd = dd;
             }
         } else if (today.getDay() < reverseWeekdays[sessionDay]) {
             daysDifference = reverseWeekdays[sessionDay] - today.getDay();
-
+            dd = parseInt(dd) + parseInt(daysDifference);
         } else {
-            daysDifference = (7 - today.getDay()) + reverseWeekdays[sessionDay] + 1;
+            daysDifference = (7 - today.getDay()) + reverseWeekdays[sessionDay];
+            dd = parseInt(dd) + parseInt(daysDifference);
         }
         // console.log(dd);
         // Custom Calendar Code 
@@ -639,8 +639,7 @@
                 } else {
                     active = "";
                 }
-                console.log(dd);
-                if (e.getDate() === dd) {
+                if (e.getDate() == dd) {
                     active = 'day-active';
                 }
                 let div = `<div class="col pb-3">
@@ -654,11 +653,14 @@
             $('#owl-cal').trigger('destroy.owl.carousel');
             $('#owl-cal').owlCarousel({
                 items: 10,
-                autoWidth: true,
-                loop: true
+                autoWidth: true
             });
 
-            $('#owl-cal').trigger('to.owl.carousel', dd - 8)
+            $('#owl-cal').trigger('to.owl.carousel', dd - 8);
+
+            $('#owl-cal').on('changed.owl.carousel', function(e) {
+                alert('com')
+            });
 
         }
         $(document).on('click', '.months', function() {
