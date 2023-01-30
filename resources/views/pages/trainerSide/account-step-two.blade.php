@@ -144,8 +144,6 @@
 
                 </div>
             </div>
-
-
         </div>
         <div class="updateinfo-qualification my-4 px-3 ">
             <h1 class="mb-4">Upload Qualification</h1>
