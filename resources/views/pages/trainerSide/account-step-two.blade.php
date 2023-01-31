@@ -1,6 +1,422 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/steptwo.css')}}">
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/steptwo.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .update-info-header {
+        background-color: #F8F8F8;
+    }
+
+    .update-info-content h1 {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+
+    .update-info-content img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+
+    .pro-form label {
+        color: #464646;
+        font-size: 0.8rem;
+    }
+
+    .form-label span {
+        color: #E37048 !important;
+        font-size: 0.6rem;
+    }
+
+    .pro-form input {
+        height: 65px !important;
+        /* color: #fff !important; */
+
+    }
+
+    .pro-form input::placeholder {
+        color: #fff;
+    }
+
+    .pro-form input,
+    .pro-form textarea {
+        background: rgba(249, 249, 249, 0.2);
+        border: 1px solid #CECECE !important;
+        box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+        border-radius: 10px !important;
+    }
+
+    .pro-form textarea {
+        resize: none !important;
+        height: 200px !important;
+    }
+
+    /* .profile-nxt-btn {
+    text-align: center;
+    background: #E37048;
+    border-radius: 10px;
+    padding: 10px 0;
+    width: 70%;
+    margin: 0 auto;
+} */
+    .profile-nxt-btn a,
+    .profile-nxt-btn a:hover,
+    .profile-nxt-btn a:focus,
+    .profile-nxt-btn a:active {
+        background: #E37048;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: white;
+        padding: 25px 0;
+        border-radius: 10px;
+        text-align: center;
+        width: 25%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        min-width: 200px;
+        height: 50px;
+    }
+
+    .update-profile-form-btn {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 2rem;
+
+    }
+
+    .hero-right label {
+        cursor: pointer;
+    }
+
+    .update-profile-form-btn:hover {
+        text-decoration: none !important;
+        color: #fff;
+    }
+
+    .input-container {
+        display: flex;
+        width: 100%;
+    }
+
+    .input-container i {
+        color: white;
+        min-width: 50px;
+        text-align: center;
+        background-color: dodgerblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 10px !important;
+        border-bottom-left-radius: 10px !important;
+        font-size: 1.3rem;
+    }
+
+    .input-container .fa-instagram {
+        /* background-color: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); */
+        background: #000;
+    }
+
+    .input-container input {
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+        border-left: none !important;
+    }
+
+    .updateinfo-qualification h1 {
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 0.3;
+    }
+
+    .update-info-qualification-image {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 10px;
+        align-items: stretch;
+    }
+
+    .update-info-qualification-image img {
+        /* padding: 0 7px; */
+        width: 100%;
+        max-width: 200px;
+    }
+
+    input[type="file"] {
+        display: none;
+        /* background-image: url(../trainerimages/uploadimg.svg); */
+    }
+
+    .grid-item {
+        position: relative;
+    }
+
+    .grid-item img:nth-of-type(1) {
+        position: absolute;
+        height: 22px;
+        width: 22px;
+        right: -5px;
+        top: -10px;
+
+    }
+
+
+
+    @media screen and (max-width:991px) {
+        .hero-section-upload {
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+
+    .profile-hero-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .profile-hero-right img {
+        margin: 0 auto;
+    }
+
+    @media screen and (max-width:768px) and (min-width:576px) {
+        .grid-item img:nth-of-type(1) {
+            position: absolute;
+            height: 22px;
+            width: 22px;
+            right: 20px;
+            top: -10px;
+
+        }
+    }
+
+    @media screen and (max-width:576px) {
+        .pro-form input {
+            height: 55px !important;
+        }
+
+        .update-profile-form-btn {
+            font-size: 1.5rem;
+        }
+
+        .hero-right img {
+            width: 250px !important;
+            height: 250px !important;
+        }
+
+        .hero-section-upload {
+            font-size: 0.9rem;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .update-info-qualification-image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-item img:nth-of-type(1) {
+            position: absolute;
+            height: 22px;
+            width: 22px;
+            right: -5px;
+            top: -7px;
+
+        }
+    }
+
+    /* ................Modal............ */
+    .modal-img {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .modal-img img {
+        width: 100%;
+        max-width: 150px;
+
+    }
+
+    .progress-cotent {
+        width: 100%;
+        max-width: 150px;
+    }
+
+    .progress {
+        height: 0.4rem !important;
+    }
+
+    .progress-bar {
+        background-color: #E37048 !important;
+    }
+
+    .progress-par {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .progress-par p {
+        margin-bottom: 0 !important;
+        font-size: 0.8rem;
+    }
+
+
+    .pro-form textarea {
+        border: 1px solid #BDBDBD;
+        background: #F2F2F2;
+    }
+
+    .modal-btn a {
+        background: #E37048;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: white;
+        padding: 10px 50px;
+        border-radius: 10px;
+        width: 25%;
+        font-size: 1.4rem;
+        min-width: 200px;
+        height: 50px;
+    }
+
+    .modal-content {
+        border-radius: 10px;
+    }
+
+    @media screen and (max-width:576px) {
+        .modal-btn a {
+            background: #E37048;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            color: white;
+            padding: 10px 40px;
+            border-radius: 10px;
+            width: 25%;
+            font-size: 0.8rem;
+            min-width: 150px;
+            height: 40px;
+        }
+
+        .progress-cotent {
+            width: 100%;
+            max-width: 150px;
+            margin: 0 auto !important;
+        }
+
+        .modal-img img {
+            width: 100%;
+            max-width: 250px;
+
+        }
+
+        .progress-cotent {
+            width: 100%;
+            max-width: 250px;
+        }
+    }
+
+
+    /* p */
+    .pagination-wrapper {
+        background-color: #F8F8F8;
+        border-radius: 10px;
+        position: relative;
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .pagination-border {
+        border: 1px solid #E37048;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        z-index: 1;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .pagination-box {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #f5bfac;
+        border: 2px solid #E37048;
+        z-index: 2;
+    }
+
+    .active-pagination {
+        background: #E37048;
+    }
+
+    .pagination-box h1 {
+        position: absolute;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0px;
+    }
+
+    .pagination-box p {
+        font-size: 0.6rem;
+        margin-bottom: 0px;
+        color: black;
+        position: absolute;
+        top: 55px;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+
+    }
+
+    @media screen and (max-width:576px) {
+        .pagination-box {
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+
+        .pagination-box h1 {
+            position: absolute;
+            color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0px;
+        }
+
+        .pagination-box p {
+            font-size: 0.5rem;
+        }
+    }
+</style>
 
 @section('content')
 <!-- header-section -->
@@ -233,7 +649,7 @@
 <script>
     function openModal() {
         $("#imageuploadmodal").modal('show')
-        $("#imageuploadmodal").css('padding-right',0)
+        $("#imageuploadmodal").css('padding-right', 0)
     }
 </script>
 @endsection

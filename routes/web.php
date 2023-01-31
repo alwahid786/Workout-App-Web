@@ -139,6 +139,9 @@ Route::get('/chat', function () {
 Route::get('/trainer/login', function () {
     return view('pages.trainerSide.auth.login');
 });
+Route::get('/trainer/logins', function () {
+    return view('pages.trainerSide.auth.logins');
+});
 Route::get('/trainer/forgetpassword', function () {
     return view('pages.trainerSide.auth.forgetpassword');
 });
