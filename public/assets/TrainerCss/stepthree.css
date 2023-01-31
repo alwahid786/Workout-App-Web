@@ -198,6 +198,34 @@
     background: #fff;
     border-radius: 10px;
 }
+.slot-vertical-icon{
+    position: relative;
+}
+.slot-vertical-icon .icon-div{
+    background: #fff;
+    position: absolute;
+    right: 0;
+    box-shadow: 0px, 5px rgba(0, 0, 0, 0.16);
+    border-radius: 7px;
+    border: 1px solid #858585;
+    width: 100%;
+    max-width: 150px;
+}
+.icon-edit{
+    border-bottom: 1px solid #858585;
+}
+.icon-edit, .icon-del{
+    display: flex;
+    justify-content: center;
+}
+
+.icon-edit h1, .icon-del h1{
+    font-size: 1rem;
+    color: #858585;
+}
+.icon-del i, .icon-edit i{
+    color: #858585;
+}
 .slot-grid-container{
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
@@ -284,6 +312,16 @@
         background: #F8F8F8 !important;
         cursor: pointer;
     }
+}
+@media screen and (max-width:991px) {
+    .timing-stack{
+        flex-direction: column;
+        height: 100%;
+    }
+    .time-stack-outer{
+        flex-direction: column;
+    }
+    
 }
 @media screen and (max-width:768px) and (min-width:576px){
     .grid-item img:nth-of-type(1){

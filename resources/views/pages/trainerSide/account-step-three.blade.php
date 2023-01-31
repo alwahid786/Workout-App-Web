@@ -176,7 +176,19 @@
     <!-- .............Stretching Outdoors............... -->
     <div class="slot-wrapper py-3 px-3 my-4">
         <div class="slot-vertical-icon my-2 text-right">
-            <img src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <img class="toggle-icon" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <div class="icon-div d-none">
+                <div class="icon-edit py-2">
+                    <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
+
+                    <h1>Edit</h1>
+                </div>
+                <div class="icon-del py-2">
+                    <i class="fa fa-trash pr-2" aria-hidden="true"></i>
+
+                    <h1>Delete</h1>
+                </div>
+            </div>
         </div>
 
         <div class="slot-grid-container">
@@ -233,7 +245,7 @@
                     <h1>Mon:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -251,7 +263,7 @@
                     <h1>Tue:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -261,15 +273,13 @@
                         <div class="time-stack-inner ml-2">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner ml-2">
                             <p class="mb-0">8 pm to 10 pm</p>
                         </div>
                         <div class="time-stack-inner ml-2">
                             <p class="mb-0">10 pm to 12 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -278,7 +288,7 @@
                     <h1>Wed:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -296,7 +306,7 @@
                     <h1>Thu:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -314,7 +324,7 @@
                     <h1>Fri:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -335,7 +345,7 @@
                     <h1>Sat:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -353,7 +363,7 @@
                     <h1>Sun:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -383,7 +393,19 @@
     <!-- .............Yoga Slot............... -->
     <div class="slot-wrapper py-3 px-3 my-4">
         <div class="slot-vertical-icon my-2 text-right">
-            <img src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <img class="toggle-icon" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <div class="icon-div d-none">
+                <div class="icon-edit py-2">
+                    <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
+
+                    <h1>Edit</h1>
+                </div>
+                <div class="icon-del py-2">
+                    <i class="fa fa-trash pr-2" aria-hidden="true"></i>
+
+                    <h1>Delete</h1>
+                </div>
+            </div>
         </div>
         <div class="slot-grid-container">
             <div class="slot-grid-item">
@@ -439,7 +461,7 @@
                     <h1>Mon:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -457,7 +479,7 @@
                     <h1>Tue:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -467,15 +489,13 @@
                         <div class="time-stack-inner ml-2">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner ml-2">
                             <p class="mb-0">8 pm to 10 pm</p>
                         </div>
                         <div class="time-stack-inner ml-2">
                             <p class="mb-0">10 pm to 12 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -484,7 +504,7 @@
                     <h1>Wed:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -502,7 +522,7 @@
                     <h1>Thu:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -520,7 +540,7 @@
                     <h1>Fri:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4  ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -541,7 +561,7 @@
                     <h1>Sat:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -559,7 +579,7 @@
                     <h1>Sun:</h1>
                 </div>
                 <div class="stack-time">
-                    <div class="time-stack-outer px-4">
+                    <div class="time-stack-outer px-4 ">
                         <div class="time-stack-inner">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
@@ -598,6 +618,13 @@
                 $('.limit-box').hide();
             }
         });
+    });
+
+    $('.toggle-icon').mouseover(function(){
+        $('.icon-div').removeClass('d-none')
+    });
+    $('.icon-div').mouseleave(function(){
+        $(this).addClass('d-none')
     });
 </script>
 @endsection
