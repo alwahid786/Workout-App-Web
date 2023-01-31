@@ -120,6 +120,23 @@
     margin-bottom: 0px;
     font-weight: 400;
 }
+.time-box-outer{
+    display: flex;
+}
+.time-box-inner{
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: #fff;
+   
+}
+
+.yellow-time{
+    background: #FFA900;
+
+}
+.green-time{
+    background: #B1D244;
+}
 
 @media screen and (max-width:991px) and (min-width:768px) {
     .difficulty-level input {
@@ -159,4 +176,7 @@
     .pro-form select {
         height: 55px !important;
     }
-}
+    .time-box-inner p{
+        font-size: 0.8rem;
+    }
+}   

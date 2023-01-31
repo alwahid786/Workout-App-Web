@@ -233,6 +233,7 @@
 <script>
     function openModal() {
         $("#imageuploadmodal").modal('show')
+        $("#imageuploadmodal").css('padding-right',0)
     }
 </script>
 @endsection

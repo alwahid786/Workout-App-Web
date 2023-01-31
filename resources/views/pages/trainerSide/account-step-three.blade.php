@@ -130,6 +130,14 @@
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </div>
                 </div>
+                <div class="time-box-outer">
+                    <div class="yellow-time time-box-inner">
+                        <p class="mb-0">9 am to 10 am</p>
+                    </div>
+                    <div class="green-time time-box-inner ml-2">
+                        <p class="mb-0">12 pm to 2 pm</p>
+                    </div>
+                </div>
             </div>
 
 
