@@ -498,7 +498,7 @@
                             <div class="trainer-class-time-header pt-4 pl-5">
                                 <h1 class="py-2 selectedDate"><?php echo date('D d, F'); ?></h1>
                             </div>
-                            <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1">
+                            <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1" id="session-list">
                                 @if(isset($class_detail) && !empty($class_detail))
                                 <!-- Loop div starts here  -->
                                 @foreach($class_detail[0]['class_session'] as $class)
@@ -541,6 +541,10 @@
                                 </div>
                                 @endif
                             </div>
+
+                            <input type="hidden" value="{{$class_detail[0]['trainer']['id']}}" id="trainer_id">
+                            <!-- <input type="text" value="{{$class_detail[0]['trainer']['id']}}" id="day"> -->
+
                             <div class="trainer-class-time-btn pt-4 pb-3">
                                 <a href="{{url('/dashboard/payment')}}" class="btn">Confirm Booking</a>
                             </div>
@@ -665,7 +669,7 @@
                 let div = `<div class="col pb-3">
                                     <div class="day-number ${active}">
                                         <h1>${e.getDate()}</h1>
-                                        <h2>${weekdays[e.getDay()]}</h2>
+                                        <h2 class="day-name">${weekdays[e.getDay()]}</h2>
                                     </div>
                                 </div>`;
                 $(".appendDays").append(div);
@@ -707,10 +711,12 @@
 
         // Get Session detail in Card on Left 
         $(document).on('click', '.sessionDiv_d', function() {
+
             $('.loaderDiv').show();
-            classId = $(this).attr('data-src');
+            class_id = $(this).attr('data-src');
             $('.sessionDiv_d').removeClass('trainer-class-active');
             $(this).addClass('trainer-class-active');
+            // alert(class_id);
 
             $.ajax({
                 headers: {
@@ -720,15 +726,19 @@
                 url: `{{route('classDetails')}}`,
                 type: "POST",
                 data: {
-                    class_id: classId
+                    class_id: class_id
                 },
                 cache: false,
                 success: function(response) {
+                    // alert('coming');
+
                     console.log(response);
                     if (response.success == true) {
+
                         $("#sessionTitle_d").text(response.data[0].category['title']);
-                        $("#sessionPrice_d").text('$' + response.data[0].session['price']);
-                        $("#sessionType_d").text(response.data[0].session['type']);
+                        $("#sessionPrice_d").text('$' + response.data[0].price);
+                        $("#sessionType_d").text(response.data[0].type);
+                        // alert(response.data[0].category['title']);
                         var hrs = response.data.hours;
                         var mins = response.data.minutes;
                         var actualHours, actualMinutes = '';
@@ -739,7 +749,8 @@
                             actualMinutes = mins + ' mins';
                         }
                         $("#sessionTime_d").text(actualHours + ' ' + actualMinutes);
-                        var classImages = response.data[0].class_images;
+                        var classImages = response.data[0].class.class_image;
+                        // alert(classImages);
                         $('#owl-carousel-images').empty();
                         $(classImages).each(function(i, e) {
                             let div = `<div class="col">
@@ -765,6 +776,90 @@
 
             });
         })
+        ////////........ get day session............////////
+        $(document).on('click', '.day-number', function() {
+
+
+            var trainer = $('#trainer_id').val();
+            var day = $(this).find('.day-name').html();
+
+            if (trainer != "") {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    url: `{{route('get_day_session')}}`,
+                    type: "POST",
+                    data: {
+                        trainer: trainer,
+                        day: day,
+                    },
+                    cache: false,
+                    success: function(response) {
+                        if (response.success == true) {
+
+                            var start_time = response.data[0].start_time;
+                            var start_meridiem = response.data[0].start_meridiem;
+
+                            var end_time = response.data[0].end_meridiem;
+                            var end_meridiem = response.data[0].end_meridiem;
+                            // var short_starttime = start_time.split(':',2);
+                            // alert(short_starttime);
+                            var classImages = response.data[0].class.class_image[0].image;
+
+                            console.log(classImages);
+                            $('#session-list').empty();
+                            $(response.data).each(function(i, e) {
+                                let div = `<div class="trainer-class-time-card-box my-2 "  style="cursor: pointer;">
+                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$class['id']}}">
+                                        <div class="trainer-class-time-card-left">
+                                            <div class="trainer-class-time-card-left-img">
+                                                <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            </div>
+                                            <div class="trainer-class-time-card-left-content pl-2">
+                                                <h2>${e.start_time} ${e.start_meridiem} - ${e.end_time} ${e.end_meridiem}</h2>
+                                            </div>
+                                        </div>
+                                        <div class="trainer-class-time-card-right">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-four" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                                            <img class="" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <div class="trainer-class-time-card-right-counter">
+                                                <h1>+5</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="trainer-class-times">
+                                        <h3>${e.start_time}</h3>
+                                    </div>
+                                    <div class="trainer-class-time-border"></div>
+                                </div>`;
+                                $("#session-list").append(div);
+                            });
+                            $("#owl-carousel-images").trigger('destroy.owl.carousel');
+                            $("#owl-carousel-images").owlCarousel({
+                                items: 1,
+                                loop: true
+                            });
+                        } else if (response.success == false) {
+                            toastr.error(dataResult.message);
+                        }
+                    },
+                    error: function(jqXHR, exception) {
+                        // $('.loaderDiv').hide();
+                        // toastr.error(jqXHR.responseJSON.message);
+                    }
+                });
+            } else {
+                // alert('Please fill all the field !');
+                // $('.loaderDiv').hide();
+                toastr.error("Please Fill All Fields.");
+            }
+        });
+
     });
 
     const slickSettings = {

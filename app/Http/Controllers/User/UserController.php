@@ -384,28 +384,38 @@ class UserController extends Controller
     // get class details 
     public function classDetails(Request $request)
     {
-        $class = Classes::where('id', '=', $request->class_id)->with('session', 'category', 'classImages')->get();
-        if (!$class) {
+
+        $session = ModelsSession::where('id', '=', $request->class_id)->with('category', 'class.classImage')->get();
+
+        if (!$session) {
             return $this->sendError('No class found against ID');
         }
-        $trainerClasses = Classes::where('trainer_id', $class['trainer_id'])->get();
-        if (count($trainerClasses) > 0) {
-        }
-        $class_detail = json_decode($class, true);
+
+        $session_detail = json_decode($session, true);
+
         // Calculate time difference 
-        $start_time = $class_detail[0]['session']['start_time'];
-        $end_time = $class_detail[0]['session']['end_time'];
+        $start_time = $session_detail[0]['start_time'];
+        $end_time = $session_detail[0]['end_time'];
         $start_datetime = new DateTime(date('Y-m-d') . ' ' . $start_time);
         $end_datetime = new DateTime(date('Y-m-d') . ' ' . $end_time);
         $timeDiff = $start_datetime->diff($end_datetime);
         $hours = $timeDiff->format('%h');
         $mins = $timeDiff->format('%i');
-        $class_detail['hours'] = $hours;
-        $class_detail['minutes'] = $mins;
+        $session_detail['hours'] = $hours;
+        $session_detail['minutes'] = $mins;
 
-        return $this->sendResponse($class_detail, 'Class details found Successfully!');
+        return $this->sendResponse($session_detail, 'Class details found Successfully!');
     }
 
     ////////........get seasion by day.....////////
 
+    public function getDaySession(Request $request)
+    {
+        $session = ModelsSession::where(['trainer_id' => $request->trainer, 'day' => $request->day])->with('category', 'class.classImage')->get();
+        if (!$session) {
+            return $this->sendError('No Data found against ID');
+        }
+
+        return $this->sendResponse($session, 'Trainer Registered Successfully!');
+    }
 }
