@@ -542,8 +542,8 @@
                                 @endif
                             </div>
 
-                            <input type="hidden" value="{{$class_detail[0]['trainer']['id']}}" id="trainer_id">
-                            <input type="hidden" value="{{$class_detail[0]['trainer']['id']}}" id="day">
+                            <input type="text" value="{{$class_detail[0]['trainer']['id']}}" id="trainer_id">
+                            <!-- <input type="text" value="{{$class_detail[0]['trainer']['id']}}" id="day"> -->
 
                             <div class="trainer-class-time-btn pt-4 pb-3">
                                 <a href="{{url('/dashboard/payment')}}" class="btn">Confirm Booking</a>
@@ -678,10 +678,12 @@
 
         // Get Session detail in Card on Left 
         $(document).on('click', '.sessionDiv_d', function() {
+
             $('.loaderDiv').show();
-            classId = $(this).attr('data-src');
+            class_id = $(this).attr('data-src');
             $('.sessionDiv_d').removeClass('trainer-class-active');
             $(this).addClass('trainer-class-active');
+            // alert(class_id);
 
             $.ajax({
                 headers: {
@@ -691,15 +693,19 @@
                 url: `{{route('classDetails')}}`,
                 type: "POST",
                 data: {
-                    class_id: classId
+                    class_id: class_id
                 },
                 cache: false,
                 success: function(response) {
+                    // alert('coming');
+
                     console.log(response);
                     if (response.success == true) {
+
                         $("#sessionTitle_d").text(response.data[0].category['title']);
-                        $("#sessionPrice_d").text('$' + response.data[0].session['price']);
-                        $("#sessionType_d").text(response.data[0].session['type']);
+                        $("#sessionPrice_d").text('$' + response.data[0].price);
+                        $("#sessionType_d").text(response.data[0].type);
+                        // alert(response.data[0].category['title']);
                         var hrs = response.data.hours;
                         var mins = response.data.minutes;
                         var actualHours, actualMinutes = '';
@@ -710,7 +716,8 @@
                             actualMinutes = mins + ' mins';
                         }
                         $("#sessionTime_d").text(actualHours + ' ' + actualMinutes);
-                        var classImages = response.data[0].class_images;
+                        var classImages = response.data[0].class.class_image;
+                        // alert(classImages);
                         $('#owl-carousel-images').empty();
                         $(classImages).each(function(i, e) {
                             let div = `<div class="col">
@@ -778,7 +785,7 @@
                             var end_time = response.data[0].end_meridiem;
                             var end_meridiem = response.data[0].end_meridiem;
 
-                            var classImages = response.data[0].class.class_image;
+                            var classImages = response.data[0].class.class_image[0].image;
 
                             console.log(classImages);
                             $('#session-list').empty();
@@ -805,7 +812,7 @@
                                         </div>
                                     </div>
                                     <div class="trainer-class-times">
-                                        <h3>${e.start_time} ${e.start_meridiem}</h3>
+                                        <h3>${e.start_time}</h3>
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>`;
