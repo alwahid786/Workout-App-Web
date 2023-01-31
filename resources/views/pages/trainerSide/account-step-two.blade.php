@@ -149,8 +149,8 @@
             <h1 class="mb-4">Upload Qualification</h1>
             <div class="update-info-qualification-image">
                 <label>
-                    <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
-                    <input type="file" name="myfile" style="display:none">
+                    <button type="button" onclick="openModal()" style="border: none;"><img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}"></button>
+                    <!-- <input type="file" name="myfile" style="display:none"> -->
                 </label>
                 <div class="grid-item py-2 py-sm-0">
                     <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
@@ -183,20 +183,32 @@
             <div class="container">
                 <form action="">
                     <div class="modalContent py-3 px-4">
+                        <div class="row">
+                            <div class="col-sm-8 text-center text-sm-right">
+                                <div class="modal-img">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <img src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
+                                        </div>
+                                        <div class="col-sm-6 d-flex align-self-end pl-sm-0 py-4 py-sm-0">
+                                            <div class="progress-cotent">
+                                                <div class="progress-par">
+                                                    <p>Uploading</p>
+                                                    <p>50%</p>
+                                                </div>
+                                                <div class="progress mt-1">
+                                                    <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                        <div class="modal-img">
-                            <img src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
-                            <div class="progress-cotent">
-                                <div class="progress-par">
-                                    <p>Uploading</p>
-                                    <p>50%</p>
-                                </div>
-                                <div class="progress mt-1">
-                                    <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+
+
                                 </div>
                             </div>
-
                         </div>
+
 
 
 
@@ -204,7 +216,7 @@
                             <label class="form-label" for="textAreaExample">Add Description</label>
                             <textarea class="form-control" id="textAreaExample1" rows="4" placeholder="Type Here"></textarea>
                         </div>
-                        <div class=" modal-btn my-5 text-right">
+                        <div class=" modal-btn my-5 text-sm-right text-center">
                             <a href="#" class="update-profile-form-btn">Upload Image</a>
                         </div>
 
@@ -219,6 +231,8 @@
 @endsection
 @section('insertsfooter')
 <script>
-
+    function openModal() {
+        $("#imageuploadmodal").modal('show')
+    }
 </script>
 @endsection

@@ -217,14 +217,17 @@ input[type="file"] {
 
 /* ................Modal............ */
 .modal-img{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    align-items: end;
-    grid-gap: 20px;
+    display: flex;
+    align-items: flex-end;
 }
 .modal-img img{
     width: 100%;
+    max-width: 150px;
     
+}
+.progress-cotent{
+    width: 100%;
+    max-width: 150px;
 }
 .progress{
     height: 0.4rem !important;
@@ -261,5 +264,34 @@ input[type="file"] {
 }
 .modal-content{
     border-radius: 10px;
+}
+@media screen and (max-width:576px) {
+    .modal-btn a{
+        background: #E37048;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: white;
+        padding: 10px 40px;
+        border-radius: 10px;
+        width: 25%;
+        font-size: 0.8rem;
+        min-width: 150px;
+        height: 40px;
+    }
+    .progress-cotent{
+        width: 100%;
+        max-width: 150px;
+        margin: 0 auto !important;
+    }
+    .modal-img img{
+        width: 100%;
+        max-width: 250px;
+        
+    }
+    .progress-cotent{
+        width: 100%;
+        max-width: 250px;
+    }
 }
 
