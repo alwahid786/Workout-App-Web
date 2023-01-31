@@ -429,7 +429,7 @@
                         <div class="col session-detail-calendar px-2">
                             <div class="row js-slick-carousel">
                                 <div class="col">
-                                    <div id="0" class="months ">
+                                    <div id="0" class="months">
                                         <h1>January</h1>
                                     </div>
                                 </div>
@@ -623,7 +623,7 @@
             if (dd > days.length) {
                 dd = dd - days.length;
             }
-            $(".appendDays").empty();
+            // $(".appendDays").empty();
             $(days).each(function(i, e) {
                 var weekdays = new Array(7);
                 weekdays[0] = "Sun";
@@ -655,18 +655,31 @@
                 items: 10,
                 autoWidth: true
             });
-
-            $('#owl-cal').trigger('to.owl.carousel', dd - 8);
-
-            $('#owl-cal').on('changed.owl.carousel', function(e) {
-                alert('com')
-            });
-
+            if (month == new Date().getMonth()) {
+                $('#owl-cal').trigger('to.owl.carousel', dd - 8);
+            } else {
+                let date = new Date(year, month - 1, 0);
+                scrollDays = date.getDate();
+                $('.months').removeClass('month-active');
+                $('#' + month).addClass('month-active');
+                $('#owl-cal').trigger('to.owl.carousel', scrollDays);
+            }
         }
+        let isOver = 0;
+        $('#owl-cal').on('changed.owl.carousel', function(e) {
+            var current = e.item.index + 8;
+            total = e.item.count;
+            if (current === total) {
+                let currentMonth = new Date().getMonth();
+                let nextMonth = currentMonth + 1;
+                getDaysInMonth(parseInt(nextMonth), Year)
+            }
+        });
         $(document).on('click', '.months', function() {
             var monthIndex = $(this).attr('id');
             $(".months").removeClass('month-active');
             $("#" + monthIndex).addClass('month-active');
+            $(".appendDays").empty();
             getDaysInMonth(parseInt(monthIndex), Year)
 
         });
