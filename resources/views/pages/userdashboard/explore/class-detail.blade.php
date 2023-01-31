@@ -542,7 +542,7 @@
                                 @endif
                             </div>
 
-                            <input type="text" value="{{$class_detail[0]['trainer']['id']}}" id="trainer_id">
+                            <input type="hidden" value="{{$class_detail[0]['trainer']['id']}}" id="trainer_id">
                             <!-- <input type="text" value="{{$class_detail[0]['trainer']['id']}}" id="day"> -->
 
                             <div class="trainer-class-time-btn pt-4 pb-3">
@@ -765,26 +765,14 @@
                     cache: false,
                     success: function(response) {
                         if (response.success == true) {
-                            // alert('coming');
-                            // $("#sessionTitle_d").text(response.data[0].category['title']);
-                            // $("#sessionPrice_d").text('$' + response.data[0].price);
-                            // $("#sessionType_d").text(response.data[0].type);
-                            // var hrs = response.data.hours;
-                            // var mins = response.data.minutes;
-                            // var actualHours, actualMinutes = '';
-                            // if (hrs != '0') {
-                            //     actualHours = hrs + ' hr';
-                            // }
-                            // if (mins != '0') {
-                            //     actualMinutes = mins + ' mins';
-                            // }
-                            // $("#sessionTime_d").text(actualHours + ' ' + actualMinutes);
+
                             var start_time = response.data[0].start_time;
                             var start_meridiem = response.data[0].start_meridiem;
 
                             var end_time = response.data[0].end_meridiem;
                             var end_meridiem = response.data[0].end_meridiem;
-
+                            var short_starttime = start_time.split(':',2);
+                            alert(short_starttime);
                             var classImages = response.data[0].class.class_image[0].image;
 
                             console.log(classImages);
