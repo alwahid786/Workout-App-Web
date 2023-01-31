@@ -501,15 +501,15 @@
                             <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1" id="session-list">
                                 @if(isset($class_detail) && !empty($class_detail))
                                 <!-- Loop div starts here  -->
-                                @foreach($class_detail[0]['class_session'] as $class)
+                                @foreach($class_detail[0]['session'] as $session)
                                 <div class="trainer-class-time-card-box my-2 " style="cursor: pointer;">
-                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$class['id']}}">
+                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$session['id']}}">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
-                                                <h2>{{date('h:i',strtotime($class['start_time']))}} {{$class['start_meridiem']}}-{{date('h:i',strtotime($class['end_time']))}} {{$class['end_meridiem']}}</h2>
+                                                <h2>{{date('h:i',strtotime($session['start_time']))}} {{$session['start_meridiem']}}-{{date('h:i',strtotime($session['end_time']))}} {{$session['end_meridiem']}}</h2>
                                             </div>
                                         </div>
                                         <div class="trainer-class-time-card-right">
@@ -524,7 +524,7 @@
                                         </div>
                                     </div>
                                     <div class="trainer-class-times">
-                                        <h3>{{date('h',strtotime($class['start_time']))}} {{$class['start_meridiem']}}</h3>
+                                        <h3>{{date('h',strtotime($session['start_time']))}} {{$session['start_meridiem']}}</h3>
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
@@ -812,7 +812,7 @@
                             $('#session-list').empty();
                             $(response.data).each(function(i, e) {
                                 let div = `<div class="trainer-class-time-card-box my-2 "  style="cursor: pointer;">
-                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$class['id']}}">
+                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="${e.id}">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">

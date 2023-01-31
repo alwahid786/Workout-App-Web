@@ -199,10 +199,15 @@ class UserController extends Controller
     }
 
     ///////// .....class detail .............////////
-    public function class_detail(Request $request, $id)
+    public function class_detail(Request $request, $id, $day)
     {
-        $class = Classes::where('id', '=', $id)->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
+        $class = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
         // $class = Classes::where('id', '=', $id)->with('category')->get();
+        if (count($class) > 0) {
+            foreach ($class as $session) {
+                $session['session'] = ModelsSession::where('day', $day)->with('category')->get();
+            }
+        }
         if (!$class) {
             return $this->sendError('Session Detail');
         }

@@ -248,7 +248,7 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="session-card-inner-link my-3">
-                                <a href="{{url('/dashboard/class-detail/'.$classes['id'])}}">Book Now</a>
+                                <a href="{{url('/dashboard/class-detail/'.$classes['trainer']['id']. '/'.$classes['session']['day'])}}">Book Now</a>
                             </div>
                         </div>
                         <p class="session-card-text">{{$classes['trainer']['about']}}</p>
