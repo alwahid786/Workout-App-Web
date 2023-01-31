@@ -771,8 +771,8 @@
 
                             var end_time = response.data[0].end_meridiem;
                             var end_meridiem = response.data[0].end_meridiem;
-                            var short_starttime = start_time.split(':',2);
-                            alert(short_starttime);
+                            // var short_starttime = start_time.split(':',2);
+                            // alert(short_starttime);
                             var classImages = response.data[0].class.class_image[0].image;
 
                             console.log(classImages);
