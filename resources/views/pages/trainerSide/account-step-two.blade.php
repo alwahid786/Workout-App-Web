@@ -165,7 +165,7 @@
         </div>
         <div class="col-12 my-5">
             <div class=" profile-nxt-btn">
-                <a href="#" class="update-profile-form-btn">Next</a>
+                <a href="{{url('/trainer/stepthree')}}" class="update-profile-form-btn">Next</a>
             </div>
         </div>
     </form>

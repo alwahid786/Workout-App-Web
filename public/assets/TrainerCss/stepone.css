@@ -47,9 +47,6 @@ input[type="file"] {
 
 .pro-form input {
     height: 65px !important;
-    /* color: #fff !important; */
-
-
 }
 
 .pro-form input::placeholder {
@@ -60,7 +57,6 @@ input[type="file"] {
 .pro-form textarea {
     background: #F8F8F8;
     border: 1px solid rgba(0, 0, 0, 0.2) !important;
-    /* border-radius: 10px; */
     box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
     border-radius: 10px !important;
 }
@@ -70,14 +66,6 @@ input[type="file"] {
     height: 200px !important;
 }
 
-/* .profile-nxt-btn {
-    text-align: center;
-    background: #E37048;
-    border-radius: 10px;
-    padding: 10px 0;
-    width: 70%;
-    margin: 0 auto;
-} */
 .profile-nxt-btn a,
 .profile-nxt-btn a:hover,
 .profile-nxt-btn a:focus,

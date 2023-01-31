@@ -87,7 +87,7 @@
                 <div class="form-group pro-form  mb-2">
                     <label for="inputAddress2" class=" ">Password</label>
                     <div class="right-inner-addon">
-                        <input type="password" class=" modal-input passInput pl-4" id="password" aria-autocomplete="list">
+                        <input type="password" class=" modal-input passInput pl-4" id="passInput" aria-autocomplete="list">
                         <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true" style="display: none;"></i>
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
@@ -98,9 +98,9 @@
                 <div class="form-group pro-form right-inner-addon mb-2">
                     <label for="inputAddress2" class=" ">Confirm Password</label>
                     <div class="right-inner-addon">
-                        <input type="password" class=" modal-input passInput pl-4" id="password_confirmation">
-                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                        <input type="password" class=" modal-input passInput pl-4" id="passInputtwo">
+                        <i id="hidePasstwo" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="showPasstwo" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
 
                 </div>
@@ -113,7 +113,7 @@
             </div>
             <div class="col-12 my-5">
                 <div class=" profile-nxt-btn">
-                    <a href="#" class="update-profile-form-btn">Next</a>
+                    <a href="{{url('/trainer/steptwo')}}" class="update-profile-form-btn">Next</a>
                 </div>
             </div>
 
@@ -127,6 +127,48 @@
 @endsection
 @section('insertsfooter')
 <script>
-
+    $('#hidePass').hide();
+    $('#showPass').click(function() {
+        $('#showPass').hide();
+        $('#hidePass').show();
+        var passInput = $("#passInput");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+    $('#hidePass').on('click', function() {
+        $('#hidePass').hide();
+        $('#showPass').show();
+        var passInput = $("#passInput");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+    // two
+    $('#hidePasstwo').hide();
+    $('#showPasstwo').click(function() {
+        $('#showPasstwo').hide();
+        $('#hidePasstwo').show();
+        var passInput = $("#passInputtwo");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+    $('#hidePasstwo').on('click', function() {
+        $('#hidePasstwo').hide();
+        $('#showPasstwo').show();
+        var passInput = $("#passInputtwo");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
 </script>
 @endsection

@@ -160,3 +160,7 @@ Route::get('/trainer/stepone', function () {
 Route::get('/trainer/steptwo', function () {
     return view('pages.trainerSide.account-step-two');
 });
+
+Route::get('/trainer/stepthree', function () {
+    return view('pages.trainerSide.account-step-three');
+});

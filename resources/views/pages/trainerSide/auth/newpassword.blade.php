@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/newpassword.css')}}">
 @section('content')
 <div class="row login-section">
-    <div class="col-12 col-md-6 right-parent  pt-5 px-5 mt-md-5">
+    <div class="col-12 col-md-6 right-parent  pt-5 px-5 my-auto">
         <div class="login-right-side ">
             <div class="heading-area">
                 <img class="d-none d-md-block" src="{{asset('public/assets/images/logo.svg')}}" alt="">
@@ -14,7 +14,7 @@
                     <label for="">Password</label>
                     <div class="login-password-field">
 
-                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" >
+                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput">
                         <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
@@ -22,13 +22,14 @@
                 <div class="form-group form-field">
                     <label for="">Confirm Password</label>
                     <div class="login-password-field">
-                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" >
-                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInputtwo">
+                        <i id="hidePasstwo" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="showPasstwo" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                 </div>
                 <div class="form-field pt-5 text-center">
-                    <button type="submit" class="btn btn-default text-center">Confirm</button>
+                    <!-- <button type="submit" class="btn btn-default text-center">Confirm</button> -->
+                    <a class="btn btn-default text-center" href="{{url('/trainer/login')}}">Confirm</a>
                 </div>
             </form>
 
@@ -58,6 +59,28 @@
         $('#hidePass').hide();
         $('#showPass').show();
         var passInput = $("#passInput");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+    // two
+    $('#hidePasstwo').hide();
+    $('#showPasstwo').click(function() {
+        $('#showPasstwo').hide();
+        $('#hidePasstwo').show();
+        var passInput = $("#passInputtwo");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+    $('#hidePasstwo').on('click', function() {
+        $('#hidePasstwo').hide();
+        $('#showPasstwo').show();
+        var passInput = $("#passInputtwo");
         if (passInput.attr('type') === 'password') {
             passInput.attr('type', 'text');
         } else {

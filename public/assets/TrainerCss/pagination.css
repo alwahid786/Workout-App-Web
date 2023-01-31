@@ -73,10 +73,6 @@
         position: relative;
         width: 30px;
         height: 30px;
-        border-radius: 50%;
-        background: #f5bfac;
-        border: 2px solid #E37048;
-        z-index: 2;
     }
 
     .pagination-box h1 {
