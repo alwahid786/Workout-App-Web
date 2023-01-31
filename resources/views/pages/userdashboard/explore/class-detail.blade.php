@@ -561,6 +561,17 @@
 <script>
     // Owl Carousel Code Starts here 
     $(document).ready(function() {
+        const currentDate = new Date();
+        const days = [];
+
+        for (let i = 0; i < 365; i++) {
+            const date = new Date(currentDate);
+            date.setDate(currentDate.getDate() + i);
+            days.push(date);
+        }
+
+        console.log(days);
+
         var daysData = @json($classSession);
         var startTimeOfSession = @json($class_detail[0]['class_session'][0]['start_time']);
         var sessionDay = @json($class_detail[0]['class_session'][0]['day']);
@@ -572,7 +583,7 @@
         });
         var Year = new Date().getFullYear();
         var Month = new Date().getMonth();
-        var dd = String(new Date().getDate()).padStart(2, '0');
+        var todayDay = String(new Date().getDate()).padStart(2, '0');
         var today = new Date();
         var timeHours = today.getHours();
         var timeMin = today.getMinutes();
@@ -595,35 +606,42 @@
         reverseWeekdays["Thur"] = 4;
         reverseWeekdays["Fri"] = 5;
         reverseWeekdays["Sat"] = 6;
+
+        // Check if today is day of session 
         if (today.getDay() == reverseWeekdays[sessionDay]) {
             if (currentTime > startTimeOfSession) {
-                dd = parseInt(dd) + 7;
+                todayDay = parseInt(todayDay) + 7;
             } else {
-                dd = dd;
+                todayDay = todayDay;
             }
         } else if (today.getDay() < reverseWeekdays[sessionDay]) {
             daysDifference = reverseWeekdays[sessionDay] - today.getDay();
-            dd = parseInt(dd) + parseInt(daysDifference);
+            todayDay = parseInt(todayDay) + parseInt(daysDifference);
         } else {
             daysDifference = (7 - today.getDay()) + reverseWeekdays[sessionDay];
-            dd = parseInt(dd) + parseInt(daysDifference);
+            todayDay = parseInt(todayDay) + parseInt(daysDifference);
         }
-        // console.log(dd);
-        // Custom Calendar Code 
+
         getDaysInMonth(Month, Year);
         $("#" + Month).addClass('month-active');
 
         function getDaysInMonth(month, year) {
             var date = new Date(year, month, 1);
             var days = [];
-            while (date.getMonth() === month) {
-                days.push(new Date(date));
-                date.setDate(date.getDate() + 1);
+            // while (date.getMonth() === month) {
+            //     days.push(new Date(date));
+            //     date.setDate(date.getDate() + 1);
+            // }
+            for (let i = 0; i < 365; i++) {
+                const date = new Date(currentDate);
+                date.setDate(currentDate.getDate() + i);
+                days.push(date);
             }
-            if (dd > days.length) {
-                dd = dd - days.length;
+            if (todayDay > days.length) {
+                todayDay = todayDay - days.length;
             }
             // $(".appendDays").empty();
+            var firstSessionDayCheck = 0
             $(days).each(function(i, e) {
                 var weekdays = new Array(7);
                 weekdays[0] = "Sun";
@@ -634,12 +652,14 @@
                 weekdays[5] = "Fri";
                 weekdays[6] = "Sat";
 
+                // Check if this iteration date has class registered 
                 if (daysData.includes(weekdays[e.getDay()])) {
                     active = 'day-class';
+                    firstSessionDayCheck++;
                 } else {
                     active = "";
                 }
-                if (e.getDate() == dd) {
+                if (daysData.includes(weekdays[e.getDay()]) && firstSessionDayCheck == 1) {
                     active = 'day-active';
                 }
                 let div = `<div class="col pb-3">
@@ -656,7 +676,7 @@
                 autoWidth: true
             });
             if (month == new Date().getMonth()) {
-                $('#owl-cal').trigger('to.owl.carousel', dd - 8);
+                // $('#owl-cal').trigger('to.owl.carousel', todayDay - 8);
             } else {
                 let date = new Date(year, month - 1, 0);
                 scrollDays = date.getDate();
