@@ -30,5 +30,4 @@
 </div>
 @endsection
 @section('insertsfooter')
-
 @endsection
