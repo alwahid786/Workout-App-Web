@@ -589,7 +589,7 @@
                         <h1>Todays Booked Sessions</h1>
                     </div>
                     <div class="workout-today-wrapper">
-                        @if($current_session != null)
+                        @if(count($current_session) > 0)
                         <!-- table -->
                         @foreach($current_session as $current)
 
@@ -653,13 +653,13 @@
 
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
-                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> {{$current['session']['class']['trainer']['name']}} </h1>
+                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> {{$upcoming['session']['class']['trainer']['name']}} </h1>
                                     </div>
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>{{$current['session']['start_time']}}-{{$current['session']['end_time']}}</span> </h1>
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>{{$upcoming['session']['start_time']}}-{{$upcoming['session']['end_time']}}</span> </h1>
                                     </div>
                                 </div>
 
