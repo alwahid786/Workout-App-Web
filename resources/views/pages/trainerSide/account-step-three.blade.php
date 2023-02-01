@@ -1,7 +1,7 @@
 @extends('layouts.trainerSide.default')
-<!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepthree.css')}}">
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
-<style>
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/stepthree.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
+<!-- <style>
     * {
         margin: 0;
         padding: 0;
@@ -276,7 +276,7 @@
             font-size: 0.5rem;
         }
     }
-</style>
+</style> -->
 
 @section('content')
 <!-- header-section -->
@@ -406,11 +406,35 @@
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </div>
                 </div>
+
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Time slot</label>
+                    <div class="time-form">
+                        <div class="time-form-field pro-form">
+                            <input type="text" class="form-control py-4" id="inputAddress" placeholder="">
+                            <img src="{{asset('public/assets/images/clock-icon.png')}}" alt="">
+                        </div>
+                        <div class="time-form-field mx-sm-3 my-4 my-sm-0">
+                            <h1>to</h1>
+                        </div>
+
+                        <div class="time-form-field pro-form mb-3 mb-sm-0 mr-sm-2">
+                            <input type="text" class="form-control py-4 " id="inputAddress" placeholder="">
+                            <img src="{{asset('public/assets/images/clock-icon.png')}}" alt="">
+                        </div>
+                        <button class="">Add</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 my-auto" data-aos="fade-left">
                 <div class="time-box-outer">
-                    <div class="yellow-time time-box-inner">
+                    <div class="yellow-time time-box-inner m-2">
                         <p class="mb-0">9 am to 10 am</p>
                     </div>
-                    <div class="green-time time-box-inner ml-2">
+                    <div class="green-time time-box-inner m-2">
                         <p class="mb-0">12 pm to 2 pm</p>
                     </div>
                 </div>

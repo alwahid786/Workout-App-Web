@@ -120,21 +120,31 @@
     margin-bottom: 0px;
     font-weight: 400;
 }
-.time-box-outer{
+
+.time-box-outer {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
-.time-box-inner{
+
+.time-box-inner {
     border-radius: 30px;
     padding: 10px 20px;
     color: #fff;
-   
+
 }
 
-.yellow-time{
+.time-box-inner p {
+    color: white;
+    margin-bottom: 0px;
+}
+
+.yellow-time {
     background: #FFA900;
 
 }
-.green-time{
+
+.green-time {
     background: #B1D244;
 }
 
@@ -176,7 +186,86 @@
     .pro-form select {
         height: 55px !important;
     }
-    .time-box-inner p{
+
+    .time-box-inner p {
         font-size: 0.8rem;
     }
-}   
+}
+
+/* time-form */
+.time-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time-form-field {
+    position: relative;
+}
+
+.time-form-field input {
+    padding-right: 40px;
+}
+
+.time-form-field img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 25px;
+}
+
+.time-form button {
+    background-color: #E37048;
+    color: white;
+    outline: none;
+    box-shadow: none !important;
+    border: 1px solid #E37048 !important;
+    font-size: 0.9rem;
+    height: 65px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-form-field h1 {
+    margin-bottom: 0px;
+    font-size: 0.8rem;
+    color: #666666;
+    font-weight: normal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+@media screen and (max-width:576px) {
+    .time-form button {
+        background-color: #E37048;
+        color: white;
+        outline: none;
+        box-shadow: none !important;
+        border: 1px solid #E37048 !important;
+        font-size: 0.9rem;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .time-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .time-form-field {
+        width: 100%;
+    }
+}
