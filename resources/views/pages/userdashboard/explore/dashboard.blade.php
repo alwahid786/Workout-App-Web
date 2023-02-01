@@ -237,6 +237,7 @@
 
                         <div class="session-card-inner">
                             <div class="session-card-inner-name my-3">
+
                                 <h1>{{$classes['category']['title']}}</h1>
                                 <p>{{$classes['trainer']['name']}}</p>
                             </div>

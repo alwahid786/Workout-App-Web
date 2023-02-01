@@ -765,6 +765,7 @@
                     cache: false,
                     success: function(response) {
                         if (response.success == true) {
+                            // var start_time = date('h:i', strtotimeresponse.data[0].start_time);
 
                             var start_time = response.data[0].start_time;
                             var start_meridiem = response.data[0].start_meridiem;
