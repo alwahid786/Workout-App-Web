@@ -1,7 +1,7 @@
 @extends('layouts.trainerSide.default')
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepthree.css')}}">
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
-<style>
+<!-- <style>
     * {
         margin: 0;
         padding: 0;
@@ -276,7 +276,7 @@
             font-size: 0.5rem;
         }
     }
-</style>
+</style> -->
 
 @section('content')
 <!-- header-section -->
@@ -406,11 +406,35 @@
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </div>
                 </div>
+
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Time slot</label>
+                    <div class="time-form">
+                        <div class="time-form-field pro-form">
+                            <input type="text" class="form-control py-4" id="inputAddress" placeholder="">
+                            <img src="{{asset('public/assets/images/clock-icon.png')}}" alt="">
+                        </div>
+                        <div class="time-form-field mx-sm-3 my-4 my-sm-0">
+                            <h1>to</h1>
+                        </div>
+
+                        <div class="time-form-field pro-form mb-3 mb-sm-0 mr-sm-2">
+                            <input type="text" class="form-control py-4 " id="inputAddress" placeholder="">
+                            <img src="{{asset('public/assets/images/clock-icon.png')}}" alt="">
+                        </div>
+                        <button class="">Add</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 my-auto" data-aos="fade-left">
                 <div class="time-box-outer">
-                    <div class="yellow-time time-box-inner">
+                    <div class="yellow-time time-box-inner m-2">
                         <p class="mb-0">9 am to 10 am</p>
                     </div>
-                    <div class="green-time time-box-inner ml-2">
+                    <div class="green-time time-box-inner m-2">
                         <p class="mb-0">12 pm to 2 pm</p>
                     </div>
                 </div>
@@ -498,12 +522,6 @@
                 </div>
 
             </div>
-            <!-- <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="slot-image">
-                    <img src="{{asset('public/assets/trainerimages/stepthree.jpg')}}" alt="">
-                </div>
-
-            </div> -->
 
         </div>
         <div class="slot-wrapper-heading px-3 my-3">
@@ -522,13 +540,13 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
                     </div>
@@ -540,19 +558,19 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">8 pm to 10 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">10 pm to 12 pm</p>
                         </div>
 
@@ -565,13 +583,13 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
                     </div>
@@ -583,13 +601,13 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
                     </div>
@@ -601,16 +619,16 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">8 pm to 10 pm</p>
                         </div>
                     </div>
@@ -622,13 +640,13 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
                     </div>
@@ -640,19 +658,19 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">8 pm to 10 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">10 pm to 12 pm</p>
                         </div>
                     </div>
@@ -738,13 +756,13 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
                     </div>
@@ -756,19 +774,19 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">8 pm to 10 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">10 pm to 12 pm</p>
                         </div>
 
@@ -781,13 +799,13 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
                     </div>
@@ -799,13 +817,13 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
                     </div>
@@ -817,16 +835,16 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4  ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">8 pm to 10 pm</p>
                         </div>
                     </div>
@@ -838,13 +856,13 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
                     </div>
@@ -856,19 +874,19 @@
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner">
+                        <div class="time-stack-inner m-2">
                             <p class="mb-0">9 am to 10 am</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">12 pm to 2 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">4 pm to 6 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">8 pm to 10 pm</p>
                         </div>
-                        <div class="time-stack-inner ml-2">
+                        <div class="time-stack-inner m-2 ">
                             <p class="mb-0">10 pm to 12 pm</p>
                         </div>
                     </div>
@@ -896,10 +914,10 @@
         });
     });
 
-    $('.toggle-icon').mouseover(function(){
+    $('.toggle-icon').mouseover(function() {
         $('.icon-div').removeClass('d-none')
     });
-    $('.icon-div').mouseleave(function(){
+    $('.icon-div').mouseleave(function() {
         $(this).addClass('d-none')
     });
 </script>
