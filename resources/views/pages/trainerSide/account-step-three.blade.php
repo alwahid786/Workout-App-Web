@@ -1,6 +1,6 @@
 @extends('layouts.trainerSide.default')
-<!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepthree.css')}}">
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/stepthree.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
 <style>
     * {
         margin: 0;
