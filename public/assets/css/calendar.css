@@ -1708,6 +1708,7 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* 
 .btn {
   font-size: 15px !important;
   text-transform: uppercase;
@@ -1717,7 +1718,7 @@ h2 {
   box-shadow: none !important;
   border: 0;
   padding: 10px 20px !important;
-}
+} */
 
 .btn:focus {
   box-shadow: none;
