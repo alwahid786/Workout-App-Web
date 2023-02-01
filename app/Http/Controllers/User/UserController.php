@@ -329,7 +329,6 @@ class UserController extends Controller
 
 
 
-
         return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
     }
     //// get all category ...........//////////

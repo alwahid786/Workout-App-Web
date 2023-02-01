@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
 
     Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('/trainers');
     Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
-    Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('update/profile');
+    Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
     Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
     Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
     Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
@@ -150,15 +150,15 @@ Route::get('/dashboard/class-detail-one', function () {
 //     return view('pages.userdashboard.dashboard.user-session');
 // });
 //workout 
-Route::get('/userdashboard', function () {
-    return view('pages.userdashboard.dashboard.user-dashboard');
-});
-Route::get('/userdashboard-copy', function () {
-    return view('pages.userdashboard.dashboard.user-dashboard-copy');
-});
-Route::get('/userdashboard/session', function () {
-    return view('pages.userdashboard.dashboard.user-session');
-});
+// Route::get('/userdashboard', function () {
+//     return view('pages.userdashboard.dashboard.user-dashboard');
+// });
+// Route::get('/userdashboard-copy', function () {
+//     return view('pages.userdashboard.dashboard.user-dashboard-copy');
+// });
+// Route::get('/userdashboard/session', function () {
+//     return view('pages.userdashboard.dashboard.user-session');
+// });
 
 Route::get('/userdashboard/pastsession', function () {
     return view('pages.userdashboard.dashboard.user-past-session');

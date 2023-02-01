@@ -639,7 +639,7 @@
                 </div>
                 <div class="workout-upcoming-section">
                     <div class="workout-upcoming-header pt-2 pb-1">
-                        <h1>Upcoming Seesions</h1>
+                        <h1>Upcoming Sessions</h1>
                     </div>
                     <div class="workout-upcoming-wrapper pr-2">
                         @if($upcoming_session != null)

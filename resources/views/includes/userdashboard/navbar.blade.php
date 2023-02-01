@@ -41,7 +41,6 @@
                         <img class="nav-y" src="{{asset('public/assets/images/search-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/search-w.svg')}}" alt="image">
                     </div>
-
                     Search
                 </a>
             </li>
@@ -52,7 +51,7 @@
                         <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
                     </div>
 
-                    Your Session
+                    My Session
                 </a>
             </li>
             <li class="nav-item">
@@ -139,6 +138,7 @@
                     </button>
                     <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{(url('/payments'))}}">Payment</a>
+                        <a class="dropdown-item" href="{{url('/profile')}}">Update Profile</a>
                         <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
 
                     </div>

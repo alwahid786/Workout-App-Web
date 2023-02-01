@@ -752,7 +752,7 @@
             e.preventDefault();
             var first_name = $('#first_name').val();
             var last_name = $('#last_name').val();
-            var name = first_name + last_name;
+            var name = first_name + ' ' + last_name;
             var email = $('#email').val();
             var password = $('#password').val();
             var password_confirmation = $('#password_confirmation').val();
