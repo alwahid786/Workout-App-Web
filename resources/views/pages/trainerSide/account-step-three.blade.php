@@ -149,8 +149,8 @@
             <h1 class="mb-4">Upload Image</h1>
             <div class="update-info-qualification-image">
                 <label>
-                    <button type="button" onclick="openModal()" style="border: none;"><img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}"></button>
-                    <!-- <input type="file" name="myfile" style="display:none"> -->
+                    <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
+                    <input type="file" name="myfile" style="display:none">
                 </label>
                 <div class="grid-item py-2 py-sm-0">
                     <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">

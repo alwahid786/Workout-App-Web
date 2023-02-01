@@ -313,7 +313,7 @@
         cursor: pointer;
     }
 }
-@media screen and (max-width:991px) {
+/* @media screen and (max-width:991px) {
     .timing-stack{
         flex-direction: column;
         height: 100%;
@@ -322,7 +322,7 @@
         flex-direction: column;
     }
     
-}
+} */
 @media screen and (max-width:768px) and (min-width:576px){
     .grid-item img:nth-of-type(1){
         position: absolute;
