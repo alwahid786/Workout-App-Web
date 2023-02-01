@@ -1,6 +1,7 @@
 @extends('layouts.userdashboard.default')
 @section('content')
-<link rel="stylesheet" href="{{asset('public/assets/css/mobiscroll.javascript.min.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('public/assets/css/mobiscroll.javascript.min.css')}}"> -->
+<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
 <style>
     .user-search-box {
         display: block;
@@ -234,19 +235,22 @@
         </div>
         <div class="filter-section py-4 px-2">
             <div class="row">
+                <div class="col-12 my-auto">
+                    <div class="filter-menu-inner my-auto px-sm-2">
+                        <div class="filter-left-heading">
+                            <h1>Sessions</h1>
+                        </div>
+
+                    </div>
+                </div>
                 <div class="col-xl-6">
                     <div class=" filter-menu">
-                        <div class="filter-menu-inner my-auto px-sm-2">
-                            <div class="filter-left-heading">
-                                <h1>Sessions</h1>
-                            </div>
 
-                        </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Workout Type</h1>
                                 <div class="drop-icon">
-                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1">
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                         <option>Yoga</option>
@@ -265,7 +269,7 @@
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Location</h1>
                                 <div class="drop-icon">
-                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1">
                                         <option>London</option>
                                         <option>London</option>
                                         <option>London</option>
@@ -280,6 +284,22 @@
                             </div>
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                            <div class="filter-left-select-heading drop-icon-parent">
+                                <h1>Class Type</h1>
+                                <div class="drop-icon">
+
+                                    <select class="wide s-select form-control ">
+                                        <option value="">One to One</option>
+                                        <option value="">Group</option>
+                                    </select>
+                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading ">
                                 <h1>Class Type</h1>
                                 <div class="dropdown-s">
@@ -290,24 +310,20 @@
                                         <a href="{{url('/dashboard/map')}}">One to One</a>
                                     </div>
                                 </div>
-                                <!-- <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Group</option>
-                                    <option><a href="{{url('/dashboard/map')}}">One to One</a></option>
-
-                                </select> -->
+                          
                             </div>
-                        </div>
+                        </div> -->
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Price Range</h1>
                                 <div class="drop-icon drop-icon-thre">
-                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1" class="drop-icon">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1" class="drop-icon">
 
-                                        <option>$20to$100</option>
-                                        <option>$20to$100</option>
-                                        <option>$20to$100</option>
-                                        <option>$20to$100</option>
-                                        <option>$20to$100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
 
                                     </select>
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
@@ -329,7 +345,7 @@
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                                 <h1>Range</h1>
                                 <div class="drop-icon">
-                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1">
                                         <option>1-3KM</option>
                                         <option>1-3KM</option>
                                         <option>1-3KM</option>
@@ -402,7 +418,13 @@
 
 @endsection
 @section('insertsfooter')
-<script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script>
+<!-- <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script> -->
+<script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.s-select').niceSelect();
+    });
+</script>
 <script>
     mobiscroll.setOptions({
         theme: 'ios',

@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="{{asset('public/assets/css/calendar.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css">
-<link rel="stylesheet" href="./style.css">
+<!-- <link rel="stylesheet" href="./style.css"> -->
 <style>
     .workout-banner-card {
         background: #FDD9CE;
@@ -510,7 +510,7 @@
                             <div class="workout-banner-content px-3 py-3 text-center text-md-left">
                                 <h1>Welcome John Smith</h1>
                                 <p class="pt-3 pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                <a class="btn" href="#">Read More</a>
+                                <a class="btn" href="{{url('/about')}}">Read More</a>
                             </div>
                         </div>
                         <div class="col-md-5 align-self-end">
@@ -523,7 +523,7 @@
                 <div class="workout-session-card my-4">
                     <div class="row">
                         <div class="col-sm-6 col-md-4 my-2">
-                            <a href="">
+                            <a href="{{url('/userdashboard/upcomingsessionone')}}">
                                 <div class="work-session-card red-session-card py-4 px-1">
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your Upcoming <span>Session</span> </h1>
@@ -536,7 +536,7 @@
                             </a>
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
-                            <a href="">
+                            <a href="{{url('/userdashboard/pastsession')}}">
                                 <div class="work-session-card blue-session-card py-4 px-1">
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your Past <span>Session</span> </h1>
@@ -568,7 +568,7 @@
                 </div>
                 <div class="workout-today-section">
                     <div class="workout-today-header pt-2 pb-1">
-                        <h1>Your Today’s Session</h1>
+                        <h1>Your Today’s Booked Session</h1>
                     </div>
 
                     <div class="workout-today-wrapper">
@@ -972,7 +972,6 @@
 @endsection
 @section('insertsfooter')
 <script src="{{ asset('public/assets/AS/js/mobiscroll.jquery.min.js') }}"></script>
-
 <script>
     mobiscroll.setOptions({
         locale: mobiscroll.localeEn, // Specify language like: locale: mobiscroll.localePl or omit setting to use default
@@ -1018,7 +1017,7 @@
         });
     });
 </script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
