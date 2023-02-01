@@ -360,10 +360,10 @@
                                 <div class="drop-icon">
                                     <select class="wide s-select form-control">
                                         <option>1-3KM</option>
-                                        <option>1-3KM</option>
-                                        <option>1-3KM</option>
-                                        <option>1-3KM</option>
-                                        <option>1-3KM</option>
+                                        <option>1-5KM</option>
+                                        <option>1-7KM</option>
+                                        <option>1-9KM</option>
+                                        <option>1-11KM</option>
                                     </select>
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
