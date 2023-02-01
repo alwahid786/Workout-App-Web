@@ -300,7 +300,7 @@
                             </div>
                             <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                                 <div class="filter-left-select-heading drop-icon-parent">
-                                    <h1>Location</h1>
+                                    <h1>Class Type</h1>
                                     <div class="drop-icon">
 
                                         <select class="wide s-select form-control ">
@@ -332,11 +332,11 @@
                                     <h1>Price Range</h1>
                                     <div class="drop-icon drop-icon-thre">
                                         <select class="wide s-select form-control ">
-                                            <option>$20to$100</option>
-                                            <option>$20to$100</option>
-                                            <option>$20to$100</option>
-                                            <option>$20to$100</option>
-                                            <option>$20to$100</option>
+                                            <option>$20 to $100</option>
+                                            <option>$20 to $100</option>
+                                            <option>$20 to $100</option>
+                                            <option>$20 to $100</option>
+                                            <option>$20 to $100</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 

@@ -2,6 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
+<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
 <style>
     .content-wrapper-inner {
         background: #ffff;
@@ -323,6 +324,7 @@
         padding: 0px 15px;
         cursor: pointer;
     }
+
     .user-search-box {
         display: block;
     }
@@ -517,9 +519,10 @@
     .drop-icon {
         position: relative;
         cursor: pointer;
-        
+
     }
-    .drop-icon:hover{
+
+    .drop-icon:hover {
         cursor: pointer;
     }
 
@@ -554,12 +557,12 @@
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Workout Type</h1>
                                 <div class="drop-icon">
-                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1">
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                         <option>Yoga</option>
-                                        <option>Yoga</option>   
+                                        <option>Yoga</option>
                                     </select>
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                 </div>
@@ -569,7 +572,7 @@
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Location</h1>
                                 <div class="drop-icon">
-                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1">
                                         <option>London</option>
                                         <option>London</option>
                                         <option>London</option>
@@ -584,6 +587,22 @@
                             </div>
                         </div>
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                            <div class="filter-left-select-heading drop-icon-parent">
+                                <h1>Class Type</h1>
+                                <div class="drop-icon">
+
+                                    <select class="wide s-select form-control ">
+                                        <option value="">One to One</option>
+                                        <option value="">Group</option>
+                                    </select>
+                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading ">
                                 <h1>Class Type</h1>
                                 <div class="dropdown-s">
@@ -594,24 +613,20 @@
                                         <a href="{{url('/dashboard/mapgroup')}}">Group</a>
                                     </div>
                                 </div>
-                                <!-- <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>Group</option>
-                                    <option><a href="{{url('/dashboard/map')}}">One to One</a></option>
-
-                                </select> -->
+                               
                             </div>
-                        </div>
+                        </div> -->
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Price Range</h1>
                                 <div class="drop-icon drop-icon-thre">
-                                    <select class="form-control px-0 text-center" id="exampleFormControlSelect1" class="drop-icon">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1" class="drop-icon">
 
-                                        <option>$20to$100</option>
-                                        <option>$20to$100</option>
-                                        <option>$20to$100</option>
-                                        <option>$20to$100</option>
-                                        <option>$20to$100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
+                                        <option>$20 to $100</option>
 
                                     </select>
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
@@ -993,6 +1008,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script>
+<script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.s-select').niceSelect();
+    });
+</script>
 <script>
     // two
     const slickSetting = {
