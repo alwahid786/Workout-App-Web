@@ -566,14 +566,14 @@
                     <input type="text" class="mb-2 modal-input" placeholder="Last Name" id="last_name">
                     <input type="text" class="mb-2 modal-input" placeholder="Email" id="email">
                     <div class="right-inner-addon mb-2">
-                        <input type="password" class=" modal-input passInput" placeholder="Password" id="password">
-                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                        <input type="password" class=" modal-input signpassInput" placeholder="Password" id="password">
+                        <i id="signhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="signshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                     <div class="right-inner-addon mb-2">
-                        <input type="password" class=" modal-input passInput" placeholder="Confirm Password" id="password_confirmation">
-                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                        <input type="password" class=" modal-input cpassInput" placeholder="Confirm Password" id="password_confirmation">
+                        <i id="confirmhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="confirmshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                     <p>Already have an account? <span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</span></p>
                     <input type="button" class=" btn my-3 login-btn" value="Sign Up" id="sighnup_submit">
@@ -597,8 +597,8 @@
                     <input type="text" class="mb-2 modal-input" placeholder="Email" id="login_email">
                     <div class="right-inner-addon mb-2">
                         <input type="password" class=" modal-input passInput" placeholder="Password" id="login_password">
-                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                        <i id="loginhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="loginshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center modal-form-middle">
@@ -636,7 +636,7 @@
             <form action="">
                 <div class="modalContent py-3 ">
                     <div class="text-center">
-                        <img style="width: 60%;" src="{{asset('public/assets/images/forget-pass.svg')}}" alt="">
+                        <img style="width: 55%;" src="{{asset('public/assets/images/forget-pass.svg')}}" alt="">
                     </div>
                     <input type="text" class="my-2 modal-input" placeholder="Email" id="forgot_email">
                     <div class="text-center">
@@ -945,7 +945,7 @@
         $('body').removeClass('new')
     })
 </script>
-<script>
+<!-- <script>
     $(".passInput").on('keyup', function() {
         let values = $(".passInput").val();
         if (values.length >= 6) {
@@ -959,8 +959,8 @@
         }
 
     })
-</script>
-<script>
+</script> -->
+<!-- <script>
     $('#hidePass').hide();
     $('#showPass').click(function() {
         $('#showPass').hide();
@@ -980,6 +980,122 @@
             passInput.attr('type', 'text');
         } else {
             passInput.attr('type', 'password');
+        }
+    })
+</script> -->
+<script>
+    $(".passInput").on('keyup', function() {
+        let values = $(".passInput").val();
+        if (values.length >= 6) {
+            $(".passInput").removeClass('login-email-field-red');
+            $(".passInput").addClass('login-email-field-green');
+            $('.right-inner-addon i').css('color', '#151C00')
+        } else {
+            $(".passInput").removeClass('login-email-field-green');
+            $(".passInput").addClass('login-email-field-red');
+            $('.login-right-inner-addon i').css('color', '#FF0000')
+        }
+
+    })
+
+    $(".cpassInput").on('keyup', function() {
+        let values = $(".cpassInput").val();
+        if (values.length >= 6) {
+            $(".cpassInput").removeClass('login-email-field-red');
+            $(".cpassInput").addClass('login-email-field-green');
+            $('.confirm-right-inner-addon i').css('color', '#151C00')
+        } else {
+            $(".cpassInput").removeClass('login-email-field-green');
+            $(".cpassInput").addClass('login-email-field-red');
+            $('.confirm-right-inner-addon i').css('color', '#FF0000')
+        }
+
+    })
+
+    $(".signpassInput").on('keyup', function() {
+        let values = $(".signpassInput").val();
+        if (values.length >= 6) {
+            $(".signpassInput").removeClass('login-email-field-red');
+            $(".signpassInput").addClass('login-email-field-green');
+            $('.sign-right-inner-addon i').css('color', '#151C00')
+        } else {
+            $(".signpassInput").removeClass('login-email-field-green');
+            $(".signpassInput").addClass('login-email-field-red');
+            $('.sign-right-inner-addon i').css('color', '#FF0000')
+        }
+
+    })
+</script>
+<script>
+    $('#loginhidePass').hide();
+    $('#loginshowPass').click(function() {
+        $('#loginshowPass').hide();
+        $('#loginhidePass').show();
+        ////login password
+        var passInput = $("#login_password");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+
+    })
+    /////signup confirm password
+
+    $('#confirmhidePass').hide();
+    $('#confirmshowPass').click(function() {
+        $('#confirmshowPass').hide();
+        $('#confirmhidePass').show();
+        var cpassInput = $("#password_confirmation");
+        if (cpassInput.attr('type') === 'password') {
+            cpassInput.attr('type', 'text');
+        } else {
+            cpassInput.attr('type', 'password');
+        }
+    })
+    /////signup password
+    $('#signhidePass').hide();
+    $('#signshowPass').click(function() {
+        $('#signshowPass').hide();
+        $('#signhidePass').show();
+        var signPassInput = $("#password");
+        if (signPassInput.attr('type') === 'password') {
+            signPassInput.attr('type', 'text');
+        } else {
+            signPassInput.attr('type', 'password');
+        }
+    })
+    $('#loginhidePass').on('click', function() {
+        $('#loginhidePass').hide();
+        $('#loginshowPass').show();
+        var passInput = $("#login_password");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+
+    ////// sign up confirm password
+    $('#confirmhidePass').on('click', function() {
+        $('#confirmhidePass').hide();
+        $('#confirmshowPass').show();
+        var cpassInput = $("#password_confirmation");
+        if (cpassInput.attr('type') === 'password') {
+            cpassInput.attr('type', 'text');
+        } else {
+            cpassInput.attr('type', 'password');
+        }
+    })
+    //////////sign up password
+    $('#signhidePass').on('click', function() {
+        $('#signhidePass').hide();
+        $('#signshowPass').show();
+        var signPassInput = $("#password");
+        if (signPassInput.attr('type') === 'password') {
+            signPassInput.attr('type', 'text');
+        } else {
+            signPassInput.attr('type', 'password');
         }
     })
 </script>
