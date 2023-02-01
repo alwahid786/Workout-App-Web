@@ -118,6 +118,9 @@ Route::get('/dashboard/map', function () {
 // Route::get('/dashboard/class-detail', function () {
 //     return view('pages.userdashboard.explore.class-detail');
 // });
+Route::get('/dashboard/trainer', function () {
+    return view('pages.userdashboard.dashboard.all-trainer');
+});
 Route::get('/dashboard/mapgroup', function () {
     return view('pages.userdashboard.explore.map-view-group');
 });
@@ -146,6 +149,16 @@ Route::get('/dashboard/class-detail-one', function () {
 // Route::get('/userdashboard/session', function () {
 //     return view('pages.userdashboard.dashboard.user-session');
 // });
+//workout 
+Route::get('/userdashboard', function () {
+    return view('pages.userdashboard.dashboard.user-dashboard');
+});
+Route::get('/userdashboard-copy', function () {
+    return view('pages.userdashboard.dashboard.user-dashboard-copy');
+});
+Route::get('/userdashboard/session', function () {
+    return view('pages.userdashboard.dashboard.user-session');
+});
 
 Route::get('/userdashboard/pastsession', function () {
     return view('pages.userdashboard.dashboard.user-past-session');
@@ -185,6 +198,9 @@ Route::get('/chat', function () {
 Route::get('/trainer/login', function () {
     return view('pages.trainerSide.auth.login');
 });
+Route::get('/trainer/logins', function () {
+    return view('pages.trainerSide.auth.logins');
+});
 Route::get('/trainer/forgetpassword', function () {
     return view('pages.trainerSide.auth.forgetpassword');
 });
@@ -193,4 +209,20 @@ Route::get('/trainer/otp', function () {
 });
 Route::get('/trainer/newpassword', function () {
     return view('pages.trainerSide.auth.newpassword');
+});
+
+
+
+//Setup New Trainer Profile
+
+Route::get('/trainer/stepone', function () {
+    return view('pages.trainerSide.account-step-one');
+});
+
+Route::get('/trainer/steptwo', function () {
+    return view('pages.trainerSide.account-step-two');
+});
+
+Route::get('/trainer/stepthree', function () {
+    return view('pages.trainerSide.account-step-three');
 });

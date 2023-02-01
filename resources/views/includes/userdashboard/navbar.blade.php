@@ -1,5 +1,8 @@
 <style>
-
+    .logout-dropdown a:hover {
+        background-color: #E37048;
+        color: white;
+    }
 </style>
 <nav class="navbar navbar-z navbar-expand-lg navbar-dark  navbar-header px-4 px-lg-0">
     <a class="navbar-brand logo-header pl-lg-3" data-aos="fade-right" href="{{url('dashboard')}}">

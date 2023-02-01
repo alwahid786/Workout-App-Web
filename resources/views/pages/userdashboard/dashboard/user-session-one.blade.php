@@ -377,7 +377,7 @@
     }
 
     .feedback-rating i:last-of-type {
-        color: #000 !important;
+        color: #f3f0f0 !important;
     }
 
     .feedback-rating p {
