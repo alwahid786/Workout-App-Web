@@ -734,4 +734,7 @@
 <script>
     $('.left-inner-addon').css('display', 'none');
 </script>
+<script>
+    $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+</script>
 @endsection
