@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body{
+    background-image: url(../trainerimages/stepFourbackground.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+.update-info-header {
+    background-color: #F8F8F8;
+}
+
+.update-info-content h1 {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+.outer-step{
+    position: relative;
+    background-image: url(../trainerimages/stepFourbackground.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}
+.content-outer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.content-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 150px; */
+}
+.content-section img{
+    width: 100%;
+    max-width: 180px;
+}
+.content-section h1{
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #000;
+}
+.form-btn{
+    width: 200px;
+    height: 50px;
+    background-color: rgba(227, 112, 72, 0.8) !important;
+    border-radius: 7px;
+    margin: 0 auto;
+    position: relative;
+}
+.form-btn a{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.05;
+    /* border: none; */
+    /* color: #fff; */
+    /* padding: 10px 50px; */
+    /* border-radius: 7px; */
+}
+.form-btn a:hover, .form-btn a:active, .form-btn:focus{
+    text-decoration: none;
+    color: #fff;
+}
+@media screen and (max-width:576px) {
+    .content-section img {
+        width: 100%;
+        max-width: 130px;
+    }
+    .content-section h1 {
+        font-size: 2.2rem;
+        font-weight: 500;
+        color: #000;
+    }
+    .form-btn{
+        width: 160px;
+    }
+    .form-btn a{
+        font-size: 1.2rem;
+    }
+}
