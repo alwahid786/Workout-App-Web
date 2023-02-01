@@ -145,9 +145,9 @@
 </style>
 
 @include('includes.userdashboard.navbar')
-<div class="content-wrapper">
+<div class="content-wrapper py-3">
     <div class="container-fluid mb-4">
-        <div class="past-session-wrapper  py-3">
+        <div class="past-session-wrapper  ">
             <div class="past-session-header px-2 py-2">
                 <!-- <h1 class="pr-sm-3"> <img class="pr-1 pr-sm-2 pb-1" src="{{asset('public/assets/images/left-arrow.svg')}}" alt="">Dashboard<img class="pl-1 pl-sm-2 pb-1" src="{{asset('public/assets/images/right-arrow.svg')}}" alt=""></h1> -->
                 <h1>All Trainer</h1>
