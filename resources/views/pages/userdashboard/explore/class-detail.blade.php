@@ -241,13 +241,14 @@
 
     .day-class {
         background-color: #F6CD8B;
+        cursor: pointer;
     }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">{{$class_detail[0]['class_session'][0]['type']}}</span></h1>
+            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">{{$class_detail[0]['session'][0]['type']}}</span></h1>
         </div>
         <div class="class-section">
             <div class="row">
@@ -282,10 +283,10 @@
                     <div class="class-banner-content">
                         <h1 id="sessionTitle_d">{{$class_detail[0]['category']['title']}}</h1>
                         <div class="class-banner-content-right">
-                            <h1 id="sessionPrice_d">${{$class_detail[0]['class_session'][0]['price']}}</h1>
+                            <h1 id="sessionPrice_d">${{$class_detail[0]['session'][0]['price']}}</h1>
                             <div class="class-banner-content-right-time">
-                                <?php $start_time = $class_detail[0]['class_session'][0]['start_time'];
-                                $end_time = $class_detail[0]['class_session'][0]['end_time'];
+                                <?php $start_time = $class_detail[0]['session'][0]['start_time'];
+                                $end_time = $class_detail[0]['session'][0]['end_time'];
                                 $start_datetime = new DateTime(date('Y-m-d') . ' ' . $start_time);
                                 $end_datetime = new DateTime(date('Y-m-d') . ' ' . $end_time);
                                 $timeDiff = $start_datetime->diff($end_datetime);
@@ -500,15 +501,15 @@
                             <div class="trainer-class-time-wrapper pl-5 pr-sm-2 pr-1" id="session-list">
                                 @if(isset($class_detail) && !empty($class_detail))
                                 <!-- Loop div starts here  -->
-                                @foreach($class_detail[0]['class_session'] as $class)
+                                @foreach($class_detail[0]['session'] as $session)
                                 <div class="trainer-class-time-card-box my-2 " style="cursor: pointer;">
-                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$class['id']}}">
+                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$session['id']}}">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
-                                                <h2>{{date('h:i',strtotime($class['start_time']))}} {{$class['start_meridiem']}}-{{date('h:i',strtotime($class['end_time']))}} {{$class['end_meridiem']}}</h2>
+                                                <h2>{{date('h:i',strtotime($session['start_time']))}} {{$session['start_meridiem']}}-{{date('h:i',strtotime($session['end_time']))}} {{$session['end_meridiem']}}</h2>
                                             </div>
                                         </div>
                                         <div class="trainer-class-time-card-right">
@@ -523,7 +524,7 @@
                                         </div>
                                     </div>
                                     <div class="trainer-class-times">
-                                        <h3>{{date('h',strtotime($class['start_time']))}} {{$class['start_meridiem']}}</h3>
+                                        <h3>{{date('h',strtotime($session['start_time']))}} {{$session['start_meridiem']}}</h3>
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>
@@ -545,7 +546,7 @@
                             <!-- <input type="text" value="{{$class_detail[0]['trainer']['id']}}" id="day"> -->
 
                             <div class="trainer-class-time-btn pt-4 pb-3">
-                                <a href="{{url('/dashboard/payment')}}" class="btn">Confirm Booking</a>
+                                <a href="{{url('/dashboard/payment')}}" class="btn" id="confirmBookingBtn">Confirm Booking</a>
                             </div>
                         </div>
                     </div>
@@ -554,6 +555,11 @@
         </div>
     </div>
 </div>
+<form action="{{route('dashboard/payment')}}" id="bookSessionForm" method="post">
+    @csrf
+    <input type="hidden" name="session_id" id="sessionId" value="">
+    <input type="hidden" name="session_date" id="sessionDate" value="">
+</form>
 @endsection
 @section('insertsfooter')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -564,6 +570,19 @@
 <script>
     // Owl Carousel Code Starts here 
     $(document).ready(function() {
+        $(document).on('click', "#confirmBookingBtn", function(e) {
+            e.preventDefault();
+            $("#bookSessionForm").submit();
+        })
+        const currentDate = new Date();
+        const days = [];
+
+        // for (let i = 0; i < 365; i++) {
+        //     const date = new Date(currentDate);
+        //     date.setDate(currentDate.getDate() + i);
+        //     days.push(date);
+        // }
+
         var daysData = @json($classSession);
         var startTimeOfSession = @json($class_detail[0]['class_session'][0]['start_time']);
         var sessionDay = @json($class_detail[0]['class_session'][0]['day']);
@@ -575,7 +594,7 @@
         });
         var Year = new Date().getFullYear();
         var Month = new Date().getMonth();
-        var dd = String(new Date().getDate()).padStart(2, '0');
+        var todayDay = String(new Date().getDate()).padStart(2, '0');
         var today = new Date();
         var timeHours = today.getHours();
         var timeMin = today.getMinutes();
@@ -598,35 +617,43 @@
         reverseWeekdays["Thur"] = 4;
         reverseWeekdays["Fri"] = 5;
         reverseWeekdays["Sat"] = 6;
+
+        // Check if today is day of session 
         if (today.getDay() == reverseWeekdays[sessionDay]) {
             if (currentTime > startTimeOfSession) {
-                dd = parseInt(dd) + 7;
+                todayDay = parseInt(todayDay) + 7;
             } else {
-                dd = dd;
+                todayDay = todayDay;
             }
         } else if (today.getDay() < reverseWeekdays[sessionDay]) {
             daysDifference = reverseWeekdays[sessionDay] - today.getDay();
-            dd = parseInt(dd) + parseInt(daysDifference);
+            todayDay = parseInt(todayDay) + parseInt(daysDifference);
         } else {
             daysDifference = (7 - today.getDay()) + reverseWeekdays[sessionDay];
-            dd = parseInt(dd) + parseInt(daysDifference);
+            todayDay = parseInt(todayDay) + parseInt(daysDifference);
         }
-        // console.log(dd);
-        // Custom Calendar Code 
+
         getDaysInMonth(Month, Year);
         $("#" + Month).addClass('month-active');
 
         function getDaysInMonth(month, year) {
             var date = new Date(year, month, 1);
             var days = [];
-            while (date.getMonth() === month) {
-                days.push(new Date(date));
-                date.setDate(date.getDate() + 1);
+            // Old code for getting days of month 
+            // while (date.getMonth() === month) {
+            //     days.push(new Date(date));
+            //     date.setDate(date.getDate() + 1);
+            // }
+            for (let i = 0; i < 365; i++) { //get next 365 days data
+                const date = new Date(currentDate);
+                date.setDate(currentDate.getDate() + i);
+                days.push(date);
             }
-            if (dd > days.length) {
-                dd = dd - days.length;
+            if (todayDay > days.length) {
+                todayDay = todayDay - days.length;
             }
             // $(".appendDays").empty();
+            var firstSessionDayCheck = 0
             $(days).each(function(i, e) {
                 var weekdays = new Array(7);
                 weekdays[0] = "Sun";
@@ -637,16 +664,22 @@
                 weekdays[5] = "Fri";
                 weekdays[6] = "Sat";
 
+                // Check if this iteration date has Session registered 
                 if (daysData.includes(weekdays[e.getDay()])) {
                     active = 'day-class';
+                    firstSessionDayCheck++; //if session day is greater than current, iterate ++
                 } else {
                     active = "";
                 }
-                if (e.getDate() == dd) {
-                    active = 'day-active';
+                if (daysData.includes(weekdays[e.getDay()]) && firstSessionDayCheck == 1) {
+                    activeBlack = 'day-active';
+                } else {
+                    activeBlack = "";
+
                 }
+                var convertedDate = e.getFullYear() + "-" + parseInt(e.getMonth() + 1) + "-" + e.getDate();
                 let div = `<div class="col pb-3">
-                                    <div class="day-number ${active}">
+                                    <div class="day-number ${active} ${activeBlack}" data-src="${convertedDate}">
                                         <h1>${e.getDate()}</h1>
                                         <h2 class="day-name">${weekdays[e.getDay()]}</h2>
                                     </div>
@@ -659,7 +692,7 @@
                 autoWidth: true
             });
             if (month == new Date().getMonth()) {
-                $('#owl-cal').trigger('to.owl.carousel', dd - 8);
+                // $('#owl-cal').trigger('to.owl.carousel', todayDay - 8);
             } else {
                 let date = new Date(year, month - 1, 0);
                 scrollDays = date.getDate();
@@ -690,7 +723,7 @@
 
         // Get Session detail in Card on Left 
         $(document).on('click', '.sessionDiv_d', function() {
-
+            $("#sessionId").val($(this).attr('data-src'));
             $('.loaderDiv').show();
             class_id = $(this).attr('data-src');
             $('.sessionDiv_d').removeClass('trainer-class-active');
@@ -701,7 +734,6 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-
                 url: `{{route('classDetails')}}`,
                 type: "POST",
                 data: {
@@ -711,9 +743,8 @@
                 success: function(response) {
                     // alert('coming');
 
-                    console.log(response);
                     if (response.success == true) {
-
+                        console.log(response)
                         $("#sessionTitle_d").text(response.data[0].category['title']);
                         $("#sessionPrice_d").text('$' + response.data[0].price);
                         $("#sessionType_d").text(response.data[0].type);
@@ -756,18 +787,17 @@
             });
         })
         ////////........ get day session............////////
-        $(document).on('click', '.day-number', function() {
-
-
+        $(document).on('click', '.day-class', function() {
+            $("#sessionDate").val($(this).attr('data-src'));
             var trainer = $('#trainer_id').val();
             var day = $(this).find('.day-name').html();
-
+            $('.day-number').removeClass('day-active');
+            $(this).addClass('day-active');
             if (trainer != "") {
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-
                     url: `{{route('get_day_session')}}`,
                     type: "POST",
                     data: {
@@ -787,17 +817,30 @@
                             // alert(short_starttime);
                             var classImages = response.data[0].class.class_image[0].image;
 
-                            console.log(classImages);
                             $('#session-list').empty();
                             $(response.data).each(function(i, e) {
+                                let timeStart = e.start_time;
+                                let convertedTimeStart = new Date("1970-01-01 " + timeStart).toLocaleTimeString("en-US", {
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                });
+                                let timeStartSession = e.start_time;
+                                let convertedTimeStartSession = new Date("1970-01-01 " + timeStartSession).toLocaleTimeString("en-US", {
+                                    hour: '2-digit'
+                                });
+                                let timeEnd = e.end_time;
+                                let convertedTimeEnd = new Date("1970-01-01 " + timeEnd).toLocaleTimeString("en-US", {
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                });
                                 let div = `<div class="trainer-class-time-card-box my-2 "  style="cursor: pointer;">
-                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$class['id']}}">
+                                    <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="${e.id}">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
-                                                <h2>${e.start_time} ${e.start_meridiem} - ${e.end_time} ${e.end_meridiem}</h2>
+                                                <h2>${convertedTimeStart} - ${convertedTimeEnd} </h2>
                                             </div>
                                         </div>
                                         <div class="trainer-class-time-card-right">
@@ -812,7 +855,7 @@
                                         </div>
                                     </div>
                                     <div class="trainer-class-times">
-                                        <h3>${e.start_time}</h3>
+                                        <h3>${convertedTimeStartSession} </h3>
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>`;

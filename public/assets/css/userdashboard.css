@@ -2239,6 +2239,7 @@ body {
 
 .day-active {
     background: black !important;
+    cursor: pointer;
 }
 
 .day-active h1 {

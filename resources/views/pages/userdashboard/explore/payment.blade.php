@@ -408,6 +408,7 @@
 
                     <input type="hidden" id="session" name="session_id" value="{{$session['id']}}">
                     <input type="hidden" id="session" name="amount" value="{{$session['price']}}">
+                    <input type="hidden" id="sessionDate" name="session_date" value="{{$sessiondate}}">
 
 
                     <!-- <a href="#" class="update-profile-form-btn"></a> -->
