@@ -139,7 +139,7 @@
                     </button>
                     <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{(url('/payments'))}}">Payment</a>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
 
                     </div>
                 </div>

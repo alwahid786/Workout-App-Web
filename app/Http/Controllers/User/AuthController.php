@@ -107,14 +107,10 @@ class AuthController extends Controller
     ////////........logout....../////////
     public function logout(Request $request)
     {
-        // $token = auth()->user()->token();
-
-        // dd('token');
-        // $token->revoke();
-        // $response = 'You have been successfully logged out!';
+        
         FacadesSession::flush();
         Auth::logout();
-        return redirect()->url('/');
+        return redirect('/');
     }
     ////// trainer sign up.......///////
     public function trainerSignup(TrainerSignupRequest $request)
