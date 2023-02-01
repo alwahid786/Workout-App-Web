@@ -1,6 +1,266 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/stepone.css')}}">
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepone.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .update-info-header {
+        background-color: #F8F8F8;
+    }
+
+    .update-info-content h1 {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .hero-section-upload {
+        color: white;
+        background: #E37048;
+        border-radius: 7px;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 20px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 204px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .pro-form label {
+        color: #464646;
+        font-size: 0.8rem;
+    }
+
+    .form-label span {
+        color: #E37048 !important;
+        font-size: 0.6rem;
+    }
+
+    .pro-form input {
+        height: 65px !important;
+    }
+
+    .pro-form input::placeholder {
+        color: #fff;
+    }
+
+    .pro-form input,
+    .pro-form textarea {
+        background: #F8F8F8;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+        border-radius: 10px !important;
+    }
+
+    .pro-form textarea {
+        resize: none !important;
+        height: 200px !important;
+    }
+
+    .profile-nxt-btn a,
+    .profile-nxt-btn a:hover,
+    .profile-nxt-btn a:focus,
+    .profile-nxt-btn a:active {
+        background: #E37048;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: white;
+        padding: 25px 0;
+        border-radius: 10px;
+        text-align: center;
+        width: 25%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        min-width: 200px;
+        height: 50px;
+    }
+
+    .update-profile-form-btn {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 2rem;
+
+    }
+
+    .hero-right label {
+        cursor: pointer;
+    }
+
+    .update-profile-form-btn:hover {
+        text-decoration: none !important;
+        color: #FFBB00;
+    }
+
+    .right-inner-addon {
+        position: relative;
+    }
+
+    .right-inner-addon input {
+        padding-right: 35px !important;
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        outline: none !important;
+    }
+
+    .right-inner-addon i {
+        color: #B5B5B5;
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .form-image img {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .upload-image img {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .update-info-content img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    @media screen and (max-width:576px) {
+        .pro-form input {
+            height: 55px !important;
+        }
+
+        .update-profile-form-btn {
+            font-size: 1.5rem;
+        }
+
+        .hero-right img {
+            width: 250px !important;
+            height: 250px !important;
+        }
+
+        .hero-section-upload {
+            font-size: 0.9rem;
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+    @media screen and (max-width:991px) {
+        .hero-section-upload {
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+
+    /* pagination */
+
+
+    .pagination-wrapper {
+        background-color: #F8F8F8;
+        border-radius: 10px;
+        position: relative;
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .pagination-border {
+        border: 1px solid #E37048;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        z-index: 1;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .pagination-box {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #f5bfac;
+        border: 2px solid #E37048;
+        z-index: 2;
+    }
+
+    .active-pagination {
+        background: #E37048;
+    }
+
+    .pagination-box h1 {
+        position: absolute;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0px;
+    }
+
+    .pagination-box p {
+        font-size: 0.6rem;
+        margin-bottom: 0px;
+        color: black;
+        position: absolute;
+        top: 55px;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+
+    }
+
+    @media screen and (max-width:576px) {
+        .pagination-box {
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+
+        .pagination-box h1 {
+            position: absolute;
+            color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0px;
+        }
+
+        .pagination-box p {
+            font-size: 0.5rem;
+        }
+    }
+</style>
 @section('content')
 <!-- header-section -->
 <div class="container-fluid update-info-header">
