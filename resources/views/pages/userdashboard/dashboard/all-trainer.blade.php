@@ -213,7 +213,7 @@
                             <h1>View</h1>
                         </div>
                         <div class="table-content-value text-md-center">
-                            <a href="#">
+                            <a href="{{url('/dashboard/trainer-detail')}}">
                                 <img class="" src="{{asset('public/assets/images/view-icon.svg')}}" alt="">
                             </a>
 
@@ -273,7 +273,7 @@
                             <h1>View</h1>
                         </div>
                         <div class="table-content-value text-md-center">
-                            <a href="#">
+                            <a href="{{url('/dashboard/trainer-detail')}}">
                                 <img class="" src="{{asset('public/assets/images/view-icon.svg')}}" alt="">
                             </a>
 
@@ -333,7 +333,7 @@
                             <h1>View</h1>
                         </div>
                         <div class="table-content-value text-md-center">
-                            <a href="#">
+                            <a href="{{url('/dashboard/trainer-detail')}}">
                                 <img class="" src="{{asset('public/assets/images/view-icon.svg')}}" alt="">
                             </a>
 
@@ -393,7 +393,7 @@
                             <h1>View</h1>
                         </div>
                         <div class="table-content-value text-md-center">
-                            <a href="#">
+                            <a href="{{url('/dashboard/trainer-detail')}}">
                                 <img class="" src="{{asset('public/assets/images/view-icon.svg')}}" alt="">
                             </a>
 
@@ -453,7 +453,7 @@
                             <h1>View</h1>
                         </div>
                         <div class="table-content-value text-md-center">
-                            <a href="#">
+                            <a href="{{url('/dashboard/trainer-detail')}}">
                                 <img class="" src="{{asset('public/assets/images/view-icon.svg')}}" alt="">
                             </a>
 
@@ -513,7 +513,7 @@
                             <h1>View</h1>
                         </div>
                         <div class="table-content-value text-md-center">
-                            <a href="#">
+                            <a href="{{url('/dashboard/trainer-detail')}}">
                                 <img class="" src="{{asset('public/assets/images/view-icon.svg')}}" alt="">
                             </a>
 
@@ -533,6 +533,6 @@
 @endsection
 @section('insertsfooter')
 <script>
-    $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
+    $('.sidenav .nav-item:nth-of-type(2)').addClass('active')
 </script>
 @endsection
