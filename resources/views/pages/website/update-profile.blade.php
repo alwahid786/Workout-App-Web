@@ -221,7 +221,7 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Date of Birth</label>
-                    <input type="text" name="date_of_birth" value="{{auth()->user()->date_of_birth ?? ''}}" placeholder="YYYY-MM-DD" class="form-control py-4" id="inputAddress2">
+                    <input type="date" name="date_of_birth" class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
