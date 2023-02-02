@@ -274,12 +274,13 @@ class UserController extends Controller
     //////////.......get all booked session .......///////
     public function getBookedSession()
     {
+
         $booksession = BookedSession::where('user_id', auth()->user()->id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->get();
         if (!$booksession) {
             return $this->sendError('Session Detail');
         }
         $booksession_detail = json_decode($booksession, true);
-
+        // dd($booksession_detail);
         return view('pages.userdashboard.dashboard.user-session', compact('booksession_detail'));
     }
     //////// view booked session.........//////
