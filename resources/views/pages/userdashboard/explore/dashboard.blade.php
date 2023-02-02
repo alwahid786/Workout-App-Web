@@ -747,5 +747,6 @@
     $('.credit_card').click(function() {
 
     });
+    $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
 </script>
 @endsection
