@@ -1,283 +1,6 @@
 @extends('layouts.trainerSide.default')
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepthree.css')}}">
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
-<!-- <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    .update-info-header {
-        background-color: #F8F8F8;
-    }
-
-    .update-info-content h1 {
-        font-size: 1.3rem;
-        font-weight: 400;
-    }
-
-    /* form */
-    .form-container {
-        background: #F8F8F8;
-        border-radius: 10px
-    }
-
-    .pro-form label {
-        color: #464646;
-        font-size: 0.8rem;
-    }
-
-    .pro-form input {
-        height: 65px;
-        border-radius: 10px !important;
-        border: 1px solid rgba(0, 0, 0, 0.2) !important;
-        box-shadow: none !important;
-        outline: none !important;
-        background: #F8F8F8;
-        color: #666666;
-    }
-
-    .select-outer {
-        position: relative;
-    }
-
-    .select-outer i {
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        cursor: pointer;
-        color: #848484;
-    }
-
-    .pro-form select {
-        height: 65px;
-        border-radius: 10px !important;
-        background: #F8F8F8;
-        box-shadow: none !important;
-        color: #666666;
-        outline: none !important;
-        border: 1px solid rgba(0, 0, 0, 0.2) !important;
-        -moz-appearance: none;
-        /* Firefox */
-        -webkit-appearance: none;
-        /* Safari and Chrome */
-        appearance: none;
-    }
-
-    .pro-form input::placeholder,
-    .pro-form select::placeholder {
-        color: #666666;
-    }
-
-    .difficulty-level {
-        display: flex;
-        align-items: center;
-        height: 65px;
-    }
-
-    .difficulty-level input {
-        height: 45px !important;
-        border-radius: 30px !important;
-        text-align: center;
-        border: 1px solid #E37048 !important;
-        color: #E37048;
-        background: #F8F8F8 !important;
-        cursor: pointer;
-    }
-
-    .difficulty-level input:hover,
-    .difficulty-level input:active,
-    .difficulty-level input:focus {
-        background: #E37048 !important;
-        color: white;
-    }
-
-    .price-outer {
-        position: relative;
-    }
-
-    .price-box {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translate(0%, -50%);
-        background-color: #E37048;
-        width: 50px;
-        height: 100%;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .price-outer input {
-        padding-left: 60px;
-    }
-
-    .price-box h1 {
-        color: white;
-        font-size: 1rem;
-        margin-bottom: 0px;
-        font-weight: 400;
-    }
-
-    .time-box-outer {
-        display: flex;
-    }
-
-    .time-box-inner {
-        border-radius: 30px;
-        padding: 10px 20px;
-        color: #fff;
-
-    }
-
-    .yellow-time {
-        background: #FFA900;
-
-    }
-
-    .green-time {
-        background: #B1D244;
-    }
-
-    @media screen and (max-width:991px) and (min-width:768px) {
-        .difficulty-level input {
-            font-size: 0.8rem;
-            height: 35px !important;
-            border-radius: 30px !important;
-            text-align: center;
-            border: 1px solid #E37048 !important;
-            color: #E37048;
-            background: #F8F8F8 !important;
-            cursor: pointer;
-        }
-    }
-
-    @media screen and (max-width:576px) {
-        .difficulty-level {
-            display: flex;
-            align-items: center;
-            height: 55px;
-        }
-
-        .difficulty-level input {
-            font-size: 0.8rem;
-            height: 35px !important;
-            border-radius: 30px !important;
-            text-align: center;
-            border: 1px solid #E37048 !important;
-            color: #E37048;
-            background: #F8F8F8 !important;
-            cursor: pointer;
-        }
-
-        .pro-form input {
-            height: 55px;
-        }
-
-        .pro-form select {
-            height: 55px !important;
-        }
-
-        .time-box-inner p {
-            font-size: 0.8rem;
-        }
-    }
-
-    /* p */
-    .pagination-wrapper {
-        background-color: #F8F8F8;
-        border-radius: 10px;
-        position: relative;
-        padding-top: 1rem;
-        padding-bottom: 3rem;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-
-    .pagination-border {
-        border: 1px solid #E37048;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
-        z-index: 1;
-    }
-
-    .pagination-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-
-    .pagination-box {
-        position: relative;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: #f5bfac;
-        border: 2px solid #E37048;
-        z-index: 2;
-    }
-
-    .active-pagination {
-        background: #E37048;
-    }
-
-    .pagination-box h1 {
-        position: absolute;
-        color: white;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 0px;
-    }
-
-    .pagination-box p {
-        font-size: 0.6rem;
-        margin-bottom: 0px;
-        color: black;
-        position: absolute;
-        top: 55px;
-        left: 50%;
-        text-align: center;
-        transform: translate(-50%, -50%);
-
-    }
-
-    @media screen and (max-width:576px) {
-        .pagination-box {
-            position: relative;
-            width: 30px;
-            height: 30px;
-        }
-
-        .pagination-box h1 {
-            position: absolute;
-            color: white;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 0px;
-        }
-
-        .pagination-box p {
-            font-size: 0.5rem;
-        }
-    }
-</style> -->
-
 @section('content')
 <!-- header-section -->
 <div class="container-fluid update-info-header">
@@ -441,7 +164,7 @@
             </div>
             <div class="col-12">
                 <div class="form-btn my-3 ">
-                    <a href="#" class="p-0">Done</a>
+                    <a href="#" class="p-0 btn">Done</a>
                 </div>
             </div>
         </div>
@@ -464,7 +187,7 @@
             </div>
         </div>
         <div class="form-btn my-5 ">
-            <a href="#" class="p-0">Done</a>
+            <a href="{{url('/trainer/stepfour')}}" class="p-0 btn">Done</a>
         </div>
     </form>
 
@@ -476,14 +199,14 @@
     <!-- .............Stretching Outdoors............... -->
     <div class="slot-wrapper py-3 px-3 my-4">
         <div class="slot-vertical-icon my-2 text-right">
-            <img class="toggle-icon" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-            <div class="icon-div d-none">
-                <div class="icon-edit py-2">
+            <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <div class="icon-div icon-div-one">
+                <div class="icon-edit py-3 icon-div-inner">
                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                     <h1>Edit</h1>
                 </div>
-                <div class="icon-del py-2">
+                <div class="icon-del py-3 icon-div-inner">
                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
                     <h1>Delete</h1>
@@ -533,7 +256,7 @@
                 <h1>$100</h1>
             </div>
         </div>
-        <div class="slot-timing-stacks">
+        <div class="slot-timing-stacks stack-timing-one">
             <div class="timing-stack timing-stack-one px-3 my-3">
                 <div class="week-name">
                     <h1>Mon:</h1>
@@ -677,6 +400,12 @@
                 </div>
             </div>
         </div>
+        <div class="col-12">
+            <div class="slot-arrow slot-arrow-one text-center">
+                <i class="fa fa-angle-double-down down-arrow" aria-hidden="true"></i>
+                <i class="fa fa-angle-double-up up-arrow" aria-hidden="true"></i>
+            </div>
+        </div>
 
 
 
@@ -687,14 +416,14 @@
     <!-- .............Yoga Slot............... -->
     <div class="slot-wrapper py-3 px-3 my-4">
         <div class="slot-vertical-icon my-2 text-right">
-            <img class="toggle-icon" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-            <div class="icon-div d-none">
-                <div class="icon-edit py-2">
+            <img class="dot-toggle-icon-two" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <div class="icon-div icon-div-two">
+                <div class="icon-edit py-3 icon-div-inner">
                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                     <h1>Edit</h1>
                 </div>
-                <div class="icon-del py-2">
+                <div class="icon-del py-3 icon-div-inner">
                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
                     <h1>Delete</h1>
@@ -732,12 +461,6 @@
                 </div>
 
             </div>
-            <!-- <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="slot-image">
-                    <img src="{{asset('public/assets/trainerimages/stepthree.jpg')}}" alt="">
-                </div>
-
-            </div> -->
 
         </div>
         <div class="slot-wrapper-heading px-3 my-3">
@@ -749,7 +472,7 @@
                 <h1>$100</h1>
             </div>
         </div>
-        <div class="slot-timing-stacks">
+        <div class="slot-timing-stacks stack-timing-two">
             <div class="timing-stack timing-stack-one px-3 my-3">
                 <div class="week-name">
                     <h1>Mon:</h1>
@@ -894,7 +617,12 @@
             </div>
         </div>
 
-
+        <div class="col-12">
+            <div class="slot-arrow slot-arrow-two text-center">
+                <i class="fa fa-angle-double-down down-arrow" aria-hidden="true"></i>
+                <i class="fa fa-angle-double-up up-arrow" aria-hidden="true"></i>
+            </div>
+        </div>
 
     </div>
 </div>
@@ -913,12 +641,54 @@
             }
         });
     });
-
-    $('.toggle-icon').mouseover(function() {
-        $('.icon-div').removeClass('d-none')
+    // edit and delete 
+    // show and hide
+    // one
+    $('.icon-div-one').hide();
+    $('.dot-toggle-icon-one').click(function() {
+        $('.icon-div-one').show();
+        $('.icon-div-two').hide();
     });
-    $('.icon-div').mouseleave(function() {
-        $(this).addClass('d-none')
+    $('.icon-div-one').mouseleave(function() {
+        $('.icon-div-one').hide();
+    });
+    // two
+    $('.icon-div-two').hide();
+    $('.dot-toggle-icon-two').click(function() {
+        $('.icon-div-two').show();
+        $('.icon-div-one').hide();
+    });
+    $('.icon-div-two').mouseleave(function() {
+        $('.icon-div-two').hide();
+    });
+    // time slot
+    // show and hide
+    // one
+    $('.stack-timing-one').hide();
+    $('.slot-arrow-one .up-arrow').hide();
+    $('.slot-arrow-one .down-arrow').click(function() {
+        $('.stack-timing-one').show(1000);
+        $('.slot-arrow-one .up-arrow').show(1000);
+        $('.slot-arrow-one .down-arrow').hide(1000);
+
+    });
+    $('.slot-arrow-one .up-arrow').click(function() {
+        $('.stack-timing-one').hide(1000);
+        $('.slot-arrow-one .up-arrow').hide(1000);
+        $('.slot-arrow-one .down-arrow').show(1000);
+    });
+    // two
+    $('.stack-timing-two').hide();
+    $('.slot-arrow-two .up-arrow').hide();
+    $('.slot-arrow-two .down-arrow').click(function() {
+        $('.stack-timing-two').show(1000);
+        $('.slot-arrow-two .up-arrow').show(1000);
+        $('.slot-arrow-two .down-arrow').hide(1000);
+    });
+    $('.slot-arrow-two .up-arrow').click(function() {
+        $('.stack-timing-two').hide(1000);
+        $('.slot-arrow-two .up-arrow').hide(1000);
+        $('.slot-arrow-two .down-arrow').show(1000);
     });
 </script>
 @endsection

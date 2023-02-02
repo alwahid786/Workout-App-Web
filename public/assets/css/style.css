@@ -1270,7 +1270,7 @@ body {
 }
 
 .modalHeader img {
-	cursor: pointer;
+	cursor: pointer !important;
 }
 
 .modalContent {
