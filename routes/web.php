@@ -173,3 +173,6 @@ Route::get('/trainer/stepfour', function () {
 Route::get('/trainer/stepfour-second', function () {
     return view('pages.trainerSide.account-step-four-second');
 });
+Route::get('/trainer/stepfive', function () {
+    return view('pages.trainerSide.account-step-five');
+});
