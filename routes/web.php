@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
     Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
     Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
+    Route::any('/filter/session', [UserController::class, 'SearchResult'])->name('filter/session');
+
     Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
 
     Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');

@@ -559,17 +559,15 @@
                     <div class="row">
                         <div class="col-lg-6 my-2">
 
-                            <div class="filter-menu">
+                            <div class="filter-menu" id="filter">
                                 <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                                     <div class="filter-left-select-heading drop-icon-parent">
                                         <h1>Workout Type</h1>
                                         <div class="drop-icon">
-                                            <select class="form-control wide s-select" id="exampleFormControlSelect1">
-                                                <option>Yoga</option>
-                                                <option>Yoga</option>
-                                                <option>Yoga</option>
-                                                <option>Yoga</option>
-                                                <option>Yoga</option>
+                                            <select class="form-control wide s-select" id="category">
+                                                @foreach($category as $categorys)
+                                                <option>{{$categorys['title']}}</option>
+                                                @endforeach
                                             </select>
                                             <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                         </div>
@@ -598,9 +596,9 @@
                                         <h1>Class Type</h1>
                                         <div class="drop-icon">
 
-                                            <select class="wide s-select form-control ">
-                                                <option value="">One to One</option>
-                                                <option value="">Group</option>
+                                            <select class="wide s-select form-control " id="type">
+                                                <option value="One to One">One to One</option>
+                                                <option value="Group">Group</option>
                                             </select>
                                             <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
@@ -886,8 +884,10 @@
                     <div class="dashboard-header-left my-4 pt-2">
                         <h1>My Sessions</h1>
                     </div>
-                    <div class="row ">
+                    <div class="row " id="sessionList">
+
                         @foreach($booksession_detail as $bookedsession)
+                        @if(!empty($bookedsession['session']['class']['category']))
                         <div class="col-lg-6 my-2">
                             <div class="class-left-banner px-2 py-3">
                                 <img class="class-banner-img" src="{{$bookedsession['session']['class']['class_image'][0]['image']}}" alt="">
@@ -921,9 +921,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         @endforeach
-
-
                     </div>
                 </div>
 
@@ -1049,4 +1048,35 @@
         <script>
             $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
         </script>
+        <script>
+            $('#filter').on('change', function(e) {
+                var category = $('#category').val();
+                var type = $('#type').val();
+                // alert(type);
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: `{{route('filter/session')}}`,
+                    type: "POST",
+                    data: {
+                        category: category,
+                        type: type,
+                    },
+                    cache: false,
+                    success: function(dataResult) {
+                        console.log(dataResult['sessionView']);
+                        $("#sessionList").html(dataResult['sessionView']);
+
+                    },
+                    error: function(jqXHR, exception) {
+                        alert('fail');
+                        $('.loaderDiv').hide();
+                        toastr.error(jqXHR.responseJSON.message);
+                    }
+                });
+
+            });
+        </script>
+
         @endsection
