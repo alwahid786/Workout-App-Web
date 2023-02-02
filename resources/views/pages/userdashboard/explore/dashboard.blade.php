@@ -16,7 +16,7 @@
                 <div class="col-sm-8 text-right">
                     <div class="dashboard-header-right">
                         <a href="" class="active">Grid View</a>
-                        <a href="{{url('dashboard/map')}}">Map View</a>
+                        <a href="{{route('mapViewPage')}}">Map View</a>
                     </div>
                 </div>
             </div>

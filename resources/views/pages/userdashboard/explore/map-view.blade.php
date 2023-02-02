@@ -244,7 +244,7 @@
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="">
                     <div class="dashboard-header-left">
-                        <h1>Search <span class="pl-1"> One to One Session</span></h1>
+                        <h1>Search <span class="pl-1"> <span id="sessionType">One to One</span> Session</span></h1>
                     </div>
                 </div>
                 <div class="">
@@ -257,14 +257,6 @@
         </div>
         <div class="filter-section py-4 px-2">
             <div class="row">
-                <!-- <div class="col-12 my-auto">
-                    <div class="filter-menu-left my-auto px-sm-2">
-                        <div class="filter-left-heading">
-                            <h1>Sessions</h1>
-                        </div>
-
-                    </div>
-                </div> -->
                 <div class="col-xl-6">
                     <div class=" filter-menu">
                         <div class=" filter-menu-right">
@@ -272,11 +264,11 @@
                                 <div class="filter-left-select-heading drop-icon-parent">
                                     <h1>Workout Type</h1>
                                     <div class="drop-icon">
-                                        <select class="wide s-select form-control ">
-                                            <option value="">Yoga</option>
-                                            <option value="">Yoga1</option>
-                                            <option value="">Yoga2</option>
-                                            <option value="">Yoga3</option>
+                                        <select class="wide s-select form-control" id="workout_category">
+                                            <option disabled="disabled" selected>Select --</option>
+                                            @foreach($categories as $category)
+                                            <option value="{{$category['id']}}" data-src="{{$category['title']}}">{{$category['title']}}</option>
+                                            @endforeach
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                     </div>
@@ -286,15 +278,14 @@
                                 <div class="filter-left-select-heading drop-icon-parent">
                                     <h1>Location</h1>
                                     <div class="drop-icon">
-                                        <select class="wide s-select form-control ">
+                                        <select class="wide s-select form-control " id="workout_location">
+                                            <option disabled="disabled" selected>Select --</option>
                                             <option value="">London</option>
                                             <option value="">London1</option>
                                             <option value="">London2</option>
                                             <option value="">London3</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-
-
                                     </div>
 
                                 </div>
@@ -304,9 +295,10 @@
                                     <h1>Class Type</h1>
                                     <div class="drop-icon">
 
-                                        <select class="wide s-select form-control ">
-                                            <option value="">One to One</option>
-                                            <option value="">Group</option>
+                                        <select class="wide s-select form-control" id="workout_type">
+                                            <option disabled="disabled" selected>Select --</option>
+                                            <option value="One to One">One to One</option>
+                                            <option value="Group">Group</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
@@ -315,24 +307,12 @@
 
                                 </div>
                             </div>
-                            <!-- <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                            <div class="filter-left-select-heading ">
-                                <h1>Class Type</h1>
-                                <div class="dropdown-s">
-                                    <button class="dropbtn-s  ">One to One <i class="fa fa-angle-down pr-3 " aria-hidden="true"></i>
-
-                                    </button>
-                                    <div class="dropdown-content-s">
-                                        <a href="{{url('/dashboard/mapgroup')}}">Group</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                             <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                                 <div class="filter-left-select-heading drop-icon-parent">
                                     <h1>Price Range</h1>
                                     <div class="drop-icon drop-icon-thre">
-                                        <select class="wide s-select form-control ">
+                                        <select class="wide s-select form-control " id="workout_price">
+                                            <option disabled="disabled" selected>Select --</option>
                                             <option>$20 to $100</option>
                                             <option>$20 to $100</option>
                                             <option>$20 to $100</option>
@@ -343,8 +323,6 @@
 
 
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -359,7 +337,8 @@
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                                 <h1>Range</h1>
                                 <div class="drop-icon">
-                                    <select class="wide s-select form-control">
+                                    <select class="wide s-select form-control" id="workout_radius">
+                                        <option disabled="disabled" selected>Select --</option>
                                         <option>1-3KM</option>
                                         <option>1-5KM</option>
                                         <option>1-7KM</option>
@@ -367,8 +346,6 @@
                                         <option>1-11KM</option>
                                     </select>
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-
-
                                 </div>
 
 
@@ -379,7 +356,7 @@
             </div>
             <div class="col text-right my-2 pr-0">
                 <div class="filter-section-btn py-2">
-                    <a href="" class="">Apply</a>
+                    <a href="javascript:void(0)" class="applyFilterBtn">Apply</a>
                 </div>
             </div>
             <div class="col py-2 map-section px-0">
@@ -434,42 +411,62 @@
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script>
     $(document).ready(function() {
-        // $('.s-select').niceSelect();
+        $('.s-select').niceSelect();
         // var calendarEl = document.getElementById('demo-1-week');
         // var calendar = new FullCalendar.Calendar(calendarEl, {
         //     initialView: 'dayGridWeek'
         // });
         // calendar.render();
+
+        $("#workout_type").on('change', function() {
+            $('#sessionType').text($(this).val());
+        })
+        $(".applyFilterBtn").on('click', function() {
+            let category = $('#workout_category').val();
+            let location = $('#workout_location').val();
+            let type = $('#workout_type').val();
+            let price = $('#workout_price').val();
+            let radius = $('#workout_radius').val();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: `{{route('filterMapData')}}`,
+                type: "POST",
+                data: {
+                    category: category,
+                    location: location,
+                    type: type,
+                    price: price,
+                    radius: radius,
+                },
+                cache: false,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(jqXHR, exception) {
+                    toastr.error(jqXHR.responseJSON.message);
+                }
+
+            });
+        })
     });
 </script>
-<!-- <script>
-    mobiscroll.setOptions({
-        theme: 'ios',
-        themeVariant: 'light',
-
-    });
-
-    mobiscroll.datepicker('#demo-1-week', {
-        controls: ['calendar'],
-        display: 'inline',
-        calendarType: 'week',
-        calendarSize: 1
-    });
-</script> -->
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
 <script>
     $('.map-card').hide();
+    var UserLocationdata = @json($currentUserInfo);
+
     // Initialize and add the map
     function initMap() {
         // The location of Uluru
         const uluru = {
-            lat: -25.344,
-            lng: 131.031
+            lat: parseInt(UserLocationdata.latitude),
+            lng: parseInt(UserLocationdata.longitude)
         };
         // The map, centered at Uluru
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 4,
+            zoom: 10,
             center: uluru,
         });
         // The marker, positioned at Uluru
@@ -483,6 +480,46 @@
     }
 
     window.initMap = initMap;
+
+    // Initialize and add the map
+    // function initMap() {
+    //     // The location of Uluru
+    //     var locations = [
+    //         [-33.890542, 151.274856, 4],
+    //         [-33.923036, 151.259052, 5],
+    //         [-34.028249, 151.157507, 3],
+    //         [-33.80010128657071, 151.28747820854187, 2],
+    //         [-33.950198, 151.259302, 1]
+    //     ];
+
+    //     var map = new google.maps.Map(document.getElementById('map'), {
+    //         zoom: 10,
+    //         center: new google.maps.LatLng(-33.92, 151.25),
+    //         mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     });
+
+    //     var infowindow = new google.maps.InfoWindow();
+
+    //     var marker, i;
+
+    //     for (i = 0; i < locations.length; i++) {
+    //         marker = new google.maps.Marker({
+    //             position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+    //             map: map
+    //         });
+
+    //         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    //             return function() {
+    //                 //     infowindow.setContent(locations[i][0]);
+    //                 //     infowindow.open(map, marker);
+    //                 $('.map-card').show();
+    //             }
+
+    //         })(marker, i));
+    //     }
+    // }
+
+    // window.initMap = initMap;
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
