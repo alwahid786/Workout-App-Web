@@ -476,14 +476,14 @@
     <!-- .............Stretching Outdoors............... -->
     <div class="slot-wrapper py-3 px-3 my-4">
         <div class="slot-vertical-icon my-2 text-right">
-            <img class="toggle-icon" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-            <div class="icon-div d-none">
-                <div class="icon-edit py-2">
+            <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <div class="icon-div icon-div-one">
+                <div class="icon-edit py-3 icon-div-inner">
                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                     <h1>Edit</h1>
                 </div>
-                <div class="icon-del py-2">
+                <div class="icon-del py-3 icon-div-inner">
                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
                     <h1>Delete</h1>
@@ -533,7 +533,7 @@
                 <h1>$100</h1>
             </div>
         </div>
-        <div class="slot-timing-stacks">
+        <div class="slot-timing-stacks stack-timing-one">
             <div class="timing-stack timing-stack-one px-3 my-3">
                 <div class="week-name">
                     <h1>Mon:</h1>
@@ -677,6 +677,12 @@
                 </div>
             </div>
         </div>
+        <div class="col-12">
+            <div class="slot-arrow slot-arrow-one text-center">
+                <i class="fa fa-angle-double-down down-arrow" aria-hidden="true"></i>
+                <i class="fa fa-angle-double-up up-arrow" aria-hidden="true"></i>
+            </div>
+        </div>
 
 
 
@@ -687,14 +693,14 @@
     <!-- .............Yoga Slot............... -->
     <div class="slot-wrapper py-3 px-3 my-4">
         <div class="slot-vertical-icon my-2 text-right">
-            <img class="toggle-icon" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-            <div class="icon-div d-none">
-                <div class="icon-edit py-2">
+            <img class="dot-toggle-icon-two" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <div class="icon-div icon-div-two">
+                <div class="icon-edit py-3 icon-div-inner">
                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                     <h1>Edit</h1>
                 </div>
-                <div class="icon-del py-2">
+                <div class="icon-del py-3 icon-div-inner">
                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
                     <h1>Delete</h1>
@@ -732,12 +738,6 @@
                 </div>
 
             </div>
-            <!-- <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="slot-image">
-                    <img src="{{asset('public/assets/trainerimages/stepthree.jpg')}}" alt="">
-                </div>
-
-            </div> -->
 
         </div>
         <div class="slot-wrapper-heading px-3 my-3">
@@ -749,7 +749,7 @@
                 <h1>$100</h1>
             </div>
         </div>
-        <div class="slot-timing-stacks">
+        <div class="slot-timing-stacks stack-timing-two">
             <div class="timing-stack timing-stack-one px-3 my-3">
                 <div class="week-name">
                     <h1>Mon:</h1>
@@ -894,7 +894,12 @@
             </div>
         </div>
 
-
+        <div class="col-12">
+            <div class="slot-arrow slot-arrow-two text-center">
+                <i class="fa fa-angle-double-down down-arrow" aria-hidden="true"></i>
+                <i class="fa fa-angle-double-up up-arrow" aria-hidden="true"></i>
+            </div>
+        </div>
 
     </div>
 </div>
@@ -913,12 +918,54 @@
             }
         });
     });
-
-    $('.toggle-icon').mouseover(function() {
-        $('.icon-div').removeClass('d-none')
+    // edit and delete 
+    // show and hide
+    // one
+    $('.icon-div-one').hide();
+    $('.dot-toggle-icon-one').click(function() {
+        $('.icon-div-one').show();
+        $('.icon-div-two').hide();
     });
-    $('.icon-div').mouseleave(function() {
-        $(this).addClass('d-none')
+    $('.icon-div-one').mouseleave(function() {
+        $('.icon-div-one').hide();
+    });
+    // two
+    $('.icon-div-two').hide();
+    $('.dot-toggle-icon-two').click(function() {
+        $('.icon-div-two').show();
+        $('.icon-div-one').hide();
+    });
+    $('.icon-div-two').mouseleave(function() {
+        $('.icon-div-two').hide();
+    });
+    // time slot
+    // show and hide
+    // one
+    $('.stack-timing-one').hide();
+    $('.slot-arrow-one .up-arrow').hide();
+    $('.slot-arrow-one .down-arrow').click(function() {
+        $('.stack-timing-one').show(1000);
+        $('.slot-arrow-one .up-arrow').show(1000);
+        $('.slot-arrow-one .down-arrow').hide(1000);
+
+    });
+    $('.slot-arrow-one .up-arrow').click(function() {
+        $('.stack-timing-one').hide(1000);
+        $('.slot-arrow-one .up-arrow').hide(1000);
+        $('.slot-arrow-one .down-arrow').show(1000);
+    });
+    // two
+    $('.stack-timing-two').hide();
+    $('.slot-arrow-two .up-arrow').hide();
+    $('.slot-arrow-two .down-arrow').click(function() {
+        $('.stack-timing-two').show(1000);
+        $('.slot-arrow-two .up-arrow').show(1000);
+        $('.slot-arrow-two .down-arrow').hide(1000);
+    });
+    $('.slot-arrow-two .up-arrow').click(function() {
+        $('.stack-timing-two').hide(1000);
+        $('.slot-arrow-two .up-arrow').hide(1000);
+        $('.slot-arrow-two .down-arrow').show(1000);
     });
 </script>
 @endsection
