@@ -550,7 +550,7 @@
 
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
-                            <a href="">
+                            <a href="{{url('/dashboard/trainer')}}">
                                 <div class="work-session-card yellow-session-card py-4 px-1 ">
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your<span>Trainer</span> </h1>
