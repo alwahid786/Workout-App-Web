@@ -120,6 +120,9 @@ Route::get('/userdashboard/upcomingsessionone', function () {
 Route::get('/userdashboard/upcomingsessiongroup', function () {
     return view('pages.userdashboard.dashboard.user-upcoming-session-group');
 });
+Route::get('/userdashboard/upcomingsessionlist', function () {
+    return view('pages.userdashboard.dashboard.upcoming-session-list');
+});
 // payment
 Route::get('/payment', function () {
     return view('pages.userdashboard.payment.payment');
