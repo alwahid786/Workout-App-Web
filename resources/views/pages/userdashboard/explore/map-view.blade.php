@@ -2,6 +2,7 @@
 @section('content')
 <!-- <link rel="stylesheet" href="{{asset('public/assets/css/mobiscroll.javascript.min.css')}}"> -->
 <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<script src="{{asset('public/assets/fullcalendar/dist/index.global.min.js')}}"></script>
 <style>
     .user-search-box {
         display: block;
@@ -433,10 +434,15 @@
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script>
     $(document).ready(function() {
-        $('.s-select').niceSelect();
+        // $('.s-select').niceSelect();
+        // var calendarEl = document.getElementById('demo-1-week');
+        // var calendar = new FullCalendar.Calendar(calendarEl, {
+        //     initialView: 'dayGridWeek'
+        // });
+        // calendar.render();
     });
 </script>
-<script>
+<!-- <script>
     mobiscroll.setOptions({
         theme: 'ios',
         themeVariant: 'light',
@@ -449,7 +455,7 @@
         calendarType: 'week',
         calendarSize: 1
     });
-</script>
+</script> -->
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
 <script>
