@@ -187,7 +187,7 @@
             </div>
         </div>
         <div class="form-btn my-5 ">
-            <a href="#" class="p-0">Done</a>
+            <a href="{{url('/trainer/stepfour')}}" class="p-0">Done</a>
         </div>
     </form>
 
