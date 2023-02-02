@@ -23,22 +23,26 @@
     }
 
     .hero-section-upload {
-        color: white;
-        background: #E37048;
-        border-radius: 7px;
-        font-size: 1rem;
-        font-weight: 600;
-        margin: 0 20px;
-        cursor: pointer;
-        width: 100%;
-        max-width: 204px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    color: #E37048;
+    background: #FFF;
+    border: 1px solid #E37048;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 20px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 204px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    }
-
+}
+.hero-section-upload:hover{
+    color: white;
+    background: #E37048;
+}
     .pro-form label {
         color: #464646;
         font-size: 0.8rem;
@@ -69,9 +73,16 @@
         resize: none !important;
         height: 200px !important;
     }
-
+    .profile-nxt-btn a{
+        background-color: #ffff !important;
+        color: #E37048 !important;
+        border: 1px solid #E37048 !important;
+    }
+    .profile-nxt-btn a:hover{
+        background: #E37048 !important;
+        color: white !important;
+    }
     .profile-nxt-btn a,
-    .profile-nxt-btn a:hover,
     .profile-nxt-btn a:focus,
     .profile-nxt-btn a:active {
         background: #E37048;
