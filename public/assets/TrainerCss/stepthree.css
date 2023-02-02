@@ -148,39 +148,33 @@
     background: #B1D244;
 }
 
-.form-btn {
+.form-btn a {
     width: 160px;
     height: 50px;
-    background-color: #F8F8F8 ;
+    background-color: #F8F8F8;
     border: 1px solid #E37048;
     color: #E37048;
     border-radius: 7px;
     margin: 0 auto;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+    text-decoration: none !important;
 }
+
+.form-btn a:hover {
+    background-color: #E37048;
+    color: white;
+}
+
+
+
+
+
 
 .form-btn a {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #E37048;
-    
-
-}
-.form-btn:hover a{
-   
-    color: #F8F8F8 !important;
-}
-.form-btn a:hover{
-   
-    text-decoration: none;
-}
-.form-btn:hover{
-    background: #E37048;
-}
-
-.form-btn a{
     text-decoration: none;
 }
 
