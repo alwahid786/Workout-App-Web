@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 /* body{
     background-image: url(../trainerimages/stepFourbackground.svg);
     background-position: center;
@@ -17,7 +18,8 @@
     font-size: 1.3rem;
     font-weight: 400;
 }
-.outer-step{
+
+.outer-step {
     position: relative;
     background-image: url(../trainerimages/stepFourbackground.svg);
     background-size: cover;
@@ -26,32 +28,37 @@
     height: 100vh;
     width: 100%;
 }
-.content-outer{
+
+.content-outer {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
-.content-section{
+
+.content-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     /* padding-top: 150px; */
 }
-.content-section img{
+
+.content-section img {
     width: 100%;
     max-width: 180px;
 }
-.content-section h1{
+
+.content-section h1 {
     font-size: 2.5rem;
     font-weight: 500;
     color: #000;
 }
-.form-btn{
+
+.form-btn {
     width: 200px;
     height: 50px;
-    background-color: transparent ;
+    background-color: transparent;
     border: 1px solid #E37048;
     color: #E37048;
     border-radius: 7px;
@@ -65,43 +72,108 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: #E37048;
-    
+
 
 }
-.form-btn:hover a{
-   
+
+.form-btn:hover a {
+
     color: #F8F8F8 !important;
 }
-.form-btn a:hover{
-   
+
+.form-btn a:hover {
+
     text-decoration: none;
 }
-.form-btn:hover{
+
+.form-btn:hover {
     background: #E37048;
 }
 
-.form-btn a{
+.form-btn a {
     text-decoration: none;
 }
+
 @media screen and (max-width:1024px) {
-    .outer-step{
+    .outer-step {
         background-position: center;
     }
 }
+
 @media screen and (max-width:576px) {
     .content-section img {
         width: 100%;
         max-width: 130px;
     }
+
     .content-section h1 {
         font-size: 2.2rem;
         font-weight: 500;
         color: #000;
     }
-    .form-btn{
+
+    .form-btn {
         width: 160px;
     }
-    .form-btn a{
+
+    .form-btn a {
         font-size: 1.2rem;
     }
+}
+
+/* new */
+.stripe-container {}
+
+.stripe-wrapper h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #6772E5;
+}
+
+.stripe-wrapper p {
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 500;
+}
+
+.stripe-wrapper a {
+    text-decoration: none !important;
+    box-shadow: none !important;
+    color: #E37048;
+    background: white;
+    border: 1px solid #E37048;
+    width: 180px;
+    border-radius: 5px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.stripe-wrapper a:hover {
+    background: #E37048;
+    color: white;
+}
+
+.stripe-wrapper img {
+    max-width: 200px;
+    width: 100%;
+}
+
+.stripe-container {
+    background-image: url('../trainerimages/stripe-bg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 15rem;
+    padding-bottom: 15rem;
+    position: relative;
+}
+
+.stripe-wrapper {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -164,7 +164,7 @@
             </div>
             <div class="col-12">
                 <div class="form-btn my-3 ">
-                    <a href="#" class="p-0">Done</a>
+                    <a href="#" class="p-0 btn">Done</a>
                 </div>
             </div>
         </div>
@@ -187,7 +187,7 @@
             </div>
         </div>
         <div class="form-btn my-5 ">
-            <a href="{{url('/trainer/stepfour')}}" class="p-0">Done</a>
+            <a href="{{url('/trainer/stepfour')}}" class="p-0 btn">Done</a>
         </div>
     </form>
 

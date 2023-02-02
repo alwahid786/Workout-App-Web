@@ -53,7 +53,7 @@
                         <div class="session-card-content">
                             <div class="session-profile-left py-2">
                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                <p class="pl-3">John Smith </p>
+                                <p class="pl-1 pl-sm-3">John Smith </p>
                             </div>
                             <div class="session-anchor-right">
                                 <a href="{{url('/userdashboard/sessionone')}}">View</a>
@@ -78,7 +78,7 @@
                         <div class="session-card-content">
                             <div class="session-profile-left py-2">
                                 <img src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                <p class="pl-3">John Smith</p>
+                                <p class="pl-1 pl-sm-3">John Smith</p>
                             </div>
                             <div class="session-anchor-right">
                                 <a href="{{url('/userdashboard/sessiongroup')}}">View</a>
@@ -142,7 +142,7 @@
                         <div class="detail-profile-button px-md-4">
 
                             <a href="#" class="btn mr-sm-4 my-2">Message</a>
-                            <a href="#" class="btn  my-2" >Delete</a>
+                            <a href="#" class="btn  my-2">Delete</a>
                         </div>
                     </div>
                 </div>
