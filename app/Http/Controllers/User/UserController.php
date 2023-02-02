@@ -300,13 +300,16 @@ class UserController extends Controller
     public function viewSession($id)
     {
         $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
+        $classes = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
+
         if (!$session_detail) {
             return $this->sendError('Session Detail');
         }
         $bookedsession = json_decode($session_detail, true);
-        // dd($bookedsession);
+        // dd($classes);
+        // $classes = json_decode($classes, true);
 
-        return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession'));
+        return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession', 'classes'));
     }
     ///////.........user dashboard upcoming , current , past session .......//////
     public function UserBookedSession()
@@ -445,16 +448,16 @@ class UserController extends Controller
             array_push($whereCategory, ['title', '=', $request->category]);
         }
         $booksession =  (new BookedSession)->newQuery();
-        
+
         $whereSession = [];
-        if($request->has('type') && !empty($request->type)){
+        if ($request->has('type') && !empty($request->type)) {
             array_push($whereSession, ['type', '=', $request->type]);
         }
-       $booksession = $booksession->where('user_id', auth()->user()->id)->with(['session' => function ($query) use ($whereSession) {
-        if (!empty($whereSession)) {
-            $query->where($whereSession);
-        }
-    },'session.class.trainer', 'session.class.category' => function ($query) use ($whereCategory) {
+        $booksession = $booksession->where('user_id', auth()->user()->id)->with(['session' => function ($query) use ($whereSession) {
+            if (!empty($whereSession)) {
+                $query->where($whereSession);
+            }
+        }, 'session.class.trainer', 'session.class.category' => function ($query) use ($whereCategory) {
             if (!empty($whereCategory)) {
                 $query->where($whereCategory);
             }
