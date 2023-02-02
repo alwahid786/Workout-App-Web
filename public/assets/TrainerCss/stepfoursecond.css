@@ -74,6 +74,11 @@
     text-decoration: none;
     color: #fff;
 }
+@media screen and (max-width:1024px) {
+    .outer-step{
+        background-position: center;
+    }
+}
 @media screen and (max-width:576px) {
     .content-section img {
         width: 100%;
