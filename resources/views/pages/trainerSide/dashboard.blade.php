@@ -61,13 +61,13 @@
         font-weight: 500;
     }
 
-    /* .dashboard-session-card {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 26.32%, #FFFFFF 117.8%), url('../../../../../workitpt_web/public/assets/trainerimages/sessionfive.jpg');
+    .dashboard-session-card {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 26.32%, #FFFFFF 117.8%), url('../../../../workitpt_web/public/assets/trainerimages/sessionfive.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         border-radius: 10px;
-    } */
+    }
 
     .dashboard-session-card .card-heading {
         color: white;
