@@ -256,11 +256,12 @@
                         <div class="card-img ">
                             <img src="{{$trainerData['class_image'][0]['image']}}" alt="">
                         </div>
+
+
                         <div class="card-heading py-3">
                             <h1>{{$trainerData['category']['title']}}</h1>
-                            <a href="{{url('/dashboard/class-detail/'.$trainerData['id']./.$trainerData['day'])}}">Book Now</a>
+                            <a href="{{url('/dashboard/class-detail/'.$trainerData['trainer_id'].'/'.$trainerData['session']['day'])}}">Book Now</a>
                         </div>
-
                         <div class="card-content">
                             <p>John Smith </p>
                             <p>{{$trainerData['session']['start_time']}}-{{$trainerData['session']['end_time']}}</p>
