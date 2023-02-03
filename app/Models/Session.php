@@ -28,4 +28,8 @@ class Session extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+    public function trainerData()
+    {
+        return $this->belongsTo(User::class, 'trainer_id');
+    }
 }

@@ -46,34 +46,32 @@ class MapController extends Controller
         $workoutRadius = $request->radius;
         $whereCategory = [];
         if ($workoutType != null) {
-            array_push($whereCategory, ('type', $workoutType));
+            $whereCategory['type'] = $workoutType;
         }
         if ($workoutCategory != null) {
-            array_push($whereCategory, ['category' => $workoutCategory]);
+            $whereCategory['category_id'] = $workoutCategory;
         }
         if ($workoutLocation != null) {
-            array_push($whereCategory, ['location' => $workoutLocation]);
+            $whereCategory['location'] =  $workoutLocation;
         }
         if ($workoutPrice != null) {
-            array_push($whereCategory, ['price' => $workoutPrice]);
+            $whereCategory['price'] =  $workoutPrice;
         }
         if ($workoutRadius != null) {
-            array_push($whereCategory, ['radius' => $workoutRadius]);
+            $whereCategory['radius'] =  $workoutRadius;
         }
-        dd($whereCategory);
-        $sessions = ModelsSession::where($whereCategory)->get();
-        
-        if (!$booksession) {
-            return $this->sendError('Session Detail');
+        $sessions = ModelsSession::where($whereCategory)->with('trainerData', 'category')->get();
+        $latLng = [];
+        if (count($sessions) > 0) {
+            foreach ($sessions as $session) {
+                array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
+            }
+        } else {
+            return $this->sendError('No Session is available for the applied filter.');
         }
-        $booksession_detail = json_decode($booksession, true);
-
-        $sessionView = View::make('pages.userdashboard.dashboard.booked-session-list', [
-            'booksession_detail' =>         $booksession_detail,
-        ])->render();
-        return [
-            'sessionView' => $sessionView,
-            'session' => $booksession_detail
-        ];
+        $success = [];
+        $success['sessions'] = $sessions;
+        $success['latLngArray'] = $latLng;
+        return $this->sendResponse($success, 'Search Completed, Found Following Sessions.');
     }
 }
