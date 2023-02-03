@@ -1072,10 +1072,10 @@
 @endsection
 @section('insertsfooter')
 <script>
-    $('#sucessModal').modal({
-        backdrop: 'static',
-        keyboard: false
-    })
+    // $('#sucessModal').modal({
+    //     backdrop: 'static',
+    //     keyboard: false
+    // })
     // edit and delete 
     // show and hide
     // one
