@@ -62,7 +62,7 @@
     }
 
     .dashboard-session-card {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 26.32%, #FFFFFF 117.8%), url('../../../../workitpt_web/public/assets/trainerimages/sessionfive.jpg');
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 26.32%, #FFFFFF 117.8%), url('../../../../../workitpt_web/public/assets/trainerimages/sessionfive.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
