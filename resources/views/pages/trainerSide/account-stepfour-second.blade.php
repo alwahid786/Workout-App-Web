@@ -51,7 +51,7 @@
     }
 
     .stripe-container {
-        /* background-image: url('../../../workitpt_web/public/assets/trainerimages/stripe-bg.svg'); */
+        background-image: url('../../../workitpt_web/public/assets/trainerimages/stripe-bg.svg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

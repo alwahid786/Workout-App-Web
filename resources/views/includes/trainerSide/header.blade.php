@@ -10,4 +10,4 @@
  {{-- <link rel="stylesheet" href="{{asset('public/assets/css/all.min.css')}}"> --}}
  <link rel="stylesheet" href="{{asset('public/assets/font-awesome/css/font-awesome.min.css')}}">
  <!-- ============== Custom Css Link ============== -->
- <link rel="stylesheet" href="{{asset('public/assets/trainercss/trainer.css')}}">
+ <!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/trainer.css')}}"> -->
