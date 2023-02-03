@@ -43,29 +43,14 @@
         </div>
     </div>
 </div>
-<!-- .............Step Four Body Section................ -->
-
-<div class="outer-step">
-
-    <div class="container-fluid">
-        <div class="content-outer">
-            <div class="content-section ">
-                <img src="{{asset('public/assets/trainerimages/stripe.svg')}}" alt="">
-                <img class="py-5" src="{{asset('public/assets/trainerimages/stepfoursec.svg')}}" alt="">
-                <h1 class="my-1 text-center">Congrats Stripe has been connected</h1>
-                <div class="form-btn my-5 ">
-                    <a href="#" class="p-0">Continue</a>
-                </div>
-            </div>
-        </div>
-
-
-
+<!-- stepfour -->
+<div class="container-fluid stripe-container">
+    <div class="stripe-wrapper text-center">
+        <h1 class="pb-4">stripe</h1>
+        <p class="pb-4">Connect Stripe For Payment</p>
+        <a href="{{url('/trainer/stepfours')}}" class="btn">Continue</a>
     </div>
 </div>
-
-
-
 @endsection
 @section('insertsfooter')
 

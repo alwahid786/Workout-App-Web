@@ -64,27 +64,35 @@
     width: 70%;
     margin: 0 auto;
 } */
-    .profile-nxt-btn a,
-    .profile-nxt-btn a:hover,
-    .profile-nxt-btn a:focus,
-    .profile-nxt-btn a:active {
-        background: #E37048;
-        border: none;
-        box-shadow: none;
-        outline: none;
-        color: white;
-        padding: 25px 0;
-        border-radius: 10px;
-        text-align: center;
-        width: 25%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        min-width: 200px;
-        height: 50px;
-    }
+.profile-nxt-btn a{
+    background-color: #ffff !important;
+    color: #E37048 !important;
+    border: 1px solid #E37048 !important;
+}
+.profile-nxt-btn a:hover{
+    background: #E37048 !important;
+    color: white !important;
+}
+.profile-nxt-btn a,
+.profile-nxt-btn a:focus,
+.profile-nxt-btn a:active {
+    background: #E37048;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    color: white;
+    padding: 25px 0;
+    border-radius: 10px;
+    text-align: center;
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    min-width: 200px;
+    height: 50px;
+}
 
     .update-profile-form-btn {
         text-decoration: none;

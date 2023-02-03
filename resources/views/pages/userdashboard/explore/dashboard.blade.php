@@ -16,7 +16,7 @@
                 <div class="col-sm-8 text-right">
                     <div class="dashboard-header-right">
                         <a href="" class="active">Grid View</a>
-                        <a href="{{url('dashboard/map')}}">Map View</a>
+                        <a href="{{route('mapViewPage')}}">Map View</a>
                     </div>
                 </div>
             </div>
@@ -231,7 +231,7 @@
                         <div class="session-card-img">
                             <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
                             <div class="session-card-amount">
-                                <h1>{{$classes['session']['day']}}</h1>
+                                <h1>${{$classes['session']['price']}}</h1>
                             </div>
                         </div>
 

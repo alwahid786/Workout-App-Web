@@ -2,6 +2,7 @@
 @section('content')
 <!-- <link rel="stylesheet" href="{{asset('public/assets/css/mobiscroll.javascript.min.css')}}"> -->
 <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<script src="{{asset('public/assets/fullcalendar/dist/index.global.min.js')}}"></script>
 <style>
     .user-search-box {
         display: block;
@@ -143,6 +144,10 @@
             display: flex;
             flex-direction: column;
         }
+
+        .range-filter {
+            margin-top: 70px;
+        }
     }
 
     .dropbtn-s {
@@ -235,6 +240,104 @@
         padding: 0px 15px;
         cursor: pointer;
     }
+
+    .fc-theme-standard th {
+        border: none;
+    }
+
+    .fc-theme-standard {
+        border: none !important;
+    }
+
+    .fc .fc-button-primary:disabled {
+        display: none;
+    }
+
+    .fc-theme-standard {
+        position: relative !important;
+    }
+
+    .fc-direction-ltr .fc-button-group>.fc-button:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        /* position: absolute; */
+        /* left: -320px; */
+    }
+
+    .fc .fc-toolbar-title {
+        color: #E37048;
+        font-size: 1.1rem;
+    }
+
+    .fc-today-button {
+        display: none !important;
+    }
+
+    .fc .fc-button-primary {
+        background: none !important;
+        color: #000 !important;
+        border: none !important;
+    }
+
+    .fc .fc-toolbar {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .fc-scrollgrid tbody {
+        display: none;
+    }
+
+    .fc-col-header {
+        border: 1px solid #fff !important;
+    }
+
+    .fc-scrollgrid-sync-inner {
+        border: none !important;
+    }
+
+    .fc table {
+        border: none !important;
+    }
+
+    .fc-col-header {
+        background: #F9F9FB;
+        border-radius: 10px;
+    }
+
+    .fc-col-header-cell-cushion div:nth-of-type(1) {
+        color: #C1C1C1 !important;
+        font-weight: 500;
+    }
+
+    .fc-col-header-cell-cushion div:nth-of-type(2) {
+        font-weight: 600;
+        padding: 10px 0;
+        color: #000;
+    }
+
+    .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion {
+        background: #E37048;
+        border-radius: 7px;
+        color: #fff !important;
+    }
+
+    .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion div:nth-of-type(1) {
+        color: #fff !important;
+    }
+
+    .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion div:nth-of-type(2) {
+        color: #fff !important;
+    }
+
+    .fc .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 0 !important;
+    }
+
+    .fc-view-harness {
+        height: 0 !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -243,7 +346,7 @@
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="">
                     <div class="dashboard-header-left">
-                        <h1>Search <span class="pl-1"> One to One Session</span></h1>
+                        <h1>Search <span class="pl-1"> <span id="sessionType">One to One</span> Session</span></h1>
                     </div>
                 </div>
                 <div class="">
@@ -256,14 +359,6 @@
         </div>
         <div class="filter-section py-4 px-2">
             <div class="row">
-                <!-- <div class="col-12 my-auto">
-                    <div class="filter-menu-left my-auto px-sm-2">
-                        <div class="filter-left-heading">
-                            <h1>Sessions</h1>
-                        </div>
-
-                    </div>
-                </div> -->
                 <div class="col-xl-6">
                     <div class=" filter-menu">
                         <div class=" filter-menu-right">
@@ -271,11 +366,11 @@
                                 <div class="filter-left-select-heading drop-icon-parent">
                                     <h1>Workout Type</h1>
                                     <div class="drop-icon">
-                                        <select class="wide s-select form-control ">
-                                            <option value="">Yoga</option>
-                                            <option value="">Yoga1</option>
-                                            <option value="">Yoga2</option>
-                                            <option value="">Yoga3</option>
+                                        <select class="wide s-select form-control" id="workout_category">
+                                            <option disabled="disabled" selected>Select --</option>
+                                            @foreach($categories as $category)
+                                            <option value="{{$category['id']}}" data-src="{{$category['title']}}">{{$category['title']}}</option>
+                                            @endforeach
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                     </div>
@@ -285,15 +380,14 @@
                                 <div class="filter-left-select-heading drop-icon-parent">
                                     <h1>Location</h1>
                                     <div class="drop-icon">
-                                        <select class="wide s-select form-control ">
+                                        <select class="wide s-select form-control " id="workout_location">
+                                            <option disabled="disabled" selected>Select --</option>
                                             <option value="">London</option>
                                             <option value="">London1</option>
                                             <option value="">London2</option>
                                             <option value="">London3</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-
-
                                     </div>
 
                                 </div>
@@ -303,9 +397,10 @@
                                     <h1>Class Type</h1>
                                     <div class="drop-icon">
 
-                                        <select class="wide s-select form-control ">
-                                            <option value="">One to One</option>
-                                            <option value="">Group</option>
+                                        <select class="wide s-select form-control" id="workout_type">
+                                            <option disabled="disabled" selected>Select --</option>
+                                            <option value="0">One to One</option>
+                                            <option value="1">Group</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
@@ -314,24 +409,12 @@
 
                                 </div>
                             </div>
-                            <!-- <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                            <div class="filter-left-select-heading ">
-                                <h1>Class Type</h1>
-                                <div class="dropdown-s">
-                                    <button class="dropbtn-s  ">One to One <i class="fa fa-angle-down pr-3 " aria-hidden="true"></i>
-
-                                    </button>
-                                    <div class="dropdown-content-s">
-                                        <a href="{{url('/dashboard/mapgroup')}}">Group</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                             <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                                 <div class="filter-left-select-heading drop-icon-parent">
                                     <h1>Price Range</h1>
                                     <div class="drop-icon drop-icon-thre">
-                                        <select class="wide s-select form-control ">
+                                        <select class="wide s-select form-control " id="workout_price">
+                                            <option disabled="disabled" selected>Select --</option>
                                             <option>$20 to $100</option>
                                             <option>$20 to $100</option>
                                             <option>$20 to $100</option>
@@ -342,8 +425,6 @@
 
 
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -352,13 +433,14 @@
                 <div class="col-xl-6">
                     <div class="row">
                         <div class="col-sm-9 week-calendar">
-                            <div id="demo-1-week"></div>
+                            <div id="calendar"></div>
                         </div>
-                        <div class="col-sm-3 mt-2 mt-sm-0">
+                        <div class="col-sm-3 range-filter">
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                                 <h1>Range</h1>
                                 <div class="drop-icon">
-                                    <select class="wide s-select form-control">
+                                    <select class="wide s-select form-control" id="workout_radius">
+                                        <option disabled="disabled" selected>Select --</option>
                                         <option>1-3KM</option>
                                         <option>1-5KM</option>
                                         <option>1-7KM</option>
@@ -366,8 +448,6 @@
                                         <option>1-11KM</option>
                                     </select>
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-
-
                                 </div>
 
 
@@ -378,7 +458,7 @@
             </div>
             <div class="col text-right my-2 pr-0">
                 <div class="filter-section-btn py-2">
-                    <a href="" class="">Apply</a>
+                    <a href="javascript:void(0)" class="applyFilterBtn">Apply</a>
                 </div>
             </div>
             <div class="col py-2 map-section px-0">
@@ -434,36 +514,66 @@
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
+        // var calendarEl = document.getElementById('demo-1-week');
+        // var calendar = new FullCalendar.Calendar(calendarEl, {
+        //     initialView: 'dayGridWeek'
+        // });
+        // calendar.render();
+
+        $("#workout_type").on('change', function() {
+            let type = $(this).val();
+            if (type == 0) {
+                $('#sessionType').text('One to One');
+            } else {
+                $('#sessionType').text('Group');
+            }
+        })
+        $(".applyFilterBtn").on('click', function() {
+            let category = $('#workout_category').val();
+            let location = $('#workout_location').val();
+            let type = $('#workout_type').val();
+            let price = $('#workout_price').val();
+            let radius = $('#workout_radius').val();
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: `{{route('filterMapData')}}`,
+                type: "POST",
+                data: {
+                    category: category,
+                    location: location,
+                    type: type,
+                    price: price,
+                    radius: radius,
+                },
+                cache: false,
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(jqXHR, exception) {
+                    toastr.error(jqXHR.responseJSON.message);
+                }
+
+            });
+        })
     });
 </script>
-<script>
-    mobiscroll.setOptions({
-        theme: 'ios',
-        themeVariant: 'light',
-
-    });
-
-    mobiscroll.datepicker('#demo-1-week', {
-        controls: ['calendar'],
-        display: 'inline',
-        calendarType: 'week',
-        calendarSize: 1
-    });
-</script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
 <script>
     $('.map-card').hide();
+    var UserLocationdata = @json($currentUserInfo);
+
     // Initialize and add the map
     function initMap() {
         // The location of Uluru
         const uluru = {
-            lat: -25.344,
-            lng: 131.031
+            lat: parseInt(UserLocationdata.latitude),
+            lng: parseInt(UserLocationdata.longitude)
         };
         // The map, centered at Uluru
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 4,
+            zoom: 10,
             center: uluru,
         });
         // The marker, positioned at Uluru
@@ -477,8 +587,90 @@
     }
 
     window.initMap = initMap;
+
+    // Initialize and add the map
+    // function initMap() {
+    //     // The location of Uluru
+    //     var locations = [
+    //         [-33.890542, 151.274856, 4],
+    //         [-33.923036, 151.259052, 5],
+    //         [-34.028249, 151.157507, 3],
+    //         [-33.80010128657071, 151.28747820854187, 2],
+    //         [-33.950198, 151.259302, 1]
+    //     ];
+
+    //     var map = new google.maps.Map(document.getElementById('map'), {
+    //         zoom: 10,
+    //         center: new google.maps.LatLng(-33.92, 151.25),
+    //         mapTypeId: google.maps.MapTypeId.ROADMAP
+    //     });
+
+    //     var infowindow = new google.maps.InfoWindow();
+
+    //     var marker, i;
+
+    //     for (i = 0; i < locations.length; i++) {
+    //         marker = new google.maps.Marker({
+    //             position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+    //             map: map
+    //         });
+
+    //         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    //             return function() {
+    //                 //     infowindow.setContent(locations[i][0]);
+    //                 //     infowindow.open(map, marker);
+    //                 $('.map-card').show();
+    //             }
+
+    //         })(marker, i));
+    //     }
+    // }
+
+    // window.initMap = initMap;
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
+</script>
+<script src="{{ asset('public/assets/js/index.global.min.js') }}"></script>
+<script>
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridWeek',
+        // buttons for switching between views
+        views: {
+            dayGridWeek: { // name of view
+                dayHeaderFormat: {
+                    weekday: 'short',
+                    day: 'numeric',
+                    omitCommas: true
+                },
+                // other view-specific options here
+            }
+        },
+        headerToolbar: {
+            left: 'prev',
+            center: 'title',
+            right: 'next' // user can switch between the two
+        }
+    });
+    calendar.render();
+    strToDiv()
+    $(".fc-next-button").click(function() {
+        strToDiv();
+    })
+    $(".fc-prev-button").click(function() {
+        strToDiv();
+    })
+
+    function strToDiv() {
+        $('.fc-col-header-cell-cushion').each(function() {
+            let str = $(this).text();
+            let parts = str.split(" ");
+            let div1 = "<div>" + parts[0] + "</div>";
+            let div2 = "<div>" + parts[1] + "</div>";
+            $(this).html(div2 + div1)
+        })
+
+    }
 </script>
 @endsection

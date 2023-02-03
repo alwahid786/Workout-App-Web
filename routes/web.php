@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\SocialController;
+use App\Http\Controllers\User\MapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,11 +61,12 @@ Route::middleware('auth')->group(function () {
     Route::any('/get_day_session', [UserController::class, 'getDaySession'])->name('get_day_session');
     Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('dashboard/payment');
     Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
+    Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
+    Route::any('/dashboard/map', [MapController::class, 'mapViewPage'])->name('mapViewPage');
+    Route::any('/dashboard/filterMapData', [MapController::class, 'filterMapData'])->name('filterMapData');
 
     Route::any('get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('get_sessions_list');
 });
-
-
 
 
 Route::get('/trainers/yoga', function () {
@@ -104,9 +106,9 @@ Route::get('/term-l', function () {
 // Route::get('/dashboard', function () {
 //     return view('pages.userdashboard.explore.dashboard');
 // });
-Route::get('/dashboard/map', function () {
-    return view('pages.userdashboard.explore.map-view');
-});
+// Route::get('/dashboard/map', function () {
+//     return view('pages.userdashboard.explore.map-view');
+// });
 
 // Route::get('/dashboard/payment', function () {
 //     return view('pages.userdashboard.explore.payment');
@@ -181,6 +183,9 @@ Route::get('/userdashboard/upcomingsessionone', function () {
 Route::get('/userdashboard/upcomingsessiongroup', function () {
     return view('pages.userdashboard.dashboard.user-upcoming-session-group');
 });
+Route::get('/userdashboard/upcomingsessionlist', function () {
+    return view('pages.userdashboard.dashboard.upcoming-session-list');
+});
 // payment
 Route::get('/payment', function () {
     return view('pages.userdashboard.payment.payment');
@@ -228,8 +233,14 @@ Route::get('/trainer/steptwo', function () {
 Route::get('/trainer/stepthree', function () {
     return view('pages.trainerSide.account-step-three');
 });
-Route::get('/trainer/stepfour', function () {
-    return view('pages.trainerSide.account-step-four');
+Route::get('/trainer/stepfours', function () {
+    return view('pages.trainerSide.account-stepfour');
+});
+Route::get('/trainer/stepfours', function () {
+    return view('pages.trainerSide.account-stepfour-second');
+});
+Route::get('/trainer/stepfive', function () {
+    return view('pages.trainerSide.account-step-five');
 });
 Route::get('/trainer/stepfour-second', function () {
     return view('pages.trainerSide.account-step-four-second');
