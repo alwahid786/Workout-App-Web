@@ -466,11 +466,11 @@
                 <div class="map-card p-2 mt-3">
                     <div class="map-card-left">
                         <div class="map-card-img">
-                            <img src="{{asset('public/assets/images/rating-right.png')}}">
+                            <img class="trainerImg_mapcard" src="{{asset('public/assets/images/rating-right.png')}}">
                         </div>
                         <div class="map-card-profile pl-3">
-                            <h1>Stretching </h1>
-                            <p class="name">John Smith</p>
+                            <h1 class="sessionName_mapcard">Stretching </h1>
+                            <p class="name trainerName_mapcard">John Smith</p>
                             <div class="rating-star py-1">
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -480,7 +480,7 @@
                             </div>
                             <div class="location-pin pb-3">
                                 <i class="fa fa-map-marker pr-2" aria-hidden="true"></i>
-                                <p>Park Gardens</p>
+                                <p class="trainerLocation_mapcard">Park Gardens</p>
                             </div>
                             <!-- <div class="image-counter">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
@@ -495,12 +495,12 @@
                     </div>
                     <div class="map-card-right">
                         <div class="map-card-right-btn mt-4">
-                            <a href="">
+                            <a href="" class="sessionAnchor_mapcard">
                                 Book Now
                             </a>
                         </div>
                     </div>
-
+                    <img src="{{asset('public/assets/images/remove.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -511,14 +511,16 @@
 @section('insertsfooter')
 <!-- <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
+
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
-        // var calendarEl = document.getElementById('demo-1-week');
-        // var calendar = new FullCalendar.Calendar(calendarEl, {
-        //     initialView: 'dayGridWeek'
-        // });
-        // calendar.render();
+        var UserLocationdata = @json($currentUserInfo);
+        var locationMap = [
+            [UserLocationdata.latitude, UserLocationdata.longitude]
+        ]
+        initMap(locationMap);
 
         $("#workout_type").on('change', function() {
             let type = $(this).val();
@@ -549,7 +551,12 @@
                 },
                 cache: false,
                 success: function(response) {
-                    console.log(response);
+                    if (response.success == true) {
+                        locationMap = response.data.latLngArray;
+                        initMap(locationMap);
+                    } else {
+                        toastr.error(response.message);
+                    }
                 },
                 error: function(jqXHR, exception) {
                     toastr.error(jqXHR.responseJSON.message);
@@ -558,75 +565,73 @@
             });
         })
     });
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
-<script>
     $('.map-card').hide();
-    var UserLocationdata = @json($currentUserInfo);
 
-    // Initialize and add the map
-    function initMap() {
+    function initMap(e) {
         // The location of Uluru
-        const uluru = {
-            lat: parseInt(UserLocationdata.latitude),
-            lng: parseInt(UserLocationdata.longitude)
-        };
-        // The map, centered at Uluru
-        const map = new google.maps.Map(document.getElementById("map"), {
+        var locations = e;
+        var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,
-            center: uluru,
+            center: new google.maps.LatLng(parseFloat(locations[0][0]), parseFloat(locations[0][1])),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-            position: uluru,
-            map: map,
-        });
-        marker.addListener("click", () => {
-            $('.map-card').show();
-        });
-    }
 
+        var infowindow = new google.maps.InfoWindow();
+
+        var marker, i;
+
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                map: map
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
+                    //     infowindow.setContent(locations[i][0]);
+                    //     infowindow.open(map, marker);
+                    let sessionData = locations[i][2];
+                    console.log(sessionData)
+                    $('.sessionName_mapcard').text(sessionData['category']['title']);
+                    $('.trainerName_mapcard').text(sessionData['trainer_data']['name']);
+                    $('.trainerLocation_mapcard').text(sessionData['trainer_data']['workout_location']);
+                    $('.trainerImg_mapcard').attr('src', sessionData['trainer_data']['profile_img']);
+                    let id = sessionData['trainer_data']['id'];
+                    let day = sessionData['day'];
+                    let url = `{{url('/dashboard/class-detail/${id}/${day}')}}`
+                    $(".sessionAnchor_mapcard").attr('href', url);
+                    $('.map-card').show();
+                }
+
+            })(marker, i));
+        }
+    }
     window.initMap = initMap;
 
     // Initialize and add the map
     // function initMap() {
     //     // The location of Uluru
-    //     var locations = [
-    //         [-33.890542, 151.274856, 4],
-    //         [-33.923036, 151.259052, 5],
-    //         [-34.028249, 151.157507, 3],
-    //         [-33.80010128657071, 151.28747820854187, 2],
-    //         [-33.950198, 151.259302, 1]
-    //     ];
-
-    //     var map = new google.maps.Map(document.getElementById('map'), {
+    //     const uluru = {
+    //         lat: parseInt(UserLocationdata.latitude),
+    //         lng: parseInt(UserLocationdata.longitude)
+    //     };
+    //     // The map, centered at Uluru
+    //     const map = new google.maps.Map(document.getElementById("map"), {
     //         zoom: 10,
-    //         center: new google.maps.LatLng(-33.92, 151.25),
-    //         mapTypeId: google.maps.MapTypeId.ROADMAP
+    //         center: uluru,
     //     });
-
-    //     var infowindow = new google.maps.InfoWindow();
-
-    //     var marker, i;
-
-    //     for (i = 0; i < locations.length; i++) {
-    //         marker = new google.maps.Marker({
-    //             position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-    //             map: map
-    //         });
-
-    //         google.maps.event.addListener(marker, 'click', (function(marker, i) {
-    //             return function() {
-    //                 //     infowindow.setContent(locations[i][0]);
-    //                 //     infowindow.open(map, marker);
-    //                 $('.map-card').show();
-    //             }
-
-    //         })(marker, i));
-    //     }
+    //     // The marker, positioned at Uluru
+    //     const marker = new google.maps.Marker({
+    //         position: uluru,
+    //         map: map,
+    //     });
+    //     marker.addListener("click", () => {
+    //         $('.map-card').show();
+    //     });
     // }
 
     // window.initMap = initMap;
+
+    // Initialize and add the map
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
