@@ -143,7 +143,8 @@
             display: flex;
             flex-direction: column;
         }
-        .range-filter{
+
+        .range-filter {
             margin-top: 70px;
         }
     }
@@ -238,90 +239,104 @@
         padding: 0px 15px;
         cursor: pointer;
     }
-    .fc-theme-standard th{
-    border: none;
-}
-        .fc-theme-standard{
-            border: none !important;
-        }
-        .fc .fc-button-primary:disabled {
-            display: none;
-        }
 
-        .fc-theme-standard {
-            position: relative !important;
-        }
+    .fc-theme-standard th {
+        border: none;
+    }
 
-        .fc-direction-ltr .fc-button-group>.fc-button:not(:last-child) {
-            border-bottom-right-radius: 0;
-            border-top-right-radius: 0;
-            /* position: absolute; */
-            /* left: -320px; */
-        }
-        .fc .fc-toolbar-title{
-            color: #E37048;
-            font-size: 1.1rem;
-        }
-        .fc-today-button{
-            display: none !important;
-        }
-        .fc .fc-button-primary {
-            background: none !important;
-            color: #000 !important;
-            border: none !important;
-        }
+    .fc-theme-standard {
+        border: none !important;
+    }
 
-        .fc .fc-toolbar {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
+    .fc .fc-button-primary:disabled {
+        display: none;
+    }
 
-        .fc-scrollgrid tbody {
-            display: none;
-        }
+    .fc-theme-standard {
+        position: relative !important;
+    }
 
-        .fc-col-header {
-            border: 1px solid #fff !important;
-        }
+    .fc-direction-ltr .fc-button-group>.fc-button:not(:last-child) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        /* position: absolute; */
+        /* left: -320px; */
+    }
 
-        .fc-scrollgrid-sync-inner {
-            border: none !important;
-        }
+    .fc .fc-toolbar-title {
+        color: #E37048;
+        font-size: 1.1rem;
+    }
 
-        .fc table {
-            border: none !important;
-        }
-        .fc-col-header {
-            background: #F9F9FB;
-            border-radius: 10px;
-        }
-        .fc-col-header-cell-cushion div:nth-of-type(1){
-            color: #C1C1C1 !important;
-            font-weight: 500;
-        }
-        .fc-col-header-cell-cushion div:nth-of-type(2){
-            font-weight: 600;
-            padding: 10px 0;
-            color: #000;
-        }
-        .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion{
-            background: #E37048;
-            border-radius: 7px;
-            color: #fff !important;
-        }
-        .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion div:nth-of-type(1){
-            color: #fff !important;
-        }
-        .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion div:nth-of-type(2){
-            color: #fff !important;
-        }
-        .fc .fc-toolbar.fc-header-toolbar{
-            margin-bottom: 0 !important;
-        }
-        .fc-view-harness{
-            height: 0 !important;
-        }
+    .fc-today-button {
+        display: none !important;
+    }
+
+    .fc .fc-button-primary {
+        background: none !important;
+        color: #000 !important;
+        border: none !important;
+    }
+
+    .fc .fc-toolbar {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .fc-scrollgrid tbody {
+        display: none;
+    }
+
+    .fc-col-header {
+        border: 1px solid #fff !important;
+    }
+
+    .fc-scrollgrid-sync-inner {
+        border: none !important;
+    }
+
+    .fc table {
+        border: none !important;
+    }
+
+    .fc-col-header {
+        background: #F9F9FB;
+        border-radius: 10px;
+    }
+
+    .fc-col-header-cell-cushion div:nth-of-type(1) {
+        color: #C1C1C1 !important;
+        font-weight: 500;
+    }
+
+    .fc-col-header-cell-cushion div:nth-of-type(2) {
+        font-weight: 600;
+        padding: 10px 0;
+        color: #000;
+    }
+
+    .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion {
+        background: #E37048;
+        border-radius: 7px;
+        color: #fff !important;
+    }
+
+    .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion div:nth-of-type(1) {
+        color: #fff !important;
+    }
+
+    .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion div:nth-of-type(2) {
+        color: #fff !important;
+    }
+
+    .fc .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 0 !important;
+    }
+
+    .fc-view-harness {
+        height: 0 !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -439,7 +454,7 @@
                 <div class="col-xl-6">
                     <div class="row">
                         <div class="col-sm-9 week-calendar">
-                        <div id="calendar"></div> 
+                            <div id="calendar"></div>
                         </div>
                         <div class="col-sm-3 range-filter">
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
@@ -471,6 +486,7 @@
             <div class="col py-2 map-section px-0">
                 <div id="map"></div>
                 <div class="map-card p-2 mt-3">
+
                     <div class="map-card-left">
                         <div class="map-card-img">
                             <img src="{{asset('public/assets/images/rating-right.png')}}">
@@ -507,6 +523,9 @@
                             </a>
                         </div>
                     </div>
+                    <div class="">
+                        <img class="map-card-close" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
+                    </div>
 
                 </div>
             </div>
@@ -518,6 +537,11 @@
 @section('insertsfooter')
 <!-- <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script>
+    $('.map-card-close').click(()=>{
+        $('.map-card').hide();
+    });
+</script>
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
@@ -570,39 +594,44 @@
 </script>
 <script src="{{ asset('public/assets/js/index.global.min.js') }}"></script>
 <script>
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridWeek',
-            // buttons for switching between views
-            views: {
-                dayGridWeek: { // name of view
-                    dayHeaderFormat: { weekday: 'short', day: 'numeric', omitCommas: true},
-                    // other view-specific options here
-                }
-            },
-            headerToolbar: {
-                left: 'prev',
-                center: 'title',
-                right: 'next' // user can switch between the two
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridWeek',
+        // buttons for switching between views
+        views: {
+            dayGridWeek: { // name of view
+                dayHeaderFormat: {
+                    weekday: 'short',
+                    day: 'numeric',
+                    omitCommas: true
+                },
+                // other view-specific options here
             }
-        });
-        calendar.render();
-        strToDiv()
-        $(".fc-next-button").click(function(){
-            strToDiv();
-        })
-        $(".fc-prev-button").click(function(){
-            strToDiv();
-        })
-        function strToDiv(){
-            $('.fc-col-header-cell-cushion').each(function(){
-                let str = $(this).text();
-                let parts = str.split(" ");
-                let div1 = "<div>" + parts[0] + "</div>";
-                let div2 = "<div>" + parts[1] + "</div>";
-                $(this).html(div2 + div1)
-            })
-
+        },
+        headerToolbar: {
+            left: 'prev',
+            center: 'title',
+            right: 'next' // user can switch between the two
         }
-    </script>
+    });
+    calendar.render();
+    strToDiv()
+    $(".fc-next-button").click(function() {
+        strToDiv();
+    })
+    $(".fc-prev-button").click(function() {
+        strToDiv();
+    })
+
+    function strToDiv() {
+        $('.fc-col-header-cell-cushion').each(function() {
+            let str = $(this).text();
+            let parts = str.split(" ");
+            let div1 = "<div>" + parts[0] + "</div>";
+            let div2 = "<div>" + parts[1] + "</div>";
+            $(this).html(div2 + div1)
+        })
+
+    }
+</script>
 @endsection

@@ -1,6 +1,7 @@
 @extends('layouts.trainerSide.default')
 <!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepthree.css')}}">
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
+<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
 <style>
     * {
         margin: 0;
@@ -36,6 +37,13 @@
         outline: none !important;
         background: #F8F8F8;
         color: #666666;
+    }
+    .nice-select.wide{
+        height: 55px !important;
+        border: 1px solid #CECECE !important;
+        box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+        border-radius: 10px !important;
+        justify-content: flex-start !important;
     }
 
     .select-outer {
@@ -297,7 +305,7 @@
 
     .slot-image img {
         width: 100%;
-        max-width: 250px;
+        /* max-width: 250px; */
         height: 100px;
         object-fit: cover;
         border-radius: 10px;
@@ -725,12 +733,13 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Select Category</label>
                     <div class="select-outer">
-                        <select class="form-control pl-4" id="exampleFormControlSelect1">
-                            <option>Yoga</option>
-                            <option>Yoga</option>
-                            <option>Yoga</option>
-                        </select>
-                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    <select class="wide s-select form-control py-4">
+                        <option value="">Yoga</option>
+                        <option value="">Yoga</option>
+                        <option value="">Yoga</option>
+                        <option value="">Yoga</option>
+                    </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
             </div>
@@ -767,11 +776,11 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Session Type</label>
                     <div class="select-outer">
-                        <select class="form-control pl-4" id="typeselector">
+                        <select class="wide s-select form-control pl-4" id="typeselector">
                             <option value="onetoone">One to one</option>
                             <option value="group">Group</option>
                         </select>
-                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
             </div>
@@ -779,11 +788,11 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Limit</label>
                     <div class="select-outer">
-                        <select class="form-control pl-4" id="exampleFormControlSelect1">
+                        <select class="wide s-select form-control pl-4" id="exampleFormControlSelect1">
                             <option>15</option>
                             <option>20</option>
                         </select>
-                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
             </div>
@@ -791,7 +800,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Days</label>
                     <div class="select-outer">
-                        <select class="form-control pl-4" id="typeselector">
+                        <select class="wide s-select form-control pl-4" id="typeselector">
                             <option value="mon">Monday</option>
                             <option value="tue">Tuesday</option>
                             <option value="wed">Wednesday</option>
@@ -800,7 +809,7 @@
                             <option value="sat">Saturday</option>
                             <option value="sun">Sunday</option>
                         </select>
-                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
 
@@ -1302,6 +1311,13 @@
 </div>
 @endsection
 @section('insertsfooter')
+<script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script src="{{ asset('public/assets/js/bootstrap-select-coutry.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.s-select').niceSelect();
+});
+</script>
 <script>
     $(document).ready(function() {
         $('.limit-box').hide();
