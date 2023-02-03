@@ -231,7 +231,7 @@
                         <div class="session-card-img">
                             <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
                             <div class="session-card-amount">
-                                <h1>{{$classes['session']['day']}}</h1>
+                                <h1>${{$classes['session']['price']}}</h1>
                             </div>
                         </div>
 

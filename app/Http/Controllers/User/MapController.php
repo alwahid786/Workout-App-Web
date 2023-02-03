@@ -46,7 +46,7 @@ class MapController extends Controller
         $workoutRadius = $request->radius;
         $whereCategory = [];
         if ($workoutType != null) {
-            array_push($whereCategory, ['type' => $workoutType]);
+            array_push($whereCategory, ('type', $workoutType));
         }
         if ($workoutCategory != null) {
             array_push($whereCategory, ['category' => $workoutCategory]);
@@ -60,11 +60,9 @@ class MapController extends Controller
         if ($workoutRadius != null) {
             array_push($whereCategory, ['radius' => $workoutRadius]);
         }
-        $booksession = BookedSession::where('user_id', auth()->user()->id)->with(['session.class.trainer', 'session.class.category' => function ($query) use ($whereCategory) {
-            if (!empty($whereCategory)) {
-                $query->where($whereCategory);
-            }
-        }, 'session.class.classImage'])->get();
+        dd($whereCategory);
+        $sessions = ModelsSession::where($whereCategory)->get();
+        
         if (!$booksession) {
             return $this->sendError('Session Detail');
         }
