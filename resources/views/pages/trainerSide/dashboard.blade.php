@@ -664,7 +664,7 @@
     }
 </style>
 @section('content')
-@include('includes.trainerside.navbar')
+@include('includes.trainerSide.navbar')
 <div class="content-wrapper px-2 py-3">
     <div class="container-fluid ">
         <div class="row">
