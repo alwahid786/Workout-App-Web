@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="content-wrapper-inner trainer-last-section-profile px-4 py-3 ">
+        <!-- <div class="content-wrapper-inner trainer-last-section-profile px-4 py-3 ">
             <div class="trainer-session-content">
                 <div class="row">
                     <div class="col-md-3">
@@ -150,7 +150,7 @@
 
 
             </div>
-        </div>
+        </div> -->
 
 
     </div>

@@ -414,6 +414,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: end;
+        align-items: center;
     }
 
     .table-cotent:first-of-type {
@@ -523,7 +524,7 @@
                 <div class="workout-session-card my-4">
                     <div class="row">
                         <div class="col-sm-6 col-md-4 my-2">
-                            <a href="{{url('/userdashboard/upcomingsessionone')}}">
+                            <a href="{{url('/userdashboard/upcomingsessionlist')}}">
                                 <div class="work-session-card red-session-card py-4 px-1">
                                     @if($upcoming_session != null)
 

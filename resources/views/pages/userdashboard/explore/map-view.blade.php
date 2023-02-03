@@ -338,6 +338,26 @@
     .fc-view-harness {
         height: 0 !important;
     }
+
+    .fc-next-button:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-prev-button:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-next-button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-prev-button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -464,6 +484,7 @@
             <div class="col py-2 map-section px-0">
                 <div id="map"></div>
                 <div class="map-card p-2 mt-3">
+
                     <div class="map-card-left">
                         <div class="map-card-img">
                             <img class="trainerImg_mapcard" src="{{asset('public/assets/images/rating-right.png')}}">
@@ -500,7 +521,10 @@
                             </a>
                         </div>
                     </div>
-                    <img src="{{asset('public/assets/images/remove.png')}}" alt="">
+                    <div class="">
+                        <img class="map-card-close" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -513,6 +537,11 @@
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
 
+<script>
+    $('.map-card-close').click(() => {
+        $('.map-card').hide();
+    });
+</script>
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();

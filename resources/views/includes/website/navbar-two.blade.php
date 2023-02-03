@@ -148,6 +148,16 @@
     .log-link i {
         color: #E37048;
     }
+
+    .logout-dropdown a:hover {
+        background-color: #E37048;
+        color: white;
+    }
+
+
+    .setting-drop-sub {
+        padding-left: 70px;
+    }
 </style>
 <nav class="navbar navbar-bg navbar-expand-lg navbar-light">
     <div class="container-fluid px-sm-5" data-aos="fade-right">
@@ -218,9 +228,15 @@
                             @endif
                             <i class="fa fa-angle-down pl-3" aria-hidden="true"></i>
                         </button>
-                        <div class="dropdown-menu logout-dropdown " aria-labelledby="dropdownMenuButton">
-                            <a href="{{url('/profile')}}" class="dropdown-item">Update Profile</a>
-                            <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                        <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item nav-setting">Setting <i class="fa fa-angle-down pl-3" aria-hidden="true"></i></a>
+                            <a class="dropdown-item d-none setting-drop setting-drop-profile pl-5">Profile<i class="fa fa-angle-down pl-3" aria-hidden="true"></i></a>
+                            <a class="dropdown-item d-none setting-drop-sub " href="{{(url('/profile'))}}">Update Profile</a>
+                            <a class="dropdown-item d-none setting-drop pl-5" href="{{url('/payment')}}">List Of Payment</a>
+                            <a class="dropdown-item d-none setting-drop pl-5" href="{{(url('/term'))}}">Terms & Condition</a>
+                            <a class="dropdown-item d-none setting-drop pl-5" href="{{(url('/approach-l'))}}">Privacy Policy</a>
+                            <a class="dropdown-item logout-btn" href="{{route('logout')}}">Logout</a>
+
                         </div>
                     </div>
                 </li>
@@ -230,3 +246,20 @@
     </div>
 
 </nav>
+<script src="{{ asset('public/assets/js/jquery.js') }}"></script>
+<script>
+    $('.nav-setting').mouseenter(() => {
+        $('.setting-drop').removeClass('d-none');
+    });
+    $('.setting-drop-profile').mouseenter(() => {
+        $('.setting-drop-sub').removeClass('d-none');
+    });
+
+    $('.setting-drop-sub').mouseleave(() => {
+        $('.setting-drop-sub').addClass('d-none');
+    });
+
+    $('.logout-btn').mouseenter(() => {
+        $('.setting-drop').addClass('d-none');
+    });
+</script>
