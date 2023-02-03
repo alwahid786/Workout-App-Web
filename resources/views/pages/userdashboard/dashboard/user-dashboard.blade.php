@@ -414,6 +414,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: end;
+        align-items: center;
     }
 
     .table-cotent:first-of-type {
