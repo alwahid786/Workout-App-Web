@@ -41,7 +41,7 @@ Route::post('/contact', [UserController::class, 'contactUs']);
 Route::middleware('auth')->group(function () {
     Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('/trainers');
+    Route::any('/trainers', [UserController::class, 'getTrainerCategory'])->name('trainers');
     Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
     Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
     Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
