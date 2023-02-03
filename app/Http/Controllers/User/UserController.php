@@ -206,16 +206,17 @@ class UserController extends Controller
         // $class = Classes::where('id', '=', $id)->with('category')->get();
         if (count($class) > 0) {
             foreach ($class as $session) {
-                $session['session'] = ModelsSession::where('day', $day)->with('category')->get();
+                $session['session'] = ModelsSession::where(['day' => $day, 'trainer_id' => $id])->with('category')->get();
             }
         }
         if (!$class) {
             return $this->sendError('Session Detail');
         }
-        $classSession = ModelsSession::where('class_id', $id)->groupBy('day')->pluck('day');
-
+        $classSession = ModelsSession::where('trainer_id', $id)->groupBy('day')->pluck('day');
         $class_detail = json_decode($class, true);
+        // $classSession = json_decode($classSession, true);
         // dd($class_detail);
+        // dd($classSession);
         return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession'));
     }
     //////customer card detail........./////////
