@@ -134,12 +134,12 @@
 
     .otp-content p:nth-of-type(1) {
         color: #E37048;
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .otp-content p:nth-of-type(2) {
         color: #A8A8A8;
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .login-email-field-red {
@@ -302,7 +302,7 @@
 
             <div class="form-field pt-5 ">
                 <!-- <button type="submit" class="btn btn-default text-center">Confirm</button> -->
-                <a class="btn btn-default text-center" href="{{url('/trainer/newpassword')}}">Confirm</a>
+                <a class="btn btn-default text-center text-uppercase" href="{{url('/trainer/newpassword')}}">Confirm</a>
             </div>
 
 

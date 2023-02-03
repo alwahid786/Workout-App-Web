@@ -52,6 +52,7 @@
 
     .form-field label {
         color: #ADA7A7;
+        font-size: 1.2rem;
     }
 
     .form-field input {
@@ -210,7 +211,7 @@
                 </div>
                 <div class="form-field pt-5 text-center">
                     <!-- <button type="submit" class="btn btn-default text-center">Confirm</button> -->
-                    <a class="btn btn-default text-center" href="{{url('/trainer/login')}}">Confirm</a>
+                    <a class="btn btn-default text-center text-uppercase" href="{{url('/trainer/login')}}">Confirm</a>
                 </div>
             </form>
 
