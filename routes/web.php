@@ -170,7 +170,7 @@ Route::get('/trainer/steptwo', function () {
 Route::get('/trainer/stepthree', function () {
     return view('pages.trainerSide.account-step-three');
 });
-Route::get('/trainer/stepfours', function () {
+Route::get('/trainer/stepfour', function () {
     return view('pages.trainerSide.account-stepfour');
 });
 Route::get('/trainer/stepfours', function () {

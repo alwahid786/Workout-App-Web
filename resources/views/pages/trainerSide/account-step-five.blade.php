@@ -1,6 +1,6 @@
 @extends('layouts.trainerSide.default')
-<!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepfive.css')}}">
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/stepfive.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
 <style>
     * {
         margin: 0;
@@ -497,6 +497,10 @@
 
     .modal-body p {
         color: #A6A6A6;
+    }
+
+    .modal-content {
+        border-radius: 10px !important;
     }
 </style>
 @section('content')
@@ -1045,12 +1049,12 @@
     </div>
 
 </div>
-
+<!-- modal -->
 <div class="modal fade" id="sucessModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
             <div class="modalHeader px-2 pt-2 pb-2 d-flex justify-content-end align-items-center">
-                <img style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+                <img class="cross-icon" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <div class="modal-body text-center sucess-modal">
                 <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
@@ -1062,9 +1066,16 @@
         </div>
     </div>
 </div>
+<div class="custom-modal">
+    <h1>Your request of become a trainer is in review we will update you in 5 working days !</h1>
+</div>
 @endsection
 @section('insertsfooter')
 <script>
+    // $('#sucessModal').modal({
+    //     backdrop: 'static',
+    //     keyboard: false
+    // })
     // edit and delete 
     // show and hide
     // one
@@ -1113,6 +1124,11 @@
         $('.stack-timing-two').hide(1000);
         $('.slot-arrow-two .up-arrow').hide(1000);
         $('.slot-arrow-two .down-arrow').show(1000);
+    });
+    // custom modal
+    $('.custom-modal').hide();
+    $('.cross-icon').click(function() {
+        $('.custom-modal').show();
     });
 </script>
 @endsection

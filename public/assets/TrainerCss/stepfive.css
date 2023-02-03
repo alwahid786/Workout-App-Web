@@ -4,6 +4,46 @@
     box-sizing: border-box;
 }
 
+body {
+    position: relative;
+}
+
+.custom-modal {
+    background-color: #FF5959;
+    max-width: 500px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.custom-modal h1 {
+    padding: 0.8rem 2rem;
+    color: white;
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+@media screen and (max-width:576px) {
+    .custom-modal h1 {
+        padding: 1rem 2rem;
+        color: white;
+        font-weight: 400;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .custom-modal {
+        background-color: #FF5959;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+}
+
 .update-info-header {
     background-color: #F8F8F8;
 }
