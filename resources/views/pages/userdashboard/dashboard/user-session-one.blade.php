@@ -602,7 +602,7 @@
                                     </div>
                                     <div class="trainer-detail-profile-right-classes text-center">
                                         <p>Classes</p>
-                                        <h1>03</h1>
+                                        <h1>{{$classes}}</h1>
                                     </div>
                                     <!-- <div class="trainer-detail-profile-right-price">
                                         <h1>$100</h1>
@@ -633,7 +633,7 @@
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Date</h1>
-                                    <p>{{date('d-m-Y', strtotime($bookedsession['created_at']));}}</p>
+                                    <p>{{date('d-m-Y', strtotime($bookedsession['session-date']));}}</p>
                                 </div>
                             </div>
                         </div>
@@ -659,7 +659,7 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Location</h1>
-                                    <p>London</p>
+                                    <p>{{$bookedsession['session']['class']['trainer']['workout_location']}}</p>
                                 </div>
                             </div>
                         </div>
