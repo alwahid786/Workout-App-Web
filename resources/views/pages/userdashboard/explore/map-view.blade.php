@@ -506,6 +506,7 @@
             <div class="col py-2 map-section px-0">
                 <div id="map"></div>
                 <div class="map-card p-2 mt-3">
+
                     <div class="map-card-left">
                         <div class="map-card-img">
                             <img src="{{asset('public/assets/images/rating-right.png')}}">
@@ -542,6 +543,9 @@
                             </a>
                         </div>
                     </div>
+                    <div class="">
+                        <img class="map-card-close" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
+                    </div>
 
                 </div>
             </div>
@@ -553,6 +557,11 @@
 @section('insertsfooter')
 <!-- <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script>
+    $('.map-card-close').click(() => {
+        $('.map-card').hide();
+    });
+</script>
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();

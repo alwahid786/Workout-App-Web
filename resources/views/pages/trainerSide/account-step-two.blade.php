@@ -1,6 +1,8 @@
 @extends('layouts.trainerSide.default')
 <!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/steptwo.css')}}">
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
+<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/css/bootstrap-select-country.min.css')}}">
 <style>
     * {
         margin: 0;
@@ -33,10 +35,18 @@
         font-size: 0.6rem;
     }
 
-    .pro-form input {
+    .pro-form input
+    .pro-form select {
         height: 65px !important;
         /* color: #fff !important; */
-
+        
+    }
+    .nice-select.wide{
+        height: 55px !important;
+        border: 1px solid #CECECE !important;
+        box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+        border-radius: 10px !important;
+        justify-content: flex-start !important;
     }
 
     .pro-form input::placeholder {
@@ -44,7 +54,8 @@
     }
 
     .pro-form input,
-    .pro-form textarea {
+    .pro-form textarea
+    .nice-select.wide {
         background: rgba(249, 249, 249, 0.2);
         border: 1px solid #CECECE !important;
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
@@ -210,7 +221,7 @@
     }
 
     @media screen and (max-width:576px) {
-        .pro-form input {
+        .pro-form input  .pro-form select{
             height: 55px !important;
         }
 
@@ -491,13 +502,16 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Date of Birth</label>
-                    <input type="text" class="form-control py-4" id="inputAddress2">
+                    <input type="date" class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Gender</label>
-                    <input type="text" class="form-control py-4" id="inputCity">
+                    <select class="wide s-select form-control py-4">
+                        <option value="">Male</option>
+                        <option value="">Female</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
@@ -656,6 +670,13 @@
 
 @endsection
 @section('insertsfooter')
+<script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script src="{{ asset('public/assets/js/bootstrap-select-coutry.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.s-select').niceSelect();
+});
+</script>
 <script>
     function openModal() {
         $("#imageuploadmodal").modal('show')

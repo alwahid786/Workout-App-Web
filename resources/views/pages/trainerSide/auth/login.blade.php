@@ -150,7 +150,13 @@
         top: 50%;
         transform: translate(-50%, -50%);
     }
-
+.input-checkbox{
+    display: flex;
+}
+.input-checkbox p{
+    margin-bottom: 0;
+    padding-left: 10px;
+}
     @media screen and (max-width:1366px) {
         .form-field input {
             height: 60px;
@@ -258,8 +264,9 @@
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                 </div>
+                
                 <div class="form-check checkbox pl-0 pt-2">
-                    <label><input type="checkbox"> Remember me</label>
+                    <label class="input-checkbox"><input type="checkbox"> <p>Remember me</p> </label>
                     <a href="{{url('/trainer/forgetpassword')}}">Forgot Password?</a>
                 </div>
                 <div class="form-field pt-5 text-center">
