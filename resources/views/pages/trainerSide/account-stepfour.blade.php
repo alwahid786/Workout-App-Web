@@ -14,13 +14,13 @@
     .stripe-container {}
 
     .stripe-wrapper h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         font-weight: 900;
         color: #6772E5;
     }
 
     .stripe-wrapper p {
-        font-size: 1.5rem;
+        font-size: 2rem;
         color: black;
         font-weight: 500;
     }
@@ -31,7 +31,7 @@
         color: #E37048;
         background: white;
         border: 1px solid #E37048;
-        width: 180px;
+        width: 200px;
         border-radius: 5px;
         height: 40px;
         display: flex;
