@@ -54,11 +54,12 @@
     }
 
     .pro-form input,
-    .pro-form textarea .nice-select.wide {
-        background: rgba(249, 249, 249, 0.2);
-        border: 1px solid #CECECE !important;
+    .pro-form textarea,
+    .nice-select.wide {
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
-        border-radius: 10px !important;
+        background: #F8F8F8 !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        border-radius: 10px;
     }
 
     .pro-form textarea {
@@ -66,14 +67,7 @@
         height: 200px !important;
     }
 
-    /* .profile-nxt-btn {
-    text-align: center;
-    background: #E37048;
-    border-radius: 10px;
-    padding: 10px 0;
-    width: 70%;
-    margin: 0 auto;
-} */
+
     .profile-nxt-btn a {
         background-color: #ffff !important;
         color: #E37048 !important;
