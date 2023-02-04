@@ -14,10 +14,10 @@
         background-color: #F8F8F8;
     }
 
-    input[type="date"]::-webkit-calendar-picker-indicator {
+    /* input[type="date"]::-webkit-calendar-picker-indicator {
         display: none;
         -webkit-appearance: none;
-    }
+    } */
 
     .update-info-content h1 {
         font-size: 1.3rem;
