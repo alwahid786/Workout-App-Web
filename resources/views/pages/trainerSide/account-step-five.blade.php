@@ -122,7 +122,7 @@
         border: 1px solid #E37048 !important;
         color: white;
         box-shadow: none !important;
-        width: 60px;
+        width: 70px;
         height: 35px;
         border-radius: 5px;
     }
@@ -339,6 +339,10 @@
         background-color: white;
     }
 
+    .step-five-buttons button:last-of-type {
+        width: 115px;
+    }
+
     .step-five-buttons button:hover {
         background: #E37048;
         color: white;
@@ -404,6 +408,12 @@
             font-size: 2.5rem;
             font-weight: 900;
             margin-bottom: 0px;
+        }
+
+        .content-left-section p {
+            color: #9B9B9B;
+            text-align: center;
+            font-size: 0.9rem;
         }
     }
 
