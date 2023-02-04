@@ -1,6 +1,6 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/stepfive.css')}}">
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepfive.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
 <style>
     * {
         margin: 0;
@@ -415,6 +415,42 @@
             text-align: center;
             font-size: 0.9rem;
         }
+    }
+
+    .custom-modal {
+        background-color: #FF5959;
+        max-width: 500px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .custom-modal h1 {
+        padding: 0.8rem 2rem;
+        color: white;
+        font-weight: 400;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    @media screen and (max-width:576px) {
+        .custom-modal h1 {
+            padding: 1rem 2rem;
+            color: white;
+            font-weight: 400;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .custom-modal {
+            background-color: #FF5959;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
     }
 
     /* p */
