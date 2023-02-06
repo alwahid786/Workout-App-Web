@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/dashboard/filterMapData', [MapController::class, 'filterMapData'])->name('filterMapData');
 
     Route::any('get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('get_sessions_list');
+    Route::any('/rating', [UserController::class, 'ratingStar'])->name('rating');
 });
 
 

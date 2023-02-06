@@ -388,13 +388,14 @@
         display: flex;
     }
 
-    .feedback-rating i {
-        color: gold;
+    .feedback-rating i.gold {
+        color: gold !important;
     }
 
-    .feedback-rating i:last-of-type {
+    .feedback-rating i {
         color: #f3f0f0 !important;
     }
+
 
     .feedback-rating p {
         margin-bottom: 0px;
@@ -514,7 +515,6 @@
     }
 </style>
 <style>
-
     .past-session-header {
         display: flex;
         flex-wrap: wrap;
@@ -618,6 +618,42 @@
             top: 17px;
         }
     }
+
+    /* .....................Review Modal Rating Star..................... */
+
+    /* Ratings widget */
+    .rating-stars ul {
+        list-style-type: none;
+        padding: 0;
+
+        -moz-user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .rating-stars ul>li.star {
+        display: inline-block;
+
+    }
+
+    /* Idle State of the stars */
+    .rating-stars ul>li.star>i.fa {
+        font-size: 2.5em;
+        /* Change the size of the stars */
+        color: #ccc;
+        /* Color on idle state */
+    }
+
+    /* Hover state of the stars */
+    .rating-stars ul>li.star.hover>i.fa {
+        color: #FFCC36;
+    }
+
+    /* Selected state of the stars */
+    .rating-stars ul>li.star.selected>i.fa {
+        color: #FFCC36;
+    }
+
+    /* ....................Review Rating Star End................. */
 </style>
 
 @include('includes.userdashboard.navbar')
@@ -804,95 +840,35 @@
                         <h1>Clients Feedback</h1>
                     </div>
                     <div class="feedback-container px-2 px-sm-4">
+                        @foreach($rating as $session_rating)
                         <div class="feedback-card my-3">
                             <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
+                                <img class="mr-2" src="{{$session_rating['user']['profile_img']}}" alt="">
+                                <h1>{{$session_rating['user']['name']}}</h1>
                                 <div class="feedback-rating pl-2">
+                                    <?php $remRating = 5 - $session_rating['rating']; ?>
+
+                                    <?php for ($i = 0; $i < $session_rating['rating']; $i++) { ?>
+                                        <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                    <?php } ?>
+                                    <?php for ($i = 0; $i < $remRating; $i++) { ?>
+                                        <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <?php } ?>
+
+
+                                    <!-- <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i> -->
+                                    <p>{{$session_rating['rating']}}</p>
                                 </div>
                             </div>
                             <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
+                                <p> {{$session_rating['description']}}</p>
 
                             </div>
                         </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                                <div class="feedback-rating pl-2">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
-                                </div>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <!-- <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                                <div class="feedback-rating pl-2">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
-                                </div>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <!-- <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                                <div class="feedback-rating pl-2">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
-                                </div>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <!-- <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div> -->
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                 </div>
@@ -940,19 +916,42 @@
             <div class="modal-body text-center review-modal mt-5 pt-0">
                 <img style="width:30%;margin:0 auto" src="{{asset('public/assets/images/review.svg')}}" alt="">
                 <h1 class="pt-2 pb-2">Send Review!</h1>
-                <div class="modal-rating-star pb-3">
+                <!-- <div class="modal-rating-star pb-3">
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star" aria-hidden="true"></i>
+                </div> -->
+                <div class='rating-stars text-center'>
+                    <ul id='stars'>
+                        <li class='star' title='Poor' data-value='1'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Fair' data-value='2'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Good' data-value='3'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Excellent' data-value='4'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='WOW!!!' data-value='5'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                    </ul>
                 </div>
-                <form>
+                <form action="{{route('rating')}}" method="post">
+                    @csrf
                     <div class="form-group modal-field">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Type reason"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Type reason" name="description"></textarea>
                     </div>
+                    <input type="hidden" value="{{$bookedsession['session']['id']}}" name="session_id">
+                    <input type="hidden" value="{{$bookedsession['session']['class']['trainer']['id']}}" name="trainer_id">
+                    <input type="hidden" value="" id="input" name="rating">
                     <div class="col text-right modal-btn pt-3 pb-2">
-                        <button>Send Review</button>
+                        <button type="submit">Send Review</button>
                     </div>
                 </form>
 
@@ -1006,5 +1005,68 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
+</script>
+<script>
+    $(document).ready(function() {
+
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#stars li').on('mouseover', function() {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+            // Now highlight all the stars that's not after the current hovered star
+            $(this).parent().children('li.star').each(function(e) {
+                if (e < onStar) {
+                    $(this).addClass('hover');
+                } else {
+                    $(this).removeClass('hover');
+                }
+            });
+
+        }).on('mouseout', function() {
+            $(this).parent().children('li.star').each(function(e) {
+                $(this).removeClass('hover');
+            });
+        });
+
+
+        /* 2. Action to perform on click */
+        $('#stars li').on('click', function() {
+            var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('li.star');
+
+            for (i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+
+            // JUST RESPONSE (Not needed)
+            var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+            var msg = "";
+            if (ratingValue > 1) {
+                msg = "Thanks! You rated this " + ratingValue + " stars.";
+            } else {
+                msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+            }
+            responseMessage(msg);
+
+        });
+
+
+    });
+
+
+    function responseMessage(msg) {
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html("<span>" + msg + "</span>");
+    }
+    $('.star').on('click', function() {
+        // alert('com');
+        var rate = $(this).attr("data-value");
+        // alert(rate);
+        $('#input').val(rate);
+    });
 </script>
 @endsection
