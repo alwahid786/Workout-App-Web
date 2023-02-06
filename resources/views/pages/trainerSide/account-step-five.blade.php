@@ -1,6 +1,6 @@
 @extends('layouts.trainerSide.default')
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/stepfive.css')}}">
-<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/stepfive.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
 <style>
     * {
         margin: 0;
@@ -122,7 +122,7 @@
         border: 1px solid #E37048 !important;
         color: white;
         box-shadow: none !important;
-        width: 60px;
+        width: 70px;
         height: 35px;
         border-radius: 5px;
     }
@@ -339,6 +339,10 @@
         background-color: white;
     }
 
+    .step-five-buttons button:last-of-type {
+        width: 115px;
+    }
+
     .step-five-buttons button:hover {
         background: #E37048;
         color: white;
@@ -405,6 +409,48 @@
             font-weight: 900;
             margin-bottom: 0px;
         }
+
+        .content-left-section p {
+            color: #9B9B9B;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    }
+
+    .custom-modal {
+        background-color: #FF5959;
+        max-width: 500px;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .custom-modal h1 {
+        padding: 0.8rem 2rem;
+        color: white;
+        font-weight: 400;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    @media screen and (max-width:576px) {
+        .custom-modal h1 {
+            padding: 1rem 2rem;
+            color: white;
+            font-weight: 400;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .custom-modal {
+            background-color: #FF5959;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
     }
 
     /* p */
@@ -623,7 +669,7 @@
                     <div class="slot-wrapper py-3 px-3 my-4">
                         <div class="slot-vertical-icon my-2 text-right">
                             <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-                            <div class="icon-div icon-div-one">
+                            <div class="icon-div icon-div-one box" id="box">
                                 <div class="icon-edit py-3 icon-div-inner">
                                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
@@ -828,7 +874,7 @@
                     <div class="slot-wrapper py-3 px-3 my-4">
                         <div class="slot-vertical-icon my-2 text-right">
                             <img class="dot-toggle-icon-two" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-                            <div class="icon-div icon-div-two">
+                            <div class="icon-div icon-div-two box" id="box">
                                 <div class="icon-edit py-3 icon-div-inner">
                                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
@@ -1084,17 +1130,19 @@
         $('.icon-div-one').show();
         $('.icon-div-two').hide();
     });
-    $('.icon-div-one').mouseleave(function() {
-        $('.icon-div-one').hide();
-    });
     // two
     $('.icon-div-two').hide();
     $('.dot-toggle-icon-two').click(function() {
         $('.icon-div-two').show();
         $('.icon-div-one').hide();
     });
-    $('.icon-div-two').mouseleave(function() {
-        $('.icon-div-two').hide();
+    $(document).mouseup(function(e) {
+        var container = $(".box");
+
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.hide();
+        }
     });
     // time slot
     // show and hide

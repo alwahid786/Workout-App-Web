@@ -36,14 +36,42 @@
         box-shadow: none !important;
         outline: none !important;
         background: #F8F8F8;
-        color: #666666;
+        color: #666666 !important;
     }
-    .nice-select.wide{
-        height: 55px !important;
+
+    .nice-select.wide {
+        height: 65px !important;
         border: 1px solid #CECECE !important;
-        box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
         border-radius: 10px !important;
         justify-content: flex-start !important;
+        background: #F8F8F8;
+    }
+
+    .nice-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px;
+    }
+
+    .s-select span {
+        color: #666666 !important;
+        font-weight: normal !important;
     }
 
     .select-outer {
@@ -733,12 +761,12 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Select Category</label>
                     <div class="select-outer">
-                    <select class="wide s-select form-control py-4">
-                        <option value="">Yoga</option>
-                        <option value="">Yoga</option>
-                        <option value="">Yoga</option>
-                        <option value="">Yoga</option>
-                    </select>
+                        <select class="wide s-select form-control pl-4">
+                            <option value="">Yoga</option>
+                            <option value="">Yoga</option>
+                            <option value="">Yoga</option>
+                            <option value="">Yoga</option>
+                        </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
@@ -746,7 +774,7 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Type of category</label>
-                    <input type="text" class="form-control py-4" id="inputAddress" placeholder="" value="Italian Yoga">
+                    <input type="text" class="form-control pl-4" id="inputAddress" placeholder="" value="Italian Yoga">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -767,7 +795,7 @@
                         <div class="price-box">
                             <h1>HKD</h1>
                         </div>
-                        <input type="text" class="form-control py-4" id="inputAddress2" value="100">
+                        <input type="text" class="form-control pl-4" id="inputAddress2" value="100">
                     </div>
 
                 </div>
@@ -883,8 +911,8 @@
     <div class="slot-wrapper py-3 px-3 my-4">
         <div class="slot-vertical-icon my-2 text-right">
             <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-            <div class="icon-div icon-div-one">
-                <div class="icon-edit py-3 icon-div-inner">
+            <div class="icon-div icon-div-one box">
+                <div class="icon-edit py-3 icon-div-inner ">
                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                     <h1>Edit</h1>
@@ -1100,7 +1128,7 @@
     <div class="slot-wrapper py-3 px-3 my-4">
         <div class="slot-vertical-icon my-2 text-right">
             <img class="dot-toggle-icon-two" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-            <div class="icon-div icon-div-two">
+            <div class="icon-div icon-div-two box">
                 <div class="icon-edit py-3 icon-div-inner">
                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
@@ -1316,7 +1344,7 @@
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
-});
+    });
 </script>
 <script>
     $(document).ready(function() {
@@ -1350,6 +1378,14 @@
     });
     $('.icon-div-two').mouseleave(function() {
         $('.icon-div-two').hide();
+    });
+    $(document).mouseup(function(e) {
+        var container = $(".box");
+
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.hide();
+        }
     });
     // time slot
     // show and hide

@@ -337,6 +337,26 @@
     .fc-view-harness {
         height: 0 !important;
     }
+
+    .fc-next-button:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-prev-button:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-next-button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-prev-button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -538,7 +558,7 @@
 <!-- <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script>
-    $('.map-card-close').click(()=>{
+    $('.map-card-close').click(() => {
         $('.map-card').hide();
     });
 </script>
