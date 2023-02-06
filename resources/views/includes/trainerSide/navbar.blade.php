@@ -418,16 +418,6 @@
             <li class="nav-item">
                 <a href="" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/explore-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/explore-w.svg')}}" alt="image">
-                    </div>
-
-                    Explore
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="#" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/images/dashboard-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/dashboard-w.svg')}}" alt="image">
                     </div>
@@ -438,21 +428,31 @@
             <li class="nav-item ">
                 <a href="#" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/search-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/search-w.svg')}}" alt="image">
+                        <img class="nav-y" src="{{asset('public/assets/images/calendar-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/calendar-w.svg')}}" alt="image">
                     </div>
 
-                    Search
+                    Calendar
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a href="#" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
                     </div>
 
-                    Your Session
+                    List of Clients
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/trainerimages/session-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/trainerimages/session-w.svg')}}" alt="image">
+                    </div>
+
+                    Sessions Schedule
                 </a>
             </li>
             <li class="nav-item">
@@ -465,16 +465,7 @@
                     Messages
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/payment-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/payment-w.svg')}}" alt="image">
-                    </div>
 
-                    Setting
-                </a>
-            </li>
 
 
 
@@ -538,7 +529,7 @@
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Payment</a>
+                        <a class="dropdown-item" href="#">Update Profile</a>
                         <a class="dropdown-item" href="#">Logout</a>
 
                     </div>

@@ -2,7 +2,7 @@
 <!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/steptwo.css')}}">
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
 <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
-<link rel="stylesheet" href="{{asset('public/assets/css/bootstrap-select-country.min.css')}}">
+
 <style>
     * {
         margin: 0;
@@ -13,6 +13,11 @@
     .update-info-header {
         background-color: #F8F8F8;
     }
+
+    /* input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    } */
 
     .update-info-content h1 {
         font-size: 1.3rem;
@@ -35,18 +40,46 @@
         font-size: 0.6rem;
     }
 
-    .pro-form input
+    .pro-form input,
     .pro-form select {
         height: 65px !important;
         /* color: #fff !important; */
-        
+
     }
-    .nice-select.wide{
-        height: 55px !important;
+
+    .nice-select.wide {
+        height: 65px !important;
         border: 1px solid #CECECE !important;
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
         border-radius: 10px !important;
         justify-content: flex-start !important;
+    }
+
+    .nice-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px;
+    }
+
+    .s-select span {
+        color: #666666 !important;
+        font-weight: normal !important;
     }
 
     .pro-form input::placeholder {
@@ -54,12 +87,12 @@
     }
 
     .pro-form input,
-    .pro-form textarea
+    .pro-form textarea,
     .nice-select.wide {
-        background: rgba(249, 249, 249, 0.2);
-        border: 1px solid #CECECE !important;
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
-        border-radius: 10px !important;
+        background: #F8F8F8 !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        border-radius: 10px;
     }
 
     .pro-form textarea {
@@ -67,14 +100,7 @@
         height: 200px !important;
     }
 
-    /* .profile-nxt-btn {
-    text-align: center;
-    background: #E37048;
-    border-radius: 10px;
-    padding: 10px 0;
-    width: 70%;
-    margin: 0 auto;
-} */
+
     .profile-nxt-btn a {
         background-color: #ffff !important;
         color: #E37048 !important;
@@ -221,9 +247,20 @@
     }
 
     @media screen and (max-width:576px) {
-        .pro-form input  .pro-form select{
+
+        .pro-form input,
+        .pro-form select {
             height: 55px !important;
         }
+
+        .nice-select.wide {
+            height: 55px !important;
+            border: 1px solid #CECECE !important;
+            box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+            border-radius: 10px !important;
+            justify-content: flex-start !important;
+        }
+
 
         .update-profile-form-btn {
             font-size: 1.5rem;
@@ -490,25 +527,25 @@
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Contact</label>
-                    <input type="text" class="form-control py-4" id="inputAddress">
+                    <input type="text" class="form-control pl-4" id="inputAddress">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Emergency Contact</label>
-                    <input type="text" class="form-control py-4" id="inputAddress">
+                    <input type="text" class="form-control pl-4" id="inputAddress">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Date of Birth</label>
-                    <input type="date" class="form-control py-4" id="inputAddress2">
+                    <input type="date" class="form-control pl-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Gender</label>
-                    <select class="wide s-select form-control py-4">
+                    <select class="wide s-select form-control pl-4">
                         <option value="">Male</option>
                         <option value="">Female</option>
                     </select>
@@ -517,19 +554,19 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
-                    <input type="text" class="form-control py-4" id="inputAddress2">
+                    <input type="text" class="form-control pl-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
-                    <input type="text" class="form-control py-4" id="inputCity">
+                    <input type="text" class="form-control pl-4" id="inputCity">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Workout Location</label>
-                    <input type="text" class="form-control py-4" id="inputAddress2">
+                    <input type="text" class="form-control pl-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -537,7 +574,7 @@
                     <label for="inputCity" class=" ">Weight</label>
 
 
-                    <input type="text" class="form-control py-4" id="inputCity">
+                    <input type="text" class="form-control pl-4" id="inputCity">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
@@ -545,13 +582,13 @@
                     <label for="inputAddress2" class=" ">Height</label>
 
 
-                    <input type="text" class="form-control py-4" id="inputAddress2">
+                    <input type="text" class="form-control pl-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
-                    <input type="text" class="form-control py-4" id="inputCity">
+                    <input type="text" class="form-control pl-4" id="inputCity">
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-right">
@@ -559,7 +596,7 @@
                     <label for="inputCity" class=" ">Add Facebook URL</label>
                     <div class="input-container">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <input type="url" class="form-control py-4" id="inputCity">
+                        <input type="url" class="form-control pl-4" id="inputCity">
                     </div>
 
                 </div>
@@ -569,7 +606,7 @@
                     <label for="inputCity" class=" ">Add Insta URL</label>
                     <div class="input-container">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <input type="url" class="form-control py-4" id="inputCity">
+                        <input type="url" class="form-control pl-4" id="inputCity">
                     </div>
 
                 </div>
@@ -579,7 +616,7 @@
                     <label for="inputCity" class=" ">Add Linkedin URL</label>
                     <div class="input-container">
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
-                        <input type="url" class="form-control py-4" id="inputCity">
+                        <input type="url" class="form-control pl-4" id="inputCity">
                     </div>
 
                 </div>
@@ -671,11 +708,11 @@
 @endsection
 @section('insertsfooter')
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
-<script src="{{ asset('public/assets/js/bootstrap-select-coutry.min.js') }}"></script>
+
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
-});
+    });
 </script>
 <script>
     function openModal() {
