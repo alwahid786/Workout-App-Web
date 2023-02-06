@@ -358,6 +358,14 @@
         outline: none !important;
         box-shadow: none !important;
     }
+
+    .er {
+        height: 55px !important;
+        border: 1px solid #CECECE !important;
+        box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+        border-radius: 10px !important;
+        justify-content: flex-start !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -401,11 +409,8 @@
                                     <h1>Location</h1>
                                     <div class="drop-icon">
                                         <select class="wide s-select form-control " id="workout_location">
-                                            <option disabled="disabled" selected>Select --</option>
-                                            <option value="">London</option>
-                                            <option value="">London1</option>
-                                            <option value="">London2</option>
-                                            <option value="">London3</option>
+                                            <!-- <option disabled="disabled" selected>Select --</option> -->
+                                            <option selected value="{{$currentUserInfo->cityName}}" class="locationOption">{{$currentUserInfo->cityName}}</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                     </div>
@@ -435,15 +440,12 @@
                                     <div class="drop-icon drop-icon-thre">
                                         <select class="wide s-select form-control " id="workout_price">
                                             <option disabled="disabled" selected>Select --</option>
-                                            <option>$20 to $100</option>
-                                            <option>$20 to $100</option>
-                                            <option>$20 to $100</option>
-                                            <option>$20 to $100</option>
-                                            <option>$20 to $100</option>
+                                            <option value="85">$85 to $200</option>
+                                            <option value="200">$200 to $400</option>
+                                            <option value="400">$400 to $800</option>
+                                            <option value="800">$800++</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-
-
                                     </div>
                                 </div>
                             </div>
@@ -452,8 +454,23 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="row">
-                        <div class="col-sm-9 week-calendar">
+                        <div class="col-sm-6 week-calendar">
                             <div id="calendar"></div>
+                        </div>
+                        <div class="col-sm-3 range-filter">
+                            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
+                                <h1>Session Type</h1>
+                                <div class="drop-icon">
+                                    <select class="wide s-select form-control" id="workout_radius">
+                                        <option disabled="disabled" selected>Select --</option>
+                                        <option value="0">Online</option>
+                                        <option value="1">In-person</option>
+                                    </select>
+                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                                </div>
+
+
+                            </div>
                         </div>
                         <div class="col-sm-3 range-filter">
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
@@ -469,9 +486,8 @@
                                     </select>
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                 </div>
-
-
                             </div>
+                            
                         </div>
                     </div>
                 </div>
