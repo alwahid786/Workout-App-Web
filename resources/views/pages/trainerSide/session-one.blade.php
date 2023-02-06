@@ -200,9 +200,9 @@
             height: 170px;
         }
 
-        .client-detail-wrapper-left .first-section {
+        /* .client-detail-wrapper-left .first-section {
             margin-top: -80px;
-        }
+        } */
 
         .client-detail-wrapper-left .first-section h1 {
             font-size: 1.5rem;
