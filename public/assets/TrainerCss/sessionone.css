@@ -1,0 +1,224 @@
+body {
+    background-color: #F2F2F2 !important;
+}
+
+.session-card-top {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.session-card-top img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: 50% 70%;
+    border-radius: 10px;
+}
+
+.session-card-top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.session-card-top-content h1:first-of-type {
+    color: #E37048;
+    font-weight: 600;
+}
+
+.session-card-top-content h1 {
+    font-size: 1.3rem;
+    color: #464646;
+    margin-bottom: 0px;
+}
+
+.session-card-top .price h1 {
+    font-size: 1.3rem;
+    color: #E37048;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+
+.client-list-heading h1 {
+    color: #E37048;
+    margin-bottom: 0px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.client-list-heading h1 span {
+    font-size: 1rem;
+}
+
+.client-wrapper {
+    background: white;
+    border-radius: 10px;
+}
+
+.client-detail-wrapper {
+    background: white;
+    border-radius: 10px;
+}
+
+.client-detail-wrapper-body {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.client-detail-wrapper-left {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    max-width: 700px;
+    justify-content: space-between;
+}
+
+.client-detail-wrapper-left .first-section {
+    margin-top: -100px;
+}
+
+.client-detail-wrapper-left .first-section {
+    max-width: 220px;
+}
+
+.client-detail-wrapper-left .first-section img {
+    /* max-width: 200px; */
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.client-detail-wrapper-left .first-section h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #E37048;
+    text-align: center;
+}
+
+.client-detail-wrapper-right h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #E37048;
+
+}
+
+.second-section h1 {
+    color: #666666;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 25px;
+    font-weight: 400;
+    margin-bottom: 0px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.second-section h1 img {
+    width: 18px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+}
+
+.client-list-heading h1 {
+    color: #E37048;
+    margin-bottom: 0px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding-bottom: 8rem;
+}
+
+.client-detail-wrapper-right h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #E37048;
+}
+
+.client-detail-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.client-detail-btn a {
+    text-decoration: none !important;
+    background: white;
+    border: 1px solid #E37048 !important;
+    max-width: 220px;
+    width: 100%;
+    height: 50px;
+    color: #E37048;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    background: white;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.client-detail-btn a:hover {
+    background-color: #E37048;
+    color: white;
+}
+
+@media screen and (max-width:576px) {
+    .client-detail-wrapper-left {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        flex-direction: column;
+        max-width: 700px;
+        justify-content: space-between;
+    }
+
+    .client-detail-wrapper-left .first-section {
+        max-width: 155px;
+    }
+
+    .client-detail-wrapper-left .first-section img {
+        max-width: 155px;
+        height: 170px;
+    }
+
+    .client-detail-wrapper-left .first-section {
+        margin-top: -80px;
+    }
+
+    .client-detail-wrapper-left .first-section h1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #E37048;
+        text-align: center;
+    }
+
+    .session-card-top-content h1 {
+        font-size: 1rem;
+    }
+
+
+
+    .session-card-top .price h1 {
+        font-size: 1rem;
+    }
+
+
+
+    .session-card-top img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        object-position: 50% 70%;
+        border-radius: 10px;
+    }
+
+    .first-section {
+        width: 200px;
+        /* margin: 0 auto; */
+    }
+}
