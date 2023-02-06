@@ -659,9 +659,15 @@
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
+        @if($bookedsession['session']['type']==0)
         <div class="dashboard-header-left my-4 pt-2">
-            <h1>My Sessions Detail <span>One to one session </span></h1>
+            <h1>My Sessions Detail <span style="font-weight: bold; font-size:large;"> One to one session </span></h1>
         </div>
+        @else
+        <div class="dashboard-header-left my-4 pt-2">
+            <h1>My Sessions Detail <span style="font-weight: bold; font-size:large;"> Group </span></h1>
+        </div>
+        @endif
         <div class="carousel-parent">
             <div class="empty-session-detail-left">
 
