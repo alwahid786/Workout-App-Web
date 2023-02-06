@@ -358,7 +358,8 @@
         outline: none !important;
         box-shadow: none !important;
     }
-    .input-location input{
+
+    .input-location input {
         border: none !important;
         width: 100%;
         height: 65px;
@@ -366,10 +367,17 @@
         border-radius: 5px;
         padding: 0 5px;
     }
-    .input-location:active input
-    .input-location:focus input{
+
+    .input-location input:active {
         border: none !important;
         outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .input-location input:focus {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
     }
 </style>
 @include('includes.userdashboard.navbar')
@@ -488,11 +496,11 @@
                                         <option>1-9KM</option>
                                         <option>1-11KM</option>
                                     </select> -->
-                                    <input type="text" placeholder="Enter Location">
+                                    <input type="text" readonly style="cursor: pointer;" placeholder="Enter Location">
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
