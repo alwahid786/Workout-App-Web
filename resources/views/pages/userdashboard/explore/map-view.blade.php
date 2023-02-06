@@ -357,6 +357,19 @@
         outline: none !important;
         box-shadow: none !important;
     }
+    .input-location input{
+        border: none !important;
+        width: 100%;
+        height: 65px;
+        background: #F9F9FB;
+        border-radius: 5px;
+        padding: 0 5px;
+    }
+    .input-location:active input
+    .input-location:focus input{
+        border: none !important;
+        outline: none !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -479,14 +492,15 @@
                         <div class="col-sm-3 range-filter">
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                                 <h1>Range</h1>
-                                <div class="drop-icon">
-                                    <select class="wide s-select form-control">
+                                <div class="drop-icon input-location">
+                                    <!-- <select class="wide s-select form-control">
                                         <option>1-3KM</option>
                                         <option>1-5KM</option>
                                         <option>1-7KM</option>
                                         <option>1-9KM</option>
                                         <option>1-11KM</option>
-                                    </select>
+                                    </select> -->
+                                    <input type="text" placeholder="Enter Location">
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
 

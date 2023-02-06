@@ -183,3 +183,6 @@ Route::get('/trainer/stepfive', function () {
 Route::get('/trainer/dashboard', function () {
     return view('pages.trainerSide.dashboard');
 });
+Route::get('/trainer/calendar', function () {
+    return view('pages.trainerSide.calendar');
+});
