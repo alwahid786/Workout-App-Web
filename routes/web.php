@@ -38,6 +38,9 @@ Route::get('/profile', function () {
 Route::get('/about', function () {
     return view('pages.website.about');
 });
+Route::get('/about-new', function () {
+    return view('pages.website.about-new');
+});
 Route::get('/services', function () {
     return view('pages.website.services');
 });
