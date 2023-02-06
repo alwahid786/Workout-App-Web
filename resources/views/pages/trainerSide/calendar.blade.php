@@ -31,7 +31,7 @@
 
             }
         });
-        
+
         calendar.render();
     });
 </script>

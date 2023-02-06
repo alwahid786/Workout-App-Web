@@ -185,6 +185,7 @@ Route::get('/trainer/dashboard', function () {
 });
 Route::get('/trainer/calendar', function () {
     return view('pages.trainerSide.calendar');
+});
 Route::get('/trainer/clientlist', function () {
     return view('pages.trainerSide.client-list');
 });
