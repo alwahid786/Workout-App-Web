@@ -185,4 +185,21 @@ Route::get('/trainer/dashboard', function () {
 });
 Route::get('/trainer/calendar', function () {
     return view('pages.trainerSide.calendar');
+Route::get('/trainer/clientlist', function () {
+    return view('pages.trainerSide.client-list');
+});
+Route::get('/trainer/session', function () {
+    return view('pages.trainerSide.session');
+});
+Route::get('/trainer/sessiongroup', function () {
+    return view('pages.trainerSide.session-group');
+});
+Route::get('/trainer/sessionone', function () {
+    return view('pages.trainerSide.session-one');
+});
+Route::get('/trainer/request', function () {
+    return view('pages.trainerSide.client-request');
+});
+Route::get('/trainer/payment', function () {
+    return view('pages.trainerSide.payment');
 });
