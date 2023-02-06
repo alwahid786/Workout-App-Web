@@ -317,13 +317,13 @@ class UserController extends Controller
     {
         $user_detail = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();
 
-        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now())->with('session.class.category', 'session.class.trainer')->get();
         // $total_currentsession = $currentsession->count();
 
-        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now())->with('session.class.category', 'session.class.trainer')->get();
         $total_upcomingsession = $upcomingsession->count();
 
-        $pastsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '<', now()->day)->with('session.class.category', 'session.class.trainer')->get();
+        $pastsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '<', now())->with('session.class.category', 'session.class.trainer')->get();
         $total_pastsession = $pastsession->count();
 
 
@@ -344,7 +344,6 @@ class UserController extends Controller
         $upcoming_session = json_decode($upcomingsession, true);
         $past_session = json_decode($pastsession, true);
         $user = json_decode($user_detail, true);
-
 
 
         return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));

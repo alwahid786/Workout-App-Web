@@ -269,6 +269,22 @@
         outline: none !important;
     }
 
+    .detail-profile-button a:nth-of-type(3) {
+        text-decoration: none;
+        border: 1px solid #E37048;
+        color: #E37048;
+        background-color: white;
+        border-radius: 5px;
+        max-width: 200px;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
     .detail-profile-button {
         display: flex;
         flex-wrap: wrap;
@@ -497,6 +513,485 @@
         }
     }
 </style>
+<style>
+    .dashboard-header-left span {
+        color: #3F3F3F;
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    .session-detail-img {
+        height: 300px !important;
+
+    }
+
+    .session-detail-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 70%;
+        /* object-position: top bottom center; */
+        border-radius: 20px;
+
+
+    }
+
+    .carousel-parent {
+        position: relative;
+    }
+
+    .empty-session-detail-left {
+        position: absolute;
+        width: 20%;
+        height: 98%;
+        background: linear-gradient(270deg, #601900 0%, rgba(217, 217, 217, 0) 85.11%);
+        transform: rotate(-180deg);
+        z-index: 999;
+        border-radius: 10px;
+    }
+
+    .empty-session-detail-right {
+        border-radius: 10px;
+        position: absolute;
+        width: 20%;
+        height: 98%;
+        right: 0;
+        z-index: 999;
+        background: linear-gradient(270deg, #601900 0%, rgba(217, 217, 217, 0) 85.11%);
+    }
+
+    .ser-left-session {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        font-size: 1rem;
+        font-weight: normal;
+        background: #FFFFFF;
+        color: #E37048;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 45px;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 999;
+
+    }
+
+    .fa-arrow-left:before {
+        position: absolute;
+
+        top: 13px !important;
+        left: 14px !important;
+    }
+
+    .fa-arrow-right:before {
+        position: absolute;
+
+        top: 13px !important;
+        left: 17px !important;
+    }
+
+    .ser-right-session {
+        background: white;
+        color: #E37048;
+        font-size: 1rem;
+        font-weight: normal;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 999;
+    }
+
+    progress::-webkit-progress-bar {
+        background-color: #eeeeee;
+    }
+
+    progress::-webkit-progress-value {
+        background-color: #E37048 !important;
+    }
+
+
+    /* For Firefox */
+    progress {
+        background-color: #eee;
+    }
+
+    progress::-moz-progress-bar {
+        background-color: #E37048 !important;
+    }
+
+    /* For IE10 */
+    progress {
+        background-color: #eee;
+        height: 5px;
+    }
+
+    progress {
+        background-color: #E37048;
+    }
+
+    /* progress end */
+    .trainer-detail-profile-left-progress {
+
+        top: 117px !important;
+    }
+
+    .trainer-detail-profile-gender img {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .trainer-detail-profile-left {
+        align-items: flex-start;
+    }
+
+    .trainer-detail-profile-left img {
+        width: 145px;
+        border-radius: 7px;
+        height: 130px;
+
+        object-fit: cover;
+        position: relative;
+    }
+
+    @media screen and (max-width:576px) {
+        .trainer-detail-profile-left img {
+            width: 130px;
+        }
+    }
+
+    .trainer-class-time-card-right img {
+        width: 60px !important;
+        height: 60px !important;
+        border: 1px solid #E37048;
+        position: absolute;
+        left: 65px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .trainer-class-time-card-right-one {
+        position: absolute;
+        left: 31px !important;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .trainer-class-time-card-right-two {
+        position: absolute;
+        left: 48px !important;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .trainer-class-time-card-right-three {
+        position: absolute;
+        left: 65px !important;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .trainer-class-time-card-right {
+        width: 100px !important;
+        height: 100px;
+    }
+
+    .trainer-detail-profile-inner {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    /* end */
+    .trainer-detail-profile-right-client,
+    .trainer-detail-profile-right-classes {
+        max-width: 200px;
+    }
+
+    .trainer-detail-profile-right-price h1 {
+        font-size: 2rem;
+        color: #E37048;
+        margin-bottom: 0px;
+        font-weight: 700;
+    }
+
+    .session-inner-content h1 {
+        font-size: 1.1rem;
+        color: #B5B5BE;
+    }
+
+    .session-inner-content p {
+        font-size: 1rem;
+        color: #000;
+        font-weight: 500;
+    }
+
+    .detail-profile-button a:last-of-type {
+        text-decoration: none;
+        border: 1px solid #E37048;
+        color: #E37048;
+        background-color: white;
+        border-radius: 5px;
+        max-width: 200px;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .detail-profile-button {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .detail-profile-button a:last-of-type:hover {
+        background-color: #E37048;
+        color: white;
+        border: 1px solid #E37048;
+        text-decoration: none;
+    }
+
+    .detail-profile-button a:first-of-type {
+        text-decoration: none;
+        border: 1px solid #FF6E6E;
+        color: #FF6E6E;
+        background-color: white;
+        border-radius: 5px;
+        max-width: 200px;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .detail-profile-button a:first-of-type:hover {
+        background-color: #FF6E6E;
+        color: white;
+        border: 1px solid #FF6E6E;
+        text-decoration: none;
+    }
+
+    @media screen and (max-width:576px) {
+        .detail-profile-button {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .feedback-wrapper {
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .feedback-header h1 {
+        color: black;
+        font-size: 1.5rem;
+    }
+
+    .feedback-profile {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .feedback-profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #E37048;
+    }
+
+    .feedback-profile h1 {
+        font-size: 0.9rem;
+        color: #E37048;
+        margin-bottom: 0px;
+    }
+
+    .feedback-message {
+        background: #F4F4F4;
+        border-radius: 10px;
+        padding-right: 50px !important;
+        position: relative;
+    }
+
+    .feedback-message p {
+        font-size: 0.8rem;
+        color: #434343;
+        margin-bottom: 0px;
+    }
+
+    .feedback-rating {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translate(0%, -50%);
+        display: flex;
+    }
+
+    .feedback-rating i {
+        color: gold;
+    }
+
+    .feedback-rating p {
+        margin-bottom: 0px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: black;
+    }
+
+    .feedback-container {
+        overflow-y: scroll;
+        height: 460px;
+    }
+
+    .feedback-container::-webkit-scrollbar-thumb {
+        background: #E37048;
+        border-radius: 7px;
+        height: 7px;
+        width: 7px;
+    }
+
+    .feedback-container::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+        width: 7px;
+    }
+
+
+    .feedback-container::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 7px;
+        height: 7px;
+        width: 7px;
+    }
+
+
+    .feedback-container::-webkit-scrollbar-thumb {
+        background: #E37048;
+        border-radius: 7px;
+        height: 7px;
+        width: 7px;
+    }
+
+    .past-session-header {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .past-session-header h1 {
+        color: #E37048;
+        font-size: 1.7rem;
+        margin-bottom: 0px;
+    }
+
+    @media screen and (max-width:576px) {
+        .past-session-header h1 {
+            color: #E37048;
+            font-size: 1.3rem;
+            margin-bottom: 0px;
+        }
+    }
+
+    /* modal */
+    .modal-field textarea {
+        resize: none;
+        background: #EDEDED;
+        color: #B4B4B4;
+        border-radius: 10px;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .modalHeader {
+        position: relative;
+    }
+
+    .modalHeader img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+    }
+
+    .review-modal h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    .modal-btn button {
+        color: #E37048;
+        background: white;
+        border: 1px solid #E37048;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 180px;
+        height: 40px;
+        border-radius: 5px;
+        margin-left: auto;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .modal-btn button:hover {
+        color: white;
+        background: #E37048;
+        border: 1px solid #E37048;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 180px;
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .modal-content {
+        border-radius: 10px;
+        border: none;
+    }
+
+    .modal-rating-star i {
+        color: gold;
+        font-size: 1.8rem;
+    }
+
+    .trainer-detail-profile-left .rated-badge {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 135px;
+        top: 17px;
+    }
+
+    @media screen and (max-width:576px) {
+        .trainer-detail-profile-left .rated-badge {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 115px;
+            top: 17px;
+        }
+    }
+</style>
 
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -669,9 +1164,12 @@
                             <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
                             <a href="{{url('/dashboard/class-detail')}}" class="btn mr-sm-4 my-2">Book Again</a>
                             <a href="" class="btn my-2" data-toggle="modal" data-target="#refundModal">Refund</a>
+                            <a href="" class="btn  my-2 review-btn" data-toggle="modal" data-target="#reviewModal">Review</a>
+
 
 
                         </div>
+
                     </div>
 
                 </div>
@@ -797,6 +1295,40 @@
                     </div>
                     <div class="col text-right modal-btn pt-3 pb-2">
                         <button>Submit Request</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- //////////// Review modal..///////// -->
+<!-- modal -->
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content signupModalDialogue">
+            <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
+            <div class="modalHeader">
+                <!-- <h2>Signup to <span>WORKITPT</span></h2> -->
+                <img style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+            </div>
+            <div class="modal-body text-center review-modal mt-5 pt-0">
+                <img style="width:30%;margin:0 auto" src="{{asset('public/assets/images/review.svg')}}" alt="">
+                <h1 class="pt-2 pb-2">Send Review!</h1>
+                <div class="modal-rating-star pb-3">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+                <form>
+                    <div class="form-group modal-field">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Type reason"></textarea>
+                    </div>
+                    <div class="col text-right modal-btn pt-3 pb-2">
+                        <button>Send Review</button>
                     </div>
                 </form>
 
