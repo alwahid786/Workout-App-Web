@@ -113,6 +113,29 @@
 
     }
 
+    .form-field .login-btn {
+        text-decoration: none !important;
+        color: #E37048;
+        background: white;
+        border: 1px solid #E37048 !important;
+        height: 50px;
+        width: 100%;
+        font-weight: 500;
+        max-width: 250px;
+        outline: none !important;
+        box-shadow: none !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .form-field .login-btn:hover {
+        color: white;
+        border: 1px solid #E37048;
+        background: #E37048;
+    }
+
     .form-field button:hover {
         color: white;
         border: 1px solid #E37048;
@@ -150,13 +173,16 @@
         top: 50%;
         transform: translate(-50%, -50%);
     }
-.input-checkbox{
-    display: flex;
-}
-.input-checkbox p{
-    margin-bottom: 0;
-    padding-left: 10px;
-}
+
+    .input-checkbox {
+        display: flex;
+    }
+
+    .input-checkbox p {
+        margin-bottom: 0;
+        padding-left: 10px;
+    }
+
     @media screen and (max-width:1366px) {
         .form-field input {
             height: 60px;
@@ -264,13 +290,16 @@
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                 </div>
-                
+
                 <div class="form-check checkbox pl-0 pt-2">
-                    <label class="input-checkbox"><input type="checkbox"> <p>Remember me</p> </label>
+                    <label class="input-checkbox"><input type="checkbox">
+                        <p>Remember me</p>
+                    </label>
                     <a href="{{url('/trainer/forgetpassword')}}">Forgot Password?</a>
                 </div>
                 <div class="form-field pt-5 text-center">
-                    <button type="submit" class="btn btn-default text-center">Login</button>
+                    <!-- <button type="submit" class="btn btn-default text-center">Login</button> -->
+                    <a class="btn login-btn" href="{{url('/trainer/dashboard')}}">Login</a>
                 </div>
             </form>
             <div class="trainer-btn text-center col">
