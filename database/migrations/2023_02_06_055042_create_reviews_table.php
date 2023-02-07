@@ -17,8 +17,10 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->integer('session_id')->nullable();
             $table->integer('user_id')->nullable();
-            $table->decimal('rating')->nullable();
+            $table->integer('trainer_id')->nullable();
+            $table->double('rating')->nullable();
             $table->text('description')->nullable();
+
             $table->timestamps();
         });
     }

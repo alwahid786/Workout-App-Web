@@ -15,6 +15,7 @@ use App\Models\BookedSession;
 use App\Models\Classes;
 use App\Models\ContactUs;
 use App\Models\Customer;
+use App\Models\Review;
 use App\Models\Session as ModelsSession;
 use Carbon\Carbon;
 use DateTime;
@@ -302,15 +303,18 @@ class UserController extends Controller
     {
         $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
         $classes = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
+        $rating = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
+
 
         if (!$session_detail) {
             return $this->sendError('Session Detail');
         }
         $bookedsession = json_decode($session_detail, true);
-        // dd($classes);
+        $rating = json_decode($rating, true);
+        // dd($rating);
         // $classes = json_decode($classes, true);
 
-        return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession', 'classes'));
+        return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession', 'classes', 'rating'));
     }
     ///////.........user dashboard upcoming , current , past session .......//////
     public function UserBookedSession()
@@ -476,4 +480,30 @@ class UserController extends Controller
         ];
         // return $this->sendResponse($booksession_detail, 'Get Session Successfully!');
     }
+    ////////////......Review......./////
+    public function ratingStar(Request $request)
+    {
+
+        $rating = Review::create(
+            [
+                'user_id' => auth()->user()->id,
+                'session_id' => $request->session_id,
+                'trainer_id' => $request->trainer_id,
+                'rating' => $request->rating,
+                'description' => $request->description,
+            ]
+        );
+        if (!$rating) {
+            return $this->sendError('Process Fail');
+        }
+
+        return redirect()->back();
+    }
+
+    //////////.......get Rating star........///////
+    // public function getRatingStar()
+    // {
+    //     $rating = Review::get();
+
+    // }
 }
