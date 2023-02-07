@@ -40,6 +40,9 @@
         <li class="nav-item mr-lg-4 ">
           <a class="nav-link px-2" href="{{url('/about')}}">ABOUT US</a>
         </li>
+        <li class="nav-item mr-lg-4 ">
+          <a class="nav-link px-2" href="{{url('/faq')}}">FAQ's</a>
+        </li>
         <li class="nav-item nav-item-block">
           <a class="nav-link login-link px-2  px-lg-4 text-center modal-view" href="javascript:void(0)" data-toggle="modal" data-target="#loginModal">Login</a>
         </li>
