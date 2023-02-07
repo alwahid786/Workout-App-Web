@@ -317,6 +317,11 @@
         color: #000;
     }
 
+    .fc-col-header-cell-cushion:hover {
+        text-decoration: none !important;
+        cursor: pointer;
+    }
+
     .fc-col-header thead tr th:nth-of-type(4) .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion {
         background: #E37048;
         border-radius: 7px;
@@ -422,8 +427,8 @@
                                     <h1>Location</h1>
                                     <div class="drop-icon">
                                         <select class="wide s-select form-control " id="workout_location">
-                                            <!-- <option disabled="disabled" selected>Select --</option> -->
-                                            <option selected value="{{$currentUserInfo->cityName}}" class="locationOption">{{$currentUserInfo->cityName}}</option>
+                                            <option value='' diasbled="disabled">Select --</option>
+                                            <option selected value="{{$currentUserInfo->regionName}}" class="locationOption">{{$currentUserInfo->regionName}}</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                     </div>
@@ -474,7 +479,7 @@
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                                 <h1>Session Type</h1>
                                 <div class="drop-icon">
-                                    <select class="wide s-select form-control" id="workout_radius">
+                                    <select class="wide s-select form-control" id="session_type">
                                         <option disabled="disabled" selected>Select --</option>
                                         <option value="0">Online</option>
                                         <option value="1">In-person</option>
@@ -489,14 +494,16 @@
                             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                                 <h1>Range</h1>
                                 <div class="drop-icon input-location">
-                                    <!-- <select class="wide s-select form-control">
-                                        <option>1-3KM</option>
-                                        <option>1-5KM</option>
-                                        <option>1-7KM</option>
-                                        <option>1-9KM</option>
-                                        <option>1-11KM</option>
-                                    </select> -->
-                                    <input type="text" readonly style="cursor: pointer;" placeholder="Enter Location">
+                                    <select class="wide s-select form-control" id="workout_radius">
+                                        <option selected disabled="disabled">Select --</option>
+                                        <option value="3">3KM</option>
+                                        <option value="5">5KM</option>
+                                        <option value="8">8KM</option>
+                                        <option value="10">10KM</option>
+                                        <option value="15">15KM</option>
+                                        <option value="20">20KM</option>
+                                    </select>
+                                    <!-- <input type="text" readonly style="cursor: pointer;" placeholder="Enter Location"> -->
                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                 </div>
                             </div>
@@ -587,13 +594,18 @@
             } else {
                 $('#sessionType').text('Group');
             }
-        })
+        });
+        $(".fc-col-header-cell-cushion").click(function() {
+            var day = $(this).find(">:first-child").text();
+
+        });
         $(".applyFilterBtn").on('click', function() {
             let category = $('#workout_category').val();
             let location = $('#workout_location').val();
             let type = $('#workout_type').val();
             let price = $('#workout_price').val();
             let radius = $('#workout_radius').val();
+            let session_type = $('#session_type').val();
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -606,6 +618,8 @@
                     type: type,
                     price: price,
                     radius: radius,
+                    session_type: session_type,
+                    day: day
                 },
                 cache: false,
                 success: function(response) {
@@ -664,32 +678,6 @@
         }
     }
     window.initMap = initMap;
-
-    // Initialize and add the map
-    // function initMap() {
-    //     // The location of Uluru
-    //     const uluru = {
-    //         lat: parseInt(UserLocationdata.latitude),
-    //         lng: parseInt(UserLocationdata.longitude)
-    //     };
-    //     // The map, centered at Uluru
-    //     const map = new google.maps.Map(document.getElementById("map"), {
-    //         zoom: 10,
-    //         center: uluru,
-    //     });
-    //     // The marker, positioned at Uluru
-    //     const marker = new google.maps.Marker({
-    //         position: uluru,
-    //         map: map,
-    //     });
-    //     marker.addListener("click", () => {
-    //         $('.map-card').show();
-    //     });
-    // }
-
-    // window.initMap = initMap;
-
-    // Initialize and add the map
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
@@ -733,7 +721,6 @@
             let div2 = "<div>" + parts[1] + "</div>";
             $(this).html(div2 + div1)
         })
-
     }
 </script>
 @endsection
