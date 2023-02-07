@@ -36,10 +36,10 @@ Route::get('/profile', function () {
     return view('pages.website.update-profile');
 });
 Route::get('/about', function () {
-    return view('pages.website.about');
+    return view('pages.website.about-new');
 });
 Route::get('/about-new', function () {
-    return view('pages.website.about-new');
+    return view('pages.website.about');
 });
 Route::get('/services', function () {
     return view('pages.website.services');
