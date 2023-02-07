@@ -205,7 +205,9 @@ class UserController extends Controller
     public function class_detail(Request $request, $id, $day)
     {
         $class = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
-        // $class = Classes::where('id', '=', $id)->with('category')->get();
+
+        $classes_count = ModelsSession::where('trainer_id', '=', $id)->count();
+
         if (count($class) > 0) {
             foreach ($class as $session) {
                 $session['session'] = ModelsSession::where(['day' => $day, 'trainer_id' => $id])->with('category')->get();
@@ -216,10 +218,8 @@ class UserController extends Controller
         }
         $classSession = ModelsSession::where('trainer_id', $id)->groupBy('day')->pluck('day');
         $class_detail = json_decode($class, true);
-        // $classSession = json_decode($classSession, true);
-        // dd($class_detail);
-        // dd($classSession);
-        return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession'));
+
+        return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession', 'classes_count'));
     }
     //////customer card detail........./////////
 

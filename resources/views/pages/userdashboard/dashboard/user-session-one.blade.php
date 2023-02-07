@@ -713,7 +713,7 @@
                             <div class="trainer-detail-profile-inner-left">
                                 <div class="trainer-detail-profile-left mt-0 d-flex">
                                     <div class="trainer-detail-profile-left-inner">
-                                        <a href="{{url('/dashboard/trainer-detail')}}"><img class="mr-2" src="{{asset('public/assets/images/session-one.jpg')}}" alt=""></a>
+                                        <a href="{{url('/dashboard/trainer-detail/'.$bookedsession['session']['class']['trainer']['id'])}}"><img class="mr-2" src="{{$bookedsession['session']['class']['trainer']['profile_img']}}" alt=""></a>
                                         <img class="rated-badge" src="{{asset('public/assets/images/badge-2.svg')}}" alt="">
                                         <div class="trainer-detail-profile-left-progress py-2 px-2">
                                             <h1>Level</h1>
@@ -831,7 +831,7 @@
                     <div class="col text-center">
                         <div class="detail-profile-button">
                             <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
-                            <a href="{{url('/dashboard/class-detail')}}" class="btn mr-sm-4 my-2">Book Again</a>
+                            <a href="{{url('/dashboard/class-detail/'.$bookedsession['session']['class']['trainer']['id'].'/'.$bookedsession['session']['day'])}}" class="btn mr-sm-4 my-2">Book Again</a>
                             <a href="javascript:void(0)" class="btn mr-sm-4 my-2" data-toggle="modal" data-target="#reviewModal">Review</a>
                             <a href="" class="btn my-2" data-toggle="modal" data-target="#refundModal">Refund</a>
                         </div>
