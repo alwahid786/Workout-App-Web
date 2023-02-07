@@ -76,6 +76,10 @@
         font-size: 0.9rem;
     }
 
+    .client-list-card-right h1 img {
+        padding-bottom: 2px !important;
+    }
+
     .right-dots {
         position: absolute;
         right: 15px;
@@ -206,6 +210,7 @@
 
         .client-list-card-right img {
             width: 12px;
+
         }
 
         .session-card-top img {
@@ -268,7 +273,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
@@ -295,7 +300,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
@@ -322,7 +327,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
@@ -349,7 +354,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
@@ -376,7 +381,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
@@ -403,7 +408,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
@@ -430,7 +435,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
@@ -457,7 +462,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
@@ -484,7 +489,7 @@
                                         </ul>
                                     </div>
                                     <div class="c-dropdown-content">
-                                        <a class="btn"></i> Edit</a>
+                                        <a class="btn"></i> Delete</a>
                                         <a class="btn">View</a>
                                     </div>
                                 </div>
