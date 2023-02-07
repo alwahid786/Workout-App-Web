@@ -855,7 +855,7 @@
                 <div class="price-field-outer" id="div1">
                     <div class="col-12 pl-0 price-field">
                         <div class="price-field-input">
-                            <input class="form-control text-right" value="0.00" type="text">
+                            <input class="form-control text-right" placeholder="0.00" type="text">
                             <h2>$</h2>
                         </div>
 
