@@ -22,6 +22,7 @@ use DateTime;
 use Stripe;
 use Throwable;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Stripe\SearchResult;
 
@@ -341,6 +342,8 @@ class UserController extends Controller
         // dd($rawQuery->count());
         $total_trainer = $rawQuery->count();
 
+
+
         if (!$currentsession) {
             return $this->sendError('Session Detail');
         }
@@ -348,6 +351,8 @@ class UserController extends Controller
         $upcoming_session = json_decode($upcomingsession, true);
         $past_session = json_decode($pastsession, true);
         $user = json_decode($user_detail, true);
+        $rawQuery = json_decode($rawQuery, true);
+        // dd($rawQuery);
 
 
         return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
@@ -500,10 +505,40 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    //////////.......get Rating star........///////
-    // public function getRatingStar()
-    // {
-    //     $rating = Review::get();
+    ////////.......get user trainer........///////
+    public function usersTrainerbk()
+    {
 
-    // }
+        $getTrainers = DB::table('booked_sessions')
+            ->join('sessions', 'booked_sessions.session_id', '=', 'sessions.id')
+            ->join('users', 'sessions.trainer_id', '=', 'users.id')
+            ->where('booked_sessions.user_id', auth()->user()->id)
+            // ->select("*")
+            // ->groupBy('booked_sessions.id')
+            ->get();
+        // dd($getTrainers);
+        if (!$getTrainers) {
+            return $this->sendError('No Data found against ID');
+        }
+        $trainer = json_decode($getTrainers, true);
+        return view('pages.userdashboard.dashboard.all-trainer', compact('trainer'));
+    }
+
+    public function usersTrainer()
+    {
+
+
+        $sessionIds = BookedSession::where('user_id', auth()->user()->id)->pluck('session_id');
+        $getTrainers = ModelsSession::whereIn('id', $sessionIds)->groupBy('trainer_id')->with(['trainerData'])->get();
+        if (!empty($getTrainers)) {
+            foreach ($getTrainers as $trainerId) {
+                $trainerId['sessionCount']  = ModelsSession::where('trainer_id', $trainerId['trainer_id'])->count();
+            }
+        }
+        if (!$getTrainers) {
+            return $this->sendError('No Data found against ID');
+        }
+        $trainer = json_decode($getTrainers, true);
+        return view('pages.userdashboard.dashboard.all-trainer', compact('trainer'));
+    }
 }
