@@ -1,6 +1,13 @@
 @extends('layouts.trainerSide.default')
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/calendar.css')}}">
 <style>
+    body{
+        background-color: #f4f6fa !important;
+    }
+    .calendar-container{
+        background-color: #fff;
+        border-radius: 8px;
+    }
     .fc-event-title-container {
         background-color: #E37048;
         border: 1px solid #E37048 !important;
@@ -29,7 +36,7 @@
 @section('content')
 @include('includes.trainerSide.navbar')
 <div class="content-wrapper px-2 py-3">
-    <div class="container-fluid ">
+    <div class="container-fluid  calendar-container py-4">
         <div id="calendar"></div>
     </div>
 </div>
