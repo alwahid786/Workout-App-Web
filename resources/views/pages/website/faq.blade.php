@@ -223,6 +223,107 @@
             display: none;
         }
     }
+
+    h2 {
+        color: #282F35;
+        font-family: 'Josefin Sans', Arial, sans-serif;
+        font-size: 18px;
+        letter-spacing: 1px;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    p {
+        color: #666666;
+        font-family: 'Malgun Gothic', Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 20px;
+    }
+
+    .container {
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .acc {
+        margin: 90px 0;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .acc li {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .acc_ctrl {
+        background: #FFFFFF;
+        border: none;
+        border-bottom: solid 1px #F2F2F2;
+        cursor: pointer;
+        display: block;
+        outline: none;
+        padding: 2em;
+        position: relative;
+        text-align: center;
+        width: 100%;
+    }
+
+    .acc_ctrl h2 {
+        text-align: left;
+    }
+
+    .acc_ctrl:before {
+        background: #44596B;
+        content: '';
+        height: 2px;
+        margin-right: 37px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -ms-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        width: 14px;
+    }
+
+    .acc_ctrl:after {
+        background: #44596B;
+        content: '';
+        height: 2px;
+        margin-right: 37px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 14px;
+    }
+
+    .acc_ctrl.active:before {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    .acc_ctrl.active h2,
+    .acc_ctrl:focus h2 {
+        position: relative;
+    }
+
+    .acc_panel {
+        background: #F2F2F2;
+        display: none;
+        overflow: hidden;
+    }
 </style>
 @include('includes.website.navbar')
 <div class="container-fluid hero-section">
@@ -230,21 +331,60 @@
         <div class="row">
             <div class="col- hero-left text-center text-md-left">
                 <div class="hero-left-content">
-                    <h1>About Us</h1>
+                    <h1>FAQ's</h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="about-content">
-        <h1>Heading</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vitae similique nulla asperiores doloremque suscipit laborum mollitia? Voluptates veniam minus ipsa modi optio consequatur eaque, sapiente aspernatur eligendi adipisci dolorem, cumque libero numquam nulla quibusdam quasi facere recusandae eum quo rem aliquam exercitationem totam! Quidem, placeat illo autem porro optio voluptates voluptate repellendus recusandae laborum odit nemo, magnam, omnis a animi beatae ab consequuntur accusantium. Libero in voluptatum, ut natus sapiente, cum dolore laborum cupiditate illo possimus unde, neque illum perferendis quibusdam! Ab at nisi vitae optio quia id, exercitationem quae. Ipsum nihil ut unde aliquam omnis excepturi ex dolorem dolor nisi reprehenderit nobis accusantium velit, impedit saepe similique nesciunt! Consectetur recusandae rerum esse sunt odio. Minus, repellendus. In fugiat dolorem aut maxime minima aliquam dolore provident magni odit delectus earum consequatur, vel iure molestiae mollitia quidem autem facere nostrum voluptas? Doloribus magnam praesentium odio ab animi ipsum quos id.</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <ul class="acc">
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>Yoga</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>GM Holden Ltd, commonly known as Holden, is an Australian automaker that operates in Australasia and is headquartered in Port Melbourne, Victoria. The company was founded in 1856 as a saddlery manufacturer in South Australia.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>Stretching Outdoors</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>The Ford Motor Company (commonly referred to as simply Ford) is an American multinational automaker headquartered in Dearborn, Michigan, a suburb of Detroit. It was founded by Henry Ford and incorporated on June 16, 1903.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>Body Building</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Toyota Motor Corporation is a Japanese automotive manufacturer which was founded by Kiichiro Toyoda in 1937 as a spinoff from his father's company Toyota Industries, which is currently headquartered in Toyota, Aichi Prefecture, Japan.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>Gymnastics</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Toyota Motor Corporation is a Japanese automotive manufacturer which was founded by Kiichiro Toyoda in 1937 as a spinoff from his father's company Toyota Industries, which is currently headquartered in Toyota, Aichi Prefecture, Japan.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>Running</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Toyota Motor Corporation is a Japanese automotive manufacturer which was founded by Kiichiro Toyoda in 1937 as a spinoff from his father's company Toyota Industries, which is currently headquartered in Toyota, Aichi Prefecture, Japan.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="about-content">
-        <h1>Heading</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vitae similique nulla asperiores doloremque suscipit laborum mollitia? Voluptates veniam minus ipsa modi optio consequatur eaque, sapiente aspernatur eligendi adipisci dolorem, cumque libero numquam nulla quibusdam quasi facere recusandae eum quo rem aliquam exercitationem totam! Quidem, placeat illo autem porro optio voluptates voluptate repellendus recusandae laborum odit nemo, magnam, omnis a animi beatae ab consequuntur accusantium. Libero in voluptatum, ut natus sapiente, cum dolore laborum cupiditate illo possimus unde, neque illum perferendis quibusdam! Ab at nisi vitae optio quia id, exercitationem quae. Ipsum nihil ut unde aliquam omnis excepturi ex dolorem dolor nisi reprehenderit nobis accusantium velit, impedit saepe similique nesciunt! Consectetur recusandae rerum esse sunt odio. Minus, repellendus. In fugiat dolorem aut maxime minima aliquam dolore provident magni odit delectus earum consequatur, vel iure molestiae mollitia quidem autem facere nostrum voluptas? Doloribus magnam praesentium odio ab animi ipsum quos id.</p>
-    </div>
+
 </div>
 <!-- Footer Section  -->
 <footer>
@@ -755,5 +895,23 @@
 </script>
 <script>
     $('.nav-lists .nav-item:nth-of-type(3)').addClass('active')
+</script>
+<script>
+    $(function() {
+        $('.acc_ctrl').on('click', function(e) {
+            e.preventDefault();
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $(this).next()
+                    .stop()
+                    .slideUp(300);
+            } else {
+                $(this).addClass('active');
+                $(this).next()
+                    .stop()
+                    .slideDown(300);
+            }
+        });
+    });
 </script>
 @endsection
