@@ -32,4 +32,8 @@ class Session extends Model
     {
         return $this->belongsTo(User::class, 'trainer_id');
     }
+    // public function trainerLocation()
+    // {
+    //     return $this->belongsTo(User::class, 'state');
+    // }
 }
