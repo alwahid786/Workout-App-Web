@@ -1,25 +1,30 @@
 @extends('layouts.trainerSide.default')
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/calendar.css')}}">
 <style>
-.fc-event-title-container{
-    background-color: #E37048;
-    border:  1px solid #E37048 !important;
-}
-.fc-event-title{
-    color: #ffff;
-}
-.fc-daygrid-event-harness .fc-event-draggable{
-    background-color: #E37048;
-}
-.fc-daygrid-event-harness .fc-event-draggable:hover{
-    background-color: #E37048;
-}
-.fc-daygrid-event-harness .fc-event-draggable .fc-daygrid-event-dot{
-    display: none;
-}
-.fc-daygrid-event-harness .fc-event-draggable .fc-event-time{
-    color: #fff;
-}
+    .fc-event-title-container {
+        background-color: #E37048;
+        border: 1px solid #E37048 !important;
+    }
+
+    .fc-event-title {
+        color: #ffff;
+    }
+
+    .fc-daygrid-event-harness .fc-event-draggable {
+        background-color: #E37048;
+    }
+
+    .fc-daygrid-event-harness .fc-event-draggable:hover {
+        background-color: #E37048;
+    }
+
+    .fc-daygrid-event-harness .fc-event-draggable .fc-daygrid-event-dot {
+        display: none;
+    }
+
+    .fc-daygrid-event-harness .fc-event-draggable .fc-event-time {
+        color: #fff;
+    }
 </style>
 @section('content')
 @include('includes.trainerSide.navbar')
@@ -58,13 +63,58 @@
             editable: true,
             eventLimit: true,
             dragScroll: true,
-            // dayPopoverFormat: 'LL',
+            // eventDisplay: 'auto',
+            // defaultRangeSeparator: ' - ',
+            // titleRangeSeparator: ' \u2013 ',
+            // defaultTimedEventDuration: '01:00:00',
+            // defaultAllDayEventDuration: {
+            //     day: 1
+            // },
+            // forceEventDuration: false,
+            // nextDayThreshold: '00:00:00',
+            // dayHeaders: true,
+            // initialView: '',
+            // aspectRatio: 1.35,
+            // headerToolbar: {
+            //     start: 'title',
+            //     center: '',
+            //     end: 'today prev,next'
+            // },
+            // weekends: true,
+            // weekNumbers: false,
+            // weekNumberCalculation: 'local',
+            // editable: false,
+            // nowIndicator: false,
+            // scrollTime: '06:00:00',
+            // slotMinTime: '00:00:00',
+            // slotMaxTime: '24:00:00',
+            // showNonCurrentDates: true,
+            // lazyFetching: true,
             // startParam: 'start',
             // endParam: 'end',
             // timeZoneParam: 'timeZone',
             // timeZone: 'local',
             // locales: [],
             // locale: '',
+            // themeSystem: 'standard',
+            // dragRevertDuration: 500,
+            // dragScroll : true,
+            // allDayMaintainDuration: false,
+            // unselectAuto: true,
+            // dropAccept: '*',
+            // eventOrder: 'start,-duration,allDay,title',
+            // dayPopoverFormat: {
+            //     month: 'long',
+            //     day: 'numeric',
+            //     year: 'numeric'
+            // },
+            // handleWindowResize: true,
+            // windowResizeDelay: 100,
+            // longPressDelay: 1000,
+            // eventDragMinDistance: 5,
+            // expandRows: false,
+            // navLinks: false,
+            // selectable: false,
             events: [{
                     title: 'All Day Event',
                     start: '2023-02-02',
@@ -88,7 +138,7 @@
                     groupId: '999',
                     title: 'Repeating Event',
                     start: '2020-02-09T16:00:00'
-                } ,{
+                }, {
                     title: 'Running',
                     start: '2023-02-07',
 
