@@ -189,13 +189,15 @@
                 </div>
 
                 <div class="payment-table">
+                    @if(isset($payments) && !empty($payments))
+                    @foreach($payments as $payment)
                     <div class="past-session-table-body d-flex justify-content-around px-3 my-4 my-md-0 py-4">
                         <div class="table-cotent">
                             <div class="table-content-heading">
-                                <h1> Class Name</h1>
+                                <h1> </h1>
                             </div>
                             <div class="table-content-value ">
-                                <h1>Nutrition</h1>
+                                <h1>{{$payment['session']['category']['title']}}</h1>
                             </div>
                         </div>
 
@@ -204,7 +206,7 @@
                                 <h1>Fee</h1>
                             </div>
                             <div class="table-content-value text-md-center">
-                                <h1>$100</h1>
+                                <h1>${{$payment['session']['price']}}</h1>
                             </div>
 
                         </div>
@@ -214,7 +216,7 @@
                                 <h1>Date</h1>
                             </div>
                             <div class="table-content-value text-md-center">
-                                <h1>22 Nov, 2022</h1>
+                                <h1>{{ date("d M, Y", strtotime($payment['created_at']))}}</h1>
                             </div>
                         </div>
 
@@ -223,7 +225,7 @@
                                 <h1>Trainer Name</h1>
                             </div>
                             <div class="table-content-value text-md-center">
-                                <h1>John Smith</h1>
+                                <h1>{{$payment['session']['trainer_data']['name']}}</h1>
                             </div>
 
                         </div>
@@ -242,165 +244,12 @@
 
 
                     </div>
-                    <div class="past-session-table-body d-flex justify-content-around px-3 my-4 my-md-0 py-4">
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1> Class Name</h1>
-                            </div>
-                            <div class="table-content-value ">
-                                <h1>Nutrition</h1>
-                            </div>
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Fee</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>$100</h1>
-                            </div>
-
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Date</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>22 Nov, 2022</h1>
-                            </div>
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Trainer Name</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>John Smith</h1>
-                            </div>
-
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Details</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <a href="{{url('/payment/paymentdetail')}}" class="btn">
-                                    Details
-                                </a>
-
-                            </div>
-                        </div>
-
-
+                    @endforeach
+                    @else
+                    <div class="text-center text-danger my-3">
+                        You have not processed any payments yet.
                     </div>
-                    <div class="past-session-table-body d-flex justify-content-around px-3 my-4 my-md-0 py-4">
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1> Class Name</h1>
-                            </div>
-                            <div class="table-content-value ">
-                                <h1>Nutrition</h1>
-                            </div>
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Fee</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>$100</h1>
-                            </div>
-
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Date</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>22 Nov, 2022</h1>
-                            </div>
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Trainer Name</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>John Smith</h1>
-                            </div>
-
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Details</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <a href="{{url('/payment/paymentdetail')}}" class="btn">
-                                    Details
-                                </a>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="past-session-table-body d-flex justify-content-around px-3 my-4 my-md-0 py-4">
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1> Class Name</h1>
-                            </div>
-                            <div class="table-content-value ">
-                                <h1>Nutrition</h1>
-                            </div>
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Fee</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>$100</h1>
-                            </div>
-
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Date</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>22 Nov, 2022</h1>
-                            </div>
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Trainer Name</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <h1>John Smith</h1>
-                            </div>
-
-                        </div>
-
-                        <div class="table-cotent">
-                            <div class="table-content-heading">
-                                <h1>Details</h1>
-                            </div>
-                            <div class="table-content-value text-md-center">
-                                <a href="{{url('/payment/paymentdetail')}}" class="btn">
-                                    Details
-                                </a>
-
-                            </div>
-                        </div>
-
-
-                    </div>
+                    @endif
                 </div>
 
 

@@ -61,12 +61,12 @@ Route::middleware('auth')->group(function () {
     Route::any('/get_day_session', [UserController::class, 'getDaySession'])->name('get_day_session');
     Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('dashboard/payment');
     Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
-    Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
     Route::any('/dashboard/map', [MapController::class, 'mapViewPage'])->name('mapViewPage');
     Route::any('/dashboard/filterMapData', [MapController::class, 'filterMapData'])->name('filterMapData');
 
     Route::any('get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('get_sessions_list');
     Route::any('/rating', [UserController::class, 'ratingStar'])->name('rating');
+    Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
 });
 
 
@@ -188,9 +188,9 @@ Route::get('/userdashboard/upcomingsessionlist', function () {
     return view('pages.userdashboard.dashboard.upcoming-session-list');
 });
 // payment
-Route::get('/payment', function () {
-    return view('pages.userdashboard.payment.payment');
-});
+// Route::get('/payment', function () {
+//     return view('pages.userdashboard.payment.payment');
+// });
 Route::get('/payment/paymentdetail', function () {
     return view('pages.userdashboard.payment.payment-detail');
 });
