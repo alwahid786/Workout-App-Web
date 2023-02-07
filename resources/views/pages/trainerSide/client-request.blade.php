@@ -68,7 +68,7 @@
 
     .second-section h1 {
         color: #666666;
-        font-size: 1rem;
+        font-size: 1.2rem;
         position: relative;
         padding-left: 25px;
         font-weight: 400;
@@ -266,7 +266,7 @@
 @include('includes.trainerSide.navbar')
 <div class="content-wrapper py-3">
     <div class="container-fluid ">
-        <div class="col-12 client-list-heading client-list-headings  my-auto ">
+        <div class="col-12 client-list-heading client-list-headings  my-auto pl-4">
             <h1>Client Request</h1>
         </div>
         <div class="client-detail-wrapper ">

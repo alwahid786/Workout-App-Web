@@ -198,6 +198,12 @@ Route::get('/trainer/sessionone', function () {
 Route::get('/trainer/request', function () {
     return view('pages.trainerSide.client-request');
 });
+Route::get('/trainer/chat', function () {
+    return view('pages.trainerSide.message');
+});
 Route::get('/trainer/payment', function () {
     return view('pages.trainerSide.payment');
+});
+Route::get('/trainer/paymentdetail', function () {
+    return view('pages.trainerSide.payment-detail');
 });
