@@ -287,9 +287,14 @@
         color: #464646;
     }
 
-    .table-content-value .session-status.pending {
+    .table-content-value .session-status.success {
         color: #3F9917 !important;
     }
+
+    .table-content-value .session-status.pending {
+        color: #FF0000 !important;
+    }
+
 
     .upcoming-header h1 {
         color: #E37048;
@@ -561,7 +566,7 @@
         font-weight: 500;
     }
 
-    @media screen and (max-width:576px) {
+    @media screen and (max-width:767px) {
         .dashboard-session-card .card-heading {
             color: white;
             font-size: 1rem;
@@ -660,6 +665,13 @@
 
         .table-content-value h1 {
             font-size: 0.8rem !important;
+        }
+    }
+
+    @media screen and (max-width: 1460px) and (min-width:992px) {
+        .table-content-value .date {
+            font-size: 0.6rem;
+            color: #464646;
         }
     }
 </style>
@@ -804,7 +816,7 @@
                                     </div>
                                     <div class="table-cotent py-2 py-md-0">
                                         <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> In session</h1>
+                                            <h1 class="session-status success"> In session</h1>
                                         </div>
                                     </div>
 
@@ -855,7 +867,7 @@
                                     </div>
                                     <div class="table-cotent py-2 py-md-0">
                                         <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> In session</h1>
+                                            <h1 class="session-status pending"> Pending</h1>
                                         </div>
                                     </div>
 
@@ -897,7 +909,7 @@
                                     </div>
                                     <div class="table-cotent py-2 py-md-0">
                                         <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> In session</h1>
+                                            <h1 class="session-status pending"> Pending</h1>
                                         </div>
                                     </div>
 
@@ -939,7 +951,7 @@
                                     </div>
                                     <div class="table-cotent py-2 py-md-0">
                                         <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> In session</h1>
+                                            <h1 class="session-status pending"> Pending</h1>
                                         </div>
                                     </div>
 
@@ -981,7 +993,7 @@
                                     </div>
                                     <div class="table-cotent py-2 py-md-0">
                                         <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> In session</h1>
+                                            <h1 class="session-status pending"> Pending</h1>
                                         </div>
                                     </div>
 
@@ -1023,7 +1035,7 @@
                                     </div>
                                     <div class="table-cotent py-2 py-md-0">
                                         <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> In session</h1>
+                                            <h1 class="session-status pending"> Pending</h1>
                                         </div>
                                     </div>
 

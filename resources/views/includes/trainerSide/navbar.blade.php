@@ -399,9 +399,43 @@
 
     }
 
+    .logout-dropdown a {
+        color: #BDBDBD;
+    }
+
+    .logout-dropdown a:first-of-type {
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+    .logout-dropdown a i {
+        color: #BDBDBD !important;
+        padding-right: 0.5rem;
+    }
+
     .logout-dropdown a:hover {
         background-color: #E37048;
         color: white;
+    }
+
+    .logout-dropdown a:hover i {
+        color: white !important;
+    }
+
+    .notification-btns button {
+        border: none !important;
+        box-shadow: none;
+        outline: none !important;
+        width: 80px;
+        height: 30px;
+        font-size: 0.8rem;
+        border-radius: 7px;
+        background-color: #E37048;
+        color: white;
+    }
+
+    .notification-btns button:nth-of-type(2) {
+        background-color: #ECECEC;
+        color: #E37048;
     }
 </style>
 <nav class="navbar navbar-z navbar-expand-lg navbar-dark  navbar-header px-4 px-lg-0">
@@ -416,7 +450,7 @@
         <ul class="navbar-nav mr-auto sidenav pt-lg-5" id="navAccordion" data-aos="fade-up">
 
             <li class="nav-item">
-                <a href="" class=" nav-link sidenav-item ">
+                <a href="{{url('/trainer/dashboard')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/images/dashboard-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/dashboard-w.svg')}}" alt="image">
@@ -436,7 +470,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="#" class=" nav-link sidenav-item ">
+                <a href="{{url('/trainer/clientlist')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
@@ -446,7 +480,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class=" nav-link sidenav-item ">
+                <a href="{{url('/trainer/session')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
                         <img class="nav-y" src="{{asset('public/assets/trainerimages/session-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/trainerimages/session-w.svg')}}" alt="image">
@@ -489,35 +523,45 @@
                     <a class="nav-link   dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" href="#"> <img src="{{asset('public/assets/images/notification-icon-w.svg')}}" alt="image"></a>
                     <div class="dropdown-menu notification-dropdown" aria-labelledby="dropdownMenuButton">
 
-                        <a class=" notification-area" href="#">
+                        <a class=" notification-area" href="{{url('/trainer/request')}}">
                             <div class="notification-profile d-flex py-3">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
-                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
-                                    view to edit</p>
-                            </div>
-                        </a>
-                        <a class=" notification-area" href="#">
-                            <div class="notification-profile d-flex py-3">
-                                <img src="{{asset('public/assets/images/rating-right.png')}}">
-                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
-                                    view to edit</p>
-                            </div>
-                        </a>
-                        <a class=" notification-area" href="#">
-                            <div class="notification-profile d-flex py-3">
-                                <img src="{{asset('public/assets/images/rating-right.png')}}">
-                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
-                                    view to edit</p>
+                                <div>
+                                    <p class="pl-3 pb-1"><span>Dayut Carlotte</span> send you request for Nutrition sessions</p>
+                                    <div class="notification-btns pl-3">
+                                        <button>Accept</button>
+                                        <button>Reject</button>
+                                    </div>
+                                </div>
 
                             </div>
                         </a>
-                        <a class=" notification-area" href="#">
+                        <a class=" notification-area" href="{{url('/trainer/request')}}">
                             <div class="notification-profile d-flex py-3">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
-                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
-                                    view to edit</p>
+                                <div>
+                                    <p class="pl-3 pb-1"><span>Dayut Carlotte</span> send you request for Nutrition sessions</p>
+                                    <div class="notification-btns pl-3">
+                                        <button>Accept</button>
+                                        <button>Reject</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </a>
+                        <a class=" notification-area" href="{{url('/trainer/request')}}">
+                            <div class="notification-profile d-flex py-3">
+                                <img src="{{asset('public/assets/images/rating-right.png')}}">
+                                <p class="pl-3"><span>Dayut Carlotte</span> your Nutritions session wil be on 12 Nov 2022 (2pm-4pm)</p>
+                            </div>
+                        </a>
+                        <a class=" notification-area" href="{{url('/trainer/request')}}">
+                            <div class="notification-profile d-flex py-3">
+                                <img src="{{asset('public/assets/images/rating-right.png')}}">
+                                <p class="pl-3"><span>Dayut Carlotte</span> your Nutritions session wil be on 12 Nov 2022 (2pm-4pm)</p>
+                            </div>
+                        </a>
+
                     </div>
                 </div>
 
@@ -528,9 +572,9 @@
                         <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </button>
-                    <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Update Profile</a>
-                        <a class="dropdown-item" href="#">Logout</a>
+                    <div class="dropdown-menu logout-dropdown py-0" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item text-center py-3" href="#"><i class="fa fa-user" aria-hidden="true"></i>Update Profile</a>
+                        <a class="dropdown-item text-center py-3" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
 
                     </div>
                 </div>
