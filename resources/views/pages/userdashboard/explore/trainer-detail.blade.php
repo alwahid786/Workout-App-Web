@@ -253,6 +253,7 @@
 
                     @foreach($trainer_detail[0]['class'] as $trainerData )
                     <div class="session-card p-3">
+                        
                         <div class="card-img ">
                             <img src="{{$trainerData['class_image'][0]['image']}}" alt="">
                         </div>
