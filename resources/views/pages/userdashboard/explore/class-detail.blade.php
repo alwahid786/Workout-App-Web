@@ -248,7 +248,12 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">{{$class_detail[0]['session'][0]['type']}}</span></h1>
+            @if($class_detail[0]['session'][0]['type']==0)
+            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">One to one</span></h1>
+            @else
+            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">Group</span></h1>
+
+            @endif
         </div>
         <div class="class-section">
             <div class="row">
@@ -339,7 +344,7 @@
                                     <div class="trainer-detail-profile-right">
                                         <div class="trainer-detail-profile-right-client text-center">
                                             <p>Clients</p>
-                                            <h1>33</h1>
+                                            <h1>{{$client}}</h1>
                                         </div>
                                         <div class="trainer-detail-profile-right-classes text-center">
                                             <p>Classes</p>
@@ -362,7 +367,36 @@
                             <div class="trainer-detail-review-header py-2">
                                 <h1>Reviews</h1>
                             </div>
+                            @foreach($review as $reviews)
                             <div class=" trainer-detail-review-wrapper my-2">
+                                <div class="trainer-detail-review-left">
+                                    <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                    <div class="trainer-detail-review-left-content pl-2">
+                                        <h1>{{$reviews['user']['name']}}</h1>
+                                        <h2>{{$reviews['session']['category']['title']}}</h2>
+                                    </div>
+                                </div>
+                                <div class="trainer-detail-review-right pl-4">
+                                    <div class="rating-star">
+                                        <?php $remRating = 5 - $reviews['rating']; ?>
+
+                                        <?php for ($i = 0; $i < $reviews['rating']; $i++) { ?>
+                                            <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                        <?php } ?>
+                                        <?php for ($i = 0; $i < $remRating; $i++) { ?>
+                                            <i class="fa fa-star pr-1" aria-hidden="true" style="color:#ccc;"></i>
+                                        <?php } ?>
+                                        <!-- <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i> -->
+                                    </div>
+                                    <p>{{$reviews['description']}} </p>
+                                </div>
+                            </div>
+                            @endforeach
+                            <!-- <div class=" trainer-detail-review-wrapper my-2">
                                 <div class="trainer-detail-review-left">
                                     <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                     <div class="trainer-detail-review-left-content pl-2">
@@ -399,26 +433,7 @@
                                     </div>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
                                 </div>
-                            </div>
-                            <div class=" trainer-detail-review-wrapper my-2">
-                                <div class="trainer-detail-review-left">
-                                    <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                    <div class="trainer-detail-review-left-content pl-2">
-                                        <h1>Samuel sam</h1>
-                                        <h2>Yoga</h2>
-                                    </div>
-                                </div>
-                                <div class="trainer-detail-review-right pl-4">
-                                    <div class="rating-star">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
 
 
@@ -560,6 +575,7 @@
     @csrf
     <input type="hidden" name="session_id" id="sessionId" value="">
     <input type="hidden" name="session_date" id="sessionDate" value="">
+    <!-- <input type="hidden" name="trainerid" value="{{$class_detail[0]['trainer']['id']}}"> -->
 </form>
 @endsection
 @section('insertsfooter')
@@ -748,7 +764,12 @@
                         console.log(response)
                         $("#sessionTitle_d").text(response.data[0].category['title']);
                         $("#sessionPrice_d").text('$' + response.data[0].price);
-                        $("#sessionType_d").text(response.data[0].type);
+                        if (response.data[0].type == 0) {
+
+                            $("#sessionType_d").text('One to one');
+                        } else {
+                            $("#sessionType_d").text('Group');
+                        }
                         // alert(response.data[0].category['title']);
                         var hrs = response.data.hours;
                         var mins = response.data.minutes;
@@ -960,7 +981,9 @@
 <script>
     $('.session').click(function() {
         var session_id = $(this).find('.session_id').val();
+
         $("#session").val(session_id);
+
 
     });
 </script>

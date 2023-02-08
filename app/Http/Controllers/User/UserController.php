@@ -207,13 +207,19 @@ class UserController extends Controller
         if (!$class) {
             return $this->sendError('Session Detail');
         }
-        $review = Review::where('trainer_id', $id)->get();
+        $review = Review::where('trainer_id', $id)->with('user', 'session.category')->get();
+
+        $client = BookedSession::where('trainer_id', $id)->groupBy('user_id')->get();
+
+        $client = $client->count();
+
+
         $classSession = ModelsSession::where('trainer_id', $id)->groupBy('day')->pluck('day');
         $trainer = json_decode($trainer, true);
         $class_detail = json_decode($class, true);
         $review = json_decode($review, true);
 
-        return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession', 'classes_count', 'trainer', 'review'));
+        return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession', 'classes_count', 'trainer', 'review', 'client'));
     }
     //////customer card detail........./////////
 
@@ -259,6 +265,7 @@ class UserController extends Controller
                 'customer_id' => $request->customer_id,
                 'is_completed' => $status,
                 'session-date' => $request->session_date,
+                'trainer_id' => $request->trainer_id,
             ));
             // Save data to transactions 
             $transaction = Transactions::create(array(
@@ -310,6 +317,9 @@ class UserController extends Controller
         $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
         $classes = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
         $rating = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
+        $client = BookedSession::where('trainer_id', $session_detail['session']['class']['trainer']['id'])->groupBy('user_id')->get();
+
+        $client = $client->count();
 
 
         if (!$session_detail) {
@@ -320,7 +330,7 @@ class UserController extends Controller
         // dd($rating);
         // $classes = json_decode($classes, true);
 
-        return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession', 'classes', 'rating'));
+        return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession', 'classes', 'rating', 'client'));
     }
     ///////.........user dashboard upcoming , current , past session .......//////
     public function UserBookedSession()

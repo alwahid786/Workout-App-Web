@@ -762,7 +762,7 @@
                                 <div class="trainer-detail-profile-right">
                                     <div class="trainer-detail-profile-right-client text-center">
                                         <p>Clients</p>
-                                        <h1>33</h1>
+                                        <h1>{{$client}}</h1>
                                     </div>
                                     <div class="trainer-detail-profile-right-classes text-center">
                                         <p>Classes</p>
