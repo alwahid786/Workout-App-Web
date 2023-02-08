@@ -248,7 +248,12 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">{{$class_detail[0]['session'][0]['type']}}</span></h1>
+            @if($class_detail[0]['session'][0]['type']==0)
+            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">One to one</span></h1>
+            @else
+            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">Group</span></h1>
+
+            @endif
         </div>
         <div class="class-section">
             <div class="row">
@@ -759,7 +764,12 @@
                         console.log(response)
                         $("#sessionTitle_d").text(response.data[0].category['title']);
                         $("#sessionPrice_d").text('$' + response.data[0].price);
-                        $("#sessionType_d").text(response.data[0].type);
+                        if (response.data[0].type == 0) {
+
+                            $("#sessionType_d").text('One to one');
+                        } else {
+                            $("#sessionType_d").text('Group');
+                        }
                         // alert(response.data[0].category['title']);
                         var hrs = response.data.hours;
                         var mins = response.data.minutes;
