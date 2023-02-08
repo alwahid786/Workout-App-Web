@@ -20,4 +20,9 @@ class Review extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function session()
+    {
+        return $this->belongsTo(Session::class, 'session_id');
+    }
 }

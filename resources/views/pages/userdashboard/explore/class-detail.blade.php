@@ -339,7 +339,7 @@
                                     <div class="trainer-detail-profile-right">
                                         <div class="trainer-detail-profile-right-client text-center">
                                             <p>Clients</p>
-                                            <h1>33</h1>
+                                            <h1>{{$client}}</h1>
                                         </div>
                                         <div class="trainer-detail-profile-right-classes text-center">
                                             <p>Classes</p>
@@ -362,7 +362,36 @@
                             <div class="trainer-detail-review-header py-2">
                                 <h1>Reviews</h1>
                             </div>
+                            @foreach($review as $reviews)
                             <div class=" trainer-detail-review-wrapper my-2">
+                                <div class="trainer-detail-review-left">
+                                    <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                    <div class="trainer-detail-review-left-content pl-2">
+                                        <h1>{{$reviews['user']['name']}}</h1>
+                                        <h2>{{$reviews['session']['category']['title']}}</h2>
+                                    </div>
+                                </div>
+                                <div class="trainer-detail-review-right pl-4">
+                                    <div class="rating-star">
+                                        <?php $remRating = 5 - $reviews['rating']; ?>
+
+                                        <?php for ($i = 0; $i < $reviews['rating']; $i++) { ?>
+                                            <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                        <?php } ?>
+                                        <?php for ($i = 0; $i < $remRating; $i++) { ?>
+                                            <i class="fa fa-star pr-1" aria-hidden="true" style="color:#ccc;"></i>
+                                        <?php } ?>
+                                        <!-- <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i> -->
+                                    </div>
+                                    <p>{{$reviews['description']}} </p>
+                                </div>
+                            </div>
+                            @endforeach
+                            <!-- <div class=" trainer-detail-review-wrapper my-2">
                                 <div class="trainer-detail-review-left">
                                     <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                     <div class="trainer-detail-review-left-content pl-2">
@@ -399,26 +428,7 @@
                                     </div>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
                                 </div>
-                            </div>
-                            <div class=" trainer-detail-review-wrapper my-2">
-                                <div class="trainer-detail-review-left">
-                                    <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                    <div class="trainer-detail-review-left-content pl-2">
-                                        <h1>Samuel sam</h1>
-                                        <h2>Yoga</h2>
-                                    </div>
-                                </div>
-                                <div class="trainer-detail-review-right pl-4">
-                                    <div class="rating-star">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
 
 
@@ -560,6 +570,7 @@
     @csrf
     <input type="hidden" name="session_id" id="sessionId" value="">
     <input type="hidden" name="session_date" id="sessionDate" value="">
+    <!-- <input type="hidden" name="trainerid" value="{{$class_detail[0]['trainer']['id']}}"> -->
 </form>
 @endsection
 @section('insertsfooter')
@@ -960,7 +971,9 @@
 <script>
     $('.session').click(function() {
         var session_id = $(this).find('.session_id').val();
+
         $("#session").val(session_id);
+
 
     });
 </script>
