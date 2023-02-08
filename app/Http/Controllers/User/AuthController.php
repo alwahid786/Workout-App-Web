@@ -20,6 +20,7 @@ use App\Models\TrainerProfile;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session as FacadesSession;
+use Illuminate\Support\Facades\Redirect;
 // use HasApiTokens;
 use Laravel\Passport\HasApiTokens;
 
@@ -107,10 +108,9 @@ class AuthController extends Controller
     ////////........logout....../////////
     public function logout(Request $request)
     {
-        
         FacadesSession::flush();
         Auth::logout();
-        return redirect('/');
+        return Redirect::to('/');
     }
     ////// trainer sign up.......///////
     public function trainerSignup(TrainerSignupRequest $request)
