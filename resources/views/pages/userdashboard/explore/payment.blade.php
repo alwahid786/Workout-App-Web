@@ -315,10 +315,10 @@
         }
     }
 
-    .profile-nxt-btn a,
-    .profile-nxt-btn a:hover,
-    .profile-nxt-btn a:focus,
-    .profile-nxt-btn a:active {
+    .profile-nxt-btn button,
+    .profile-nxt-btn button:hover,
+    .profile-nxt-btn button:focus,
+    .profile-nxt-btn button:active {
         background: #E37048;
         border: none;
         box-shadow: none;

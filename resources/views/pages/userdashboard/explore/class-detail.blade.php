@@ -252,7 +252,6 @@
             <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">One to one</span></h1>
             @else
             <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span id="sessionType_d" class="ml-3" style="text-transform:capitalize">Group</span></h1>
-
             @endif
         </div>
         <div class="class-section">

@@ -134,9 +134,9 @@
                             </div>
                         </div>
                         <p>{{$session['trainer_data']['about']}}</p>
-                        <a href="{{url('/dashboard/class-detail/'.$session['id'].'/'.$session['day'])}}" class="btn pl-0 pb-1 pb-sm-3">Read More <i class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
+                        <a href="{{url('/dashboard/class-detail/'.$session['trainer_data']['id'].'/'.$session['day'])}}" class="btn pl-0 pb-1 pb-sm-3">Read More <i class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
                         <div class="book-now-btn">
-                            <a href="{{url('/dashboard/class-detail/'.$session['id'].'/'.$session['day'])}}" class="btn">Book Now</a>
+                            <a href="{{url('/dashboard/class-detail/'.$session['trainer_data']['id'].'/'.$session['day'])}}" class="btn">Book Now</a>
                         </div>
                     </div>
                 </div>

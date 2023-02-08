@@ -200,7 +200,6 @@ class UserController extends Controller
         $class = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
         $classes_count = ModelsSession::where('trainer_id', '=', $id)->count();
         $trainer = User::where('id', $id)->first();
-
         if (count($class) > 0) {
             foreach ($class as $session) {
                 $session['session'] = ModelsSession::where(['day' => $day, 'trainer_id' => $id])->with('category')->get();
