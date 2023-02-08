@@ -816,12 +816,11 @@
 
                         email: email,
                         password: password,
-
                     },
                     cache: false,
                     success: function(dataResult) {
                         console.log(dataResult);
-                        window.location.href = `{{url('/latest/sessions')}}`;
+                        window.location.href = `{{url('/dashboard')}}`;
                     },
                     error: function(jqXHR, exception) {
                         $('.loaderDiv').hide();

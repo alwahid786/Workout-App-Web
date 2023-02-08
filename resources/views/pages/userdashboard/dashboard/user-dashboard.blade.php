@@ -504,13 +504,13 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4 py-3">
         <div class="row">
-            <div class="col-xl-8">
+            <div class="col-12">
                 <div class="workout-banner-card">
                     <div class="row">
                         <div class="col-md-7 my-auto">
                             <div class="workout-banner-content px-3 py-3 text-center text-md-left">
-                                <h1>Welcome {{$user['user']['name']}}</h1>
-                                <p class="pt-3 pb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
+                                <h1>Welcome <span style="text-transform:capitalize">{{$user['user']['name']}}</span></h1>
+                                <p class="pt-3 pb-4">Welcome back! Your dashboard is the central hub for all your account activity. From here, you can manage your settings, view recent activity, and access all your important information. Let's get started!</p>
                                 <a class="btn" href="{{url('/about')}}">Read More</a>
                             </div>
                         </div>
@@ -529,12 +529,12 @@
                                     @if($upcoming_session != null)
 
                                     <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your Upcoming <span>Session</span> </h1>
+                                        <h1>Your Upcoming <span>Sessions</span> </h1>
                                         <p>{{$total_upcomingsession}}</p>
                                     </div>
                                     @else
                                     <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your Upcoming <span>Session</span> </h1>
+                                        <h1>Your Upcoming <span>Sessions</span> </h1>
                                         <p>0</p>
                                     </div>
                                     @endif
@@ -551,12 +551,12 @@
                                 <div class="work-session-card blue-session-card py-4 px-1">
                                     @if($past_session != null)
                                     <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your Past <span>Session</span> </h1>
+                                        <h1>Your Past <span>Sessions</span> </h1>
                                         <p>{{$total_pastsession}}</p>
                                     </div>
                                     @else
                                     <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your Past <span>Session</span> </h1>
+                                        <h1>Your Past <span>Sessions</span> </h1>
                                         <p>0</p>
                                     </div>
                                     @endif
@@ -571,7 +571,7 @@
                                 <div class="work-session-card yellow-session-card py-4 px-1 ">
                                     @if($total_trainer!=null)
                                     <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your<span>Trainer</span> </h1>
+                                        <h1>Your<span>Trainers</span> </h1>
                                         <p>{{$total_trainer}}</p>
                                     </div>
                                     @else
@@ -589,6 +589,86 @@
 
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 mt-4 mt-xl-0">
+                {{-- <div class="workout-calendar p-3">
+                    <!-- <div id="demo"></div> -->
+                    <div class=" card-bg ">
+                        <h2 class="mb-4 text-left cal-head">Calendar</h2>
+                        <div class="card">
+                            <div class="card-body p-0">
+                                <div id="calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- calendar modal -->
+                    <div id="modal-view-event" class="modal modal-top fade calendar-modal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span>
+                                    </h4>
+                                    <div class="event-body"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <form id="add-event">
+                                    <div class="modal-body">
+                                        <h4>Add Event Detail</h4>
+                                        <div class="form-group">
+                                            <label>Event name</label>
+                                            <input type="text" class="form-control" name="ename">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Event Date</label>
+                                            <input type='text' class="datetimepicker form-control" name="edate">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Event Description</label>
+                                            <textarea class="form-control" name="edesc"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Event Color</label>
+                                            <select class="form-control" name="ecolor">
+                                                <option value="fc-bg-default">fc-bg-default</option>
+                                                <option value="fc-bg-blue">fc-bg-blue</option>
+                                                <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
+                                                <option value="fc-bg-pinkred">fc-bg-pinkred</option>
+                                                <option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Event Icon</label>
+                                            <select class="form-control" name="eicon">
+                                                <option value="circle">circle</option>
+                                                <option value="cog">cog</option>
+                                                <option value="group">group</option>
+                                                <option value="suitcase">suitcase</option>
+                                                <option value="calendar">calendar</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+
                 <div class="workout-today-section">
                     <div class="workout-today-header pt-2 pb-1">
                         <h1>Your Today’s Booked Session</h1>
@@ -686,219 +766,10 @@
                         ....................................................................................
                         @endif
 
-                        <!-- <a href="{{url('/userdashboard/upcomingsessiongroup')}}">
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> John Smith </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="workout-table-border workout-table-border-red "></div>
-                            </div>
-                        </a>
-                        <a href="{{url('/userdashboard/upcomingsessiongroup')}}">
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> John Smith </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="workout-table-border workout-table-border-green "></div>
-                            </div>
-                        </a>
-                        <a href="{{url('/userdashboard/upcomingsessiongroup')}}">
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> John Smith </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="workout-table-border workout-table-border-yellow "></div>
-                            </div>
-                        </a>
-                        <a href="{{url('/userdashboard/upcomingsessiongroup')}}">
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> John Smith </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="workout-table-border workout-table-border-blue "></div>
-                            </div>
-                        </a> -->
                     </div>
                 </div>
-
-
             </div>
             <div class="col-xl-4 mt-4 mt-xl-0">
-                <div class="workout-calendar p-3">
-                    <!-- <div id="demo"></div> -->
-                    <div class=" card-bg ">
-                        <h2 class="mb-4 text-left cal-head">Calendar</h2>
-                        <div class="card">
-                            <div class="card-body p-0">
-                                <div id="calendar"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- calendar modal -->
-                    <div id="modal-view-event" class="modal modal-top fade calendar-modal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span>
-                                    </h4>
-                                    <div class="event-body"></div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <form id="add-event">
-                                    <div class="modal-body">
-                                        <h4>Add Event Detail</h4>
-                                        <div class="form-group">
-                                            <label>Event name</label>
-                                            <input type="text" class="form-control" name="ename">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Event Date</label>
-                                            <input type='text' class="datetimepicker form-control" name="edate">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Event Description</label>
-                                            <textarea class="form-control" name="edesc"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Event Color</label>
-                                            <select class="form-control" name="ecolor">
-                                                <option value="fc-bg-default">fc-bg-default</option>
-                                                <option value="fc-bg-blue">fc-bg-blue</option>
-                                                <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
-                                                <option value="fc-bg-pinkred">fc-bg-pinkred</option>
-                                                <option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Event Icon</label>
-                                            <select class="form-control" name="eicon">
-                                                <option value="circle">circle</option>
-                                                <option value="cog">cog</option>
-                                                <option value="group">group</option>
-                                                <option value="suitcase">suitcase</option>
-                                                <option value="calendar">calendar</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">Save</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="workout-right-session">
                     <h2 class="my-4">Past Session</h2>
                     <div class="col text-right workout-right-session-btn">
@@ -930,86 +801,8 @@
                         @else
                         .........................................................................................
                         @endif
-                        <!-- <a href="{{url('/userdashboard/pastsessiondetail')}}">
-                            <div class="workout-right-session-card  px-3 py-4 my-3">
-                                <div class="workout-card-left-section ">
-                                    <div class="workout-card-inner-img pr-2">
-                                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                                    </div>
-                                    <div class="workout-card-left-inner-section">
-                                        <p>Dayut Calort</p>
-                                        <p>Yoga</p>
-                                    </div>
-                                </div>
-                                <div class="workout-card-right-inner-section ">
-                                    <p>12Pm-2Pm</p>
-                                    <p class="">Nov-02-2022</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{url('/userdashboard/pastsessiondetail')}}">
-                            <div class="workout-right-session-card  px-3 py-4 my-3">
-                                <div class="workout-card-left-section ">
-                                    <div class="workout-card-inner-img pr-2">
-                                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                                    </div>
-                                    <div class="workout-card-left-inner-section">
-                                        <p>Dayut Calort</p>
-                                        <p>Yoga</p>
-                                    </div>
-                                </div>
-                                <div class="workout-card-right-inner-section ">
-                                    <p>12Pm-2Pm</p>
-                                    <p class="">Nov-02-2022</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{url('/userdashboard/pastsessiondetail')}}">
-                            <div class="workout-right-session-card  px-3 py-4 my-3">
-                                <div class="workout-card-left-section ">
-                                    <div class="workout-card-inner-img pr-2">
-                                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                                    </div>
-                                    <div class="workout-card-left-inner-section">
-                                        <p>Dayut Calort</p>
-                                        <p>Yoga</p>
-                                    </div>
-                                </div>
-                                <div class="workout-card-right-inner-section ">
-                                    <p>12Pm-2Pm</p>
-                                    <p class="">Nov-02-2022</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="{{url('/userdashboard/pastsessiondetail')}}">
-                            <div class="workout-right-session-card  px-3 py-4 my-3">
-                                <div class="workout-card-left-section ">
-                                    <div class="workout-card-inner-img pr-2">
-                                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                                    </div>
-                                    <div class="workout-card-left-inner-section">
-                                        <p>Dayut Calort</p>
-                                        <p>Yoga</p>
-                                    </div>
-                                </div>
-                                <div class="workout-card-right-inner-section ">
-                                    <p>12Pm-2Pm</p>
-                                    <p class="">Nov-02-2022</p>
-                                </div>
-                            </div>
-                        </a> -->
-
-
-
-
-
                     </div>
-
-
                 </div>
-
-
-
             </div>
         </div>
     </div>

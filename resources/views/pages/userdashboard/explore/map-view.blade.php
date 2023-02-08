@@ -472,7 +472,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="row">
-                        <div class="col-sm-6 week-calendar">
+                        <div class="col-sm-6 ">
                             <div id="calendar"></div>
                         </div>
                         <div class="col-sm-3 range-filter">
@@ -635,7 +635,7 @@
                 }
 
             });
-        })
+        });
     });
     $('.map-card').hide();
 
