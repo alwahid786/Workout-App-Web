@@ -48,6 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
     Route::any('/filter/session', [UserController::class, 'SearchResult'])->name('filter/session');
 
+    Route::any('/dashboard/trainer', [UserController::class, 'usersTrainer'])->name('dashboard/trainer');
+
+
     Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
 
     Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
@@ -124,9 +127,9 @@ Route::get('/term-l', function () {
 // Route::get('/dashboard/class-detail', function () {
 //     return view('pages.userdashboard.explore.class-detail');
 // });
-Route::get('/dashboard/trainer', function () {
-    return view('pages.userdashboard.dashboard.all-trainer');
-});
+// Route::get('/dashboard/trainer', function () {
+//     return view('pages.userdashboard.dashboard.all-trainer');
+// });
 Route::get('/dashboard/mapgroup', function () {
     return view('pages.userdashboard.explore.map-view-group');
 });

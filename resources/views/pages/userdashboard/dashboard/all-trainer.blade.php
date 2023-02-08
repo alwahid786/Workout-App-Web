@@ -157,13 +157,73 @@
                 <div class="past-session-table-header d-flex justify-content-around px-3">
                     <div class="table-heading">Trainer Name</div>
                     <div class="table-heading text-center">Workout</div>
-                    <div class="table-heading text-center">Time</div>
-                    <div class="table-heading text-center">Date</div>
+                    <!-- <div class="table-heading text-center">Time</div> -->
+                    <div class="table-heading text-center">No of Classes</div>
                     <div class="table-heading text-center">View</div>
                 </div>
-
+                @foreach($trainer as $trainers)
 
                 <div class="past-session-table-body d-flex justify-content-around px-3 my-4 my-md-0 py-4">
+                    <div class="table-cotent">
+                        <div class="table-content-heading">
+                            <h1>Trainer Name</h1>
+                        </div>
+                        <div class="table-content-value">
+                            <div class="table-content-value-profile">
+                                <img class="mr-1" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                <div class="table-content-value-profile-content">
+                                    <h1>{{$trainers['trainer_data']['name']}} </h1>
+                                    <p>{{$trainers['trainer_data']['country']}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-cotent">
+                        <div class="table-content-heading">
+                            <h1>Workout</h1>
+                        </div>
+                        <div class="table-content-value text-md-center">
+                            <h1>Yoga</h1>
+                        </div>
+
+                    </div>
+
+                    <!-- <div class="table-cotent">
+                        <div class="table-content-heading">
+                            <h1>Time</h1>
+                        </div>
+                        <div class="table-content-value text-md-center">
+                            <h1>12am-2am</h1>
+                        </div>
+                    </div> -->
+
+                    <div class="table-cotent">
+                        <div class="table-content-heading">
+                            <h1>No of Classes</h1>
+                        </div>
+                        <div class="table-content-value text-md-center">
+                            <h1>{{$trainers['sessionCount']}}</h1>
+                        </div>
+
+                    </div>
+
+                    <div class="table-cotent">
+                        <div class="table-content-heading">
+                            <h1>View</h1>
+                        </div>
+                        <div class="table-content-value text-md-center">
+                            <a href="{{url('/dashboard/trainer-detail/'.$trainers['trainer_data']['id'])}}">
+                                <img class="" src="{{asset('public/assets/images/view-icon.svg')}}" alt="">
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                @endforeach
+                <!-- <div class="past-session-table-body d-flex justify-content-around px-3 my-4 my-md-0 py-4">
                     <div class="table-cotent">
                         <div class="table-content-heading">
                             <h1>Trainer Name</h1>
@@ -461,67 +521,7 @@
                     </div>
 
 
-                </div>
-
-                <div class="past-session-table-body d-flex justify-content-around px-3 my-4 my-md-0 py-4">
-                    <div class="table-cotent">
-                        <div class="table-content-heading">
-                            <h1>Trainer Name</h1>
-                        </div>
-                        <div class="table-content-value">
-                            <div class="table-content-value-profile">
-                                <img class="mr-1" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                <div class="table-content-value-profile-content">
-                                    <h1>Dayut Carlotte </h1>
-                                    <p>United Kingdom</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="table-cotent">
-                        <div class="table-content-heading">
-                            <h1>Workout</h1>
-                        </div>
-                        <div class="table-content-value text-md-center">
-                            <h1>Yoga</h1>
-                        </div>
-
-                    </div>
-
-                    <div class="table-cotent">
-                        <div class="table-content-heading">
-                            <h1>Time</h1>
-                        </div>
-                        <div class="table-content-value text-md-center">
-                            <h1>12am-2am</h1>
-                        </div>
-                    </div>
-
-                    <div class="table-cotent">
-                        <div class="table-content-heading">
-                            <h1>Date</h1>
-                        </div>
-                        <div class="table-content-value text-md-center">
-                            <h1>22-Nov-1996</h1>
-                        </div>
-
-                    </div>
-
-                    <div class="table-cotent">
-                        <div class="table-content-heading">
-                            <h1>View</h1>
-                        </div>
-                        <div class="table-content-value text-md-center">
-                            <a href="{{url('/dashboard/trainer-detail')}}">
-                                <img class="" src="{{asset('public/assets/images/view-icon.svg')}}" alt="">
-                            </a>
-
-                        </div>
-                    </div>
-
-
-                </div>
+                </div> -->
 
 
             </div>

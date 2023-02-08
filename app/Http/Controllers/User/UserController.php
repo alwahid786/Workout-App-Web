@@ -23,6 +23,7 @@ use DateTime;
 use Stripe;
 use Throwable;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Stripe\SearchResult;
 
@@ -205,7 +206,9 @@ class UserController extends Controller
     public function class_detail(Request $request, $id, $day)
     {
         $class = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
-        // $class = Classes::where('id', '=', $id)->with('category')->get();
+        $classes_count = ModelsSession::where('trainer_id', '=', $id)->count();
+        $trainer = User::where('id', $id)->first();
+
         if (count($class) > 0) {
             foreach ($class as $session) {
                 $session['session'] = ModelsSession::where(['day' => $day, 'trainer_id' => $id])->with('category')->get();
@@ -214,12 +217,13 @@ class UserController extends Controller
         if (!$class) {
             return $this->sendError('Session Detail');
         }
+        $review = Review::where('trainer_id', $id)->get();
         $classSession = ModelsSession::where('trainer_id', $id)->groupBy('day')->pluck('day');
+        $trainer = json_decode($trainer, true);
         $class_detail = json_decode($class, true);
-        // $classSession = json_decode($classSession, true);
-        // dd($class_detail);
-        // dd($classSession);
-        return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession'));
+        $review = json_decode($review, true);
+
+        return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession', 'classes_count', 'trainer', 'review'));
     }
     //////customer card detail........./////////
 
@@ -353,6 +357,8 @@ class UserController extends Controller
         // dd($rawQuery->count());
         $total_trainer = $rawQuery->count();
 
+
+
         if (!$currentsession) {
             return $this->sendError('Session Detail');
         }
@@ -360,6 +366,8 @@ class UserController extends Controller
         $upcoming_session = json_decode($upcomingsession, true);
         $past_session = json_decode($pastsession, true);
         $user = json_decode($user_detail, true);
+        $rawQuery = json_decode($rawQuery, true);
+        // dd($rawQuery);
 
 
         return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
@@ -532,5 +540,41 @@ class UserController extends Controller
         $bookedsession = json_decode($session_detail, true);
         $rating = json_decode($rating, true);
         return view('pages.userdashboard.payment.payment-detail', compact('bookedsession', 'classes', 'rating'));
+    }
+    ////////.......get user trainer........///////
+    public function usersTrainerbk()
+    {
+
+        $getTrainers = DB::table('booked_sessions')
+            ->join('sessions', 'booked_sessions.session_id', '=', 'sessions.id')
+            ->join('users', 'sessions.trainer_id', '=', 'users.id')
+            ->where('booked_sessions.user_id', auth()->user()->id)
+            // ->select("*")
+            // ->groupBy('booked_sessions.id')
+            ->get();
+        // dd($getTrainers);
+        if (!$getTrainers) {
+            return $this->sendError('No Data found against ID');
+        }
+        $trainer = json_decode($getTrainers, true);
+        return view('pages.userdashboard.dashboard.all-trainer', compact('trainer'));
+    }
+
+    public function usersTrainer()
+    {
+
+
+        $sessionIds = BookedSession::where('user_id', auth()->user()->id)->pluck('session_id');
+        $getTrainers = ModelsSession::whereIn('id', $sessionIds)->groupBy('trainer_id')->with(['trainerData'])->get();
+        if (!empty($getTrainers)) {
+            foreach ($getTrainers as $trainerId) {
+                $trainerId['sessionCount']  = ModelsSession::where('trainer_id', $trainerId['trainer_id'])->count();
+            }
+        }
+        if (!$getTrainers) {
+            return $this->sendError('No Data found against ID');
+        }
+        $trainer = json_decode($getTrainers, true);
+        return view('pages.userdashboard.dashboard.all-trainer', compact('trainer'));
     }
 }

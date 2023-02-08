@@ -314,7 +314,7 @@
                             <div class="row">
                                 <div class="col-sm-6 col-xl-7">
                                     <div class="trainer-detail-profile-left">
-                                        <img class="mr-2" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                        <img class="mr-2" src="{{$trainer['profile_img']}}" alt="">
                                         <div class="trainer-detail-profile-left-progress py-2 px-2">
                                             <h1>Level</h1>
                                             <progress id="file" value="72" max="100"> 32% </progress>
@@ -328,10 +328,10 @@
                                         </div>
                                     </div>
                                     <div class="col trainer-detail-profile-name px-0 pt-2">
-                                        <h1>John Smith</h1>
+                                        <h1>{{$trainer['name']}}</h1>
                                         <div class="trainer-detail-profile-gender pb-3">
                                             <img class="mr-2" src="{{asset('public/assets/images/profile-icon.svg')}}" alt="">
-                                            <p>Male , 5’11”</p>
+                                            <p>{{$trainer['gender']}} ,{{$trainer['height']}} </p>
                                         </div>
                                     </div>
                                 </div>
@@ -343,7 +343,7 @@
                                         </div>
                                         <div class="trainer-detail-profile-right-classes text-center">
                                             <p>Classes</p>
-                                            <h1>03</h1>
+                                            <h1>{{$classes_count}}</h1>
                                         </div>
 
                                     </div>
@@ -354,7 +354,7 @@
                         <div class="col-sm-6 trainer-detail-experience px-0 py-2">
 
                             <h1>3 Years</h1>
-                            <h1>Toronto</h1>
+                            <h1>{{$trainer['country']}}</h1>
                             <h1>Yoga</h1>
 
                         </div>
@@ -425,7 +425,8 @@
                     </div>
 
                 </div>
-                <div class="col-lg-6 mt-4 mt-lg-0">                         <div class="session-detail-right-wrapper px-2 py-3">
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="session-detail-right-wrapper px-2 py-3">
                         <div class="col session-detail-calendar px-2">
                             <div class="row js-slick-carousel">
                                 <div class="col">

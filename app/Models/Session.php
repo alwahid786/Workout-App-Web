@@ -18,7 +18,8 @@ class Session extends Model
         'difficulty_level',
         'type',
         'start_meridiem',
-        'end_meridiem'
+        'end_meridiem',
+        'trainer_id'
     ];
     public function class()
     {
