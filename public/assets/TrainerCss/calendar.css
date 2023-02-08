@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -22,7 +22,7 @@
     padding: 7px 25px !important;
     text-transform: capitalize !important;
     outline: none !important;
-    /* box-shadow: none !important; */
+    /* box-shadow: none !important; 
 
 }
 .fc-prev-button{
@@ -71,4 +71,4 @@
     .fc-toolbar-title{
         font-size: 1.5rem !important;
     }
-}
+} */

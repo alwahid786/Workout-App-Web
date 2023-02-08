@@ -196,6 +196,9 @@ Route::get('/userdashboard/upcomingsessiongroup', function () {
 Route::get('/userdashboard/upcomingsessionlist', function () {
     return view('pages.userdashboard.dashboard.upcoming-session-list');
 });
+Route::get('/userdashboard/dashboard-null', function () {
+    return view('pages.userdashboard.dashboard.dashboard-null');
+});
 // payment
 // Route::get('/payment', function () {
 //     return view('pages.userdashboard.payment.payment');
