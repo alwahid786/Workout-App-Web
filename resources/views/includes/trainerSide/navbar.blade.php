@@ -516,7 +516,7 @@
         </div>
         <ul class="navbar-nav ml-auto py-2">
             <li class="nav-item my-2 my-lg-0 mr-lg-4 chat-link">
-                <a class="nav-link px-2" href="#"> <img src="{{asset('public/assets/images/chat-icon-w.svg')}}" alt="image"></a>
+                <a class="nav-link px-2" href="{{(url('/chat'))}}"> <img src="{{asset('public/assets/images/chat-icon-w.svg')}}" alt="image"></a>
             </li>
             <li class="nav-item mr-lg-4 my-2 my-lg-0">
                 <div class="dropdown chat-link">
@@ -573,8 +573,8 @@
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu logout-dropdown py-0" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item text-center py-3" href="#"><i class="fa fa-user" aria-hidden="true"></i>Update Profile</a>
-                        <a class="dropdown-item text-center py-3" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                        <a class="dropdown-item text-center py-3" href="{{(url('/profile'))}}"><i class="fa fa-user" aria-hidden="true"></i>Update Profile</a>
+                        <a class="dropdown-item text-center py-3" href="{{(url('/trainer/login'))}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
 
                     </div>
                 </div>
