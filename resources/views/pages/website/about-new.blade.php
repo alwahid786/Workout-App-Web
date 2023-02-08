@@ -51,7 +51,7 @@
 
     .make-diff-section {
         background-color: #F9F9F9;
-        padding-top: 200px;
+        /* padding-top: 200px; */
         text-align: center;
     }
 
@@ -222,9 +222,9 @@
 
         .make-diff-section {
             background-color: #F9F9F9;
-            padding-top: 200px;
+            /* padding-top: 200px; */
             text-align: center;
-            margin-top: 900px;
+            /* margin-top: 900px; */
         }
 
         .ceo-profile-content p:nth-of-type(1) {
@@ -326,7 +326,7 @@
 
         .make-diff-section {
             background-color: #F9F9F9;
-            padding-top: 80px;
+            /* padding-top: 80px; */
             text-align: center;
         }
         .carousel-content h1 {
@@ -365,18 +365,18 @@
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="right-section-img">
+                <!-- <div class="right-section-img">
                     <img src="{{asset('public/assets/trainerimages/iphonescreen.png')}}" alt="">
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </section>
 <!-- ..............Section End................. -->
 
-<section class="make-diff-section">
+<section class="make-diff-section py-5">
     <div class="container">
-        <div class="make-diff-content" data-aos="fade-up" data-aos-delay="100">
+        <div class="make-diff-content py-5" data-aos="fade-up" data-aos-delay="100">
             <h1 class="pb-5">What makes us different</h1>
             <p>Regardless of your current fitness level or experience, you can expect a fully personalised fitness programme. R1:1 sessions mean more time for you. TruBe trainers are trained in everything from kickboxing to ballet fit, each trainer has been cherry-picked through a rigorous selection process, so you can be confident you have the best of the best and the best workout routine at home.</p>
         </div>

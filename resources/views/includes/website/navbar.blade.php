@@ -10,7 +10,7 @@
     }
 
     .nav-list .nav-item.active {
-      border-bottom: 2px solid #E37048;
+      /* border-bottom: 2px solid #E37048; */
 
     }
 
