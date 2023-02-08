@@ -26,6 +26,8 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Stripe\SearchResult;
+use Stevebauman\Location\Facades\Location;
+
 
 class UserController extends Controller
 {
@@ -301,6 +303,9 @@ class UserController extends Controller
             }
         }, 'session.class.classImage'])->get();
         $category = Category::get();
+        $ip = '162.159.24.227';
+        $currentUserInfo = Location::get($ip);
+        $categories = Category::all();
         if (!$booksession) {
             return $this->sendError('Session Detail');
         }
@@ -469,14 +474,25 @@ class UserController extends Controller
     {
         $whereCategory = [];
         if ($request->has('category') && !empty($request->category)) {
-            array_push($whereCategory, ['title', '=', $request->category]);
+            array_push($whereCategory, ['id', '=', $request->category]);
         }
+        // dd($request->all());
         $booksession =  (new BookedSession)->newQuery();
 
         $whereSession = [];
-        if ($request->has('type') && !empty($request->type)) {
+        if ($request->has('type') && ($request->type == 1 || $request->type == 0) && $request->type!="") {
             array_push($whereSession, ['type', '=', $request->type]);
         }
+        if ($request->has('price') && !empty($request->price)) {
+            $price = explode('|', $request->price);
+            // dd($price);
+    
+            array_push($whereSession, ['price', '>=', $price[0]]);
+            if (isset($price[1])) {
+                array_push($whereSession, ['price', '<=', $price[1]]);
+            }
+        }
+        // dd($whereSession);
         $booksession = $booksession->where('user_id', auth()->user()->id)->with(['session' => function ($query) use ($whereSession) {
             if (!empty($whereSession)) {
                 $query->where($whereSession);
@@ -486,6 +502,10 @@ class UserController extends Controller
                 $query->where($whereCategory);
             }
         }, 'session.class.classImage'])->get();
+
+
+        // dd($currentUserInfo);
+        // $categories = Category::all();
         if (!$booksession) {
             return $this->sendError('Session Detail');
         }

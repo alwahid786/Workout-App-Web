@@ -1073,25 +1073,13 @@
                                                 <div class="drop-icon">
                                                     <select class="wide s-select form-control" id="workout_category">
                                                         <option disabled="disabled" selected>Select --</option>
-                                                        {{--@foreach($categories as $category)
-                                                        <option value="{{$category['id']}}" data-src="{{$category['title']}}">{{$category['title']}}</option>
-                                                        @endforeach --}}
-                                                    </select>
-                                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                                            <div class="filter-left-select-heading drop-icon-parent">
-                                                <h1>Location</h1>
-                                                <div class="drop-icon">
-                                                    <select class="wide s-select form-control " id="workout_location">
-                                                        <option value='' diasbled="disabled">Select --</option>
-                                                        {{--<option selected value="{{$currentUserInfo->regionName}}" class="locationOption">{{$currentUserInfo->regionName}}</option> --}}
-                                                    </select>
-                                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                                </div>
+                                                        @foreach($category as $categories)
 
+                                                        <option value="{{$categories['id']}}" data-src="{{$categories['title']}}">{{$categories['title']}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
@@ -1100,7 +1088,7 @@
                                                 <div class="drop-icon">
 
                                                     <select class="wide s-select form-control" id="workout_type">
-                                                        <option disabled="disabled" selected>Select --</option>
+                                                        <option value="">Select --</option>
                                                         <option value="0">One to One</option>
                                                         <option value="1">Group</option>
                                                     </select>
@@ -1117,9 +1105,9 @@
                                                 <div class="drop-icon drop-icon-thre">
                                                     <select class="wide s-select form-control " id="workout_price">
                                                         <option disabled="disabled" selected>Select --</option>
-                                                        <option value="85">$85 to $200</option>
-                                                        <option value="200">$200 to $400</option>
-                                                        <option value="400">$400 to $800</option>
+                                                        <option value="85|200">$85 to $200</option>
+                                                        <option value="200|400">$200 to $400</option>
+                                                        <option value="400|800">$400 to $800</option>
                                                         <option value="800">$800++</option>
                                                     </select>
                                                     <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
@@ -1135,7 +1123,7 @@
                         </div>
                         <div class="col text-right my-2 pr-0">
                             <div class="filter-section-btn py-2">
-                                <a href="javascript:void(0)" class="applyFilterBtn">Apply</a>
+                                <a href="javascript:void(0)" class="applyFilterBtn" id="filterbtn">Apply</a>
                             </div>
                         </div>
 
@@ -1143,10 +1131,10 @@
                     <div class="dashboard-header-left mb-4 pt-2">
                         <h1>My Sessions</h1>
                     </div>
-                    <div class="row " id="sessionList">
+                    <div class="row" id="sessionList">
 
                         @foreach($booksession_detail as $bookedsession)
-                        @if(!empty($bookedsession['session']['class']['category']))
+
                         <div class="col-lg-6 my-2">
                             <div class="class-left-banner px-2 py-3">
                                 <img class="class-banner-img" src="{{$bookedsession['session']['class']['class_image'][0]['image']}}" alt="">
@@ -1172,7 +1160,7 @@
                                 <div class="session-card-content">
                                     <div class="session-profile-left py-2">
                                         <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                        <p class="pl-3">{{$bookedsession['session']['class']['trainer']['name']}} </p>
+                                        <p class="pl-3">{{$bookedsession['session']['class']['trainer']['name']}}</p>
                                     </div>
                                     <div class="session-anchor-right">
                                         <a href="{{url('/userdashboard/sessionone/'.$bookedsession['id'])}}">View</a>
@@ -1180,8 +1168,9 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
+
                         @endforeach
+
                     </div>
                 </div>
 
@@ -1189,6 +1178,7 @@
             </div>
         </div>
 
+        <!-- // var UserLocationdata = ($currentUserInfo); -->
 
 
         @endsection
@@ -1201,7 +1191,6 @@
         <script>
             $(document).ready(function() {
                 $('.s-select').niceSelect();
-                var UserLocationdata = @json($currentUserInfo);
                 var locationMap = [
                     [UserLocationdata.latitude, UserLocationdata.longitude]
                 ]
@@ -1363,10 +1352,11 @@
             $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
         </script>
         <script>
-            $('#filter').on('change', function(e) {
-                var category = $('#category').val();
-                var type = $('#type').val();
-                // alert(type);
+            $('#filterbtn').on('click', function(e) {
+                var category = $('#workout_category').val();
+                var type = $('#workout_type').val();
+                var price = $("#workout_price").val();
+                // alert(price);
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1376,9 +1366,11 @@
                     data: {
                         category: category,
                         type: type,
+                        price: price,
                     },
                     cache: false,
                     success: function(dataResult) {
+                        // alert('hji')
                         console.log(dataResult['sessionView']);
                         $("#sessionList").html(dataResult['sessionView']);
 
