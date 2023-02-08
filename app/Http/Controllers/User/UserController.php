@@ -33,7 +33,7 @@ class UserController extends Controller
     ///////// category Trainer Api...../////////
     public function getTrainerCategory(Request $request)
     {
-        $sessions = ModelsSession::latest()->limit(6)->with('trainerData')->get();
+        $sessions = ModelsSession::latest()->limit(6)->with('trainerData', 'category')->get();
         $sessions = json_decode($sessions, true);
 
         return view('pages.website.all-trainers-web', compact('sessions'));
@@ -336,7 +336,6 @@ class UserController extends Controller
     public function UserBookedSession()
     {
         $user_detail = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();
-
         $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now())->with('session.class.category', 'session.class.trainer')->get();
         // $total_currentsession = $currentsession->count();
 
@@ -367,9 +366,9 @@ class UserController extends Controller
         $past_session = json_decode($pastsession, true);
         $user = json_decode($user_detail, true);
         $rawQuery = json_decode($rawQuery, true);
-        // dd($rawQuery);
-
-
+        if (count($upcoming_session) <= 0 && count($past_session) <= 0) {
+            return view('pages.userdashboard.dashboard.dashboard-null');
+        }
         return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
     }
     //// get all category ...........//////////

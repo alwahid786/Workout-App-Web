@@ -122,7 +122,7 @@
                         <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="">
                     </div>
                     <div class="experienced-trainer-card-right pl-2">
-                        <h1> {{$session['trainer_data']['name']}}</h1>
+                        <h1> {{$session['category']['title']}}</h1>
                         <div class="trainer-card-rating">
                             <h1>{{$session['trainer_data']['country']}}<span>{{$session['trainer_data']['state']}}</span></h1>
                             <div class="rating-star pb-2 pl-2">
@@ -181,7 +181,7 @@
 
 
 <!-- contact section -->
-<div class="container-fluid contact-section contactUs position-relative" id="contact-us">
+<!-- <div class="container-fluid contact-section contactUs position-relative" id="contact-us">
     <div class="container py-4 ">
         <div class="col-12 text-center contact-heading pb-sm-5" data-aos="fade-up">
             <h1>Contact Us</h1>
@@ -224,7 +224,7 @@
     </div>
     <img class="circleElement1" src="{{asset('public/assets/images/dots-c.svg')}}" alt="">
     <img class="circleElement2" src="{{asset('public/assets/images/dots-c.svg')}}" alt="">
-</div>
+</div> -->
 <!-- black div -->
 <!-- <div class="container-fluid py-3 py-sm-5" style="background-color:white;"></div> -->
 

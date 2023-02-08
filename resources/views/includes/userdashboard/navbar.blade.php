@@ -36,7 +36,6 @@
                         <img class="nav-y" src="{{asset('public/assets/images/dashboard-g.svg')}}" alt="image">
                         <img class="nav-w" src="{{asset('public/assets/images/dashboard-w.svg')}}" alt="image">
                     </div>
-
                     Dashboard
                 </a>
             </li>
