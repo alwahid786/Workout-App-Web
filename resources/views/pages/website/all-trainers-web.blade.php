@@ -69,6 +69,14 @@
             margin: 0 auto;
         }
     }
+
+    .viewAllSessions_s button {
+        padding: 8px 20px;
+        background: #f8693c;
+        border: none;
+        color: white;
+        border-radius: 20px;
+    }
 </style>
 @include('includes.website.navbar-two')
 <div class="container-fluid hero-section">
@@ -94,44 +102,80 @@
 <div class="container-fluid training-session px-0 pt-5">
     <div class="container-fluid  training-session-header-outer pl-sm-5 mt-4 py-3 py-sm-5">
         <div class="training-session-header text-center text-sm-left pb-0 pt-0" data-aos="zoom-in">
-            <h1>Search Our Training <span> sessions</span> </h1>
+            <h1>Browse Our <span> Latest Sessions</span> </h1>
         </div>
         <img class="dots-one" src="{{asset('public/assets/images/dots.svg')}}" alt="image">
         <img class="dots-two" src="{{asset('public/assets/images/dots.svg')}}" alt="image">
     </div>
-    <div class="training-session-header text-center text-sm-left pt-3 pl-sm-5" data-aos="zoom-in">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="row px-sm-5 mt-4 py-3 py-sm-5 ">
+        <div class="col-12 text-right viewAllSessions_s">
+            <a href="{{url('/dashboard/categories/1')}}">
+                <button>View All</button>
+            </a>
+        </div>
+        @if(isset($sessions) && !empty($sessions))
+        @foreach($sessions as $session)
+        <div class="col-md-6" data-aos="zoom-in">
+            <div class="experienced-trainer-card-double mx-4">
+                <div class="experienced-trainer-card my-5">
+                    <div class="experienced-trainer-card-left">
+                        <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="">
+                    </div>
+                    <div class="experienced-trainer-card-right pl-2">
+                        <h1> {{$session['trainer_data']['name']}}</h1>
+                        <div class="trainer-card-rating">
+                            <h1>{{$session['trainer_data']['country']}}<span>{{$session['trainer_data']['state']}}</span></h1>
+                            <div class="rating-star pb-2 pl-2">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <p>{{$session['trainer_data']['about']}}</p>
+                        <a href="{{url('/dashboard/class-detail/'.$session['id'].'/'.$session['day'])}}" class="btn pl-0 pb-1 pb-sm-3">Read More <i class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
+                        <div class="book-now-btn">
+                            <a href="{{url('/dashboard/class-detail/'.$session['id'].'/'.$session['day'])}}" class="btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @endif
     </div>
-    <div class="training-session-card-outer pb-3 pl-2 pl-sm-5">
+
+    {{-- <div class="training-session-card-outer pb-3 pl-2 pl-sm-5">
         @if(isset($userdata) && !empty($userdata))
         @foreach($userdata as $data)
         <?php if (count($data['trainer_category']) == 0) {
             continue;
         } ?>
         <a href="{{url('/trainers/'.$data['id'])}}">
-            <div class="training-session-card mx-3" data-aos="flip-left">
-                <div class="card__overlay"></div>
-                <i class="fa fa-arrows-alt" aria-hidden="true"></i>
-                <img src="{{asset('public/assets/images/trainer1.svg')}}" alt="image">
-                <div class="training-session-card-content px-3 pb-2">
-                    <div class="training-card-content-top">
-                        <div class="training-card-content-top-left">
-                            <h1>{{$data['title']}}</h1>
-                        </div>
-                        <div class="training-card-content-top-right">
-                            <h1>{{count($data['trainer_category'])}}</h1>
-                        </div>
-                    </div>
-                    <div class="training-card-content-bottom">
-                        <p>{{$data['description']}} </p>
-                    </div>
+    <div class="training-session-card mx-3" data-aos="flip-left">
+        <div class="card__overlay"></div>
+        <i class="fa fa-arrows-alt" aria-hidden="true"></i>
+        <img src="{{asset('public/assets/images/trainer1.svg')}}" alt="image">
+        <div class="training-session-card-content px-3 pb-2">
+            <div class="training-card-content-top">
+                <div class="training-card-content-top-left">
+                    <h1>{{$data['title']}}</h1>
+                </div>
+                <div class="training-card-content-top-right">
+                    <h1>{{count($data['trainer_category'])}}</h1>
                 </div>
             </div>
-        </a>
-
-        @endforeach
-        @endif
+            <div class="training-card-content-bottom">
+                <p>{{$data['description']}} </p>
+            </div>
+        </div>
     </div>
+    </a>
+    @endforeach
+    @endif
+</div>--}}
+
 
 </div>
 

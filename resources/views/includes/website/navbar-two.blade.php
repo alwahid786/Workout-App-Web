@@ -171,7 +171,7 @@
                     <a class="nav-link px-2" href="{{url('dashboard')}}">Dashboard</a>
                 </li>
                 <li class="nav-item mr-lg-4 list-trainer">
-                    <a class="nav-link px-2" href="{{url('/trainers')}}">List Of Trainer</a>
+                    <a class="nav-link px-2" href="{{url('/trainers')}}">Latest Sessions</a>
                 </li>
                 <li class="nav-item mr-lg-4 ">
                     <a class="nav-link px-2" href="{{url('/about-l')}}">About Us</a>

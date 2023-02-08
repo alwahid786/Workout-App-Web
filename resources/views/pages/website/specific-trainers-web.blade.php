@@ -195,7 +195,6 @@
                         <!-- <li class="mb-3 text-md-white"><strong>Customer Area</strong></li> -->
                         <li class="mb-2"><a href=" javascript:void(0)">Our Approach</a></li>
                         <li class="mb-2"><a href=" javascript:void(0)" class="modal-view invisible" data-toggle="modal" data-target="#loginModal">Get Started</a></li>
-
                     </ul>
                 </div>
                 <div class="col-xl-4 col-md-6 order-xl-4 order-md-3 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="400">

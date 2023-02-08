@@ -821,8 +821,7 @@
                     cache: false,
                     success: function(dataResult) {
                         console.log(dataResult);
-                        window.location.href = `{{url('/trainers')}}`;
-
+                        window.location.href = `{{url('/latest/sessions')}}`;
                     },
                     error: function(jqXHR, exception) {
                         $('.loaderDiv').hide();

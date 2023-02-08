@@ -33,20 +33,10 @@ class UserController extends Controller
     ///////// category Trainer Api...../////////
     public function getTrainerCategory(Request $request)
     {
+        $sessions = ModelsSession::latest()->limit(6)->with('trainerData')->get();
+        $sessions = json_decode($sessions, true);
 
-        if ($request->has('id')) {
-            $trainer_category = Category::where('id', $request->id)->with('trainerCategory.trainer')->first();
-        } else {
-            $trainer_category = Category::with('trainerCategory.trainer')->get();
-        }
-
-        if (!$trainer_category) {
-            return $this->sendError('Category');
-        }
-        $responseBody = $trainer_category;
-        $userdata = json_decode($responseBody, true);
-        // dd($userdata);
-        return view('pages.website.all-trainers-web', compact('userdata'));
+        return view('pages.website.all-trainers-web', compact('sessions'));
     }
     /////.........spacific.........//////
     public function getSpecificTrainer(Request $request, $id)
