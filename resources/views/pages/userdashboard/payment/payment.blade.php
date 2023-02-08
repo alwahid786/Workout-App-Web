@@ -235,7 +235,7 @@
                                 <h1>Details</h1>
                             </div>
                             <div class="table-content-value text-md-center">
-                                <a href="{{url('/payment/paymentdetail')}}" class="btn">
+                                <a href="{{url('/userdashboard/session/'.$payment['session']['id'])}}" class="btn">
                                     Details
                                 </a>
 

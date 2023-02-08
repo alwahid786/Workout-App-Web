@@ -468,7 +468,7 @@
                             <div class="trainer-detail-profile-inner-left">
                                 <div class="trainer-detail-profile-left mt-0 d-flex">
                                     <div class="trainer-detail-profile-left-inner">
-                                        <img class="mr-2" src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
+                                        <img class="mr-2" src="{{$bookedsession['session']['class']['trainer']['profile_img']}}" alt="">
                                         <img class="rated-badge" src="{{asset('public/assets/images/badge-2.svg')}}" alt="">
                                         <div class="trainer-detail-profile-left-progress py-2 px-2">
                                             <h1>Level</h1>
@@ -477,10 +477,10 @@
                                     </div>
                                     <div class="trainer-detail-profile-left-inner-right">
                                         <div class="col trainer-detail-profile-name px-0 pt-2">
-                                            <h1>John Smith</h1>
+                                            <h1>{{$bookedsession['session']['class']['trainer']['name']}}</h1>
                                             <div class="trainer-detail-profile-gender">
-                                                <img class="mr-2" src="{{asset('public/assets/images/profile-icon.svg')}}" alt="">
-                                                <p>Male , 5’11”</p>
+                                                <img class="mr-2" src="{{$bookedsession['session']['class']['trainer']['profile_img']}}" alt="">
+                                                <p>{{$bookedsession['session']['class']['trainer']['gender']}} , {{$bookedsession['session']['class']['trainer']['height'] ?? ''}}”</p>
                                             </div>
                                         </div>
                                         <div class="rating-star">
@@ -495,6 +495,7 @@
                                 </div>
 
                             </div>
+                            @if($bookedsession['session']['type'] != 0)
                             <div class="trainer-detail-profile-inner-right my-auto text-right">
                                 <div class="trainer-class-time-card-right">
                                     <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
@@ -503,6 +504,7 @@
 
                                 </div>
                             </div>
+                            @endif
 
                         </div>
 
@@ -518,14 +520,14 @@
                                     </div>
                                     <div class="trainer-detail-profile-right-classes text-center">
                                         <p>Classes</p>
-                                        <h1>03</h1>
+                                        <h1>{{$classes}}</h1>
                                     </div>
 
                                 </div>
                             </div>
                             <div class="col-sm-6 my-4 pl-0">
                                 <div class="trainer-detail-profile-right-price">
-                                    <h1>$100</h1>
+                                    <h1>${{$bookedsession['session']['price']}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -535,13 +537,13 @@
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Session</h1>
-                                    <p>Yoga</p>
+                                    <p>{{$bookedsession['session']['class']['category']['title']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Date</h1>
-                                    <p>20-Dec-2022</p>
+                                    <p>{{$bookedsession['session-date']}}</p>
                                 </div>
                             </div>
                         </div>
@@ -551,13 +553,13 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Start Time</h1>
-                                    <p>02:00 Pm</p>
+                                    <p>{{date('h',strtotime($bookedsession['session']['start_time']))}} {{$bookedsession['session']['start_meridiem']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>End Time</h1>
-                                    <p>03:00 Pm</p>
+                                    <p>{{date('h',strtotime($bookedsession['session']['end_time']))}} {{$bookedsession['session']['end_meridiem']}}</p>
                                 </div>
                             </div>
                         </div>
@@ -577,66 +579,27 @@
                         <h1>Clients Feedback</h1>
                     </div>
                     <div class="feedback-container px-2 px-sm-4">
+                        @if(isset($rating) && !empty($rating))
+                        @foreach($rating as $review)
                         <div class="feedback-card my-3">
                             <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
+                                <img class="mr-2" src="{{$review['user']['profile_img']}}" alt="">
+                                <h1>{{$review['user']['name']}}</h1>
                             </div>
                             <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
+                                <p>{{$review['description']}}</p>
                                 <div class="feedback-rating">
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
+                                    <p>{{$review['rating']}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div>
-                            </div>
+                        @endforeach
+                        @else
+                        <div class="text-center">
+                            <strong>No Reviews</strong>
                         </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
                     </div>
 
                 </div>

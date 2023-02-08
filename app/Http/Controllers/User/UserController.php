@@ -514,9 +514,23 @@ class UserController extends Controller
 
     public function userPaymentsList(Request $request)
     {
-        $payments = Transactions::where('user_id', auth()->user()->id)->with('session','session.category', 'session.trainerData')->get();
+        $payments = Transactions::where('user_id', auth()->user()->id)->with('session', 'session.category', 'session.trainerData')->get();
         $payments = json_decode($payments, true);
 
         return view('pages.userdashboard.payment.payment', compact('payments'));
+    }
+
+    public function sessionDetails($id)
+    {
+        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
+        $classes = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
+        $rating = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
+
+        if (!$session_detail) {
+            return $this->sendError('Session Detail');
+        }
+        $bookedsession = json_decode($session_detail, true);
+        $rating = json_decode($rating, true);
+        return view('pages.userdashboard.payment.payment-detail', compact('bookedsession', 'classes', 'rating'));
     }
 }
