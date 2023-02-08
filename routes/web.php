@@ -84,7 +84,10 @@ Route::get('/profile', function () {
     return view('pages.website.update-profile');
 });
 Route::get('/about', function () {
-    return view('pages.website.about');
+    return view('pages.website.about-new');
+});
+Route::get('/faq', function () {
+    return view('pages.website.faq');
 });
 Route::get('/services', function () {
     return view('pages.website.services');
@@ -272,6 +275,12 @@ Route::get('/trainer/sessionone', function () {
 Route::get('/trainer/request', function () {
     return view('pages.trainerSide.client-request');
 });
+Route::get('/trainer/chat', function () {
+    return view('pages.trainerSide.message');
+});
 Route::get('/trainer/payment', function () {
     return view('pages.trainerSide.payment');
+});
+Route::get('/trainer/paymentdetail', function () {
+    return view('pages.trainerSide.payment-detail');
 });

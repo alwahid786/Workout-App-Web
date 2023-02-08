@@ -563,6 +563,7 @@
                 <ul class="quickLinks mx-auto">
                     <li class="mb-3 text-md-white"><strong>Questions?</strong></li>
                     <li class="mb-2"><a href="#contact-us">Contact Us</a></li>
+                    <li class="mb-2"><a href="{{url('/faq')}}">FAQ's</a></li>
 
                 </ul>
             </div>
