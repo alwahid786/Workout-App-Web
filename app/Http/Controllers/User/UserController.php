@@ -16,6 +16,7 @@ use App\Models\Classes;
 use App\Models\ContactUs;
 use App\Models\Customer;
 use App\Models\Review;
+use App\Models\Transactions;
 use App\Models\Session as ModelsSession;
 use Carbon\Carbon;
 use DateTime;
@@ -241,7 +242,6 @@ class UserController extends Controller
     public function cardPayment(Request $request)
     {
         $customerId = $request->customer;
-
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
 
@@ -266,11 +266,23 @@ class UserController extends Controller
                 'is_completed' => $status,
                 'session-date' => $request->session_date,
             ));
+            // Save data to transactions 
+            $transaction = Transactions::create(array(
+                'session_id' => $request->session_id,
+                'user_id' => auth()->user()->id,
+                'customer_id' => $request->customer_id,
+                'amount' => $request->amount,
+                'is_refunded' => 0
+            ));
+            if ($transaction) {
+                return redirect()->route('/dashboard');
+            } else {
+                return $this->sendError('Something went wrong, Try again in a While.');
+            }
         } catch (Throwable $e) {
 
             return $this->sendError(false, $e);
         }
-        return redirect()->route('/dashboard');
 
         // return $this->sendResponse([], 'Payment successfully Done!');
     }
@@ -500,10 +512,25 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    //////////.......get Rating star........///////
-    // public function getRatingStar()
-    // {
-    //     $rating = Review::get();
+    public function userPaymentsList(Request $request)
+    {
+        $payments = Transactions::where('user_id', auth()->user()->id)->with('session', 'session.category', 'session.trainerData')->get();
+        $payments = json_decode($payments, true);
 
-    // }
+        return view('pages.userdashboard.payment.payment', compact('payments'));
+    }
+
+    public function sessionDetails($id)
+    {
+        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
+        $classes = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
+        $rating = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
+
+        if (!$session_detail) {
+            return $this->sendError('Session Detail');
+        }
+        $bookedsession = json_decode($session_detail, true);
+        $rating = json_decode($rating, true);
+        return view('pages.userdashboard.payment.payment-detail', compact('bookedsession', 'classes', 'rating'));
+    }
 }

@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     // Route::post('categories/trainer/{id}', [UserController::class, 'category_trainer'])->name('categories/trainer');
     Route::any('/dashboard/categories/{id}', [UserController::class, 'categoryDetail'])->name('/dashboard/categories');
     Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');
+    Route::any('/userdashboard/session/{id}', [UserController::class, 'sessionDetails'])->name('sessionDetails');
 
     Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
     Route::any('/dashboard/class-detail/{id}/{day}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
@@ -61,12 +62,12 @@ Route::middleware('auth')->group(function () {
     Route::any('/get_day_session', [UserController::class, 'getDaySession'])->name('get_day_session');
     Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('dashboard/payment');
     Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
-    Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
     Route::any('/dashboard/map', [MapController::class, 'mapViewPage'])->name('mapViewPage');
     Route::any('/dashboard/filterMapData', [MapController::class, 'filterMapData'])->name('filterMapData');
 
     Route::any('get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('get_sessions_list');
     Route::any('/rating', [UserController::class, 'ratingStar'])->name('rating');
+    Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
 });
 
 
@@ -188,9 +189,9 @@ Route::get('/userdashboard/upcomingsessionlist', function () {
     return view('pages.userdashboard.dashboard.upcoming-session-list');
 });
 // payment
-Route::get('/payment', function () {
-    return view('pages.userdashboard.payment.payment');
-});
+// Route::get('/payment', function () {
+//     return view('pages.userdashboard.payment.payment');
+// });
 Route::get('/payment/paymentdetail', function () {
     return view('pages.userdashboard.payment.payment-detail');
 });
