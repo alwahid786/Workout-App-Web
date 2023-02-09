@@ -192,6 +192,10 @@
         width: 7px !important;
     }
 
+    .fc-scroller {
+        overflow: unset !important;
+    }
+
     .fc .fc-scrollgrid {
         width: inherit !important;
     }
