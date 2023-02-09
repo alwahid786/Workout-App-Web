@@ -320,7 +320,7 @@ class UserController extends Controller
     {
         $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
         $classes = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
-        $rating = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
+        $rating = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
         $client = BookedSession::where('trainer_id', $session_detail['session']['class']['trainer']['id'])->groupBy('user_id')->get();
 
         $client = $client->count();
