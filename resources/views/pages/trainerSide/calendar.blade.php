@@ -5,6 +5,8 @@
         background-color: #f4f6fa !important;
     }
 
+
+
     #calendar {
         height: 70vh;
     }
@@ -157,19 +159,37 @@
         height: 30px !important;
     }
 
-    /* 
-    .fc-daygrid-body {
-
-        overflow-x: scroll;
-        overflow-y: hidden;
-    }*/
-
-    /* .fc-view-harness {
-        width: 500px;
-        overflow-x: scroll !important;
-    } */
     .fc-dayGridMonth-view {
         overflow-x: scroll;
+    }
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-thumb {
+        background: #E37048 !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+    .fc-dayGridMonth-view::-webkit-scrollbar {
+        width: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-thumb {
+        background: #E37048 !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
     }
 
     .fc .fc-scrollgrid {
