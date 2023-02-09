@@ -478,13 +478,13 @@ class UserController extends Controller
         $booksession =  (new BookedSession)->newQuery();
 
         $whereSession = [];
-        if ($request->has('type') && ($request->type == 1 || $request->type == 0) && $request->type!="") {
+        if ($request->has('type') && ($request->type == 1 || $request->type == 0) && $request->type != "") {
             array_push($whereSession, ['type', '=', $request->type]);
         }
         if ($request->has('price') && !empty($request->price)) {
             $price = explode('|', $request->price);
             // dd($price);
-    
+
             array_push($whereSession, ['price', '>=', $price[0]]);
             if (isset($price[1])) {
                 array_push($whereSession, ['price', '<=', $price[1]]);
@@ -594,5 +594,17 @@ class UserController extends Controller
         }
         $trainer = json_decode($getTrainers, true);
         return view('pages.userdashboard.dashboard.all-trainer', compact('trainer'));
+    }
+    /////////////...past session..........//////
+    public function allPastSession()
+    {
+        $pastsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '<', now())->with('session.class.category', 'session.class.trainer')->get();
+        if (!$pastsession) {
+            return $this->sendError('No Data found against ID');
+        }
+        $pastsession = json_decode($pastsession, true);
+
+        // dd($pastsession);
+        return view('pages.userdashboard.dashboard.user-past-session', compact('pastsession'));
     }
 }
