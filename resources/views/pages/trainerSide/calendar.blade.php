@@ -78,6 +78,8 @@
         background-color: #fff;
         width: max-content;
         border-radius: 8px;
+        /* height: 650px; */
+        /* width: 1000px; */
     }
 
     .fc-event-title-container {
@@ -140,6 +142,48 @@
         .fc-toolbar-title {
             font-size: 1.5rem !important;
         }
+    }
+
+    .fc-col-header-cell {
+        width: 200px !important;
+    }
+
+    .fc-scrollgrid-sync-table {
+        overflow-x: scroll !important;
+    }
+
+    .fc-scrollgrid-sync-table tbody tr td {
+        width: 200px !important;
+        height: 30px !important;
+    }
+
+    /* 
+    .fc-daygrid-body {
+
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }*/
+
+    /* .fc-view-harness {
+        width: 500px;
+        overflow-x: scroll !important;
+    } */
+    .fc-dayGridMonth-view {
+        overflow-x: scroll;
+    }
+
+    .fc .fc-scrollgrid {
+        width: inherit !important;
+    }
+
+    /* 
+    .fc .fc-scrollgrid table {
+        width: 1000px;
+        overflow-x: scroll;
+    } */
+
+    .fc .fc-scrollgrid-liquid {
+        height: 500px !important;
     }
 </style>
 @section('content')
@@ -274,4 +318,9 @@
         calendar.render();
     });
 </script>
+<!-- <script>
+    $(document).ready(function() {
+        $('table').addClass('table-responsive')
+    })
+</script> -->
 @endsection
