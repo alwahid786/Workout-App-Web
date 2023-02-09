@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/rating', [UserController::class, 'ratingStar'])->name('rating');
     Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
     Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
+    Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
 });
 
 
@@ -194,9 +195,9 @@ Route::get('/userdashboard/upcomingsessionone', function () {
 Route::get('/userdashboard/upcomingsessiongroup', function () {
     return view('pages.userdashboard.dashboard.user-upcoming-session-group');
 });
-Route::get('/userdashboard/upcomingsessionlist', function () {
-    return view('pages.userdashboard.dashboard.upcoming-session-list');
-});
+// Route::get('/userdashboard/upcomingsessionlist', function () {
+//     return view('pages.userdashboard.dashboard.upcoming-session-list');
+// });
 Route::get('/userdashboard/dashboard-null', function () {
     return view('pages.userdashboard.dashboard.dashboard-null');
 });

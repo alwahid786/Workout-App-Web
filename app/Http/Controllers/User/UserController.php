@@ -581,7 +581,6 @@ class UserController extends Controller
     public function usersTrainer()
     {
 
-
         $sessionIds = BookedSession::where('user_id', auth()->user()->id)->pluck('session_id');
         $getTrainers = ModelsSession::whereIn('id', $sessionIds)->groupBy('trainer_id')->with(['trainerData'])->get();
         if (!empty($getTrainers)) {
@@ -606,5 +605,19 @@ class UserController extends Controller
 
         // dd($pastsession);
         return view('pages.userdashboard.dashboard.user-past-session', compact('pastsession'));
+    }
+
+    /////  upcoming session.............////
+    public function upcomingSession()
+    {
+        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now())->with('session.class.category', 'session.class.trainer')->get();
+
+        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now())->with('session.class.category', 'session.class.trainer')->get();
+        if (!$currentsession) {
+            return $this->sendError('No Data found against ID');
+        }
+        $currentsession = json_decode($currentsession, true);
+        $upcomingsession = json_decode($upcomingsession, true);
+        return view('pages.userdashboard.dashboard.upcoming-session-list', compact('currentsession', 'upcomingsession'));
     }
 }

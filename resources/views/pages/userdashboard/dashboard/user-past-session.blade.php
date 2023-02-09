@@ -203,7 +203,7 @@
                             <h1>{{$past_session['session-date']}}</h1>
                         </div>
                         <div class="table-content-value text-md-center">
-                            <h1>22-Nov-1996</h1>
+                            <h1>{{$past_session['session-date']}}</h1>
                         </div>
 
                     </div>
