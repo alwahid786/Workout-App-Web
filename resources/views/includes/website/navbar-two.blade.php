@@ -148,13 +148,14 @@
     .log-link i {
         color: #E37048;
     }
+
     .logout-dropdown a:hover {
         background-color: #E37048;
         color: white;
     }
 
 
-    .setting-drop-sub{
+    .setting-drop-sub {
         padding-left: 70px;
     }
 </style>
@@ -249,15 +250,15 @@
     $('.nav-setting').mouseenter(() => {
         $('.setting-drop').removeClass('d-none');
     });
-    $('.setting-drop-profile').mouseenter(()=>{
+    $('.setting-drop-profile').mouseenter(() => {
         $('.setting-drop-sub').removeClass('d-none');
     });
 
-    $('.setting-drop-sub').mouseleave(()=>{
+    $('.setting-drop-sub').mouseleave(() => {
         $('.setting-drop-sub').addClass('d-none');
     });
 
-    $('.logout-btn').mouseenter(()=>{
+    $('.logout-btn').mouseenter(() => {
         $('.setting-drop').addClass('d-none');
     });
 </script>
