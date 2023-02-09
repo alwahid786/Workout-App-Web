@@ -88,22 +88,8 @@
         color: #848484;
     }
 
-    .pro-form select {
-        height: 65px;
-        border-radius: 10px !important;
-        background: #F8F8F8;
-        box-shadow: none !important;
-        color: #666666;
-        outline: none !important;
-        border: 1px solid rgba(0, 0, 0, 0.2) !important;
-        -moz-appearance: none;
-        /* Firefox */
-        -webkit-appearance: none;
-        /* Safari and Chrome */
-        appearance: none;
-    }
 
-    .pro-form input::placeholder,
+    */ .pro-form input::placeholder,
     .pro-form select::placeholder {
         color: #666666;
     }
@@ -529,9 +515,9 @@
         position: relative;
     }
 
-    .time-form-field input {
+    /* .time-form-field input {
         padding-right: 40px;
-    }
+    } */
 
     .time-form-field img {
         position: absolute;
@@ -800,7 +786,7 @@
 
                 </div>
             </div>
-            <div class="col-md-6" data-aos="fade-right">
+            <div class="col-md-6 pb-2" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Session Type</label>
                     <div class="select-outer">
@@ -842,21 +828,21 @@
                 </div>
 
             </div>
-            <div class="col-lg-6" data-aos="fade-left">
+            <div class="col-lg-6 " data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Time slot</label>
                     <div class="time-form">
                         <div class="time-form-field pro-form">
-                            <input type="text" class="form-control py-4" id="inputAddress" placeholder="">
-                            <img src="{{asset('public/assets/images/clock-icon.png')}}" alt="">
+                            <input type="time" class="form-control py-4" id="inputAddress" placeholder="">
+                            <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
                         </div>
                         <div class="time-form-field mx-sm-3 my-4 my-sm-0">
                             <h1>to</h1>
                         </div>
 
                         <div class="time-form-field pro-form mb-3 mb-sm-0 mr-sm-2">
-                            <input type="text" class="form-control py-4 " id="inputAddress" placeholder="">
-                            <img src="{{asset('public/assets/images/clock-icon.png')}}" alt="">
+                            <input type="time" class="form-control py-4 " id="inputAddress" placeholder="">
+                            <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
                         </div>
                         <button class="">Add</button>
                     </div>

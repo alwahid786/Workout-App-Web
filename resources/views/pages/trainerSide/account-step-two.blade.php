@@ -551,16 +551,28 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-6" data-aos="fade-left">
+            <div class="col-md-6 pb-3" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress2">
+                    <div class="select-outer">
+                        <select class="wide s-select form-control pl-4" id="typeselector">
+                            <option value="mon">USA</option>
+                            <option value="mon">Australia</option>
+                            <option value="mon">Austria</option>
+                        </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6" data-aos="fade-right">
+            <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
-                    <input type="text" class="form-control pl-4" id="inputCity">
+                    <select class="wide s-select form-control pl-4" id="typeselector">
+                        <option value="mon">Alaska</option>
+                        <option value="mon">Washington</option>
+                        <option value="mon">New South Wales</option>
+                        <option value="mon">Tirol</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
