@@ -64,7 +64,7 @@
                         </div>
                         <div class="session-card-content">
                             <div class="session-profile-left py-2">
-                                <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                <img src="{{$upcoming_session['session']['class']['trainer']['profile_img']}}" alt="">
                                 <p class="pl-1 pl-sm-3">{{$upcoming_session['session']['class']['trainer']['name']}}</p>
                             </div>
                             <div class="session-anchor-right">
