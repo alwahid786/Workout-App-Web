@@ -610,14 +610,15 @@ class UserController extends Controller
     /////  upcoming session.............////
     public function upcomingSession()
     {
-        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now())->with('session.class.category', 'session.class.trainer')->get();
+        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now())->with('session.class.category', 'session.class.trainer', 'session.class.classImages')->get();
 
-        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now())->with('session.class.category', 'session.class.trainer')->get();
+        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now())->with('session.class.category', 'session.class.trainer', 'session.class.classImages')->get();
         if (!$currentsession) {
             return $this->sendError('No Data found against ID');
         }
         $currentsession = json_decode($currentsession, true);
         $upcomingsession = json_decode($upcomingsession, true);
+        // dd($upcomingsession);
         return view('pages.userdashboard.dashboard.upcoming-session-list', compact('currentsession', 'upcomingsession'));
     }
 }

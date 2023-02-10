@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <div class="session-card-content">
-                            <p class="ml-auto my-2">{{$current_session['session']['price']}}</p>
+                            <p class="ml-auto my-2">${{$current_session['session']['price']}}</p>
                         </div>
                     </div>
                 </div>
@@ -42,14 +42,23 @@
                 @foreach($upcomingsession as $upcoming_session)
                 <div class="col-lg-6 my-2">
                     <div class="class-left-banner px-2 py-3">
-                        <img class="class-banner-img" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                        <img class="class-banner-img" src="{{$upcoming_session['session']['class']['class_images'][1]['image']}}" alt="">
                         <div class="class-banner-content banner-content pt-3">
                             <h1>{{$upcoming_session['session']['class']['category']['title']}}</h1>
                             <div class="class-banner-content-right">
-                                <h1>{{$upcoming_session['session']['price']}}</h1>
+                                <h1>${{$upcoming_session['session']['price']}}</h1>
                                 <div class="class-banner-content-right-time">
                                     <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
-                                    <p>25min</p>
+                                    <?php
+
+                                    $a = new DateTime(($upcoming_session['session']['start_time']));
+                                    $b = new DateTime($upcoming_session['session']['end_time']);
+                                    $interval = $a->diff($b);
+
+                                    $hour = $interval->format("%H:%I");
+
+                                    ?>
+                                    <p>{{$hour}}</p>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +68,7 @@
                                 <p class="pl-1 pl-sm-3">{{$upcoming_session['session']['class']['trainer']['name']}}</p>
                             </div>
                             <div class="session-anchor-right">
-                                <a href="{{url('/userdashboard/sessionone')}}">View</a>
+                                <a href="{{url('/userdashboard/sessionone/'.$upcoming_session['id'])}}">View</a>
                             </div>
                         </div>
                     </div>
