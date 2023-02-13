@@ -296,7 +296,7 @@
     <div class="row">
         <div class="col-lg-4 slider-left-outer">
             <div class="slider-left pl-lg-5 text-center text-lg-left" data-aos="zoom-out">
-                <h1 class="pb-2 pb-sm-3">Near by <span class="pt-sm-3">Trainers</span></h1>
+                <h1 class="pb-2 pb-sm-3">Session </h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
 
@@ -312,7 +312,7 @@
                         </div>
                         <div class="trainer-card-right pl-4">
                             <div class="trainer-rating">
-                                <h1 class="mr-3">Yoga</h1>
+                                <!-- <h1 class="mr-3">Yoga</h1> -->
                                 <div class="rating-star pb-1 pb-lg-2 d-flex">
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star px-1" aria-hidden="true"></i>
@@ -323,8 +323,8 @@
                                 </div>
                             </div>
                             <div class="trainer-name pb-1 pb-lg-2">
-                                <h1 class="">John Smith</h1>
-                                <p class="">Canada (ontario)</p>
+                                <h1 class="">Yoga</h1>
+                                <p class="">John Smith</p>
                             </div>
                             <div class="trainer-price pb-2">
                                 <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
@@ -340,7 +340,7 @@
                         </div>
                         <div class="trainer-card-right pl-4">
                             <div class="trainer-rating">
-                                <h1 class="mr-3">Yoga</h1>
+                                <!-- <h1 class="mr-3">Yoga</h1> -->
                                 <div class="rating-star pb-2 d-flex">
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star px-1" aria-hidden="true"></i>
@@ -351,8 +351,8 @@
                                 </div>
                             </div>
                             <div class="trainer-name pb-2">
-                                <h1>John Smith</h1>
-                                <p>Canada (ontario) </p>
+                                <h1 class="">Yoga</h1>
+                                <p class="">John Smith</p>
                             </div>
                             <div class="trainer-price pb-2">
                                 <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
@@ -368,7 +368,7 @@
                         </div>
                         <div class="trainer-card-right pl-4">
                             <div class="trainer-rating">
-                                <h1 class="mr-3">Yoga</h1>
+                                <!-- <h1 class="mr-3">Yoga</h1> -->
                                 <div class="rating-star pb-2 d-flex">
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star px-1" aria-hidden="true"></i>
@@ -379,8 +379,8 @@
                                 </div>
                             </div>
                             <div class="trainer-name pb-2">
-                                <h1>John Smith</h1>
-                                <p>Canada (ontario)</p>
+                                <h1 class="">Yoga</h1>
+                                <p class="">John Smith</p>
                             </div>
                             <div class="trainer-price pb-2">
                                 <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
