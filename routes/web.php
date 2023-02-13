@@ -73,6 +73,8 @@ Route::middleware('auth')->group(function () {
     Route::any('get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('get_sessions_list');
     Route::any('/rating', [UserController::class, 'ratingStar'])->name('rating');
     Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
+    Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
+    Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
 });
 
 
@@ -174,9 +176,9 @@ Route::get('/dashboard/class-detail-one', function () {
 //     return view('pages.userdashboard.dashboard.user-session');
 // });
 
-Route::get('/userdashboard/pastsession', function () {
-    return view('pages.userdashboard.dashboard.user-past-session');
-});
+// Route::get('/userdashboard/pastsession', function () {
+//     return view('pages.userdashboard.dashboard.user-past-session');
+// });
 Route::get('/userdashboard/pastsessiondetail', function () {
     return view('pages.userdashboard.dashboard.user-past-session-detail');
 });
@@ -193,9 +195,9 @@ Route::get('/userdashboard/upcomingsessionone', function () {
 Route::get('/userdashboard/upcomingsessiongroup', function () {
     return view('pages.userdashboard.dashboard.user-upcoming-session-group');
 });
-Route::get('/userdashboard/upcomingsessionlist', function () {
-    return view('pages.userdashboard.dashboard.upcoming-session-list');
-});
+// Route::get('/userdashboard/upcomingsessionlist', function () {
+//     return view('pages.userdashboard.dashboard.upcoming-session-list');
+// });
 Route::get('/userdashboard/dashboard-null', function () {
     return view('pages.userdashboard.dashboard.dashboard-null');
 });

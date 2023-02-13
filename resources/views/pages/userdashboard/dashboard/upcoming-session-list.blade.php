@@ -12,56 +12,69 @@
             <!-- <h1 class="pr-sm-3"> <img class="pr-1 pr-sm-2 pb-1" src="{{asset('public/assets/images/left-arrow.svg')}}" alt="">Dashboard<img class="pl-1 pl-sm-2 pb-1" src="{{asset('public/assets/images/right-arrow.svg')}}" alt=""></h1> -->
             <h1>Today's Session</h1>
         </div>
+        @foreach($currentsession as $current_session)
         <div class="content-wrapper-inner">
             <div class="row ">
                 <div class="col-12 my-2">
                     <div class="class-left-banner left-banner px-2 py-3">
                         <img class="class-banner-img" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                         <div class="class-banner-content pt-3">
-                            <h1>Stretching outdoors</h1>
+                            <h1>{{$current_session['session']['class']['category']['title']}}</h1>
                             <div class="class-banner-content-right">
                                 <div class="class-banner-content-right-time">
-                                    <p>7 Dec, 2022 | 10 AM-11 AM</p>
+                                    <p>{{$current_session['session-date']}} | {{$current_session['session']['start_time']}}-{{$current_session['session']['end_time']}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="session-card-content">
-                            <p class="ml-auto my-2">$100</p>
+                            <p class="ml-auto my-2">${{$current_session['session']['price']}}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
         <div class="content-wrapper-inner p-3 my-3">
             <div class="dashboard-header-left my-4 pt-2">
                 <h1>Upcoming Session</h1>
             </div>
             <div class="row ">
+                @foreach($upcomingsession as $upcoming_session)
                 <div class="col-lg-6 my-2">
                     <div class="class-left-banner px-2 py-3">
-                        <img class="class-banner-img" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                        <img class="class-banner-img" src="{{$upcoming_session['session']['class']['class_images'][1]['image']}}" alt="">
                         <div class="class-banner-content banner-content pt-3">
-                            <h1>Stretching outdoors</h1>
+                            <h1>{{$upcoming_session['session']['class']['category']['title']}}</h1>
                             <div class="class-banner-content-right">
-                                <h1>$100</h1>
+                                <h1>${{$upcoming_session['session']['price']}}</h1>
                                 <div class="class-banner-content-right-time">
                                     <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
-                                    <p>25min</p>
+                                    <?php
+
+                                    $a = new DateTime(($upcoming_session['session']['start_time']));
+                                    $b = new DateTime($upcoming_session['session']['end_time']);
+                                    $interval = $a->diff($b);
+
+                                    $hour = $interval->format("%H:%I");
+
+                                    ?>
+                                    <p>{{$hour}}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="session-card-content">
                             <div class="session-profile-left py-2">
-                                <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                <p class="pl-1 pl-sm-3">John Smith </p>
+                                <img src="{{$upcoming_session['session']['class']['trainer']['profile_img']}}" alt="">
+                                <p class="pl-1 pl-sm-3">{{$upcoming_session['session']['class']['trainer']['name']}}</p>
                             </div>
                             <div class="session-anchor-right">
-                                <a href="{{url('/userdashboard/sessionone')}}">View</a>
+                                <a href="{{url('/userdashboard/sessionone/'.$upcoming_session['id'])}}">View</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 my-2 ">
+                @endforeach
+                <!-- <div class="col-lg-6 my-2 ">
 
                     <div class="class-left-banner px-2 py-3">
                         <img class="class-banner-img" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
@@ -85,7 +98,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 

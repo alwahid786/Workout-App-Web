@@ -253,7 +253,7 @@
 
                     @foreach($trainer_detail[0]['class'] as $trainerData )
                     <div class="session-card p-3">
-                        
+
                         <div class="card-img ">
                             <img src="{{$trainerData['class_image'][0]['image']}}" alt="">
                         </div>
@@ -265,7 +265,16 @@
                         </div>
                         <div class="card-content">
                             <p>John Smith </p>
-                            <p>{{$trainerData['session']['start_time']}}-{{$trainerData['session']['end_time']}}</p>
+                            <?php
+
+                            $a = new DateTime(($trainerData['session']['start_time']));
+                            $b = new DateTime($trainerData['session']['end_time']);
+
+                            $start_hour = $a->format("H:i");
+                            $end_hour = $b->format("H:i");
+
+                            ?>
+                            <p>{{$start_hour}}-{{$end_hour}}</p>
                         </div>
                         <div class="session-left-divider"></div>
                         <div class="card-bottom-section p-2">
