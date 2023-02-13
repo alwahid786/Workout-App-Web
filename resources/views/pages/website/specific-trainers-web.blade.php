@@ -48,7 +48,8 @@
             margin: 0 auto;
         }
     }
-    .experienced-trainer-card-right a{
+
+    .experienced-trainer-card-right a {
         outline: none !important;
         box-shadow: none !important;
     }
@@ -222,7 +223,7 @@
 
                 </ul>
             </div>
-            <div class="col-xl-4 col-md-6 order-xl-4 order-md-3 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-xl-2 col-md-6 order-xl-4 order-md-3 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="400">
                 <ul class="quickLinks mx-auto">
                     <li class="mb-3 text-md-white"><strong>Questions?</strong></li>
                     <li class="mb-2"><a href="#contact-us">Contact Us</a></li>

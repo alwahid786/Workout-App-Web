@@ -1168,7 +1168,7 @@ body {
 	font-size: 1.3rem;
 }
 
-.footer-icon-outer:hover {
+/* .footer-icon-outer:hover {
 	background-color: #FF7A00;
 	border: 1px solid #FF7A00;
 	animation: flip-icons 1.5s infinite;
@@ -1183,7 +1183,7 @@ body {
 	100% {
 		transform: rotateY(0deg);
 	}
-}
+} */
 
 .footer-icon-outer:hover i {
 	color: white;
@@ -2028,10 +2028,10 @@ body {
 	display: none;
 }
 
-.pro-form select {
+/* .pro-form select {
 	position: relative;
 
-}
+} */
 
 /*  update profile gender */
 .pro-form-select {
