@@ -229,7 +229,7 @@
                     <label for="inputCity" class=" ">Gender</label>
                     <!-- <input type="text" name="gender" value="{{auth()->user()->gender ?? ''}}" class="form-control py-4" id="inputCity"> -->
                     <!-- <input type="text" class="form-control py-4" id="inputCity"> -->
-                    <select name="" class="form-control py-4 pro-form-select" id="inputCity">
+                    <select name="" class="form-control py-2 pro-form-select" id="inputCity">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
