@@ -112,42 +112,42 @@ class AuthController extends Controller
         Auth::logout();
         return Redirect::to('/');
     }
-    ////// trainer sign up.......///////
-    public function trainerSignup(TrainerSignupRequest $request)
-    {
-        $TrainerData = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'user_type' => 'trainer',
-            'password' => bcrypt($request->password),
-            'profile_img' => $request->image,
-            'phone' => $request->contact_number,
-            'date_of_birth' => $request->date_of_birth,
-            'about' => $request->about,
-            'emergency_contact' => $request->emergency_contact,
-            'relationship_emergency_contact' => $request->relation_emergency,
-            'gender' => $request->gender,
-            'country' => $request->country,
-            'state' => $request->state,
-            'workout_location' => $request->location,
-            'weight' => $request->weight,
-            'height' => $request->height,
-            'madical_condition' => $request->madical_condition,
-        ];
-        $registeredTrainer = User::create($TrainerData);
-        if (!$registeredTrainer) {
-            return $this->sendError('User has not registered. Please try again later');
-        }
+    // ////// trainer sign up.......///////
+    // public function trainerSignup(TrainerSignupRequest $request)
+    // {
+    //     $TrainerData = [
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'user_type' => 'trainer',
+    //         'password' => bcrypt($request->password),
+    //         'profile_img' => $request->image,
+    //         'phone' => $request->contact_number,
+    //         'date_of_birth' => $request->date_of_birth,
+    //         'about' => $request->about,
+    //         'emergency_contact' => $request->emergency_contact,
+    //         'relationship_emergency_contact' => $request->relation_emergency,
+    //         'gender' => $request->gender,
+    //         'country' => $request->country,
+    //         'state' => $request->state,
+    //         'workout_location' => $request->location,
+    //         'weight' => $request->weight,
+    //         'height' => $request->height,
+    //         'madical_condition' => $request->madical_condition,
+    //     ];
+    //     $registeredTrainer = User::create($TrainerData);
+    //     if (!$registeredTrainer) {
+    //         return $this->sendError('User has not registered. Please try again later');
+    //     }
 
 
-        $trainerData  = User::find($registeredTrainer->id);
-        $tarner_profile = TrainerProfile::create([
-            'user_id' => $trainerData->id,
-        ]);
+    //     $trainerData  = User::find($registeredTrainer->id);
+    //     $tarner_profile = TrainerProfile::create([
+    //         'user_id' => $trainerData->id,
+    //     ]);
 
-        $trainerData->token = $registeredTrainer->createToken('API Token')->accessToken;
-        return $this->sendResponse($trainerData, 'Trainer Registered Successfully!');
-    }
+    //     $trainerData->token = $registeredTrainer->createToken('API Token')->accessToken;
+    //     return $this->sendResponse($trainerData, 'Trainer Registered Successfully!');
+    // }
     /// trainer detail.......///////
     public function trainerDetail(TrainerDetailRequest $request)
     {

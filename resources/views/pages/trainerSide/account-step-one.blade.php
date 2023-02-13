@@ -113,6 +113,7 @@
         color: #fff;
         font-weight: 600;
         font-size: 2rem;
+        border: none;
 
     }
 
@@ -254,6 +255,25 @@
 
     }
 
+    .button {
+        background: #E37048;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: white;
+        padding: 25px 0;
+        border-radius: 10px;
+        text-align: center;
+        width: 25%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        min-width: 200px;
+        height: 50px;
+    }
+
     @media screen and (max-width:576px) {
         .pagination-box {
             position: relative;
@@ -324,7 +344,8 @@
 
 <!-- ............Form Section................ -->
 <div class="container">
-    <form>
+    <form action="{{url('trainer_signup')}}" method="post">
+        @csrf
         <div class="row">
             <div class="col-md-6 text-center text-lg-left  upload-image py-5">
                 <img src="{{asset('public/assets/trainerimages/update-info-left.svg')}}" alt="image">
@@ -338,32 +359,32 @@
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">First Name</label>
-                    <input type="text" class="form-control py-4" id="inputAddress">
+                    <input type="text" class="form-control py-4" id="inputAddress" name="first_name">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Last Name</label>
-                    <input type="text" class="form-control py-4" id="inputAddress">
+                    <input type="text" class="form-control py-4" id="inputAddress" name="last_name">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Email</label>
-                    <input type="text" class="form-control py-4" id="inputAddress2">
+                    <input type="text" class="form-control py-4" id="inputAddress2" name="email">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Contact Number</label>
-                    <input type="text" class="form-control py-4" id="inputAddress2">
+                    <input type="text" class="form-control py-4" id="inputAddress2" name="contact_number">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form  mb-2">
                     <label for="inputAddress2" class=" ">Password</label>
                     <div class="right-inner-addon">
-                        <input type="password" class=" modal-input passInput pl-4" id="passInput" aria-autocomplete="list">
+                        <input type="password" class=" modal-input passInput pl-4" id="passInput" aria-autocomplete="list" name="password">
                         <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true" style="display: none;"></i>
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
@@ -374,7 +395,7 @@
                 <div class="form-group pro-form right-inner-addon mb-2">
                     <label for="inputAddress2" class=" ">Confirm Password</label>
                     <div class="right-inner-addon">
-                        <input type="password" class=" modal-input passInput pl-4" id="passInputtwo">
+                        <input type="password" class=" modal-input passInput pl-4" id="passInputtwo" name="confirm_password">
                         <i id="hidePasstwo" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="showPasstwo" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
@@ -384,12 +405,13 @@
             <div class="col-12" data-aos="fade-up">
                 <div class="form-outline pro-form">
                     <label class="form-label" for="textAreaExample">Tell Us About yourself <span>(256)</span></label>
-                    <textarea class="form-control" id="textAreaExample1" rows="4"></textarea>
+                    <textarea class="form-control" id="textAreaExample1" rows="4" name="about"></textarea>
                 </div>
             </div>
             <div class="col-12 my-5">
                 <div class=" profile-nxt-btn">
-                    <a href="{{url('/trainer/steptwo')}}" class="update-profile-form-btn">Next</a>
+                    <!-- <a href="{{url('/trainer/steptwo')}}" class="update-profile-form-btn">Next</a> -->
+                    <button class="button" type="submit">Next</button>
                 </div>
             </div>
 

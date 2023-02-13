@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Trainer\AuthController as TrainerAuthController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\SocialController;
@@ -24,6 +25,9 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('pages.website.index');
 });
+
+Route::post('/trainer_signup', [TrainerAuthController::class, 'trainerSignup']);
+
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
