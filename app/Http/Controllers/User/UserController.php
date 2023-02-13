@@ -340,7 +340,7 @@ class UserController extends Controller
     public function UserBookedSession()
     {
         $user_detail = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();
-        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now())->with('session.class.category', 'session.class.trainer')->get();
+        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', now()->format('Y-m-d'))->with('session.class.category', 'session.class.trainer')->get();
         // $total_currentsession = $currentsession->count();
 
         $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now())->with('session.class.category', 'session.class.trainer')->get();
