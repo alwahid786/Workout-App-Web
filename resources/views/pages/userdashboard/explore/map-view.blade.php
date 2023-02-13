@@ -413,7 +413,6 @@
                                     <h1>Workout Type</h1>
                                     <div class="drop-icon">
                                         <select class="wide s-select form-control" id="workout_category">
-                                            <option disabled="disabled" selected>Select --</option>
                                             @foreach($categories as $category)
                                             <option value="{{$category['id']}}" data-src="{{$category['title']}}">{{$category['title']}}</option>
                                             @endforeach
@@ -427,7 +426,6 @@
                                     <h1>Location</h1>
                                     <div class="drop-icon">
                                         <select class="wide s-select form-control " id="workout_location">
-                                            <option value='' diasbled="disabled">Select --</option>
                                             <option selected value="{{$currentUserInfo->regionName}}" class="locationOption">{{$currentUserInfo->regionName}}</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
@@ -441,7 +439,6 @@
                                     <div class="drop-icon">
 
                                         <select class="wide s-select form-control" id="workout_type">
-                                            <option disabled="disabled" selected>Select --</option>
                                             <option value="0">One to One</option>
                                             <option value="1">Group</option>
                                         </select>
@@ -457,7 +454,6 @@
                                     <h1>Price Range</h1>
                                     <div class="drop-icon drop-icon-thre">
                                         <select class="wide s-select form-control " id="workout_price">
-                                            <option disabled="disabled" selected>Select --</option>
                                             <option value="85">$85 to $200</option>
                                             <option value="200">$200 to $400</option>
                                             <option value="400">$400 to $800</option>
@@ -480,7 +476,6 @@
                                 <h1>Session Type</h1>
                                 <div class="drop-icon">
                                     <select class="wide s-select form-control" id="session_type">
-                                        <option disabled="disabled" selected>Select --</option>
                                         <option value="0">Online</option>
                                         <option value="1">In-person</option>
                                     </select>
@@ -495,7 +490,6 @@
                                 <h1>Range</h1>
                                 <div class="drop-icon input-location">
                                     <select class="wide s-select form-control" id="workout_radius">
-                                        <option selected disabled="disabled">Select --</option>
                                         <option value="3">3KM</option>
                                         <option value="5">5KM</option>
                                         <option value="8">8KM</option>
