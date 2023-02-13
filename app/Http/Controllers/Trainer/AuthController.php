@@ -52,4 +52,5 @@ class AuthController extends Controller
         // return $this->sendResponse($trainerData, 'Trainer Registered Successfully!');
         return Redirect::to('/trainer/steptwo');
     }
+    
 }
