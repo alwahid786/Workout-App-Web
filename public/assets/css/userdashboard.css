@@ -413,7 +413,7 @@ body {
     font-weight: 700;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
+    flex-direction: column;
 }
 
 .dashboard-header-right {
