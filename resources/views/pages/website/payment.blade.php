@@ -366,6 +366,10 @@
     }
 
     @media screen and (max-width:576px) {
+        .profile-nxt-btn button, .profile-nxt-btn button:hover, .profile-nxt-btn button:focus, .profile-nxt-btn button:active{
+            width: 70% !important;
+            padding: 10px 0px !important;
+        }
         #payment-form-h {
             font-size: 2rem;
             font-weight: 500;
