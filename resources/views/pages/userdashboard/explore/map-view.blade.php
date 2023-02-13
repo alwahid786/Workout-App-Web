@@ -591,7 +591,15 @@
         });
         $(".fc-col-header-cell-cushion").click(function() {
             var day = $(this).find(">:first-child").text();
-
+            var data = {
+                    category: category,
+                    location: location,
+                    type: type,
+                    price: price,
+                    radius: radius,
+                    session_type: session_type,
+                    day: day
+                }
         });
         $(".applyFilterBtn").on('click', function() {
             let category = $('#workout_category').val();
@@ -600,21 +608,21 @@
             let price = $('#workout_price').val();
             let radius = $('#workout_radius').val();
             let session_type = $('#session_type').val();
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: `{{route('filterMapData')}}`,
-                type: "POST",
-                data: {
+            var data = {
                     category: category,
                     location: location,
                     type: type,
                     price: price,
                     radius: radius,
                     session_type: session_type,
-                    day: day
+                };
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
+                url: `{{route('filterMapData')}}`,
+                type: "POST",
+                data: data,
                 cache: false,
                 success: function(response) {
                     if (response.success == true) {
