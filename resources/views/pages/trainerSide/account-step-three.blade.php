@@ -1323,6 +1323,9 @@
 
     </div>
 </div>
+
+
+
 @endsection
 @section('insertsfooter')
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
