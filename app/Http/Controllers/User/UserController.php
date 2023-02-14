@@ -53,7 +53,7 @@ class UserController extends Controller
             return $this->sendError('Category');
         }
         $responseBody = $trainer_category;
-        $userdata = json_decode($responseBody, true);
+        $userdata     = json_decode($responseBody, true);
 
         return view('pages.website.specific-trainers-web', compact('userdata'));
     }
@@ -71,7 +71,7 @@ class UserController extends Controller
                 $message = $e->getMessage();
                 return $this->failure($message);
             }
-            $image = url('public/files') . '/' .  $fileNames;
+            $image = url('public/files') . '/' . $fileNames;
             // return $this->sendResponse($image, 'URL');
         }
         $data = request()->except(['_token']);
@@ -79,7 +79,7 @@ class UserController extends Controller
             unset($data['files']);
             $data['profile_img'] = $image;
         }
-        $update = User::findOrFail($request->user_id);
+        $update     = User::findOrFail($request->user_id);
         $updateUser = $update->fill($data)->save();
         if (!$updateUser) {
             Session::flash('error', 'Something went wrong, please try again later.');
@@ -99,26 +99,28 @@ class UserController extends Controller
 
 
         $month = date('m', strtotime($request->valid_through));
-        $year = date('Y', strtotime($request->valid_through));
+        $year  = date('Y', strtotime($request->valid_through));
 
 
-        $response = \Stripe\Token::create(array(
-            "card" => array(
-                "number"    => $request->input('card_number'),
-                "exp_month" => $month,
-                "exp_year"  => $year,
-                "cvc"       => $request->input('cvc'),
-                "name"      => $request->input('name')
+        $response = \Stripe\Token::create(
+            array(
+                "card" => array(
+                    "number"    => $request->input('card_number'),
+                    "exp_month" => $month,
+                    "exp_year"  => $year,
+                    "cvc"       => $request->input('cvc'),
+                    "name"      => $request->input('name')
+                )
             )
-        ));
+        );
 
         $card_token = $response->id;
-        $userId = auth()->user()->id;
+        $userId     = auth()->user()->id;
 
 
         $customer = $stripe->customers->create([
             'description' => 'Customer create successfully',
-            'source' => $card_token
+            'source'      => $card_token
         ]);
 
         $ephemeralKey = \Stripe\EphemeralKey::create(
@@ -129,21 +131,21 @@ class UserController extends Controller
 
 
         Customer::create([
-            "card_name"      => $request->input('name'),
-            "card_number"    => $request->input('card_number'),
+            "card_name"   => $request->input('name'),
+            "card_number" => $request->input('card_number'),
             'customer_id' => $customer->id,
-            'user_id' => $userId,
-            'type' => 'CREDIT CARD',
-            'valid_thru' => $month . '/' . $year
+            'user_id'     => $userId,
+            'type'        => 'CREDIT CARD',
+            'valid_thru'  => $month . '/' . $year
         ]);
 
         $pay_int_res = [
-            'result' => 'Success',
-            'message' => 'Customer create successfully',
+            'result'             => 'Success',
+            'message'            => 'Customer create successfully',
             'stripe_publish_key' => env('STRIPE_KEY'),
             // 'payment_intent' => $paymentIntent->client_secret,
-            'ephemeral_key' => $ephemeralKey->secret,
-            'customer_id' => $customer->id
+            'ephemeral_key'      => $ephemeralKey->secret,
+            'customer_id'        => $customer->id
         ];
 
 
@@ -154,10 +156,10 @@ class UserController extends Controller
     public function contactUs(ContactUsRequest $request)
     {
         $contact_us = new ContactUs();
-        $contact_us->name = $request->full_name;
-        $contact_us->email = $request->email;
-        $contact_us->phone = $request->phone_number;
-        $contact_us->message = $request->message;
+        $contact_us->name        = $request->full_name;
+        $contact_us->email       = $request->email;
+        $contact_us->phone       = $request->phone_number;
+        $contact_us->message     = $request->message;
         if (!$contact_us) {
             return $this->sendError('Contact');
         }
@@ -177,7 +179,7 @@ class UserController extends Controller
             return $this->sendError('Dashboard');
         }
         $trainers = json_decode($all_trainer, true);
-        $class = json_decode($class_detail, true);
+        $class    = json_decode($class_detail, true);
 
         $category = json_decode($all_category, true);
         return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class'));
@@ -186,20 +188,39 @@ class UserController extends Controller
     public function trainer_detail(Request $request, $id)
     {
         $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session', 'class.classImage'])->get();
-        if (!$trainer) {
-            return $this->sendError('Trainer Detail');
+        // if (!$trainer) {
+        //     return $this->sendError('Trainer Detail');
+        // }
+        $trainer_detail      = json_decode($trainer, true);
+        $categorizedSessions = ModelsSession::where('trainer_id', $id)->get()->groupBy('category_id');
+        // dd($session);
+        if (!empty($categorizedSessions)) {
+            foreach ($categorizedSessions as $key => $session) {
+                $session['category_name'] = Category::where('id', $key)->pluck('title')->first();
+                $session['category_id']   = $key;
+            }
         }
-        $trainer_detail = json_decode($trainer, true);
-
-        return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail'));
+        $sessions = json_decode($categorizedSessions, true);
+        return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail', 'sessions'));
+    }
+    public function trainerSessionDetail(Request $request, $id, $trainerId)
+    {
+        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session', 'class.classImage'])->get();
+        // if (!$trainer) {
+        //     return $this->sendError('Trainer Detail');
+        // }
+        $sessions = ModelsSession::where(['trainer_id' => $trainerId, 'category_id' => $id])->with('class', 'class.classImages', 'category', 'trainerData')->get();
+        $sessions = json_decode($sessions, true);
+        $trainer  = json_decode($trainer, true);
+        return view('pages.userdashboard.explore.trainer-session-detail', compact('sessions', 'trainer'));
     }
 
     ///////// .....class detail .............////////
     public function class_detail(Request $request, $id, $day)
     {
-        $class = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
+        $class         = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
         $classes_count = ModelsSession::where('trainer_id', '=', $id)->count();
-        $trainer = User::where('id', $id)->first();
+        $trainer       = User::where('id', $id)->first();
         if (count($class) > 0) {
             foreach ($class as $session) {
                 $session['session'] = ModelsSession::where(['day' => $day, 'trainer_id' => $id])->with('category')->get();
@@ -216,9 +237,9 @@ class UserController extends Controller
 
 
         $classSession = ModelsSession::where('trainer_id', $id)->groupBy('day')->pluck('day');
-        $trainer = json_decode($trainer, true);
+        $trainer      = json_decode($trainer, true);
         $class_detail = json_decode($class, true);
-        $review = json_decode($review, true);
+        $review       = json_decode($review, true);
 
         return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession', 'classes_count', 'trainer', 'review', 'client'));
     }
@@ -226,14 +247,14 @@ class UserController extends Controller
 
     public function showCard(Request $request)
     {
-        $card = Customer::where('user_id', auth()->user()->id)->get();
+        $card           = Customer::where('user_id', auth()->user()->id)->get();
         $session_detail = ModelsSession::where('id', $request->session_id)->first();
 
         if (!$card) {
             return $this->sendError('Card');
         }
         $card_detail = json_decode($card, true);
-        $session = json_decode($session_detail, true);
+        $session     = json_decode($session_detail, true);
         $sessiondate = $request->session_date;
 
         return view('pages.userdashboard.explore.payment', compact('card_detail', 'session', 'sessiondate'));
@@ -248,11 +269,13 @@ class UserController extends Controller
 
         try {
 
-            $payment = \Stripe\Charge::create(array(
-                "amount" => $request->amount * 100,
-                "currency" => "usd",
-                "customer" => $customerId
-            ));
+            $payment = \Stripe\Charge::create(
+                array(
+                    "amount"   => $request->amount * 100,
+                    "currency" => "usd",
+                    "customer" => $customerId
+                )
+            );
 
             if ($payment['status'] = "succeeded") {
                 $status = true;
@@ -260,22 +283,26 @@ class UserController extends Controller
                 $status = false;
             }
 
-            $booksession = BookedSession::create(array(
-                'session_id' => $request->session_id,
-                'user_id' => auth()->user()->id,
-                'customer_id' => $request->customer_id,
-                'is_completed' => $status,
-                'session-date' => $request->session_date,
-                'trainer_id' => $request->trainer_id,
-            ));
+            $booksession = BookedSession::create(
+                array(
+                    'session_id'   => $request->session_id,
+                    'user_id'      => auth()->user()->id,
+                    'customer_id'  => $request->customer_id,
+                    'is_completed' => $status,
+                    'session-date' => $request->session_date,
+                    'trainer_id'   => $request->trainer_id,
+                )
+            );
             // Save data to transactions 
-            $transaction = Transactions::create(array(
-                'session_id' => $request->session_id,
-                'user_id' => auth()->user()->id,
-                'customer_id' => $request->customer_id,
-                'amount' => $request->amount,
-                'is_refunded' => 0
-            ));
+            $transaction = Transactions::create(
+                array(
+                    'session_id'  => $request->session_id,
+                    'user_id'     => auth()->user()->id,
+                    'customer_id' => $request->customer_id,
+                    'amount'      => $request->amount,
+                    'is_refunded' => 0
+                )
+            );
             if ($transaction) {
                 return redirect()->route('/dashboard');
             } else {
@@ -291,25 +318,29 @@ class UserController extends Controller
     //////////.......get all booked session .......///////
     public function getBookedSession()
     {
-        $workoutType = '';
+        $workoutType   = '';
         $whereCategory = [];
         if ($workoutType != '') {
             array_push($whereCategory, ['title', '=', $workoutType]);
         }
-        $booksession = BookedSession::where('user_id', auth()->user()->id)->with(['session.class.trainer', 'session.class.category' => function ($query) use ($whereCategory) {
-            if (!empty($whereCategory)) {
-                $query->where($whereCategory);
-            }
-        }, 'session.class.classImage'])->get();
-        $category = Category::get();
-        $ip = '162.159.24.227';
+        $booksession     = BookedSession::where('user_id', auth()->user()->id)->with([
+            'session.class.trainer',
+            'session.class.category' => function ($query) use ($whereCategory) {
+                if (!empty($whereCategory)) {
+                    $query->where($whereCategory);
+                }
+            },
+            'session.class.classImage'
+        ])->get();
+        $category        = Category::get();
+        $ip              = '162.159.24.227';
         $currentUserInfo = Location::get($ip);
-        $categories = Category::all();
+        $categories      = Category::all();
         if (!$booksession) {
             return $this->sendError('Session Detail');
         }
         $booksession_detail = json_decode($booksession, true);
-        $category = json_decode($category, true);
+        $category           = json_decode($category, true);
 
 
         // echo '<pre>';print_r($booksession_detail);exit;
@@ -319,9 +350,9 @@ class UserController extends Controller
     public function viewSession($id)
     {
         $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
-        $classes = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
-        $rating = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
-        $client = BookedSession::where('trainer_id', $session_detail['session']['class']['trainer']['id'])->groupBy('user_id')->get();
+        $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
+        $rating         = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
+        $client         = BookedSession::where('trainer_id', $session_detail['session']['class']['trainer']['id'])->groupBy('user_id')->get();
 
         $client = $client->count();
 
@@ -330,7 +361,7 @@ class UserController extends Controller
             return $this->sendError('Session Detail');
         }
         $bookedsession = json_decode($session_detail, true);
-        $rating = json_decode($rating, true);
+        $rating        = json_decode($rating, true);
         // dd($rating);
         // $classes = json_decode($classes, true);
 
@@ -339,41 +370,40 @@ class UserController extends Controller
     ///////.........user dashboard upcoming , current , past session .......//////
     public function UserBookedSession()
     {
-        $user_detail = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();
+        $user_detail    = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();
         $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', now()->format('Y-m-d'))->with('session.class.category', 'session.class.trainer')->get();
         // $total_currentsession = $currentsession->count();
 
-        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now())->with('session.class.category', 'session.class.trainer')->get();
+        $upcomingsession       = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now())->with('session.class.category', 'session.class.trainer')->get();
         $total_upcomingsession = $upcomingsession->count();
 
-        $pastsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '<', now())->with('session.class.category', 'session.class.trainer')->get();
+        $pastsession       = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '<', now())->with('session.class.category', 'session.class.trainer')->get();
         $total_pastsession = $pastsession->count();
 
-
-        $rawQuery = DB::table('booked_sessions')
+        $rawQuery      = DB::table('booked_sessions')
             ->join('sessions', 'booked_sessions.session_id', '=', 'sessions.id')
             ->join('classes', 'sessions.class_id', '=', 'classes.id')
             ->join('users', 'classes.trainer_id', '=', 'users.id')
             ->select(DB::raw("(classes.trainer_id) as stocks_quantity"))
             ->groupBy('stocks_quantity')
             ->get();
-        // dd($rawQuery->count());
         $total_trainer = $rawQuery->count();
 
-
+        $sessionDates = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->groupBy('session-date')->pluck('session-date');
 
         if (!$currentsession) {
             return $this->sendError('Session Detail');
         }
-        $current_session = json_decode($currentsession, true);
+        $current_session  = json_decode($currentsession, true);
         $upcoming_session = json_decode($upcomingsession, true);
-        $past_session = json_decode($pastsession, true);
-        $user = json_decode($user_detail, true);
-        $rawQuery = json_decode($rawQuery, true);
+        $past_session     = json_decode($pastsession, true);
+        $user             = json_decode($user_detail, true);
+        $rawQuery         = json_decode($rawQuery, true);
+        $sessionDates     = json_decode($sessionDates, true);
         if (count($upcoming_session) <= 0 && count($past_session) <= 0) {
             return view('pages.userdashboard.dashboard.dashboard-null');
         }
-        return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer'));
+        return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer', 'sessionDates'));
     }
     //// get all category ...........//////////
     public function categoryDetail($id)
@@ -408,13 +438,13 @@ class UserController extends Controller
         $trainerDetails = json_decode($trainerDetails, true);
 
         $trainersView = View::make('pages.userdashboard.explore.trainers_list', [
-            'trainerDetails' =>         $trainerDetails[0]['trainer_category'],
-            'category' => $trainerDetails[0]['title']
+            'trainerDetails' => $trainerDetails[0]['trainer_category'],
+            'category'       => $trainerDetails[0]['title']
         ])->render();
 
         return [
             'trainersView' => $trainersView,
-            'category' => $trainerDetails[0]['title']
+            'category'     => $trainerDetails[0]['title']
         ];
     }
     /////..render view to categories.blad. php......../////
@@ -442,14 +472,14 @@ class UserController extends Controller
         $session_detail = json_decode($session, true);
 
         // Calculate time difference 
-        $start_time = $session_detail[0]['start_time'];
-        $end_time = $session_detail[0]['end_time'];
-        $start_datetime = new DateTime(date('Y-m-d') . ' ' . $start_time);
-        $end_datetime = new DateTime(date('Y-m-d') . ' ' . $end_time);
-        $timeDiff = $start_datetime->diff($end_datetime);
-        $hours = $timeDiff->format('%h');
-        $mins = $timeDiff->format('%i');
-        $session_detail['hours'] = $hours;
+        $start_time                = $session_detail[0]['start_time'];
+        $end_time                  = $session_detail[0]['end_time'];
+        $start_datetime            = new DateTime(date('Y-m-d') . ' ' . $start_time);
+        $end_datetime              = new DateTime(date('Y-m-d') . ' ' . $end_time);
+        $timeDiff                  = $start_datetime->diff($end_datetime);
+        $hours                     = $timeDiff->format('%h');
+        $mins                      = $timeDiff->format('%i');
+        $session_detail['hours']   = $hours;
         $session_detail['minutes'] = $mins;
 
         return $this->sendResponse($session_detail, 'Class details found Successfully!');
@@ -475,7 +505,7 @@ class UserController extends Controller
             array_push($whereCategory, ['id', '=', $request->category]);
         }
         // dd($request->all());
-        $booksession =  (new BookedSession)->newQuery();
+        $booksession = (new BookedSession)->newQuery();
 
         $whereSession = [];
         if ($request->has('type') && ($request->type == 1 || $request->type == 0) && $request->type != "") {
@@ -491,15 +521,20 @@ class UserController extends Controller
             }
         }
         // dd($whereSession);
-        $booksession = $booksession->where('user_id', auth()->user()->id)->with(['session' => function ($query) use ($whereSession) {
-            if (!empty($whereSession)) {
-                $query->where($whereSession);
-            }
-        }, 'session.class.trainer', 'session.class.category' => function ($query) use ($whereCategory) {
-            if (!empty($whereCategory)) {
-                $query->where($whereCategory);
-            }
-        }, 'session.class.classImage'])->get();
+        $booksession = $booksession->where('user_id', auth()->user()->id)->with([
+            'session'                => function ($query) use ($whereSession) {
+                if (!empty($whereSession)) {
+                    $query->where($whereSession);
+                }
+            },
+            'session.class.trainer',
+            'session.class.category' => function ($query) use ($whereCategory) {
+                if (!empty($whereCategory)) {
+                    $query->where($whereCategory);
+                }
+            },
+            'session.class.classImage'
+        ])->get();
 
 
         // dd($currentUserInfo);
@@ -510,11 +545,11 @@ class UserController extends Controller
         $booksession_detail = json_decode($booksession, true);
 
         $sessionView = View::make('pages.userdashboard.dashboard.booked-session-list', [
-            'booksession_detail' =>  $booksession_detail,
+            'booksession_detail' => $booksession_detail,
         ])->render();
         return [
             'sessionView' => $sessionView,
-            'session' => $booksession_detail
+            'session'     => $booksession_detail
         ];
         // return $this->sendResponse($booksession_detail, 'Get Session Successfully!');
     }
@@ -524,10 +559,10 @@ class UserController extends Controller
 
         $rating = Review::create(
             [
-                'user_id' => auth()->user()->id,
-                'session_id' => $request->session_id,
-                'trainer_id' => $request->trainer_id,
-                'rating' => $request->rating,
+                'user_id'     => auth()->user()->id,
+                'session_id'  => $request->session_id,
+                'trainer_id'  => $request->trainer_id,
+                'rating'      => $request->rating,
                 'description' => $request->description,
             ]
         );
@@ -549,14 +584,14 @@ class UserController extends Controller
     public function sessionDetails($id)
     {
         $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
-        $classes = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
-        $rating = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
+        $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
+        $rating         = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
 
         if (!$session_detail) {
             return $this->sendError('Session Detail');
         }
         $bookedsession = json_decode($session_detail, true);
-        $rating = json_decode($rating, true);
+        $rating        = json_decode($rating, true);
         return view('pages.userdashboard.payment.payment-detail', compact('bookedsession', 'classes', 'rating'));
     }
     ////////.......get user trainer........///////
@@ -567,8 +602,8 @@ class UserController extends Controller
             ->join('sessions', 'booked_sessions.session_id', '=', 'sessions.id')
             ->join('users', 'sessions.trainer_id', '=', 'users.id')
             ->where('booked_sessions.user_id', auth()->user()->id)
-            // ->select("*")
-            // ->groupBy('booked_sessions.id')
+                // ->select("*")
+                // ->groupBy('booked_sessions.id')
             ->get();
         // dd($getTrainers);
         if (!$getTrainers) {
@@ -581,11 +616,11 @@ class UserController extends Controller
     public function usersTrainer()
     {
 
-        $sessionIds = BookedSession::where('user_id', auth()->user()->id)->pluck('session_id');
+        $sessionIds  = BookedSession::where('user_id', auth()->user()->id)->pluck('session_id');
         $getTrainers = ModelsSession::whereIn('id', $sessionIds)->groupBy('trainer_id')->with(['trainerData'])->get();
         if (!empty($getTrainers)) {
             foreach ($getTrainers as $trainerId) {
-                $trainerId['sessionCount']  = ModelsSession::where('trainer_id', $trainerId['trainer_id'])->count();
+                $trainerId['sessionCount'] = ModelsSession::where('trainer_id', $trainerId['trainer_id'])->count();
             }
         }
         if (!$getTrainers) {
@@ -616,7 +651,7 @@ class UserController extends Controller
         if (!$currentsession) {
             return $this->sendError('No Data found against ID');
         }
-        $currentsession = json_decode($currentsession, true);
+        $currentsession  = json_decode($currentsession, true);
         $upcomingsession = json_decode($upcomingsession, true);
         // dd($upcomingsession);
         return view('pages.userdashboard.dashboard.upcoming-session-list', compact('currentsession', 'upcomingsession'));
