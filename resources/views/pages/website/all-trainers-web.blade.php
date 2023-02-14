@@ -226,50 +226,7 @@
 </div>
 
 
-<!-- contact section -->
-<div class="container-fluid contact-section contactUs position-relative" id="contact-us">
-    <div class="container py-4 ">
-        <div class="col-12 text-center contact-heading pb-sm-5" data-aos="fade-up">
-            <h1>Contact Us</h1>
-        </div>
-        <form>
-            <div class="row pt-sm-4">
-                <div class="col-md-4">
-                    <div class="form-group form-field" data-aos="fade-up" data-aos-delay="100">
-                        <label for="fullname" class="pb-sm-2">Full Name</label>
-                        <input type="text" class="form-control" id="fullname">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group form-field" data-aos="fade-up" data-aos-delay="200">
-                        <label for="email" class="pb-sm-2">Email</label>
-                        <input type="email" class="form-control" id="contactemail">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group form-field" data-aos="fade-up" data-aos-delay="300">
-                        <label for="pNumber" class="pb-sm-2">Phone Number</label>
-                        <input type="text" class="form-control" id="pNumber">
-                    </div>
-                </div>
-                <div class="col-12 mt-sm-4">
-                    <div class="form-group form-field" data-aos="fade-up" data-aos-delay="400">
-                        <label for="message" class="pb-sm-2">Message</label>
-                        <textarea class="form-control" id="message" rows="7"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 text-right" data-aos="fade-up" data-aos-delay="400">
-                    <button class="px-5 py-2 sendContactBtn">Send</button>
-                </div>
-            </div>
-        </form>
 
-    </div>
-    <img class="circleElement1" src="{{asset('public/assets/images/dots-c.svg')}}" alt="">
-    <img class="circleElement2" src="{{asset('public/assets/images/dots-c.svg')}}" alt="">
-</div>
 <!-- black div -->
 <!-- <div class="container-fluid py-3 py-sm-5" style="background-color:white;"></div> -->
 
