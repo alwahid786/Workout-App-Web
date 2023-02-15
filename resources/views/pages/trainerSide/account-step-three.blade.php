@@ -759,7 +759,7 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Type of category</label>
+                    <label for="inputAddress" class=" ">Sub-Category</label>
                     <input type="text" class="form-control pl-4" id="inputAddress" placeholder="" value="Italian Yoga">
                 </div>
             </div>
@@ -828,6 +828,32 @@
                 </div>
 
             </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Class Type</label>
+                    <div class="select-outer">
+                        <select class="wide s-select form-control pl-4" id="typeselector">
+                            <option value="0">Online</option>
+                            <option value="1">In-person</option>
+                        </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Preference</label>
+                    <div class="select-outer">
+                        <select class="wide s-select form-control pl-4" id="typeselector">
+                            <option value="0">One Time</option>
+                            <option value="1">Recurring</option>
+                        </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                    </div>
+                </div>
+
+            </div>
             <div class="col-lg-6 " data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Time slot</label>
@@ -859,11 +885,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <!-- <div class="col-12">
                 <div class="form-btn my-3 ">
                     <a href="#" class="p-0 btn">Done</a>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="updateinfo-qualification my-4 px-3 ">
             <h1 class="mb-4">Upload Image</h1>
