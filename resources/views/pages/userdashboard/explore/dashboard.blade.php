@@ -72,7 +72,7 @@
                                 <div class="trainer-card-right">
                                     <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
                                     <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail/'.$trainer_data['id'])}})}}" class="btn">Book Now</a>
+                                    <a href="{{url('/dashboard/trainer-detail/'.$trainer_data['id'])}}" class="btn">Book Now</a>
                                 </div>
                             </div>
                         </div>

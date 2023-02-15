@@ -203,6 +203,46 @@
     .trainer-name h1 {
         display: block !important;
     }
+     .card-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .card-heading {
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-footer{
+            background: #E37048;
+        }
+        .card{
+            border-radius: 10px !important;
+            height: fit-content;
+        }
+        .card-heading h1, .card p{
+            color: #ffff;
+        }
+        .card-heading h1{
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        a{
+            text-decoration: none !important;
+        }
+        .card:hover .card-img{
+            transform: scaleZ(1.1);
+        }
+        .card-footer div{
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .card-img{
+            border-radius: 1px;
+            overflow: hidden;
+        }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -246,361 +286,31 @@
             </div>
             <div class="col-lg-8 col-xl-9">
                 <div class="dashboard-header-left">
-                    <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer_detail[0]['name']}}'s Sessions</h1>
+                    <h1 class="d-block"><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer_detail[0]['name']}}'s Classes</h1>
                 </div>
                 <div class="card-grid-section">
-                    @if($trainer_detail[0]['class']!= null)
-
-                    @foreach($trainer_detail[0]['class'] as $trainerData )
-                    <div class="session-card p-3">
-
-                        <div class="card-img ">
-                            <img src="{{$trainerData['class_image'][0]['image']}}" alt="">
+                    <!-- Category card starts here  -->
+                    @if(isset($sessions) && !empty($sessions))
+                    @foreach($sessions as $category)
+                    <?php $count = count($category) - 2; ?>
+                    <a href="{{url('/dashboard/trainer-sessions/'.$category['category_id'].'/'.$trainer_detail[0]['id'])}}" style="height:fit-content">
+                        <div class="card">
+                            <div class="card-img">
+                                <img class="card-img" src="{{asset('public/assets/images/gallery-one.svg')}}" alt="">
+                            </div>
+                            <div class="card-footer d-flex justify-content-between">
+                                <div>
+                                    {{$category['category_name']}}
+                                </div>
+                                <div>
+                                    {{$count}}
+                                </div>
+                                
+                            </div>
                         </div>
-
-
-                        <div class="card-heading py-3">
-                            <h1>{{$trainerData['category']['title']}}</h1>
-                            <a href="{{url('/dashboard/class-detail/'.$trainerData['trainer_id'].'/'.$trainerData['session']['day'])}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith </p>
-                            <?php
-
-                            $a = new DateTime(($trainerData['session']['start_time']));
-                            $b = new DateTime($trainerData['session']['end_time']);
-
-                            $start_hour = $a->format("H:i");
-                            $end_hour = $b->format("H:i");
-
-                            ?>
-                            <p>{{$start_hour}}-{{$end_hour}}</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>${{$trainerData['session']['price']}}</p>
-                            <?php
-
-                            $a = new DateTime(($trainerData['session']['start_time']));
-                            $b = new DateTime($trainerData['session']['end_time']);
-                            $interval = $a->diff($b);
-
-                            $hour = $interval->format("%H:%I");
-
-                            ?>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> {{$hour}} </p>
-                        </div>
-                    </div>
+                    </a>
                     @endforeach
-                    @else
-                    <p> Data not found</p>
                     @endif
-                    <!-- <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Stretching Outdoors</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/jogging.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Jogging in park</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/body-building.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Body Building</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Gymnastics</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/running.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Running</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/sessionseven.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Wait Gain</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Wait Lose</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/Nutritions.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Nutritions</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Yoga</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith </p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Stretching Outdoors</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/jogging.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Jogging in park</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/body-building.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Body Building</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Gymnastics</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/running.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Running</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/sessionseven.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Wait Gain</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Wait Lose</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div>
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{asset('public/assets/images/Nutritions.jpg')}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>Nutritions</h1>
-                            <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>John Smith</p>
-                            <p>9am-10am</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>$25</p>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
