@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/userdashboard/session/{id}', [UserController::class, 'sessionDetails'])->name('sessionDetails');
 
     Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
+    Route::any('/dashboard/trainer-sessions/{id}/{trainerId}', [UserController::class, 'trainerSessionDetail'])->name('/dashboard/trainer-detail');
     Route::any('/dashboard/class-detail/{id}/{day}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
     Route::any('class_detail', [UserController::class, 'classDetails'])->name('classDetails');
     Route::any('/get_day_session', [UserController::class, 'getDaySession'])->name('get_day_session');

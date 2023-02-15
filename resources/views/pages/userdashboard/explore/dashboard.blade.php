@@ -3,6 +3,24 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
+<style>
+    .trainer-search{
+        position: absolute;
+        right: 0;
+        border-radius: 30px;
+        background: transparent !important;
+        border: 1px solid #fff !important;
+        color: #fff !important;
+        height: 40px;
+        box-shadow: none !important;
+        outline: none !important;
+        width: 50%;
+    }
+    .trainer-search::placeholder{
+        color: #fff !important;
+
+    }
+</style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
@@ -10,7 +28,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="dashboard-header-left">
-                        <h1>Dashboard</h1>
+                        <h1>Explore</h1>
                     </div>
                 </div>
                 <div class="col-sm-8 text-right">
@@ -54,7 +72,7 @@
                                 <div class="trainer-card-right">
                                     <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
                                     <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail/'.$trainer_data['id'])}})}}" class="btn">Book Now</a>
+                                    <a href="{{url('/dashboard/trainer-detail/'.$trainer_data['id'])}}" class="btn">Book Now</a>
                                 </div>
                             </div>
                         </div>
@@ -257,6 +275,247 @@
                 </div>
                 @endforeach
 
+            </div>
+        </div>
+        <div class="dashboard-session mt-4 py-4 px-3 px-sm-3">
+            <div class="dashboard-layer-left"></div>
+            <div class="dashboard-layer-right"></div>
+            <div class="dashboard-session-header px-3 pb-3 pb-sm-3">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>Trainers</h1>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <input class="trainer-search pl-3 form-control" type="text" name="" placeholder="Search Here">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row js-slick-carousels px-sm-5 pt-3">
+                <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="category-section">

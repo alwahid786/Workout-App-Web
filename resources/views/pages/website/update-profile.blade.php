@@ -229,7 +229,7 @@
                     <label for="inputCity" class=" ">Gender</label>
                     <!-- <input type="text" name="gender" value="{{auth()->user()->gender ?? ''}}" class="form-control py-4" id="inputCity"> -->
                     <!-- <input type="text" class="form-control py-4" id="inputCity"> -->
-                    <select name="" class="form-control py-4 pro-form-select" id="inputCity">
+                    <select name="" class="form-control py-2 pro-form-select" id="inputCity">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -299,7 +299,7 @@
             <div class="col-12" data-aos="fade-up">
                 <div class="form-outline pro-form">
                     <label class="form-label" for="textAreaExample">Tell Us About yourself <span>(256)</span></label>
-                    <textarea class="form-control" name="about" id="textAreaExample1" rows="4">{{auth()->user()->about ?? ''}}</textarea>
+                    <textarea class="form-control" maxlength="256" name="about" id="textAreaExample1" rows="4">{{auth()->user()->about ?? ''}}</textarea>
                 </div>
             </div>
             <div class="col-12 my-5">

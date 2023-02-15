@@ -3,9 +3,9 @@
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
     <div class="container-fluid py-1">
-        <div class="dashboard-header-left pb-2">
+        <!-- <div class="dashboard-header-left pb-2">
             <h1>Messages</h1>
-        </div>
+        </div> -->
         <div class="chat-area">
             <div class="col chat-area-header py-3 ">
                 <h1>Messages</h1>

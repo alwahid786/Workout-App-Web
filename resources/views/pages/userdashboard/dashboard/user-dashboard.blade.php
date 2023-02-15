@@ -509,7 +509,7 @@
                     <div class="row">
                         <div class="col-md-7 my-auto">
                             <div class="workout-banner-content px-3 py-3 text-center text-md-left">
-                                <h1>Welcome <span style="text-transform:capitalize">{{$user['user']['name']}}</span></h1>
+                                <h1 style="text-transform:capitalize;">Welcome {{auth()->user()->name}}</h1>
                                 <p class="pt-3 pb-4">Welcome back! Your dashboard is the central hub for all your account activity. From here, you can manage your settings, view recent activity, and access all your important information. Let's get started!</p>
                                 <a class="btn" href="{{url('/about')}}">Read More</a>
                             </div>
@@ -529,7 +529,7 @@
                                     @if($upcoming_session != null)
 
                                     <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your Upcoming <span>Sessions</span> </h1>
+                                        <h1>Your Upcoming <span>Session</span> </h1>
                                         <p>{{$total_upcomingsession}}</p>
                                     </div>
                                     @else
@@ -551,7 +551,7 @@
                                 <div class="work-session-card blue-session-card py-4 px-1">
                                     @if($past_session != null)
                                     <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your Past <span>Sessions</span> </h1>
+                                        <h1>Your Past <span>Session</span> </h1>
                                         <p>{{$total_pastsession}}</p>
                                     </div>
                                     @else
@@ -577,7 +577,7 @@
                                     @else
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your<span>Trainer</span> </h1>
-                                        <p>0</p>
+                                        <p>{{$total_trainer}}</p>
                                     </div>
                                     @endif
                                     <div class="work-session-card-right">
@@ -589,6 +589,129 @@
 
                     </div>
                 </div>
+                <div class="workout-today-section">
+                    <div class="workout-today-header pt-2 pb-1">
+                        <h1>Your Today’s Booked Session</h1>
+                    </div>
+
+                    <div class="workout-today-wrapper">
+                        <!-- table -->
+                        @if(!empty($current_session))
+                        @foreach($current_session as $currentSession)
+                        <a href="{{url('/userdashboard/sessionone/'.$currentSession['session_id'])}}">
+                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="workout-type">{{$currentSession['session']['class']['category']['title']}} Session</h1>
+                                    </div>
+                                </div>
+
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> {{$currentSession['session']['class']['trainer']['name']}} </h1>
+                                    </div>
+                                </div>
+
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">{{date('d M, Y',strtotime($currentSession['session-date']))}} | <span> {{date('h',strtotime($currentSession['session']['start_time']))}} {{$currentSession['session']['start_meridiem']}}-{{date('h',strtotime($currentSession['session']['end_time']))}} {{$currentSession['session']['end_meridiem']}}</span> </h1>
+                                    </div>
+                                </div>
+
+                               @if($currentSession['session']['type'] == 1)
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                <div class="workout-table-border workout-table-border-blue "></div>
+                            </div>
+                        </a>
+                        @endforeach
+                        @else
+                        <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <strong class="text-danger text-center">No Session Booked For Today. </strong>
+                                <div class="workout-table-border workout-table-border-red"></div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="workout-upcoming-section">
+                    <div class="workout-upcoming-header pt-2 pb-1">
+                        <h1>Upcoming Sessions</h1>
+                    </div>
+
+                    <div class="workout-upcoming-wrapper pr-2">
+                        <!-- table -->
+                        @if(!empty($upcoming_session))
+                        @foreach($upcoming_session as $upcomingSession)
+                        <a href="{{url('/userdashboard/sessionone/'.$upcomingSession['session_id'])}}">
+                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="workout-type">{{$upcomingSession['session']['class']['category']['title']}} Session </h1>
+                                    </div>
+                                </div>
+
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> {{$upcomingSession['session']['class']['trainer']['name']}} </h1>
+                                    </div>
+                                </div>
+
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">{{date('d M, Y',strtotime($upcomingSession['session-date']))}} | <span> {{date('h',strtotime($upcomingSession['session']['start_time']))}} {{$upcomingSession['session']['start_meridiem']}}-{{date('h',strtotime($upcomingSession['session']['end_time']))}} {{$upcomingSession['session']['end_meridiem']}}</span> </h1>
+                                    </div>
+                                </div>
+                                @if($upcomingSession['session']['type'] == 1)
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                <div class="workout-table-border workout-table-border-blue "></div>
+                            </div>
+                        </a>
+                        @endforeach
+                        @else
+                        <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <strong class="text-danger text-center">There Is No Upcoming Session.</strong>
+                                <div class="workout-table-border workout-table-border-red"></div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
+
             </div>
         </div>
         <div class="row">
@@ -776,30 +899,30 @@
                         <a href="{{url('/userdashboard/pastsession')}}">View All</a>
                     </div>
                     <div class="workout-right-inner-session pr-2">
-                        @if($past_session != null)
-                        @foreach($past_session as $past)
-                        <!-- <a href="{{url('/userdashboard/pastsessiondetail')}}"> -->
-                        <a href="{{url('/userdashboard/sessionone/'.$past['id'])}}">
-
-                            <div class="workout-right-session-card workout-card-right-active px-3 py-4 my-3">
+                        @if(!empty($past_session))
+                        @foreach($past_session as $pastSession)
+                        <a href="{{url('/userdashboard/sessionone/'.$pastSession['session_id'])}}">
+                            <div class="workout-right-session-card  px-3 py-4 my-3">
                                 <div class="workout-card-left-section ">
                                     <div class="workout-card-inner-img pr-2">
-                                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
+                                        <img src="{{$pastSession['session']['class']['trainer']['profile_img']}}" alt="">
                                     </div>
                                     <div class="workout-card-left-inner-section">
-                                        <p>{{$past['session']['class']['trainer']['name']}}</p>
-                                        <p>{{$past['session']['class']['category']['title']}}</p>
+                                        <p>{{$pastSession['session']['class']['trainer']['name']}}</p>
+                                        <p>{{$pastSession['session']['class']['category']['title']}}</p>
                                     </div>
                                 </div>
                                 <div class="workout-card-right-inner-section ">
-                                    <p>{{$past['session']['start_time']}}-{{$past['session']['end_time']}}</p>
-                                    <p class="">Nov-02-2022</p>
+                                    <p>{{date('h',strtotime($pastSession['session']['start_time']))}} {{$pastSession['session']['start_meridiem']}}-{{date('h',strtotime($pastSession['session']['end_time']))}} {{$pastSession['session']['end_meridiem']}}</p>
+                                    <p class="">{{$pastSession['session-date']}}</p>
                                 </div>
                             </div>
                         </a>
                         @endforeach
                         @else
-                        .........................................................................................
+                        <div class="workout-right-session-card  px-3 py-4 my-3">
+                                <strong class="text-danger text-center">There Is No Past Session.</strong>
+                            </div>
                         @endif
                     </div>
                 </div>
@@ -807,6 +930,7 @@
         </div>
     </div>
 </div>
+<!-- <div class="fc-day-number">dd</div> -->
 @endsection
 @section('insertsfooter')
 <script src="{{ asset('public/assets/AS/js/mobiscroll.jquery.min.js') }}"></script>
@@ -864,6 +988,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
 <script>
     jQuery(document).ready(function() {
+        $(".workout-right-session-card").on('mouseover', function(){
+            $(this).addClass('workout-card-right-active')
+        });
+        $(".workout-right-session-card").on('mouseout', function(){
+            $(this).removeClass('workout-card-right-active')
+        });
+
+        const dates = @json($sessionDates); 
+        setTimeout(() => {
+            const elementsToHighlight = document.querySelectorAll('fc-day-top'); 
+            $(dates).each(function(i,e){
+                a = $(`td.fc-day-top[data-date=${e}]`);
+                a.css('background-color', '#ffa50054');
+                a.css('border-radius', '10px');
+                a.css('cursor', 'pointer');
+            });
+        }, 2000);
+
+
         jQuery('.datetimepicker').datepicker({
             timepicker: true,
             language: 'en',
@@ -871,16 +1014,16 @@
             multipleDates: true,
             multipleDatesSeparator: " - "
         });
-        jQuery("#add-event").submit(function() {
-            alert("Submitted");
-            var values = {};
-            $.each($('#add-event').serializeArray(), function(i, field) {
-                values[field.name] = field.value;
-            });
-            console.log(
-                values
-            );
-        });
+        // jQuery("#add-event").submit(function() {
+        //     alert("Submitted");
+        //     var values = {};
+        //     $.each($('#add-event').serializeArray(), function(i, field) {
+        //         values[field.name] = field.value;
+        //     });
+        //     console.log(
+        //         values
+        //     );
+        // });
     });
 
     (function() {
@@ -904,114 +1047,14 @@
                     center: 'title,,agendaWeek,month,agendaDay',
                     right: 'next'
                 },
-                events: [{
-                        title: 'Barber',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-07-07',
-                        end: '2019-07-07',
-                        className: 'fc-bg-default',
-                        icon: "circle"
-                    },
-                    {
-                        title: 'Flight Paris',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-08T14:00:00',
-                        end: '2019-08-08T20:00:00',
-                        className: 'fc-bg-deepskyblue',
-                        icon: "cog",
-                        allDay: false
-                    },
-                    {
-                        title: 'Team Meeting',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-07-10T13:00:00',
-                        end: '2019-07-10T16:00:00',
-                        className: 'fc-bg-pinkred',
-                        icon: "group",
-                        allDay: false
-                    },
-                    {
-                        title: 'Meeting',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-12',
-                        className: 'fc-bg-lightgreen',
-                        icon: "suitcase"
-                    },
-                    {
-                        title: 'Conference',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-13',
-                        end: '2019-08-15',
-                        className: 'fc-bg-blue',
-                        icon: "calendar"
-                    },
-                    {
-                        title: 'Baby Shower',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-13',
-                        end: '2019-08-14',
-                        className: 'fc-bg-default',
-                        icon: "child"
-                    },
-                    {
-                        title: 'Birthday',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-09-13',
-                        end: '2019-09-14',
-                        className: 'fc-bg-default',
-                        icon: "birthday-cake"
-                    },
-                    {
-                        title: 'Restaurant',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-10-15T09:30:00',
-                        end: '2019-10-15T11:45:00',
-                        className: 'fc-bg-default',
-                        icon: "glass",
-                        allDay: false
-                    },
-                    {
-                        title: 'Dinner',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-11-15T20:00:00',
-                        end: '2019-11-15T22:30:00',
-                        className: 'fc-bg-default',
-                        icon: "cutlery",
-                        allDay: false
-                    },
-                    {
-                        title: 'Shooting',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-08-25',
-                        end: '2019-08-25',
-                        className: 'fc-bg-blue',
-                        icon: "camera"
-                    },
-                    {
-                        title: 'Go Space :)',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-12-27',
-                        end: '2019-12-27',
-                        className: 'fc-bg-default',
-                        icon: "rocket"
-                    },
-                    {
-                        title: 'Dentist',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-                        start: '2019-12-29T11:30:00',
-                        end: '2019-12-29T012:30:00',
-                        className: 'fc-bg-blue',
-                        icon: "medkit",
-                        allDay: false
-                    }
-                ],
+                
                 eventRender: function(event, element) {
                     if (event.icon) {
                         element.find(".fc-title").prepend("<i class='fa fa-" + event.icon + "'></i>");
                     }
                 },
                 dayClick: function() {
-                    jQuery('#modal-view-event-add').modal();
+                    // jQuery('#modal-view-event-add').modal();
                 },
                 eventClick: function(event, jsEvent, view) {
                     jQuery('.event-icon').html("<i class='fa fa-" + event.icon + "'></i>");

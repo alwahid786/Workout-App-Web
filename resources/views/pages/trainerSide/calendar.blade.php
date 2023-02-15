@@ -5,6 +5,8 @@
         background-color: #f4f6fa !important;
     }
 
+
+
     #calendar {
         height: 70vh;
     }
@@ -78,6 +80,8 @@
         background-color: #fff;
         width: max-content;
         border-radius: 8px;
+        /* height: 650px; */
+        /* width: 1000px; */
     }
 
     .fc-event-title-container {
@@ -140,6 +144,70 @@
         .fc-toolbar-title {
             font-size: 1.5rem !important;
         }
+    }
+
+    .fc-col-header-cell {
+        width: 200px !important;
+    }
+
+    .fc-scrollgrid-sync-table {
+        overflow-x: scroll !important;
+    }
+
+    .fc-scrollgrid-sync-table tbody tr td {
+        width: 200px !important;
+        height: 30px !important;
+    }
+
+    .fc-dayGridMonth-view {
+        overflow-x: scroll;
+    }
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-thumb {
+        background: #E37048 !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+    .fc-dayGridMonth-view::-webkit-scrollbar {
+        width: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-thumb {
+        background: #E37048 !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+    .fc-scroller {
+        overflow: unset !important;
+    }
+
+    .fc .fc-scrollgrid {
+        width: inherit !important;
+    }
+
+    /* 
+    .fc .fc-scrollgrid table {
+        width: 1000px;
+        overflow-x: scroll;
+    } */
+
+    .fc .fc-scrollgrid-liquid {
+        height: 500px !important;
     }
 </style>
 @section('content')
@@ -273,5 +341,13 @@
 
         calendar.render();
     });
+</script>
+<!-- <script>
+    $(document).ready(function() {
+        $('table').addClass('table-responsive')
+    })
+</script> -->
+<script>
+    $('.sidenav .nav-item:nth-of-type(2)').addClass('active')
 </script>
 @endsection

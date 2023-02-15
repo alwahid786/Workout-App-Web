@@ -660,8 +660,8 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         @if($bookedsession['session']['type']==0)
-        <div class="dashboard-header-left my-4 pt-2">
-            <h1>My Sessions Detail <span > One to one session </span></h1>
+        <div class="dashboard-header-left my-4 pt-2 ">
+            <h1>My Sessions Detail <span class="d-block"> One to one session </span></h1>
         </div>
         @else
         <div class="dashboard-header-left my-4 pt-2">
@@ -743,14 +743,14 @@
                                 </div>
 
                             </div>
-                            <!-- <div class="trainer-detail-profile-inner-right my-auto text-right">
+                            <div class="trainer-detail-profile-inner-right my-auto text-right">
                                 <div class="trainer-class-time-card-right">
                                     <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
                                     <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
                                     <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionfour.jpg')}}" alt="">
 
                                 </div>
-                            </div> -->
+                            </div>
 
                         </div>
 

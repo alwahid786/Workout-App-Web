@@ -232,7 +232,7 @@
 <footer>
     <div class="container-fluid footerSection">
         <div class="row px-sm-5 px-2">
-            <div class="col-xl-4 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
                 <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
                 <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p>
                 <p class="text-md-white"><strong>Follow Us</strong></p>
@@ -265,7 +265,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-md-6 mt-md-0 mt-5 text-md-left text-center" data-aos="fade-up" data-aos-delay="200">
-                <ul class="quickLinks mx-auto">
+                <ul class="quickLinks mx-auto text-center">
                     <!-- <li class="mb-3 text-md-white"><strong>Quick Links</strong></li> -->
                     <li class="mb-2"><a href=" {{url('/about-l')}}">About Us</a></li>
                     <li class="mb-2"><a href=" {{url('/services-l')}}">Services</a></li>
@@ -274,15 +274,15 @@
                 </ul>
             </div>
             <div class="col-xl-2 col-md-6 order-xl-3 order-md-4 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="300">
-                <ul class="quickLinks mx-auto">
+                <ul class="quickLinks ">
                     <!-- <li class="mb-3 text-md-white"><strong>Customer Area</strong></li> -->
                     <li class="mb-2"><a href=" {{url('/approach-l')}}">Our Approach</a></li>
                     <li class="mb-2"><a href=" javascript:void(0)" class="modal-view invisible" data-toggle="modal" data-target="#loginModal">Get Started</a></li>
 
                 </ul>
             </div>
-            <div class="col-xl-4 col-md-6 order-xl-4 order-md-3 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="400">
-                <ul class="quickLinks mx-auto">
+            <div class="col-xl-2 col-md-6 order-xl-4 order-md-3 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="400">
+                <ul class="quickLinks">
                     <li class="mb-3 text-md-white"><strong>Questions?</strong></li>
                     <li class="mb-2"><a href="#contact-us">Contact Us</a></li>
 
