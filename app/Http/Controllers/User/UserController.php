@@ -277,9 +277,12 @@ class UserController extends Controller
                 'is_refunded' => 0
             ));
             if ($transaction) {
+                flash()->success('Payment Successfuly!');
                 return redirect()->route('/dashboard');
             } else {
-                return $this->sendError('Something went wrong, Try again in a While.');
+                // return $this->sendError('Something went wrong, Try again in a While.');
+                Session::flash('error', 'Something went wrong, please try again later.');
+                return redirect()->back();
             }
         } catch (Throwable $e) {
 
