@@ -663,22 +663,26 @@
 
     .modal-btn {
         margin: 0 auto;
-        
+
         width: 40%;
     }
 
     .modal-btn a {
         background: #E37048;
         border: none;
-        box-shadow: none;
+        box-shadow: none !important;
         outline: none;
-        color: white;
-        padding: 10px 50px;
+        color: white !important;
         border-radius: 10px;
         width: 25%;
         font-size: 1.4rem;
-        min-width: 200px;
-        height: 50px;
+        max-width: 200px;
+        width: 100%;
+        font-size: 0.8rem;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .update-profile-form-btn {
@@ -712,20 +716,11 @@
         }
     }
 
-    @media screen and (max-width:576px) {
-        .modal-btn a {
-            background: #E37048;
-            border: none;
-            box-shadow: none;
-            outline: none;
-            color: white;
-            padding: 10px 40px;
-            border-radius: 10px;
-            width: 25%;
-            font-size: 0.8rem;
-            min-width: 150px;
-            height: 40px;
-        }
+
+
+    .modal-content {
+        border: none !important;
+        border-radius: 10px !important;
     }
 </style>
 @section('content')
@@ -1118,8 +1113,8 @@
                             <div class="right-notification pr-3">
                                 <h1><span>Dayut Carlotte</span> send you request for Nutrition sessions</h1>
                                 <div class="right-notification-btn px-0">
-                                    <button class="m-2">Accept</button>
-                                    <button class="m-2">Reject</button>
+                                    <button class="m-2" data-toggle="modal" data-target="#acceptModal">Accept</button>
+                                    <button class="m-2" data-toggle="modal" data-target="#rejectModal">Reject</button>
                                 </div>
                             </div>
                         </div>
@@ -1244,25 +1239,39 @@
 
 
 <!-- .................Confrim Modal............... -->
-<div class="" id="sucessModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
+<div class="modal fade" id="acceptModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
             <div class="modalHeader px-2 pt-2 pb-2 d-flex justify-content-end align-items-center">
                 <img class="cross-icon" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
-            <div class="modal-body text-center sucess-modal">
-                <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
-                <!-- <h1 class="mt-2">Confrim!</h1> -->
-                <p>Do you really want to Accept this request?</p>
-                <div class=" modal-btn my-5 text-sm-right text-center">
-                    <a href="#" class="update-profile-form-btn">Confirm</a>
+            <div class="modal-body text-center sucess-modal ">
+                <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
+                <p class="mb-0 py-3">Do you really want to Accept <br> this request?</p>
+                <div class=" modal-btn text-sm-right text-center">
+                    <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a>
                 </div>
             </div>
-            <div class="modal-body text-center sucess-modal">
-                <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
-                <h1 class="mt-2">Confrim!</h1>
-                <p></p>
+
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content signupModalDialogue">
+            <div class="modalHeader px-2 pt-2 pb-2 d-flex justify-content-end align-items-center">
+                <img class="cross-icon" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
+            <div class="modal-body text-center sucess-modal ">
+                <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
+                <p class="mb-0 py-3">Do you really want to Reject<br> this request?</p>
+                <div class=" modal-btn text-sm-right text-center">
+                    <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
