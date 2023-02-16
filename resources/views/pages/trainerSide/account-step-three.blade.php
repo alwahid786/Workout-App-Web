@@ -695,6 +695,31 @@
         .pagination-box p {
             font-size: 0.5rem;
         }
+
+
+    }
+
+    .price-select-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .price-select-input .select-outer {
+        width: 20%;
+
+    }
+
+    .price-select-input .nice-select.wide {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+
+    .price-select-input input {
+        width: 80%;
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
     }
 </style>
 @section('content')
@@ -778,10 +803,19 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Price</label>
                     <div class="price-outer">
-                        <div class="price-box">
+                        <!-- <div class="price-box">
                             <h1>HKD</h1>
+                        </div> -->
+                        <div class="price-select-input">
+                            <div class="select-outer">
+                                <select class="wide s-select form-control pl-4" id="exampleFormControlSelect1">
+                                    <option>15</option>
+                                    <option>20</option>
+                                </select>
+                                <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                            </div>
+                            <input type="text" class="form-control pl-4" id="inputAddress2" value="100">
                         </div>
-                        <input type="text" class="form-control pl-4" id="inputAddress2" value="100">
                     </div>
 
                 </div>
