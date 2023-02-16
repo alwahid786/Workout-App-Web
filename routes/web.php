@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
     Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
     Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
-    Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
+    Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('userdashboard/session');
     Route::any('/filter/session', [UserController::class, 'SearchResult'])->name('filter/session');
 
     Route::any('/dashboard/trainer', [UserController::class, 'usersTrainer'])->name('dashboard/trainer');
