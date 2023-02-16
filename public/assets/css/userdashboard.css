@@ -775,12 +775,20 @@ body {
     color: #E37048;
     font-size: 1rem;
     margin-bottom: 2px;
+    white-space: nowrap;
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .session-card-inner-name p {
     color: #E37048;
     font-size: 0.8rem;
     margin-bottom: 0px;
+    white-space: nowrap;
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .session-card-inner .rating-star i {
@@ -877,12 +885,19 @@ body {
         color: #E37048;
         font-size: 0.8rem;
         margin-bottom: 2px;
+        width: 65px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .session-card-inner-name p {
         color: #E37048;
         font-size: 0.7rem;
         margin-bottom: 0px;
+        white-space: nowrap;
+        width: 65px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .session-card-text {
