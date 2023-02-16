@@ -502,6 +502,14 @@
             font-size: 1.5rem;
             font-weight: bold;
         }
+
+        .nice-select.wide {
+            height: 55px !important;
+            border: 1px solid #CECECE !important;
+            border-radius: 10px !important;
+            justify-content: flex-start !important;
+            background: #F8F8F8;
+        }
     }
 
     /* time-form */
@@ -697,6 +705,8 @@
         }
 
 
+
+
     }
 
     .price-select-input {
@@ -808,9 +818,12 @@
                         </div> -->
                         <div class="price-select-input">
                             <div class="select-outer">
-                                <select class="wide s-select form-control pl-4" id="exampleFormControlSelect1">
-                                    <option>15</option>
-                                    <option>20</option>
+                                <select class="wide s-select form-control pl-sm-4" id="exampleFormControlSelect1">
+                                    <option>USD</option>
+                                    <option>EURO</option>
+                                    <option>YEN</option>
+                                    <option>GBP</option>
+                                    <option>PKR</option>
                                 </select>
                                 <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                             </div>
