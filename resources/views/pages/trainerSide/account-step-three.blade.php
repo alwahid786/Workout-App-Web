@@ -731,6 +731,69 @@
         border-top-left-radius: 0px !important;
         border-bottom-left-radius: 0px !important;
     }
+
+    .price-select-input .nice-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px !important;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 15% !important;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px !important;
+
+    }
+
+    @media screen and (max-width:576px) {
+        .price-select-input .select-outer {
+            width: 30%;
+
+        }
+
+        .price-select-input input {
+            width: 70%;
+            border-top-left-radius: 0px !important;
+            border-bottom-left-radius: 0px !important;
+        }
+
+        .price-select-input .nice-select:after {
+            border-bottom: 2px solid #848484;
+            border-right: 2px solid #848484;
+            content: '';
+            display: block;
+            height: 9px !important;
+            margin-top: -4px;
+            pointer-events: none;
+            position: absolute;
+            right: 8px !important;
+            top: 50%;
+            -webkit-transform-origin: 66% 66%;
+            -ms-transform-origin: 66% 66%;
+            transform-origin: 66% 66%;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            width: 9px !important;
+
+        }
+
+        /* .price-select-input .nice-select.wide span {
+            font-size: 0.9rem !important;
+        } */
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -818,7 +881,7 @@
                         </div> -->
                         <div class="price-select-input">
                             <div class="select-outer">
-                                <select class="wide s-select form-control pl-sm-4" id="exampleFormControlSelect1">
+                                <select class="wide s-select currency-select form-control " id="exampleFormControlSelect1">
                                     <option>USD</option>
                                     <option>EURO</option>
                                     <option>YEN</option>

@@ -1,5 +1,6 @@
 @extends('layouts.trainerSide.default')
 <!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/client.css')}}"> -->
+<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
 <style>
     body {
         background-color: #F2F2F2 !important;
@@ -109,6 +110,64 @@
         display: block;
     }
 
+    .client-list-filter .nice-select.wide {
+        height: 50px !important;
+        border: 1px solid #CECECE !important;
+        border-radius: 10px !important;
+        justify-content: flex-start !important;
+        background: #F8F8F8;
+    }
+
+    .s-select span {
+        color: #666666 !important;
+        font-weight: normal !important;
+    }
+
+    .nice-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px !important;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 20px !important;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px !important;
+
+    }
+
+    .client-list-filter input {
+        height: 50px;
+        border-radius: 10px;
+        padding-left: 40px;
+        box-shadow: none !important;
+        background: #F8F8F8;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .left-inner-addons {
+        position: relative;
+        width: 100%;
+    }
+
+    .left-inner-addons i {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        color: #E37048;
+        transform: translate(0%, -50%);
+    }
+
     @media screen and (max-width:576px) {
         .client-list-row {
             display: grid !important;
@@ -143,9 +202,27 @@
 @include('includes.trainerSide.navbar')
 <div class="content-wrapper py-3">
     <div class="container-fluid ">
-        <div class="col-12 client-list-heading pb-4">
+        <div class="col-12 client-list-heading pl-0">
             <h1>List Of Clients</h1>
         </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 client-list-filter my-3">
+                <select class="wide s-select form-control ">
+                    <option value="">Cardio</option>
+                    <option value="">Stretching</option>
+                    <option value="">Yoga</option>
+
+                </select>
+            </div>
+            <div class="col-md-6 col-lg-4 client-list-filter my-3">
+                <div class="left-inner-addons">
+                    <input type="text" class="form-control" placeholder="Search here">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+
+            </div>
+        </div>
+
         <div class="client-list-row">
             <div class="client-list-card p-3">
                 <div class="client-list-card-left pr-3">
@@ -395,6 +472,12 @@
 </div>
 @endsection
 @section('insertsfooter')
+<script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.s-select').niceSelect();
+    });
+</script>
 <script>
     $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
 </script>

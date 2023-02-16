@@ -223,7 +223,7 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span>Group Session</span></h1>
+            <h1>Session Detail <span>Group Session</span></h1>
         </div>
         <div class="class-section">
             <div class="row">
@@ -428,7 +428,8 @@
                     </div>
 
                 </div>
-                <div class="col-lg-6 mt-4 mt-lg-0">                         <div class="session-detail-right-wrapper px-2 py-3">
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="session-detail-right-wrapper px-2 py-3">
                         <div class="col session-detail-calendar px-2">
                             <div class="row js-slick-carousels">
                                 <div class="col">

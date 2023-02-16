@@ -170,9 +170,9 @@
                 <li class="nav-item mr-lg-4">
                     <a class="nav-link px-2" href="{{url('dashboard')}}">Dashboard</a>
                 </li>
-                <li class="nav-item mr-lg-4 list-trainer">
+                <!-- <li class="nav-item mr-lg-4 list-trainer">
                     <a class="nav-link px-2" href="{{url('/trainers')}}">List Of Trainer</a>
-                </li>
+                </li> -->
                 <li class="nav-item mr-lg-4 ">
                     <a class="nav-link px-2" href="{{url('/about-l')}}">About Us</a>
                 </li>

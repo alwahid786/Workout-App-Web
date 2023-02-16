@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="dashboard-header-left">
-                        <h1>Dashboard</h1>
+                        <h1>Explore</h1>
                     </div>
                 </div>
                 <div class="col-sm-8 text-right">

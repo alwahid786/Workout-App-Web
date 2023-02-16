@@ -127,7 +127,17 @@
                         <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
                     </div>
 
-                    Your Session
+                    My Session
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/dashboard/trainer')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
+                    </div>
+
+                    List of Trainer
                 </a>
             </li>
             <li class="nav-item">

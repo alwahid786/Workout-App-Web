@@ -550,7 +550,7 @@
     <div class="container-fluid mb-4 ">
         <div class="content-wrapper-inner p-3">
             <div class="row">
-                <div class="col-lg-6 my-2">
+                <div class="col-lg-12 my-2">
 
                     <div class="filter-menu">
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
@@ -602,20 +602,7 @@
 
                             </div>
                         </div>
-                        <!-- <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                            <div class="filter-left-select-heading ">
-                                <h1>Class Type</h1>
-                                <div class="dropdown-s">
-                                    <button class="dropbtn-s  ">One to One <i class="fa fa-angle-down pr-3 " aria-hidden="true"></i>
 
-                                    </button>
-                                    <div class="dropdown-content-s">
-                                        <a href="{{url('/dashboard/mapgroup')}}">Group</a>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div> -->
                         <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Price Range</h1>
@@ -640,7 +627,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-6 my-2">
+                <!-- <div class="col-lg-6 my-2">
                     <div class="col session-detail-calendar px-2">
                         <div class="row js-slick-carousels">
                             <div class="col">
@@ -888,7 +875,7 @@
                         </div>
                         <div id="demo-1-week"></div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="dashboard-header-left my-4 pt-2">
                 <h1>My Sessions</h1>
@@ -1117,5 +1104,8 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
+</script>
+<script>
+    $('.left-inner-addon').css('display', 'none');
 </script>
 @endsection
