@@ -52,5 +52,16 @@ class AuthController extends Controller
         // return $this->sendResponse($trainerData, 'Trainer Registered Successfully!');
         return Redirect::to('/trainer/steptwo');
     }
-    
+
+    /// screen 2.............../////
+    public function updateProfileStwo(Request $request)
+    {
+        $data = $request->all();
+        $user = User::where('id', auth()->user()->id)->update([$data]);
+        if (!$user) {
+            return $this->sendError('User has not registered. Please try again later');
+        }
+
+        return Redirect::to(url('/trainer/stepthree'));
+    }
 }

@@ -216,7 +216,19 @@
 
     }
 
+    input[type=radio] {
+        height: 10px !important;
+        border: 1px solid #E37048;
+    }
 
+
+
+    input[type=radio].color-radio {
+        accent-color: #E37048;
+        border: 1px solid #E37048;
+        transform: scale(1.5);
+        background: transparent !important;
+    }
 
     @media screen and (max-width:991px) {
         .hero-section-upload {
@@ -527,25 +539,25 @@
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Contact</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress">
+                    <input type="text" class="form-control pl-4" id="inputAddress" name="phone">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Emergency Contact</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress">
+                    <input type="text" class="form-control pl-4" id="inputAddress" name="emergency_contact">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Date of Birth</label>
-                    <input type="date" class="form-control pl-4" id="inputAddress2">
+                    <input type="date" class="form-control pl-4" id="inputAddress2" name="date_of_birth">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Gender</label>
-                    <select class="wide s-select form-control pl-4">
+                    <select class="wide s-select form-control pl-4" name="gender">
                         <option value="">Male</option>
                         <option value="">Female</option>
                     </select>
@@ -555,7 +567,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
+                        <select class="wide s-select form-control pl-4" id="typeselector" name="country">
                             <option value="mon">USA</option>
                             <option value="mon">Australia</option>
                             <option value="mon">Austria</option>
@@ -567,7 +579,7 @@
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
-                    <select class="wide s-select form-control pl-4" id="typeselector">
+                    <select class="wide s-select form-control pl-4" id="typeselector" name="state">
                         <option value="mon">Alaska</option>
                         <option value="mon">Washington</option>
                         <option value="mon">New South Wales</option>
@@ -578,29 +590,67 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Workout Location</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress2">
+                    <input type="text" class="form-control pl-4" id="inputAddress2" name="workout_location">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
+                <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
 
 
-                    <input type="text" class="form-control pl-4" id="inputCity">
+                    <input type="text" class="form-control pl-4" id="inputCity" name="weight">
+                </div> -->
+
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Weight</label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2 " value="kg" type="radio" name="weight_unit" <?php if (auth()->user()->weight_unit == 'kg') {
+                                                                                                        echo 'checked';
+                                                                                                    } ?>>KGs
+                    </label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="lb" type="radio" name="weight_unit" <?php if (auth()->user()->weight_unit == 'lb') {
+                                                                                                        echo 'checked';
+                                                                                                    } ?>>LBs
+                    </label>
+                    <!-- <input type="text" name="weight" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity"> -->
+                    <input type="text" class="form-control pl-4" id="inputCity" name="weight">
+
+
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
+                    <!-- <label for="inputAddress2" class=" ">Height</label>
+
+
+                    <input type="text" class="form-control pl-4" id="inputAddress2" name="height"> -->
+
                     <label for="inputAddress2" class=" ">Height</label>
-
-
-                    <input type="text" class="form-control pl-4" id="inputAddress2">
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="feet" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'feet') {
+                                                                                                            echo 'checked';
+                                                                                                        } ?>>Feet
+                    </label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="cm" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'cm') {
+                                                                                                        echo 'checked';
+                                                                                                    } ?>>CM
+                    </label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" type="radio" value="inches" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'inches') {
+                                                                                                            echo 'checked';
+                                                                                                        } ?>>Inches
+                    </label>
+                    <input type="text" class="form-control pl-4" id="inputAddress2" name="height">
                 </div>
+
+
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
-                    <input type="text" class="form-control pl-4" id="inputCity">
+                    <input type="text" class="form-control pl-4" id="inputCity" name="madical_condition">
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-right">
@@ -608,7 +658,7 @@
                     <label for="inputCity" class=" ">Add Facebook URL</label>
                     <div class="input-container">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="inputCity">
+                        <input type="url" class="form-control pl-4" id="inputCity" name="facebook_id">
                     </div>
 
                 </div>
@@ -618,7 +668,7 @@
                     <label for="inputCity" class=" ">Add Insta URL</label>
                     <div class="input-container">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="inputCity">
+                        <input type="url" class="form-control pl-4" id="inputCity" name="insta_id">
                     </div>
 
                 </div>
