@@ -1143,8 +1143,8 @@
                             <div class="right-notification pr-3">
                                 <h1><span>Dayut Carlotte</span> send you request for Nutrition sessions</h1>
                                 <div class="right-notification-btn px-0">
-                                    <button class="m-2">Accept</button>
-                                    <button class="m-2">Reject</button>
+                                    <button class="m-2" data-toggle="modal" data-target="#acceptModal">Accept</button>
+                                    <button class="m-2" data-toggle="modal" data-target="#rejectModal">Reject</button>
                                 </div>
                             </div>
                         </div>
