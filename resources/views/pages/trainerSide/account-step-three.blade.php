@@ -349,8 +349,11 @@
     }
 
     .timing-stack {
+        border-radius: 10px;
+    }
+
+    .timing-stack-inner {
         padding-top: 1rem;
-        padding-bottom: 1rem;
         width: 100%;
         border-radius: 10px;
         display: flex;
@@ -463,7 +466,7 @@
             font-size: 0.8rem;
         }
 
-        .timing-stack {
+        .timing-stack-inner {
             flex-direction: column;
         }
 
@@ -755,7 +758,38 @@
 
     }
 
+    .stack-categories h1 {
+        font-size: 1rem;
+        margin-bottom: 0px;
+        background-color: transparent;
+        border: 1px solid #E37048;
+        border-radius: 30px;
+        padding: 0.5rem 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: #E37048;
+        font-weight: 500;
+        display: flex;
+        width: 50%;
+    }
+
+    .stack-categories h1 span {
+        font-weight: 400;
+    }
+
+    @media screen and (max-width:767px) {
+        .stack-categories h1 {
+            width: 100%;
+        }
+    }
+
     @media screen and (max-width:576px) {
+        .stack-categories h1 {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
         .price-select-input .select-outer {
             width: 30%;
 
@@ -938,7 +972,7 @@
                 </div>
 
             </div>
-            <div class="col-md-6" data-aos="fade-right">
+            <div class="col-md-6 pb-2" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Class Type</label>
                     <div class="select-outer">
@@ -951,7 +985,7 @@
                 </div>
 
             </div>
-            <div class="col-md-6" data-aos="fade-right">
+            <div class="col-md-6 " data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Preference</label>
                     <div class="select-outer">
@@ -980,12 +1014,12 @@
                             <input type="time" class="form-control py-4 " id="inputAddress" placeholder="">
                             <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
                         </div>
-                        <button class="">Add</button>
+                        <!-- <button class="">Add</button> -->
                     </div>
 
                 </div>
             </div>
-            <div class="col-lg-6 my-auto" data-aos="fade-left">
+            <!-- <div class="col-lg-6 my-auto" data-aos="fade-left">
                 <div class="time-box-outer">
                     <div class="yellow-time time-box-inner m-2">
                         <p class="mb-0">9 am to 10 am</p>
@@ -994,7 +1028,7 @@
                         <p class="mb-0">12 pm to 2 pm</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- <div class="col-12">
                 <div class="form-btn my-3 ">
                     <a href="#" class="p-0 btn">Done</a>
@@ -1091,147 +1125,28 @@
         </div>
         <div class="slot-timing-stacks stack-timing-one">
             <div class="timing-stack timing-stack-one px-3 my-3">
-                <div class="week-name">
-                    <h1>Mon:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
+                <div class="timing-stack-inner">
+                    <div class="week-name">
+                        <h1>Mon:</h1>
                     </div>
-                </div>
-            </div>
-            <div class="timing-stack timing-stack-two px-3 my-3">
-                <div class="week-name">
-                    <h1>Tue:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">8 pm to 10 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">10 pm to 12 pm</p>
+                    <div class="stack-time">
+                        <div class="time-stack-outer px-4 ">
+                            <div class="time-stack-inner m-2">
+                                <p class="mb-0">9 am to 10 am</p>
+                            </div>
                         </div>
 
                     </div>
                 </div>
-            </div>
-            <div class="timing-stack timing-stack-three px-3 my-3">
-                <div class="week-name">
-                    <h1>Wed:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                    </div>
+
+                <div class="stack-categories pb-2">
+                    <h1>Difficulty Level: <span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Session Type:<span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Class Type: <span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Preference:<span>Lorem ipsum dolor sit amet</span></h1>
                 </div>
             </div>
-            <div class="timing-stack timing-stack-four px-3 my-3">
-                <div class="week-name">
-                    <h1>Thu:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="timing-stack timing-stack-five px-3 my-3">
-                <div class="week-name">
-                    <h1>Fri:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">8 pm to 10 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="timing-stack timing-stack-six px-3 my-3">
-                <div class="week-name">
-                    <h1>Sat:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="timing-stack timing-stack-seven px-3 my-3">
-                <div class="week-name">
-                    <h1>Sun:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">8 pm to 10 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">10 pm to 12 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="col-12">
             <div class="slot-arrow slot-arrow-one text-center">
@@ -1306,148 +1221,29 @@
             </div>
         </div>
         <div class="slot-timing-stacks stack-timing-two">
-            <div class="timing-stack timing-stack-one px-3 my-3">
-                <div class="week-name">
-                    <h1>Mon:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="timing-stack timing-stack-two px-3 my-3">
-                <div class="week-name">
-                    <h1>Tue:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">8 pm to 10 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">10 pm to 12 pm</p>
+                <div class="timing-stack-inner">
+                    <div class="week-name">
+                        <h1>Mon:</h1>
+                    </div>
+                    <div class="stack-time">
+                        <div class="time-stack-outer px-4 ">
+                            <div class="time-stack-inner m-2">
+                                <p class="mb-0">9 am to 10 am</p>
+                            </div>
                         </div>
 
                     </div>
                 </div>
-            </div>
-            <div class="timing-stack timing-stack-three px-3 my-3">
-                <div class="week-name">
-                    <h1>Wed:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                    </div>
+
+                <div class="stack-categories pb-2">
+                    <h1>Difficulty Level: <span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Session Type:<span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Class Type: <span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Preference:<span>Lorem ipsum dolor sit amet</span></h1>
                 </div>
             </div>
-            <div class="timing-stack timing-stack-four px-3 my-3">
-                <div class="week-name">
-                    <h1>Thu:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="timing-stack timing-stack-five px-3 my-3">
-                <div class="week-name">
-                    <h1>Fri:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4  ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">8 pm to 10 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="timing-stack timing-stack-six px-3 my-3">
-                <div class="week-name">
-                    <h1>Sat:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="timing-stack timing-stack-seven px-3 my-3">
-                <div class="week-name">
-                    <h1>Sun:</h1>
-                </div>
-                <div class="stack-time">
-                    <div class="time-stack-outer px-4 ">
-                        <div class="time-stack-inner m-2">
-                            <p class="mb-0">9 am to 10 am</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">12 pm to 2 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">4 pm to 6 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">8 pm to 10 pm</p>
-                        </div>
-                        <div class="time-stack-inner m-2 ">
-                            <p class="mb-0">10 pm to 12 pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
         <div class="col-12">
