@@ -686,4 +686,7 @@
 
     }
 </script>
+<script>
+    $('.left-inner-addon').css('display', 'none');
+</script>
 @endsection

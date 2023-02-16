@@ -222,7 +222,7 @@
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="">
                     <div class="dashboard-header-left">
-                        <h1>Search <span class="pl-1">Group Session</span></h1>
+                        <h1>Search <span class="">Group Session</span></h1>
                     </div>
                 </div>
                 <div class="">
@@ -469,5 +469,8 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
+</script>
+<script>
+    $('.left-inner-addon').css('display', 'none');
 </script>
 @endsection
