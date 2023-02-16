@@ -26,16 +26,7 @@ class AuthController extends Controller
             // 'profile_img' => $request->image,
             'phone' => $request->contact_number,
             'about' => $request->about,
-            // 'date_of_birth' => $request->date_of_birth,
-            // 'emergency_contact' => $request->emergency_contact,
-            // 'relationship_emergency_contact' => $request->relation_emergency,
-            // 'gender' => $request->gender,
-            // 'country' => $request->country,
-            // 'state' => $request->state,
-            // 'workout_location' => $request->location,
-            // 'weight' => $request->weight,
-            // 'height' => $request->height,
-            // 'madical_condition' => $request->madical_condition,
+
         ];
         $registeredTrainer = User::create($TrainerData);
         if (!$registeredTrainer) {
@@ -53,7 +44,7 @@ class AuthController extends Controller
         return Redirect::to('/trainer/steptwo');
     }
 
-    /// screen 2.............../////
+    /// update trainer screen 2.............../////
     public function updateProfileStwo(Request $request)
     {
         $data = $request->all();
