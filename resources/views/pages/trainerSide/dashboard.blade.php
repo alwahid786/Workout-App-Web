@@ -1284,6 +1284,7 @@
             <div class="modal-body text-center sucess-modal ">
                 <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
                 <p class="mb-0 py-3">Do you really want to Reject<br> this request?</p>
+                <p class="text-left mb-0" style="font-weight:500;">Reason</p>
                 <textarea class="form-control mb-3"></textarea>
                 <div class=" modal-btn text-sm-right text-center">
                     <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a>
