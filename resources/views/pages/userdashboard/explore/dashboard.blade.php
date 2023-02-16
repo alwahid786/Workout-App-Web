@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
 <style>
-    .trainer-search{
+    .trainer-search {
         position: absolute;
         right: 0;
         border-radius: 30px;
@@ -16,7 +16,8 @@
         outline: none !important;
         width: 50%;
     }
-    .trainer-search::placeholder{
+
+    .trainer-search::placeholder {
         color: #fff !important;
 
     }
@@ -77,160 +78,7 @@
                             </div>
                         </div>
                         @endforeach
-                        <!-- <div class="col ">
-                            <div class="trainer-card">
-                                <div class="trainer-card-left p-2">
-                                    <h1>Ahmad Zayn</h1>
-                                    <div class="rating-star pb-2">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>England,London</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="trainer-card-right">
-                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col ">
-                            <div class="trainer-card">
-                                <div class="trainer-card-left p-2">
-                                    <h1>Ahmad Zayn</h1>
-                                    <div class="rating-star pb-2">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>England,London</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="trainer-card-right">
-                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col ">
-                            <div class="trainer-card">
-                                <div class="trainer-card-left p-2">
-                                    <h1>Ahmad Zayn</h1>
-                                    <div class="rating-star pb-2">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>England,London</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="trainer-card-right">
-                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col ">
-                            <div class="trainer-card">
-                                <div class="trainer-card-left p-2">
-                                    <h1>Ahmad Zayn</h1>
-                                    <div class="rating-star pb-2">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>England,London</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="trainer-card-right">
-                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col ">
-                            <div class="trainer-card">
-                                <div class="trainer-card-left p-2">
-                                    <h1>Ahmad Zayn</h1>
-                                    <div class="rating-star pb-2">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>England,London</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="trainer-card-right">
-                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col ">
-                            <div class="trainer-card">
-                                <div class="trainer-card-left p-2">
-                                    <h1>Ahmad Zayn</h1>
-                                    <div class="rating-star pb-2">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>England,London</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="trainer-card-right">
-                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col ">
-                            <div class="trainer-card">
-                                <div class="trainer-card-left p-2">
-                                    <h1>Ahmad Zayn</h1>
-                                    <div class="rating-star pb-2">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>England,London</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="trainer-card-right">
-                                    <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                                    <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
-                                    <a href="{{url('/dashboard/trainer-detail')}}" class="btn">Book Now</a>
-                                </div>
-                            </div>
-                        </div> -->
+
                     </div>
                 </div>
             </div>
@@ -292,7 +140,67 @@
 
             </div>
             <div class="row js-slick-carousels px-sm-5 pt-3">
+                @foreach($trainers as $trainer_data)
+
                 <div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>John Smith</h1>
+                                <p>Yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                    </div>
+                </div>
+                @endforeach
+
+                <!-- <div class="categories-card p-3">
+
+                    <div class="categories-card-heading py-3">
+                        <div class="heading-left-section">
+                            <p>country -state</p>
+                            <h1>name</h1>
+                            <p>Sepcialist</p>
+                        </div>
+                        <div class="rating-stars pb-5">
+                            <i class="fa fa-star " aria-hidden="true"></i>
+                            <i class="fa fa-star " aria-hidden="true"></i>
+                            <i class="fa fa-star " aria-hidden="true"></i>
+                            <i class="fa fa-star " aria-hidden="true"></i>
+                            <i class="fa fa-star " aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="categories-card-text">
+                        <p>about </p>
+                    </div>
+
+                    <div class="categories-card-exp">
+
+                        <p class="text-center">5+ Years Experience</p>
+                    </div>
+                    <div class="text-center my-4">
+                        <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail/')}}">View Detail</a>
+                    </div>
+                </div> -->
+                <!-- <div class="col">
                     <div class="session-card p-2">
                         <div class="session-card-img">
                             <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
@@ -487,35 +395,7 @@
                         </div>
                         <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="session-card p-2">
-                        <div class="session-card-img">
-                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
-                            <div class="session-card-amount">
-                                <h1>$100</h1>
-                            </div>
-                        </div>
-
-                        <div class="session-card-inner">
-                            <div class="session-card-inner-name my-3">
-                                <h1>John Smith</h1>
-                                <p>Yoga</p>
-                            </div>
-                            <div class="rating-star my-3">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="session-card-inner-link my-3">
-                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
-                            </div>
-                        </div>
-                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="category-section">

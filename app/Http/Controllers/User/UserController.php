@@ -171,7 +171,7 @@ class UserController extends Controller
     /////.....get all trainer........./////
     public function dashbord()
     {
-        $all_trainer = User::where('user_type', '=', 'trainer')->get();
+        $all_trainer = User::where('user_type', '=', 'trainer')->with('session.category')->get();
         // Classes::with('session', 'category')->get();
         $class_detail = Classes::with(['category', 'session', 'trainer'])->get();
 
