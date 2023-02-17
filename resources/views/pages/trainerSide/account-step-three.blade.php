@@ -879,29 +879,30 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Select Category</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4">
-                            <option value="">Yoga</option>
-                            <option value="">Yoga</option>
-                            <option value="">Yoga</option>
-                            <option value="">Yoga</option>
+                        <select class="wide s-select form-control pl-4" name="category_id" id="category_id">
+                            <option value="1">Yoga</option>
+                            <option value="2">Yoga</option>
+                            <option value="3">Yoga</option>
+                            <option value="4">Yoga</option>
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
+                    <input type="hidden" value="{{auth()->user()->id}}" name="trainer_id" id="trainer_id">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Sub-Category</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress" placeholder="" value="Italian Yoga">
+                    <input type="text" class="form-control pl-4" id="sub_category" placeholder="" value="Italian Yoga" name="sub_category">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Difficulty Level</label>
                     <div class="difficulty-level">
-                        <input type="text" class="form-control py-2" id="inputAddress2" value="Beginner" readonly>
-                        <input type="text" class="form-control py-2 mx-3" id="inputAddress2" value="Intermediate" readonly>
-                        <input type="text" class="form-control py-2" id="inputAddress2" value="Advanced" readonly>
+                        <input type="text" class="form-control py-2" id="inputAddress2" value="Beginner" readonly name="difficulty-level">
+                        <input type="text" class="form-control py-2 mx-3" id="inputAddress2" value="Intermediate" readonly name="difficulty-level">
+                        <input type="text" class="form-control py-2" id="inputAddress2" value="Advanced" readonly name="difficulty-level">
                     </div>
 
                 </div>
@@ -915,16 +916,16 @@
                         </div> -->
                         <div class="price-select-input">
                             <div class="select-outer">
-                                <select class="wide s-select currency-select form-control " id="exampleFormControlSelect1">
-                                    <option>USD</option>
-                                    <option>EURO</option>
-                                    <option>YEN</option>
-                                    <option>GBP</option>
-                                    <option>PKR</option>
+                                <select class="wide s-select currency-select form-control " id="price_unit" name="price_unit">
+                                    <option value="USD">USD</option>
+                                    <option value="EURO">EURO</option>
+                                    <option value="YEN">YEN</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="PKR">PKR</option>
                                 </select>
                                 <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                             </div>
-                            <input type="text" class="form-control pl-4" id="inputAddress2" value="100">
+                            <input type="text" class="form-control pl-4" id="price" value="100" name="price">
                         </div>
                     </div>
 
@@ -934,9 +935,9 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Session Type</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
-                            <option value="onetoone">One to one</option>
-                            <option value="group">Group</option>
+                        <select class="wide s-select form-control pl-4" id="type" name="type">
+                            <option value="0">One to one</option>
+                            <option value="1">Group</option>
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
@@ -958,7 +959,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Days</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
+                        <select class="wide s-select form-control pl-4" id="day" name="day">
                             <option value="mon">Monday</option>
                             <option value="tue">Tuesday</option>
                             <option value="wed">Wednesday</option>
@@ -976,7 +977,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Class Type</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
+                        <select class="wide s-select form-control pl-4" id="typeselector" name="session_type">
                             <option value="0">Online</option>
                             <option value="1">In-person</option>
                         </select>
@@ -1040,17 +1041,14 @@
             <div class="update-info-qualification-image">
                 <label>
                     <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
-                    <input type="file" name="myfile" style="display:none">
+                    <input type="file" name="myfile" id="choose-file" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
                 </label>
-                <div class="grid-item py-2 py-sm-0">
-                    <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
-                    <img src="{{asset('public/assets/trainerimages/stepthreeone.jpg')}}" alt="">
+                <div id="img-preview" class="d-flex">
+                    <div class="grid-item py-2 py-sm-0">
+                        <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
+                        <img src="{{asset('public/assets/trainerimages/stepthreeone.jpg')}}" alt="">
+                    </div>
                 </div>
-                <div class="grid-item py-2 py-sm-0">
-                    <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
-                    <img src="{{asset('public/assets/trainerimages/stepthreetwo.jpg')}}" alt="">
-                </div>
-
             </div>
         </div>
         <div class="form-btn my-5 ">
@@ -1279,6 +1277,31 @@
                 $('.limit-box').hide();
             }
         });
+
+
+        const chooseFile = document.getElementById("choose-file");
+        const imgPreview = document.getElementById("img-preview");
+
+        chooseFile.addEventListener("change", function() {
+            getImgData();
+        });
+
+        function getImgData() {
+            const files = chooseFile.files;
+            if (files) {
+                imgPreview.innerHTML = "";
+                $(files).each(function(i, files) {
+                    const fileReader = new FileReader();
+                    fileReader.readAsDataURL(files);
+                    fileReader.addEventListener("load", function() {
+                        let beforeImage = `<div class="grid-item py-2 py-sm-0">
+                        <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">`;
+                        let afterImage = `</div>`;
+                        imgPreview.innerHTML += beforeImage + '<img class="cursorPointer_s objectFitCover_s" src="' + this.result + '" />' + afterImage;
+                    });
+                });
+            }
+        }
     });
     // edit and delete 
     // show and hide

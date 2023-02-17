@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TrainerDetailRequest;
 use App\Http\Requests\TrainerSignupRequest;
 use App\Models\TrainerProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
+use App\Models\Classes;
+use App\Models\ClassImage;
+use App\Models\Session;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 
@@ -83,5 +87,61 @@ class AuthController extends Controller
         }
 
         return Redirect::to(url('/trainer/stepthree'));
+    }
+
+    public function trainerDetail(Request $request)
+    {
+        $class = Classes::create(
+            [
+                'category_id' => $request->category_id,
+                'trainer_id' => $request->trainer_id,
+
+            ]
+        );
+
+        if (!$class) {
+            return $this->sendError('Trainer');
+        }
+
+        $session = $request->session;
+        foreach ($session as $sessions) {
+            $startMeridiem = date('a', strtotime($sessions['start_time']));
+            $endMeridiem = date('a', strtotime($sessions['end_time']));
+            $session_data = new Session();
+            $session_data->trainer_id = $request->trainer_id;
+            $session_data->category_id = $request->category_id;
+
+            $session_data->sub_category = $sessions['sub_category'];
+            $session_data->limit = $sessions['limit'];
+            $session_data->preference = $sessions['preference'];
+            $session_data->price_unit = $sessions['price_unit'];
+
+            $session_data->day = $sessions['day'];
+            $session_data->class_id = $class->id;
+            $session_data->price = $sessions['price'];
+            $session_data->difficulty_level = $sessions['difficulty_level'];
+            $session_data->type = $sessions['type'];
+            $session_data->start_time = $sessions['start_time'];
+            $session_data->end_time = $sessions['end_time'];
+            $session_data->start_meridiem = $startMeridiem;
+            $session_data->end_meridiem = $endMeridiem;
+            $session[] = $session_data->save();
+
+            $session_image = $request->session_images;
+            foreach ($session_image as  $session_images) {
+                $images = new ClassImage();
+                $images->image = $session_images['image'];
+                $images->session_id = $session->id;
+                $images->save();
+            }
+        }
+        $class_image = $request->class_images;
+        foreach ($class_image as  $class_images) {
+            $images = new ClassImage();
+            $images->image = $class_images['image'];
+            $images->class_id = $class->id;
+            $images->save();
+        }
+        return $this->sendResponse([], 'Trainer Detail insert Successfully!');
     }
 }
