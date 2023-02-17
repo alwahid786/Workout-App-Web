@@ -211,85 +211,85 @@
             {{--<div class="col-lg-4 col-xl-3">
                 <div class="sessions-left-section py-5 px-2">
                     <div class="session-profile-image text-center">
-                        <img src="{{$trainer_detail[0]['profile_img']}}" alt="">
-                    </div>
-                    <div class="sessions-profile-con text-center">
-                        <div class="dashboard-header-left pt-3 trainer-name">
-                            <h1>{{$trainer_detail[0]['name']}}</h1>
-                        </div>
-                        <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>{{$trainer_detail[0]['workout_location']}},{{$trainer_detail[0]['state']}}, {{$trainer_detail[0]['country']}}</p>
-                        <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="session-left-divider"></div>
-                    <div class="session-left-bottom px-2">
-                        <div class="session-bottom-header pt-3">
-                            <h1>About Trainer</h1>
-                        </div>
-                        <div class="session-bottom-par">
-                            <p>{{$trainer_detail[0]['about']}}</p>
-                            <!-- <p>Lorem ipsum is a placeholder text
+                        <img src="{{$trainer[0]['profile_img']}}" alt="">
+        </div>
+        <div class="sessions-profile-con text-center">
+            <div class="dashboard-header-left pt-3 trainer-name">
+                <h1>{{$trainer[0]['name']}}</h1>
+            </div>
+            <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>{{$trainer[0]['workout_location']}},{{$trainer[0]['state']}}, {{$trainer[0]['country']}}</p>
+            <div class="rating-stars pb-5">
+                <i class="fa fa-star " aria-hidden="true"></i>
+                <i class="fa fa-star " aria-hidden="true"></i>
+                <i class="fa fa-star " aria-hidden="true"></i>
+                <i class="fa fa-star " aria-hidden="true"></i>
+                <i class="fa fa-star " aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="session-left-divider"></div>
+        <div class="session-left-bottom px-2">
+            <div class="session-bottom-header pt-3">
+                <h1>About Trainer</h1>
+            </div>
+            <div class="session-bottom-par">
+                <p>{{$trainer[0]['about']}}</p>
+                <!-- <p>Lorem ipsum is a placeholder text
                                 commonly used to demonstrate the
                                 visual form of a document or a type
                                 face without relying on meaningful
                                 content. Lorem ipsum may be used
                                 as a placeholder before final copy
                                 is available.</p> -->
-                        </div>
-                    </div>
-                </div>
-            </div>--}}
-            <div class="col-12">
-                <div class="dashboard-header-left">
-                    <h1 style="text-transform: capitalize; display: block"><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer[0]['name']}}'s Sessions</h1>
-                </div>
-                <div class="card-grid-section">
-                    @if(isset($sessions) && !empty($sessions))
-                    @foreach($sessions as $session)
-                    <div class="session-card p-3">
-                        <div class="card-img ">
-                            <img src="{{$session['class']['class_images'][0]['image']}}" alt="">
-                        </div>
-                        <div class="card-heading py-3">
-                            <h1>{{$session['category']['title']}}</h1>
-                            <a href="{{url('/dashboard/class-detail/'.$session['trainer_id'].'/'.$session['day'])}}">Book Now</a>
-                        </div>
-                        <div class="card-content">
-                            <p>{{$session['trainer_data']['name']}}</p>
-                            <?php
+            </div>
+        </div>
+    </div>
+</div>--}}
+<div class="col-12">
+    <div class="dashboard-header-left">
+        <h1 style="text-transform: capitalize; display: block"><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer[0]['name']}}'s Sessions</h1>
+    </div>
+    <div class="card-grid-section">
+        @if(isset($sessions) && !empty($sessions))
+        @foreach($sessions as $session)
+        <div class="session-card p-3">
+            <div class="card-img ">
+                <img src="{{$session['class']['class_images'][0]['image']}}" alt="">
+            </div>
+            <div class="card-heading py-3">
+                <h1>{{$session['category']['title']}}</h1>
+                <a href="{{url('/dashboard/class-detail/'.$session['trainer_id'].'/'.$session['day'])}}">Book Now</a>
+            </div>
+            <div class="card-content">
+                <p>{{$session['trainer_data']['name']}}</p>
+                <?php
 
-                            $a = new DateTime(($session['start_time']));
-                            $b = new DateTime($session['end_time']);
+                $a = new DateTime(($session['start_time']));
+                $b = new DateTime($session['end_time']);
 
-                            $start_hour = $a->format("H:i");
-                            $end_hour = $b->format("H:i");
+                $start_hour = $a->format("H:i");
+                $end_hour = $b->format("H:i");
 
-                            ?>
-                            <p>{{date('h:i', strtotime($session['start_time']))}}-{{date('h:i', strtotime($session['end_time']))}}</p>
-                        </div>
-                        <div class="session-left-divider"></div>
-                        <div class="card-bottom-section p-2">
-                            <p>${{$session['price']}}</p>
-                            <?php
+                ?>
+                <p>{{date('h:i', strtotime($session['start_time']))}}-{{date('h:i', strtotime($session['end_time']))}}</p>
+            </div>
+            <div class="session-left-divider"></div>
+            <div class="card-bottom-section p-2">
+                <p>${{$session['price']}}</p>
+                <?php
 
-                            $a = new DateTime(($session['start_time']));
-                            $b = new DateTime($session['end_time']);
-                            $interval = $a->diff($b);
+                $a = new DateTime(($session['start_time']));
+                $b = new DateTime($session['end_time']);
+                $interval = $a->diff($b);
 
-                            $hour = $interval->format("%H:%I");
+                $hour = $interval->format("%H:%I");
 
-                            ?>
-                            <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> {{$hour}} </p>
-                        </div>
-                    </div>
-                    @endforeach
-                    @endif
-                    <!-- <div class="session-card p-3">
+                ?>
+                <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> {{$hour}} </p>
+            </div>
+        </div>
+        @endforeach
+        @endif
+        <!-- <div class="session-card p-3">
                         <div class="card-img ">
                             <img src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
                         </div>
@@ -595,10 +595,10 @@
                             <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
                         </div>
                     </div> -->
-                </div>
-            </div>
-        </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 @endsection
 @section('insertsfooter')

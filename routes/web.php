@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Trainer\AuthController as TrainerAuthController;
 use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\SocialController;
@@ -24,6 +25,9 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('pages.website.index');
 });
+
+Route::post('/trainer_signup', [TrainerAuthController::class, 'trainerSignup']);
+
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
@@ -47,7 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
     Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
     Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
-    Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('/userdashboard/session');
+    Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('userdashboard/session');
     Route::any('/filter/session', [UserController::class, 'SearchResult'])->name('filter/session');
 
     Route::any('/dashboard/trainer', [UserController::class, 'usersTrainer'])->name('dashboard/trainer');
@@ -62,7 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/userdashboard/session/{id}', [UserController::class, 'sessionDetails'])->name('sessionDetails');
 
     Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
-    Route::any('/dashboard/trainer-sessions/{id}/{trainerId}', [UserController::class, 'trainerSessionDetail'])->name('/dashboard/trainer-detail');
+    Route::any('/dashboard/trainer-sessions/{id}/{trainerId}', [UserController::class, 'trainerSessionDetail']);
     Route::any('/dashboard/class-detail/{id}/{day}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
     Route::any('class_detail', [UserController::class, 'classDetails'])->name('classDetails');
     Route::any('/get_day_session', [UserController::class, 'getDaySession'])->name('get_day_session');
@@ -76,6 +80,13 @@ Route::middleware('auth')->group(function () {
     Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
     Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
     Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
+
+    ///// trainer............//////
+    Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
+
+    Route::get('/trainer/steptwo', function () {
+        return view('pages.trainerSide.account-step-two');
+    }); 
 });
 
 
@@ -242,9 +253,9 @@ Route::get('/trainer/stepone', function () {
     return view('pages.trainerSide.account-step-one');
 });
 
-Route::get('/trainer/steptwo', function () {
-    return view('pages.trainerSide.account-step-two');
-});
+// Route::get('/trainer/steptwo', function () {
+//     return view('pages.trainerSide.account-step-two');
+// });
 
 Route::get('/trainer/stepthree', function () {
     return view('pages.trainerSide.account-step-three');

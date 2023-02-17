@@ -29,6 +29,7 @@ use Stripe\SearchResult;
 use Stevebauman\Location\Facades\Location;
 
 
+
 class UserController extends Controller
 {
     use ResponseTrait;
@@ -170,7 +171,7 @@ class UserController extends Controller
     /////.....get all trainer........./////
     public function dashbord()
     {
-        $all_trainer = User::where('user_type', '=', 'trainer')->get();
+        $all_trainer = User::where('user_type', '=', 'trainer')->with('session.category')->get();
         // Classes::with('session', 'category')->get();
         $class_detail = Classes::with(['category', 'session', 'trainer'])->get();
 
@@ -205,7 +206,7 @@ class UserController extends Controller
     }
     public function trainerSessionDetail(Request $request, $id, $trainerId)
     {
-        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session', 'class.classImage'])->get();
+        $trainer = User::where('id', '=', $trainerId)->with(['class.category', 'class.session', 'class.classImage'])->get();
         // if (!$trainer) {
         //     return $this->sendError('Trainer Detail');
         // }
@@ -304,9 +305,17 @@ class UserController extends Controller
                 )
             );
             if ($transaction) {
+                // flash()->success('Payment Successfuly!');
+                // notify()->success('Laravel Notify is awesome!');
+                // Toastr::success('message', 'title', 'welcome to text');
+                // Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+                notify()->success('Welcome to Laravel Notify ⚡️');
+
                 return redirect()->route('/dashboard');
             } else {
-                return $this->sendError('Something went wrong, Try again in a While.');
+                // return $this->sendError('Something went wrong, Try again in a While.');
+                Session::flash('error', 'Something went wrong, please try again later.');
+                return redirect()->back();
             }
         } catch (Throwable $e) {
 
@@ -602,8 +611,8 @@ class UserController extends Controller
             ->join('sessions', 'booked_sessions.session_id', '=', 'sessions.id')
             ->join('users', 'sessions.trainer_id', '=', 'users.id')
             ->where('booked_sessions.user_id', auth()->user()->id)
-                // ->select("*")
-                // ->groupBy('booked_sessions.id')
+            // ->select("*")
+            // ->groupBy('booked_sessions.id')
             ->get();
         // dd($getTrainers);
         if (!$getTrainers) {

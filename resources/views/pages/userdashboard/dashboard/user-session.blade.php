@@ -1160,7 +1160,7 @@
                         <h1>My Sessions</h1>
                     </div>
                     <div class="row" id="sessionList">
-
+                        
                         @foreach($booksession_detail as $bookedsession)
 
                         <div class="col-lg-6 my-2">

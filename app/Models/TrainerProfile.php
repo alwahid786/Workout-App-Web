@@ -9,6 +9,9 @@ class TrainerProfile extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id'
+        'user_id',
+        'facebook_url',
+        'instagram_url',
+        'linkedin_url'
     ];
 }

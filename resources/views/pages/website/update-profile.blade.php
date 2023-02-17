@@ -152,7 +152,7 @@
         border: 1px solid #E37048;
     }
 
-    input[type=radio]:not() {}
+
 
     input[type=radio].color-radio {
         accent-color: #E37048;
