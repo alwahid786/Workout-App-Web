@@ -19,155 +19,105 @@
     .right-inner-addon {
         position: relative;
     }
-.right-inner-addon {
-    position: relative;
-}
 
-.login-email-field-red {
-    background: #FFDEDE !important;
-    border: 2px solid #FF0000 !important;
-    color: #FF0000 !important;
-}
+    .right-inner-addon {
+        position: relative;
+    }
 
-.login-email-field-green {
-    background: #EAF3CD !important;
-    border: 2px solid #151C00 !important;
-    color: #151C00 !important;
-}
+    .login-email-field-red {
+        background: #FFDEDE !important;
+        border: 2px solid #FF0000 !important;
+        color: #FF0000 !important;
+    }
 
-.right-inner-addon input {
-    padding-right: 35px !important;
-}
+    .login-email-field-green {
+        background: #EAF3CD !important;
+        border: 2px solid #151C00 !important;
+        color: #151C00 !important;
+    }
 
-.right-inner-addon i {
-    color: #B5B5B5;
-    position: absolute;
-    right: 0px;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
+    .right-inner-addon input {
+        padding-right: 35px !important;
+    }
 
-.modal-input {
-    color: #B5B5B5 !important;
-}
+    .right-inner-addon i {
+        color: #B5B5B5;
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 
-.modal-label {
-    color: #B5B5B5 !important;
-}
+    .modal-input {
+        color: #B5B5B5 !important;
+    }
 
-.otp-seconds {
-    color: #E37048 !important;
-}
+    .modal-label {
+        color: #B5B5B5 !important;
+    }
 
-#resendCode_d {
-    color: black !important;
-}
+    .otp-seconds {
+        color: #E37048 !important;
+    }
 
-.modal-input-otp {
-    color: black !important;
-    font-size: 1.2rem !important;
-    font-weight: 500 !important;
-}
+    #resendCode_d {
+        color: black !important;
+    }
 
-.login-btn {
-    text-decoration: none;
-    background: white !important;
-    border: 1px solid #E37048 !important;
-    color: #E37048 !important;
-    width: 70%;
-    max-width: 240px;
-    margin: 0 auto;
-    border-radius: 10px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .modal-input-otp {
+        color: black !important;
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+    }
 
-}
+    .login-btn {
+        text-decoration: none;
+        background: white !important;
+        border: 1px solid #E37048 !important;
+        color: #E37048 !important;
+        width: 70%;
+        max-width: 240px;
+        margin: 0 auto;
+        border-radius: 10px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-.login-btn:hover {
-    background: #E37048 !important;
-    color: white !important;
-    border: 1px solid #E37048 !important;
-}
+    }
 
-.home-card-section {
-    position: relative;
-}
+    .login-btn:hover {
+        background: #E37048 !important;
+        color: white !important;
+        border: 1px solid #E37048 !important;
+    }
 
-.workout-gallery {
-    position: relative;
-}
+    .home-card-section {
+        position: relative;
+    }
 
-.dot-left-one {
-    width: 100px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0%, -50%);
-}
-
-.dotc-left-one {
-    width: 100px;
-    position: absolute;
-    top: 40%;
-    left: 0;
-    transform: translate(0%, -50%);
-}
-
-.dot-left-two {
-    width: 100px;
-    position: absolute;
-    top: 50%;
-    left: 45%;
-    transform: translate(-50%, -50%);
-}
-
-.dot-right-one {
-    width: 90px;
-    position: absolute;
-    top: 70%;
-    right: 0;
-    transform: translate(0%, 0%);
-}
-
-.dotc-right-one {
-    width: 90px;
-    position: absolute;
-    top: 70%;
-    right: 0;
-    transform: translate(0%, 0%);
-}
-
-.dot-right-two {
-    width: 90px;
-    height: 80px;
-    position: absolute;
-    top: 90%;
-    right: 20%;
-    transform: translate(-50%, 0%);
-}
-
-@media screen and (max-width:1330px) {
+    .workout-gallery {
+        position: relative;
+    }
 
     .dot-left-one {
-        width: 60px;
+        width: 100px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0%, -50%);
+    }
+
+    .dotc-left-one {
+        width: 100px;
         position: absolute;
         top: 40%;
         left: 0;
         transform: translate(0%, -50%);
     }
 
-    .dotc-left-one {
-        width: 60px;
-        position: absolute;
-        top: 20%;
-        left: 0;
-        transform: translate(0%, -50%);
-    }
-
     .dot-left-two {
-        width: 60px;
+        width: 100px;
         position: absolute;
         top: 50%;
         left: 45%;
@@ -175,43 +125,94 @@
     }
 
     .dot-right-one {
-        width: 60px;
+        width: 90px;
         position: absolute;
-        top: 80%;
+        top: 70%;
         right: 0;
         transform: translate(0%, 0%);
     }
 
     .dotc-right-one {
-        width: 60px;
+        width: 90px;
         position: absolute;
-        top: 90%;
+        top: 70%;
         right: 0;
         transform: translate(0%, 0%);
     }
 
-
     .dot-right-two {
-        width: 60px;
-        height: 60px;
+        width: 90px;
+        height: 80px;
         position: absolute;
         top: 90%;
         right: 20%;
         transform: translate(-50%, 0%);
     }
-}
 
-@media screen and (max-width:1200px) {
+    @media screen and (max-width:1330px) {
 
-    .dot-left-one,
-    .dot-right-one,
-    .dot-right-two,
-    .dot-left-two,
-    .dotc-left-one,
-    .dotc-right-one {
-        display: none;
+        .dot-left-one {
+            width: 60px;
+            position: absolute;
+            top: 40%;
+            left: 0;
+            transform: translate(0%, -50%);
+        }
+
+        .dotc-left-one {
+            width: 60px;
+            position: absolute;
+            top: 20%;
+            left: 0;
+            transform: translate(0%, -50%);
+        }
+
+        .dot-left-two {
+            width: 60px;
+            position: absolute;
+            top: 50%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dot-right-one {
+            width: 60px;
+            position: absolute;
+            top: 80%;
+            right: 0;
+            transform: translate(0%, 0%);
+        }
+
+        .dotc-right-one {
+            width: 60px;
+            position: absolute;
+            top: 90%;
+            right: 0;
+            transform: translate(0%, 0%);
+        }
+
+
+        .dot-right-two {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 90%;
+            right: 20%;
+            transform: translate(-50%, 0%);
+        }
     }
-}
+
+    @media screen and (max-width:1200px) {
+
+        .dot-left-one,
+        .dot-right-one,
+        .dot-right-two,
+        .dot-left-two,
+        .dotc-left-one,
+        .dotc-right-one {
+            display: none;
+        }
+    }
 
     @media screen and (max-width:1200px) {
 
@@ -238,35 +239,40 @@
         font-weight: 600 !important;
         background: #eaf3cd !important;
     }
-.user-input-wrp {
-	position: relative;
-	width: 100%;
-}
-.user-input-wrp .inputText{
-	width: 100%;
-	outline: none;
-	border:none;
-	border-bottom: 1px solid #E37048 ;
- 	box-shadow: none !important;
-}
-.user-input-wrp .inputText:focus{
-	border-color: #E37048;
-	border-width: medium medium 2px;
-}
-.user-input-wrp .floating-label {
-	position: absolute;
-	pointer-events: none;
-	top: 50%;
-	left: 10px;
-	transition: 0.2s ease all;
-}
-.user-input-wrp input:focus ~ .floating-label,
-.user-input-wrp input:not(:focus):valid ~ .floating-label{
-	top: 0px;
-	left: 10px;
-	font-size: 13px;
-	opacity: 1;
-}
+
+    .user-input-wrp {
+        position: relative;
+        width: 100%;
+    }
+
+    .user-input-wrp .inputText {
+        width: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #E37048;
+        box-shadow: none !important;
+    }
+
+    .user-input-wrp .inputText:focus {
+        border-color: #E37048;
+        border-width: medium medium 2px;
+    }
+
+    .user-input-wrp .floating-label {
+        position: absolute;
+        pointer-events: none;
+        top: 50%;
+        left: 10px;
+        transition: 0.2s ease all;
+    }
+
+    .user-input-wrp input:focus~.floating-label,
+    .user-input-wrp input:not(:focus):valid~.floating-label {
+        top: 0px;
+        left: 10px;
+        font-size: 13px;
+        opacity: 1;
+    }
 </style>
 @include('includes.website.navbar')
 <div class="container-fluid hero-section">
@@ -276,8 +282,7 @@
                 <div class="hero-left-content">
                     <h1>The personal<span>Training you</span><span>Deserve</span></h1>
                     <p class="pb-4 pt-3">Book personal training experience.</p>
-                    <a href="" class="btn modal-view" data-toggle="modal" data-target="#loginModal">Read More <i
-                            class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
+                    <a href="" class="btn modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0">
@@ -293,52 +298,43 @@
             <div class="col-md-6 col-lg-4 py-3 card-wrapper-outer">
                 <div class="card-wrapper py-3 px-2 px-sm-4" data-aos="flip-left">
                     <div class="icon-wrapper">
-                        <img class="active-image" src="{{asset('public/assets/images/card-icon-three-y.svg')}}"
-                            alt="image">
-                        <img class="hover-image" src="{{asset('public/assets/images/card-icon-three-w.svg')}}"
-                            alt="image">
+                        <img class="active-image" src="{{asset('public/assets/images/card-icon-three-y.svg')}}" alt="image">
+                        <img class="hover-image" src="{{asset('public/assets/images/card-icon-three-w.svg')}}" alt="image">
                     </div>
                     <h1 class="py-3">Experience</h1>
                     <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a
                         typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
                         final copy is available.
                     </p>
-                    <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i
-                            class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
+                    <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 py-3 card-wrapper-outer">
                 <div class="card-wrapper py-3 px-2 px-sm-4" data-aos="flip-left">
                     <div class="icon-wrapper">
-                        <img class="active-image" src="{{asset('public/assets/images/card-icon-one-y.svg')}}"
-                            alt="image">
-                        <img class="hover-image" src="{{asset('public/assets/images/card-icon-one-w.svg')}}"
-                            alt="image">
+                        <img class="active-image" src="{{asset('public/assets/images/card-icon-one-y.svg')}}" alt="image">
+                        <img class="hover-image" src="{{asset('public/assets/images/card-icon-one-w.svg')}}" alt="image">
                     </div>
                     <h1 class="py-3">Coach Trainer</h1>
                     <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a
                         typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
                         final copy is available.
                     </p>
-                    <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i
-                            class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
+                    <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 py-3 card-wrapper-outer" data-aos="flip-left">
                 <div class="card-wrapper py-3 px-2 px-sm-4">
                     <div class="icon-wrapper">
-                        <img class="active-image" src="{{asset('public/assets/images/card-icon-two-y.svg')}}"
-                            alt="image">
-                        <img class="hover-image" src="{{asset('public/assets/images/card-icon-two-w.svg')}}"
-                            alt="image">
+                        <img class="active-image" src="{{asset('public/assets/images/card-icon-two-y.svg')}}" alt="image">
+                        <img class="hover-image" src="{{asset('public/assets/images/card-icon-two-w.svg')}}" alt="image">
                     </div>
                     <h1 class="py-3">Nutritional diet</h1>
                     <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a
                         typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
                         final copy is available.
                     </p>
-                    <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i
-                            class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
+                    <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -418,8 +414,7 @@
                             <div class="trainer-price pb-2">
                                 <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
                             </div>
-                            <a href="" class="btn px-5 modal-view" data-toggle="modal"
-                                data-target="#loginModal">View</a>
+                            <a href="" class="btn px-5 modal-view" data-toggle="modal" data-target="#loginModal">View</a>
                         </div>
                     </div>
                 </div>
@@ -447,8 +442,7 @@
                             <div class="trainer-price pb-2">
                                 <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
                             </div>
-                            <a href="" class="btn px-5 modal-view" data-toggle="modal"
-                                data-target="#loginModal">View</a>
+                            <a href="" class="btn px-5 modal-view" data-toggle="modal" data-target="#loginModal">View</a>
                         </div>
                     </div>
                 </div>
@@ -476,8 +470,7 @@
                             <div class="trainer-price pb-2">
                                 <!-- <h1>$15,63 <sup>Per Month</sup></h1> -->
                             </div>
-                            <a href="" class="btn px-5 modal-view" data-toggle="modal"
-                                data-target="#loginModal">View</a>
+                            <a href="" class="btn px-5 modal-view" data-toggle="modal" data-target="#loginModal">View</a>
                         </div>
                     </div>
                 </div>
@@ -497,8 +490,7 @@
                         typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
                         final copy is available.
                     </p>
-                    <a href="" class="btn pl-0 modal-view" data-toggle="modal" data-target="#loginModal">Read More <i
-                            class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
+                    <a href="" class="btn pl-0 modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -580,8 +572,7 @@
     <div class="container-fluid footerSection">
         <div class="row px-sm-5 px-2">
             <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
-                <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}"
-                        alt="image"></a>
+                <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
                 <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis
                     reprehenderit quasi unde eum libero fuga impedit molestiae et.</p>
                 <p class="text-md-white"><strong>Follow Us</strong></p>
@@ -613,8 +604,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-6 mt-md-0 mt-5 text-md-left text-center" data-aos="fade-up"
-                data-aos-delay="200">
+            <div class="col-xl-2 col-md-6 mt-md-0 mt-5 text-md-left text-center" data-aos="fade-up" data-aos-delay="200">
                 <ul class="quickLinks mx-auto">
                     <!-- <li class="mb-3 text-md-white"><strong>Quick Links</strong></li> -->
                     <li class="mb-2"><a href="{{url('/about')}}">About Us</a></li>
@@ -623,18 +613,15 @@
 
                 </ul>
             </div>
-            <div class="col-xl-2 col-md-6 order-xl-3 order-md-4 mt-xl-0 mt-3 text-md-left text-center"
-                data-aos="fade-up" data-aos-delay="300">
+            <div class="col-xl-2 col-md-6 order-xl-3 order-md-4 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="300">
                 <ul class="quickLinks mx-auto">
                     <!-- <li class="mb-3 text-md-white"><strong>Customer Area</strong></li> -->
                     <li class="mb-2"><a href=" {{url('/approach')}}">Our Approach</a></li>
-                    <li class="mb-2"><a href=" javascript:void(0)" class="modal-view" data-toggle="modal"
-                            data-target="#loginModal">Get Started</a></li>
+                    <li class="mb-2"><a href=" javascript:void(0)" class="modal-view" data-toggle="modal" data-target="#loginModal">Get Started</a></li>
 
                 </ul>
             </div>
-            <div class="col-xl-2 col-md-6 order-xl-4 order-md-3 mt-xl-0 mt-3 text-md-left text-center"
-                data-aos="fade-up" data-aos-delay="400">
+            <div class="col-xl-2 col-md-6 order-xl-4 order-md-3 mt-xl-0 mt-3 text-md-left text-center" data-aos="fade-up" data-aos-delay="400">
                 <ul class="quickLinks mx-auto">
                     <li class="mb-3 text-md-white"><strong>Questions?</strong></li>
                     <li class="mb-2"><a href="#contact-us">Contact Us</a></li>
@@ -654,15 +641,13 @@
     </div>
 </footer>
 <!--Signup Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle"
-    aria-hidden="true">
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
             <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Signup to <span>WORKITPT</span></h2>
-                <img class="close-modal" style="width: 8%;" data-dismiss="modal"
-                    src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+                <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <hr>
             <form action="">
@@ -676,13 +661,11 @@
                         <i id="signshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                     <div class="right-inner-addon mb-2">
-                        <input type="password" class=" modal-input cpassInput" placeholder="Confirm Password"
-                            id="password_confirmation">
+                        <input type="password" class=" modal-input cpassInput" placeholder="Confirm Password" id="password_confirmation">
                         <i id="confirmhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="confirmshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
-                    <p>Already have an account? <span data-toggle="modal" data-target="#loginModal"
-                            data-dismiss="modal">Login</span></p>
+                    <p>Already have an account? <span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</span></p>
                     <input type="button" class=" btn my-3 login-btn" value="Sign Up" id="sighnup_submit">
                 </div>
             </form>
@@ -690,23 +673,20 @@
     </div>
 </div>
 <!--Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle"
-    aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
             <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Login to <span>WORKITPT</span></h2>
-                <img class="close-modal" style="width: 8%;" data-dismiss="modal"
-                    src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+                <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <hr>
             <form action="">
                 <div class="modalContent py-3 ">
                     <input type="text" class="mb-2 modal-input" placeholder="Email" id="login_email">
                     <div class="right-inner-addon mb-2">
-                        <input type="password" class=" modal-input passInput" placeholder="Password"
-                            id="login_password">
+                        <input type="password" class=" modal-input passInput" placeholder="Password" id="login_password">
                         <i id="loginhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="loginshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
@@ -715,8 +695,7 @@
                         <label class="d-flex align-items-center modal-label">
                             <input type="checkbox" name="remember" class="mr-2" style="width: 10px;"> Remember me
                         </label>
-                        <a class="fnt-normal" href="javascript:void(0)" data-dismiss="modal" data-toggle="modal"
-                            data-target="#forgotPassModal">Forgot Password?</a>
+                        <a class="fnt-normal" href="javascript:void(0)" data-dismiss="modal" data-toggle="modal" data-target="#forgotPassModal">Forgot Password?</a>
                     </div>
                     <div class="d-flex justify-content-between align-items-center w-50 mx-auto mt-3 modal-social-icon">
                         <a href="{{route('redirectToInstagram')}}"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
@@ -736,15 +715,13 @@
     </div>
 </div>
 <!--Forgot Password Modal -->
-<div class="modal fade" id="forgotPassModal" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalTitle"
-    aria-hidden="true">
+<div class="modal fade" id="forgotPassModal" tabindex="-1" role="dialog" aria-labelledby="forgotPassModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
             <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Forgot <span>Password?</span></h2>
-                <img class="close-modal" style="width: 8%;" data-dismiss="modal"
-                    src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+                <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <form action="">
                 <div class="modalContent py-3 ">
@@ -752,7 +729,7 @@
                         <img style="width: 55%;" src="{{asset('public/assets/images/forget-pass.svg')}}" alt="">
                     </div>
                     <div class="user-input-wrp">
-                        <br/>
+                        <br />
                         <input type="text" class="inputText" required id="forgot_email">
                         <span class="floating-label">Email Address</span>
                     </div>
@@ -765,15 +742,13 @@
     </div>
 </div>
 <!--Verify OTP Modal -->
-<div class="modal fade" id="verifyOtpModal" tabindex="-1" role="dialog" aria-labelledby="verifyOtpModalTitle"
-    aria-hidden="true">
+<div class="modal fade" id="verifyOtpModal" tabindex="-1" role="dialog" aria-labelledby="verifyOtpModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
             <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Verify <span>OTP</span></h2>
-                <img class="close-modal" style="width: 8%;" data-dismiss="modal"
-                    src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+                <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <form action="">
                 <div class="modalContent py-3 ">
@@ -803,15 +778,13 @@
     </div>
 </div>
 <!--Reset Password Modal -->
-<div class="modal fade" id="resetPassModal" tabindex="-1" role="dialog" aria-labelledby="resetPassModalTitle"
-    aria-hidden="true">
+<div class="modal fade" id="resetPassModal" tabindex="-1" role="dialog" aria-labelledby="resetPassModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
             <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
                 <h2>Reset <span>Password</span></h2>
-                <img class="close-modal" style="width: 8%;" data-dismiss="modal"
-                    src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+                <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <hr>
             <form action="">
@@ -851,11 +824,11 @@
             var password = $('#password').val();
             var password_confirmation = $('#password_confirmation').val();
 
-        if (first_name != "" && last_name != "" && email != "" && password != "") {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
+            if (first_name != "" && last_name != "" && email != "" && password != "") {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
 
                     url: `{{route('register')}}`,
                     type: "POST",
@@ -883,10 +856,6 @@
                         $('.loaderDiv').hide();
                         toastr.error(jqXHR.responseJSON.message);
                     }
-                },
-                error: function(jqXHR, exception) {
-                    toastr.error(jqXHR.responseJSON.message);
-                }
 
                 });
             } else {
@@ -1115,168 +1084,74 @@
         });
 
     });
-
-    // Login API Call 
-    $('#login_submit').on('click', function(e) {
-        e.preventDefault();
-        var email = $('#login_email').val();
-        var password = $('#login_password').val();
-
-        if (email != "" && password != "") {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-
-                url: 'http://localhost/workitpt/api/login',
-                type: "POST",
-                data: {
-
-                    email: email,
-                    password: password,
-
-                },
-                cache: false,
-                success: function(dataResult) {
-                    console.log(dataResult);
-                    window.location.href = '/workitpt/trainers';
-
-
-                }
-            });
-        } else {
-            // alert('Please fill all the field !');
-        }
-    });
-
-    // Email Validation Signup
-    $(document).on('keyup', "#email", function() {
-        let value = $(this).val();
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-            $("#email").removeClass('errorInput');
-            $("#email").addClass('successInput');
-        } else {
-            $("#email").removeClass('successInput');
-            $("#email").addClass('errorInput');
-        }
-    });
-    // Email Validation Login
-    $(document).on('keyup', "#login_email", function() {
-        let value = $(this).val();
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-            $("#login_email").removeClass('errorInput');
-            $("#login_email").addClass('successInput');
-        } else {
-            $("#login_email").removeClass('successInput');
-            $("#login_email").addClass('errorInput');
-        }
-    });
-
-    ///....get data from in put and stor in variable........///
-    $('#forgot_submit').on('click', function(e) {
-        e.preventDefault();
-
-        var email = $('#forgot_email').val();
-
-        // console.log(email);
-
-
-        if (email != "") {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-
-                url: 'http://localhost/workitpt/api/verify/email',
-                type: "POST",
-                data: {
-                    email: email,
-
-                },
-                cache: false,
-                success: function(dataResult) {
-                    console.log(dataResult);
-                    // window.location.href = '/workitpt/trainers';
-                    $('#forgotPassModal').modal('hide');
-                    $('#verifyOtpModal').modal('show');
-
-
-                }
-            });
-        } else {
-            // alert('Please fill all the field !');
-        }
-    });
-
-});
 </script>
 <script>
-const slickSettings = {
-    arrows: true,
-    infinite: true,
-    prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left' aria-hidden='true'></i> ",
-    nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right' aria-hidden='true'></i>",
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [{
-            breakpoint: 2000,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
+    const slickSettings = {
+        arrows: true,
+        infinite: true,
+        prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left' aria-hidden='true'></i> ",
+        nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right' aria-hidden='true'></i>",
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [{
+                breakpoint: 2000,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 1140,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
             }
-        },
-        {
-            breakpoint: 1140,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
-            }
-        },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 576,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        }
-    ]
-}
-let digitValidate = function(ele) {
-    ele.value = ele.value.replace(/[^0-9]/g, '');
-}
-
-let tabChange = function(val) {
-    let ele = document.getElementsByClassName("otp");
-    if (ele[val - 1].value != '') {
-        ele[val].focus();
-    } else if (ele[val - 1].value == '') {
-        ele[val - 2].focus()
+        ]
     }
-}
+    let digitValidate = function(ele) {
+        ele.value = ele.value.replace(/[^0-9]/g, '');
+    }
+
+    let tabChange = function(val) {
+        let ele = document.getElementsByClassName("otp");
+        if (ele[val - 1].value != '') {
+            ele[val].focus();
+        } else if (ele[val - 1].value == '') {
+            ele[val - 2].focus()
+        }
+    }
 
 
-// $('.js-slick-carousel').on('init', handleSlickInit);
-$('.js-slick-carousel').slick(slickSettings);
+    // $('.js-slick-carousel').on('init', handleSlickInit);
+    $('.js-slick-carousel').slick(slickSettings);
 
-// reinitialization
-$('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
+    // reinitialization
+    $('.js-slick-carousel').on('reInit', () => console.log('slick re-init fired'));
 
-$(window).resize(handleResize);
+    $(window).resize(handleResize);
 </script>
 <script>
-$('.modal-view').click(function() {
-    $('body').addClass('new')
-})
-$('.close-modal').click(function() {
-    $('body').removeClass('new')
-})
+    $('.modal-view').click(function() {
+        $('body').addClass('new')
+    })
+    $('.close-modal').click(function() {
+        $('body').removeClass('new')
+    })
 </script>
 <!-- <script>
     $(".passInput").on('keyup', function() {
@@ -1317,119 +1192,119 @@ $('.close-modal').click(function() {
     })
 </script> -->
 <script>
-$(".passInput").on('keyup', function() {
-    let values = $(".passInput").val();
-    if (values.length >= 6) {
-        $(".passInput").removeClass('login-email-field-red');
-        $(".passInput").addClass('login-email-field-green');
-        $('.right-inner-addon i').css('color', '#151C00')
-    } else {
-        $(".passInput").removeClass('login-email-field-green');
-        $(".passInput").addClass('login-email-field-red');
-        $('.login-right-inner-addon i').css('color', '#FF0000')
-    }
+    $(".passInput").on('keyup', function() {
+        let values = $(".passInput").val();
+        if (values.length >= 6) {
+            $(".passInput").removeClass('login-email-field-red');
+            $(".passInput").addClass('login-email-field-green');
+            $('.right-inner-addon i').css('color', '#151C00')
+        } else {
+            $(".passInput").removeClass('login-email-field-green');
+            $(".passInput").addClass('login-email-field-red');
+            $('.login-right-inner-addon i').css('color', '#FF0000')
+        }
 
-})
+    })
 
-$(".cpassInput").on('keyup', function() {
-    let values = $(".cpassInput").val();
-    if (values.length >= 6) {
-        $(".cpassInput").removeClass('login-email-field-red');
-        $(".cpassInput").addClass('login-email-field-green');
-        $('.confirm-right-inner-addon i').css('color', '#151C00')
-    } else {
-        $(".cpassInput").removeClass('login-email-field-green');
-        $(".cpassInput").addClass('login-email-field-red');
-        $('.confirm-right-inner-addon i').css('color', '#FF0000')
-    }
+    $(".cpassInput").on('keyup', function() {
+        let values = $(".cpassInput").val();
+        if (values.length >= 6) {
+            $(".cpassInput").removeClass('login-email-field-red');
+            $(".cpassInput").addClass('login-email-field-green');
+            $('.confirm-right-inner-addon i').css('color', '#151C00')
+        } else {
+            $(".cpassInput").removeClass('login-email-field-green');
+            $(".cpassInput").addClass('login-email-field-red');
+            $('.confirm-right-inner-addon i').css('color', '#FF0000')
+        }
 
-})
+    })
 
-$(".signpassInput").on('keyup', function() {
-    let values = $(".signpassInput").val();
-    if (values.length >= 6) {
-        $(".signpassInput").removeClass('login-email-field-red');
-        $(".signpassInput").addClass('login-email-field-green');
-        $('.sign-right-inner-addon i').css('color', '#151C00')
-    } else {
-        $(".signpassInput").removeClass('login-email-field-green');
-        $(".signpassInput").addClass('login-email-field-red');
-        $('.sign-right-inner-addon i').css('color', '#FF0000')
-    }
+    $(".signpassInput").on('keyup', function() {
+        let values = $(".signpassInput").val();
+        if (values.length >= 6) {
+            $(".signpassInput").removeClass('login-email-field-red');
+            $(".signpassInput").addClass('login-email-field-green');
+            $('.sign-right-inner-addon i').css('color', '#151C00')
+        } else {
+            $(".signpassInput").removeClass('login-email-field-green');
+            $(".signpassInput").addClass('login-email-field-red');
+            $('.sign-right-inner-addon i').css('color', '#FF0000')
+        }
 
-})
+    })
 </script>
 <script>
-$('#loginhidePass').hide();
-$('#loginshowPass').click(function() {
-    $('#loginshowPass').hide();
-    $('#loginhidePass').show();
-    ////login password
-    var passInput = $("#login_password");
-    if (passInput.attr('type') === 'password') {
-        passInput.attr('type', 'text');
-    } else {
-        passInput.attr('type', 'password');
-    }
-
-})
-/////signup confirm password
-
-$('#confirmhidePass').hide();
-$('#confirmshowPass').click(function() {
-    $('#confirmshowPass').hide();
-    $('#confirmhidePass').show();
-    var cpassInput = $("#password_confirmation");
-    if (cpassInput.attr('type') === 'password') {
-        cpassInput.attr('type', 'text');
-    } else {
-        cpassInput.attr('type', 'password');
-    }
-})
-/////signup password
-$('#signhidePass').hide();
-$('#signshowPass').click(function() {
-    $('#signshowPass').hide();
-    $('#signhidePass').show();
-    var signPassInput = $("#password");
-    if (signPassInput.attr('type') === 'password') {
-        signPassInput.attr('type', 'text');
-    } else {
-        signPassInput.attr('type', 'password');
-    }
-})
-$('#loginhidePass').on('click', function() {
     $('#loginhidePass').hide();
-    $('#loginshowPass').show();
-    var passInput = $("#login_password");
-    if (passInput.attr('type') === 'password') {
-        passInput.attr('type', 'text');
-    } else {
-        passInput.attr('type', 'password');
-    }
-})
+    $('#loginshowPass').click(function() {
+        $('#loginshowPass').hide();
+        $('#loginhidePass').show();
+        ////login password
+        var passInput = $("#login_password");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
 
-////// sign up confirm password
-$('#confirmhidePass').on('click', function() {
+    })
+    /////signup confirm password
+
     $('#confirmhidePass').hide();
-    $('#confirmshowPass').show();
-    var cpassInput = $("#password_confirmation");
-    if (cpassInput.attr('type') === 'password') {
-        cpassInput.attr('type', 'text');
-    } else {
-        cpassInput.attr('type', 'password');
-    }
-})
-//////////sign up password
-$('#signhidePass').on('click', function() {
+    $('#confirmshowPass').click(function() {
+        $('#confirmshowPass').hide();
+        $('#confirmhidePass').show();
+        var cpassInput = $("#password_confirmation");
+        if (cpassInput.attr('type') === 'password') {
+            cpassInput.attr('type', 'text');
+        } else {
+            cpassInput.attr('type', 'password');
+        }
+    })
+    /////signup password
     $('#signhidePass').hide();
-    $('#signshowPass').show();
-    var signPassInput = $("#password");
-    if (signPassInput.attr('type') === 'password') {
-        signPassInput.attr('type', 'text');
-    } else {
-        signPassInput.attr('type', 'password');
-    }
-})
+    $('#signshowPass').click(function() {
+        $('#signshowPass').hide();
+        $('#signhidePass').show();
+        var signPassInput = $("#password");
+        if (signPassInput.attr('type') === 'password') {
+            signPassInput.attr('type', 'text');
+        } else {
+            signPassInput.attr('type', 'password');
+        }
+    })
+    $('#loginhidePass').on('click', function() {
+        $('#loginhidePass').hide();
+        $('#loginshowPass').show();
+        var passInput = $("#login_password");
+        if (passInput.attr('type') === 'password') {
+            passInput.attr('type', 'text');
+        } else {
+            passInput.attr('type', 'password');
+        }
+    })
+
+    ////// sign up confirm password
+    $('#confirmhidePass').on('click', function() {
+        $('#confirmhidePass').hide();
+        $('#confirmshowPass').show();
+        var cpassInput = $("#password_confirmation");
+        if (cpassInput.attr('type') === 'password') {
+            cpassInput.attr('type', 'text');
+        } else {
+            cpassInput.attr('type', 'password');
+        }
+    })
+    //////////sign up password
+    $('#signhidePass').on('click', function() {
+        $('#signhidePass').hide();
+        $('#signshowPass').show();
+        var signPassInput = $("#password");
+        if (signPassInput.attr('type') === 'password') {
+            signPassInput.attr('type', 'text');
+        } else {
+            signPassInput.attr('type', 'password');
+        }
+    })
 </script>
 @endsection
