@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
 use Illuminate\Support\Facades\Redirect;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -32,14 +33,22 @@ class AuthController extends Controller
         if (!$registeredTrainer) {
             return $this->sendError('User has not registered. Please try again later');
         }
-
-
+        $UserData = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
         $trainerData  = User::find($registeredTrainer->id);
+        Auth::loginUsingId($trainerData['id']);
         $tarner_profile = TrainerProfile::create([
             'user_id' => $trainerData->id,
         ]);
+        // if (!auth()->attempt($UserData)) {
+        //     return $this->sendError('Try again. Wrong password.Try again or click forget password to reset your password.');
+        // }
+        // $authUser = auth()->user();
+        $trainerData->token = $trainerData->createToken('API Token')->accessToken;
 
-        $trainerData->token = $registeredTrainer->createToken('API Token')->accessToken;
+
         // return $this->sendResponse($trainerData, 'Trainer Registered Successfully!');
         return Redirect::to('/trainer/steptwo');
     }
@@ -48,8 +57,28 @@ class AuthController extends Controller
     public function updateProfileStwo(Request $request)
     {
         $data = $request->all();
-        $user = User::where('id', auth()->user()->id)->update([$data]);
-        if (!$user) {
+        // dd(auth()->user()->id);
+        $trainer = User::where('id', auth()->user()->id)->update([
+            'date_of_birth' => $request->date_of_birth,
+            'emergency_contact' => $request->emergency_contact,
+            'gender' => $request->gender,
+            'country' => $request->country,
+            'state' => $request->state,
+            'workout_location' => $request->workout_location,
+            'weight' => $request->weight,
+            'weight_unit' => $request->weight_unit,
+            'height' => $request->height,
+            'hieght_unit' => $request->height_unit,
+            'madical_condition' => $request->madical_condition,
+            'relationship_emergency_contact' => $request->relation_emergency,
+            // $data
+        ]);
+        $social = TrainerProfile::where('user_id', auth()->user()->id)->update([
+            'facebook_url' => $request->facebook,
+            'instagram_url' => $request->instagram,
+            'linkedin_url' => $request->linkedin
+        ]);
+        if (!$trainer) {
             return $this->sendError('User has not registered. Please try again later');
         }
 

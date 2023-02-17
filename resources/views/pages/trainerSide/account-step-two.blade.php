@@ -304,6 +304,10 @@
             top: -7px;
 
         }
+
+        input[type=radio].color-radio {
+            height: 10px !important;
+        }
     }
 
     /* ................Modal............ */
@@ -485,10 +489,32 @@
         .pagination-box p {
             font-size: 0.5rem;
         }
+
+
+    }
+
+    .button {
+        background: #E37048;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        color: white;
+        padding: 25px 0;
+        border-radius: 10px;
+        text-align: center;
+        width: 25%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        min-width: 200px;
+        height: 50px;
     }
 </style>
 
 @section('content')
+
 <!-- header-section -->
 <div class="container-fluid update-info-header">
     <div class="container">
@@ -534,12 +560,13 @@
 
 <!-- ............Form Section................ -->
 <div class="container pt-5">
-    <form>
+    <form action="{{route('update_profile_two')}}" method="post">
+        @csrf
         <div class="row">
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Contact</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress" name="phone">
+                    <label for="inputAddress" class=" ">Relationship Emergency Contact</label>
+                    <input type="text" class="form-control pl-4" id="inputAddress" name="relation_emergency">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
@@ -558,8 +585,8 @@
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Gender</label>
                     <select class="wide s-select form-control pl-4" name="gender">
-                        <option value="">Male</option>
-                        <option value="">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
             </div>
@@ -568,9 +595,9 @@
                     <label for="inputAddress2" class=" ">Country</label>
                     <div class="select-outer">
                         <select class="wide s-select form-control pl-4" id="typeselector" name="country">
-                            <option value="mon">USA</option>
-                            <option value="mon">Australia</option>
-                            <option value="mon">Austria</option>
+                            <option value="USA">USA</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
@@ -580,10 +607,10 @@
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
                     <select class="wide s-select form-control pl-4" id="typeselector" name="state">
-                        <option value="mon">Alaska</option>
-                        <option value="mon">Washington</option>
-                        <option value="mon">New South Wales</option>
-                        <option value="mon">Tirol</option>
+                        <option value="Alaska">Alaska</option>
+                        <option value="Washington">Washington</option>
+                        <option value="South">New South Wales</option>
+                        <option value="Tirol">Tirol</option>
                     </select>
                 </div>
             </div>
@@ -628,17 +655,17 @@
 
                     <label for="inputAddress2" class=" ">Height</label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="feet" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'feet') {
+                        <input class="color-radio mx-2" value="feet" type="radio" name="height_unit" <?php if (auth()->user()->hieght_unit == 'feet') {
                                                                                                             echo 'checked';
                                                                                                         } ?>>Feet
                     </label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="cm" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'cm') {
+                        <input class="color-radio mx-2" value="cm" type="radio" name="height_unit" <?php if (auth()->user()->hieght_unit == 'cm') {
                                                                                                         echo 'checked';
                                                                                                     } ?>>CM
                     </label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" type="radio" value="inches" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'inches') {
+                        <input class="color-radio mx-2" type="radio" value="inches" name="height_unit" <?php if (auth()->user()->hieght_unit == 'inches') {
                                                                                                             echo 'checked';
                                                                                                         } ?>>Inches
                     </label>
@@ -658,7 +685,7 @@
                     <label for="inputCity" class=" ">Add Facebook URL</label>
                     <div class="input-container">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="inputCity" name="facebook_id">
+                        <input type="url" class="form-control pl-4" id="inputCity" name="facebook">
                     </div>
 
                 </div>
@@ -668,7 +695,7 @@
                     <label for="inputCity" class=" ">Add Insta URL</label>
                     <div class="input-container">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="inputCity" name="insta_id">
+                        <input type="url" class="form-control pl-4" id="inputCity" name="instagram">
                     </div>
 
                 </div>
@@ -678,7 +705,7 @@
                     <label for="inputCity" class=" ">Add Linkedin URL</label>
                     <div class="input-container">
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="inputCity">
+                        <input type="url" class="form-control pl-4" id="inputCity" name="linkedin">
                     </div>
 
                 </div>
@@ -704,10 +731,14 @@
         </div>
         <div class="col-12 my-5">
             <div class=" profile-nxt-btn">
-                <a href="{{url('/trainer/stepthree')}}" class="update-profile-form-btn">Next</a>
+                <!-- <a href="{{url('/trainer/stepthree')}}" class="update-profile-form-btn">Next</a> -->
+
+
+                <button class="button" type="submit">Next</button>
             </div>
         </div>
-    </form>
+</div>
+</form>
 
 </div>
 
