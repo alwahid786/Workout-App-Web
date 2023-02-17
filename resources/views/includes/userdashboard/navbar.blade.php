@@ -18,73 +18,7 @@
     </button>
 
     <div class="collapse navbar-collapse nav-main pl-0" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto sidenav pt-lg-5" id="navAccordion" data-aos="fade-up">
-
-            <li class="nav-item">
-                <a href="{{url('dashboard')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/explore-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/explore-w.svg')}}" alt="image">
-                    </div>
-
-                    Explore
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="{{url('userdashboard')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/dashboard-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/dashboard-w.svg')}}" alt="image">
-                    </div>
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="{{url('/dashboard/map')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/search-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/search-w.svg')}}" alt="image">
-                    </div>
-                    Search
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{url('/userdashboard/session')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
-                    </div>
-
-                    My Session
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{url('/chat')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/message-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/message-w.svg')}}" alt="image">
-                    </div>
-
-                    Messages
-                </a>
-            </li>
-            <!-- <li class="nav-item">
-                <a href="{{url('/payment')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/payment-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/payment-w.svg')}}" alt="image">
-                    </div>
-
-                    Setting
-                </a>
-            </li> -->
-
-
-
-
-
-        </ul>
-        <div class="nav-profile-name pl-lg-3">
+        <div class="nav-profile-name pl-lg-3 ">
             <h1>Welcome, John Smith </h1>
             <p>Wed, 23 Nov 2022</p>
         </div>
@@ -154,6 +88,85 @@
             </li>
 
         </ul>
+        <ul class="navbar-nav mr-auto sidenav pt-lg-5" id="navAccordion" data-aos="fade-up">
+
+            <li class="nav-item">
+                <a href="{{url('dashboard')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/explore-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/explore-w.svg')}}" alt="image">
+                    </div>
+
+                    Explore
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="{{url('userdashboard')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/dashboard-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/dashboard-w.svg')}}" alt="image">
+                    </div>
+
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="{{url('/dashboard/map')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/search-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/search-w.svg')}}" alt="image">
+                    </div>
+
+                    Search
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/userdashboard/session')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
+                    </div>
+
+                    My Session
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/dashboard/trainer')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
+                    </div>
+
+                    List of Trainer
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/chat')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/message-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/message-w.svg')}}" alt="image">
+                    </div>
+
+                    Messages
+                </a>
+            </li>
+            <!-- <li class="nav-item">
+                <a href="{{url('/payment')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/payment-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/payment-w.svg')}}" alt="image">
+                    </div>
+
+                    Setting
+                </a>
+            </li> -->
+
+
+
+
+
+        </ul>
+
 
 
     </div>

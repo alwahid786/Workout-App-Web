@@ -373,7 +373,7 @@
         padding: 0 5px;
     }
 
-    .input-location input:active {
+    .input-location:active input .input-location:focus input {
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
@@ -724,5 +724,8 @@
             $(this).html(div2 + div1)
         })
     }
+</script>
+<script>
+    $('.left-inner-addon').css('display', 'none');
 </script>
 @endsection

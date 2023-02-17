@@ -383,8 +383,8 @@
             </div>
             <div class="col-12" data-aos="fade-up">
                 <div class="form-outline pro-form">
-                    <label class="form-label" for="textAreaExample">Tell Us About yourself <span>(256)</span></label>
-                    <textarea class="form-control" id="textAreaExample1" rows="4"></textarea>
+                    <label class="form-label" for="textAreaExample">Tell Us About yourself <span>(256 Characters)</span></label>
+                    <textarea class="form-control" maxlength="256" id="textAreaExample1" rows="4"></textarea>
                 </div>
             </div>
             <div class="col-12 my-5">

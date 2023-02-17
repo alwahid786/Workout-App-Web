@@ -1053,11 +1053,39 @@
 @include('includes.userdashboard.navbar')
 
 <div class="content-wrapper">
-    <div class="container-fluid mb-4">
-        <div class="dashboard-header-left my-4 pt-2">
-            <h1>My Sessions</h1>
-        </div>
-        <div class="row ">
+    <div class="container-fluid mb-4 ">
+        <div class="content-wrapper-inner p-3">
+            <div class="row">
+                <div class="col-lg-12 my-2">
+
+                    <div class="filter-menu">
+                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                            <div class="filter-left-select-heading drop-icon-parent">
+                                <h1>Workout Type</h1>
+                                <div class="drop-icon">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1">
+                                        <option>Yoga</option>
+                                        <option>Yoga</option>
+                                        <option>Yoga</option>
+                                        <option>Yoga</option>
+                                        <option>Yoga</option>
+                                    </select>
+                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                            <div class="filter-left-select-heading drop-icon-parent">
+                                <h1>Location</h1>
+                                <div class="drop-icon">
+                                    <select class="form-control wide s-select" id="exampleFormControlSelect1">
+                                        <option>London</option>
+                                        <option>London</option>
+                                        <option>London</option>
+                                        <option>London</option>
+                                        <option>London</option>
+                                    </select>
+                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
 
             <div class="container-fluid mb-4 ">

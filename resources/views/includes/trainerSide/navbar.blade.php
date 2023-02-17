@@ -447,76 +447,7 @@
     </button>
 
     <div class="collapse navbar-collapse nav-main pl-0" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto sidenav pt-lg-5" id="navAccordion" data-aos="fade-up">
-
-            <li class="nav-item">
-                <a href="{{url('/trainer/dashboard')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/dashboard-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/dashboard-w.svg')}}" alt="image">
-                    </div>
-
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="{{url('trainer/calendar')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/calendar-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/calendar-w.svg')}}" alt="image">
-                    </div>
-
-                    Calendar
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a href="{{url('/trainer/clientlist')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
-                    </div>
-
-                    List of Clients
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{url('/trainer/session')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/trainerimages/session-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/trainerimages/session-w.svg')}}" alt="image">
-                    </div>
-
-                    Sessions Schedule
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{url('/trainer/chat')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/message-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/message-w.svg')}}" alt="image">
-                    </div>
-
-                    Messages
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{url('/trainer/payment')}}" class=" nav-link sidenav-item ">
-                    <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/trainerimages/payment-g.png')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/trainerimages/payment-w.png')}}" alt="image">
-                    </div>
-
-                    Payment Details
-                </a>
-            </li>
-
-
-
-
-
-
-        </ul>
-        <div class="nav-profile-name pl-lg-3">
+        <div class="nav-profile-name pl-lg-3 ">
             <h1>Welcome, John Smith </h1>
             <p>Wed, 23 Nov 2022</p>
         </div>
@@ -591,6 +522,77 @@
             </li>
 
         </ul>
+        <ul class="navbar-nav mr-auto sidenav pt-lg-5" id="navAccordion" data-aos="fade-up">
+
+            <li class="nav-item">
+                <a href="{{url('/trainer/dashboard')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/dashboard-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/dashboard-w.svg')}}" alt="image">
+                    </div>
+
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="{{url('trainer/calendar')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/calendar-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/calendar-w.svg')}}" alt="image">
+                    </div>
+
+                    Calendar
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a href="{{url('/trainer/clientlist')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
+                    </div>
+
+                    List of Clients
+                </a>
+            </li>
+            <!-- <li class="nav-item">
+                <a href="{{url('/trainer/session')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/trainerimages/session-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/trainerimages/session-w.svg')}}" alt="image">
+                    </div>
+
+                    Sessions Schedule
+                </a>
+            </li> -->
+
+            <li class="nav-item">
+                <a href="{{url('/trainer/payment')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/trainerimages/payment-g.png')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/trainerimages/payment-w.png')}}" alt="image">
+                    </div>
+
+                    Payment Details
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{url('/trainer/chat')}}" class=" nav-link sidenav-item ">
+                    <div class="nav-link-image-outer mr-1">
+                        <img class="nav-y" src="{{asset('public/assets/images/message-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/message-w.svg')}}" alt="image">
+                    </div>
+
+                    Messages
+                </a>
+            </li>
+
+
+
+
+
+
+        </ul>
+
 
 
     </div>

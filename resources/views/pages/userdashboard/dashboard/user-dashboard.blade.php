@@ -504,7 +504,7 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4 py-3">
         <div class="row">
-            <div class="col-12">
+            <div class="col-xl-8">
                 <div class="workout-banner-card">
                     <div class="row">
                         <div class="col-md-7 my-auto">
@@ -526,19 +526,10 @@
                         <div class="col-sm-6 col-md-4 my-2">
                             <a href="{{url('/userdashboard/upcomingsessionlist')}}">
                                 <div class="work-session-card red-session-card py-4 px-1">
-                                    @if($upcoming_session != null)
-
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your Upcoming <span>Session</span> </h1>
                                         <p>{{$total_upcomingsession}}</p>
                                     </div>
-                                    @else
-                                    <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your Upcoming <span>Sessions</span> </h1>
-                                        <p>0</p>
-                                    </div>
-                                    @endif
-
                                     <div class="work-session-card-right">
                                         <img src="{{asset('public/assets/images/red-card-icon.svg')}}" alt="">
                                     </div>
@@ -547,44 +538,31 @@
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
                             <a href="{{url('/userdashboard/pastsession')}}">
-
                                 <div class="work-session-card blue-session-card py-4 px-1">
-                                    @if($past_session != null)
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your Past <span>Session</span> </h1>
                                         <p>{{$total_pastsession}}</p>
                                     </div>
-                                    @else
-                                    <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your Past <span>Sessions</span> </h1>
-                                        <p>0</p>
-                                    </div>
-                                    @endif
                                     <div class="work-session-card-right">
                                         <img src="{{asset('public/assets/images/blue-card-icon.svg')}}" alt="">
                                     </div>
                                 </div>
                             </a>
+
                         </div>
                         <div class="col-sm-6 col-md-4 my-2">
                             <a href="{{url('/dashboard/trainer')}}">
                                 <div class="work-session-card yellow-session-card py-4 px-1 ">
-                                    @if($total_trainer!=null)
-                                    <div class="work-session-card-left py-1 pl-3">
-                                        <h1>Your<span>Trainers</span> </h1>
-                                        <p>{{$total_trainer}}</p>
-                                    </div>
-                                    @else
                                     <div class="work-session-card-left py-1 pl-3">
                                         <h1>Your<span>Trainer</span> </h1>
                                         <p>{{$total_trainer}}</p>
                                     </div>
-                                    @endif
                                     <div class="work-session-card-right">
                                         <img src="{{asset('public/assets/images/yellow-card-icon.svg')}}" alt="">
                                     </div>
                                 </div>
                             </a>
+
                         </div>
 
                     </div>
@@ -713,10 +691,8 @@
 
 
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-8 mt-4 mt-xl-0">
-                {{-- <div class="workout-calendar p-3">
+            <div class="col-xl-4 mt-4 mt-xl-0">
+                <div class="workout-calendar p-3">
                     <!-- <div id="demo"></div> -->
                     <div class=" card-bg ">
                         <h2 class="mb-4 text-left cal-head">Calendar</h2>
@@ -790,109 +766,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
-
-                <div class="workout-today-section">
-                    <div class="workout-today-header pt-2 pb-1">
-                        <h1>Your Today’s Booked Session</h1>
-                    </div>
-                    <div class="workout-today-wrapper">
-                        @if(count($current_session) > 0)
-                        <!-- table -->
-                        @foreach($current_session as $current)
-
-                        <!-- <a href="{{url('/userdashboard/upcomingsessionone')}}"> -->
-                        <a href="{{url('/userdashboard/sessionone/'.$current['id'])}}">
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">{{$current['session']['class']['category']['title']}} Session </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> {{$current['session']['class']['trainer']['name']}} </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>{{$current['session']['start_time']}}-{{$current['session']['end_time']}}</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="workout-table-border workout-table-border-blue "></div>
-                            </div>
-                        </a>
-                        @endforeach
-                        @else
-                        ..........................................................................................
-                        @endif
-                    </div>
                 </div>
-                <div class="workout-upcoming-section">
-                    <div class="workout-upcoming-header pt-2 pb-1">
-                        <h1>Upcoming Sessions</h1>
-                    </div>
-                    <div class="workout-upcoming-wrapper pr-2">
-                        @if($upcoming_session != null)
-                        @foreach($upcoming_session as $upcoming)
-                        <!-- table -->
-                        <!-- <a href="{{url('/userdashboard/upcomingsessiongroup')}}"> -->
-                        <a href="{{url('/userdashboard/sessionone/'.$upcoming['id'])}}">
-
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">{{$upcoming['session']['class']['category']['title']}} Session </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> <img src="{{asset('public/assets/images/name-icon.svg')}}" alt=""> {{$upcoming['session']['class']['trainer']['name']}} </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>{{$upcoming['session']['start_time']}}-{{$upcoming['session']['end_time']}}</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="workout-table-border workout-table-border-blue "></div>
-                            </div>
-                        </a>
-                        @endforeach
-                        @else
-                        ....................................................................................
-                        @endif
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 mt-4 mt-xl-0">
                 <div class="workout-right-session">
                     <h2 class="my-4">Past Session</h2>
                     <div class="col text-right workout-right-session-btn">
@@ -925,7 +799,12 @@
                             </div>
                         @endif
                     </div>
+
+
                 </div>
+
+
+
             </div>
         </div>
     </div>

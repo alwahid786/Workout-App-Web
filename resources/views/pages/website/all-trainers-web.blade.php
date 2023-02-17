@@ -180,7 +180,6 @@
 </div>
 
 
-<!-- contact section -->
 <!-- <div class="container-fluid contact-section contactUs position-relative" id="contact-us">
     <div class="container py-4 ">
         <div class="col-12 text-center contact-heading pb-sm-5" data-aos="fade-up">
@@ -226,9 +225,6 @@
     <img class="circleElement2" src="{{asset('public/assets/images/dots-c.svg')}}" alt="">
 </div> -->
 <!-- black div -->
-<!-- <div class="container-fluid py-3 py-sm-5" style="background-color:white;"></div> -->
-
-<!-- Footer Section  -->
 <footer>
     <div class="container-fluid footerSection">
         <div class="row px-sm-5 px-2">
@@ -344,7 +340,7 @@
 
     $(window).resize(handleResize);
 </script>
-<script>
+<!-- <script>
     $('.nav-list .nav-item:nth-of-type(2)').addClass('active')
-</script>
+</script> -->
 @endsection
