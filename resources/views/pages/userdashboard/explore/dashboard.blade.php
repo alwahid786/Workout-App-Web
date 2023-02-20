@@ -133,9 +133,12 @@
                     <div class="col-sm-6">
                         <h1>Trainers</h1>
                     </div>
-                    <div class="col-sm-6 ">
-                        <input class="trainer-search pl-3 form-control" type="text" name="" placeholder="Search Here">
-                    </div>
+                    <form action="{{route('dashboard')}}">
+
+                        <div class="col-sm-6 ">
+                            <input class="trainer-search pl-3 form-control" type="text" name="" placeholder="Search Here">
+                        </div>
+                    </form>
                 </div>
 
             </div>
@@ -153,8 +156,8 @@
 
                         <div class="session-card-inner">
                             <div class="session-card-inner-name my-3">
-                                <h1>John Smith</h1>
-                                <p>Yoga</p>
+                                <h1>{{$trainer_data['name']}}</h1>
+                                <p>yoga</p>
                             </div>
                             <div class="rating-star my-3">
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -164,10 +167,10 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="session-card-inner-link my-3">
-                                <a href="{{url('/dashboard/class-detail')}}">Book Now</a>
+                                <a href="{{url('/dashboard/class-detail/'.$trainer_data['id'])}}">Book Now</a>
                             </div>
                         </div>
-                        <p class="session-card-text">Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur ascing elit, sed do eiusmod tempor </p>
+                        <p class="session-card-text">{{$trainer_data['about']}}</p>
                     </div>
                 </div>
                 @endforeach

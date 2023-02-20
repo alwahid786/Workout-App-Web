@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
 
     Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
 
-    Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
+    Route::any('/dashboard', [UserController::class, 'dashbord'])->name('dashboard');
     // Route::post('categories/trainer/{id}', [UserController::class, 'category_trainer'])->name('categories/trainer');
     Route::any('/dashboard/categories/{id}', [UserController::class, 'categoryDetail'])->name('/dashboard/categories');
     Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');

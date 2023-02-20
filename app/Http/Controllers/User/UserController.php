@@ -169,9 +169,13 @@ class UserController extends Controller
     }
 
     /////.....get all trainer........./////
-    public function dashbord()
+    public function dashbord(Request $request)
     {
-        $all_trainer = User::where('user_type', '=', 'trainer')->with('session.category')->get();
+        $all_trainer = (new User)->newQuery();
+        if ($request->has('search_by') && !empty($request->search_by)) {
+            $all_trainer->where('name', 'Like', '%' . $request->search_by . '%')->get();
+        }
+        $all_trainer = $all_trainer->where('user_type', '=', 'trainer')->with('session.category')->get();
         // Classes::with('session', 'category')->get();
         $class_detail = Classes::with(['category', 'session', 'trainer'])->get();
 
