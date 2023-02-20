@@ -231,19 +231,96 @@
             <div class="col- hero-left text-center text-md-left">
                 <div class="hero-left-content">
                     <h1>Terms and Condition</h1>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container py-3">
     <div class="about-content">
-        <h1>Heading</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vitae similique nulla asperiores doloremque suscipit laborum mollitia? Voluptates veniam minus ipsa modi optio consequatur eaque, sapiente aspernatur eligendi adipisci dolorem, cumque libero numquam nulla quibusdam quasi facere recusandae eum quo rem aliquam exercitationem totam! Quidem, placeat illo autem porro optio voluptates voluptate repellendus recusandae laborum odit nemo, magnam, omnis a animi beatae ab consequuntur accusantium. Libero in voluptatum, ut natus sapiente, cum dolore laborum cupiditate illo possimus unde, neque illum perferendis quibusdam! Ab at nisi vitae optio quia id, exercitationem quae. Ipsum nihil ut unde aliquam omnis excepturi ex dolorem dolor nisi reprehenderit nobis accusantium velit, impedit saepe similique nesciunt! Consectetur recusandae rerum esse sunt odio. Minus, repellendus. In fugiat dolorem aut maxime minima aliquam dolore provident magni odit delectus earum consequatur, vel iure molestiae mollitia quidem autem facere nostrum voluptas? Doloribus magnam praesentium odio ab animi ipsum quos id.</p>
+        <p class="pt-3">Your agreement is with your personal trainer (the “Trainer”) who delivers your training.
+            These Terms and Conditions form part of your agreement with the Trainer. You understand that the Trainer is self-employed and you are entering into a contract with him/her alone.
+            Your instructions to commence personal training will constitute acceptance of these Terms and Conditions when you will become a client (a “Client” or “you”).You are asked to pay special attention to the provisions related to liability and cancellations. This does not affect your statutory rights. Getting into any business with Workitpt, assumes that you have already read and accepted these terms.</p>
+
     </div>
     <div class="about-content">
-        <h1>Heading</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vitae similique nulla asperiores doloremque suscipit laborum mollitia? Voluptates veniam minus ipsa modi optio consequatur eaque, sapiente aspernatur eligendi adipisci dolorem, cumque libero numquam nulla quibusdam quasi facere recusandae eum quo rem aliquam exercitationem totam! Quidem, placeat illo autem porro optio voluptates voluptate repellendus recusandae laborum odit nemo, magnam, omnis a animi beatae ab consequuntur accusantium. Libero in voluptatum, ut natus sapiente, cum dolore laborum cupiditate illo possimus unde, neque illum perferendis quibusdam! Ab at nisi vitae optio quia id, exercitationem quae. Ipsum nihil ut unde aliquam omnis excepturi ex dolorem dolor nisi reprehenderit nobis accusantium velit, impedit saepe similique nesciunt! Consectetur recusandae rerum esse sunt odio. Minus, repellendus. In fugiat dolorem aut maxime minima aliquam dolore provident magni odit delectus earum consequatur, vel iure molestiae mollitia quidem autem facere nostrum voluptas? Doloribus magnam praesentium odio ab animi ipsum quos id.</p>
+        <h1>1. Trainer</h1>
+        <p>Your Trainer is a fully qualified personal trainer with previous experience in both the health and fitness industry as well as specifically in personal training</p>
+    </div>
+    <div class="about-content">
+        <h1>2. Trainer’s Obligations</h1>
+        <p>a.) The Trainer will use his/her skills and knowledge to run a safe session of exercise that will take into account your lifestyle, personal goals, fitness levels and medical history.</p>
+        <p>b.) The Trainer will provide the coaching, supervision, advice and support that you will need to achieve your goals. Apart from the initial consultation each personal training session will last up tp 60 minutes (a “Session”) or up to the trainer's discretion.</p>
+        <p>c.) You understand that the results of any fitness programme cannot be guaranteed. Your progress depends on your effort and co-operation in and outside of the Sessions. In particular you acknowledge that individual results may vary and no particular result is guaranteed by your Trainer.</p>
+        <p>d.) All Client information will be kept strictly private and confidential.</p>
+    </div>
+    <div class="about-content">
+        <h1>3. Your Obligations</h1>
+        <p>a.) It is understood between you and your Trainer that both must commit to your training session 100% in order for you to achieve the results of the session.</p>
+        <p>b.) You are required to arrive on time for each Session so that the Trainer’s full training plan is achieved on each visit.</p>
+        <p>c.) You are required to wear appropriate clothing and footwear.</p>
+        <p>d.) Your Trainer may require a letter of ‘medical clearance’ from your GP. Please be aware that your GP may charge for providing this letter.</p>
+        <p>e.) You understand and agree that it is your responsibility to inform the Trainer of any conditions or changes to your health, now and on-going, which may affect your ability to exercise safely and with minimal risk of injury.</p>
+        <p>f.) If your Trainer requires further medical information from a practitioner, you must provide such details.</p>
+        <p>g.) You understand that there are inherent risks in participating in a programme of strenuous exercise. If you sustain or claim to sustain any injury while participating in training, you acknowledge that the Trainer and Workitpt are not responsible, except where the injury was caused by his/her gross negligence or intentional act.</p>
+        <p>h.) Your Trainer cannot be held liable in any way for undeclared or unknown medical conditions.</p>
+
+    </div>
+    <div class="about-content">
+        <h1>4. Payment</h1>
+        <p>a.) Payment for Sessions must be made in advance. Payments will be held in an escrow account by workitpt and only released to the trainers once the session is completed.</p>
+        <p>b.) Acceptable forms of payment will be shown on the payment screen of the website</p>
+    </div>
+    <div class="about-content">
+        <h1>5. Cancellation and Refunds</h1>
+        <p>a.) 2 hours prior notice of cancellation or postponement is required for all sessions.</p>
+        <p>b.) Notice of less than 2 hours will incur full payment of the full session fee </p>
+        <p>c.) Unforeseen events will be taken into consideration on the day, including but not limited to weather, political factors and others.</p>
+        <p>d.) Once purchased, your Sessions are non-refundable and non-transferable.</p>
+    </div>
+    <div class="about-content">
+        <h1>6. Lateness Policy</h1>
+        <p>a.) If the client is late the Session cannot be extended and will end at the appointed time.</p>
+        <p>b.) If the Trainer is late additional time will be added to the Session or to subsequent Sessions.</p>
+    </div>
+    <div class="about-content">
+        <h1>7. Health and Safety</h1>
+        <p>a.) If your Trainer conducts the Sessions on your premises you are responsible for providing a safe exercise environment.</p>
+        <p>b.) Venues selected, whether indoor or outdoor must be agreed upon by both parties and safety must be assured before beginning the sessions.</p>
+    </div>
+    <div class="about-content">
+        <h1>8. Liability</h1>
+        <p>a.) This Liability section applies only to the extent permitted by law. For the avoidance of doubt, the Trainer and/or Workitpt does not exclude or limit any liability for: (a) personal injury (including sickness and death) where such injury results from his/her gross negligence or willful default, or that of his/her, agents or subcontractors or (b) fraudulent misrepresentation.</p>
+        <p>b.) The Trainer and/or Workitpt (the “Company”) does not accept liability (except as set out below) for any errors and omissions and reserve the right to change information, specifications and descriptions of listed packages and services. The Trainer and/or the Company will use their reasonable effort to correct errors and omissions as quickly as practicable after being notified of them.</p>
+        <p>c.) The Trainer and the Company do not accept any liability whatsoever for any indirect loss, consequential loss, loss of data, loss of income or profit, loss of damage to property and/or loss from claims of third parties arising out of the use of the Company’s website or services purchased from the Trainer and/or the Company or any other damage howsoever caused.</p>
+        <p>d.) The Trainer and/or the Company will only be liable for direct loss up to a maximum total of the price of the Sessions and/or services purchased by the Client in respect of any claim.</p>
+        <p>e.) The Trainer shall not be liable for any loss or injury attributable to:</p>
+        <ol type="i" class="pl-5">
+            <li> the Client’s fault;</li>
+            <li>a third party unconnected with the provision of services provided by your Trainer; or</li>
+            <li> events which your Trainer, nor his/her suppliers or agents could have foreseen or forestalled, even if they had taken reasonable care.</li>
+
+        </ol>
+        <p>
+            f.) The Trainer and/or the company are not liable for loss or damage to your property.
+        </p>
+        <p>g.) The Trainer and/or the company are not liable if you ignore his/her recommendation, at any time, to seek medical advice.</p>
+    </div>
+    <div class="about-content">
+        <h1>9. Intellectual Property</h1>
+        <p>a.) Any marketing, educational or other materials, including the Company’s programmes and/or any variations thereto and its nutrition services materials, made available to you will at all times remain the property of the Company and is subject to copyright.</p>
+        <p>b.) You undertake to use such materials only for your own personal development and not to copy, publish or reproduce any such materials.</p>
+    </div>
+    <div class="about-content">
+        <h1>10. General</h1>
+        <p>a.) You understand that in the unlikely event of your Trainer being unable to continue your training, for any reason, subject to availability you can have your Sessions transferred to another similar Trainer if he/she agrees to take over his/her training or you can request a full refund from your existing Trainer for any unfulfilled Sessions. In any of these cases, you may reach out directly to Workitpt by sending an email or using the contact form on the website</p>
+        <p>b.) The Trainer has the right to change these Terms and Conditions, for example, to be able to offer new services or as required by law. The Trainer will notify you of any change. When such a change(s) is made, if dissatisfied you can cancel this agreement once you have made any payments already due to the Trainer.</p>
+        <p>c.) You are responsible for keeping all your contact information and marketing preferences up to date with the Trainer. In order to comply with the Data Protection Act, the Trainer will only do what you ask him/her to do, or what you have given him/her permission to do with any personal or sensitive information held about you.</p>
+        <p>d.) Your training may be filmed or pictures taken for marketing purposes. Your participation in a Session means you consent to photography, filming and sound recording which may include you as a Client and its use in commercial distribution without payment or copyright. You will be informed beforehand.</p>
+        <p>e.) This agreement is governed by the laws of Hong Kong and is subject to the jurisdiction of the Hong Kong courts.</p>
+
+
     </div>
 </div>
 <!-- Footer Section  -->
@@ -252,7 +329,7 @@
         <div class="row px-sm-5 px-2">
             <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
                 <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
-                <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p>
+                <p class="mt-3">At WorkitPT, we want you to get the training you deserve</p>
                 <p class="text-md-white"><strong>Follow Us</strong></p>
                 <div class="d-flex justify-content-between align-items-center mt-3 footer-social-icons">
                     <a href="https://www.facebook.com/">
