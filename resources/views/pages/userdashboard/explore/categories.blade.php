@@ -180,7 +180,7 @@
         <div class="category-section px-sm-3">
             <div class="dashboard-header ">
                 <div class="dashboard-header-left">
-                    <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Categories</h1>
+                    <h1>Categories</h1>
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
                     @foreach($class as $categories)
@@ -364,8 +364,6 @@
                     slidesToScroll: 1
                 }
             },
-
-
         ]
     };
     $('.js-slick-carouselss').slick(slickSettingsss);

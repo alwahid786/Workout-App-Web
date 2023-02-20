@@ -762,15 +762,23 @@
         font-size: 1rem;
         margin-bottom: 0px;
         background-color: transparent;
-        border: 1px solid #E37048;
-        border-radius: 30px;
+        /* border: 1px solid #E37048;
+        border-radius: 30px; */
         padding: 0.5rem 1rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
         color: #E37048;
         font-weight: 500;
         display: flex;
-        width: 50%;
+        width: 30%;
+    }
+
+    .stack-categories span {
+        font-size: 1rem;
+        margin-bottom: 0px;
+        background-color: transparent;
+        /* border: 1px solid #E37048;
+        border-radius: 30px; */
+        color: #E37048;
+        width: 70%;
     }
 
     .stack-categories h1 span {
@@ -1138,10 +1146,29 @@
                 </div>
 
                 <div class="stack-categories pb-2">
-                    <h1>Difficulty Level: <span>Lorem ipsum dolor sit amet</span></h1>
-                    <h1>Session Type:<span>Lorem ipsum dolor sit amet</span></h1>
-                    <h1>Class Type: <span>Lorem ipsum dolor sit amet</span></h1>
-                    <h1>Preference:<span>Lorem ipsum dolor sit amet</span></h1>
+                    <div class="row text-md-left text-center">
+                        <div class="col-md-6">
+                            <div class="w-100 d-md-flex align-items-center">
+                                <h1>Difficulty Level:</h1>
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="w-100 d-md-flex align-items-center">
+                                <h1>Session Type:</h1>
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="w-100 d-md-flex align-items-center">
+                                <h1>Class Type:</h1>
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="w-100 d-md-flex align-items-center">
+                                <h1>Preference:</h1>
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </div>
+    
+                        </div>
+                    </div>
                 </div>
             </div>
 
