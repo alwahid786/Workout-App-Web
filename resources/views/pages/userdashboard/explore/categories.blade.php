@@ -374,7 +374,7 @@
     $('.js-slick-carouselss').on('reInit', () => console.log('slick re-init fired'));
 </script>
 <script>
-    $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+    $('.sidenav .nav-item:nth-of-type(5)').addClass('active')
 </script>
 <script>
     $(".catergory-card-yellow").click(function(e) {
