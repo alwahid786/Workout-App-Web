@@ -80,13 +80,14 @@ Route::middleware('auth')->group(function () {
     Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
     Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
     Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
+    Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
 
     ///// trainer............//////
     Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
 
     Route::get('/trainer/steptwo', function () {
         return view('pages.trainerSide.account-step-two');
-    }); 
+    });
 });
 
 

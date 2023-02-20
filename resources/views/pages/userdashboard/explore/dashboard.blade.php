@@ -136,13 +136,13 @@
                     <!-- <form action="{{route('dashboard')}}"> -->
 
                     <div class="col-sm-6 ">
-                        <input class="trainer-search pl-3 form-control" type="text" name="search_by" placeholder="Search Here">
+                        <input class="trainer-search pl-3 form-control" type="text" name="search_by" placeholder="Search Here" id="search_by">
                     </div>
                     <!-- </form> -->
                 </div>
 
             </div>
-            <div class="row js-slick-carousels px-sm-5 pt-3">
+            <div class="row js-slick-carousels px-sm-5 pt-3 div" id="trainers">
                 @foreach($trainers as $trainer_data)
 
                 <div class="col">
@@ -701,4 +701,74 @@
         $('.catergory-cards').trigger('click');
     });
 </script> -->
+<script>
+    $('#search_by').on('change', function() {
+
+        // e.preventDefault();
+        var search_by = $('#search_by').val();
+
+        if (search_by != "") {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: `{{route('search/trainers')}}`,
+                type: "POST",
+                data: {
+                    search_by: search_by,
+                },
+                cache: false,
+                success: function(dataResult) {
+                    var result = JSON.stringify(dataResult);
+                    console.log(dataResult);
+                    // alert(result);
+                    $('#trainers').empty();
+                    $(dataResult).each(function(i, e) {
+                        let div = `<div class="col">
+                    <div class="session-card p-2">
+                        <div class="session-card-img">
+                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <div class="session-card-amount">
+                                <h1>$100</h1>
+                            </div>
+                        </div>
+
+                        <div class="session-card-inner">
+                            <div class="session-card-inner-name my-3">
+                                <h1>${e.name}</h1>
+                                <p>yoga</p>
+                            </div>
+                            <div class="rating-star my-3">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="session-card-inner-link my-3">
+                                <a href="{{url('/dashboard/trainer-detail/')}}">Book Now</a>
+                            </div>
+                        </div>
+                        <p class="session-card-text">${e.about}</p>
+                    </div>
+                </div>`
+                        $(".div").append(div);
+
+                    });
+
+
+
+
+                    // window.location.href = `{{url('/dashboard')}}`;
+                },
+                error: function(jqXHR, exception) {
+
+                    toastr.error(jqXHR.responseJSON.message);
+                }
+            });
+        } else {
+            toastr.error('Please fill all the field !');
+        }
+    });
+</script>
 @endsection

@@ -189,6 +189,20 @@ class UserController extends Controller
         $category = json_decode($all_category, true);
         return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class'));
     }
+    //////////..........search input for traniner.......////////
+    public function trainerSearch(Request $request)
+    {
+        $all_trainer = (new User)->newQuery();
+
+        $all_trainer->where('name', 'Like', '%' . $request->search_by . '%')->get();
+        if (!$all_trainer) {
+            return $this->sendError('Dashboard');
+        }
+        // return $this->sendResponse([], 'Payment successfully Done!');
+        return $this->sendResponse([
+            'trainers' => $all_trainer,
+        ], 'Successfully Search');
+    }
     /////....user side trainer detail......../////
     public function trainer_detail(Request $request, $id)
     {
