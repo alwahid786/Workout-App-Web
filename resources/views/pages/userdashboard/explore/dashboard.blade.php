@@ -133,12 +133,12 @@
                     <div class="col-sm-6">
                         <h1>Trainers</h1>
                     </div>
-                    <form action="{{route('dashboard')}}">
+                    <!-- <form action="{{route('dashboard')}}"> -->
 
-                        <div class="col-sm-6 ">
-                            <input class="trainer-search pl-3 form-control" type="text" name="" placeholder="Search Here">
-                        </div>
-                    </form>
+                    <div class="col-sm-6 ">
+                        <input class="trainer-search pl-3 form-control" type="text" name="search_by" placeholder="Search Here">
+                    </div>
+                    <!-- </form> -->
                 </div>
 
             </div>
@@ -167,7 +167,7 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="session-card-inner-link my-3">
-                                <a href="{{url('/dashboard/class-detail/'.$trainer_data['id'])}}">Book Now</a>
+                                <a href="{{url('/dashboard/trainer-detail/'.$trainer_data['id'])}}">Book Now</a>
                             </div>
                         </div>
                         <p class="session-card-text">{{$trainer_data['about']}}</p>
