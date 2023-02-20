@@ -180,7 +180,7 @@
         <div class="category-section px-sm-3">
             <div class="dashboard-header ">
                 <div class="dashboard-header-left">
-                    <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Categories</h1>
+                    <h1>Categories</h1>
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
                     <div class="col">
@@ -662,8 +662,6 @@
                     slidesToScroll: 1
                 }
             },
-
-
         ]
     };
     $('.js-slick-carouselss').slick(slickSettingsss);
@@ -672,6 +670,6 @@
     $('.js-slick-carouselss').on('reInit', () => console.log('slick re-init fired'));
 </script>
 <script>
-    $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+    $('.sidenav .nav-item:nth-of-type(5)').addClass('active')
 </script>
 @endsection
