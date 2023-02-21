@@ -194,10 +194,13 @@ class UserController extends Controller
     {
         $all_trainer = (new User)->newQuery();
 
-        $all_trainer->where('name', 'Like', '%' . $request->search_by . '%')->get();
+        $all_trainer = User::where('name', 'Like', '%' . $request->search_by . '%')->get();
         if (!$all_trainer) {
             return $this->sendError('Dashboard');
         }
+        $all_trainer = json_decode($all_trainer, true);
+        // dd($all_trainer);
+
         // return $this->sendResponse([], 'Payment successfully Done!');
         return $this->sendResponse([
             'trainers' => $all_trainer,

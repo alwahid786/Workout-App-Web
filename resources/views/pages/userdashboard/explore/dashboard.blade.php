@@ -142,7 +142,7 @@
                 </div>
 
             </div>
-            <div class="row js-slick-carousels px-sm-5 pt-3 div" id="trainers">
+            <div class="row js-slick-carousels px-sm-5 pt-3 apend-trainer" id="trainers">
                 @foreach($trainers as $trainer_data)
 
                 <div class="col">
@@ -719,13 +719,17 @@
                 },
                 cache: false,
                 success: function(dataResult) {
-                    var result = JSON.stringify(dataResult);
-                    console.log(dataResult);
-                    // alert(result);
+                    // var result = JSON.stringify(dataResult);
+                    // console.log(dataResult);
+
                     $('#trainers').empty();
-                    $(dataResult).each(function(i, e) {
-                        let div = `<div class="col">
-                    <div class="session-card p-2">
+
+                    // $('.apend-trainer').slick('refresh');
+
+                    $(dataResult.data.trainers).each(function(i, e) {
+                        let div =
+                            `<div class="col d-flex justify-content-center">
+                    <div class="session-card p-2 ">
                         <div class="session-card-img">
                             <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
                             <div class="session-card-amount">
@@ -746,18 +750,16 @@
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             </div>
                             <div class="session-card-inner-link my-3">
-                                <a href="{{url('/dashboard/trainer-detail/')}}">Book Now</a>
+                                <a href="{{url('/dashboard/trainer-detail')}}">Book Now</a>
                             </div>
                         </div>
                         <p class="session-card-text">${e.about}</p>
                     </div>
                 </div>`
-                        $(".div").append(div);
+                        let apend = $(".apend-trainer").append(div);
 
                     });
-
-
-
+                    // $('.apend-trainer').slick('reinit');
 
                     // window.location.href = `{{url('/dashboard')}}`;
                 },
@@ -771,4 +773,6 @@
         }
     });
 </script>
+
+
 @endsection
