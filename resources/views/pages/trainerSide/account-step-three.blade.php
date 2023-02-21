@@ -951,6 +951,19 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 " data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Preference</label>
+                    <div class="select-outer">
+                        <select class="wide s-select form-control pl-4" id="typeselector">
+                            <option value="0">One Time</option>
+                            <option value="1">Recurring</option>
+                        </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                    </div>
+                </div>
+
+            </div>
             <div class="col-md-6 limit-box" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Limit</label>
@@ -981,6 +994,13 @@
                 </div>
 
             </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Date</label>
+                    <input type="date" class="form-control pl-4" id="sessionDate" placeholder="" name="sessionDate">
+                </div>
+
+            </div>
             <div class="col-md-6 pb-2" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Class Type</label>
@@ -994,19 +1014,7 @@
                 </div>
 
             </div>
-            <div class="col-md-6 " data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Preference</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
-                            <option value="0">One Time</option>
-                            <option value="1">Recurring</option>
-                        </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
-                    </div>
-                </div>
 
-            </div>
             <div class="col-lg-6 " data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Time slot</label>
@@ -1166,7 +1174,7 @@
                                 <h1>Preference:</h1>
                                 <span>Lorem ipsum dolor sit amet</span>
                             </div>
-    
+
                         </div>
                     </div>
                 </div>
