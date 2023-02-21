@@ -278,6 +278,7 @@
 @section('content')
 <div class="row login-section">
     <div class="col-12 col-md-6 right-parent  px-5 my-auto">
+
         <div class="login-right-side text-center text-md-left">
             <div class="heading-area">
                 <img class="d-none d-md-block" src="{{asset('public/assets/images/logo.svg')}}" alt="">
@@ -286,27 +287,39 @@
             </div>
             <div class="verification-code">
                 <div class="verification-code--inputs">
-                    <input type="text" maxlength="1" class="ml-0 otpone" />
-                    <input class="otptwo" type="text" maxlength="1" />
-                    <input class="otpthree" type="text" maxlength="1" />
-                    <input class="otpfour" type="text" maxlength="1" />
-                    <input class="otpfive" type="text" maxlength="1" />
-                    <input class="otpsix" type="text" maxlength="1" />
+                    <input type="text" maxlength="1" class="ml-0 otpone" name="otp1" id="otp1" />
+                    <input class="otptwo" type="text" maxlength="1" name="otp2" id="otp2" />
+                    <input class="otpthree" type="text" maxlength="1" name="otp3" id="otp3" />
+                    <input class="otpfour" type="text" maxlength="1" name="otp4" id="otp4" />
+                    <input class="otpfive" type="text" maxlength="1" name="otp5" id="otp5" />
+                    <input class="otpsix" type="text" maxlength="1" name="otp6" id="otp6" />
                 </div>
                 <input type="hidden" id="verificationCode" />
             </div>
-            <div class="otp-content text-center">
-                <p>04:00</p>
-                <p>Resend Code</p>
+
+            <div class="otp-content text-center ">
+                <p id="demo" class="otp-seconds">00:00</p>
+                <form action="{{route('trainer/forgotPassword')}}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{$email}}" name="email">
+                    <!-- <a href="javascript:void(0)" id="resendCode_d">Resend Code</a> -->
+                    <button style="border:none" type="submit" disabled="disabled" id="resendCode_d"> Resend Code</button>
+                </form>
+                <!-- <p>Resend Code</p> -->
             </div>
+            <form action="{{route('trainer/sendOtp')}}" method="post" id="form">
+                @csrf
+                <input type="hidden" value="{{$email}}" name="email">
+                <input type="hidden" id="otp" name="otp_code">
+                <div class="form-field pt-5 ">
+                    <button type="submit" id="submit" class="btn btn-default text-center">Confirm</button>
+                    <!-- <a class="btn btn-default text-center text-uppercase" href="{{url('/trainer/newpassword')}}">Confirm</a> -->
+                </div>
 
-            <div class="form-field pt-5 ">
-                <!-- <button type="submit" class="btn btn-default text-center">Confirm</button> -->
-                <a class="btn btn-default text-center text-uppercase" href="{{url('/trainer/newpassword')}}">Confirm</a>
-            </div>
 
-
+            </form>
         </div>
+
     </div>
     <div class="col-md-6 px-0 login-left-side-wrapper">
         <div class="login-left-side">
@@ -425,5 +438,30 @@
         }
 
     })
+    $('#submit').on('click', function(e) {
+        var otp_code = $('#otp1').val() + $('#otp2').val() + $('#otp3').val() + $('#otp4').val() + $('#otp5').val() + $('#otp6').val();
+        $('#otp').val(otp_code);
+        $('#form').submit();
+    });
+    $(document).ready(function() {
+        // 4 minutes Countdown For resend Code 
+        var deadline = new Date(+new Date() + 60000 * 0.5).getTime();
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var t = deadline - now;
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((t % (1000 * 60)) / 1000);
+            document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
+            if (t < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "00:00";
+                document.getElementById("resendCode_d").style.color = '#E37048';
+                // document.getElementById("resendCode_d").style.cursor = 'pointer';
+                document.getElementById("resendCode_d").removeAttribute('disabled');
+            }
+        }, 1000);
+    });
 </script>
 @endsection

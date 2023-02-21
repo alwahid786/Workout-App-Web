@@ -190,14 +190,15 @@
                 <img class="d-block d-md-none" src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
                 <h3 class="pt-5 pb-0">Forget <br> <span>Password</span> </h3>
             </div>
-            <form class="mt-5">
+            <form class="mt-5" action="{{route('trainer/forgotPassword')}}" method="post">
+                @csrf
                 <div class="form-group form-field">
                     <label for="">Email</label>
-                    <input type="email" class="form-control pl-sm-4 pl-2" id="email">
+                    <input type="email" class="form-control pl-sm-4 pl-2" id="email" name="email">
                 </div>
                 <div class="form-field pt-5 text-center">
-                    <!-- <button type="submit" class="btn btn-default text-center">Send</button> -->
-                    <a class="btn btn-default text-center" href="{{url('/trainer/otp')}}">Send</a>
+                    <button type="submit" class="btn btn-default text-center">Send</button>
+                    <!-- <a class="btn btn-default text-center" href="{{url('/trainer/otp')}}">Send</a> -->
                 </div>
             </form>
 

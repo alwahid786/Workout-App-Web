@@ -25,9 +25,13 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('pages.website.index');
 });
-
+/////////.........trainer......../////////////
 Route::post('/trainer_signup', [TrainerAuthController::class, 'trainerSignup']);
-
+Route::post('/trainer/login', [TrainerAuthController::class, 'trainerLogin'])->name('trainer/login');
+Route::post('/trainer/forgotPassword', [TrainerAuthController::class, 'trainerSendOtp'])->name('trainer/forgotPassword');
+Route::post('/trainer/sendOtp', [TrainerAuthController::class, 'verifyOtp'])->name('trainer/sendOtp');
+Route::post('/trainer/newPassword', [TrainerAuthController::class, 'newPassword'])->name('trainer/newPassword');
+/////////.............user........./////////
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
@@ -239,12 +243,12 @@ Route::get('/trainer/logins', function () {
 Route::get('/trainer/forgetpassword', function () {
     return view('pages.trainerSide.auth.forgetpassword');
 });
-Route::get('/trainer/otp', function () {
-    return view('pages.trainerSide.auth.otp');
-});
-Route::get('/trainer/newpassword', function () {
-    return view('pages.trainerSide.auth.newpassword');
-});
+// Route::get('/trainer/otp', function () {
+//     return view('pages.trainerSide.auth.otp');
+// });
+// Route::get('/trainer/newpassword', function () {
+//     return view('pages.trainerSide.auth.newpassword');
+// });
 
 
 
