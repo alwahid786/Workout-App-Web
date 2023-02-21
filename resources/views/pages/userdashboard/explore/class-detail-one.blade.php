@@ -218,7 +218,7 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Session Detail <span>One to One Session</span></h1>
+            <h1>Session Detail <span>One to One Session</span></h1>
         </div>
         <div class="class-section">
             <div class="row">

@@ -346,7 +346,7 @@
 
     $(window).resize(handleResize);
 </script>
-<script>
+<!-- <script>
     $('.nav-list .nav-item:nth-of-type(2)').addClass('active')
-</script>
+</script> -->
 @endsection

@@ -252,7 +252,7 @@
             </div>
             <div class="col-lg-8 col-xl-9">
                 <div class="dashboard-header-left">
-                    <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i>Allen's Sessions</h1>
+                    <h1>Allen's Sessions</h1>
                 </div>
                 <div class="card-grid-section">
                     <div class="session-card p-3">

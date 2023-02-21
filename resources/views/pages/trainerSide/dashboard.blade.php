@@ -722,6 +722,24 @@
         border: none !important;
         border-radius: 10px !important;
     }
+
+    .sucess-modal textarea {
+        resize: none;
+        box-shadow: none !important;
+        min-height: 150px;
+        border-radius: 10px;
+        border: 1px solid #80808021 !important;
+    }
+
+    @media screen and (max-width:576px) {
+        .sucess-modal textarea {
+            resize: none;
+            box-shadow: none !important;
+            min-height: 100px;
+            border-radius: 10px;
+            border: 1px solid #80808021 !important;
+        }
+    }
 </style>
 @section('content')
 @include('includes.trainerSide.navbar')
@@ -1125,8 +1143,8 @@
                             <div class="right-notification pr-3">
                                 <h1><span>Dayut Carlotte</span> send you request for Nutrition sessions</h1>
                                 <div class="right-notification-btn px-0">
-                                    <button class="m-2">Accept</button>
-                                    <button class="m-2">Reject</button>
+                                    <button class="m-2" data-toggle="modal" data-target="#acceptModal">Accept</button>
+                                    <button class="m-2" data-toggle="modal" data-target="#rejectModal">Reject</button>
                                 </div>
                             </div>
                         </div>
@@ -1266,6 +1284,8 @@
             <div class="modal-body text-center sucess-modal ">
                 <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
                 <p class="mb-0 py-3">Do you really want to Reject<br> this request?</p>
+                <p class="text-left mb-0" style="font-weight:500;">Reason</p>
+                <textarea class="form-control mb-3"></textarea>
                 <div class=" modal-btn text-sm-right text-center">
                     <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a>
                 </div>

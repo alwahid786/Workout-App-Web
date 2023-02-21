@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
 <style>
-    .trainer-search{
+    .trainer-search {
         position: absolute;
         right: 0;
         border-radius: 30px;
@@ -16,7 +16,8 @@
         outline: none !important;
         width: 50%;
     }
-    .trainer-search::placeholder{
+
+    .trainer-search::placeholder {
         color: #fff !important;
 
     }
@@ -28,7 +29,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="dashboard-header-left">
-                        <h1>Dashboard</h1>
+                        <h1>Explore</h1>
                     </div>
                 </div>
                 <div class="col-sm-8 text-right">

@@ -357,7 +357,8 @@
         outline: none !important;
         box-shadow: none !important;
     }
-    .input-location input{
+
+    .input-location input {
         border: none !important;
         width: 100%;
         height: 65px;
@@ -365,8 +366,8 @@
         border-radius: 5px;
         padding: 0 5px;
     }
-    .input-location:active input
-    .input-location:focus input{
+
+    .input-location:active input .input-location:focus input {
         border: none !important;
         outline: none !important;
     }
@@ -378,7 +379,7 @@
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="">
                     <div class="dashboard-header-left">
-                        <h1>Search <span class="pl-1"> One to One Session</span></h1>
+                        <h1>Search <span class=""> One to One Session</span></h1>
                     </div>
                 </div>
                 <div class="">
@@ -684,5 +685,8 @@
         })
 
     }
+</script>
+<script>
+    $('.left-inner-addon').css('display', 'none');
 </script>
 @endsection
