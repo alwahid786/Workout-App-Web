@@ -176,8 +176,8 @@
             <div class="row">
                 <div class="col-md-6 order-2 order-md-1 hero-left text-center text-md-left">
                     <div class="hero-left-content heroText">
-                        <h1>Hello <span>John Smith,</span></h1>
-                        <p class="pb-4 pt-3">Johnsmith@gmail.com</p>
+                        <h1>Hello <span>{{auth()->user()->name}}</span></h1>
+                        <p class="pb-4 pt-3">{{auth()->user()->email}}</p>
                     </div>
                 </div>
                 <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0 profile-hero-right">
