@@ -569,7 +569,6 @@
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
                                 <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
                             </div>
 
                         </div>
