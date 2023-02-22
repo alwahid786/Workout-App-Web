@@ -835,6 +835,12 @@
         /* .price-select-input .nice-select.wide span {
             font-size: 0.9rem !important;
         } */
+
+    }
+
+    .text-area {
+        background: #F8F8F8 !important;
+        border-radius: 10px !important;
     }
 </style>
 @section('content')
@@ -899,8 +905,8 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Sub-Category</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress" placeholder="" value="Italian Yoga">
+                    <label for="inputAddress" class=" ">Category Description</label>
+                    <textarea type="text" class="form-control pl-4 text-area" id="inputAddress" placeholder="" value=""></textarea>
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -1168,7 +1174,7 @@
                                 <h1>Preference:</h1>
                                 <span>Lorem ipsum dolor sit amet</span>
                             </div>
-    
+
                         </div>
                     </div>
                 </div>
