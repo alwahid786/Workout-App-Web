@@ -1059,7 +1059,7 @@
                 <div class="col-lg-12 my-2">
 
                     <div class="filter-menu">
-                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                        <!-- <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                             <div class="filter-left-select-heading drop-icon-parent">
                                 <h1>Workout Type</h1>
                                 <div class="drop-icon">
@@ -1070,7 +1070,7 @@
                                         <option>Yoga</option>
                                         <option>Yoga</option>
                                     </select>
-                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -1085,372 +1085,375 @@
                                         <option>London</option>
                                         <option>London</option>
                                     </select>
-                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-
-
-            <div class="container-fluid mb-4 ">
-                <div class="content-wrapper-inner p-3">
-                    <div class="filter-section py-4 px-2">
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class=" filter-menu">
-                                    <div class=" filter-menu-right">
-                                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                                            <div class="filter-left-select-heading drop-icon-parent">
-                                                <h1>Workout Type</h1>
-                                                <div class="drop-icon">
-                                                    <select class="wide s-select form-control" id="workout_category">
-                                                        <option disabled="disabled" selected>Select --</option>
-                                                        @foreach($category as $categories)
-
-                                                        <option value="{{$categories['id']}}" data-src="{{$categories['title']}}">{{$categories['title']}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                                            <div class="filter-left-select-heading drop-icon-parent">
-                                                <h1>Class Type</h1>
-                                                <div class="drop-icon">
-
-                                                    <select class="wide s-select form-control" id="workout_type">
-                                                        <option value="">Select --</option>
-                                                        <option value="0">One to One</option>
-                                                        <option value="1">Group</option>
-                                                    </select>
-                                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                                            <div class="filter-left-select-heading drop-icon-parent">
-                                                <h1>Price Range</h1>
-                                                <div class="drop-icon drop-icon-thre">
-                                                    <select class="wide s-select form-control " id="workout_price">
-                                                        <option disabled="disabled" selected>Select --</option>
-                                                        <option value="85|200">$85 to $200</option>
-                                                        <option value="200|400">$200 to $400</option>
-                                                        <option value="400|800">$400 to $800</option>
-                                                        <option value="800">$800++</option>
-                                                    </select>
-                                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6" style="margin-top: -10px;">
-                                <div id="calendar"></div>
-                            </div>
-                        </div>
-                        <div class="col text-right my-2 pr-0">
-                            <div class="filter-section-btn py-2">
-                                <a href="javascript:void(0)" class="applyFilterBtn" id="filterbtn">Apply</a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="dashboard-header-left mb-4 pt-2">
-                        <h1>My Sessions</h1>
-                    </div>
-                    <div class="row" id="sessionList">
-                        
-                        @foreach($booksession_detail as $bookedsession)
-
-                        <div class="col-lg-6 my-2">
-                            <div class="class-left-banner px-2 py-3">
-                                <img class="class-banner-img" src="{{$bookedsession['session']['class']['class_image'][0]['image']}}" alt="">
-                                <div class="class-banner-content pt-3">
-                                    <h1>{{$bookedsession['session']['class']['category']['title']}}</h1>
-                                    <div class="class-banner-content-right">
-                                        <h1>${{$bookedsession['session']['price']}}</h1>
-                                        <div class="class-banner-content-right-time">
-                                            <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
-                                            <?php
-
-                                            $a = new DateTime(($bookedsession['session']['start_time']));
-                                            $b = new DateTime($bookedsession['session']['end_time']);
-                                            $interval = $a->diff($b);
-
-                                            $hour = $interval->format("%H:%I");
-
-                                            ?>
-                                            <p>{{$hour}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="session-card-content">
-                                    <div class="session-profile-left py-2">
-                                        <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                        <p class="pl-3">{{$bookedsession['session']['class']['trainer']['name']}}</p>
-                                    </div>
-                                    <div class="session-anchor-right">
-                                        <a href="{{url('/userdashboard/sessionone/'.$bookedsession['id'])}}">View</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
-                        @endforeach
 
+                        <div class="container-fluid mb-4 ">
+                            <div class="content-wrapper-inner p-3">
+                                <div class="filter-section py-4 px-2">
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class=" filter-menu">
+                                                <div class=" filter-menu-right">
+                                                    <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                                                        <div class="filter-left-select-heading drop-icon-parent">
+                                                            <h1>Workout Type</h1>
+                                                            <div class="drop-icon">
+                                                                <select class="wide s-select form-control" id="workout_category">
+                                                                    <option disabled="disabled" selected>Select --</option>
+                                                                    @foreach($category as $categories)
+
+                                                                    <option value="{{$categories['id']}}" data-src="{{$categories['title']}}">{{$categories['title']}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                                                        <div class="filter-left-select-heading drop-icon-parent">
+                                                            <h1>Class Type</h1>
+                                                            <div class="drop-icon">
+
+                                                                <select class="wide s-select form-control" id="workout_type">
+                                                                    <option value="">Select --</option>
+                                                                    <option value="0">One to One</option>
+                                                                    <option value="1">Group</option>
+                                                                </select>
+                                                                <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                                                        <div class="filter-left-select-heading drop-icon-parent">
+                                                            <h1>Price Range</h1>
+                                                            <div class="drop-icon drop-icon-thre">
+                                                                <select class="wide s-select form-control " id="workout_price">
+                                                                    <option disabled="disabled" selected>Select --</option>
+                                                                    <option value="85|200">$85 to $200</option>
+                                                                    <option value="200|400">$200 to $400</option>
+                                                                    <option value="400|800">$400 to $800</option>
+                                                                    <option value="800">$800++</option>
+                                                                </select>
+                                                                <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-xl-6" style="margin-top: -10px;">
+                                            <div id="calendar"></div>
+                                        </div> -->
+                                    </div>
+                                    <div class="col text-right my-2 pr-0">
+                                        <div class="filter-section-btn py-2">
+                                            <a href="javascript:void(0)" class="applyFilterBtn" id="filterbtn">Apply</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="dashboard-header-left mb-4 pt-2">
+                                    <h1>My Sessions</h1>
+                                </div>
+                                <div class="row" id="sessionList">
+
+                                    @foreach($booksession_detail as $bookedsession)
+
+                                    <div class="col-lg-6 my-2">
+                                        <div class="class-left-banner px-2 py-3">
+                                            <img class="class-banner-img" src="{{$bookedsession['session']['class']['class_image'][0]['image']}}" alt="">
+                                            <div class="class-banner-content pt-3">
+                                                <h1>{{$bookedsession['session']['class']['category']['title']}}</h1>
+                                                <div class="class-banner-content-right">
+                                                    <h1>${{$bookedsession['session']['price']}}</h1>
+                                                    <div class="class-banner-content-right-time">
+                                                        <img class="pr-2" src="{{asset('public/assets/images/clock.svg')}}" alt="">
+                                                        <?php
+
+                                                        $a = new DateTime(($bookedsession['session']['start_time']));
+                                                        $b = new DateTime($bookedsession['session']['end_time']);
+                                                        $interval = $a->diff($b);
+
+                                                        $hour = $interval->format("%H:%I");
+
+                                                        ?>
+                                                        <p>{{$hour}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="session-card-content">
+                                                <div class="session-profile-left py-2">
+                                                    <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                                    <p class="pl-3">{{$bookedsession['session']['class']['trainer']['name']}}</p>
+                                                </div>
+                                                <div class="session-anchor-right">
+                                                    <a href="{{url('/userdashboard/sessionone/'.$bookedsession['id'])}}">View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @endforeach
+
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
-                </div>
+
+                    <!-- // var UserLocationdata = ($currentUserInfo); -->
 
 
-            </div>
-        </div>
+                    @endsection
+                    @section('insertsfooter')
 
-        <!-- // var UserLocationdata = ($currentUserInfo); -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script>
+                    <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $('.s-select').niceSelect();
+                            var locationMap = [
+                                [UserLocationdata.latitude, UserLocationdata.longitude]
+                            ]
+                            initMap(locationMap);
 
+                            $("#workout_type").on('change', function() {
+                                let type = $(this).val();
+                                if (type == 0) {
+                                    $('#sessionType').text('One to One');
+                                } else {
+                                    $('#sessionType').text('Group');
+                                }
+                            });
+                            $(".fc-col-header-cell-cushion").click(function() {
+                                var day = $(this).find(">:first-child").text();
 
-        @endsection
-        @section('insertsfooter')
+                            });
+                            $(".applyFilterBtn").on('click', function() {
+                                let category = $('#workout_category').val();
+                                let location = $('#workout_location').val();
+                                let type = $('#workout_type').val();
+                                let price = $('#workout_price').val();
+                                let radius = $('#workout_radius').val();
+                                let session_type = $('#session_type').val();
+                                $.ajax({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    url: `{{route('filterMapData')}}`,
+                                    type: "POST",
+                                    data: {
+                                        category: category,
+                                        location: location,
+                                        type: type,
+                                        price: price,
+                                        radius: radius,
+                                        session_type: session_type,
+                                        day: day
+                                    },
+                                    cache: false,
+                                    success: function(response) {
+                                        if (response.success == true) {
+                                            locationMap = response.data.latLngArray;
+                                            initMap(locationMap);
+                                        } else {
+                                            toastr.error(response.message);
+                                        }
+                                    },
+                                    error: function(jqXHR, exception) {
+                                        toastr.error(jqXHR.responseJSON.message);
+                                    }
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script>
-        <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
-        <script>
-            $(document).ready(function() {
-                $('.s-select').niceSelect();
-                var locationMap = [
-                    [UserLocationdata.latitude, UserLocationdata.longitude]
-                ]
-                initMap(locationMap);
-
-                $("#workout_type").on('change', function() {
-                    let type = $(this).val();
-                    if (type == 0) {
-                        $('#sessionType').text('One to One');
-                    } else {
-                        $('#sessionType').text('Group');
-                    }
-                });
-                $(".fc-col-header-cell-cushion").click(function() {
-                    var day = $(this).find(">:first-child").text();
-
-                });
-                $(".applyFilterBtn").on('click', function() {
-                    let category = $('#workout_category').val();
-                    let location = $('#workout_location').val();
-                    let type = $('#workout_type').val();
-                    let price = $('#workout_price').val();
-                    let radius = $('#workout_radius').val();
-                    let session_type = $('#session_type').val();
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: `{{route('filterMapData')}}`,
-                        type: "POST",
-                        data: {
-                            category: category,
-                            location: location,
-                            type: type,
-                            price: price,
-                            radius: radius,
-                            session_type: session_type,
-                            day: day
-                        },
-                        cache: false,
-                        success: function(response) {
-                            if (response.success == true) {
-                                locationMap = response.data.latLngArray;
-                                initMap(locationMap);
-                            } else {
-                                toastr.error(response.message);
-                            }
-                        },
-                        error: function(jqXHR, exception) {
-                            toastr.error(jqXHR.responseJSON.message);
-                        }
-
-                    });
-                });
-            });
-        </script>
-        <script>
-            // two
-            const slickSetting = {
-                arrows: true,
-                infinite: true,
-                prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
-                nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
-                slidesToShow: 7,
-                slidesToScroll: 7,
-                responsive: [{
-                        breakpoint: 1160,
-                        settings: {
-                            slidesToShow: 5,
-                            slidesToScroll: 5
-                        }
-                    },
-                    {
-                        breakpoint: 991,
-                        settings: {
-                            slidesToShow: 8,
-                            slidesToScroll: 8
-                        }
-                    },
-                    {
-                        breakpoint: 650,
-                        settings: {
-                            slidesToShow: 6,
-                            slidesToScroll: 6
-                        }
-                    },
-                    {
-                        breakpoint: 400,
-                        settings: {
-                            slidesToShow: 4,
-                            slidesToScroll: 4
-                        }
-                    },
-
-
-
-                ]
-            }
-
-
-            // $('.js-slick-carousel').on('init', handleSlickInit);
-            $('.js-slick-carousels').slick(slickSetting);
-
-            // reinitialization
-            $('.js-slick-carousels').on('reInit', () => console.log('slick re-init fired'));
-
-            // two
-            const slickSettingss = {
-                arrows: true,
-                infinite: true,
-                prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
-                nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
-                slidesToShow: 8,
-                slidesToScroll: 8,
-                responsive: [{
-                        breakpoint: 1160,
-                        settings: {
+                                });
+                            });
+                        });
+                    </script>
+                    <script>
+                        // two
+                        const slickSetting = {
+                            arrows: true,
+                            infinite: true,
+                            prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
+                            nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
                             slidesToShow: 7,
-                            slidesToScroll: 7
+                            slidesToScroll: 7,
+                            responsive: [{
+                                    breakpoint: 1160,
+                                    settings: {
+                                        slidesToShow: 5,
+                                        slidesToScroll: 5
+                                    }
+                                },
+                                {
+                                    breakpoint: 991,
+                                    settings: {
+                                        slidesToShow: 8,
+                                        slidesToScroll: 8
+                                    }
+                                },
+                                {
+                                    breakpoint: 650,
+                                    settings: {
+                                        slidesToShow: 6,
+                                        slidesToScroll: 6
+                                    }
+                                },
+                                {
+                                    breakpoint: 400,
+                                    settings: {
+                                        slidesToShow: 4,
+                                        slidesToScroll: 4
+                                    }
+                                },
+
+
+
+                            ]
                         }
-                    },
-                    {
-                        breakpoint: 991,
-                        settings: {
-                            slidesToShow: 14,
-                            slidesToScroll: 14
-                        }
-                    },
-                    {
-                        breakpoint: 650,
-                        settings: {
+
+
+                        // $('.js-slick-carousel').on('init', handleSlickInit);
+                        $('.js-slick-carousels').slick(slickSetting);
+
+                        // reinitialization
+                        $('.js-slick-carousels').on('reInit', () => console.log('slick re-init fired'));
+
+                        // two
+                        const slickSettingss = {
+                            arrows: true,
+                            infinite: true,
+                            prevArrow: "<i class='fa fa-arrow-left slick-prev arrow ser-left-session d-none' aria-hidden='true'></i> ",
+                            nextArrow: "<i class='fa fa-arrow-right slick-next arrow ser-right-session d-none' aria-hidden='true'></i>",
                             slidesToShow: 8,
-                            slidesToScroll: 8
+                            slidesToScroll: 8,
+                            responsive: [{
+                                    breakpoint: 1160,
+                                    settings: {
+                                        slidesToShow: 7,
+                                        slidesToScroll: 7
+                                    }
+                                },
+                                {
+                                    breakpoint: 991,
+                                    settings: {
+                                        slidesToShow: 14,
+                                        slidesToScroll: 14
+                                    }
+                                },
+                                {
+                                    breakpoint: 650,
+                                    settings: {
+                                        slidesToShow: 8,
+                                        slidesToScroll: 8
+                                    }
+                                },
+                                {
+                                    breakpoint: 400,
+                                    settings: {
+                                        slidesToShow: 5,
+                                        slidesToScroll: 5
+                                    }
+                                },
+
+
+
+
+                            ]
                         }
-                    },
-                    {
-                        breakpoint: 400,
-                        settings: {
-                            slidesToShow: 5,
-                            slidesToScroll: 5
+
+
+                        // $('.js-slick-carousel').on('init', handleSlickInit);
+                        $('.js-slick-carouselss').slick(slickSettingss);
+
+                        // reinitialization
+                        $('.js-slick-carouselss').on('reInit', () => console.log('slick re-init fired'));
+                        $(window).resize(handleResize);
+                    </script>
+                    <script>
+                        $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
+                    </script>
+                    <script>
+                        $('#filterbtn').on('click', function(e) {
+                            var category = $('#workout_category').val();
+                            var type = $('#workout_type').val();
+                            var price = $("#workout_price").val();
+                            // alert(price);
+                            $.ajax({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                url: `{{route('filter/session')}}`,
+                                type: "POST",
+                                data: {
+                                    category: category,
+                                    type: type,
+                                    price: price,
+                                },
+                                cache: false,
+                                success: function(dataResult) {
+                                    // alert('hji')
+                                    console.log(dataResult['sessionView']);
+                                    $("#sessionList").html(dataResult['sessionView']);
+
+                                },
+                                error: function(jqXHR, exception) {
+                                    alert('fail');
+                                    $('.loaderDiv').hide();
+                                    toastr.error(jqXHR.responseJSON.message);
+                                }
+                            });
+
+                        });
+                    </script>
+                    <script>
+                        var calendarEl = document.getElementById('calendar');
+                        var calendar = new FullCalendar.Calendar(calendarEl, {
+                            initialView: 'dayGridWeek',
+                            // buttons for switching between views
+                            views: {
+                                dayGridWeek: { // name of view
+                                    dayHeaderFormat: {
+                                        weekday: 'short',
+                                        day: 'numeric',
+                                        omitCommas: true
+                                    },
+                                    // other view-specific options here
+                                }
+                            },
+                            headerToolbar: {
+                                left: 'prev',
+                                center: 'title',
+                                right: 'next' // user can switch between the two
+                            }
+                        });
+                        calendar.render();
+                        strToDiv()
+                        $(".fc-next-button").click(function() {
+                            strToDiv();
+                        })
+                        $(".fc-prev-button").click(function() {
+                            strToDiv();
+                        })
+
+                        function strToDiv() {
+                            $('.fc-col-header-cell-cushion').each(function() {
+                                let str = $(this).text();
+                                let parts = str.split(" ");
+                                let div1 = "<div>" + parts[0] + "</div>";
+                                let div2 = "<div>" + parts[1] + "</div>";
+                                $(this).html(div2 + div1)
+                            })
                         }
-                    },
+                    </script>
 
-
-
-
-                ]
-            }
-
-
-            // $('.js-slick-carousel').on('init', handleSlickInit);
-            $('.js-slick-carouselss').slick(slickSettingss);
-
-            // reinitialization
-            $('.js-slick-carouselss').on('reInit', () => console.log('slick re-init fired'));
-            $(window).resize(handleResize);
-        </script>
-        <script>
-            $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
-        </script>
-        <script>
-            $('#filterbtn').on('click', function(e) {
-                var category = $('#workout_category').val();
-                var type = $('#workout_type').val();
-                var price = $("#workout_price").val();
-                // alert(price);
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: `{{route('filter/session')}}`,
-                    type: "POST",
-                    data: {
-                        category: category,
-                        type: type,
-                        price: price,
-                    },
-                    cache: false,
-                    success: function(dataResult) {
-                        // alert('hji')
-                        console.log(dataResult['sessionView']);
-                        $("#sessionList").html(dataResult['sessionView']);
-
-                    },
-                    error: function(jqXHR, exception) {
-                        alert('fail');
-                        $('.loaderDiv').hide();
-                        toastr.error(jqXHR.responseJSON.message);
-                    }
-                });
-
-            });
-        </script>
-        <script>
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridWeek',
-                // buttons for switching between views
-                views: {
-                    dayGridWeek: { // name of view
-                        dayHeaderFormat: {
-                            weekday: 'short',
-                            day: 'numeric',
-                            omitCommas: true
-                        },
-                        // other view-specific options here
-                    }
-                },
-                headerToolbar: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'next' // user can switch between the two
-                }
-            });
-            calendar.render();
-            strToDiv()
-            $(".fc-next-button").click(function() {
-                strToDiv();
-            })
-            $(".fc-prev-button").click(function() {
-                strToDiv();
-            })
-
-            function strToDiv() {
-                $('.fc-col-header-cell-cushion').each(function() {
-                    let str = $(this).text();
-                    let parts = str.split(" ");
-                    let div1 = "<div>" + parts[0] + "</div>";
-                    let div2 = "<div>" + parts[1] + "</div>";
-                    $(this).html(div2 + div1)
-                })
-            }
-        </script>
-
-        @endsection
+                    @endsection
