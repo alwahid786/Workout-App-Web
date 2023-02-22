@@ -802,7 +802,7 @@
             <div class="col-xl-8">
                 <div class="row">
                     <div class="col-xl-12">
-                        <div class="workout-today-header pt-2 pb-1">
+                        <div class="workout-today-header  pb-4">
                             <h1>Revenue</h1>
                         </div>
                         <div class="chart-section">
