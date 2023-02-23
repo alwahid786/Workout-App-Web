@@ -326,11 +326,11 @@ class UserController extends Controller
                 )
             );
             if ($transaction) {
-                // flash()->success('Payment Successfuly!');
+                flash()->success('Payment Successfuly!');
                 // notify()->success('Laravel Notify is awesome!');
                 // Toastr::success('message', 'title', 'welcome to text');
                 // Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
-                notify()->success('Welcome to Laravel Notify ⚡️');
+                // notify()->success('Welcome to Laravel Notify ⚡️');
 
                 return redirect()->route('/dashboard');
             } else {
