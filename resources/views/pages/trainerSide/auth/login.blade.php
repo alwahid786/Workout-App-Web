@@ -279,13 +279,14 @@
                 <img class="d-none d-md-block" src="{{asset('public/assets/images/logo.svg')}}" alt="">
                 <img class="d-block d-md-none" src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
             </div>
-            <form class="mt-5">
+            <form class="mt-5" action="{{route('trainer/login')}}" method="post">
+                @csrf
                 <div class="form-group form-field">
-                    <input type="email" class="form-control pl-sm-4 pl-2" id="email" placeholder="Email">
+                    <input type="email" class="form-control pl-sm-4 pl-2" id="email" placeholder="Email" name="email">
                 </div>
                 <div class="form-group form-field">
                     <div class="login-password-field">
-                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" placeholder="Password">
+                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" placeholder="Password" name="password">
                         <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
@@ -298,8 +299,8 @@
                     <a href="{{url('/trainer/forgetpassword')}}">Forgot Password?</a>
                 </div>
                 <div class="form-field pt-5 text-center">
-                    <!-- <button type="submit" class="btn btn-default text-center">Login</button> -->
-                    <a class="btn login-btn" href="{{url('/trainer/dashboard')}}">Login</a>
+                    <button type="submit" class="btn btn-default text-center">Login</button>
+                    <!-- <a class="btn login-btn" href="{{url('/trainer/dashboard')}}">Login</a> -->
                 </div>
             </form>
             <div class="trainer-btn text-center col">

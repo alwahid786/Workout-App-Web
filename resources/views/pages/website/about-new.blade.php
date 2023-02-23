@@ -342,6 +342,16 @@
 
 
     }
+
+    .modern-approach-img img {
+        width: auto;
+        height: 120% !important;
+    }
+
+    .Transforming-img  img{
+        height: 100% ;
+        width: 100%;
+    }
 </style>
 @include('includes.website.navbar')
 <div class="container-fluid hero-section-about">
@@ -350,7 +360,7 @@
             <div class="col- hero-left text-center text-md-left">
                 <div class="hero-left-content my-sm-5 px-sm-5">
                     <h1 class="my-4">About Us</h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero facilis voluptate adipisci tempora quo magni dolorum alias quam quas temporibus impedit incidunt, nisi eaque vitae a quae ut doloribus eos tempore. Error perspiciatis, quidem distinctio vel reiciendis quam veritatis vero quae doloremque. Magni incidunt iusto quasi consequuntur quae, architecto ipsum. </p>
+                    <p>With WorkitPT, clients can filter through a list of sessions provided by various personal trainers for any form of exercise or sport they wish to partake in and simply sign up for the session, agree a time and a location, then get to work!</p>
                 </div>
             </div>
         </div>
@@ -358,19 +368,30 @@
 </div>
 
 <section class="hero-section about-us-mobile py-5">
-    <div class="container-fluid">
-        <div class="row my-sm-5 px-sm-5">
-            <div class="col-md-8" data-aos="fade-up" data-aos-delay="200">
-                <div class="left-section-par ">
-                    <p>At TruBe, we believe that personal fitness shouldn’t be intimidating — it should be accessible and fulfilling. TruBe makes it all possible: We designed an app that’s as easy-to-use as it is effective, with trainers whose fitness expertise is matched only by their ability to build authentic relationships with our clients. At TruBe, your fitness goals always feel within reach — no matter how big or how small.</p>
+    <div class="container">
+        <!-- <div class="row my-sm-5 px-sm-5"> -->
+        <!-- <div class="col-md-8" data-aos="fade-up" data-aos-delay="200"> -->
+        <div class="left-section-par ">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 pt-5">
+
+                    <h1 class="my-4 text-light">Transforming Personal Training</h1>
+                    <p class="">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
                 </div>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <!-- <div class="right-section-img">
-                    <img src="{{asset('public/assets/trainerimages/iphonescreen.png')}}" alt="">
-                </div> -->
+                <div class="col-lg-6 col-md-6 col-sm-12 Transforming-img">
+                    <img src="{{asset('public/assets/images/Transforming personal training.png')}}" alt="">
+
+                </div>
+                <!-- <p>At TruBe, we believe that personal fitness shouldn’t be intimidating — it should be accessible and fulfilling. TruBe makes it all possible: We designed an app that’s as easy-to-use as it is effective, with trainers whose fitness expertise is matched only by their ability to build authentic relationships with our clients. At TruBe, your fitness goals always feel within reach — no matter how big or how small.</p> -->
             </div>
         </div>
+        <!-- </div> -->
+        <!-- <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="right-section-img">
+                    <img src="{{asset('public/assets/trainerimages/iphonescreen.png')}}" alt="">
+                </div>
+            </div> -->
+        <!-- </div> -->
     </div>
 </section>
 <!-- ..............Section End................. -->
@@ -378,10 +399,21 @@
 <section class="make-diff-section py-5">
     <div class="container">
         <div class="make-diff-content py-5" data-aos="fade-up" data-aos-delay="100">
-            <h1 class="pb-5">What makes us different</h1>
-            <p>Regardless of your current fitness level or experience, you can expect a fully personalised fitness programme. R1:1 sessions mean more time for you. TruBe trainers are trained in everything from kickboxing to ballet fit, each trainer has been cherry-picked through a rigorous selection process, so you can be confident you have the best of the best and the best workout routine at home.</p>
+            <div class="row">
+                <div class="col-lg-6 col-md-5 col-sm-12 modern-approach-img">
+                    <img src="{{asset('public/assets/images/modern aproach.png')}}" alt="">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 " style="padding-top: 3rem ;">
+                    <!-- <h1 class="pb-5">What makes us different</h1> -->
+                    <h1 class="pb-5">A Modern Approach</h1>
+                    <!-- <p>Regardless of your current fitness level or experience, you can expect a fully personalised fitness programme. R1:1 sessions mean more time for you. TruBe trainers are trained in everything from kickboxing to ballet fit, each trainer has been cherry-picked through a rigorous selection process, so you can be confident you have the best of the best and the best workout routine at home.</p> -->
+                    <p>It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
+
+                </div>
+            </div>
+
         </div>
-        <div class="ceo-message-box px-sm-5 py-5 px-2">
+        <!-- <div class="ceo-message-box px-sm-5 py-5 px-2">
             <div class="profile-section">
                 <div class="ceo-image">
                     <img src="{{asset('public/assets/trainerimages/profile.png')}}" alt="">
@@ -403,8 +435,8 @@
                 <p> Favourite workouts: personal training and yoga</p>
             </div>
 
-        </div>
-        <div class="carousel-section my-5 py-5" data-aos="fade-up" data-aos-delay="100">
+        </div> -->
+        <!-- <div class="carousel-section my-5 py-5" data-aos="fade-up" data-aos-delay="100">
             <div class="row js-slick-carousel px-5">
 
                 <div class="col">
@@ -444,7 +476,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 
@@ -455,7 +487,8 @@
         <div class="row px-sm-5 px-2">
             <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
                 <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
-                <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p>
+                <!-- <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p> -->
+                <p class="mt-3">At WorkitPT, we want you to get the training you deserve</p>
                 <p class="text-md-white"><strong>Follow Us</strong></p>
                 <div class="d-flex justify-content-between align-items-center mt-3 footer-social-icons">
                     <a href="https://www.facebook.com/">

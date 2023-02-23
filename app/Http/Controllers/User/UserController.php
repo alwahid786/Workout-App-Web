@@ -169,9 +169,13 @@ class UserController extends Controller
     }
 
     /////.....get all trainer........./////
-    public function dashbord()
+    public function dashbord(Request $request)
     {
-        $all_trainer = User::where('user_type', '=', 'trainer')->with('session.category')->get();
+        $all_trainer = (new User)->newQuery();
+        if ($request->has('search_by') && !empty($request->search_by)) {
+            $all_trainer->where('name', 'Like', '%' . $request->search_by . '%')->get();
+        }
+        $all_trainer = $all_trainer->where('user_type', '=', 'trainer')->with('session.category')->get();
         // Classes::with('session', 'category')->get();
         $class_detail = Classes::with(['category', 'session', 'trainer'])->get();
 
@@ -184,6 +188,23 @@ class UserController extends Controller
 
         $category = json_decode($all_category, true);
         return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class'));
+    }
+    //////////..........search input for traniner.......////////
+    public function trainerSearch(Request $request)
+    {
+        $all_trainer = (new User)->newQuery();
+
+        $all_trainer = User::where('name', 'Like', '%' . $request->search_by . '%')->get();
+        if (!$all_trainer) {
+            return $this->sendError('Dashboard');
+        }
+        $all_trainer = json_decode($all_trainer, true);
+        // dd($all_trainer);
+
+        // return $this->sendResponse([], 'Payment successfully Done!');
+        return $this->sendResponse([
+            'trainers' => $all_trainer,
+        ], 'Successfully Search');
     }
     /////....user side trainer detail......../////
     public function trainer_detail(Request $request, $id)

@@ -191,12 +191,14 @@
                 <img class="d-block d-md-none" src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
                 <h3 class="pt-5 pb-0">Enter <br> <span>New Password</span> </h3>
             </div>
-            <form class="mt-3">
+            <form class="mt-3" action="{{route('trainer/newPassword')}}" method="post">
+                @csrf
                 <div class="form-group form-field">
+                    <input type="hidden" value="{{$email}}" name="email">
                     <label for="">Password</label>
                     <div class="login-password-field">
 
-                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput">
+                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInput" name="password">
                         <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
@@ -204,14 +206,14 @@
                 <div class="form-group form-field">
                     <label for="">Confirm Password</label>
                     <div class="login-password-field">
-                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInputtwo">
+                        <input type="password" class="form-control pl-sm-4 pl-2 pr-5" id="passInputtwo" name="password_confirmation">
                         <i id="hidePasstwo" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="showPasstwo" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                 </div>
                 <div class="form-field pt-5 text-center">
-                    <!-- <button type="submit" class="btn btn-default text-center">Confirm</button> -->
-                    <a class="btn btn-default text-center text-uppercase" href="{{url('/trainer/login')}}">Confirm</a>
+                    <button type="submit" class="btn btn-default text-center">Confirm</button>
+                    <!-- <a class="btn btn-default text-center text-uppercase" href="{{url('/trainer/login')}}">Confirm</a> -->
                 </div>
             </form>
 

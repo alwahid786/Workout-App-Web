@@ -26,9 +26,13 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('pages.website.index');
 });
-
+/////////.........trainer......../////////////
 Route::post('/trainer_signup', [TrainerAuthController::class, 'trainerSignup']);
-
+Route::post('/trainer/login', [TrainerAuthController::class, 'trainerLogin'])->name('trainer/login');
+Route::post('/trainer/forgotPassword', [TrainerAuthController::class, 'trainerSendOtp'])->name('trainer/forgotPassword');
+Route::post('/trainer/sendOtp', [TrainerAuthController::class, 'verifyOtp'])->name('trainer/sendOtp');
+Route::post('/trainer/newPassword', [TrainerAuthController::class, 'newPassword'])->name('trainer/newPassword');
+/////////.............user........./////////
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/verify/mail', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
@@ -56,7 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/dashboard/trainer', [UserController::class, 'usersTrainer'])->name('dashboard/trainer');
     Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
 
-    Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
+    Route::any('/dashboard', [UserController::class, 'dashbord'])->name('dashboard');
     // Route::post('categories/trainer/{id}', [UserController::class, 'category_trainer'])->name('categories/trainer');
     Route::any('/dashboard/categories/{id}', [UserController::class, 'categoryDetail'])->name('/dashboard/categories');
     Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');
@@ -77,6 +81,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
     Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
     Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
+    Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
 
     ///// trainer............//////
     Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
@@ -236,12 +241,12 @@ Route::get('/trainer/logins', function () {
 Route::get('/trainer/forgetpassword', function () {
     return view('pages.trainerSide.auth.forgetpassword');
 });
-Route::get('/trainer/otp', function () {
-    return view('pages.trainerSide.auth.otp');
-});
-Route::get('/trainer/newpassword', function () {
-    return view('pages.trainerSide.auth.newpassword');
-});
+// Route::get('/trainer/otp', function () {
+//     return view('pages.trainerSide.auth.otp');
+// });
+// Route::get('/trainer/newpassword', function () {
+//     return view('pages.trainerSide.auth.newpassword');
+// });
 
 
 

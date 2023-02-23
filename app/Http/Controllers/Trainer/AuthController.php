@@ -3,18 +3,23 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\TrainerDetailRequest;
 use App\Http\Requests\TrainerSignupRequest;
+use App\Http\Requests\VerifyEmailRequest;
 use App\Models\TrainerProfile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
+use App\Mail\VerifyEmail;
 use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Session;
 use App\Models\Category;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -145,5 +150,68 @@ class AuthController extends Controller
             $images->save();
         }
         return $this->sendResponse([], 'Trainer Detail insert Successfully!');
+    }
+    ////////........trainer login........////////
+    public function trainerLogin(LoginRequest $request)
+    {
+
+        $UserData = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
+        if (!auth()->attempt($UserData)) {
+            return $this->sendError('Try again. Wrong password.Try again or click forget password to reset your password.');
+        }
+        $authUser = auth()->user();
+        $authUser->token = $authUser->createToken('API Token')->accessToken;
+        return Redirect::to(url('/trainer/dashboard'));
+    }
+    ///////////...forget password..........///////
+
+    public function trainerSendOtp(VerifyEmailRequest $request)
+    {
+        $email = $request->email;
+        $otp = rand(100000, 999999);
+        if (!User::where('email', $request->email)->update(['otp_code' => $otp])) {
+            return $this->sendError('Unable to proccess. Please try again later');
+        }
+        Mail::to($request->email)->send(new VerifyEmail($otp));
+
+        // return Redirect::to(url('/trainer/otp'));
+        return view('pages.trainerSide.auth.otp', compact('email'));
+    }
+
+    ///////........verify otp...........//////////
+    public function verifyOtp(Request $request)
+    {
+        $email = $request->email;
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+            'otp_code' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+        if (!User::where([['email', '=', $request->email], ['otp_code', '=', $request->otp_code]])->exists()) {
+            return $this->sendError('Invalid Code.');
+        }
+        return view('pages.trainerSide.auth.newpassword', compact('email'));
+    }
+
+    public function newPassword(Request $request)
+    {
+       
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|confirmed|min:8',
+            'email' => 'required|email|exists:users,email'
+        ]);
+        if ($validator->fails()) {
+            return $this->sendError('Password should not be less than 8 digits and must match.', $validator->errors());
+        }
+
+        if (!User::where('email', $request->email)->update(['otp_code' => Null, 'password' => bcrypt($request->password)])) {
+            return $this->sendError('Unable to process. Please try again later.');
+        }
+        return Redirect::to(url('/trainer/login'));
     }
 }
