@@ -245,8 +245,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
@@ -272,8 +272,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
@@ -299,8 +299,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
@@ -326,8 +326,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
@@ -353,8 +353,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
@@ -380,8 +380,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
@@ -407,8 +407,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
@@ -434,8 +434,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
@@ -461,8 +461,8 @@
                             </ul>
                         </div>
                         <div class="c-dropdown-content">
-                            <a class="btn"></i> Edit</a>
-                            <a class="btn">View</a>
+
+                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>

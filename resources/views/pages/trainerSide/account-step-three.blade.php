@@ -526,10 +526,6 @@
         position: relative;
     }
 
-    /* .time-form-field input {
-        padding-right: 40px;
-    } */
-
     .time-form-field img {
         position: absolute;
         top: 50%;

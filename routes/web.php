@@ -216,3 +216,10 @@ Route::get('/trainer/payment', function () {
 Route::get('/trainer/paymentdetail', function () {
     return view('pages.trainerSide.payment-detail');
 });
+Route::get('/trainer/updateprofile', function () {
+    return view('pages.trainerSide.update-profile');
+});
+
+Route::get('/trainer/profile', function () {
+    return view('pages.trainerSide.profile');
+});
