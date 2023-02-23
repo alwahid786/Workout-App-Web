@@ -1091,7 +1091,7 @@
 </div>
 <div class="container ">
     <div class=" w-100 text-right">
-        <button>Next</button>
+        <button id="saveSession">Next</button>
     </div>
 </div>
 
@@ -1205,6 +1205,25 @@
         // }
         // $('#createSessionForm').submit();
         $('#createSessionForm').submit(function(e) {
+            validation = validateForm();
+            if (validation.success == false) {
+                e.preventDefault();
+                let imageErrorText = ', Atleast 1 image is required.'
+                if (validation.imageError > 0) {
+                    swal({
+                        title: "Some Fields Missing",
+                        text: "Please fill all marked fields" + imageErrorText,
+                        icon: "error",
+                    });
+                } else {
+                    swal({
+                        title: "Some Fields Missing",
+                        text: "Please fill all marked fields",
+                        icon: "error",
+                    });
+                }
+                return;
+            }
             e.preventDefault();
             var formData = new FormData(this);
             formData.append('index', index);
@@ -1219,11 +1238,11 @@
                 processData: false,
                 contentType: false,
                 success: function(data) {
-                    console.log(data)
                     $('#slotsSection').append(data.html);
                     sessionsArray.push(data.data);
                     index++
                     resetForm();
+                    console.log(sessionsArray);
                 }
             });
         });
@@ -1314,6 +1333,25 @@
                 'imageError': imageError
             };
         }
+
+        // Save Session API Call 
+        $(document).on('click', "#saveSession", function() {
+            var sessionsData = {
+                allSessions: sessionsArray
+            };
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url('api/trainer_detail') }}",
+                type: "POST",
+                data: sessionsData,
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        });
     });
 </script>
 <script>
