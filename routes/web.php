@@ -6,6 +6,7 @@ use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\SocialController;
 use App\Http\Controllers\User\MapController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,17 +47,13 @@ Route::post('/contact', [UserController::class, 'contactUs']);
 
 Route::middleware('auth')->group(function () {
     Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
-
     Route::any('/latest/sessions', [UserController::class, 'getTrainerCategory'])->name('trainers');
     Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
     Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
     Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
     Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('userdashboard/session');
     Route::any('/filter/session', [UserController::class, 'SearchResult'])->name('filter/session');
-
     Route::any('/dashboard/trainer', [UserController::class, 'usersTrainer'])->name('dashboard/trainer');
-
-
     Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
 
     Route::any('/dashboard', [UserController::class, 'dashbord'])->name('/dashboard');
@@ -86,7 +83,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/trainer/steptwo', function () {
         return view('pages.trainerSide.account-step-two');
-    }); 
+    });
+    Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
 });
 
 

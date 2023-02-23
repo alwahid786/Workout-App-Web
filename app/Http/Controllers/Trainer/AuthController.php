@@ -12,6 +12,7 @@ use App\Http\Traits\ResponseTrait;
 use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Session;
+use App\Models\Category;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 
@@ -85,8 +86,9 @@ class AuthController extends Controller
         if (!$trainer) {
             return $this->sendError('User has not registered. Please try again later');
         }
-
-        return Redirect::to(url('/trainer/stepthree'));
+        $category = Category::all();
+        $categories = json_decode($category, true);
+        return view('pages.trainerSide.account-step-three', compact('categories'));
     }
 
     public function trainerDetail(Request $request)
