@@ -183,9 +183,10 @@
                     <h1>Categories</h1>
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
+
                     @foreach($class as $categories)
                     <div class="col catergory-card-img">
-                        <!-- <a href=""> -->
+
                         <div class="catergory-card catergory-card-yellow p-2" data-id="{{$categories['id']}}">
                             <div class="category-left">
                                 <h1>{{$categories['title']}}</h1>
@@ -195,108 +196,11 @@
                                 <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
                             </div>
                         </div>
-                        <!-- </a> -->
+
 
                     </div>
                     @endforeach
-                    <!-- <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-blue p-2">
-                                <div class="category-left">
-                                    <h1>Gymnastic</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
 
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-green p-2">
-                                <div class="category-left">
-                                    <h1>Fitness</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-purple p-2">
-                                <div class="category-left">
-                                    <h1>Bodybuilding</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-yellow p-2">
-                                <div class="category-left">
-                                    <h1>Yoga</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-blue p-2">
-                                <div class="category-left">
-                                    <h1>Gymnastic</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-green p-2">
-                                <div class="category-left">
-                                    <h1>Fitness</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-                    <div class="col">
-                        <a href="">
-                            <div class="catergory-card catergory-card-purple p-2">
-                                <div class="category-left">
-                                    <h1>Bodybuilding</h1>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                                <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
-                                </div>
-                            </div>
-                        </a>
-
-                    </div> -->
                 </div>
             </div>
             <div class="dashboard-header-left categories-heading my-4 ">
@@ -304,7 +208,7 @@
             </div>
             <div id="trainerList" class="categories-grid-section pb-3">
                 <?= $trainersView['trainersView']; ?>
-                
+
             </div>
         </div>
     </div>

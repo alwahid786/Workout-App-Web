@@ -143,9 +143,9 @@ Route::get('/term-l', function () {
 // Route::get('/dashboard/trainer-detail', function () {
 //     return view('pages.userdashboard.explore.trainer-detail');
 // });
-// Route::get('/dashboard/categories', function () {
-//     return view('pages.userdashboard.explore.categories');
-// });
+Route::get('/dashboard/categories', function () {
+    return view('pages.userdashboard.explore.categories');
+});
 // Route::get('/dashboard/class-detail', function () {
 //     return view('pages.userdashboard.explore.class-detail');
 // });
