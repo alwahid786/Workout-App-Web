@@ -194,7 +194,7 @@ class UserController extends Controller
     {
         $all_trainer = (new User)->newQuery();
 
-        $all_trainer = User::where('name', 'Like', '%' . $request->search_by . '%')->get();
+        $all_trainer = User::where('user_type', 'trainer')->where('name', 'Like', '%' . $request->search_by . '%')->get();
         if (!$all_trainer) {
             return $this->sendError('Dashboard');
         }
