@@ -1108,7 +1108,7 @@
             </div>
         </div>
         <div class="form-btn my-5 ">
-            <button disabled type="button" id="renderSession" class="">Done</button>
+            <button type="submit" id="renderSession" class="">Done</button>
             <!-- <a href="javascript:void(0)" id="renderSession" class="p-0 btn">Done</a> -->
         </div>
     </form>
@@ -1122,7 +1122,7 @@
 </div>
 <div class="container next-btn">
     <div class=" w-100 text-right">
-        <button id="saveSession">Next</button>
+        <button disabled id="saveSession">Next</button>
     </div>
 </div>
 
@@ -1236,7 +1236,7 @@
         // }
         // $('#createSessionForm').submit();
         $('#createSessionForm').submit(function(e) {
-            validation = validateForm();
+            validation = validateForm(e);
             if (validation.success == false) {
                 e.preventDefault();
                 let imageErrorText = ', Atleast 1 image is required.'
@@ -1330,24 +1330,31 @@
 
         }
 
-        function validateForm() {
+        // Form Validations 
+        function validateForm(e) {
+            e.preventDefault();
             errors = 0;
             imageError = 0;
-            var except = $("#choose-file");
-            $("form#createSessionForm :input,select").each(function() {
+            $("form#createSessionForm :input,form#createSessionForm select").each(function() {
                 value = $(this).val();
 
                 if (value == '') {
                     if ($(this).is("input")) {
+                        alert('input');
                         $(this).css('border', '1px solid red');
-                    } else {
+                        errors++;
+
+                    } else if ($(this).is("select")) {
+                        console.log($(this));
                         $(this).next().addClass('borderRed');
+                        errors++;
+
                     }
 
                     if ($(this).is("input[type='file']")) {
+                        console.log($(this));
                         imageError++;
                     }
-                    errors++;
                 } else {
                     $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
                     $(this).next().removeClass('borderRed');
