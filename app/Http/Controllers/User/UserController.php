@@ -686,4 +686,7 @@ class UserController extends Controller
         // dd($upcomingsession);
         return view('pages.userdashboard.dashboard.upcoming-session-list', compact('currentsession', 'upcomingsession'));
     }
+    public function topRatedTrainer(){
+        
+    }
 }
