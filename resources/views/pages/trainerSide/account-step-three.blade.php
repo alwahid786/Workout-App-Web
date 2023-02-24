@@ -179,7 +179,7 @@
         background: #B1D244;
     }
 
-    .form-btn a {
+    .form-btn button {
         width: 160px;
         height: 50px;
         background-color: #F8F8F8;
@@ -195,7 +195,7 @@
         text-decoration: none !important;
     }
 
-    .form-btn a:hover {
+    .form-btn button:hover {
         background-color: #E37048;
         color: white;
     }
@@ -205,7 +205,38 @@
 
 
 
-    .form-btn a {
+    .form-btn button {
+        text-decoration: none;
+    }
+
+    .next-btn button {
+        width: 160px;
+        height: 50px;
+        background-color: #F8F8F8;
+        border: 1px solid #E37048;
+        color: #E37048;
+        border-radius: 7px;
+        margin-left: auto;
+        margin-bottom: 20px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none !important;
+        text-decoration: none !important;
+    }
+
+    .next-btn button:hover {
+        background-color: #E37048;
+        color: white;
+    }
+
+
+
+
+
+
+    .next-btn button {
         text-decoration: none;
     }
 
@@ -1077,7 +1108,7 @@
             </div>
         </div>
         <div class="form-btn my-5 ">
-            <button type="submit" id="renderSession" class="p-0 btn">Done</button>
+            <button type="submit" id="renderSession" class="">Done</button>
             <!-- <a href="javascript:void(0)" id="renderSession" class="p-0 btn">Done</a> -->
         </div>
     </form>
@@ -1089,9 +1120,9 @@
 <div class="container form-container my-5 py-5" id="slotsSection">
 
 </div>
-<div class="container ">
+<div class="container next-btn">
     <div class=" w-100 text-right">
-        <button id="saveSession">Next</button>
+        <button disabled id="saveSession">Next</button>
     </div>
 </div>
 
@@ -1205,7 +1236,7 @@
         // }
         // $('#createSessionForm').submit();
         $('#createSessionForm').submit(function(e) {
-            validation = validateForm();
+            validation = validateForm(e);
             if (validation.success == false) {
                 e.preventDefault();
                 let imageErrorText = ', Atleast 1 image is required.'
@@ -1299,24 +1330,31 @@
 
         }
 
-        function validateForm() {
+        // Form Validations 
+        function validateForm(e) {
+            e.preventDefault();
             errors = 0;
             imageError = 0;
-            var except = $("#choose-file");
-            $("form#createSessionForm :input,select").each(function() {
+            $("form#createSessionForm :input,form#createSessionForm select").each(function() {
                 value = $(this).val();
 
                 if (value == '') {
                     if ($(this).is("input")) {
+                        alert('input');
                         $(this).css('border', '1px solid red');
-                    } else {
+                        errors++;
+
+                    } else if ($(this).is("select")) {
+                        console.log($(this));
                         $(this).next().addClass('borderRed');
+                        errors++;
+
                     }
 
                     if ($(this).is("input[type='file']")) {
+                        console.log($(this));
                         imageError++;
                     }
-                    errors++;
                 } else {
                     $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
                     $(this).next().removeClass('borderRed');
