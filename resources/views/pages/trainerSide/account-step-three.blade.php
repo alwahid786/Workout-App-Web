@@ -1274,6 +1274,11 @@
                     index++
                     resetForm();
                     console.log(sessionsArray);
+                    if (sessionsArray.length > 0) {
+                        $("#saveSession").removeAttr('disabled');
+                    } else {
+                        $("#saveSession").attr('disabled', 'disabled');
+                    }
                 }
             });
         });
@@ -1285,6 +1290,9 @@
             var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
             sessionsArray.splice(index, 1);
             $(this).parent().parent().parent().parent().remove();
+            if (sessionsArray.length < 1) {
+                $("#saveSession").attr('disabled', 'disabled');
+            }
         });
 
 
