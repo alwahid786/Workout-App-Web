@@ -54,6 +54,10 @@
                 </div>
                 <div class="col-xl-8">
                     <div class="row js-slick-carousel">
+                        @if($trainers== null)
+
+                        ....................................
+                        @else
                         @foreach($trainers as $trainer_data)
                         <div class="col ">
                             <div class="trainer-card">
@@ -78,7 +82,7 @@
                             </div>
                         </div>
                         @endforeach
-
+                        @endif
                     </div>
                 </div>
             </div>
@@ -90,7 +94,9 @@
                 <h1>Sessions</h1>
             </div>
             <div class="row js-slick-carousels px-sm-5">
-
+                @if($class== null)
+                ...................
+                @else
                 @foreach($class as $classes)
                 <div class="col">
                     <div class="session-card p-2">
@@ -122,7 +128,7 @@
                     </div>
                 </div>
                 @endforeach
-
+                @endif
             </div>
         </div>
         <div class="dashboard-session mt-4 py-4 px-3 px-sm-3">
@@ -143,6 +149,9 @@
 
             </div>
             <div class="row js-slick-carousels js-slick-reinit px-sm-5 pt-3 apend-trainer" id="trainers">
+                @if($trainers == null)
+                ....................
+                @else
                 @foreach($trainers as $trainer_data)
 
                 <div class="col">
@@ -174,6 +183,7 @@
                     </div>
                 </div>
                 @endforeach
+                @endif
             </div>
         </div>
         <div class="category-section">
@@ -186,12 +196,19 @@
                     </div>
                     <div class="col-6 text-right">
                         <div class="category-header-right py-3">
+                            @if($category == null)
+                            <a href="{{url('/dashboard/categories/')}}" class="view-click">View All</a>
+                            @else
                             <a href="{{url('/dashboard/categories/'.$category[0]['id'])}}" class="view-click">View All</a>
+                            @endif
                         </div>
                     </div>
 
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
+                    @if($category == null)
+                    .......................................
+                    @else
                     @foreach($category as $category_data)
                     <div class="col">
                         <a class="catergory-cards" href="{{url('/dashboard/categories/'.$category_data['id'])}}">
@@ -208,6 +225,7 @@
 
                     </div>
                     @endforeach
+                    @endif
                 </div>
             </div>
         </div>

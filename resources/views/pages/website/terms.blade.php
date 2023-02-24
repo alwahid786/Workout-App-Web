@@ -410,14 +410,14 @@
                     <input type="text" class="mb-2 modal-input" placeholder="Last Name" id="last_name">
                     <input type="text" class="mb-2 modal-input" placeholder="Email" id="email">
                     <div class="right-inner-addon mb-2">
-                        <input type="password" class=" modal-input passInput" placeholder="Password" id="password">
-                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                        <input type="password" class=" modal-input signpassInput" placeholder="Password" id="password">
+                        <i id="signhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="signshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                     <div class="right-inner-addon mb-2">
-                        <input type="password" class=" modal-input passInput" placeholder="Confirm Password" id="password_confirmation">
-                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                        <input type="password" class=" modal-input cpassInput" placeholder="Confirm Password" id="password_confirmation">
+                        <i id="confirmhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="confirmshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                     <p>Already have an account? <span data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</span></p>
                     <input type="button" class=" btn my-3 login-btn" value="Sign Up" id="sighnup_submit">
@@ -441,8 +441,8 @@
                     <input type="text" class="mb-2 modal-input" placeholder="Email" id="login_email">
                     <div class="right-inner-addon mb-2">
                         <input type="password" class=" modal-input passInput" placeholder="Password" id="login_password">
-                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
-                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                        <i id="loginhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
+                        <i id="loginshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center modal-form-middle">
@@ -452,15 +452,15 @@
                         <a class="fnt-normal" href="javascript:void(0)" data-dismiss="modal" data-toggle="modal" data-target="#forgotPassModal">Forgot Password?</a>
                     </div>
                     <div class="d-flex justify-content-between align-items-center w-50 mx-auto mt-3 modal-social-icon">
-                        <a href="javascript:void(0)"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
-                        <a href="javascript:void(0)"><img src="{{asset('public/assets/images/google-color.svg')}}" alt=""></a>
-                        <a href="javascript:void(0)"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+                        <a href="{{route('redirectToInstagram')}}"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                        <a href="{{route('redirectToGoogle')}}"><img src="{{asset('public/assets/images/google-color.svg')}}" alt=""></a>
+                        <a href="{{route('redirectToFacebook')}}"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
                     </div>
                     <div class="my-3 text-center">
                         <strong class="clr-orange">OR</strong>
                     </div>
                     <!-- <input type="submit" class=" btn my-3" value="Login" id="login_submit"> -->
-                    <a href="{{url('trainers')}}" class="btn my-3 login-btn form-control">Login</a>
+                    <a href="" class="btn my-3 login-btn form-control" id="login_submit">Login</a>
                     <p class="text-center mt-3">Don't have an account? <span data-dismiss="modal" data-toggle="modal" data-target="#signupModal">Signup</span></p>
 
                 </div>
@@ -474,19 +474,22 @@
         <div class="modal-content signupModalDialogue">
             <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
-                <h2>Forget <span>Password</span></h2>
+                <h2>Forgot <span>Password?</span></h2>
                 <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <form action="">
                 <div class="modalContent py-3 ">
                     <div class="text-center">
-                        <img style="width: 60%;" src="{{asset('public/assets/images/forget-pass.svg')}}" alt="">
+                        <img style="width: 55%;" src="{{asset('public/assets/images/forget-pass.svg')}}" alt="">
                     </div>
-                    <input type="text" class="my-2 modal-input" placeholder="Email" id="forgot_email">
+                    <div class="user-input-wrp">
+                        <br />
+                        <input type="text" class="inputText" required id="forgot_email">
+                        <span class="floating-label">Email Address</span>
+                    </div>
                     <div class="text-center">
-                        <input type="submit" class="w-50 btn my-4 login-btn" value="Send OTP" data-dismiss="modal" data-toggle="modal" data-target="#verifyOtpModal" id="forgot_submit">
+                        <input type="submit" class="w-50 btn my-4 login-btn" value="Send OTP" id="forgot_submit">
                     </div>
-
                 </div>
             </form>
         </div>
@@ -498,7 +501,7 @@
         <div class="modal-content signupModalDialogue">
             <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader px-4 pt-4 pb-2 d-flex justify-content-between align-items-center">
-                <h2>Forget <span>Password</span></h2>
+                <h2>Verify <span>OTP</span></h2>
                 <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <form action="">
@@ -508,19 +511,19 @@
                     </div>
                     <div class="text-center">
 
-                        <input class="otp otp1 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
-                        <input class="otp otp2 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
-                        <input class="otp otp3 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
-                        <input class="otp otp4 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
-                        <input class="otp otp5 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(5)' maxlength=1>
-                        <input class="otp otp6 modal-input-otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(6)' maxlength=1>
+                        <input class="otp otp1 modal-input-otp" id="otp1" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
+                        <input class="otp otp2 modal-input-otp" id="otp2" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
+                        <input class="otp otp3 modal-input-otp" id="otp3" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
+                        <input class="otp otp4 modal-input-otp" id="otp4" type="text" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
+                        <input class="otp otp5 modal-input-otp" id="otp5" type="text" oninput='digitValidate(this)' onkeyup='tabChange(5)' maxlength=1>
+                        <input class="otp otp6 modal-input-otp" id="otp6" type="text" oninput='digitValidate(this)' onkeyup='tabChange(6)' maxlength=1>
                     </div>
                     <div class="resend-btn text-center pt-4  ">
                         <p id="demo" class="otp-seconds">00:00</p>
                         <a href="javascript:void(0)" id="resendCode_d">Resend Code</a>
                     </div>
                     <div class="text-center">
-                        <input type="submit" class="w-50 btn my-4 login-btn" value="Verify OTP" data-dismiss="modal" data-toggle="modal" data-target="#resetPassModal" placeholder="Confirm Password">
+                        <input type="submit" class="w-50 btn my-4 login-btn" id="otp_submit" value="Verify OTP" placeholder="Confirm Password">
 
                     </div>
                 </div>
@@ -541,21 +544,20 @@
             <form action="">
                 <div class="modalContent py-3 ">
                     <div class="my-3">
-                        <input type="text modal-input" class="mb-2" placeholder="Enter New Password">
-                        <input type="text modal-input" class="mb-2" placeholder="Confirm Password">
+                        <input type="text modal-input" id="new_password" class="mb-2" placeholder="Enter New Password">
+                        <input type="text modal-input" id="confirm_password_reset" class="mb-2" placeholder="Confirm Password">
                     </div>
-
-                    <input type="submit" class=" btn my-3 login-btn" value="Confirm" data-dismiss="modal" data-toggle="modal" data-target="#loginModal" placeholder="Confirm Password">
+                    <input type="submit" class=" btn my-3 login-btn" value="Confirm" id="update_password" placeholder="Confirm Password">
 
                 </div>
             </form>
         </div>
     </div>
 </div>
-<form method="GET" action="" enctype="multipart/form-data">
+<!-- <form method="GET" action="" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="email" class="form-control" placeholder="Email" value="">
-</form>
+</form> -->
 @endsection
 @section('insertfooter')
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
