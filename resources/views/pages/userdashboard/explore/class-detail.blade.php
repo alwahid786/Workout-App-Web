@@ -395,44 +395,7 @@
                                 </div>
                             </div>
                             @endforeach
-                            <!-- <div class=" trainer-detail-review-wrapper my-2">
-                                <div class="trainer-detail-review-left">
-                                    <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                    <div class="trainer-detail-review-left-content pl-2">
-                                        <h1>Samuel sam</h1>
-                                        <h2>Yoga</h2>
-                                    </div>
-                                </div>
-                                <div class="trainer-detail-review-right pl-4">
-                                    <div class="rating-star">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                            </div>
-                            <div class=" trainer-detail-review-wrapper my-2">
-                                <div class="trainer-detail-review-left">
-                                    <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                    <div class="trainer-detail-review-left-content pl-2">
-                                        <h1>Samuel sam</h1>
-                                        <h2>Yoga</h2>
-                                    </div>
-                                </div>
-                                <div class="trainer-detail-review-right pl-4">
-                                    <div class="rating-star">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
-                                </div>
-                            </div> -->
+                          
                         </div>
 
 
@@ -517,11 +480,13 @@
                                 @if(isset($class_detail) && !empty($class_detail))
                                 <!-- Loop div starts here  -->
                                 @foreach($class_detail[0]['session'] as $session)
+                                
                                 <div class="trainer-class-time-card-box my-2 " style="cursor: pointer;">
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$session['id']}}">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
                                                 <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h2>{{date('h:i',strtotime($session['start_time']))}} {{$session['start_meridiem']}}-{{date('h:i',strtotime($session['end_time']))}} {{$session['end_meridiem']}}</h2>

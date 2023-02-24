@@ -225,13 +225,15 @@ class UserController extends Controller
         $sessions = json_decode($categorizedSessions, true);
         return view('pages.userdashboard.explore.trainer-detail', compact('trainer_detail', 'sessions'));
     }
+
+    ///////////////////.............trainer session................//////////////
     public function trainerSessionDetail(Request $request, $id, $trainerId)
     {
-        $trainer = User::where('id', '=', $trainerId)->with(['class.category', 'class.session', 'class.classImage'])->get();
+        $trainer = User::where('id', '=', $trainerId)->with(['class.category', 'class.session'])->get();
         // if (!$trainer) {
         //     return $this->sendError('Trainer Detail');
         // }
-        $sessions = ModelsSession::where(['trainer_id' => $trainerId, 'category_id' => $id])->with('class', 'class.classImages', 'category', 'trainerData')->get();
+        $sessions = ModelsSession::where(['trainer_id' => $trainerId, 'category_id' => $id])->with('class', 'session_image', 'category', 'trainerData')->get();
         $sessions = json_decode($sessions, true);
         $trainer  = json_decode($trainer, true);
         return view('pages.userdashboard.explore.trainer-session-detail', compact('sessions', 'trainer'));
@@ -240,12 +242,12 @@ class UserController extends Controller
     ///////// .....class detail .............////////
     public function class_detail(Request $request, $id, $day)
     {
-        $class         = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
+        $class         = Classes::where(['trainer_id' => $id])->with('classSession','classSession.Category', 'trainer', 'category', 'classImages')->get();
         $classes_count = ModelsSession::where('trainer_id', '=', $id)->count();
         $trainer       = User::where('id', $id)->first();
         if (count($class) > 0) {
             foreach ($class as $session) {
-                $session['session'] = ModelsSession::where(['day' => $day, 'trainer_id' => $id])->with('category')->get();
+                $session['session'] = ModelsSession::where(['day' => $day, 'trainer_id' => $id])->with('category', 'session_image')->get();
             }
         }
         if (!$class) {
@@ -686,5 +688,4 @@ class UserController extends Controller
         // dd($upcomingsession);
         return view('pages.userdashboard.dashboard.upcoming-session-list', compact('currentsession', 'upcomingsession'));
     }
-    
 }
