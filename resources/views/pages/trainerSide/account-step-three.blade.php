@@ -1395,6 +1395,7 @@
                 cache: false,
                 success: function(data) {
                     console.log(data)
+                    window.location.href = '/workitpt_web/trainer/stepfive';
                 }
             });
         });

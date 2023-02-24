@@ -7,6 +7,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\SocialController;
 use App\Http\Controllers\User\MapController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\Trainer\TrainerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,14 @@ Route::get('instagram/callback', [SocialController::class, 'handleInstagramCallb
 Route::post('/contact', [UserController::class, 'contactUs']);
 
 Route::middleware('auth')->group(function () {
+    /////////.............trainer...............//////////
+
+
+
+
+    //////////////....user................////////////////
+
+
     Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::any('/latest/sessions', [UserController::class, 'getTrainerCategory'])->name('trainers');
     Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
@@ -85,6 +94,7 @@ Route::middleware('auth')->group(function () {
 
     ///// trainer............//////
     Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
+    Route::any('/trainer/stepfive', [TrainerController::class, 'showTrainerDetail'])->name('trainer/stepfive');
 
     Route::get('/trainer/steptwo', function () {
         return view('pages.trainerSide.account-step-two');
@@ -269,9 +279,9 @@ Route::get('/trainer/stepfour', function () {
 Route::get('/trainer/stepfours', function () {
     return view('pages.trainerSide.account-stepfour-second');
 });
-Route::get('/trainer/stepfive', function () {
-    return view('pages.trainerSide.account-step-five');
-});
+// Route::get('/trainer/stepfive', function () {
+//     return view('pages.trainerSide.account-step-five');
+// });
 Route::get('/trainer/stepfour-second', function () {
     return view('pages.trainerSide.account-step-four-second');
 });

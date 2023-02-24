@@ -597,34 +597,55 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="content-left-section p-3">
+                    @if($trainer['profile_img']==null)
                     <img src="{{asset('public/assets/trainerimages/profile.png')}}" alt="">
-                    <h1>Advanced</h1>
+                    @else
+                    <img src="{{$trainer['profile_img']}}" alt="">
+
+                    @endif
+                    <h1>{{$trainer['name']}}</h1>
                     <div class="middle-heading">
                         <h2>About</h2>
                         <div></div>
                     </div>
-                    <p>n publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
-                    <p>n publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
+                    <p>{{$trainer['about']}}</p>
+                    <!-- <p>n publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p> -->
                 </div>
             </div>
             <div class="col-md-8 mt-4 mt-md-0">
                 <div class="content-right-profile p-3">
                     <div class="col-12 content-right-profile-header px-0">
-                        <h1 class="py-3">John Smith</h1>
+                        <h1 class="py-3">{{$trainer['name']}}</h1>
                     </div>
                     <div class="content-right-profile-body">
                         <div class="profile-body pr-sm-5 mr-lg-5 pr-lg-5">
-                            <h1><img src="{{asset('public/assets/trainerimages/message-icon.png')}}" alt="">johnsmith@gmail.com</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/user-icon.png')}}" alt="">Male , 5’11” , 78kgs</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">Toronto, Canada</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/social-icon.png')}}" alt="">https://www.linkedin.com</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/message-icon.png')}}" alt="">{{$trainer['email']}}</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/user-icon.png')}}" alt="">{{$trainer['gender']}}, {{$trainer['height']}} {{$trainer['hieght_unit']}} , {{$trainer['weight']}} {{$trainer['weight_unit']}}</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">{{$trainer['phone']}} </h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">{{$trainer['country']}}, {{$trainer['state']}}</h1>
+
                         </div>
                         <div class="profile-body">
-                            <h1><img src="{{asset('public/assets/trainerimages/date-icon.png')}}" alt="">22 Nov, 1996</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/heart-icon.png')}}" alt="">Pollen Allergy</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">Toronto, Canada </h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/heart-icon.png')}}" alt="">{{$trainer['madical_condition']}}</h1>
+
+                            @if($trainer['trainer_profile']['facebook_url']== null)
+
+                            @else
+                            <h1><img src="{{asset('public/assets/trainerimages/social-icon.png')}}" alt="">{{$trainer['trainer_profile']['facebook_url']}}</h1>
+                            @endif
+                            @if($trainer['trainer_profile']['instagram_url']== null)
+
+                            @else
+                            <h1><img src="{{asset('public/assets/trainerimages/social-icon.png')}}" alt="">{{$trainer['trainer_profile']['instagram_url']}}</h1>
+                            @endif
+                            @if($trainer['trainer_profile']['linkedin_url']== null)
+
+                            @else
+                            <h1><img src="{{asset('public/assets/trainerimages/social-icon.png')}}" alt="">{{$trainer['trainer_profile']['linkedin_url']}}</h1>
+                            @endif
+
+
+                            <!-- <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>  -->
 
                         </div>
                     </div>
@@ -666,6 +687,7 @@
 
                 <div class="container form-container py-3">
                     <!-- .............Stretching Outdoors............... -->
+                    
                     <div class="slot-wrapper py-3 px-3 my-4">
                         <div class="slot-vertical-icon my-2 text-right">
                             <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
@@ -690,7 +712,7 @@
                                 </div>
 
                             </div>
-                            <div class="slot-grid-item">
+                            <!-- <div class="slot-grid-item">
                                 <div class="slot-image">
                                     <img src="{{asset('public/assets/trainerimages/stepthreetwo.jpg')}}" alt="">
                                 </div>
@@ -713,7 +735,7 @@
                                     <img src="{{asset('public/assets/trainerimages/stepthreefive.jpg')}}" alt="">
                                 </div>
 
-                            </div>
+                            </div> -->
 
                         </div>
                         <div class="slot-wrapper-heading px-3 my-3">
@@ -871,7 +893,7 @@
 
 
                     <!-- .............Yoga Slot............... -->
-                    <div class="slot-wrapper py-3 px-3 my-4">
+                    <!-- <div class="slot-wrapper py-3 px-3 my-4">
                         <div class="slot-vertical-icon my-2 text-right">
                             <img class="dot-toggle-icon-two" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
                             <div class="icon-div icon-div-two box" id="box">
@@ -1066,7 +1088,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> -->
                 </div>
                 <!-- Payment Info -->
                 <div class="col-12 content-right-certificate-header px-0">

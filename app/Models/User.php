@@ -72,4 +72,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Session::class, 'trainer_id');
     }
+    public function trainer_profile()
+    {
+        return $this->hasOne(TrainerProfile::class, 'user_id');
+    }
 }
