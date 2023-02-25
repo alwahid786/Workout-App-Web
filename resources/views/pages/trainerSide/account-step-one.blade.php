@@ -76,20 +76,20 @@
         height: 200px !important;
     }
 
-    .profile-nxt-btn a {
+    .profile-nxt-btn button {
         background-color: #ffff !important;
         color: #E37048 !important;
         border: 1px solid #E37048 !important;
     }
 
-    .profile-nxt-btn a:hover {
+    .profile-nxt-btn button:hover {
         background: #E37048 !important;
         color: white !important;
     }
 
-    .profile-nxt-btn a,
-    .profile-nxt-btn a:focus,
-    .profile-nxt-btn a:active {
+    .profile-nxt-btn button,
+    .profile-nxt-btn button:focus,
+    .profile-nxt-btn button:active {
         background: #E37048;
         border: none;
         box-shadow: none;
@@ -152,7 +152,9 @@
 
     .upload-image img {
         width: 100%;
+        height: 100%;
         max-width: 250px;
+        max-height: 250px;
     }
 
     .update-info-content img {
@@ -344,13 +346,15 @@
 
 <!-- ............Form Section................ -->
 <div class="container">
-    <form action="{{url('trainer_signup')}}" method="post">
+    <form action="{{url('trainer_signup')}}" method="post" enctype="multipart/form-data" id="TrainerSignupForm">
         @csrf
         <div class="row">
             <div class="col-md-6 text-center text-lg-left  upload-image py-5">
-                <img src="{{asset('public/assets/trainerimages/update-info-left.svg')}}" alt="image">
+                <div id="img-preview">
+                    <img src="{{asset('public/assets/trainerimages/update-info-left.svg')}}" alt="image">
+                </div>
                 <label class="hero-section-upload my-4"> Upload Image
-                    <input type="file" size="60">
+                    <input type="file" name="profile_img" id="profile-img" size="60">
                 </label>
             </div>
             <div class="col-md-6 text-center form-image pt-md-5 pb-5">
@@ -417,13 +421,68 @@
 
         </div>
     </form>
-
 </div>
 
 
 
 @endsection
 @section('insertsfooter')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        const chooseFile = document.getElementById("profile-img");
+        const imgPreview = document.getElementById("img-preview");
+        chooseFile.addEventListener("change", function() {
+            getImgData();
+        });
+
+        function getImgData() {
+            const files = chooseFile.files[0];
+            if (files) {
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(files);
+                fileReader.addEventListener("load", function() {
+                    // imgPreview.style.display = "block";
+                    imgPreview.innerHTML = '<img class="cursorPointer_s objectFitCover_s" src="' + this.result +
+                        '" />';
+                });
+            }
+        }
+
+        $("#TrainerSignupForm").submit(function(e) {
+            e.preventDefault();
+            var FormValidation = validateForm();
+            if (FormValidation) {
+                $("#TrainerSignupForm")[0].submit();
+            } else {
+                swal({
+                    title: "Some Fields Missing",
+                    text: "Please fill all fields",
+                    icon: "error",
+                });
+            }
+        })
+
+        // Signup Validations
+        function validateForm() {
+            // Get all the input fields in the form
+            const inputs = document.getElementsByTagName("input");
+
+            // Loop through each input field and check if it's empty
+            for (let i = 0; i < inputs.length; i++) {
+                if (inputs[i].value === "") {
+                    // If the input field is empty, show an error message
+                    // alert("Please fill in all fields");
+                    return false; // return false to prevent the form from submitting
+                }
+            }
+
+            // If all input fields are filled in, return true to allow the form to submit
+            return true;
+        }
+    });
+</script>
 <script>
     $('#hidePass').hide();
     $('#showPass').click(function() {

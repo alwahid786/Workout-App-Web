@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Exception;
+
 
 class AuthController extends Controller
 {
@@ -28,38 +30,43 @@ class AuthController extends Controller
     ////// trainer sign up.......///////
     public function trainerSignup(Request $request)
     {
-        $TrainerData = [
-            'name' => $request->first_name . ' ' . $request->last_name,
-            'email' => $request->email,
-            'user_type' => 'trainer',
-            'password' => bcrypt($request->password),
-            'password_confirmation' => $request->confirm_password,
-            // 'profile_img' => $request->image,
-            'phone' => $request->contact_number,
-            'about' => $request->about,
-
-        ];
-        $registeredTrainer = User::create($TrainerData);
-        if (!$registeredTrainer) {
-            return $this->sendError('User has not registered. Please try again later');
+        if ($request->has('profile_img')) {
+            try {
+                $file = $request->file('profile_img');
+                $name = time() . $file->getClientOriginalName();
+                $file->move(public_path('/files'), $name);
+                $fileNames = $name;
+            } catch (Exception $e) {
+                $message = $e->getMessage();
+                return $this->failure($message);
+            }
+            $image = url('public/files') . '/' . $fileNames;
         }
-        $UserData = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+        $data = request()->except(['_token']);
+        if ($request->has('profile_img')) {
+            $data['profile_img'] = $image;
+        }
+        // $TrainerData = [
+        //     'name' => $request->first_name . ' ' . $request->last_name,
+        //     'email' => $request->email,
+        //     'user_type' => 'trainer',
+        //     'password' => bcrypt($request->password),
+        //     'password_confirmation' => $request->confirm_password,
+        //     // 'profile_img' => $request->image,
+        //     'phone' => $request->contact_number,
+        //     'about' => $request->about,
+
+        // ];
+        $registeredTrainer = User::create($data);
+        if (!$registeredTrainer) {
+            return $this->sendError('Unexpected error occured while registration. Please try again later');
+        }
         $trainerData  = User::find($registeredTrainer->id);
         Auth::loginUsingId($trainerData['id']);
-        $tarner_profile = TrainerProfile::create([
+        TrainerProfile::create([
             'user_id' => $trainerData->id,
         ]);
-        // if (!auth()->attempt($UserData)) {
-        //     return $this->sendError('Try again. Wrong password.Try again or click forget password to reset your password.');
-        // }
-        // $authUser = auth()->user();
         $trainerData->token = $trainerData->createToken('API Token')->accessToken;
-
-
-        // return $this->sendResponse($trainerData, 'Trainer Registered Successfully!');
         return Redirect::to('/trainer/steptwo');
     }
 
@@ -200,7 +207,7 @@ class AuthController extends Controller
 
     public function newPassword(Request $request)
     {
-       
+
         $validator = Validator::make($request->all(), [
             'password' => 'required|confirmed|min:8',
             'email' => 'required|email|exists:users,email'
