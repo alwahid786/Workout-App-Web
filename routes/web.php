@@ -49,6 +49,10 @@ Route::get('instagram', [SocialController::class, 'redirectToInstagram'])->name(
 Route::get('instagram/callback', [SocialController::class, 'handleInstagramCallback']);
 Route::post('/contact', [UserController::class, 'contactUs']);
 
+// Create Image Path for Certificates 
+Route::post('/upload-image', [UserController::class, 'uploadImage'])->name('uploadImage');
+
+
 Route::middleware('auth')->group(function () {
     Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::any('/latest/sessions', [UserController::class, 'getTrainerCategory'])->name('trainers');

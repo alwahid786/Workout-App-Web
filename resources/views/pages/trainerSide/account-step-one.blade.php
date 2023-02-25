@@ -451,17 +451,17 @@
         }
 
         $("#TrainerSignupForm").submit(function(e) {
-            e.preventDefault();
-            var FormValidation = validateForm();
-            if (FormValidation) {
+            // e.preventDefault();
+            // var FormValidation = validateForm();
+            // if (FormValidation) {
                 $("#TrainerSignupForm")[0].submit();
-            } else {
-                swal({
-                    title: "Some Fields Missing",
-                    text: "Please fill all fields",
-                    icon: "error",
-                });
-            }
+            // } else {
+            //     swal({
+            //         title: "Some Fields Missing",
+            //         text: "Please fill all fields",
+            //         icon: "error",
+            //     });
+            // }
         })
 
         // Signup Validations

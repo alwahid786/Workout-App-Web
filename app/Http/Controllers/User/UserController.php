@@ -692,4 +692,24 @@ class UserController extends Controller
         // dd($upcomingsession);
         return view('pages.userdashboard.dashboard.upcoming-session-list', compact('currentsession', 'upcomingsession'));
     }
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('file')) {
+            $image = $request->file('file');
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $path = public_path('uploads/');
+            if (!is_dir($path)) {
+                mkdir($path, 0777, true);
+            }
+            $image->move($path, $filename);
+            $path = public_path('uploads/' . $filename);
+            return response()->json([
+                'path' => $path
+            ]);
+        }
+        return response()->json([
+            'error' => 'No file uploaded'
+        ]);
+    }
 }

@@ -318,8 +318,8 @@
 
     .modal-img img {
         width: 100%;
-        max-width: 150px;
-
+        max-height: 200px;
+        height: 100%;
     }
 
     .progress-cotent {
@@ -563,28 +563,28 @@
     <form action="{{route('update_profile_two')}}" method="post">
         @csrf
         <div class="row">
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Relationship Emergency Contact</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress" name="relation_emergency">
-                </div>
-            </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Emergency Contact</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress" name="emergency_contact">
+                    <label for="inputAddress" class="">Emergency Contact</label>
+                    <input type="text" class="form-control pl-4 validate" id="inputAddress" name="emergency_contact">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Relationship With Emergency Contact</label>
+                    <input type="text" class="form-control pl-4 validate" id="inputAddress" name="relation_emergency">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Date of Birth</label>
-                    <input type="date" class="form-control pl-4" id="inputAddress2" name="date_of_birth">
+                    <input type="date" class="form-control pl-4 validate" id="inputAddress2" name="date_of_birth">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Gender</label>
-                    <select class="wide s-select form-control pl-4" name="gender">
+                    <select class="wide s-select form-control pl-4 validate" name="gender">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -594,7 +594,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector" name="country">
+                        <select class="wide s-select form-control pl-4 validate" id="typeselector" name="country">
                             <option value="USA">USA</option>
                             <option value="Australia">Australia</option>
                             <option value="Austria">Austria</option>
@@ -606,7 +606,7 @@
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
-                    <select class="wide s-select form-control pl-4" id="typeselector" name="state">
+                    <select class="wide s-select form-control pl-4 validate" id="typeselector" name="state">
                         <option value="Alaska">Alaska</option>
                         <option value="Washington">Washington</option>
                         <option value="South">New South Wales</option>
@@ -614,12 +614,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-6" data-aos="fade-left">
-                <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Workout Location</label>
-                    <input type="text" class="form-control pl-4" id="inputAddress2" name="workout_location">
-                </div>
-            </div>
+
             <div class="col-md-6" data-aos="fade-right">
                 <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
@@ -631,14 +626,10 @@
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2 " value="kg" type="radio" name="weight_unit" <?php if (auth()->user()->weight_unit == 'kg') {
-                                                                                                        echo 'checked';
-                                                                                                    } ?>>KGs
+                        <input class="color-radio mx-2" value="kg" type="radio" name="weight_unit" checked>KGs
                     </label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="lb" type="radio" name="weight_unit" <?php if (auth()->user()->weight_unit == 'lb') {
-                                                                                                        echo 'checked';
-                                                                                                    } ?>>LBs
+                        <input class="color-radio mx-2" value="lb" type="radio" name="weight_unit">LBs
                     </label>
                     <!-- <input type="text" name="weight" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity"> -->
                     <input type="text" class="form-control pl-4" id="inputCity" name="weight">
@@ -655,19 +646,13 @@
 
                     <label for="inputAddress2" class=" ">Height</label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="feet" type="radio" name="height_unit" <?php if (auth()->user()->hieght_unit == 'feet') {
-                                                                                                            echo 'checked';
-                                                                                                        } ?>>Feet
+                        <input class="color-radio mx-2" value="feet" type="radio" name="height_unit" checked>Feet
                     </label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="cm" type="radio" name="height_unit" <?php if (auth()->user()->hieght_unit == 'cm') {
-                                                                                                        echo 'checked';
-                                                                                                    } ?>>CM
+                        <input class="color-radio mx-2" value="cm" type="radio" name="height_unit">CM
                     </label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" type="radio" value="inches" name="height_unit" <?php if (auth()->user()->hieght_unit == 'inches') {
-                                                                                                            echo 'checked';
-                                                                                                        } ?>>Inches
+                        <input class="color-radio mx-2" type="radio" value="inches" name="height_unit">Inches
                     </label>
                     <input type="text" class="form-control pl-4" id="inputAddress2" name="height">
                 </div>
@@ -680,6 +665,13 @@
                     <input type="text" class="form-control pl-4" id="inputCity" name="madical_condition">
                 </div>
             </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="form-group pro-form">
+                    <label for="inputAddress2" class=" ">Workout Location</label>
+                    <input type="text" class="form-control pl-4 validate" id="inputAddress2" name="workout_location">
+                </div>
+            </div>
+            
             <div class="col-md-4" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Add Facebook URL</label>
@@ -713,20 +705,11 @@
         </div>
         <div class="updateinfo-qualification my-4 px-3 ">
             <h1 class="mb-4">Upload Qualification</h1>
-            <div class="update-info-qualification-image">
-                <label>
-                    <button type="button" onclick="openModal()" style="border: none;"><img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}"></button>
-                    <!-- <input type="file" name="myfile" style="display:none"> -->
+            <div class="update-info-qualification-image" id="certificatePreviews">
+                <label style="cursor: pointer;">
+                    <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
+                    <input type="file" name="myfile" id="uploadDocInput" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
                 </label>
-                <div class="grid-item py-2 py-sm-0">
-                    <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
-                    <img src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
-                </div>
-                <div class="grid-item py-2 py-sm-0">
-                    <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
-                    <img src="{{asset('public/assets/trainerimages/certificate2.svg')}}" alt="">
-                </div>
-
             </div>
         </div>
         <div class="col-12 my-5">
@@ -737,9 +720,7 @@
                 <button class="button" type="submit">Next</button>
             </div>
         </div>
-</div>
-</form>
-
+    </form>
 </div>
 
 <!-- ..............Modal....................... -->
@@ -754,13 +735,15 @@
                 <form action="">
                     <div class="modalContent py-3 px-4">
                         <div class="row">
-                            <div class="col-sm-8 text-center text-sm-right">
+                            <div class="col-12 text-center text-sm-right">
                                 <div class="modal-img">
                                     <div class="row">
-                                        <div class="col-sm-6">
-                                            <img src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
+                                        <div class="col-12">
+                                            <div id="img-preview">
+                                                <img id="modalCertificate" src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
+                                            </div>
                                         </div>
-                                        <div class="col-sm-6 d-flex align-self-end pl-sm-0 py-4 py-sm-0">
+                                        <!-- <div class="col-sm-6 d-flex align-self-end pl-sm-0 py-4 py-sm-0">
                                             <div class="progress-cotent">
                                                 <div class="progress-par">
                                                     <p>Uploading</p>
@@ -770,26 +753,18 @@
                                                     <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
-
-
-
                                 </div>
                             </div>
                         </div>
-
-
-
-
                         <div class="form-outline pro-form my-5">
                             <label class="form-label" for="textAreaExample">Add Description</label>
-                            <textarea class="form-control" id="textAreaExample1" rows="4" placeholder="Type Here"></textarea>
+                            <textarea class="form-control" id="certificateCaption" rows="4" placeholder="Type Here"></textarea>
                         </div>
                         <div class=" modal-btn my-5 text-sm-right text-center">
-                            <a href="#" class="update-profile-form-btn">Upload Image</a>
+                            <a href="javascript:void(0)" class="update-profile-form-btn" id="addCertificate">Upload Image</a>
                         </div>
-
                     </div>
                 </form>
             </div>
@@ -805,6 +780,59 @@
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
+        var certificateArray = [];
+        var index = 0;
+
+        const fileInput = document.getElementById('uploadDocInput');
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        // Create Link of the image when the file is selected
+        fileInput.addEventListener('change', (event) => {
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Send the AJAX request
+            fetch("{{ route('uploadImage') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response from the server
+                    $("#modalCertificate").attr('src', data.path);
+                    $("#imageuploadmodal").modal('show');
+                })
+                .catch(error => console.error(error));
+        });
+
+        // Add Certificate 
+        $(document).on('click', "#addCertificate", function() {
+            var image = $("#modalCertificate").attr('src');
+            var imgCaption = $("#certificateCaption").val();
+            let div = `<div class="grid-item py-2 py-sm-0">
+                    <img class="deleteCertificate" style="cursor:pointer" data-src="${index}" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
+                    <img src="${image}" alt="">
+                </div>`
+            $("#certificatePreviews").append(div);
+            index++;
+            var certificateData = {
+                image: image,
+                caption: imgCaption
+            };
+            certificateArray.push(certificateData);
+            $("#imageuploadmodal").modal('hide');
+        });
+
+        // Remove Certificate 
+        $(document).on('click', ".deleteCertificate", function() {
+            index = $(this).attr('data-src');
+            $(this).parent().remove();
+            certificateArray.splice(index, 1);
+        })
+
     });
 </script>
 <script>
