@@ -1292,6 +1292,7 @@
             $(this).parent().parent().parent().parent().remove();
             if (sessionsArray.length < 1) {
                 $("#saveSession").attr('disabled', 'disabled');
+            } else {
             }
         });
 

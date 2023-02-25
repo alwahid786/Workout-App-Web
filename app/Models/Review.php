@@ -25,4 +25,8 @@ class Review extends Model
     {
         return $this->belongsTo(Session::class, 'session_id');
     }
+    public function trainer()
+    {
+        return $this->belongsTo(User::class, 'trainer_id');
+    }
 }

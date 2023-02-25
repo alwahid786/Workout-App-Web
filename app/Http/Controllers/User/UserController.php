@@ -22,7 +22,7 @@ use Carbon\Carbon;
 use DateTime;
 use Stripe;
 use Throwable;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Stripe\SearchResult;
@@ -178,22 +178,28 @@ class UserController extends Controller
         $all_trainer = $all_trainer->where('user_type', '=', 'trainer')->with('session.category')->get();
         // Classes::with('session', 'category')->get();
         $class_detail = Classes::with(['category', 'session', 'trainer'])->get();
-
         $all_category = Category::get();
         if (!$all_trainer) {
             return $this->sendError('Dashboard');
         }
+
+        $averageRatings = Review::select('trainer_id', DB::raw('AVG(rating) as average_rating'))
+            ->groupBy('trainer_id')
+            ->orderBy('average_rating', 'desc')
+            ->limit(5)
+            ->with('trainer')
+            ->get();
+
+        $topTrainers = json_decode($averageRatings, true);
         $trainers = json_decode($all_trainer, true);
         $class    = json_decode($class_detail, true);
-
         $category = json_decode($all_category, true);
-        return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class'));
+        return view('pages.userdashboard.explore.dashboard', compact('trainers', 'category', 'class', 'topTrainers'));
     }
     //////////..........search input for traniner.......////////
     public function trainerSearch(Request $request)
     {
         $all_trainer = (new User)->newQuery();
-
         $all_trainer = User::where('user_type', 'trainer')->where('name', 'Like', '%' . $request->search_by . '%')->get();
         if (!$all_trainer) {
             return $this->sendError('Dashboard');
