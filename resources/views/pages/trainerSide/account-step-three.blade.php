@@ -562,10 +562,6 @@
         position: relative;
     }
 
-    /* .time-form-field input {
-        padding-right: 40px;
-    } */
-
     .time-form-field img {
         position: absolute;
         top: 50%;
@@ -871,6 +867,12 @@
         /* .price-select-input .nice-select.wide span {
             font-size: 0.9rem !important;
         } */
+
+    }
+
+    .text-area {
+        background: #F8F8F8 !important;
+        border-radius: 10px !important;
     }
 
     .closeBtn {
@@ -955,8 +957,8 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Sub-Category</label>
-                    <input type="text" class="form-control pl-4" id="sub_category" placeholder="Enter Sub-Category" name="subCategory">
+                    <label for="inputAddress" class=" ">Category Description</label>
+                    <textarea type="text" class="form-control pl-4 text-area" id="inputAddress" placeholder="" value=""></textarea>
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -1118,383 +1120,590 @@
     <h1>All Slots</h1>
 </div>
 <div class="container form-container my-5 py-5" id="slotsSection">
+    <!-- .............Stretching Outdoors............... -->
+    <div class="slot-wrapper py-3 px-3 my-4">
+        <div class="slot-vertical-icon my-2 text-right">
+            <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <div class="icon-div icon-div-one box">
+                <div class="icon-edit py-3 icon-div-inner ">
+                    <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
-</div>
-<div class="container next-btn">
-    <div class=" w-100 text-right">
-        <button disabled id="saveSession">Next</button>
+                    <h1>Edit</h1>
+                </div>
+                <div class="icon-del py-3 icon-div-inner">
+                    <i class="fa fa-trash pr-2" aria-hidden="true"></i>
+
+                    <h1>Delete</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="slot-grid-container">
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthreeone.jpg')}}" alt="">
+                </div>
+
+            </div>
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthreetwo.jpg')}}" alt="">
+                </div>
+
+            </div>
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthree.jpg')}}" alt="">
+                </div>
+
+            </div>
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthreefour.jpg')}}" alt="">
+                </div>
+
+            </div>
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthreefive.jpg')}}" alt="">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="slot-wrapper-heading px-3 my-3">
+            <div class="left-slot-heading">
+                <h1>Stretching Outdoors</h1>
+                <h2 class="pt-2">Static Stretching</h2>
+            </div>
+            <div class="right-slot-heading">
+                <h1>$100</h1>
+            </div>
+        </div>
+        <div class="slot-timing-stacks stack-timing-one">
+            <div class="timing-stack timing-stack-one px-3 my-3">
+                <div class="timing-stack-inner">
+                    <div class="week-name">
+                        <h1>Mon:</h1>
+                    </div>
+                    <div class="stack-time">
+                        <div class="time-stack-outer px-4 ">
+                            <div class="time-stack-inner m-2">
+                                <p class="mb-0">9 am to 10 am</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="stack-categories pb-2">
+                    <div class="row text-md-left text-center">
+                        <div class="col-md-6">
+                            <div class="w-100 d-md-flex align-items-center">
+                                <h1>Difficulty Level:</h1>
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="w-100 d-md-flex align-items-center">
+                                <h1>Session Type:</h1>
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="w-100 d-md-flex align-items-center">
+                                <h1>Class Type:</h1>
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </div>
+                            <div class="w-100 d-md-flex align-items-center">
+                                <h1>Preference:</h1>
+                                <span>Lorem ipsum dolor sit amet</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12">
+            <div class="slot-arrow slot-arrow-one text-center">
+                <i class="fa fa-angle-double-down down-arrow" aria-hidden="true"></i>
+                <i class="fa fa-angle-double-up up-arrow" aria-hidden="true"></i>
+            </div>
+        </div>
+
+
+
     </div>
-</div>
 
-@endsection
-@section('insertsfooter')
-<script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="{{ asset('public/assets/js/bootstrap-select-coutry.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        var sessionsArray = [];
-        var images = [];
-        var index = 0;
-        $('.s-select').niceSelect();
 
-        const fileInput = document.getElementById('choose-file');
-        const imagePreview = document.getElementById('img-preview');
 
-        fileInput.addEventListener('change', function(e) {
-            for (let i = 0; i < fileInput.files.length; i++) {
-                const file = fileInput.files[i];
-                const image = new Image();
-                image.src = URL.createObjectURL(file);
-                image.onload = function() {
-                    URL.revokeObjectURL(image.src);
-                };
+    <!-- .............Yoga Slot............... -->
+    <div class="slot-wrapper py-3 px-3 my-4">
+        <div class="slot-vertical-icon my-2 text-right">
+            <img class="dot-toggle-icon-two" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+            <div class="icon-div icon-div-two box">
+                <div class="icon-edit py-3 icon-div-inner">
+                    <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
-                const imageWrapper = document.createElement('div');
-                imageWrapper.classList.add('image-wrapper');
-                imageWrapper.classList.add('position-relative');
+                    <h1>Edit</h1>
+                </div>
+                <div class="icon-del py-3 icon-div-inner">
+                    <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
-                const imageCloseButton = document.createElement('a');
-                imageCloseButton.classList.add('image-close-button');
-                imageCloseButton.classList.add('closeBtn');
-                imageCloseButton.setAttribute('type', 'btn');
-                imageCloseButton.setAttribute('href', 'javascript:void(0)');
-                imageCloseButton.innerHTML = `<img class="closeImg" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">`;
+                    <h1>Delete</h1>
+                </div>
+            </div>
+        </div>
+        <div class="slot-grid-container">
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthreeone.jpg')}}" alt="">
+                </div>
 
-                const imageContainer = document.createElement('div');
-                imageContainer.classList.add('image-container');
+            </div>
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthreetwo.jpg')}}" alt="">
+                </div>
 
-                imageContainer.appendChild(image);
-                imageWrapper.appendChild(imageCloseButton);
-                imageWrapper.appendChild(imageContainer);
-                imagePreview.appendChild(imageWrapper);
+            </div>
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthree.jpg')}}" alt="">
+                </div>
 
-                images.push(file);
+            </div>
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthreefour.jpg')}}" alt="">
+                </div>
 
-                imageCloseButton.addEventListener('click', function() {
-                    imageWrapper.remove();
-                    let index = images.indexOf(file);
-                    if (index > -1) {
-                        images.splice(index, 1);
+            </div>
+            <div class="slot-grid-item">
+                <div class="slot-image">
+                    <img src="{{asset('public/assets/trainerimages/stepthreefive.jpg')}}" alt="">
+                </div>
+
+            </div>
+
+        </div>
+        <div class="slot-wrapper-heading px-3 my-3">
+            <div class="left-slot-heading">
+                <h1>Yoga</h1>
+                <h2 class="pt-2">Italian Yoga</h2>
+            </div>
+            <div class="right-slot-heading">
+                <h1>$100</h1>
+            </div>
+        </div>
+        <div class="slot-timing-stacks stack-timing-two">
+            <div class="timing-stack timing-stack-two px-3 my-3">
+                <div class="timing-stack-inner">
+                    <div class="week-name">
+                        <h1>Mon:</h1>
+                    </div>
+                    <div class="stack-time">
+                        <div class="time-stack-outer px-4 ">
+                            <div class="time-stack-inner m-2">
+                                <p class="mb-0">9 am to 10 am</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="stack-categories pb-2">
+                    <h1>Difficulty Level: <span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Session Type:<span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Class Type: <span>Lorem ipsum dolor sit amet</span></h1>
+                    <h1>Preference:<span>Lorem ipsum dolor sit amet</span></h1>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12">
+            <div class="slot-arrow slot-arrow-two text-center">
+                <i class="fa fa-angle-double-down down-arrow" aria-hidden="true"></i>
+                <i class="fa fa-angle-double-up up-arrow" aria-hidden="true"></i>
+            </div>
+        </div>
+
+    </div>
+    <div class="container next-btn">
+        <div class=" w-100 text-right">
+            <button disabled id="saveSession">Next</button>
+        </div>
+    </div>
+
+    @endsection
+    @section('insertsfooter')
+    <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ asset('public/assets/js/bootstrap-select-coutry.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            var sessionsArray = [];
+            var images = [];
+            var index = 0;
+            $('.s-select').niceSelect();
+
+            const fileInput = document.getElementById('choose-file');
+            const imagePreview = document.getElementById('img-preview');
+
+            fileInput.addEventListener('change', function(e) {
+                for (let i = 0; i < fileInput.files.length; i++) {
+                    const file = fileInput.files[i];
+                    const image = new Image();
+                    image.src = URL.createObjectURL(file);
+                    image.onload = function() {
+                        URL.revokeObjectURL(image.src);
+                    };
+
+                    const imageWrapper = document.createElement('div');
+                    imageWrapper.classList.add('image-wrapper');
+                    imageWrapper.classList.add('position-relative');
+
+                    const imageCloseButton = document.createElement('a');
+                    imageCloseButton.classList.add('image-close-button');
+                    imageCloseButton.classList.add('closeBtn');
+                    imageCloseButton.setAttribute('type', 'btn');
+                    imageCloseButton.setAttribute('href', 'javascript:void(0)');
+                    imageCloseButton.innerHTML = `<img class="closeImg" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">`;
+
+                    const imageContainer = document.createElement('div');
+                    imageContainer.classList.add('image-container');
+
+                    imageContainer.appendChild(image);
+                    imageWrapper.appendChild(imageCloseButton);
+                    imageWrapper.appendChild(imageContainer);
+                    imagePreview.appendChild(imageWrapper);
+
+                    images.push(file);
+
+                    imageCloseButton.addEventListener('click', function() {
+                        imageWrapper.remove();
+                        let index = images.indexOf(file);
+                        if (index > -1) {
+                            images.splice(index, 1);
+                        }
+                    });
+                }
+            });
+
+            $(document).on('click', ".difficulties", function() {
+                $('#difficulty_level').val($(this).val());
+                $(".difficulties").removeClass('activeDifficulty');
+                $(this).addClass('activeDifficulty');
+            });
+            $(document).on('click', ".categoryOption", function() {
+                $('#category_id').attr('data-src', $(this).text());
+            });
+
+            $(document).on('change', '#preference', function() {
+                if ($('#preference').val() == 1) {
+                    $("#sessionDate").attr('readonly', 'readonly');
+                } else {
+                    $("#sessionDate").removeAttr('readonly');
+                }
+            })
+
+            // Render View of Session Slots 
+            // $(document).on('click', "#renderSession", function() {
+            // validation = validateForm();
+            // if (validation.success == false) {
+            //     let imageErrorText = ', Atleast 1 image is required.'
+            //     if (validation.imageError > 0) {
+            //         swal({
+            //             title: "Some Fields Missing",
+            //             text: "Please fill all marked fields" + imageErrorText,
+            //             icon: "error",
+            //         });
+            //     } else {
+            //         swal({
+            //             title: "Some Fields Missing",
+            //             text: "Please fill all marked fields",
+            //             icon: "error",
+            //         });
+            //     }
+            //     return;
+            // }
+            // var dataApi = {
+            //     categoryName: $('#category_id').attr('data-src'),
+            //     categoryId: $('#category_id').val(),
+            //     subCategory: $('#sub_category').val(),
+            //     difficulty: $('#difficulty_level').val(),
+            //     priceUnit: $('#price_unit').val(),
+            //     price: $('#price').val(),
+            //     type: $('#type').val(),
+            //     day: $('#day').val(),
+            //     sessionType: $('#session_type').val(),
+            //     preference: $('#preference').val(),
+            //     startTime: $('#startTime').val(),
+            //     endTime: $('#endTime').val(),
+            //     sessionImages: images,
+            //     index: index,
+            // }
+            // $('#createSessionForm').submit();
+            $('#createSessionForm').submit(function(e) {
+                validation = validateForm(e);
+                if (validation.success == false) {
+                    e.preventDefault();
+                    let imageErrorText = ', Atleast 1 image is required.'
+                    if (validation.imageError > 0) {
+                        swal({
+                            title: "Some Fields Missing",
+                            text: "Please fill all marked fields" + imageErrorText,
+                            icon: "error",
+                        });
+                    } else {
+                        swal({
+                            title: "Some Fields Missing",
+                            text: "Please fill all marked fields",
+                            icon: "error",
+                        });
+                    }
+                    return;
+                }
+                e.preventDefault();
+                var formData = new FormData(this);
+                formData.append('index', index);
+                formData.append('categoryName', $('#category_id').attr('data-src'));
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ route('session.render') }}",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        $('#slotsSection').append(data.html);
+                        sessionsArray.push(data.data);
+                        index++
+                        resetForm();
+                        console.log(sessionsArray);
+                        if (sessionsArray.length > 0) {
+                            $("#saveSession").removeAttr('disabled');
+                        } else {
+                            $("#saveSession").attr('disabled', 'disabled');
+                        }
                     }
                 });
+            });
+            // });
+
+            // Delete Session Slot 
+            $(document).on('click', ".deleteSlot", function() {
+                let rawIndex = $(this).attr('data-role');
+                var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
+                sessionsArray.splice(index, 1);
+                $(this).parent().parent().parent().parent().remove();
+                if (sessionsArray.length < 1) {
+                    $("#saveSession").attr('disabled', 'disabled');
+                } else {}
+            });
+
+
+            // Edit Session Slot 
+            $(document).on('click', ".editSlot", function() {
+                let rawIndex = $(this).attr('data-role');
+                var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
+                var slotData = sessionsArray[parseInt(index)];
+                console.log(slotData);
+
+                $("#category_id").val(slotData.category_id)
+                $("#category_id").attr('data-src', slotData.category_id)
+                $("#sub_category").val(slotData.subCategory)
+                $("#" + slotData.difficulty).addClass('activeDifficulty')
+                $("#difficulty").val(slotData.difficulty);
+                $("#price_unit").val(slotData.priceUnit);
+                $("#price").val(slotData.price);
+                $("#type").val(slotData.type);
+                $("#session_type").val(slotData.sessionType);
+                $("#preference").val(slotData.preference);
+                $("#day").val(slotData.day);
+                $("#start_time").val(slotData.startTime);
+                $("#end_time").val(slotData.endTime);
+
+
+            });
+
+            // Reset Form 
+            function resetForm() {
+                $('#category_id').prop('selectedIndex', 0);
+                $('select').val('');
+                $('select').niceSelect('update');
+                $('#sub_category').val('');
+                $('#difficulty_level').val('');
+                $('#price').val('');
+                $('#startTime').val('');
+                $('#endTime').val('');
+                $('#sessionDate').val('');
+                $('#sessionDate').removeAttr('readonly');
+                images.splice(0, images.length - 1);
+                $("#difficulty").val('');
+                $('.difficulties').removeClass('activeDifficulty');
+
             }
-        });
 
-        $(document).on('click', ".difficulties", function() {
-            $('#difficulty_level').val($(this).val());
-            $(".difficulties").removeClass('activeDifficulty');
-            $(this).addClass('activeDifficulty');
-        });
-        $(document).on('click', ".categoryOption", function() {
-            $('#category_id').attr('data-src', $(this).text());
-        });
-
-        $(document).on('change', '#preference', function() {
-            if ($('#preference').val() == 1) {
-                $("#sessionDate").attr('readonly', 'readonly');
-            } else {
-                $("#sessionDate").removeAttr('readonly');
-            }
-        })
-
-        // Render View of Session Slots 
-        // $(document).on('click', "#renderSession", function() {
-        // validation = validateForm();
-        // if (validation.success == false) {
-        //     let imageErrorText = ', Atleast 1 image is required.'
-        //     if (validation.imageError > 0) {
-        //         swal({
-        //             title: "Some Fields Missing",
-        //             text: "Please fill all marked fields" + imageErrorText,
-        //             icon: "error",
-        //         });
-        //     } else {
-        //         swal({
-        //             title: "Some Fields Missing",
-        //             text: "Please fill all marked fields",
-        //             icon: "error",
-        //         });
-        //     }
-        //     return;
-        // }
-        // var dataApi = {
-        //     categoryName: $('#category_id').attr('data-src'),
-        //     categoryId: $('#category_id').val(),
-        //     subCategory: $('#sub_category').val(),
-        //     difficulty: $('#difficulty_level').val(),
-        //     priceUnit: $('#price_unit').val(),
-        //     price: $('#price').val(),
-        //     type: $('#type').val(),
-        //     day: $('#day').val(),
-        //     sessionType: $('#session_type').val(),
-        //     preference: $('#preference').val(),
-        //     startTime: $('#startTime').val(),
-        //     endTime: $('#endTime').val(),
-        //     sessionImages: images,
-        //     index: index,
-        // }
-        // $('#createSessionForm').submit();
-        $('#createSessionForm').submit(function(e) {
-            validation = validateForm(e);
-            if (validation.success == false) {
+            // Form Validations 
+            function validateForm(e) {
                 e.preventDefault();
-                let imageErrorText = ', Atleast 1 image is required.'
-                if (validation.imageError > 0) {
-                    swal({
-                        title: "Some Fields Missing",
-                        text: "Please fill all marked fields" + imageErrorText,
-                        icon: "error",
-                    });
-                } else {
-                    swal({
-                        title: "Some Fields Missing",
-                        text: "Please fill all marked fields",
-                        icon: "error",
-                    });
-                }
-                return;
-            }
-            e.preventDefault();
-            var formData = new FormData(this);
-            formData.append('index', index);
-            formData.append('categoryName', $('#category_id').attr('data-src'));
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{ route('session.render') }}",
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(data) {
-                    $('#slotsSection').append(data.html);
-                    sessionsArray.push(data.data);
-                    index++
-                    resetForm();
-                    console.log(sessionsArray);
-                    if (sessionsArray.length > 0) {
-                        $("#saveSession").removeAttr('disabled');
+                errors = 0;
+                imageError = 0;
+                $("form#createSessionForm :input,form#createSessionForm select").each(function() {
+                    value = $(this).val();
+
+                    if (value == '') {
+                        if ($(this).is("input")) {
+                            alert('input');
+                            $(this).css('border', '1px solid red');
+                            errors++;
+
+                        } else if ($(this).is("select")) {
+                            console.log($(this));
+                            $(this).next().addClass('borderRed');
+                            errors++;
+
+                        }
+
+                        if ($(this).is("input[type='file']")) {
+                            console.log($(this));
+                            imageError++;
+                        }
                     } else {
-                        $("#saveSession").attr('disabled', 'disabled');
+                        $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
+                        $(this).next().removeClass('borderRed');
                     }
+                });
+                if (errors > 0) {
+                    return {
+                        'success': false,
+                        'imageError': imageError
+                    };
                 }
-            });
-        });
-        // });
-
-        // Delete Session Slot 
-        $(document).on('click', ".deleteSlot", function() {
-            let rawIndex = $(this).attr('data-role');
-            var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
-            sessionsArray.splice(index, 1);
-            $(this).parent().parent().parent().parent().remove();
-            if (sessionsArray.length < 1) {
-                $("#saveSession").attr('disabled', 'disabled');
-            } else {
-            }
-        });
-
-
-        // Edit Session Slot 
-        $(document).on('click', ".editSlot", function() {
-            let rawIndex = $(this).attr('data-role');
-            var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
-            var slotData = sessionsArray[parseInt(index)];
-            console.log(slotData);
-
-            $("#category_id").val(slotData.category_id)
-            $("#category_id").attr('data-src', slotData.category_id)
-            $("#sub_category").val(slotData.subCategory)
-            $("#" + slotData.difficulty).addClass('activeDifficulty')
-            $("#difficulty").val(slotData.difficulty);
-            $("#price_unit").val(slotData.priceUnit);
-            $("#price").val(slotData.price);
-            $("#type").val(slotData.type);
-            $("#session_type").val(slotData.sessionType);
-            $("#preference").val(slotData.preference);
-            $("#day").val(slotData.day);
-            $("#start_time").val(slotData.startTime);
-            $("#end_time").val(slotData.endTime);
-
-
-        });
-
-        // Reset Form 
-        function resetForm() {
-            $('#category_id').prop('selectedIndex', 0);
-            $('select').val('');
-            $('select').niceSelect('update');
-            $('#sub_category').val('');
-            $('#difficulty_level').val('');
-            $('#price').val('');
-            $('#startTime').val('');
-            $('#endTime').val('');
-            $('#sessionDate').val('');
-            $('#sessionDate').removeAttr('readonly');
-            images.splice(0, images.length - 1);
-            $("#difficulty").val('');
-            $('.difficulties').removeClass('activeDifficulty');
-
-        }
-
-        // Form Validations 
-        function validateForm(e) {
-            e.preventDefault();
-            errors = 0;
-            imageError = 0;
-            $("form#createSessionForm :input,form#createSessionForm select").each(function() {
-                value = $(this).val();
-
-                if (value == '') {
-                    if ($(this).is("input")) {
-                        alert('input');
-                        $(this).css('border', '1px solid red');
-                        errors++;
-
-                    } else if ($(this).is("select")) {
-                        console.log($(this));
-                        $(this).next().addClass('borderRed');
-                        errors++;
-
-                    }
-
-                    if ($(this).is("input[type='file']")) {
-                        console.log($(this));
-                        imageError++;
-                    }
-                } else {
-                    $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
-                    $(this).next().removeClass('borderRed');
-                }
-            });
-            if (errors > 0) {
                 return {
-                    'success': false,
+                    'success': true,
                     'imageError': imageError
                 };
             }
-            return {
-                'success': true,
-                'imageError': imageError
-            };
-        }
 
-        // Save Session API Call 
-        $(document).on('click', "#saveSession", function() {
-            var sessionsData = {
-                allSessions: sessionsArray
-            };
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: "{{ url('api/trainer_detail') }}",
-                type: "POST",
-                data: sessionsData,
-                cache: false,
-                success: function(data) {
-                    console.log(data)
-                    window.location.href = '/workitpt_web/trainer/stepfive';
-                }
+            // Save Session API Call 
+            $(document).on('click', "#saveSession", function() {
+                var sessionsData = {
+                    allSessions: sessionsArray
+                };
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url('api/trainer_detail') }}",
+                    type: "POST",
+                    data: sessionsData,
+                    cache: false,
+                    success: function(data) {
+                        console.log(data)
+                        window.location.href = '/workitpt_web/trainer/stepfive';
+                    }
+                });
             });
         });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('.limit-box').hide();
-        $('#typeselector').change(function() {
-            var selectValue = $(this).val();
-            console.log(selectValue)
-            if (selectValue == "group") {
-                $('.limit-box').show();
-            } else {
-                $('.limit-box').hide();
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.limit-box').hide();
+            $('#typeselector').change(function() {
+                var selectValue = $(this).val();
+                console.log(selectValue)
+                if (selectValue == "group") {
+                    $('.limit-box').show();
+                } else {
+                    $('.limit-box').hide();
+                }
+            });
+
+            // const chooseFile = document.getElementById("choose-file");
+            // const imgPreview = document.getElementById("img-preview");
+
+            // chooseFile.addEventListener("change", function() {
+            //     getImgData();
+            // });
+
+            // function getImgData() {
+            //     const files = chooseFile.files;
+            //     if (files) {
+            //         imgPreview.innerHTML = "";
+            //         $(files).each(function(i, files) {
+            //             const fileReader = new FileReader();
+            //             fileReader.readAsDataURL(files);
+            //             fileReader.addEventListener("load", function() {
+            //                 let beforeImage = `<div class="grid-item py-2 py-sm-0">
+            //                 <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">`;
+            //                 let afterImage = `</div>`;
+            //                 imgPreview.innerHTML += beforeImage + '<img class="cursorPointer_s objectFitCover_s" src="' + this.result + '" />' + afterImage;
+            //             });
+            //         });
+            //     }
+            // }
+        });
+        // edit and delete 
+        // show and hide
+        // one
+        $('.icon-div-one').hide();
+        $('.dot-toggle-icon-one').click(function() {
+            $('.icon-div-one').show();
+            $('.icon-div-two').hide();
+        });
+        $('.icon-div-one').mouseleave(function() {
+            $('.icon-div-one').hide();
+        });
+        // two
+        $('.icon-div-two').hide();
+        $('.dot-toggle-icon-two').click(function() {
+            $('.icon-div-two').show();
+            $('.icon-div-one').hide();
+        });
+        $('.icon-div-two').mouseleave(function() {
+            $('.icon-div-two').hide();
+        });
+        $(document).mouseup(function(e) {
+            var container = $(".box");
+
+            // if the target of the click isn't the container nor a descendant of the container
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                container.hide();
             }
         });
+        // time slot
+        // show and hide
+        // one
+        $('.stack-timing-one').hide();
+        $('.slot-arrow-one .up-arrow').hide();
+        $('.slot-arrow-one .down-arrow').click(function() {
+            $('.stack-timing-one').show(1000);
+            $('.slot-arrow-one .up-arrow').show(1000);
+            $('.slot-arrow-one .down-arrow').hide(1000);
 
-        // const chooseFile = document.getElementById("choose-file");
-        // const imgPreview = document.getElementById("img-preview");
-
-        // chooseFile.addEventListener("change", function() {
-        //     getImgData();
-        // });
-
-        // function getImgData() {
-        //     const files = chooseFile.files;
-        //     if (files) {
-        //         imgPreview.innerHTML = "";
-        //         $(files).each(function(i, files) {
-        //             const fileReader = new FileReader();
-        //             fileReader.readAsDataURL(files);
-        //             fileReader.addEventListener("load", function() {
-        //                 let beforeImage = `<div class="grid-item py-2 py-sm-0">
-        //                 <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">`;
-        //                 let afterImage = `</div>`;
-        //                 imgPreview.innerHTML += beforeImage + '<img class="cursorPointer_s objectFitCover_s" src="' + this.result + '" />' + afterImage;
-        //             });
-        //         });
-        //     }
-        // }
-    });
-    // edit and delete 
-    // show and hide
-    // one
-    $('.icon-div-one').hide();
-    $('.dot-toggle-icon-one').click(function() {
-        $('.icon-div-one').show();
-        $('.icon-div-two').hide();
-    });
-    $('.icon-div-one').mouseleave(function() {
-        $('.icon-div-one').hide();
-    });
-    // two
-    $('.icon-div-two').hide();
-    $('.dot-toggle-icon-two').click(function() {
-        $('.icon-div-two').show();
-        $('.icon-div-one').hide();
-    });
-    $('.icon-div-two').mouseleave(function() {
-        $('.icon-div-two').hide();
-    });
-    $(document).mouseup(function(e) {
-        var container = $(".box");
-
-        // if the target of the click isn't the container nor a descendant of the container
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-            container.hide();
-        }
-    });
-    // time slot
-    // show and hide
-    // one
-    $('.stack-timing-one').hide();
-    $('.slot-arrow-one .up-arrow').hide();
-    $('.slot-arrow-one .down-arrow').click(function() {
-        $('.stack-timing-one').show(1000);
-        $('.slot-arrow-one .up-arrow').show(1000);
-        $('.slot-arrow-one .down-arrow').hide(1000);
-
-    });
-    $('.slot-arrow-one .up-arrow').click(function() {
-        $('.stack-timing-one').hide(1000);
-        $('.slot-arrow-one .up-arrow').hide(1000);
-        $('.slot-arrow-one .down-arrow').show(1000);
-    });
-    // two
-    $('.stack-timing-two').hide();
-    $('.slot-arrow-two .up-arrow').hide();
-    $('.slot-arrow-two .down-arrow').click(function() {
-        $('.stack-timing-two').show(1000);
-        $('.slot-arrow-two .up-arrow').show(1000);
-        $('.slot-arrow-two .down-arrow').hide(1000);
-    });
-    $('.slot-arrow-two .up-arrow').click(function() {
-        $('.stack-timing-two').hide(1000);
-        $('.slot-arrow-two .up-arrow').hide(1000);
-        $('.slot-arrow-two .down-arrow').show(1000);
-    });
-</script>
-@endsection
+        });
+        $('.slot-arrow-one .up-arrow').click(function() {
+            $('.stack-timing-one').hide(1000);
+            $('.slot-arrow-one .up-arrow').hide(1000);
+            $('.slot-arrow-one .down-arrow').show(1000);
+        });
+        // two
+        $('.stack-timing-two').hide();
+        $('.slot-arrow-two .up-arrow').hide();
+        $('.slot-arrow-two .down-arrow').click(function() {
+            $('.stack-timing-two').show(1000);
+            $('.slot-arrow-two .up-arrow').show(1000);
+            $('.slot-arrow-two .down-arrow').hide(1000);
+        });
+        $('.slot-arrow-two .up-arrow').click(function() {
+            $('.stack-timing-two').hide(1000);
+            $('.slot-arrow-two .up-arrow').hide(1000);
+            $('.slot-arrow-two .down-arrow').show(1000);
+        });
+    </script>
+    @endsection

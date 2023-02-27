@@ -729,7 +729,7 @@
         <div class="modal-content signupModalDialogue">
             <!-- <div class="w-50" style="background-color:#E37048 ; height:5px; margin-left:15px"></div> -->
             <div class="modalHeader text-right">
-                <img class="close-modal" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+                <img class="close-modal" style="width:30px;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <div class="container">
                 <form action="">

@@ -390,25 +390,25 @@
         </div>
         <div class="payment-wrapper ">
             <div class="row px-3">
-                <div class="col-sm-6 col-md-3 px-0 payment-box-outer">
+                <!-- <div class="col-sm-6 col-md-3 px-0 payment-box-outer">
                     <div class="payment-box">
                         <p>Send By Client Side</p>
                         <h1>$60.00</h1>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-3 px-0 payment-box-outer">
+                </div> -->
+                <div class="col-sm-6 col-md-4 px-0 payment-box-outer">
                     <div class="payment-box ">
                         <p>In WorkitPT Wallet</p>
                         <h1>$60.00</h1>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3 px-0 payment-box-outer">
+                <div class="col-sm-6 col-md-4 px-0 payment-box-outer">
                     <div class="payment-box">
                         <p>Remaining</p>
                         <h1>$60.00</h1>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-3 px-0 payment-box-outer">
+                <div class="col-sm-6 col-md-4 px-0 payment-box-outer">
                     <div class="payment-box">
                         <p>Total Earning</p>
                         <h1>$60.00</h1>

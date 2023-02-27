@@ -192,267 +192,153 @@
             border-radius: 10px;
         }
     }
+
+    .session-card .card-img img {
+        object-fit: cover;
+        height: 200px;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .card-heading,
+    .card-content,
+    .card-bottom-section {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card-heading h1 {
+        color: #E37048;
+        font-size: 1.4rem;
+        white-space: nowrap;
+        width: 50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card-heading a {
+        background: white;
+        color: #E37048;
+        border: 1px solid #E37048;
+        text-decoration: none;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 0.9rem;
+    }
+
+    .card-heading a:hover {
+        background: #E37048;
+        color: #fff;
+        border: 1px solid #E37048;
+        text-decoration: none;
+    }
+
+    .card-content p {
+        color: #4B4B4B;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .card-content p:nth-of-type(1) {
+        white-space: nowrap;
+        width: 50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .session-left-divider {
+        border: 1px solid #E0E0E0;
+    }
+
+    .card-bottom-section p:first-child {
+        color: #4B4B4B;
+        font-weight: 800;
+        font-size: 1.1rem
+    }
+
+    .card-bottom-section p:last-child {
+        color: #4B4B4B;
+        font-size: 1.1rem
+    }
+
+    .card-bottom-section p img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .session-card {
+        background: white;
+        border-radius: 10px;
+    }
 </style>
 @section('content')
 @include('includes.trainerSide.navbar')
 <div class="content-wrapper py-3">
     <div class="container-fluid ">
-        <div class="col-12 my-2 px-0">
-            <div class="session-card-top p-3">
-                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                <div class="session-card-top-content pt-4 pb-2">
-                    <h1 class="py-2">Stretching outdoors</h1>
-                    <h1 class="py-2">7 Dec, 2022 | 10 AM-11 AM</h1>
-                </div>
-                <div class="col-12 text-right price pr-0 py-2">
-                    <h1>$100</h1>
-                </div>
-            </div>
-            <div class="col-12 client-list-heading py-4">
-                <h1>Clients</h1>
+        <div class="col-12 px-0">
+
+            <div class="col-12 client-list-heading pb-4">
+                <h1>Sessions</h1>
             </div>
             <div class="client-list-row">
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                <div class="session-card p-3">
+                    <div class="card-img ">
+                        <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                     </div>
-                    <div class="client-list-card-right">
+                    <div class="card-heading py-3">
+                        <h1>Yoga</h1>
+                        <a href="" class="px-3 px-sm-5">View</a>
+                    </div>
 
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
+                    <div class="session-left-divider"></div>
+                    <div class="card-bottom-section p-2">
+                        <p>$25</p>
+                        <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
                     </div>
                 </div>
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                <div class="session-card p-3">
+                    <div class="card-img ">
+                        <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                     </div>
-                    <div class="client-list-card-right">
+                    <div class="card-heading py-3">
+                        <h1>Yoga</h1>
+                        <a href="" class="px-3 px-sm-5">View</a>
+                    </div>
 
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
+                    <div class="session-left-divider"></div>
+                    <div class="card-bottom-section p-2">
+                        <p>$25</p>
+                        <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
                     </div>
                 </div>
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                <div class="session-card p-3">
+                    <div class="card-img ">
+                        <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                     </div>
-                    <div class="client-list-card-right">
+                    <div class="card-heading py-3">
+                        <h1>Yoga</h1>
+                        <a href="" class="px-3 px-sm-5">View</a>
+                    </div>
 
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
+                    <div class="session-left-divider"></div>
+                    <div class="card-bottom-section p-2">
+                        <p>$25</p>
+                        <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
                     </div>
                 </div>
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                <div class="session-card p-3">
+                    <div class="card-img ">
+                        <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                     </div>
-                    <div class="client-list-card-right">
+                    <div class="card-heading py-3">
+                        <h1>Yoga</h1>
+                        <a href="" class="px-3 px-sm-5">View</a>
+                    </div>
 
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                    </div>
-                    <div class="client-list-card-right">
-
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                    </div>
-                    <div class="client-list-card-right">
-
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                    </div>
-                    <div class="client-list-card-right">
-
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                    </div>
-                    <div class="client-list-card-right">
-
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="client-list-card p-3">
-                    <div class="client-list-card-left pr-3">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                    </div>
-                    <div class="client-list-card-right">
-
-                        <h1>John Smith</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">Cardio</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">Tuesday, 4PM-5PM</h1>
-                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">Torronto</h1>
-                    </div>
-                    <div class="right-dots">
-                        <div class="c-dropdown">
-                            <div class="dots px-3">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="c-dropdown-content">
-                                <a class="btn"></i> Edit</a>
-                                <a class="btn">View</a>
-                            </div>
-                        </div>
+                    <div class="session-left-divider"></div>
+                    <div class="card-bottom-section p-2">
+                        <p>$25</p>
+                        <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
                     </div>
                 </div>
             </div>
@@ -463,6 +349,6 @@
 @endsection
 @section('insertsfooter')
 <script>
-    $('.sidenav .nav-item:nth-of-type(4)').addClass('active')
+    $('.sidenav .nav-item:nth-of-type(6)').addClass('active')
 </script>
 @endsection

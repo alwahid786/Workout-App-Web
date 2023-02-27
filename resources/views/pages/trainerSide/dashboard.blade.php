@@ -1,5 +1,8 @@
 @extends('layouts.trainerSide.default')
 <!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/dashboard.css')}}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" /> -->
 <style>
     body {
         background-color: #F2F2F2 !important;
@@ -740,6 +743,56 @@
             border: 1px solid #80808021 !important;
         }
     }
+
+    .today-chat a {
+        text-decoration: inherit;
+        color: inherit;
+
+
+    }
+
+    .feedback-profile {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+
+    .feedback-profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #E37048;
+    }
+
+    .feedback-profile h1 {
+        font-size: 0.9rem;
+        color: #E37048;
+        margin-bottom: 4px;
+    }
+
+    .feedback-rating {
+        /* position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translate(0%, -50%); */
+        display: flex;
+    }
+
+    .feedback-rating i {
+        color: gold;
+    }
+
+    .feedback-rating i:last-of-type {
+        color: #f3f0f0 !important;
+    }
+
+    .feedback-rating p {
+        margin-bottom: 0px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: black;
+    }
 </style>
 @section('content')
 @include('includes.trainerSide.navbar')
@@ -748,13 +801,16 @@
         <div class="row">
             <div class="col-xl-8">
                 <div class="row">
-                    <div class="col-xl-6">
+                    <div class="col-xl-12">
+                        <div class="workout-today-header  pb-4">
+                            <h1>Revenue</h1>
+                        </div>
                         <div class="chart-section">
                             <div id="chart"></div>
                         </div>
 
                     </div>
-                    <div class="col-xl-6 mt-4 mt-xl-0 ">
+                    <!-- <div class="col-xl-6 mt-4 mt-xl-0 ">
                         <div class="dashboard-session-section p-3">
                             <div class="dashboard-session-heading">
                                 <h1>Sessions</h1>
@@ -844,7 +900,7 @@
 
 
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-12 workout-today-section py-2">
                         <div class="workout-today-header pt-2 pb-1">
                             <h1>Your Today’s Session</h1>
@@ -852,48 +908,56 @@
 
                         <div class="workout-today-wrapper">
                             <!-- table -->
-                            <a href="{{url('')}}">
-                                <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="workout-type">Yoga Session </h1>
-                                        </div>
+                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="workout-type">Yoga Session </h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
                                     </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
 
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <div class="trainer-class-time-card-right workout-table-img">
-                                                <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
 
-                                            </div>
-                                        </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="name"> $100</h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="name"> $100</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="session-status success"> In session</h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="session-status success"> In session</h1>
-                                        </div>
-                                    </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
+                                <div class="table-cotent py-1 py-md-0">
+                                    <a href="{{url('/trainer/session')}}">
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
-                                    </div>
-                                    <div class="workout-table-border workout-table-border-blue "></div>
+                                    </a>
                                 </div>
-                            </a>
+                                <div class="table-cotent py-1 ">
+
+                                    <div class="table-content-value text-center today-chat">
+                                        <a href="{{url('/trainer/chat')}}">
+                                            <i class="fa fa-commenting" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="workout-table-border workout-table-border-blue "></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 workout-today-section py-2">
@@ -903,216 +967,223 @@
 
                         <div class="workout-today-wrapper upcoming-wrapper pr-2">
                             <!-- table -->
-                            <a href="{{url('')}}">
-                                <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="workout-type">Yoga Session </h1>
-                                        </div>
+                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="workout-type">Yoga Session </h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <div class="trainer-class-time-card-right workout-table-img">
-                                                <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
 
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="name"> $100</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="name"> $100</h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> Pending</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="session-status pending"> Pending</h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <a href="{{url('/trainer/session')}}">
+
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
-                                    </div>
-                                    <div class="workout-table-border workout-table-border-blue "></div>
+                                    </a>
                                 </div>
-                            </a>
-                            <a href="{{url('')}}">
-                                <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="workout-type">Yoga Session </h1>
-                                        </div>
+                                <div class="workout-table-border workout-table-border-blue "></div>
+                            </div>
+                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="workout-type">Yoga Session </h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <div class="trainer-class-time-card-right workout-table-img">
-                                                <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
 
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="name"> $100</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="name"> $100</h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> Pending</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="session-status pending"> Pending</h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <a href="{{url('/trainer/session')}}">
+
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
-                                    </div>
-                                    <div class="workout-table-border workout-table-border-blue "></div>
+                                    </a>
                                 </div>
-                            </a>
-                            <a href="{{url('')}}">
-                                <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="workout-type">Yoga Session </h1>
-                                        </div>
+                                <div class="workout-table-border workout-table-border-blue "></div>
+                            </div>
+                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="workout-type">Yoga Session </h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <div class="trainer-class-time-card-right workout-table-img">
-                                                <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
 
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="name"> $100</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="name"> $100</h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> Pending</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="session-status pending"> Pending</h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <a href="{{url('/trainer/session')}}">
+
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
-                                    </div>
-                                    <div class="workout-table-border workout-table-border-blue "></div>
+                                    </a>
                                 </div>
-                            </a>
-                            <a href="{{url('')}}">
-                                <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="workout-type">Yoga Session </h1>
-                                        </div>
+                                <div class="workout-table-border workout-table-border-blue "></div>
+                            </div>
+                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="workout-type">Yoga Session </h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <div class="trainer-class-time-card-right workout-table-img">
-                                                <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
 
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="name"> $100</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="name"> $100</h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> Pending</h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="session-status pending"> Pending</h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <a href="{{url('/trainer/session')}}">
+
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
-                                    </div>
-                                    <div class="workout-table-border workout-table-border-blue "></div>
+                                    </a>
                                 </div>
-                            </a>
-                            <a href="{{url('')}}">
-                                <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="workout-type">Yoga Session </h1>
-                                        </div>
+                                <div class="workout-table-border workout-table-border-blue "></div>
+                            </div>
+                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="workout-type">Yoga Session </h1>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                        </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
                                     </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <div class="trainer-class-time-card-right workout-table-img">
-                                                <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                                <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <div class="trainer-class-time-card-right workout-table-img">
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
 
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="name"> $100</h1>
-                                        </div>
-                                    </div>
-                                    <div class="table-cotent py-2 py-md-0">
-                                        <div class="table-content-value text-center">
-                                            <h1 class="session-status pending"> Pending</h1>
-                                        </div>
-                                    </div>
+                                </div>
 
-                                    <div class="table-cotent py-2 py-md-0">
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="name"> $100</h1>
+                                    </div>
+                                </div>
+                                <div class="table-cotent py-2 py-md-0">
+                                    <div class="table-content-value text-center">
+                                        <h1 class="session-status pending"> Pending</h1>
+                                    </div>
+                                </div>
+
+                                <div class="table-cotent py-2 py-md-0">
+                                    <a href="{{url('/trainer/session')}}">
+
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
-                                    </div>
-                                    <div class="workout-table-border workout-table-border-blue "></div>
+                                    </a>
                                 </div>
-                            </a>
+                                <div class="workout-table-border workout-table-border-blue "></div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -1170,8 +1241,8 @@
                         <div class="recent-session-card recent-session-card-active py-3 my-2">
                             <div class="col-12 text-right recent-session-card-images">
                                 <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                                <!-- <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt=""> -->
                             </div>
                             <div class="col-12 card-inner py-2">
                                 <div class="card-inner-left">
@@ -1182,6 +1253,13 @@
                                     <h1>12Pm-2Pm<span class="pt-1">Nov-02-2022</span></h1>
                                 </div>
                             </div>
+                            <div class="d-flex justify-content-between px-2">
+
+                                <p class="text-light ">One Time</p>
+                                <p class="text-light ">In Person</p>
+
+                            </div>
+
                             <div class="col-12 text-center noti-card-btn">
                                 <a class="btn" href="#">View</a>
                             </div>
@@ -1201,6 +1279,11 @@
                                     <h1>12Pm-2Pm<span class="pt-1">Nov-02-2022</span></h1>
                                 </div>
                             </div>
+                            <div class="d-flex justify-content-between px-2">
+
+                                <p class="text-dark ">Recurring</p>
+                                <p class="text-dark text-right">Online</p>
+                            </div>
                             <div class="col-12 text-center noti-card-btn">
                                 <a class="btn" href="#">View</a>
                             </div>
@@ -1214,19 +1297,42 @@
                     </div>
                     <div class="feedback-section-wrapper p-3">
                         <div class="feedback-card my-2">
-                            <div class="feedback-inner-header pb-2">
+
+                            <!-- <div class="feedback-inner-header pb-2">
                                 <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                                 <h1>Michael John</h1>
+
+                            </div> -->
+                            <div class="feedback-profile">
+                                <img class="mr-2" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                                <h1>Michael John</h1>
+                                <div class="feedback-rating pl-2">
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <p>4.0</p>
+                                </div>
                             </div>
+
                             <div class="feedback-inner-body p-3">
                                 <p>LoremIpsum Lorem Ipsum
                                     Lorem Ipsum Lorem Ipsum </p>
                             </div>
                         </div>
                         <div class="feedback-card my-2">
-                            <div class="feedback-inner-header pb-2">
-                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                            <div class="feedback-profile">
+                                <img class="mr-2" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                                 <h1>Michael John</h1>
+                                <div class="feedback-rating pl-2">
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <p>4.0</p>
+                                </div>
                             </div>
                             <div class="feedback-inner-body p-3">
                                 <p>LoremIpsum Lorem Ipsum
@@ -1234,9 +1340,17 @@
                             </div>
                         </div>
                         <div class="feedback-card feedback-card-hide my-2">
-                            <div class="feedback-inner-header pb-2">
-                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                            <div class="feedback-profile">
+                                <img class="mr-2" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                                 <h1>Michael John</h1>
+                                <div class="feedback-rating pl-2">
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <p>4.0</p>
+                                </div>
                             </div>
                             <div class="feedback-inner-body p-3">
                                 <p>LoremIpsum Lorem Ipsum

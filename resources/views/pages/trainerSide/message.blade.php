@@ -351,6 +351,7 @@
 </style>
 @section('content')
 @include('includes.trainerSide.navbar')
+
 <div class="content-wrapper">
     <div class="container-fluid py-1">
         <!-- <div class="dashboard-header-left pb-2">
@@ -368,10 +369,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Monday Yoga </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-repeat ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -381,10 +384,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Sunday therapy</h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -394,10 +399,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Monday Yoga </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-repeat ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -407,10 +414,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Sunday therapy </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -420,10 +429,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Monday Yoga </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -433,10 +444,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Sunday therapy </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-repeat ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -446,10 +459,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Monday Yoga </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -459,10 +474,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Sunday therapy </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -472,10 +489,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Monday Yoga </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -485,10 +504,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Sunday therapy </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -498,10 +519,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Sunday therapy </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -511,10 +534,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Monday Yoga </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -524,10 +549,12 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Sunday therapy </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
+
                             </div>
 
                         </div>
@@ -537,10 +564,11 @@
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
+                            <h1>Monday Yoga </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
+                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
                             </div>
 
                         </div>
@@ -550,7 +578,7 @@
 
                 <div class="chat-box-right ">
                     <div class="chat-box-right-header px-3 py-2">
-                        <h1>John Smith</h1>
+                        <h1>Monday Yoga</h1>
                         <button id="chat-screen"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
                     <div class="chat-box-right-body px-5">
