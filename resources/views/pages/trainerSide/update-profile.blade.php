@@ -197,7 +197,26 @@
         color: white;
     }
 
+    .form-btn button {
+        width: 160px;
+        height: 50px;
+        background-color: #F8F8F8;
+        border: 1px solid #E37048;
+        color: #E37048;
+        border-radius: 7px;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none !important;
+        text-decoration: none !important;
+    }
 
+    .form-btn button:hover {
+        background-color: #E37048;
+        color: white;
+    }
 
 
 
@@ -519,27 +538,29 @@
     <div class="col-12 update-profile-heading pl-0">
         <h1>General Information</h1>
     </div>
-    <form>
+
+    <form action="{{route('trainer/update_profile')}}" method="post">
+        @csrf
         <div class="row">
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form my-2">
                     <label for="inputAddress" class=" ">Email</label>
-                    <input type="email" class="form-control pl-4">
+                    <input type="email" class="form-control pl-4" name="email" readonly value="{{$trainer['email']}}">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form my-2">
                     <label for="inputAddress" class=" ">Date of Birth</label>
-                    <input type="date" class="form-control pl-4">
+                    <input type="date" class="form-control pl-4" name="date_of_birth" value="{{$trainer['date_of_birth']}}">
                 </div>
             </div>
             <div class="col-md-6 " data-aos="fade-right">
                 <div class="form-group pro-form my-2">
                     <label for="inputAddress" class=" ">Gender</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                        <select class="wide s-select form-control pl-4" id="typeselector" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
 
                     </div>
@@ -548,17 +569,17 @@
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form my-2">
                     <label for="inputAddress" class=" ">Phone</label>
-                    <input type="text" class="form-control pl-4">
+                    <input type="text" class="form-control pl-4" name="phone" value="{{$trainer['phone']}}">
                 </div>
             </div>
             <div class="col-md-6 pb-3" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
-                            <option value="mon">USA</option>
-                            <option value="mon">Australia</option>
-                            <option value="mon">Austria</option>
+                        <select class="wide s-select form-control pl-4" id="typeselector" name="country">
+                            <option value="USA">USA</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
@@ -566,12 +587,12 @@
             </div>
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputCity" class=" ">State</label>
+                    <label for="inputCity" class=" " name="state">State</label>
                     <select class="wide s-select form-control pl-4" id="typeselector">
-                        <option value="mon">Alaska</option>
-                        <option value="mon">Washington</option>
-                        <option value="mon">New South Wales</option>
-                        <option value="mon">Tirol</option>
+                        <option value="Alaska">Alaska</option>
+                        <option value="Washington">Washington</option>
+                        <option value="New South Wales">New South Wales</option>
+                        <option value="Tirol">Tirol</option>
                     </select>
                 </div>
             </div>
@@ -602,7 +623,8 @@
             </div>
         </div>
         <div class="form-btn my-5 ">
-            <a href="{{url('/trainer/stepfive')}}" class="p-0 btn">Update</a>
+            <!-- <a href="{{url('/trainer/stepfive')}}" class="p-0 btn">Update</a> -->
+            <button class="p-0 btn" type="submit">Update</button>
         </div>
     </form>
 </div>

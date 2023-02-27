@@ -99,6 +99,9 @@ Route::middleware('auth')->group(function () {
     ///// trainer............//////
     Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
     Route::any('/trainer/stepfive', [TrainerController::class, 'showTrainerDetail'])->name('trainer/stepfive');
+    Route::any('/trainer/update_profile/', [TrainerController::class, 'updateTrainer'])->name('trainer/update_profile');
+    Route::any('/trainer/updateprofile/', [TrainerController::class, 'showupdate'])->name('trainer/updateprofile');
+
 
     Route::get('/trainer/steptwo', function () {
         return view('pages.trainerSide.account-step-two');
@@ -320,9 +323,9 @@ Route::get('/trainer/payment', function () {
 Route::get('/trainer/paymentdetail', function () {
     return view('pages.trainerSide.payment-detail');
 });
-Route::get('/trainer/updateprofile', function () {
-    return view('pages.trainerSide.update-profile');
-});
+// Route::get('/trainer/updateprofile', function () {
+//     return view('pages.trainerSide.update-profile');
+// });
 
 Route::get('/trainer/profile', function () {
     return view('pages.trainerSide.profile');

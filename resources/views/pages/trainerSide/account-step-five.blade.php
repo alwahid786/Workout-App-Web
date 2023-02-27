@@ -302,7 +302,7 @@
 
     .time-stack-inner {
         border-radius: 30px;
-        width: 150px;
+        /* width: 150px; */
         height: 40px;
         text-align: center;
         display: flex;
@@ -310,6 +310,7 @@
         justify-content: center;
         color: #E37048;
         background-color: #fff;
+        padding: 7px;
 
     }
 
@@ -1131,7 +1132,7 @@
 
     .time-stack-inner {
         border-radius: 30px;
-        width: 150px;
+        /* width: 150px; */
         height: 40px;
         text-align: center;
         display: flex;
@@ -1744,17 +1745,17 @@
                                 <div class="icon-edit py-3 icon-div-inner ">
                                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
-                                    <h1>Edit</h1>
+                                    <h1 data-toggle="modal" data-target="#editModal">Edit</h1>
                                 </div>
                                 <div class="icon-del py-3 icon-div-inner">
                                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
-                                    <h1>Delete</h1>
+                                    <h1 data-toggle="modal" data-target="#deleteModal">Delete</h1>
                                 </div>
                             </div>
                         </div>
-                        @foreach($session['session_image'] as $image)
                         <div class="slot-grid-container">
+                            @foreach($session['session_image'] as $image)
                             <div class="slot-grid-item">
                                 <div class="slot-image">
                                     <img src="{{$image['image']}}" alt="">
@@ -1762,51 +1763,28 @@
 
                             </div>
                             @endforeach
-                            <!-- <div class="slot-grid-item">
-                                <div class="slot-image">
-                                    <img src="{{asset('public/assets/trainerimages/stepthreetwo.jpg')}}" alt="">
-                                </div>
 
-                            </div>
-                            <div class="slot-grid-item">
-                                <div class="slot-image">
-                                    <img src="{{asset('public/assets/trainerimages/stepthree.jpg')}}" alt="">
-                                </div>
-
-                            </div>
-                            <div class="slot-grid-item">
-                                <div class="slot-image">
-                                    <img src="{{asset('public/assets/trainerimages/stepthreefour.jpg')}}" alt="">
-                                </div>
-
-                            </div>
-                            <div class="slot-grid-item">
-                                <div class="slot-image">
-                                    <img src="{{asset('public/assets/trainerimages/stepthreefive.jpg')}}" alt="">
-                                </div>
-
-                            </div> -->
 
                         </div>
                         <div class="slot-wrapper-heading px-3 my-3">
                             <div class="left-slot-heading">
-                                <h1>Stretching Outdoors</h1>
-                                <h2 class="pt-2">Static Stretching</h2>
+                                <h1>{{$session['category']['title']}}</h1>
+                                <!-- <h2 class="pt-2">Static Stretching</h2> -->
                             </div>
                             <div class="right-slot-heading">
-                                <h1>$100</h1>
+                                <h1>${{$session['price']}}</h1>
                             </div>
                         </div>
                         <div class="slot-timing-stacks stack-timing-one">
                             <div class="timing-stack timing-stack-one px-3 my-3">
                                 <div class="timing-stack-inner">
                                     <div class="week-name">
-                                        <h1>Mon:</h1>
+                                        <h1>{{$session['day']}}</h1>
                                     </div>
                                     <div class="stack-time">
                                         <div class="time-stack-outer px-4 ">
                                             <div class="time-stack-inner m-2">
-                                                <p class="mb-0">9 am to 10 am</p>
+                                                <p class="mb-0">{{date('h:i',strtotime($session['start_time']))}} {{$session['start_meridiem']}} to {{date('h:i',strtotime($session['end_time']))}} {{$session['end_meridiem']}}</p>
                                             </div>
                                         </div>
 
@@ -1818,21 +1796,33 @@
                                         <div class="col-md-6">
                                             <div class="w-100 d-lg-flex align-items-center">
                                                 <h1>Difficulty Level:</h1>
-                                                <span>Lorem ipsum </span>
+                                                <span>{{$session['difficulty_level']}} </span>
                                             </div>
                                             <div class="w-100 d-lg-flex align-items-center">
                                                 <h1>Session Type:</h1>
-                                                <span>Lorem ipsum </span>
+                                                @if($session['type'] == 0)
+                                                <span>One</span>
+                                                @else
+                                                <span>One</span>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="w-100 d-lg-flex align-items-center">
                                                 <h1>Class Type:</h1>
-                                                <span>Lorem ipsum </span>
+                                                @if($session['session_type'] == 0)
+                                                <span>Online</span>
+                                                @else
+                                                <span>In-Person</span>
+                                                @endif
                                             </div>
                                             <div class="w-100 d-lg-flex align-items-center">
                                                 <h1>Preference:</h1>
-                                                <span>Lorem ipsum </span>
+                                                @if($session['preference'] == 0)
+                                                <span>One Time</span>
+                                                @else
+                                                <span>Recurring</span>
+                                                @endif
                                             </div>
 
                                         </div>
