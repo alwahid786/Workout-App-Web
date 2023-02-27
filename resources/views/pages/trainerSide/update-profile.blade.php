@@ -49,6 +49,14 @@
         background: #F8F8F8;
     }
 
+    .nice-state-select.wide {
+        height: 65px !important;
+        border: 1px solid #CECECE !important;
+        border-radius: 10px !important;
+        justify-content: flex-start !important;
+        background: #F8F8F8;
+    }
+
     .nice-select:after {
         border-bottom: 2px solid #848484;
         border-right: 2px solid #848484;
@@ -71,9 +79,38 @@
         width: 9px;
     }
 
+    .nice-select-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px;
+    }
+
+
     .s-select span {
         color: #666666 !important;
         font-weight: normal !important;
+    }
+
+    .state-select span {
+        color: #666666 !important;
+        font-weight: normal !important;
+
     }
 
     .select-outer {
@@ -284,6 +321,11 @@
         border-bottom-right-radius: 0px !important;
     }
 
+    .price-select-input .nice-state-select.wide {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+
     .price-select-input input {
         width: 80%;
         border-top-left-radius: 0px !important;
@@ -291,6 +333,29 @@
     }
 
     .price-select-input .nice-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px !important;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 15% !important;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px !important;
+
+    }
+
+    .price-select-input .nice-state-select:after {
         border-bottom: 2px solid #848484;
         border-right: 2px solid #848484;
         content: '';
@@ -383,6 +448,29 @@
 
         }
 
+        .price-select-input .nice-state-select:after {
+            border-bottom: 2px solid #848484;
+            border-right: 2px solid #848484;
+            content: '';
+            display: block;
+            height: 9px !important;
+            margin-top: -4px;
+            pointer-events: none;
+            position: absolute;
+            right: 8px !important;
+            top: 50%;
+            -webkit-transform-origin: 66% 66%;
+            -ms-transform-origin: 66% 66%;
+            transform-origin: 66% 66%;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            width: 9px !important;
+
+        }
+
 
         .difficulty-level {
             display: flex;
@@ -412,6 +500,15 @@
             justify-content: flex-start !important;
             background: #F8F8F8;
         }
+
+        .nice-state-select.wide {
+            height: 55px !important;
+            border: 1px solid #CECECE !important;
+            border-radius: 10px !important;
+            justify-content: flex-start !important;
+            background: #F8F8F8;
+        }
+
     }
 
     /* ................Modal............ */
@@ -523,6 +620,8 @@
         font-size: 1.5rem;
         font-weight: 500;
     }
+
+    
 </style>
 @section('content')
 <!-- header-section -->
@@ -576,24 +675,18 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector" name="country">
-                            <option value="USA">USA</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Austria">Austria</option>
-                        </select>
+                        <select class="wide s-select form-control pl-4" id="country" name="country"></select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
             </div>
+
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputCity" class=" " name="state">State</label>
-                    <select class="wide s-select form-control pl-4" id="typeselector">
-                        <option value="Alaska">Alaska</option>
-                        <option value="Washington">Washington</option>
-                        <option value="New South Wales">New South Wales</option>
-                        <option value="Tirol">Tirol</option>
-                    </select>
+                    <label for="inputCity" class=" ">State</label>
+
+                    <!-- <select class="wide s-select form-control pl-4" name="state" id="state"></select> -->
+                    <select class="wide state-select nice-state-select form-control pl-4" name="state" id="state"></select>
                 </div>
             </div>
 
@@ -624,6 +717,7 @@
         </div>
         <div class="form-btn my-5 ">
             <!-- <a href="{{url('/trainer/stepfive')}}" class="p-0 btn">Update</a> -->
+
             <button class="p-0 btn" type="submit">Update</button>
         </div>
     </form>
@@ -685,9 +779,16 @@
 @endsection
 @section('insertsfooter')
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/assets/List_Country_State-master/countries.js') }}"></script>
+<!-- <script src="countries.js"></script> -->
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
+        $('.state-slect').addClass('.nice-state-select');
+
     });
+</script>
+<script language="javascript">
+    populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
 </script>
 @endsection
