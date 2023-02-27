@@ -1742,15 +1742,15 @@
                         <div class="slot-vertical-icon my-2 text-right">
                             <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
                             <div class="icon-div icon-div-one box">
-                                <div class="icon-edit py-3 icon-div-inner ">
+                                <div class="icon-edit py-3 icon-div-inner " data-toggle="modal" data-target="#editModal">
                                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
-                                    <h1 data-toggle="modal" data-target="#editModal">Edit</h1>
+                                    <h1>Edit</h1>
                                 </div>
-                                <div class="icon-del py-3 icon-div-inner">
+                                <div class="icon-del py-3 icon-div-inner" data-toggle="modal" data-target="#deleteModal">
                                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
-                                    <h1 data-toggle="modal" data-target="#deleteModal">Delete</h1>
+                                    <h1>Delete</h1>
                                 </div>
                             </div>
                         </div>
