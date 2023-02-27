@@ -257,8 +257,8 @@
         padding-bottom: 1rem;
         width: 100%;
         border-radius: 10px;
-        display: flex;
-        align-items: center;
+        /* display: flex;
+        align-items: center; */
     }
 
     .week-name h1 {
@@ -977,6 +977,618 @@
         align-items: center;
         justify-content: center;
     }
+
+    /* .............Step Three CSS................. */
+
+    .slot-wrapper {
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    .slot-vertical-icon {
+        position: relative;
+    }
+
+    .slot-vertical-icon img {
+        max-width: 7px;
+        cursor: pointer;
+    }
+
+    .slot-vertical-icon .icon-div {
+        background: #fff;
+        position: absolute;
+        right: 0px;
+        box-shadow: 0px, 5px rgba(0, 0, 0, 0.16);
+        border-radius: 7px;
+        width: 100%;
+        box-shadow: 5px 10px 18px #888888;
+        max-width: 150px;
+        top: 30px;
+    }
+
+    .icon-edit {
+        border-bottom: 1px solid #858585;
+    }
+
+    .icon-edit,
+    .icon-del {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .icon-div-inner:hover {
+        background-color: #E37048;
+        color: white;
+    }
+
+    .icon-div-inner:hover h1,
+    .icon-div-inner:hover i {
+        color: white
+    }
+
+    .icon-edit h1,
+    .icon-del h1 {
+        font-size: 1rem;
+        color: #858585;
+        margin-bottom: 0px;
+    }
+
+    .icon-del i,
+    .icon-edit i {
+        color: #858585;
+    }
+
+    .slot-grid-container {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+        grid-gap: 10px !important;
+        align-items: stretch;
+    }
+
+    .slot-image img {
+        width: 100%;
+        /* max-width: 250px; */
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .slot-wrapper-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .left-slot-heading h1 {
+        color: #E37048;
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    .left-slot-heading h2 {
+        color: #E37048;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+    .right-slot-heading h1 {
+        color: #E37048;
+        font-size: 1.3rem;
+    }
+
+    .timing-stack {
+        border-radius: 10px;
+    }
+
+    .timing-stack-inner {
+        padding-top: 1rem;
+        width: 100%;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .week-name h1 {
+        font-size: 1.4rem;
+        color: #333333;
+    }
+
+    .timing-stack-one {
+        background-color: #FFDA98;
+    }
+
+    .timing-stack-two {
+        background-color: #ECFFAB;
+    }
+
+    .timing-stack-three {
+        background-color: rgba(141, 40, 173, 0.15);
+    }
+
+    .timing-stack-four {
+        background-color: #FFB3BC;
+    }
+
+    .timing-stack-five {
+        background-color: #ADABFF;
+    }
+
+    .timing-stack-six {
+        background-color: #FFB272;
+    }
+
+    .timing-stack-seven {
+        background-color: #6CA3EA;
+    }
+
+    .time-stack-outer {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .time-stack-inner {
+        border-radius: 30px;
+        width: 150px;
+        height: 40px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #E37048;
+        background-color: #fff;
+
+    }
+
+    @media screen and (max-width:991px) and (min-width:768px) {
+        .difficulty-level input {
+            font-size: 0.8rem;
+            height: 35px !important;
+            border-radius: 30px !important;
+            text-align: center;
+            border: 1px solid #E37048 !important;
+            color: #E37048;
+            background: #F8F8F8 !important;
+            cursor: pointer;
+        }
+    }
+
+    @media screen and (max-width:768px) and (min-width:577px) {
+        .grid-item img:nth-of-type(1) {
+            position: absolute;
+            height: 22px;
+            width: 22px;
+            right: 20px;
+            top: -10px;
+
+        }
+    }
+
+    @media screen and (max-width:576px) {
+        .difficulty-level {
+            display: flex;
+            align-items: center;
+            height: 55px;
+        }
+
+        .difficulty-level input {
+            font-size: 0.8rem;
+            height: 35px !important;
+            border-radius: 30px !important;
+            text-align: center;
+            border: 1px solid #E37048 !important;
+            color: #E37048;
+            background: #F8F8F8 !important;
+            cursor: pointer;
+        }
+
+        .pro-form input {
+            height: 55px;
+        }
+
+        .pro-form select {
+            height: 55px !important;
+        }
+
+        .time-box-inner p {
+            font-size: 0.8rem;
+        }
+
+        .timing-stack-inner {
+            flex-direction: column;
+        }
+
+        .time-stack-outer {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .right-slot-heading h1 {
+            color: #E37048;
+            font-size: 1rem;
+        }
+
+        .left-slot-heading h1 {
+            color: #E37048;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .left-slot-heading h2 {
+            color: #E37048;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .week-name h1 {
+            font-size: 1rem;
+            color: #333333;
+        }
+
+        .slot-heading h1 {
+            color: #E37048;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nice-select.wide {
+            height: 55px !important;
+            border: 1px solid #CECECE !important;
+            border-radius: 10px !important;
+            justify-content: flex-start !important;
+            background: #F8F8F8;
+        }
+    }
+
+    /* time-form */
+    .time-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .time-form-field {
+        position: relative;
+    }
+
+    .time-form-field img {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%, -50%);
+        width: 25px;
+    }
+
+    .time-form button {
+        background-color: #E37048;
+        color: white;
+        outline: none;
+        box-shadow: none !important;
+        border: 1px solid #E37048 !important;
+        font-size: 0.9rem;
+        height: 65px;
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .time-form-field h1 {
+        margin-bottom: 0px;
+        font-size: 0.8rem;
+        color: #666666;
+        font-weight: normal;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    @media screen and (max-width:576px) {
+        .time-form button {
+            background-color: #E37048;
+            color: white;
+            outline: none;
+            box-shadow: none !important;
+            border: 1px solid #E37048 !important;
+            font-size: 0.9rem;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .time-form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+
+        .time-form-field {
+            width: 100%;
+        }
+
+        .update-info-qualification-image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-item img:nth-of-type(1) {
+            position: absolute;
+            height: 22px;
+            width: 22px;
+            right: -5px;
+            top: -7px;
+
+        }
+
+        .updateinfo-qualification h1 {
+            text-align: center;
+        }
+    }
+
+    .slot-arrow i {
+        color: #E37048;
+        font-weight: bold;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    /* p */
+    .pagination-wrapper {
+        background-color: #F8F8F8;
+        border-radius: 10px;
+        position: relative;
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .pagination-border {
+        border: 1px solid #E37048;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        z-index: 1;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .pagination-box {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #f5bfac;
+        border: 2px solid #E37048;
+        z-index: 2;
+    }
+
+    .active-pagination {
+        background: #E37048;
+    }
+
+    .pagination-box h1 {
+        position: absolute;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0px;
+    }
+
+    .pagination-box p {
+        font-size: 0.6rem;
+        margin-bottom: 0px;
+        color: black;
+        position: absolute;
+        top: 55px;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+
+    }
+
+    @media screen and (max-width:576px) {
+        .pagination-box {
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+
+        .pagination-box h1 {
+            position: absolute;
+            color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0px;
+        }
+
+        .pagination-box p {
+            font-size: 0.5rem;
+        }
+
+
+
+
+    }
+
+    .price-select-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .price-select-input .select-outer {
+        width: 20%;
+
+    }
+
+    .price-select-input .nice-select.wide {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+
+    .price-select-input input {
+        width: 80%;
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+    }
+
+    .price-select-input .nice-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px !important;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 15% !important;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px !important;
+
+    }
+
+    .stack-categories h1 {
+        font-size: 1rem;
+        margin-bottom: 0px;
+        background-color: transparent;
+        /* border: 1px solid #E37048;
+        border-radius: 30px; */
+        padding: 0.5rem 1rem;
+        color: #E37048;
+        font-weight: 500;
+        display: flex;
+        width: 100%;
+    }
+
+    .stack-categories span {
+        font-size: 1rem;
+        margin-bottom: 0px;
+        background-color: transparent;
+        /* border: 1px solid #E37048;
+        border-radius: 30px; */
+        color: #E37048;
+        width: 70%;
+    }
+
+    .stack-categories h1 span {
+        font-weight: 400;
+    }
+
+    @media screen and (max-width:991px) {
+        .stack-categories h1 {
+            width: 100%;
+        }
+
+        .stack-categories h1 {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .timing-stack-inner {
+            flex-direction: column;
+        }
+
+        .slot-image {
+            text-align: center !important;
+        }
+    }
+
+    /* @media screen and (max-width:767px) {
+        .stack-categories h1 {
+            width: 100%;
+        }
+        .stack-categories h1 {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    } */
+
+    @media screen and (max-width:576px) {
+
+
+        .price-select-input .select-outer {
+            width: 30%;
+
+        }
+
+        .price-select-input input {
+            width: 70%;
+            border-top-left-radius: 0px !important;
+            border-bottom-left-radius: 0px !important;
+        }
+
+        .price-select-input .nice-select:after {
+            border-bottom: 2px solid #848484;
+            border-right: 2px solid #848484;
+            content: '';
+            display: block;
+            height: 9px !important;
+            margin-top: -4px;
+            pointer-events: none;
+            position: absolute;
+            right: 8px !important;
+            top: 50%;
+            -webkit-transform-origin: 66% 66%;
+            -ms-transform-origin: 66% 66%;
+            transform-origin: 66% 66%;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transition: all 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+            width: 9px !important;
+
+        }
+
+        /* .price-select-input .nice-select.wide span {
+            font-size: 0.9rem !important;
+        } */
+
+    }
+
+    .text-area {
+        background: #F8F8F8 !important;
+        border-radius: 10px !important;
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -1107,13 +1719,13 @@
                     <div class="slot-wrapper py-3 px-3 my-4">
                         <div class="slot-vertical-icon my-2 text-right">
                             <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-                            <div class="icon-div icon-div-one box" id="box">
-                                <div class="icon-edit py-3 icon-div-inner" data-toggle="modal" data-target="#editModal">
+                            <div class="icon-div icon-div-one box">
+                                <div class="icon-edit py-3 icon-div-inner ">
                                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                                     <h1>Edit</h1>
                                 </div>
-                                <div class="icon-del py-3 icon-div-inner" data-toggle="modal" data-target="#deleteModal">
+                                <div class="icon-del py-3 icon-div-inner">
                                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
                                     <h1>Delete</h1>
@@ -1165,135 +1777,47 @@
                         </div>
                         <div class="slot-timing-stacks stack-timing-one">
                             <div class="timing-stack timing-stack-one px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Mon:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
+                                <div class="timing-stack-inner">
+                                    <div class="week-name">
+                                        <h1>Mon:</h1>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-two px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Tue:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-three px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Wed:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-four px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Thu:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-five px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Fri:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
+                                    <div class="stack-time">
+                                        <div class="time-stack-outer px-4 ">
+                                            <div class="time-stack-inner m-2">
+                                                <p class="mb-0">9 am to 10 am</p>
+                                            </div>
                                         </div>
 
                                     </div>
                                 </div>
-                            </div>
-                            <div class="timing-stack timing-stack-six px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Sat:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-seven px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Sun:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
 
+                                <div class="stack-categories pb-2">
+                                    <div class="row  text-center">
+                                        <div class="col-md-6">
+                                            <div class="w-100 d-lg-flex align-items-center">
+                                                <h1>Difficulty Level:</h1>
+                                                <span>Lorem ipsum </span>
+                                            </div>
+                                            <div class="w-100 d-lg-flex align-items-center">
+                                                <h1>Session Type:</h1>
+                                                <span>Lorem ipsum </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="w-100 d-lg-flex align-items-center">
+                                                <h1>Class Type:</h1>
+                                                <span>Lorem ipsum </span>
+                                            </div>
+                                            <div class="w-100 d-lg-flex align-items-center">
+                                                <h1>Preference:</h1>
+                                                <span>Lorem ipsum </span>
+                                            </div>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="col-12">
                             <div class="slot-arrow slot-arrow-one text-center">
@@ -1311,20 +1835,21 @@
                     <!-- .............Yoga Slot............... -->
                     <div class="slot-wrapper py-3 px-3 my-4">
                         <div class="slot-vertical-icon my-2 text-right">
-                            <img class="dot-toggle-icon-two" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
-                            <div class="icon-div icon-div-two box" id="box">
-                                <div class="icon-edit py-3 icon-div-inner" data-toggle="modal" data-target="#editModal">
+                            <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
+                            <div class="icon-div icon-div-one box">
+                                <div class="icon-edit py-3 icon-div-inner ">
                                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                                     <h1>Edit</h1>
                                 </div>
-                                <div class="icon-del py-3 icon-div-inner" data-toggle="modal" data-target="#deleteModal">
+                                <div class="icon-del py-3 icon-div-inner">
                                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
                                     <h1>Delete</h1>
                                 </div>
                             </div>
                         </div>
+
                         <div class="slot-grid-container">
                             <div class="slot-grid-item">
                                 <div class="slot-image">
@@ -1367,142 +1892,58 @@
                                 <h1>$100</h1>
                             </div>
                         </div>
-                        <div class="slot-timing-stacks stack-timing-two">
+                        <div class="slot-timing-stacks stack-timing-one">
                             <div class="timing-stack timing-stack-one px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Mon:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
+                                <div class="timing-stack-inner">
+                                    <div class="week-name">
+                                        <h1>Mon:</h1>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-two px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Tue:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
+                                    <div class="stack-time">
+                                        <div class="time-stack-outer px-4 ">
+                                            <div class="time-stack-inner m-2">
+                                                <p class="mb-0">9 am to 10 am</p>
+                                            </div>
                                         </div>
 
                                     </div>
                                 </div>
-                            </div>
-                            <div class="timing-stack timing-stack-three px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Wed:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
+
+                                <div class="stack-categories pb-2">
+                                    <div class="row  text-center">
+                                        <div class="col-md-6">
+                                            <div class="w-100 d-lg-flex align-items-center">
+                                                <h1>Difficulty Level:</h1>
+                                                <span>Lorem ipsum </span>
+                                            </div>
+                                            <div class="w-100 d-lg-flex align-items-center">
+                                                <h1>Session Type:</h1>
+                                                <span>Lorem ipsum </span>
+                                            </div>
                                         </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-four px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Thu:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
+                                        <div class="col-md-6">
+                                            <div class="w-100 d-lg-flex align-items-center">
+                                                <h1>Class Type:</h1>
+                                                <span>Lorem ipsum </span>
+                                            </div>
+                                            <div class="w-100 d-lg-flex align-items-center">
+                                                <h1>Preference:</h1>
+                                                <span>Lorem ipsum </span>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="timing-stack timing-stack-five px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Fri:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4  ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-six px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Sat:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="timing-stack timing-stack-seven px-3 my-3">
-                                <div class="week-name">
-                                    <h1>Sun:</h1>
-                                </div>
-                                <div class="stack-time">
-                                    <div class="time-stack-outer px-4 ">
-                                        <div class="time-stack-inner m-2">
-                                            <p class="mb-0">9 am to 10 am</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">12 pm to 2 pm</p>
-                                        </div>
-                                        <div class="time-stack-inner m-2 ">
-                                            <p class="mb-0">4 pm to 6 pm</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
-
                         <div class="col-12">
-                            <div class="slot-arrow slot-arrow-two text-center">
+                            <div class="slot-arrow slot-arrow-one text-center">
                                 <i class="fa fa-angle-double-down down-arrow" aria-hidden="true"></i>
                                 <i class="fa fa-angle-double-up up-arrow" aria-hidden="true"></i>
                             </div>
                         </div>
+
+
 
                     </div>
                 </div>
