@@ -2224,8 +2224,8 @@
     // one
     $('.icon-div-one').hide();
     $('.dot-toggle-icon-one').click(function() {
-        $('.icon-div-one').show();
-        $('.icon-div-two').hide();
+        $(this).next().show();
+        // $('.icon-div-two').hide();
     });
     // two
     $('.icon-div-two').hide();
@@ -2244,6 +2244,9 @@
     // time slot
     // show and hide
     // one
+    $(".dot-toggle-icon-one").click(function(){
+        $(this).next().css('display', 'block');
+    })
     $('.stack-timing-one').hide();
     $('.slot-arrow-one .up-arrow').hide();
     $('.slot-arrow-one .down-arrow').click(function() {
