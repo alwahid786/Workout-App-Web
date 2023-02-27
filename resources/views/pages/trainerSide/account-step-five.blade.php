@@ -1657,7 +1657,7 @@
                 <div class="content-right-profile p-3">
                     <div class="row">
                         <div class="col-sm-6 content-right-profile-header px-0">
-                            <h1 class="py-3">John Smith</h1>
+                            <h1 class="py-3">{{$trainer['name']}}</h1>
                         </div>
                         <div class="my-auto col-sm-6 content-right-certificate-btn px-0 text-right">
                             <a class="btn" href="{{url('/trainer/updateprofile')}}" class="btn"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>Edit</a>
@@ -1735,6 +1735,7 @@
 
                 <div class="container form-container py-3">
                     <!-- .............Stretching Outdoors............... -->
+                    @foreach($trainer['session'] as $session)
 
                     <div class="slot-wrapper py-3 px-3 my-4">
                         <div class="slot-vertical-icon my-2 text-right">
@@ -1752,14 +1753,15 @@
                                 </div>
                             </div>
                         </div>
-
+                        @foreach($session['session_image'] as $image)
                         <div class="slot-grid-container">
                             <div class="slot-grid-item">
                                 <div class="slot-image">
-                                    <img src="{{asset('public/assets/trainerimages/stepthreeone.jpg')}}" alt="">
+                                    <img src="{{$image['image']}}" alt="">
                                 </div>
 
                             </div>
+                            @endforeach
                             <!-- <div class="slot-grid-item">
                                 <div class="slot-image">
                                     <img src="{{asset('public/assets/trainerimages/stepthreetwo.jpg')}}" alt="">
@@ -1849,6 +1851,7 @@
 
 
                     </div>
+                    @endforeach
 
 
 

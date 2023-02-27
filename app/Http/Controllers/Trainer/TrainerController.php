@@ -10,7 +10,7 @@ class TrainerController extends Controller
 {
     public function showTrainerDetail()
     {
-        $trainer = User::where('id', auth()->user()->id)->with('trainer_profile', 'session.category')->first();
+        $trainer = User::where('id', auth()->user()->id)->with('trainer_profile', 'session.category', 'session.session_image')->first();
         if (!$trainer) {
             return $this->sendError('No Data found against ID');
         }
