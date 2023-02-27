@@ -51,7 +51,15 @@
         height: 65px !important;
         border: 1px solid #CECECE !important;
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
-        border-radius: 10px !important;
+        border-radius: 10px;
+        justify-content: flex-start !important;
+    }
+
+    .nice-select.wide {
+        height: 65px !important;
+        border: 1px solid #CECECE !important;
+        box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+        border-radius: none !important;
         justify-content: flex-start !important;
     }
 
@@ -93,6 +101,15 @@
         background: #F8F8F8 !important;
         border: 1px solid rgba(0, 0, 0, 0.2) !important;
         border-radius: 10px;
+    }
+
+    .nice-select.wide2 {
+        box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+        background: #F8F8F8 !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        border-radius: none;
+        display: flex;
+        align-items: center;
     }
 
     .pro-form textarea {
@@ -177,6 +194,34 @@
         border-top-left-radius: 0px !important;
         border-bottom-left-radius: 0px !important;
         border-left: none !important;
+    }
+
+    .location-container {
+        display: flex;
+        width: 100%;
+    }
+
+    .location-container i {
+        color: white;
+        min-width: 50px;
+        text-align: center;
+        background-color: #E37048;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-right-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        font-size: 1.3rem;
+    }
+
+    .location-container .fa-instagram {
+        /* background-color: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); */
+        background: #000;
+    }
+
+    .location-container input {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
     }
 
     .updateinfo-qualification h1 {
@@ -270,6 +315,14 @@
             border: 1px solid #CECECE !important;
             box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
             border-radius: 10px !important;
+            justify-content: flex-start !important;
+        }
+
+        .nice-select.wide2 {
+            height: 100% !important;
+            border: 1px solid #CECECE !important;
+            box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+            border-radius: none !important;
             justify-content: flex-start !important;
         }
 
@@ -511,6 +564,57 @@
         min-width: 200px;
         height: 50px;
     }
+
+    .price-select-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+    }
+
+    .price-select-input .select-outer {
+        width: 100%;
+
+    }
+
+    .price-select-input .nice-select.wide2 {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+
+    .price-select-input input {
+        width: 80%;
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+    }
+
+    .pro-form .price-select-input .nice-select.wide2 {
+        border-radius: none !important;
+        height: 100% !important;
+    }
+
+    .price-select-input .nice-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px !important;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 15% !important;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px !important;
+
+    }
 </style>
 
 @section('content')
@@ -667,11 +771,27 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Workout Location</label>
-                    <input type="text" class="form-control pl-4 validate" id="inputAddress2" name="workout_location">
+                    <label for="locationInput" class="">Workout Location</label>
+                    <div class="location-container">
+                        <input type="text" class="form-control pl-4 validate" id="locationInput" name="workout_location">
+                        <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
+                        <div class="price-select-input">
+                            <div class="select-outer">
+                                <select class="wide2 s-select currency-select form-control " id="price_unit" name="priceUnit">
+                                    <option value="USD">Home</option>
+                                    <option value="EURO">Gym</option>
+                                    <option value="YEN">Work</option>
+                                    <option value="GBP">Park</option>
+                                    <option value="PKR">Other</option>
+                                </select>
+                                <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                            </div>
+                        </div>
+                        <i class="fa fa-plus addLocation" style="cursor: pointer;"></i>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="col-md-4" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Add Facebook URL</label>
@@ -775,8 +895,9 @@
 
 @endsection
 @section('insertsfooter')
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" async defer></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
@@ -832,6 +953,16 @@
             $(this).parent().remove();
             certificateArray.splice(index, 1);
         })
+
+
+        // Integrate map search on input Location 
+        function initMap() {
+            var input = document.getElementById('locationInput');
+            new google.maps.places.Autocomplete(input);
+        }
+
+        // Call the initMap() function when the Google Maps API has finished loading
+        initMap();
 
     });
 </script>
