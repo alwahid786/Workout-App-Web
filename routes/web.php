@@ -101,6 +101,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/stepfive', [TrainerController::class, 'showTrainerDetail'])->name('trainer/stepfive');
     Route::any('/trainer/update_profile/', [TrainerController::class, 'updateTrainer'])->name('trainer/update_profile');
     Route::any('/trainer/updateprofile/', [TrainerController::class, 'showupdate'])->name('trainer/updateprofile');
+    Route::any('/trainer/update_session/', [TrainerController::class, 'updateSession'])->name('trainer/update_session');
 
 
     Route::get('/trainer/steptwo', function () {

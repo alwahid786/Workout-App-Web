@@ -16,6 +16,7 @@ use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Session;
 use App\Models\Category;
+use App\Models\SessionImage;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Illuminate\Support\Facades\Mail;
@@ -143,7 +144,7 @@ class AuthController extends Controller
 
             $session_image = $request->session_images;
             foreach ($session_image as  $session_images) {
-                $images = new ClassImage();
+                $images = new SessionImage();
                 $images->image = $session_images['image'];
                 $images->session_id = $session->id;
                 $images->save();

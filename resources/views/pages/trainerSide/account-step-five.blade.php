@@ -1742,10 +1742,12 @@
                         <div class="slot-vertical-icon my-2 text-right">
                             <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
                             <div class="icon-div icon-div-one box">
-                                <div class="icon-edit py-3 icon-div-inner " data-toggle="modal" data-target="#editModal">
+                                <div class="icon-edit py-3 icon-div-inner edit_session " data-toggle="modal" data-target="#editModal" id="edit_session">
                                     <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                                     <h1>Edit</h1>
+                                    <input type="hidden" value="{{$session['id']}}" class="session_id">
+
                                 </div>
                                 <div class="icon-del py-3 icon-div-inner" data-toggle="modal" data-target="#deleteModal">
                                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
@@ -1763,7 +1765,6 @@
 
                             </div>
                             @endforeach
-
 
                         </div>
                         <div class="slot-wrapper-heading px-3 my-3">
@@ -2013,17 +2014,18 @@
                 <img class="cross-icon" style="width:30px;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
             <div class="modal-body text-center sucess-modal">
-                <form>
+                <form action="{{route('trainer/update_session')}}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
+                        <input type="hidden" value="" name="session_id" id="session_id">
                         <div class="col-md-6" data-aos="fade-right">
                             <div class="form-group pro-form">
                                 <label for="inputAddress" class=" ">Select Category</label>
                                 <div class="select-outer">
-                                    <select class="wide s-select form-control pl-4">
-                                        <option value="">Yoga</option>
-                                        <option value="">Yoga</option>
-                                        <option value="">Yoga</option>
-                                        <option value="">Yoga</option>
+                                    <select class="wide s-select form-control pl-4 " name="category_id" id="category_id">
+                                        @foreach($category as $categories)
+                                        <option value="{{$categories['id']}}">{{$categories['title']}}</option>
+                                        @endforeach
                                     </select>
                                     <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                                 </div>
@@ -2031,17 +2033,19 @@
                         </div>
                         <div class="col-md-6" data-aos="fade-left">
                             <div class="form-group pro-form">
-                                <label for="inputAddress" class=" ">Category Description</label>
-                                <textarea type="text" class="form-control pl-4 text-area" id="inputAddress" placeholder="" value=""></textarea>
+                                <label for="inputAddress" class=" " id="sub_category">Category Description</label>
+                                <textarea type="text" class="form-control pl-4 text-area" id="inputAddress" placeholder="" value="" name="category_description"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6" data-aos="fade-right">
                             <div class="form-group pro-form">
                                 <label for="inputAddress2" class=" ">Difficulty Level</label>
                                 <div class="difficulty-level">
-                                    <input type="text" class="form-control py-2" id="inputAddress2" value="Beginner" readonly>
+                                    <input type="text" class="form-control py-2" name="difficulty_level" value="Beginner" readonly>
                                     <input type="text" class="form-control py-2 mx-3" id="inputAddress2" value="Intermediate" readonly>
                                     <input type="text" class="form-control py-2" id="inputAddress2" value="Advanced" readonly>
+                                    <input type="hidden" class="form-control py-2" id="difficulty_level" name="difficulty" value="">
+
                                 </div>
 
                             </div>
@@ -2055,7 +2059,7 @@
                         </div> -->
                                     <div class="price-select-input">
                                         <div class="select-outer">
-                                            <select class="wide s-select currency-select form-control " id="exampleFormControlSelect1">
+                                            <select class="wide s-select currency-select form-control " id="price_unit" name="priceUnit">
                                                 <option>USD</option>
                                                 <option>EURO</option>
                                                 <option>YEN</option>
@@ -2064,7 +2068,7 @@
                                             </select>
                                             <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                                         </div>
-                                        <input type="text" class="form-control pl-4" id="inputAddress2" value="100">
+                                        <input type="text" class="form-control pl-4" id="price" value="100" name="price">
                                     </div>
                                 </div>
 
@@ -2074,7 +2078,7 @@
                             <div class="form-group pro-form">
                                 <label for="inputAddress" class=" ">Session Type</label>
                                 <div class="select-outer">
-                                    <select class="wide s-select form-control pl-4" id="typeselector">
+                                    <select class="wide s-select form-control pl-4" id="type" name="type">
                                         <option value="onetoone">One to one</option>
                                         <option value="group">Group</option>
                                     </select>
@@ -2082,23 +2086,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 limit-box" data-aos="fade-right">
-                            <div class="form-group pro-form">
-                                <label for="inputAddress" class=" ">Limit</label>
-                                <div class="select-outer">
-                                    <select class="wide s-select form-control pl-4" id="exampleFormControlSelect1">
-                                        <option>15</option>
-                                        <option>20</option>
-                                    </select>
-                                    <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="col-md-6" data-aos="fade-right">
                             <div class="form-group pro-form">
                                 <label for="inputAddress" class=" ">Days</label>
                                 <div class="select-outer">
-                                    <select class="wide s-select form-control pl-4" id="typeselector">
+                                    <select class="wide s-select form-control pl-4" id="day" name="day">
                                         <option value="mon">Monday</option>
                                         <option value="tue">Tuesday</option>
                                         <option value="wed">Wednesday</option>
@@ -2112,11 +2105,20 @@
                             </div>
 
                         </div>
+
+                        <div class="col-md-6" data-aos="fade-right">
+                            <div class="form-group pro-form">
+                                <label for="inputAddress" class=" ">Date</label>
+                                <input type="date" class="form-control pl-4" id="sessionDate" placeholder="" name="sessionDate">
+                            </div>
+
+                        </div>
+
                         <div class="col-md-6 pb-2" data-aos="fade-right">
                             <div class="form-group pro-form">
                                 <label for="inputAddress" class=" ">Class Type</label>
                                 <div class="select-outer">
-                                    <select class="wide s-select form-control pl-4" id="typeselector">
+                                    <select class="wide s-select form-control pl-4" id="session_type" name="sessionType">
                                         <option value="0">Online</option>
                                         <option value="1">In-person</option>
                                     </select>
@@ -2129,7 +2131,7 @@
                             <div class="form-group pro-form">
                                 <label for="inputAddress" class=" ">Preference</label>
                                 <div class="select-outer">
-                                    <select class="wide s-select form-control pl-4" id="typeselector">
+                                    <select class="wide s-select form-control pl-4" id="preference" name="preference">
                                         <option value="0">One Time</option>
                                         <option value="1">Recurring</option>
                                     </select>
@@ -2143,7 +2145,7 @@
                                 <label for="inputAddress" class=" ">Time slot</label>
                                 <div class="time-form">
                                     <div class="time-form-field pro-form">
-                                        <input type="time" class="form-control py-4" id="inputAddress" placeholder="">
+                                        <input type="time" class="form-control py-4" id="startTime" name="startTime">
                                         <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
                                     </div>
                                     <div class="time-form-field mx-sm-3 my-4 my-sm-0">
@@ -2151,7 +2153,7 @@
                                     </div>
 
                                     <div class="time-form-field pro-form mb-3 mb-sm-0 mr-sm-2">
-                                        <input type="time" class="form-control py-4 " id="inputAddress" placeholder="">
+                                        <input type="time" class="form-control py-4 " id="endTime" name="endTime" placeholder="">
                                         <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
                                     </div>
                                     <!-- <button class="">Add</button> -->
@@ -2161,26 +2163,21 @@
                         </div>
 
                     </div>
-                    <div class="updateinfo-qualification my-4 px-3 text-left">
+                    <div class="updateinfo-qualification my-4 px-3 ">
                         <h1 class="mb-4">Upload Image</h1>
                         <div class="update-info-qualification-image">
-                            <label class="text-center">
+                            <label>
                                 <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
-                                <input type="file" name="myfile" style="display:none">
+                                <input type="file" name="myfile[]" id="choose-file" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
                             </label>
-                            <div class="grid-item py-2 py-sm-0">
-                                <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
-                                <img src="{{asset('public/assets/trainerimages/stepthreeone.jpg')}}" alt="">
-                            </div>
-                            <div class="grid-item py-2 py-sm-0">
-                                <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
-                                <img src="{{asset('public/assets/trainerimages/stepthreetwo.jpg')}}" alt="">
-                            </div>
+                            <div id="img-preview" class="d-flex">
 
+                            </div>
                         </div>
                     </div>
                     <div class="form-btn my-5 ">
-                        <a href="{{url('')}}" class="p-0 btn">Done</a>
+
+                        <button class="p-0 btn" type="submit">Done</button>
                     </div>
                 </form>
             </div>
@@ -2244,7 +2241,7 @@
     // time slot
     // show and hide
     // one
-    $(".dot-toggle-icon-one").click(function(){
+    $(".dot-toggle-icon-one").click(function() {
         $(this).next().css('display', 'block');
     })
     $('.stack-timing-one').hide();
@@ -2277,6 +2274,251 @@
     $('.custom-modal').hide();
     $('.cross-icon').click(function() {
         $('.custom-modal').show();
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        var sessionsArray = [];
+        var images = [];
+        var index = 0;
+
+
+        const fileInput = document.getElementById('choose-file');
+        const imagePreview = document.getElementById('img-preview');
+
+        fileInput.addEventListener('change', function(e) {
+            for (let i = 0; i < fileInput.files.length; i++) {
+                const file = fileInput.files[i];
+                const image = new Image();
+                image.src = URL.createObjectURL(file);
+                image.onload = function() {
+                    URL.revokeObjectURL(image.src);
+                };
+
+                const imageWrapper = document.createElement('div');
+                imageWrapper.classList.add('image-wrapper');
+                imageWrapper.classList.add('position-relative');
+
+                const imageCloseButton = document.createElement('a');
+                imageCloseButton.classList.add('image-close-button');
+                imageCloseButton.classList.add('closeBtn');
+                imageCloseButton.setAttribute('type', 'btn');
+                imageCloseButton.setAttribute('href', 'javascript:void(0)');
+                imageCloseButton.innerHTML = `<img class="closeImg" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">`;
+
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
+
+                imageContainer.appendChild(image);
+                imageWrapper.appendChild(imageCloseButton);
+                imageWrapper.appendChild(imageContainer);
+                imagePreview.appendChild(imageWrapper);
+
+                images.push(file);
+
+                imageCloseButton.addEventListener('click', function() {
+                    imageWrapper.remove();
+                    let index = images.indexOf(file);
+                    if (index > -1) {
+                        images.splice(index, 1);
+                    }
+                });
+            }
+        });
+
+        $(document).on('click', ".difficulties", function() {
+            $('#difficulty_level').val($(this).val());
+            $(".difficulties").removeClass('activeDifficulty');
+            $(this).addClass('activeDifficulty');
+        });
+        $(document).on('click', ".categoryOption", function() {
+            $('#category_id').attr('data-src', $(this).text());
+        });
+
+        $(document).on('change', '#preference', function() {
+            if ($('#preference').val() == 1) {
+                $("#sessionDate").attr('readonly', 'readonly');
+            } else {
+                $("#sessionDate").removeAttr('readonly');
+            }
+        })
+
+
+        $('#createSessionForm').submit(function(e) {
+            validation = validateForm(e);
+            if (validation.success == false) {
+                e.preventDefault();
+                let imageErrorText = ', Atleast 1 image is required.'
+                if (validation.imageError > 0) {
+                    swal({
+                        title: "Some Fields Missing",
+                        text: "Please fill all marked fields" + imageErrorText,
+                        icon: "error",
+                    });
+                } else {
+                    swal({
+                        title: "Some Fields Missing",
+                        text: "Please fill all marked fields",
+                        icon: "error",
+                    });
+                }
+                return;
+            }
+            e.preventDefault();
+            var formData = new FormData(this);
+            formData.append('index', index);
+            formData.append('categoryName', $('#category_id').attr('data-src'));
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ route('session.render') }}",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    $('#slotsSection').append(data.html);
+                    sessionsArray.push(data.data);
+                    index++
+                    resetForm();
+                    console.log(sessionsArray);
+                    if (sessionsArray.length > 0) {
+                        $("#saveSession").removeAttr('disabled');
+                    } else {
+                        $("#saveSession").attr('disabled', 'disabled');
+                    }
+                }
+            });
+        });
+        // });
+
+        // Delete Session Slot 
+        $(document).on('click', ".deleteSlot", function() {
+            let rawIndex = $(this).attr('data-role');
+            var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
+            sessionsArray.splice(index, 1);
+            $(this).parent().parent().parent().parent().remove();
+            if (sessionsArray.length < 1) {
+                $("#saveSession").attr('disabled', 'disabled');
+            }
+        });
+
+
+        // Edit Session Slot 
+        $(document).on('click', ".editSlot", function() {
+            let rawIndex = $(this).attr('data-role');
+            var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
+            var slotData = sessionsArray[parseInt(index)];
+            console.log(slotData);
+
+            $("#category_id").val(slotData.category_id)
+            $("#category_id").attr('data-src', slotData.category_id)
+            $("#sub_category").val(slotData.subCategory)
+            $("#" + slotData.difficulty).addClass('activeDifficulty')
+            $("#difficulty").val(slotData.difficulty);
+            $("#price_unit").val(slotData.priceUnit);
+            $("#price").val(slotData.price);
+            $("#type").val(slotData.type);
+            $("#session_type").val(slotData.sessionType);
+            $("#preference").val(slotData.preference);
+            $("#day").val(slotData.day);
+            $("#start_time").val(slotData.startTime);
+            $("#end_time").val(slotData.endTime);
+
+
+        });
+
+        // Reset Form 
+        function resetForm() {
+            $('#category_id').prop('selectedIndex', 0);
+            $('select').val('');
+            $('select').niceSelect('update');
+            $('#sub_category').val('');
+            $('#difficulty_level').val('');
+            $('#price').val('');
+            $('#startTime').val('');
+            $('#endTime').val('');
+            $('#sessionDate').val('');
+            $('#sessionDate').removeAttr('readonly');
+            images.splice(0, images.length - 1);
+            $("#difficulty").val('');
+            $('.difficulties').removeClass('activeDifficulty');
+
+        }
+
+        // Form Validations 
+        function validateForm(e) {
+            e.preventDefault();
+            errors = 0;
+            imageError = 0;
+            $("form#createSessionForm :input,form#createSessionForm select").each(function() {
+                value = $(this).val();
+
+                if (value == '') {
+                    if ($(this).is("input")) {
+                        // alert('input');
+                        $(this).css('border', '1px solid red');
+                        errors++;
+
+                    } else if ($(this).is("select")) {
+                        console.log($(this));
+                        $(this).next().addClass('borderRed');
+                        errors++;
+
+                    }
+
+                    if ($(this).is("input[type='file']")) {
+                        console.log($(this));
+                        imageError++;
+                    }
+                } else {
+                    $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
+                    $(this).next().removeClass('borderRed');
+                }
+            });
+            if (errors > 0) {
+                return {
+                    'success': false,
+                    'imageError': imageError
+                };
+            }
+            return {
+                'success': true,
+                'imageError': imageError
+            };
+        }
+
+        // Save Session API Call 
+        $(document).on('click', "#saveSession", function() {
+            var sessionsData = {
+                allSessions: sessionsArray
+            };
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url('api/trainer_detail') }}",
+                type: "POST",
+                data: sessionsData,
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                    window.location.href = '/workitpt_web/trainer/stepfive';
+                }
+            });
+        });
+    });
+
+
+    $('.edit_session').click(function() {
+
+        // let session = $('.session_id').val();
+        let session_id = $(this).find('.session_id').val();
+        // alert(session_id);
+
+        $("#session_id").val(session_id);
     });
 </script>
 @endsection
