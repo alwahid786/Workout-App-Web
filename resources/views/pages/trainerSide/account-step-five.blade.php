@@ -1749,10 +1749,12 @@
                                     <input type="hidden" value="{{$session['id']}}" class="session_id">
 
                                 </div>
-                                <div class="icon-del py-3 icon-div-inner" data-toggle="modal" data-target="#deleteModal">
+                                <div class="icon-del py-3 icon-div-inner delete_session" data-toggle="modal" data-target="#deleteModal">
                                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
                                     <h1>Delete</h1>
+
+
                                 </div>
                             </div>
                         </div>
@@ -2195,7 +2197,8 @@
                 <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
                 <p class="mb-0 py-3">Do you really want to delete <br> this?</p>
                 <div class=" modal-btn text-sm-right text-center">
-                    <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a>
+                    <!-- <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a> -->
+                    <button class="update-profile-form-btn btn">Confirm</button>
                 </div>
             </div>
 
@@ -2519,6 +2522,14 @@
         // alert(session_id);
 
         $("#session_id").val(session_id);
+    });
+    $('.delete_session').click(function() {
+
+        // let session = $('.session_id').val();
+        let session_id = $(this).find('.session_id').val();
+        // alert(session_id);
+
+        $("#delete_session").val(session_id);
     });
 </script>
 @endsection

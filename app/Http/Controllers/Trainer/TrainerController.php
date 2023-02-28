@@ -105,16 +105,14 @@ class TrainerController extends Controller
 
 
         ]);
+        if (!$session) {
+            return $this->sendError('No Data found against ID');
+        }
         // dd($request->session_images);
 
         $images = $request->file('images');
 
-        // foreach ($paths as $image) {
-        //     $path = $image->store('public/images');
-        //     // Do something with the $path, like save it to a database
-        // }
-        // $session_image = $request->file('session_images');
-        // dd($request->file('session_images'));
+
         SessionImage::where('session_id', $request->session_id)->delete();
         foreach ($paths as  $session_image) {
             $images = new SessionImage();
@@ -123,6 +121,17 @@ class TrainerController extends Controller
             $images->save();
         }
 
+
+        return redirect()->route('trainer/stepfive');
+    }
+
+    public function deleteSession(Request $request)
+    {
+        $session = Session::where('id', $request->session_id)->delete();
+        if (!$session) {
+            return $this->sendError('No Data found against ID');
+        }
+        SessionImage::where('session_id', $request->session_id)->delete();
 
         return redirect()->route('trainer/stepfive');
     }
