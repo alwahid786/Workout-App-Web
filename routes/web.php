@@ -99,10 +99,12 @@ Route::middleware('auth')->group(function () {
     ///// trainer............//////
     Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
     Route::any('/trainer/stepfive', [TrainerController::class, 'showTrainerDetail'])->name('trainer/stepfive');
+    Route::any('/trainer/stepthree', [TrainerAuthController::class, 'stepThree'])->name('trainer/stepthree');
     Route::any('/trainer/update_profile/', [TrainerController::class, 'updateTrainer'])->name('trainer/update_profile');
     Route::any('/trainer/updateprofile/', [TrainerController::class, 'showupdate'])->name('trainer/updateprofile');
     Route::any('/trainer/update_session/', [TrainerController::class, 'updateSession'])->name('trainer/update_session');
     Route::any('/trainer/delete_session/', [TrainerController::class, 'deleteSession'])->name('trainer/delete_session');
+    Route::any('/trainer/submit_request/', [TrainerController::class, 'submitTrainerRequest'])->name('trainer/submit_request');
 
 
     Route::get('/trainer/steptwo', function () {
@@ -279,9 +281,9 @@ Route::get('/trainer/stepone', function () {
 //     return view('pages.trainerSide.account-step-two');
 // });
 
-Route::get('/trainer/stepthree', function () {
-    return view('pages.trainerSide.account-step-three');
-});
+// Route::get('/trainer/stepthree', function () {
+//     return view('pages.trainerSide.account-step-three');
+// });
 Route::get('/trainer/stepfour', function () {
     return view('pages.trainerSide.account-stepfour');
 });

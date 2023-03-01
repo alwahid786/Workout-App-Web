@@ -2001,6 +2001,7 @@
                 <!-- buttons -->
                 <div class="col-12 step-five-buttons pt-5 pb-3 px-0">
                     <button class="m-2" data-toggle="modal" data-target="#sucessModal">Submit</button>
+                    <a href="{{route('trainer/submit_request')}}">Submit</a>
                     <button class="m-2"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>Edit</button>
                 </div>
             </div>
@@ -2231,6 +2232,11 @@
 </div>
 @endsection
 @section('insertsfooter')
+@if(session()->has('successCode') && session()->get('successCode') == 1)
+<script>
+    $('#sucessModal').modal('show');
+</script>
+@endif
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script>
     $(document).ready(function() {

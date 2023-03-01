@@ -59,6 +59,8 @@ class AuthController extends Controller
 
         // ];
         $registeredTrainer = User::create($data);
+        $page = TrainerProfile::where('trainer_id', $registeredTrainer->id)->update(['page' => 1]);
+
         if (!$registeredTrainer) {
             return $this->sendError('Unexpected error occured while registration. Please try again later');
         }
@@ -89,21 +91,32 @@ class AuthController extends Controller
             'hieght_unit' => $request->height_unit,
             'madical_condition' => $request->madical_condition,
             'relationship_emergency_contact' => $request->relation_emergency,
+
             // $data
         ]);
         $social = TrainerProfile::where('user_id', auth()->user()->id)->update([
             'facebook_url' => $request->facebook,
             'instagram_url' => $request->instagram,
-            'linkedin_url' => $request->linkedin
+            'linkedin_url' => $request->linkedin,
+            'page' => 2,
         ]);
         if (!$trainer) {
             return $this->sendError('User has not registered. Please try again later');
         }
+        return Redirect::to(url('/trainer/stepthree'));
+    }
+    //.........show step three ...//////////
+    public function stepThree()
+    {
+        // dd('com');
         $category = Category::all();
+        if (!$category) {
+            return $this->sendError('No Data found against ID');
+        }
         $categories = json_decode($category, true);
         return view('pages.trainerSide.account-step-three', compact('categories'));
     }
-
+    ///////...........create session.......////
     public function trainerDetail(Request $request)
     {
         $class = Classes::create(
@@ -157,6 +170,9 @@ class AuthController extends Controller
             $images->class_id = $class->id;
             $images->save();
         }
+        TrainerProfile::where('trainer_id', auth()->user()->id)->update([
+            'page' => 3,
+        ]);
         return $this->sendResponse([], 'Trainer Detail insert Successfully!');
     }
     ////////........trainer login........////////
@@ -172,7 +188,20 @@ class AuthController extends Controller
         }
         $authUser = auth()->user();
         $authUser->token = $authUser->createToken('API Token')->accessToken;
-        return Redirect::to(url('/trainer/dashboard'));
+        $page = TrainerProfile::where('user_id', auth()->user()->id)->first();
+        if ($page['page'] == 1) {
+            return Redirect::to(url('/trainer/steptwo'));
+        }
+        if ($page['page'] == 2) {
+            return Redirect::to(url('/trainer/stepthree'));
+        }
+        if ($page['page'] == 3) {
+            return Redirect::to(url('/trainer/stepfive'));
+        }
+        if ($page['page'] == 5) {
+
+            return Redirect::to(url('/trainer/dashboard'));
+        }
     }
     ///////////...forget password..........///////
 

@@ -11,6 +11,7 @@ use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Session;
 use App\Models\SessionImage;
+use App\Models\TrainerProfile;
 use Illuminate\Support\Facades\Redirect;
 
 class TrainerController extends Controller
@@ -124,7 +125,7 @@ class TrainerController extends Controller
 
         return redirect()->route('trainer/stepfive');
     }
-////////.......delete session..........///////
+    ////////.......delete session..........///////
     public function deleteSession(Request $request)
     {
         $session = Session::where('id', $request->session_id)->delete();
@@ -134,5 +135,14 @@ class TrainerController extends Controller
         SessionImage::where('session_id', $request->session_id)->delete();
 
         return redirect()->route('trainer/stepfive');
+    }
+    ////.....submit trainer request .............//////
+    public function submitTrainerRequest()
+    {
+        $trainerProfile = TrainerProfile::where('user_id', auth()->user()->id)->update(['status' => 1, 'page' => 5]);
+        if (!$trainerProfile) {
+            return $this->sendError('No Data found against ID');
+        }
+        return redirect()->route('trainer/stepfive')->with(['successCode' => 1]);
     }
 }
