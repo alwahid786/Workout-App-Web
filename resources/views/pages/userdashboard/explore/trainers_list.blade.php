@@ -1,7 +1,7 @@
 @foreach($trainerDetails as $trainerDetail)
 <div class="categories-card p-3">
     <div class="card-img-section ">
-        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
+        <img src="{{$trainerDetail['trainer']['profile_img']}}" alt="">
         <?php $price = 0;
         foreach ($trainerDetail['class_session'] as $session) {
             $price += $session['price'];
