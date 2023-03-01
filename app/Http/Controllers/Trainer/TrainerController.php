@@ -124,7 +124,7 @@ class TrainerController extends Controller
 
         return redirect()->route('trainer/stepfive');
     }
-
+////////.......delete session..........///////
     public function deleteSession(Request $request)
     {
         $session = Session::where('id', $request->session_id)->delete();

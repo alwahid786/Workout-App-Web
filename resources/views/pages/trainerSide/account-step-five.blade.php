@@ -748,7 +748,26 @@
         color: white;
     }
 
+    .form-btn button {
+        width: 160px !important;
+        height: 50px;
+        background-color: #F8F8F8 !important;
+        border: 1px solid #E37048;
+        color: #E37048;
+        border-radius: 7px;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none !important;
+        text-decoration: none !important;
+    }
 
+    .form-btn button:hover {
+        background-color: #E37048;
+        color: white;
+    }
 
 
 
@@ -961,7 +980,7 @@
         width: 40%;
     }
 
-    .modal-btn a {
+    .modal-btn button {
         background: #E37048;
         border: none;
         box-shadow: none !important;
@@ -1751,6 +1770,7 @@
                                 </div>
                                 <div class="icon-del py-3 icon-div-inner delete_session" data-toggle="modal" data-target="#deleteModal">
                                     <i class="fa fa-trash pr-2" aria-hidden="true"></i>
+                                    <input type="hidden" value="{{$session['id']}}" class="session_id">
 
                                     <h1>Delete</h1>
 
@@ -2193,15 +2213,18 @@
             <div class="modalHeader px-2 pt-2 pb-2 d-flex justify-content-end align-items-center">
                 <img class="cross-icon" style="width:30px;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
-            <div class="modal-body text-center sucess-modal ">
-                <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
-                <p class="mb-0 py-3">Do you really want to delete <br> this?</p>
-                <div class=" modal-btn text-sm-right text-center">
-                    <!-- <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a> -->
-                    <button class="update-profile-form-btn btn">Confirm</button>
+            <form action="{{route('trainer/delete_session')}}" method="post">
+                @csrf
+                <div class="modal-body text-center sucess-modal ">
+                    <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
+                    <p class="mb-0 py-3">Do you really want to delete <br> this?</p>
+                    <input type="hidden" id="delete_session" value="" name="session_id">
+                    <div class=" modal-btn text-sm-right text-center">
+                        <!-- <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a> -->
+                        <button class=" p-0 btn">Confirm</button>
+                    </div>
                 </div>
-            </div>
-
+            </form>
 
         </div>
     </div>
@@ -2517,7 +2540,7 @@
 
     $('.edit_session').click(function() {
 
-        // let session = $('.session_id').val();
+
         let session_id = $(this).find('.session_id').val();
         // alert(session_id);
 
@@ -2525,10 +2548,8 @@
     });
     $('.delete_session').click(function() {
 
-        // let session = $('.session_id').val();
-        let session_id = $(this).find('.session_id').val();
-        // alert(session_id);
 
+        let session_id = $(this).find('.session_id').val();
         $("#delete_session").val(session_id);
     });
 </script>
