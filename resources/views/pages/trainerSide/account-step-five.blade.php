@@ -1695,7 +1695,7 @@
                         </div>
                         <div class="profile-body">
                             <h1><img src="{{asset('public/assets/trainerimages/heart-icon.png')}}" alt="">{{$trainer['madical_condition']}}</h1>
-
+                            
                             @if($trainer['trainer_profile']['facebook_url']== null)
 
                             @else

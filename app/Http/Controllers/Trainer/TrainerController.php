@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
+use App\Models\BookedSession;
 use App\Models\Category;
 use App\Models\Classes;
 use App\Models\ClassImage;
@@ -128,7 +129,11 @@ class TrainerController extends Controller
     ////////.......delete session..........///////
     public function deleteSession(Request $request)
     {
+        $class = Session::where('id', $request->session_id)->pluck('class_id');
         $session = Session::where('id', $request->session_id)->delete();
+        // $class = json_decode($class, true);
+        // dd($class);
+        $class_delete = Classes::whereIn('id', $class)->delete();
         if (!$session) {
             return $this->sendError('No Data found against ID');
         }
@@ -144,5 +149,10 @@ class TrainerController extends Controller
             return $this->sendError('No Data found against ID');
         }
         return redirect()->route('trainer/stepfive')->with(['successCode' => 1]);
+    }
+
+    public function dashboard()
+    {
+        // $today_session=BookedSession::
     }
 }

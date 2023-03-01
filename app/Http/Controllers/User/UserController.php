@@ -248,7 +248,7 @@ class UserController extends Controller
     ///////// .....class detail .............////////
     public function class_detail(Request $request, $id, $day)
     {
-        $class         = Classes::where(['trainer_id' => $id])->with('classSession','classSession.Category', 'trainer', 'category', 'classImages')->get();
+        $class         = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
         $classes_count = ModelsSession::where('trainer_id', '=', $id)->count();
         $trainer       = User::where('id', $id)->first();
         if (count($class) > 0) {
@@ -334,13 +334,15 @@ class UserController extends Controller
                 )
             );
             if ($transaction) {
+
+
                 flash()->success('Payment Successfuly!');
                 // notify()->success('Laravel Notify is awesome!');
                 // Toastr::success('message', 'title', 'welcome to text');
                 // Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
                 // notify()->success('Welcome to Laravel Notify ⚡️');
 
-                return redirect()->route('/dashboard');
+                return redirect('/dashboard');
             } else {
                 // return $this->sendError('Something went wrong, Try again in a While.');
                 Session::flash('error', 'Something went wrong, please try again later.');
@@ -368,7 +370,7 @@ class UserController extends Controller
                     $query->where($whereCategory);
                 }
             },
-            'session.class.classImage'
+            'session.session_image'
         ])->get();
         $category        = Category::get();
         $ip              = '162.159.24.227';
@@ -538,11 +540,11 @@ class UserController extends Controller
 
     public function SearchResult(Request $request)
     {
+        // dd($request->all());
         $whereCategory = [];
         if ($request->has('category') && !empty($request->category)) {
             array_push($whereCategory, ['id', '=', $request->category]);
         }
-        // dd($request->all());
         $booksession = (new BookedSession)->newQuery();
 
         $whereSession = [];
@@ -551,7 +553,7 @@ class UserController extends Controller
         }
         if ($request->has('price') && !empty($request->price)) {
             $price = explode('|', $request->price);
-            // dd($price);
+
 
             array_push($whereSession, ['price', '>=', $price[0]]);
             if (isset($price[1])) {
@@ -571,7 +573,7 @@ class UserController extends Controller
                     $query->where($whereCategory);
                 }
             },
-            'session.class.classImage'
+            'session.session_image'
         ])->get();
 
 

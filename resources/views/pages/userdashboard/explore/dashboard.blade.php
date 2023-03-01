@@ -93,6 +93,7 @@
             <div class="dashboard-session-header px-3 pb-3 pb-sm-3">
                 <h1>Sessions</h1>
             </div>
+
             <div class="row js-slick-carousels px-sm-5">
                 @if($class== null)
                 ...................

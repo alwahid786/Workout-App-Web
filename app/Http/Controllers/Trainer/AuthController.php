@@ -108,7 +108,7 @@ class AuthController extends Controller
     //.........show step three ...//////////
     public function stepThree()
     {
-        // dd('com');
+        
         $category = Category::all();
         if (!$category) {
             return $this->sendError('No Data found against ID');
