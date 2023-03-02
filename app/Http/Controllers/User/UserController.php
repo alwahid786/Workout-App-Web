@@ -313,7 +313,7 @@ class UserController extends Controller
             } else {
                 $status = false;
             }
-
+            dd($request->session_date);
             $booksession = BookedSession::create(
                 array(
                     'session_id'   => $request->session_id,
@@ -505,7 +505,7 @@ class UserController extends Controller
     public function classDetails(Request $request)
     {
 
-        $session = ModelsSession::where('id', '=', $request->class_id)->with('category', 'class.classImage')->get();
+        $session = ModelsSession::where('id', '=', $request->class_id)->with('category', 'session_image')->get();
 
         if (!$session) {
             return $this->sendError('No class found against ID');
