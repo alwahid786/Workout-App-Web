@@ -226,3 +226,7 @@ Route::get('/trainer/updateprofile', function () {
 Route::get('/trainer/profile', function () {
     return view('pages.trainerSide.profile');
 });
+
+Route::get('/trainer/session-one', function () {
+    return view('pages.trainerSide.trainer-session-one');
+});
