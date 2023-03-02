@@ -105,6 +105,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/update_session/', [TrainerController::class, 'updateSession'])->name('trainer/update_session');
     Route::any('/trainer/delete_session/', [TrainerController::class, 'deleteSession'])->name('trainer/delete_session');
     Route::any('/trainer/submit_request/', [TrainerController::class, 'submitTrainerRequest'])->name('trainer/submit_request');
+    Route::any('/trainer/dashboard', [TrainerController::class, 'trainerDashboard'])->name('trainer/dashboard');
 
 
     Route::get('/trainer/steptwo', function () {
@@ -297,9 +298,9 @@ Route::get('/trainer/stepfour-second', function () {
     return view('pages.trainerSide.account-step-four-second');
 });
 // trainer
-Route::get('/trainer/dashboard', function () {
-    return view('pages.trainerSide.dashboard');
-});
+// Route::get('/trainer/dashboard', function () {
+//     return view('pages.trainerSide.dashboard');
+// });
 Route::get('/trainer/calendar', function () {
     return view('pages.trainerSide.calendar');
 });

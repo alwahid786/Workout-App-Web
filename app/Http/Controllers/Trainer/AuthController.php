@@ -108,7 +108,7 @@ class AuthController extends Controller
     //.........show step three ...//////////
     public function stepThree()
     {
-        
+
         $category = Category::all();
         if (!$category) {
             return $this->sendError('No Data found against ID');
@@ -198,7 +198,11 @@ class AuthController extends Controller
         if ($page['page'] == 3) {
             return Redirect::to(url('/trainer/stepfive'));
         }
-        if ($page['page'] == 5) {
+        if ($page['page'] == 5 && $page['status'] == 1) {
+
+            return Redirect::to(url('/trainer/dashboard'));
+        }
+        if ($page['page'] == 5 && $page['status'] == 2) {
 
             return Redirect::to(url('/trainer/dashboard'));
         }

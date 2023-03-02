@@ -391,7 +391,7 @@ class UserController extends Controller
     public function viewSession($id)
     {
         $session_detail = BookedSession::where('session_id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
-// dd($session_detail);
+        // dd($session_detail);
         $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
         $rating         = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
         $client         = BookedSession::where('trainer_id', $session_detail['session']['class']['trainer']['id'])->groupBy('user_id')->get();
@@ -687,9 +687,9 @@ class UserController extends Controller
     /////  upcoming session.............////
     public function upcomingSession()
     {
-        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now())->with('session.class.category', 'session.class.trainer', 'session.class.classImages')->get();
+        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '=', now()->format('Y-m-d'))->with('session.class.category', 'session.class.trainer', 'session.session_image')->get();
 
-        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now())->with('session.class.category', 'session.class.trainer', 'session.class.classImages')->get();
+        $upcomingsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now()->format('Y-m-d'))->with('session.class.category', 'session.class.trainer', 'session.session_image')->get();
         if (!$currentsession) {
             return $this->sendError('No Data found against ID');
         }

@@ -10,6 +10,7 @@ use App\Models\BookedSession;
 use App\Models\Category;
 use App\Models\Classes;
 use App\Models\ClassImage;
+use App\Models\Review;
 use App\Models\Session;
 use App\Models\SessionImage;
 use App\Models\TrainerProfile;
@@ -151,8 +152,22 @@ class TrainerController extends Controller
         return redirect()->route('trainer/stepfive')->with(['successCode' => 1]);
     }
 
-    public function dashboard()
+    public function trainerDashboard()
     {
-        // $today_session=BookedSession::
+        $today_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
+        $upcoming_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', '>', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
+        $past_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', '<', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
+        $rating         = Review::where('trainer_id', auth()->user()->id)->with('user:id,name,profile_img')->get();
+
+        if (!$today_sessions) {
+            return $this->sendError('No Data found against ID');
+        }
+        $today_sessions = json_decode($today_sessions, true);
+        $upcoming_sessions = json_decode($upcoming_sessions, true);
+        $past_sessions = json_decode($past_sessions, true);
+        $rating        = json_decode($rating, true);
+
+        // dd($rating);
+        return view('pages.trainerSide.dashboard', compact('today_sessions', 'upcoming_sessions', 'past_sessions', 'rating'));
     }
 }

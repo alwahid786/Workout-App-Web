@@ -178,7 +178,7 @@
 
     .table-content-value .workout-type {
         color: #E37048;
-        font-size: 1rem;
+        font-size: 1rem !important;
         font-weight: 500;
     }
 
@@ -901,6 +901,9 @@
 
                         </div>
                     </div> -->
+                    @if($today_sessions==null)
+                    @else
+                    @foreach($today_sessions as $today_session)
                     <div class="col-12 workout-today-section py-2">
                         <div class="workout-today-header pt-2 pb-1">
                             <h1>Your Today’s Session</h1>
@@ -911,12 +914,12 @@
                             <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
+                                        <h1 class="workout-type">{{$today_session['session']['category']['title']}} Session </h1>
                                     </div>
                                 </div>
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">{{date('d-m-Y',strtotime($today_session['session-date']))}} | <span>{{date('h:i',strtotime($today_session['session']['start_time']))}} {{$today_session['session']['start_meridiem']}}-{{date('h:i',strtotime($today_session['session']['end_time']))}} {{$today_session['session']['end_meridiem']}}</span> </h1>
                                     </div>
                                 </div>
                                 <div class="table-cotent py-2 py-md-0">
@@ -932,7 +935,7 @@
 
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
-                                        <h1 class="name"> $100</h1>
+                                        <h1 class="name"> ${{$today_session['session']['price']}}</h1>
                                     </div>
                                 </div>
                                 <div class="table-cotent py-2 py-md-0">
@@ -941,25 +944,29 @@
                                     </div>
                                 </div>
 
-                                <div class="table-cotent py-1 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
-                                        <div class="table-content-value text-center">
-                                            <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="table-cotent py-1 ">
+                                <div class=" row table-cotent py-1 py-md-0">
 
-                                    <div class="table-content-value text-center today-chat">
+                                    <div class="col-6">
+                                        <a href="{{url('/trainer/session')}}">
+                                            <div class="table-content-value text-center">
+                                                <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 table-content-value text-center today-chat">
                                         <a href="{{url('/trainer/chat')}}">
                                             <i class="fa fa-commenting" aria-hidden="true"></i>
                                         </a>
                                     </div>
+
                                 </div>
+
                                 <div class="workout-table-border workout-table-border-blue "></div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
+                    @endif
                     <div class="col-12 workout-today-section py-2">
                         <div class="upcoming-header pt-2 pb-1">
                             <h1>Upcoming Seesions</h1>
@@ -967,15 +974,18 @@
 
                         <div class="workout-today-wrapper upcoming-wrapper pr-2">
                             <!-- table -->
+                            @if($upcoming_sessions == null)
+                            @else
+                            @foreach($upcoming_sessions as $upcoming_session)
                             <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
+                                        <h1 class="workout-type">{{$upcoming_session['session']['category']['title']}} Session </h1>
                                     </div>
                                 </div>
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
+                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">{{date('d-m-Y',strtotime($upcoming_session['session-date']))}} | <span>{{date('h:i',strtotime($upcoming_session['session']['start_time']))}} {{$upcoming_session['session']['start_meridiem']}}-{{date('h:i',strtotime($upcoming_session['session']['end_time']))}} {{$upcoming_session['session']['end_meridiem']}}</span> </h1>
                                     </div>
                                 </div>
 
@@ -991,7 +1001,7 @@
                                 </div>
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
-                                        <h1 class="name"> $100</h1>
+                                        <h1 class="name"> ${{$upcoming_session['session']['price']}}</h1>
                                     </div>
                                 </div>
                                 <div class="table-cotent py-2 py-md-0">
@@ -1010,180 +1020,8 @@
                                 </div>
                                 <div class="workout-table-border workout-table-border-blue "></div>
                             </div>
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> $100</h1>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="session-status pending"> Pending</h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
-
-                                        <div class="table-content-value text-center">
-                                            <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="workout-table-border workout-table-border-blue "></div>
-                            </div>
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> $100</h1>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="session-status pending"> Pending</h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
-
-                                        <div class="table-content-value text-center">
-                                            <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="workout-table-border workout-table-border-blue "></div>
-                            </div>
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> $100</h1>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="session-status pending"> Pending</h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
-
-                                        <div class="table-content-value text-center">
-                                            <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="workout-table-border workout-table-border-blue "></div>
-                            </div>
-                            <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="workout-type">Yoga Session </h1>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="date"> <img src="{{asset('public/assets/images/clock.svg')}}" alt="">7 Dec, 2022 |<span>10 AM-11 AM</span> </h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <div class="trainer-class-time-card-right workout-table-img">
-                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                            <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="name"> $100</h1>
-                                    </div>
-                                </div>
-                                <div class="table-cotent py-2 py-md-0">
-                                    <div class="table-content-value text-center">
-                                        <h1 class="session-status pending"> Pending</h1>
-                                    </div>
-                                </div>
-
-                                <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
-
-                                        <div class="table-content-value text-center">
-                                            <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="workout-table-border workout-table-border-blue "></div>
-                            </div>
-
+                            @endforeach
+                            @endif
                         </div>
                     </div>
 
@@ -1233,38 +1071,59 @@
                     </div>
 
                 </div>
+
                 <div class="recent-session">
                     <div class="recent-session-heading">
                         <h1 class="py-4">Recent Session</h1>
                     </div>
                     <div class="recent-session-wrapper p-3">
+                        @if($past_sessions == null)
+                        @else
+                        @foreach($past_sessions as $past_session)
                         <div class="recent-session-card recent-session-card-active py-3 my-2">
+                            @if($past_session['session']['session_type'] == 0)
                             <div class="col-12 text-right recent-session-card-images">
                                 <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                                 <!-- <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                                 <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt=""> -->
                             </div>
+                            @else
+                            <div class="col-12 text-right recent-session-card-images">
+                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                            </div>
+                            @endif
                             <div class="col-12 card-inner py-2">
                                 <div class="card-inner-left">
                                     <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                    <h1>Yoga<span class="pt-1">$100</span></h1>
+                                    <h1>{{$past_session['session']['category']['title']}}<span class="pt-1">${{$past_session['session']['price']}}</span></h1>
                                 </div>
                                 <div class="card-inner-left card-inner-right">
-                                    <h1>12Pm-2Pm<span class="pt-1">Nov-02-2022</span></h1>
+                                    <h1>{{date('h:i',strtotime($past_session['session']['start_time']))}} {{$past_session['session']['start_meridiem']}}-{{date('h:i',strtotime($past_session['session']['end_time']))}} {{$past_session['session']['end_meridiem']}}<span class="pt-1">{{date('d-M-Y',strtotime($past_session['session-date']))}}</span></h1>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between px-2">
-
+                                @if($past_session['session']['preference']==0)
                                 <p class="text-light ">One Time</p>
-                                <p class="text-light ">In Person</p>
+                                @else
+                                <p class="text-light ">Recurring</p>
+                                @endif
+                                @if($past_session['session']['session_type']==0)
 
+                                <p class="text-light ">Online</p>
+                                @else
+                                <p class="text-light ">In Person</p>
+                                @endif
                             </div>
 
                             <div class="col-12 text-center noti-card-btn">
                                 <a class="btn" href="#">View</a>
                             </div>
                         </div>
-                        <div class="recent-session-card py-3 my-2">
+                        @endforeach
+                        @endif
+                        <!-- <div class="recent-session-card py-3 my-2">
                             <div class="col-12 text-right recent-session-card-images">
                                 <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                                 <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
@@ -1287,7 +1146,7 @@
                             <div class="col-12 text-center noti-card-btn">
                                 <a class="btn" href="#">View</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -1296,6 +1155,8 @@
                         <h1>Clients Feedback</h1>
                     </div>
                     <div class="feedback-section-wrapper p-3">
+                        @foreach($rating as $session_rating)
+
                         <div class="feedback-card my-2">
 
                             <!-- <div class="feedback-inner-header pb-2">
@@ -1305,23 +1166,33 @@
                             </div> -->
                             <div class="feedback-profile">
                                 <img class="mr-2" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                <h1>Michael John</h1>
+                                <h1>{{$session_rating['user']['name']}}</h1>
                                 <div class="feedback-rating pl-2">
+
+                                    <?php $remRating = 5 - $session_rating['rating']; ?>
+
+                                    <?php for ($i = 0; $i < $session_rating['rating']; $i++) { ?>
+                                        <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                    <?php } ?>
+                                    <?php for ($i = 0; $i < $remRating; $i++) { ?>
+                                        <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <?php } ?>
+                                    <!-- <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
+                                    <i class="fa fa-star pr-1" aria-hidden="true"></i> -->
+                                    <p>{{$session_rating['rating']}}</p>
                                 </div>
                             </div>
 
                             <div class="feedback-inner-body p-3">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
+                                <p> {{$session_rating['description']}}</p>
+
                             </div>
                         </div>
-                        <div class="feedback-card my-2">
+                        @endforeach
+                        <!-- <div class="feedback-card my-2">
                             <div class="feedback-profile">
                                 <img class="mr-2" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                                 <h1>Michael John</h1>
@@ -1338,8 +1209,8 @@
                                 <p>LoremIpsum Lorem Ipsum
                                     Lorem Ipsum Lorem Ipsum </p>
                             </div>
-                        </div>
-                        <div class="feedback-card feedback-card-hide my-2">
+                        </div> -->
+                        <!-- <div class="feedback-card feedback-card-hide my-2">
                             <div class="feedback-profile">
                                 <img class="mr-2" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                                 <h1>Michael John</h1>
@@ -1356,7 +1227,7 @@
                                 <p>LoremIpsum Lorem Ipsum
                                     Lorem Ipsum Lorem Ipsum </p>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-12 feedback-arrow-btn text-center">
                             <i class=" fa fa-angle-down down" aria-hidden="true"></i>
                             <i class="fa fa-angle-up up" aria-hidden="true"></i>
