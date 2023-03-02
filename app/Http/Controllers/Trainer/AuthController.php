@@ -43,23 +43,22 @@ class AuthController extends Controller
             }
             $image = url('public/files') . '/' . $fileNames;
         }
-        $data = request()->except(['_token']);
-        if ($request->has('profile_img')) {
-            $data['profile_img'] = $image;
-        }
-        // $TrainerData = [
-        //     'name' => $request->first_name . ' ' . $request->last_name,
-        //     'email' => $request->email,
-        //     'user_type' => 'trainer',
-        //     'password' => bcrypt($request->password),
-        //     'password_confirmation' => $request->confirm_password,
-        //     // 'profile_img' => $request->image,
-        //     'phone' => $request->contact_number,
-        //     'about' => $request->about,
+        // $data = request()->except(['_token']);
+        // if ($request->has('profile_img')) {
+        //     $data['profile_img'] = $image;
+        // }
+        $data = [
+            'name' => $request->first_name . ' ' . $request->last_name,
+            'email' => $request->email,
+            'user_type' => 'trainer',
+            'password' => bcrypt($request->password),
+            'password_confirmation' => $request->confirm_password,
+            'profile_img' => $image,
+            'phone' => $request->contact_number,
+            'about' => $request->about,
 
-        // ];
+        ];
         $registeredTrainer = User::create($data);
-        $page = TrainerProfile::where('trainer_id', $registeredTrainer->id)->update(['page' => 1]);
 
         if (!$registeredTrainer) {
             return $this->sendError('Unexpected error occured while registration. Please try again later');
@@ -68,7 +67,9 @@ class AuthController extends Controller
         Auth::loginUsingId($trainerData['id']);
         TrainerProfile::create([
             'user_id' => $trainerData->id,
+
         ]);
+        // $page = TrainerProfile::where('trainer_id', $registeredTrainer->id)->update(['page' => 1]);
         $trainerData->token = $trainerData->createToken('API Token')->accessToken;
         return Redirect::to('/trainer/steptwo');
     }

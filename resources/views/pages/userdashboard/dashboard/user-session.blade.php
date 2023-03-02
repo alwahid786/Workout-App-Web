@@ -1194,7 +1194,7 @@
                                                     <p class="pl-3">{{$bookedsession['session']['class']['trainer']['name']}}</p>
                                                 </div>
                                                 <div class="session-anchor-right">
-                                                    <a href="{{url('/userdashboard/sessionone/'.$bookedsession['id'])}}">View</a>
+                                                    <a href="{{url('/userdashboard/sessionone/'.$bookedsession['session']['id'])}}">View</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -249,7 +249,7 @@ class UserController extends Controller
     ///////// .....class detail .............////////
     public function class_detail(Request $request, $id, $day)
     {
-        $class         = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category', 'classImages')->get();
+        $class         = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category')->get();
         $classes_count = ModelsSession::where('trainer_id', '=', $id)->count();
         $trainer       = User::where('id', $id)->first();
         if (count($class) > 0) {
@@ -313,7 +313,7 @@ class UserController extends Controller
             } else {
                 $status = false;
             }
-            dd($request->session_date);
+            // dd($request->session_date);
             $booksession = BookedSession::create(
                 array(
                     'session_id'   => $request->session_id,
@@ -390,7 +390,7 @@ class UserController extends Controller
     //////// view booked session.........//////
     public function viewSession($id)
     {
-        $session_detail = BookedSession::where('session_id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
+        $session_detail = BookedSession::where('session_id', $id)->with('session.class.trainer', 'session.class.category', 'session.session_image')->first();
         // dd($session_detail);
         $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
         $rating         = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
@@ -531,10 +531,11 @@ class UserController extends Controller
 
     public function getDaySession(Request $request)
     {
-        $session = ModelsSession::where(['trainer_id' => $request->trainer, 'day' => $request->day])->with('category', 'class.classImage')->get();
+        $session = ModelsSession::where(['trainer_id' => $request->trainer, 'day' => $request->day])->with('category', 'session_image')->get();
         if (!$session) {
             return $this->sendError('No Data found against ID');
         }
+        // dd($session);
         return $this->sendResponse($session, 'Get Session Successfully!');
     }
 

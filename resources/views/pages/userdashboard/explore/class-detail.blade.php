@@ -266,7 +266,7 @@
                         </div>
                     </div>
                     <div id="owl-carousel-images" class="row owl-carousel">
-                        @foreach($class_detail[0]['class_images'] as $image)
+                        @foreach($class_detail[0]['session']['0']['session_image'] as $image)
                         <div class="col">
                             <div class="class-left-banner px-2 py-3">
                                 <img class="class-banner-img" src="{{$image['image']}}" alt="">
@@ -485,7 +485,8 @@
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$session['id']}}">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
-                                                <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                                <!-- <img src="{{asset('public/assets/images/session-one.jpg')}}" alt=""> -->
+                                                <img src="{{$session['session_image'][0]['image']}}" alt="">
 
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
@@ -802,7 +803,7 @@
                             var end_meridiem = response.data[0].end_meridiem;
                             // var short_starttime = start_time.split(':',2);
                             // alert(short_starttime);
-                            var classImages = response.data[0].class.class_image[0].image;
+                            var classImages = response.data[0].session_image[0].image;
 
                             $('#session-list').empty();
                             $(response.data).each(function(i, e) {
@@ -824,7 +825,7 @@
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="${e.id}">
                                         <div class="trainer-class-time-card-left">
                                             <div class="trainer-class-time-card-left-img">
-                                                <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                                <img src="${classImages}" alt="">
                                             </div>
                                             <div class="trainer-class-time-card-left-content pl-2">
                                                 <h2>${convertedTimeStart} - ${convertedTimeEnd} </h2>
