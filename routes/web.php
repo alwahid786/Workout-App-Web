@@ -335,3 +335,7 @@ Route::get('/trainer/paymentdetail', function () {
 Route::get('/trainer/profile', function () {
     return view('pages.trainerSide.profile');
 });
+
+// Route::get('/trainer/session-one', function () {
+//     return view('pages.trainerSide.session-one');
+// });
