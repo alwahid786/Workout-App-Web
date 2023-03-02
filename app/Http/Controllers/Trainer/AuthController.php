@@ -69,7 +69,7 @@ class AuthController extends Controller
             'user_id' => $trainerData->id,
 
         ]);
-        // $page = TrainerProfile::where('trainer_id', $registeredTrainer->id)->update(['page' => 1]);
+        $page = TrainerProfile::where('user_id', $registeredTrainer->id)->update(['page' => 1]);
         $trainerData->token = $trainerData->createToken('API Token')->accessToken;
         return Redirect::to('/trainer/steptwo');
     }

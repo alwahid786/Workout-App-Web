@@ -535,7 +535,7 @@ class UserController extends Controller
         if (!$session) {
             return $this->sendError('No Data found against ID');
         }
-        // dd($session);
+        // dd(json_decode($session, true));
         return $this->sendResponse($session, 'Get Session Successfully!');
     }
 
