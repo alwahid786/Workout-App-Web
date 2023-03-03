@@ -1589,6 +1589,10 @@
         background: #F8F8F8 !important;
         border-radius: 10px !important;
     }
+
+    .socialIcons_s img {
+        width: 35px !important;
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -1667,7 +1671,11 @@
                             <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>
                             <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">Toronto, Canada</h1>
                             <!-- <h1><img src="{{asset('public/assets/trainerimages/social-icon.png')}}" alt="">https://www.linkedin.com</h1> -->
-                            <h1><i class="fa fa-linkedin mr-3 " aria-hidden="true"></i>https://www.linkedin.com</h1>
+                            <h1 class="mx-3 socialIcons_s mt-4">
+                                <a target="_blank" href="https://www.linkedin.com"><img src="{{asset('public/assets/images/linkedin-color.png')}}" alt=""></a>
+                                <a target="_blank" href="https://www.instagram.com"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                                <a target="_blank" href="https://www.facebook.com"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+                            </h1>
 
                         </div>
                         <div class="profile-body">

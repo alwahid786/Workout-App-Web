@@ -203,6 +203,10 @@
     .trainer-name h1 {
         display: block !important;
     }
+
+    .socialIcons_s img {
+        width: 25px !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -218,13 +222,20 @@
                             <h1>Allen Smith</h1>
                         </div>
                         <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>Zone 6, Southwest US</p>
-                        <div class="rating-stars pb-5">
+                        <div class="rating-stars pb-2">
                             <i class="fa fa-star " aria-hidden="true"></i>
                             <i class="fa fa-star " aria-hidden="true"></i>
                             <i class="fa fa-star " aria-hidden="true"></i>
                             <i class="fa fa-star " aria-hidden="true"></i>
                             <i class="fa fa-star " aria-hidden="true"></i>
                         </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h1 class="mx-3 socialIcons_s ">
+                            <a target="_blank" href="https://www.linkedin.com"><img src="{{asset('public/assets/images/linkedin-color.png')}}" alt=""></a>
+                            <a target="_blank" href="https://www.instagram.com"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                            <a target="_blank" href="https://www.facebook.com"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+                        </h1>
                     </div>
                     <div class="session-left-divider"></div>
                     <div class="session-left-bottom px-2">

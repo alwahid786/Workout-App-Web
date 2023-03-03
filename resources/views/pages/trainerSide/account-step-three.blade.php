@@ -889,11 +889,10 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Select Category</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4">
-                            <option value="">Yoga</option>
-                            <option value="">Yoga</option>
-                            <option value="">Yoga</option>
-                            <option value="">Yoga</option>
+                        <select class="wide s-select form-control pl-4" name="category_id" id="category_id">
+                            <option value="yoga">Yoga</option>
+                            <option value="yoga">Yoga</option>
+                            <option value="yoga">Yoga</option>
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
@@ -901,40 +900,41 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Category Description</label>
-                    <textarea type="text" class="form-control pl-4 text-area" id="inputAddress" placeholder="" value=""></textarea>
+                    <label for="inputAddress" class=" ">Sub-Category</label>
+                    <input type="text" class="form-control pl-4" id="sub_category" placeholder="Enter Sub-Category" name="subCategory">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Difficulty Level</label>
                     <div class="difficulty-level">
-                        <input type="text" class="form-control py-2" id="inputAddress2" value="Beginner" readonly>
-                        <input type="text" class="form-control py-2 mx-3" id="inputAddress2" value="Intermediate" readonly>
-                        <input type="text" class="form-control py-2" id="inputAddress2" value="Advanced" readonly>
+                        <input type="text" class="form-control py-2 difficulties" id="beginner" value="Beginner" readonly name="difficulty-level">
+                        <input type="text" class="form-control py-2 difficulties mx-3" id="intermediate" value="Intermediate" readonly name="difficulty-level">
+                        <input type="text" class="form-control py-2 difficulties" id="advanced" value="Advanced" readonly name="difficulty-level">
+                        <input type="hidden" class="form-control py-2" id="difficulty_level" name="difficulty" value="">
                     </div>
 
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Price</label>
+                    <label for="inputAddress2" class="">Price</label>
                     <div class="price-outer">
                         <!-- <div class="price-box">
                             <h1>HKD</h1>
                         </div> -->
                         <div class="price-select-input">
                             <div class="select-outer">
-                                <select class="wide s-select currency-select form-control " id="exampleFormControlSelect1">
-                                    <option>USD</option>
-                                    <option>EURO</option>
-                                    <option>YEN</option>
-                                    <option>GBP</option>
-                                    <option>PKR</option>
+                                <select class="wide s-select currency-select form-control " id="price_unit" name="priceUnit">
+                                    <option value="USD">USD</option>
+                                    <option value="EURO">EURO</option>
+                                    <option value="YEN">YEN</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="PKR">PKR</option>
                                 </select>
                                 <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                             </div>
-                            <input type="text" class="form-control pl-4" id="inputAddress2" value="100">
+                            <input type="text" class="form-control pl-4" id="price" value="100" name="price">
                         </div>
                     </div>
 
@@ -944,62 +944,19 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Session Type</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
-                            <option value="onetoone">One to one</option>
-                            <option value="group">Group</option>
+                        <select class="wide s-select form-control pl-4" id="type" name="type">
+                            <option value="0">One to one</option>
+                            <option value="1">Group</option>
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 limit-box" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Limit</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="exampleFormControlSelect1">
-                            <option>15</option>
-                            <option>20</option>
-                        </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Days</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
-                            <option value="mon">Monday</option>
-                            <option value="tue">Tuesday</option>
-                            <option value="wed">Wednesday</option>
-                            <option value="thu">Thursday</option>
-                            <option value="fri">Friday</option>
-                            <option value="sat">Saturday</option>
-                            <option value="sun">Sunday</option>
-                        </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-6 pb-2" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Class Type</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
-                            <option value="0">Online</option>
-                            <option value="1">In-person</option>
-                        </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
-                    </div>
-                </div>
-
             </div>
             <div class="col-md-6 " data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Preference</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="typeselector">
+                        <select class="wide s-select form-control pl-4" id="preference" name="preference">
                             <option value="0">One Time</option>
                             <option value="1">Recurring</option>
                         </select>
@@ -1008,12 +965,51 @@
                 </div>
 
             </div>
+
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Days</label>
+                    <div class="select-outer">
+                        <select class="wide s-select form-control pl-4" id="day" name="day">
+                            <option value="Mon">Monday</option>
+                            <option value="Tue">Tuesday</option>
+                            <option value="Wed">Wednesday</option>
+                            <option value="Thu">Thursday</option>
+                            <option value="Fri">Friday</option>
+                            <option value="Sat">Saturday</option>
+                            <option value="Sun">Sunday</option>
+                        </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Date</label>
+                    <input type="date" class="form-control pl-4" id="sessionDate" placeholder="" name="sessionDate">
+                </div>
+
+            </div>
+            <div class="col-md-6 pb-2" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Class Type</label>
+                    <div class="select-outer">
+                        <select class="wide s-select form-control pl-4" id="session_type" name="sessionType">
+                            <option value="0">Online</option>
+                            <option value="1">In-person</option>
+                        </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                    </div>
+                </div>
+            </div>
+
             <div class="col-lg-6 " data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Time slot</label>
                     <div class="time-form">
                         <div class="time-form-field pro-form">
-                            <input type="time" class="form-control py-4" id="inputAddress" placeholder="">
+                            <input type="time" class="form-control py-4" id="startTime" name="startTime" placeholder="">
                             <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
                         </div>
                         <div class="time-form-field mx-sm-3 my-4 my-sm-0">
@@ -1021,12 +1017,11 @@
                         </div>
 
                         <div class="time-form-field pro-form mb-3 mb-sm-0 mr-sm-2">
-                            <input type="time" class="form-control py-4 " id="inputAddress" placeholder="">
+                            <input type="time" class="form-control py-4 " id="endTime" name="endTime" placeholder="">
                             <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
                         </div>
                         <!-- <button class="">Add</button> -->
                     </div>
-
                 </div>
             </div>
             <!-- <div class="col-lg-6 my-auto" data-aos="fade-left">
@@ -1308,6 +1303,13 @@
                 $('.limit-box').hide();
             }
         });
+        $(document).on('change', '#preference', function() {
+            if ($('#preference').val() == 1) {
+                $("#sessionDate").attr('readonly', 'readonly');
+            } else {
+                $("#sessionDate").removeAttr('readonly');
+            }
+        })
     });
     // edit and delete 
     // show and hide
