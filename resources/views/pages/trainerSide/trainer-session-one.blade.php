@@ -498,7 +498,7 @@
     }
 </style>
 
-@include('includes.userdashboard.navbar')
+@include('includes.trainerSide.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left my-4 pt-2">
@@ -545,12 +545,12 @@
         <div class="row pt-4">
             <div class="col-xl-7">
                 <div class="trainer-detail-wrapper px-2 ">
-                    
+
                     <div class="col">
                         <div class="row">
                             <div class="col-sm-6 my-4 pl-0">
                                 <div class="trainer-detail-profile-right">
-                                   
+
                                     <div class="trainer-detail-profile-right-price">
                                         <h1>$100</h1>
                                     </div>
@@ -558,7 +558,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 my-4 pl-0">
-                                
+
                                 <div class="trainer-detail-profile-inner-right my-auto text-right">
                                     <div class="trainer-class-time-card-right">
                                         <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
