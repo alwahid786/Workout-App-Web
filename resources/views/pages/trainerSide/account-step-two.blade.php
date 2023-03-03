@@ -452,6 +452,17 @@
 
     }
 
+    input[type=radio].color-radio {
+        accent-color: #E37048;
+        border: 1px solid #E37048;
+        transform: scale(1.5);
+        background: transparent !important;
+    }
+
+    input[type=radio].color-radio {
+        height: 10px !important;
+    }
+
     @media screen and (max-width:576px) {
         .pagination-box {
             position: relative;
@@ -582,20 +593,48 @@
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
+                <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
 
 
-                    <input type="text" class="form-control pl-4" id="inputCity">
+                    <input type="text" class="form-control pl-4" id="inputCity" name="weight">
+                </div> -->
+
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Weight</label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="kg" type="radio" name="weight_unit" checked>KGs
+                    </label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="lb" type="radio" name="weight_unit">LBs
+                    </label>
+                    <!-- <input type="text" name="weight" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity"> -->
+                    <input type="text" class="form-control pl-4" id="inputCity" name="weight">
+
+
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
+                    <!-- <label for="inputAddress2" class=" ">Height</label>
+
+
+                    <input type="text" class="form-control pl-4" id="inputAddress2" name="height"> -->
+
                     <label for="inputAddress2" class=" ">Height</label>
-
-
-                    <input type="text" class="form-control pl-4" id="inputAddress2">
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="feet" type="radio" name="height_unit" checked>Feet
+                    </label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="cm" type="radio" name="height_unit">CM
+                    </label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" type="radio" value="inches" name="height_unit">Inches
+                    </label>
+                    <input type="text" class="form-control pl-4" id="inputAddress2" name="height">
                 </div>
+
+
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
