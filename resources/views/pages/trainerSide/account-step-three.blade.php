@@ -1303,6 +1303,13 @@
                 $('.limit-box').hide();
             }
         });
+        $(document).on('change', '#preference', function() {
+            if ($('#preference').val() == 1) {
+                $("#sessionDate").attr('readonly', 'readonly');
+            } else {
+                $("#sessionDate").removeAttr('readonly');
+            }
+        })
     });
     // edit and delete 
     // show and hide
