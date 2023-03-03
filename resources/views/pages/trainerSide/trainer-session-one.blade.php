@@ -544,66 +544,13 @@
         </div>
         <div class="row pt-4">
             <div class="col-xl-7">
-                <div class="trainer-detail-wrapper px-2 py-3">
-                    <div class="trainer-detail-profile">
-                        <div class="trainer-detail-profile-inner ">
-                            <div class="trainer-detail-profile-inner-left">
-                                <div class="trainer-detail-profile-left mt-0 d-flex">
-                                    <div class="trainer-detail-profile-left-inner">
-                                        <a href="{{url('/dashboard/trainer-detail')}}"><img class="mr-2" src="{{asset('public/assets/images/session-one.jpg')}}" alt=""></a>
-                                        <img class="rated-badge" src="{{asset('public/assets/images/badge-2.svg')}}" alt="">
-                                        <div class="trainer-detail-profile-left-progress py-2 px-2">
-                                            <h1>Level</h1>
-                                            <progress id="file" value="72" max="100"> 32% </progress>
-                                        </div>
-                                    </div>
-                                    <div class="trainer-detail-profile-left-inner-right">
-                                        <div class="col trainer-detail-profile-name px-0 pt-2">
-                                            <a href="{{url('/dashboard/trainer-detail')}}">
-                                                <h1>John Smith</h1>
-                                            </a>
-                                            <div class="trainer-detail-profile-gender">
-                                                <img class="mr-2" src="{{asset('public/assets/images/profile-icon.svg')}}" alt="">
-                                                <p>Male , 5’11”</p>
-                                            </div>
-                                        </div>
-                                        <div class="rating-star">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="trainer-detail-profile-inner-right my-auto text-right">
-                                <div class="trainer-class-time-card-right">
-                                    <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
-                                    <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                    <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionfour.jpg')}}" alt="">
-
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
+                <div class="trainer-detail-wrapper px-2 ">
+                    
                     <div class="col">
                         <div class="row">
                             <div class="col-sm-6 my-4 pl-0">
                                 <div class="trainer-detail-profile-right">
-                                    <!-- <div class="trainer-detail-profile-right-client text-center">
-                                        <p>Clients</p>
-                                        <h1>33</h1>
-                                    </div>
-                                    <div class="trainer-detail-profile-right-classes text-center">
-                                        <p>Classes</p>
-                                        <h1>03</h1>
-                                    </div> -->
+                                   
                                     <div class="trainer-detail-profile-right-price">
                                         <h1>$100</h1>
                                     </div>
@@ -611,9 +558,15 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 my-4 pl-0">
-                                <!-- <div class="trainer-detail-profile-right-price">
-                                    <h1>$100</h1>
-                                </div> -->
+                                
+                                <div class="trainer-detail-profile-inner-right my-auto text-right">
+                                    <div class="trainer-class-time-card-right">
+                                        <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+                                        <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
+                                        <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionfour.jpg')}}" alt="">
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -660,10 +613,10 @@
                         </div>
                     </div>
                     <div class="col pl-0 text-center">
-                        <div class="detail-profile-button">
+                        <div class="detail-profile-button ">
                             <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
-                            <a href="{{url('/dashboard/class-detail')}}" class="btn mr-sm-4 my-2">Book Again</a>
-                            <a href="" class="btn my-2" data-toggle="modal" data-target="#refundModal">Refund</a>
+                            <!-- <a href="{{url('/dashboard/class-detail')}}" class="btn mr-sm-4 my-2">Book Again</a>
+                            <a href="" class="btn my-2" data-toggle="modal" data-target="#refundModal">Refund</a> -->
 
 
                         </div>

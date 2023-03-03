@@ -942,7 +942,7 @@
                                 </div>
 
                                 <div class="table-cotent py-1 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
+                                    <a href="{{url('/trainer/session-one')}}">
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
@@ -1001,7 +1001,7 @@
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
+                                    <a href="{{url('/trainer/session-one')}}">
 
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
@@ -1044,7 +1044,7 @@
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
+                                    <a href="{{url('/trainer/session-one')}}">
 
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
@@ -1087,7 +1087,7 @@
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
+                                    <a href="{{url('/trainer/session-one')}}">
 
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
@@ -1130,7 +1130,7 @@
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
+                                    <a href="{{url('/trainer/session-one')}}">
 
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
@@ -1174,7 +1174,7 @@
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session')}}">
+                                    <a href="{{url('/trainer/session-one')}}">
 
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
@@ -1261,7 +1261,7 @@
                             </div>
 
                             <div class="col-12 text-center noti-card-btn">
-                                <a class="btn" href="#">View</a>
+                                <a class="btn" href="{{url('/trainer/session-one')}}">View</a>
                             </div>
                         </div>
                         <div class="recent-session-card py-3 my-2">
@@ -1285,7 +1285,7 @@
                                 <p class="text-dark text-right">Online</p>
                             </div>
                             <div class="col-12 text-center noti-card-btn">
-                                <a class="btn" href="#">View</a>
+                                <a class="btn" href="{{url('/trainer/session-one')}}">View</a>
                             </div>
                         </div>
                     </div>
