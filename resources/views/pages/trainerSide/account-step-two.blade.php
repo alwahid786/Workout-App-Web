@@ -592,15 +592,27 @@
                     <input type="text" class="form-control pl-4" id="inputAddress2">
                 </div>
             </div>
-            <div class="form-group pro-form">
-                <label for="inputCity" class=" ">Weight</label>
-                <label class="radio-inline">
-                    <input class="color-radio mx-2" value="kg" type="radio" name="weight_unit" checked>KGs
-                </label>
-                <label class="radio-inline">
-                    <input class="color-radio mx-2" value="lb" type="radio" name="weight_unit">LBs
-                </label>
-                <input type="text" class="form-control w-100 pl-4" id="inputCity" name="weight">
+            <div class="col-md-6" data-aos="fade-right">
+                <!-- <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Weight</label>
+
+
+                    <input type="text" class="form-control pl-4" id="inputCity" name="weight">
+                </div> -->
+
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">Weight</label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="kg" type="radio" name="weight_unit" checked>KGs
+                    </label>
+                    <label class="radio-inline">
+                        <input class="color-radio mx-2" value="lb" type="radio" name="weight_unit">LBs
+                    </label>
+                    <!-- <input type="text" name="weight" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity"> -->
+                    <input type="text" class="form-control pl-4" id="inputCity" name="weight">
+
+
+                </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
