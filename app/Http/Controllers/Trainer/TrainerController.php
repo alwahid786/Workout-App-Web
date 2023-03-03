@@ -173,7 +173,7 @@ class TrainerController extends Controller
 
     public function sessionDetail($id)
     {
-        $session_detail = BookedSession::where('session_id', $id)->with('session.trainerData','session.category', 'session.session_image')->first();
+        $session_detail = BookedSession::where('id', $id)->with('session.trainerData', 'session.category', 'session.session_image')->first();
         $rating         = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
 
         if (!$session_detail) {
@@ -185,5 +185,17 @@ class TrainerController extends Controller
         // dd($rating);
 
         return view('pages.trainerSide.trainer-session-one', compact('bookedsession', 'rating'));
+    }
+
+    //////////////.............. total client........../////
+    public function client()
+    {
+        $clients         = BookedSession::where('trainer_id', auth()->user()->id)->groupBy('user_id')->with('user', 'session.category')->get();
+        if (!$clients) {
+            return $this->sendError('Client not found');
+        }
+        $clients = json_decode($clients, true);
+        // dd($client);
+        return view('pages.trainerSide.client-list', compact('clients'));
     }
 }

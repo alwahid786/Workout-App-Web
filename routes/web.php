@@ -107,6 +107,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/submit_request/', [TrainerController::class, 'submitTrainerRequest'])->name('trainer/submit_request');
     Route::any('/trainer/dashboard', [TrainerController::class, 'trainerDashboard'])->name('trainer/dashboard');
     Route::any('/trainer/session-one/{id}', [TrainerController::class, 'sessionDetail'])->name('trainer/session-one');
+    Route::any('/trainer/clientlist', [TrainerController::class, 'client'])->name('/trainer/clientlist');
 
 
     Route::get('/trainer/steptwo', function () {
@@ -308,9 +309,9 @@ Route::get('/trainer/dashboardnull', function () {
 Route::get('/trainer/calendar', function () {
     return view('pages.trainerSide.calendar');
 });
-Route::get('/trainer/clientlist', function () {
-    return view('pages.trainerSide.client-list');
-});
+// Route::get('/trainer/clientlist', function () {
+//     return view('pages.trainerSide.client-list');
+// });
 Route::get('/trainer/session', function () {
     return view('pages.trainerSide.session');
 });

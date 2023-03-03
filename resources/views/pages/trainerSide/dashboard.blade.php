@@ -306,10 +306,7 @@
         margin-bottom: 0px;
     }
 
-    /* .upcoming-wrapper {
-    height: 300px;
-    overflow-y: scroll;
-} */
+    
 
     .upcoming-wrapper::-webkit-scrollbar-thumb {
         background: #E37048;
@@ -793,6 +790,30 @@
         font-weight: 500;
         color: black;
     }
+
+    .feedback-rating {
+        /* position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translate(0%, -50%); */
+        display: flex;
+    }
+
+    .feedback-rating i.gold {
+        color: gold !important;
+    }
+
+    .feedback-rating i {
+        color: #f3f0f0 !important;
+    }
+
+
+    .feedback-rating p {
+        margin-bottom: 0px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: black;
+    }
 </style>
 
 @section('content')
@@ -856,7 +877,7 @@
                                 </div>
 
                                 <div class="table-cotent py-1 py-md-0">
-                                    <a href="{{url('/trainer/session-one/'.$today_session['session']['id'])}}">
+                                    <a href="{{url('/trainer/session-one/'.$today_session['id'])}}">
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
@@ -864,13 +885,7 @@
                                 </div>
                                 <div class="table-cotent py-1 ">
 
-                                    <div class="col-6">
-                                        <a href="{{url('/trainer/session/')}}">
-                                            <div class="table-content-value text-center">
-                                                <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
+
                                     <div class="col-6 table-content-value text-center today-chat">
                                         <a href="{{url('/trainer/chat')}}">
                                             <i class="fa fa-commenting" aria-hidden="true"></i>
@@ -929,7 +944,7 @@
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session-one/'.$upcoming_session['session']['id'])}}">
+                                    <a href="{{url('/trainer/session-one/'.$upcoming_session['id'])}}">
 
 
                                         <div class="table-content-value text-center">
@@ -1037,8 +1052,8 @@
                             </div>
 
                             <div class="col-12 text-center noti-card-btn">
-                                <a class="btn" href="{{url('/trainer/session-one/'.$past_session['session']['id'])}}">View</a>
-                                <a href="{{url('/trainer/session-one/'.$upcoming_session['session']['id'])}}">
+                                <a class="btn" href="{{url('/trainer/session-one/'.$past_session['id'])}}">View</a>
+                                <!-- <a href="{{url('/trainer/session-one/'.$upcoming_session['session']['id'])}}"> -->
 
                             </div>
                         </div>

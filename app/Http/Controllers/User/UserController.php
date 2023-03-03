@@ -404,8 +404,8 @@ class UserController extends Controller
         }
         $bookedsession = json_decode($session_detail, true);
         $rating        = json_decode($rating, true);
-        // dd($rating);
-        // $classes = json_decode($classes, true);
+        // $client = json_decode($client, true);
+        // dd($client);
 
         return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession', 'classes', 'rating', 'client'));
     }
