@@ -1609,6 +1609,10 @@
         background: #F8F8F8 !important;
         border-radius: 10px !important;
     }
+
+    .socialIcons_s img {
+        width: 35px !important;
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -1691,11 +1695,15 @@
                             <h1><img src="{{asset('public/assets/trainerimages/user-icon.png')}}" alt="">{{$trainer['gender']}}, {{$trainer['height']}} {{$trainer['hieght_unit']}} , {{$trainer['weight']}} {{$trainer['weight_unit']}}</h1>
                             <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">{{$trainer['phone']}} </h1>
                             <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">{{$trainer['country']}}, {{$trainer['state']}}</h1>
-
+                            <h1 class="mx-3 socialIcons_s mt-4">
+                                <a target="_blank" href="https://www.linkedin.com"><img src="{{asset('public/assets/images/linkedin-color.png')}}" alt=""></a>
+                                <a target="_blank" href="https://www.instagram.com"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                                <a target="_blank" href="https://www.facebook.com"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+                            </h1>
                         </div>
                         <div class="profile-body">
                             <h1><img src="{{asset('public/assets/trainerimages/heart-icon.png')}}" alt="">{{$trainer['madical_condition']}}</h1>
-                            
+
                             @if($trainer['trainer_profile']['facebook_url']== null)
 
                             @else

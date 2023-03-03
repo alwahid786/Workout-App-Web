@@ -301,6 +301,9 @@ Route::get('/trainer/stepfour-second', function () {
 // Route::get('/trainer/dashboard', function () {
 //     return view('pages.trainerSide.dashboard');
 // });
+Route::get('/trainer/dashboardnull', function () {
+    return view('pages.trainerSide.dashboard-null');
+});
 Route::get('/trainer/calendar', function () {
     return view('pages.trainerSide.calendar');
 });
@@ -336,6 +339,6 @@ Route::get('/trainer/profile', function () {
     return view('pages.trainerSide.profile');
 });
 
-// Route::get('/trainer/session-one', function () {
-//     return view('pages.trainerSide.session-one');
-// });
+Route::get('/trainer/session-one', function () {
+    return view('pages.trainerSide.trainer-session-one');
+});

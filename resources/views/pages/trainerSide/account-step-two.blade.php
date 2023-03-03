@@ -521,6 +521,17 @@
 
     }
 
+    input[type=radio].color-radio {
+        accent-color: #E37048;
+        border: 1px solid #E37048;
+        transform: scale(1.5);
+        background: transparent !important;
+    }
+
+    input[type=radio].color-radio {
+        height: 10px !important;
+    }
+
     @media screen and (max-width:576px) {
         .pagination-box {
             position: relative;

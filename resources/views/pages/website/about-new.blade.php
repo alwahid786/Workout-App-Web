@@ -5,18 +5,11 @@
 <style>
     .hero-section-about {
         background-image: url("{{asset('public/assets/trainerimages/about-us.jpg')}}");
-        /* background-position: center; */
         background-repeat: no-repeat;
         background-size: cover;
-        height: 90vh;
-    }
-
-    .hero-left-content {
-        position: absolute;
-        top: 50%;
-        transform: translate(0%, 25%);
-        width: 100%;
-        max-width: 800px;
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        text-align: center;
     }
 
     .hero-left-content h1 {
@@ -344,139 +337,69 @@
     }
 
     .modern-approach-img img {
-        width: auto;
-        height: 120% !important;
+        width: 100%;
+        height: 100%;
+        max-height: 600px;
+        object-fit: cover;
     }
+
 
     .Transforming-img img {
         height: 100%;
         width: 100%;
+        max-height: 600px;
+        object-fit: cover;
     }
 </style>
 @include('includes.website.navbar')
 <div class="container-fluid hero-section-about">
     <div class="container-fluid hero-section-wrapper-about" data-aos="fade-left">
-        <div class="row">
-            <div class="col- hero-left text-center text-md-left">
-                <div class="hero-left-content my-sm-5 px-sm-5">
-                    <h1 class="my-4">About Us</h1>
-                    <p>With WorkitPT, clients can filter through a list of sessions provided by various personal trainers for any form of exercise or sport they wish to partake in and simply sign up for the session, agree a time and a location, then get to work!</p>
-                </div>
+        <div class="col-12 hero-left text-center text-md-left">
+            <div class="hero-left-content my-sm-5 px-sm-5 text-center">
+                <h1 class="my-4">About Us</h1>
+                <p>With WorkitPT, clients can filter through a list of sessions provided by various personal trainers for any form of exercise or sport they wish to partake in and simply sign up for the session, agree a time and a location, then get to work!</p>
             </div>
         </div>
+
     </div>
 </div>
 
-<section class="hero-section about-us-mobile py-5">
-    <div class="container">
-        <!-- <div class="row my-sm-5 px-sm-5"> -->
-        <!-- <div class="col-md-8" data-aos="fade-up" data-aos-delay="200"> -->
+<section class="hero-section about-us-mobile">
+    <div class="container-fluid">
         <div class="left-section-par ">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 pt-5">
+                <div class="col-md-6 my-auto text-center py-5 py-md-0">
 
-                    <h1 class="my-4 text-light">Transforming Personal Training</h1>
-                    <p class="">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
+                    <h1 class="pb-2 pb-md-5 mb-0 text-light">Transforming Personal Training</h1>
+                    <p class="mb-0">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 Transforming-img">
+                <div class="col-md-6 Transforming-img px-0">
                     <img src="{{asset('public/assets/images/Transforming personal training.png')}}" alt="">
 
                 </div>
-                <!-- <p>At TruBe, we believe that personal fitness shouldn’t be intimidating — it should be accessible and fulfilling. TruBe makes it all possible: We designed an app that’s as easy-to-use as it is effective, with trainers whose fitness expertise is matched only by their ability to build authentic relationships with our clients. At TruBe, your fitness goals always feel within reach — no matter how big or how small.</p> -->
             </div>
         </div>
-        <!-- </div> -->
-        <!-- <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="right-section-img">
-                    <img src="{{asset('public/assets/trainerimages/iphonescreen.png')}}" alt="">
-                </div>
-            </div> -->
-        <!-- </div> -->
+
     </div>
 </section>
 <!-- ..............Section End................. -->
 
-<section class="make-diff-section py-5">
-    <div class="container">
-        <div class="make-diff-content py-5" data-aos="fade-up" data-aos-delay="100">
+<section class="make-diff-section ">
+    <div class="container-fluid">
+        <div class="make-diff-content " data-aos="fade-up" data-aos-delay="100">
             <div class="row">
-                <div class="col-lg-6 col-md-5 col-sm-12 modern-approach-img">
+                <div class="col-md-6 modern-approach-img px-0 order-2 order-md-1">
                     <img src="{{asset('public/assets/images/modern aproach.png')}}" alt="">
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 " style="padding-top: 3rem ;">
-                    <!-- <h1 class="pb-5">What makes us different</h1> -->
-                    <h1 class="pb-5">A Modern Approach</h1>
-                    <!-- <p>Regardless of your current fitness level or experience, you can expect a fully personalised fitness programme. R1:1 sessions mean more time for you. TruBe trainers are trained in everything from kickboxing to ballet fit, each trainer has been cherry-picked through a rigorous selection process, so you can be confident you have the best of the best and the best workout routine at home.</p> -->
-                    <p>It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
+                <div class="col-md-6 my-auto text-center py-5 py-md-0 order-1 order-md-2">
+                    <h1 class="pb-2 pb-md-5 mb-0">A Modern Approach</h1>
+                    <p class="mb-0">It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
 
                 </div>
             </div>
 
         </div>
-        <!-- <div class="ceo-message-box px-sm-5 py-5 px-2">
-            <div class="profile-section">
-                <div class="ceo-image">
-                    <img src="{{asset('public/assets/trainerimages/profile.png')}}" alt="">
-                </div>
-                <div class="ceo-profile-content text-left px-sm-4 px-1">
-                    <p class="ceo-name">Daria Kantor</p>
-                    <p class="ceo-designation">Founder and CEO of TruBe</p>
-                </div>
-            </div>
 
-            <p class="ceo-message text-left mt-5">It’s so important to listen to yourself and be true to where you want to be as a person.</p>
-            <div class="ceo-message-quote text-left" data-aos="fade-up" data-aos-delay="100">
-                <p>Daria Kantor set up TruBe to challenge the traditional methods of personal training and to adapt it to today’s lifestyle.</p>
-
-                <p>As a keen exerciser — Daria was a semi-professional tennis player in her youth and coached the Maccabi tennis team in her hometown, Geneva, as a teenager — she saw a need from consumers to find a trainer that can work around their schedule.</p>
-
-                <p>One thing we see more and more is that people are struggling to fit exercise and working out into their everyday life.</p>
-
-                <p> Favourite workouts: personal training and yoga</p>
-            </div>
-
-        </div> -->
-        <!-- <div class="carousel-section my-5 py-5" data-aos="fade-up" data-aos-delay="100">
-            <div class="row js-slick-carousel px-5">
-
-                <div class="col">
-                    <div class="carousel-content">
-                        <h1>The best app for busy women</h1>
-                        <p>Always on the move but still want a little bit of guidance? TruBe is your knight in shining armour.</p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="carousel-content">
-                        <h1>Like Uber for personal trainers</h1>
-                        <p>All the trainers are fully qualified and thoroughly vetted so you know you’re in good hands.</p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="carousel-content">
-                        <h1>Like Uber for personal trainers</h1>
-                        <p>All the trainers are fully qualified and thoroughly vetted so you know you’re in good hands.</p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="carousel-content">
-                        <h1>Like Uber for personal trainers</h1>
-                        <p>All the trainers are fully qualified and thoroughly vetted so you know you’re in good hands.</p>
-                        <hr>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="carousel-content">
-                        <h1>Like Uber for personal trainers</h1>
-                        <p>All the trainers are fully qualified and thoroughly vetted so you know you’re in good hands.</p>
-                        <hr>
-                    </div>
-                </div>
-
-            </div>
-        </div> -->
     </div>
 </section>
 

@@ -243,6 +243,10 @@
             border-radius: 1px;
             overflow: hidden;
         }
+
+    .socialIcons_s img {
+        width: 25px !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -265,6 +269,13 @@
                             <i class="fa fa-star " aria-hidden="true"></i>
                             <i class="fa fa-star " aria-hidden="true"></i>
                         </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <h1 class="mx-3 socialIcons_s ">
+                            <a target="_blank" href="https://www.linkedin.com"><img src="{{asset('public/assets/images/linkedin-color.png')}}" alt=""></a>
+                            <a target="_blank" href="https://www.instagram.com"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                            <a target="_blank" href="https://www.facebook.com"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+                        </h1>
                     </div>
                     <div class="session-left-divider"></div>
                     <div class="session-left-bottom px-2">
