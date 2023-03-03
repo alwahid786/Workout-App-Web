@@ -166,20 +166,20 @@
             <div class="col-md-4">
                 <div class="content-left-section p-3">
                     <img src="{{asset('public/assets/trainerimages/profile.png')}}" alt="">
-                    <h1>Advanced</h1>
+                    <h1>{{$user['name']}}</h1>
                     <div class="middle-heading">
                         <h2>About</h2>
                         <div></div>
                     </div>
-                    <p>n publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
-                    <p>n publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.</p>
+                    <p>{{$user['about']}}</p>
+
                 </div>
             </div>
             <div class="col-md-8 mt-4 mt-md-0">
                 <div class="content-right-profile p-3">
                     <div class="row">
                         <div class="col-12 content-right-profile-header px-0">
-                            <h1 class="py-3 pl-2">John Smith</h1>
+                            <h1 class="py-3 pl-2">{{$user['name']}}</h1>
                         </div>
 
 
@@ -187,19 +187,20 @@
 
                     <div class="content-right-profile-body">
                         <div class="profile-body pr-sm-5 mr-lg-5 pr-lg-5">
-                            <h1><img src="{{asset('public/assets/trainerimages/message-icon.png')}}" alt="">johnsmith@gmail.com</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/user-icon.png')}}" alt="">Male , 5’11” , 78kgs</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">Toronto, Canada</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/message-icon.png')}}" alt="">{{$user['email']}}</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/user-icon.png')}}" alt="">{{$user['gender']}} , {{$user['height']}} {{$user['hieght_unit']}} , {{$user['weight']}} {{$user['weight_unit']}}</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">{{$user['phone']}} </h1>
                             <!-- <h1><img src="{{asset('public/assets/trainerimages/social-icon.png')}}" alt="">https://www.linkedin.com</h1> -->
-                            <h1><i class="fa fa-linkedin mr-3 " aria-hidden="true"></i>https://www.linkedin.com</h1>
+                            <!-- <h1><i class="fa fa-linkedin mr-3 " aria-hidden="true"></i>https://www.linkedin.com</h1> -->
 
                         </div>
                         <div class="profile-body">
-                            <h1><img src="{{asset('public/assets/trainerimages/date-icon.png')}}" alt="">22 Nov, 1996</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/heart-icon.png')}}" alt="">Pollen Allergy</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">Toronto, Canada </h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/date-icon.png')}}" alt="">{{date('d-M-Y',strtotime($user['date_of_birth']))}}</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/heart-icon.png')}}" alt="">{{$user['madical_condition']}}</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">{{$user['workout_location']}}</h1>
+
+                            <!-- <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">Toronto, Canada </h1> -->
+                            <!-- <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>     -->
 
                         </div>
                     </div>

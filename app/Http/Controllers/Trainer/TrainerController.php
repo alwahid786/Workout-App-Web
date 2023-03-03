@@ -198,4 +198,15 @@ class TrainerController extends Controller
         // dd($client);
         return view('pages.trainerSide.client-list', compact('clients'));
     }
+    //////////........user detail.........//////
+    public function userDetail($id)
+    {
+        $user = User::where('id', $id)->first();
+        if (!$user) {
+            return $this->sendError('Client not found');
+        }
+        $user = json_decode($user, true);
+        // dd($user);
+        return view('pages.trainerSide.profile', compact('user'));
+    }
 }

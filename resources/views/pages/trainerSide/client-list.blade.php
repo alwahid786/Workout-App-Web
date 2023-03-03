@@ -247,7 +247,7 @@
                         </div>
                         <div class="c-dropdown-content">
 
-                            <a href="{{url('/trainer/profile')}}" class="btn">View</a>
+                            <a href="{{url('/trainer/profile/'.$client['user']['id'])}}" class="btn">View</a>
                         </div>
                     </div>
                 </div>
