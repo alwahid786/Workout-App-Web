@@ -452,6 +452,17 @@
 
     }
 
+    input[type=radio].color-radio {
+        accent-color: #E37048;
+        border: 1px solid #E37048;
+        transform: scale(1.5);
+        background: transparent !important;
+    }
+
+    input[type=radio].color-radio {
+        height: 10px !important;
+    }
+
     @media screen and (max-width:576px) {
         .pagination-box {
             position: relative;
@@ -589,7 +600,7 @@
                 <label class="radio-inline">
                     <input class="color-radio mx-2" value="lb" type="radio" name="weight_unit">LBs
                 </label>
-                <input type="text" class="form-control pl-4" id="inputCity" name="weight">
+                <input type="text" class="form-control w-100 pl-4" id="inputCity" name="weight">
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
