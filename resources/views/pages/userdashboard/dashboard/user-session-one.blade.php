@@ -661,11 +661,11 @@
     <div class="container-fluid mb-4">
         @if($bookedsession['session']['type']==0)
         <div class="dashboard-header-left my-4 pt-2 ">
-            <h1>My Sessions Detail <span class="d-block"> One to one session </span></h1>
+            <h1>My Sessions Detail <span class="d-block"> One to One Session </span></h1>
         </div>
         @else
         <div class="dashboard-header-left my-4 pt-2">
-            <h1>My Sessions Detail <span > Group </span></h1>
+            <h1>My Sessions Detail <span> Group Session</span></h1>
         </div>
         @endif
         <div class="carousel-parent">
@@ -676,6 +676,14 @@
 
             </div>
             <div class="row js-slick-carousel">
+
+                <!-- foreach($bookedsession['session']['session_image'] as $image)
+                <div class="col">
+                    <div class="session-detail-img">
+                        <img src="$image['image']" alt="">
+                    </div>
+                </div>
+                endforeach -->
 
                 <div class="col">
                     <div class="session-detail-img">

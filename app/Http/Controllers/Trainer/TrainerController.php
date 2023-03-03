@@ -151,7 +151,7 @@ class TrainerController extends Controller
         }
         return redirect()->route('trainer/stepfive')->with(['successCode' => 1]);
     }
-
+    ////.............trainer.dashboard.............///
     public function trainerDashboard()
     {
         $today_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
@@ -169,5 +169,21 @@ class TrainerController extends Controller
 
         // dd($rating);
         return view('pages.trainerSide.dashboard', compact('today_sessions', 'upcoming_sessions', 'past_sessions', 'rating'));
+    }
+
+    public function sessionDetail($id)
+    {
+        $session_detail = BookedSession::where('session_id', $id)->with('session.trainerData','session.category', 'session.session_image')->first();
+        $rating         = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
+
+        if (!$session_detail) {
+            return $this->sendError('Session Detail');
+        }
+        $bookedsession = json_decode($session_detail, true);
+        $rating        = json_decode($rating, true);
+        // dd($bookedsession);
+        // dd($rating);
+
+        return view('pages.trainerSide.trainer-session-one', compact('bookedsession', 'rating'));
     }
 }

@@ -269,6 +269,22 @@
         outline: none !important;
     }
 
+    .detail-profile-button a:nth-of-type(3) {
+        text-decoration: none;
+        border: 1px solid #E37048;
+        color: #E37048;
+        background-color: white;
+        border-radius: 5px;
+        max-width: 200px;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
     .detail-profile-button {
         display: flex;
         flex-wrap: wrap;
@@ -372,13 +388,14 @@
         display: flex;
     }
 
-    .feedback-rating i {
-        color: gold;
+    .feedback-rating i.gold {
+        color: gold !important;
     }
 
-    .feedback-rating i:last-of-type {
+    .feedback-rating i {
         color: #f3f0f0 !important;
     }
+
 
     .feedback-rating p {
         margin-bottom: 0px;
@@ -497,13 +514,160 @@
         }
     }
 </style>
+<style>
+    .past-session-header {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .past-session-header h1 {
+        color: #E37048;
+        font-size: 1.7rem;
+        margin-bottom: 0px;
+    }
+
+    @media screen and (max-width:576px) {
+        .past-session-header h1 {
+            color: #E37048;
+            font-size: 1.3rem;
+            margin-bottom: 0px;
+        }
+    }
+
+    /* modal */
+    .modal-field textarea {
+        resize: none;
+        background: #EDEDED;
+        color: #B4B4B4;
+        border-radius: 10px;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .modalHeader {
+        position: relative;
+    }
+
+    .modalHeader img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+    }
+
+    .review-modal h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    .modal-btn button {
+        color: #E37048;
+        background: white;
+        border: 1px solid #E37048;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 180px;
+        height: 40px;
+        border-radius: 5px;
+        margin-left: auto;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+
+    .modal-btn button:hover {
+        color: white;
+        background: #E37048;
+        border: 1px solid #E37048;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 180px;
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .modal-content {
+        border-radius: 10px;
+        border: none;
+    }
+
+    .modal-rating-star i {
+        color: gold;
+        font-size: 1.8rem;
+    }
+
+    .trainer-detail-profile-left .rated-badge {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 135px;
+        top: 17px;
+    }
+
+    @media screen and (max-width:576px) {
+        .trainer-detail-profile-left .rated-badge {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            left: 115px;
+            top: 17px;
+        }
+    }
+
+    /* .....................Review Modal Rating Star..................... */
+
+    /* Ratings widget */
+    .rating-stars ul {
+        list-style-type: none;
+        padding: 0;
+
+        -moz-user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .rating-stars ul>li.star {
+        display: inline-block;
+
+    }
+
+    /* Idle State of the stars */
+    .rating-stars ul>li.star>i.fa {
+        font-size: 2.5em;
+        /* Change the size of the stars */
+        color: #ccc;
+        /* Color on idle state */
+    }
+
+    /* Hover state of the stars */
+    .rating-stars ul>li.star.hover>i.fa {
+        color: #FFCC36;
+    }
+
+    /* Selected state of the stars */
+    .rating-stars ul>li.star.selected>i.fa {
+        color: #FFCC36;
+    }
+
+    /* ....................Review Rating Star End................. */
+</style>
 
 @include('includes.trainerSide.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
-        <div class="dashboard-header-left my-4 pt-2">
-            <h1>My Sessions Detail <span>One to one session </span></h1>
+        @if($bookedsession['session']['type']==0)
+        <div class="dashboard-header-left my-4 pt-2 ">
+            <h1>My Sessions Detail <span class="d-block"> One to One Session </span></h1>
         </div>
+        @else
+        <div class="dashboard-header-left my-4 pt-2">
+            <h1>My Sessions Detail <span> Group Session</span></h1>
+        </div>
+        @endif
         <div class="carousel-parent">
             <div class="empty-session-detail-left">
 
@@ -512,12 +676,13 @@
 
             </div>
             <div class="row js-slick-carousel">
-
+                <!-- foreach($bookedsession['session']['session_image'] as $image)
                 <div class="col">
                     <div class="session-detail-img">
-                        <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                        <img src="$image['image']" alt="">
                     </div>
                 </div>
+                endforeach -->
                 <div class="col">
                     <div class="session-detail-img">
                         <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
@@ -552,7 +717,7 @@
                                 <div class="trainer-detail-profile-right">
 
                                     <div class="trainer-detail-profile-right-price">
-                                        <h1>$100</h1>
+                                        <h1>${{$bookedsession['session']['price']}}</h1>
                                     </div>
 
                                 </div>
@@ -575,13 +740,13 @@
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Session</h1>
-                                    <p>Yoga</p>
+                                    <p>{{$bookedsession['session']['category']['title']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Date</h1>
-                                    <p>20-Dec-2022</p>
+                                    <p>{{date('d-M-Y',strtotime($bookedsession['session-date']))}}</p>
                                 </div>
                             </div>
                         </div>
@@ -591,13 +756,13 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Start Time</h1>
-                                    <p>02:00 Pm</p>
+                                    <p>{{date('h:i',strtotime($bookedsession['session']['start_time']))}} {{$bookedsession['session']['start_meridiem']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>End Time</h1>
-                                    <p>03:00 Pm</p>
+                                    <p>{{date('h:i',strtotime($bookedsession['session']['end_time']))}} {{$bookedsession['session']['end_meridiem']}}</p>
                                 </div>
                             </div>
                         </div>
@@ -607,14 +772,14 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Location</h1>
-                                    <p>London</p>
+                                    <p>{{$bookedsession['session']['trainer_data']['state']}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col pl-0 text-center">
                         <div class="detail-profile-button ">
-                            <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
+                            <a href="{{url('/trainer/chat')}}" class="btn mr-sm-4 my-2">Message</a>
                             <!-- <a href="{{url('/dashboard/class-detail')}}" class="btn mr-sm-4 my-2">Book Again</a>
                             <a href="" class="btn my-2" data-toggle="modal" data-target="#refundModal">Refund</a> -->
 
@@ -630,95 +795,32 @@
                         <h1>Clients Feedback</h1>
                     </div>
                     <div class="feedback-container px-2 px-sm-4">
+                        @foreach($rating as $session_rating)
                         <div class="feedback-card my-3">
                             <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
+                                <img class="mr-2" src="{{$session_rating['user']['profile_img']}}" alt="">
+                                <h1>{{$session_rating['user']['name']}}</h1>
                                 <div class="feedback-rating pl-2">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
+                                    <?php $remRating = 5 - $session_rating['rating']; ?>
+
+                                    <?php for ($i = 0; $i < $session_rating['rating']; $i++) { ?>
+                                        <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                    <?php } ?>
+                                    <?php for ($i = 0; $i < $remRating; $i++) { ?>
+                                        <i class="fa fa-star pr-1" aria-hidden="true"></i>
+                                    <?php } ?>
+
+
+
+                                    <p>{{$session_rating['rating']}}</p>
                                 </div>
                             </div>
                             <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
+                                <p> {{$session_rating['description']}}</p>
 
                             </div>
                         </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                                <div class="feedback-rating pl-2">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
-                                </div>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <!-- <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                                <div class="feedback-rating pl-2">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
-                                </div>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <!-- <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div> -->
-                            </div>
-                        </div>
-                        <div class="feedback-card my-3">
-                            <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
-                                <h1>Michael John</h1>
-                                <div class="feedback-rating pl-2">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>4.0</p>
-                                </div>
-                            </div>
-                            <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
-                                <p>LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum LoremIpsum Lorem Ipsum
-                                    Lorem Ipsum Lorem Ipsum </p>
-                                <!-- <div class="feedback-rating">
-                                    <i class="fa fa-star pr-1" aria-hidden="true"></i>
-                                    <p>5.0</p>
-                                </div> -->
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                 </div>

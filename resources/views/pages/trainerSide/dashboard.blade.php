@@ -794,6 +794,7 @@
         color: black;
     }
 </style>
+
 @section('content')
 @include('includes.trainerSide.navbar')
 <div class="content-wrapper px-2 py-3">
@@ -810,104 +811,14 @@
                         </div>
 
                     </div>
-                    <!-- <div class="col-xl-6 mt-4 mt-xl-0 ">
-                        <div class="dashboard-session-section p-3">
-                            <div class="dashboard-session-heading">
-                                <h1>Sessions</h1>
-                            </div>
-                            <div class="dashboard-session-card-wrapper pr-2">
-                                <div class="col-12 dashboard-session-card my-3 px-3 pt-3 pb-1">
-                                    <h1 class="card-heading">Body Building</h1>
-                                    <div class="dashboard-session-card-footer">
-                                        <div class="dashboard-session-card-footer-left">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <div>
-                                                <h1>+20</h1>
-                                            </div>
-                                        </div>
-                                        <div class="dashboard-session-card-footer-right">
-                                            <a class="btn" href="#">See all members</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 dashboard-session-card my-3 px-3 pt-3 pb-1">
-                                    <h1 class="card-heading">Body Building</h1>
-                                    <div class="dashboard-session-card-footer">
-                                        <div class="dashboard-session-card-footer-left">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <div>
-                                                <h1>+20</h1>
-                                            </div>
-                                        </div>
-                                        <div class="dashboard-session-card-footer-right">
-                                            <a class="btn" href="#">See all members</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 dashboard-session-card my-3 px-3 pt-3 pb-1">
-                                    <h1 class="card-heading">Body Building</h1>
-                                    <div class="dashboard-session-card-footer">
-                                        <div class="dashboard-session-card-footer-left">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <div>
-                                                <h1>+20</h1>
-                                            </div>
-                                        </div>
-                                        <div class="dashboard-session-card-footer-right">
-                                            <a class="btn" href="#">See all members</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 dashboard-session-card my-3 px-3 pt-3 pb-1">
-                                    <h1 class="card-heading">Body Building</h1>
-                                    <div class="dashboard-session-card-footer">
-                                        <div class="dashboard-session-card-footer-left">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <div>
-                                                <h1>+20</h1>
-                                            </div>
-                                        </div>
-                                        <div class="dashboard-session-card-footer-right">
-                                            <a class="btn" href="#">See all members</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 dashboard-session-card my-3 px-3 pt-3 pb-1">
-                                    <h1 class="card-heading">Body Building</h1>
-                                    <div class="dashboard-session-card-footer">
-                                        <div class="dashboard-session-card-footer-left">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                                            <div>
-                                                <h1>+20</h1>
-                                            </div>
-                                        </div>
-                                        <div class="dashboard-session-card-footer-right">
-                                            <a class="btn" href="#">See all members</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-
-                        </div>
-                    </div> -->
-                    @if($today_sessions==null)
-                    @else
-                    @foreach($today_sessions as $today_session)
                     <div class="col-12 workout-today-section py-2">
                         <div class="workout-today-header pt-2 pb-1">
                             <h1>Your Today’s Session</h1>
                         </div>
+                        @if($today_sessions==null)
+                        @else
+                        @foreach($today_sessions as $today_session)
 
                         <div class="workout-today-wrapper">
                             <!-- table -->
@@ -945,7 +856,7 @@
                                 </div>
 
                                 <div class="table-cotent py-1 py-md-0">
-                                    <a href="{{url('/trainer/session-one')}}">
+                                    <a href="{{url('/trainer/session-one/'.$today_session['session']['id'])}}">
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
@@ -954,7 +865,7 @@
                                 <div class="table-cotent py-1 ">
 
                                     <div class="col-6">
-                                        <a href="{{url('/trainer/session')}}">
+                                        <a href="{{url('/trainer/session/')}}">
                                             <div class="table-content-value text-center">
                                                 <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                             </div>
@@ -971,9 +882,9 @@
                                 <div class="workout-table-border workout-table-border-blue "></div>
                             </div>
                         </div>
+                        @endforeach
+                        @endif
                     </div>
-                    @endforeach
-                    @endif
                     <div class="col-12 workout-today-section py-2">
                         <div class="upcoming-header pt-2 pb-1">
                             <h1>Upcoming Seesions</h1>
@@ -1018,7 +929,8 @@
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session-one')}}">
+                                    <a href="{{url('/trainer/session-one/'.$upcoming_session['session']['id'])}}">
+
 
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
@@ -1125,7 +1037,9 @@
                             </div>
 
                             <div class="col-12 text-center noti-card-btn">
-                                <a class="btn" href="{{url('/trainer/session-one')}}">View</a>
+                                <a class="btn" href="{{url('/trainer/session-one/'.$past_session['session']['id'])}}">View</a>
+                                <a href="{{url('/trainer/session-one/'.$upcoming_session['session']['id'])}}">
+
                             </div>
                         </div>
                         @endforeach
@@ -1172,7 +1086,7 @@
 
                             </div> -->
                             <div class="feedback-profile">
-                                <img class="mr-2" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                                <img class="mr-2" src="{{$session_rating['user']['profile_img']}}" alt="">
                                 <h1>{{$session_rating['user']['name']}}</h1>
                                 <div class="feedback-rating pl-2">
 
