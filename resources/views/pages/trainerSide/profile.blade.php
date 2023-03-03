@@ -165,7 +165,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="content-left-section p-3">
-                    <img src="{{asset('public/assets/trainerimages/profile.png')}}" alt="">
+                    <img src="{{$user['profile_img']}}" alt="">
                     <h1>{{$user['name']}}</h1>
                     <div class="middle-heading">
                         <h2>About</h2>

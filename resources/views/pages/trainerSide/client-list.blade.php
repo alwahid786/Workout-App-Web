@@ -234,7 +234,7 @@
                     <h1>{{$client['user']['name']}}</h1>
                     <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">{{$client['session']['category']['title']}}</h1>
                     <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">{{$client['session']['day']}}, {{date('h:i',strtotime($client['session']['start_time']))}} {{$client['session']['start_meridiem']}}- {{date('h:i',strtotime($client['session']['end_time']))}} {{$client['session']['end_meridiem']}}</h1>
-                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">{{$client['user']['state']}}</h1>
+                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">{{$client['user']['workout_location']}}</h1>
                 </div>
                 <div class="right-dots">
                     <div class="c-dropdown">
