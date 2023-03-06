@@ -214,9 +214,7 @@ class TrainerController extends Controller
     /////////.......search category with user.......///////////
     public function categoryFilter(Request $request)
     {
-
         $clients = (new BookedSession())->newQuery();
-
         if ($request->has('search_by')) {
             $search_by = $request->search_by;
 
@@ -235,12 +233,11 @@ class TrainerController extends Controller
 
         $clients = $clients->where('trainer_id', auth()->user()->id)->groupBy('user_id')->with('user', 'session.category')->get();
 
-        // $categories = Category::get();
         if (!$clients) {
             return $this->sendError('Client not found');
         }
         $clients = json_decode($clients, true);
-        // dd($clients);
+
         return $this->sendResponse(
             [
                 'client' => $clients,
