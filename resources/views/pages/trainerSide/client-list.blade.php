@@ -207,15 +207,15 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-lg-4 client-list-filter my-3">
-                <select class="wide s-select form-control  search_by">
+                <select class="wide s-select form-control  search_by" onchange="search_by(value)">
                     @foreach($categories as $category)
-                    <option value="">{{$category['title']}}</option>
+                    <option value="{{$category['title']}}">{{$category['title']}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col-md-6 col-lg-4 client-list-filter my-3">
                 <div class="left-inner-addons">
-                    <input type="text" class="form-control search_by" placeholder="Search here" id="search_by">
+                    <input type="text" class="form-control search_by" onchange="search_by(value)" placeholder="Search here" id="search_by" value="">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
 
@@ -482,11 +482,18 @@
 <script>
     $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
 </script>
-<script>
-    $('#search_by').on('change', function() {
 
-        // e.preventDefault();
-        var search_by = $('#search_by').val();
+<!-- filter request -->
+<script>
+    function select_by(value) {
+
+
+        var search_by = $('.search_by').val();
+        // var search_by = $(this).find('.search_by').val();
+        // var search_by = $(this).find('.search_by').map(function() {}).get().join(',');
+        //     return $(this).val();
+        // var search_by = $(this).val('search_by');
+        alert(search_by);
 
         if (search_by != "") {
             $.ajax({
@@ -564,6 +571,6 @@
         } else {
             toastr.error('Please fill all the field !');
         }
-    });
+    }
 </script>
 @endsection
