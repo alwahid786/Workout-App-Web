@@ -500,12 +500,12 @@
                 },
                 cache: false,
                 success: function(dataResult) {
+
+                    $('#client').empty();
                     var start_time = dataResult.data.client[0].session.start_time;
                     // var start_meridiem = dataResult.data.client[0].session.start_meridiem;
+                    var end_time = dataResult.data.client[0].session.end_time;
 
-                    var end_time = dataResult.data.client[0].session.end_time;          
-                                       
-                    $('#client').empty();
                     $(dataResult.data.client).each(function(i, e) {
                         // console.log(e.session.category.title);
                         // alert(JSON.stringify(e.user))
