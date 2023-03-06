@@ -226,7 +226,7 @@
             @foreach($clients as $client)
             <div class="client-list-card p-3">
                 <div class="client-list-card-left pr-3">
-                    <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                    <img src="{{$client['user']['profile_img']}}" alt="">
                 </div>
                 <div class="client-list-card-right">
 
@@ -524,7 +524,7 @@
                         let div =
                             `<div class="client-list-card p-3">
                 <div class="client-list-card-left pr-3">
-                    <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                    <img src="${e.user.profile_img}" alt="">
                 </div>
                 <div class="client-list-card-right">
 
