@@ -109,6 +109,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/session-one/{id}', [TrainerController::class, 'sessionDetail'])->name('trainer/session-one');
     Route::any('/trainer/clientlist', [TrainerController::class, 'client'])->name('/trainer/clientlist');
     Route::any('/trainer/profile/{id}', [TrainerController::class, 'userDetail'])->name('trainer/profile');
+    Route::any('/trainer/client', [TrainerController::class, 'categoryFilter'])->name('trainer/client');
 
 
     Route::get('/trainer/steptwo', function () {

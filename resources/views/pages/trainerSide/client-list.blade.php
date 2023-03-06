@@ -207,23 +207,22 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-lg-4 client-list-filter my-3">
-                <select class="wide s-select form-control ">
-                    <option value="">Cardio</option>
-                    <option value="">Stretching</option>
-                    <option value="">Yoga</option>
-
+                <select class="wide s-select form-control  search_by">
+                    @foreach($categories as $category)
+                    <option value="">{{$category['title']}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="col-md-6 col-lg-4 client-list-filter my-3">
                 <div class="left-inner-addons">
-                    <input type="text" class="form-control" placeholder="Search here">
+                    <input type="text" class="form-control search_by" placeholder="Search here" id="search_by">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
 
             </div>
         </div>
 
-        <div class="client-list-row">
+        <div class="client-list-row append_client" id="client">
             @foreach($clients as $client)
             <div class="client-list-card p-3">
                 <div class="client-list-card-left pr-3">
@@ -482,5 +481,89 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
+</script>
+<script>
+    $('#search_by').on('change', function() {
+
+        // e.preventDefault();
+        var search_by = $('#search_by').val();
+
+        if (search_by != "") {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: `{{route('trainer/client')}}`,
+                type: "POST",
+                data: {
+                    search_by: search_by,
+                },
+                cache: false,
+                success: function(dataResult) {
+                    var start_time = dataResult.data.client[0].session.start_time;
+                    // var start_meridiem = dataResult.data.client[0].session.start_meridiem;
+
+                    var end_time = dataResult.data.client[0].session.end_time;          
+                                       
+                    $('#client').empty();
+                    $(dataResult.data.client).each(function(i, e) {
+                        // console.log(e.session.category.title);
+                        // alert(JSON.stringify(e.user))
+                        let timeStart = start_time;
+
+                        let convertedTimeStart = new Date("1970-01-01 " + timeStart).toLocaleTimeString("en-US", {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+
+                        let timeEnd = end_time;
+                        let convertedTimeEnd = new Date("1970-01-01 " + timeEnd).toLocaleTimeString("en-US", {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                        let div =
+                            `<div class="client-list-card p-3">
+                <div class="client-list-card-left pr-3">
+                    <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                </div>
+                <div class="client-list-card-right">
+
+                    <h1>${e.user.name}</h1>
+                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">${e.session.category.title}</h1>
+                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">${e.session.day}, ${convertedTimeStart} -  ${convertedTimeEnd} </h1>
+                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">${e.user.workout_location}</h1>
+                </div>
+                <div class="right-dots">
+                    <div class="c-dropdown">
+                        <div class="dots px-3">
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                        <div class="c-dropdown-content">
+
+                            <a href="{{url('/trainer/profile/'.$client['user']['id'])}}" class="btn">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+                        let apend = $(".append_client").append(div);
+                        // console.log(div);
+                    });
+
+
+                    // window.location.href = `{{url('/trainer/clientlist')}}`;
+                },
+                error: function(jqXHR, exception) {
+
+                    toastr.error(jqXHR.responseJSON.message);
+                }
+            });
+        } else {
+            toastr.error('Please fill all the field !');
+        }
+    });
 </script>
 @endsection

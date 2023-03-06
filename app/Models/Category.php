@@ -18,4 +18,8 @@ class Category extends Model
     {
         return $this->hasMany(Classes::class, 'category_id');
     }
+    public function session()
+    {
+        return $this->belongsTo(Session::class, 'category_id');
+    }
 }

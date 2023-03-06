@@ -191,12 +191,14 @@ class TrainerController extends Controller
     public function client()
     {
         $clients         = BookedSession::where('trainer_id', auth()->user()->id)->groupBy('user_id')->with('user', 'session.category')->get();
+        $categories = Category::get();
         if (!$clients) {
             return $this->sendError('Client not found');
         }
         $clients = json_decode($clients, true);
+        $categories = json_decode($categories, true);
         // dd($client);
-        return view('pages.trainerSide.client-list', compact('clients'));
+        return view('pages.trainerSide.client-list', compact('clients', 'categories'));
     }
     //////////........user detail.........//////
     public function userDetail($id)
@@ -208,5 +210,42 @@ class TrainerController extends Controller
         $user = json_decode($user, true);
         // dd($user);
         return view('pages.trainerSide.profile', compact('user'));
+    }
+    /////////.......search category with user.......///////////
+    public function categoryFilter(Request $request)
+    {
+
+        $clients = (new BookedSession())->newQuery();
+
+        if ($request->has('search_by')) {
+            $search_by = $request->search_by;
+
+            $clients->where(function ($query) use ($search_by) {
+                $query->whereHas('user', function ($query) use ($search_by) {
+                    $query->where('name', 'like', '%' . $search_by . '%');
+                })
+                    ->orWhereHas('session', function ($query) use ($search_by) {
+                        $query->where('day', 'like', '%' . $search_by . '%');
+                    })
+                    ->orWhereHas('session.category', function ($query) use ($search_by) {
+                        $query->where('title', 'like', '%' . $search_by . '%');
+                    });
+            });
+        }
+
+        $clients = $clients->where('trainer_id', auth()->user()->id)->groupBy('user_id')->with('user', 'session.category')->get();
+
+        // $categories = Category::get();
+        if (!$clients) {
+            return $this->sendError('Client not found');
+        }
+        $clients = json_decode($clients, true);
+        // dd($clients);
+        return $this->sendResponse(
+            [
+                'client' => $clients,
+            ],
+            'Successfully Search'
+        );
     }
 }
