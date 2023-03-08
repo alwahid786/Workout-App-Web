@@ -278,9 +278,15 @@
         <div class="col-12 px-0">
 
             <div class="col-12 client-list-heading pb-4">
+                @if($category==null)
+                <h1>Sessions</h1>
+
+                @else
                 <h1>{{$category['title']}}</h1>
+                @endif
             </div>
             <div class="client-list-row">
+                @if($category!=null)
                 @foreach($category['session'] as $session)
                 <div class="session-card p-3">
                     <div class="card-img ">
@@ -307,22 +313,35 @@
                     </div>
                 </div>
                 @endforeach
-                <!-- <div class="session-card p-3">
+                @else
+                @foreach($sessions as $session)
+                <div class="session-card p-3">
                     <div class="card-img ">
-                        <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                        <img src="{{$session['session_image'][0]['image']}}" alt="">
                     </div>
                     <div class="card-heading py-3">
-                        <h1>Yoga</h1>
-                        <a href="" class="px-3 px-sm-5">View</a>
+                        <h1>{{$session['category']['title']}}</h1>
+                        <a href="{{url('/trainer/session-one/'.$session['id'])}}" class="px-3 px-sm-5">View</a>
                     </div>
 
                     <div class="session-left-divider"></div>
                     <div class="card-bottom-section p-2">
-                        <p>$25</p>
-                        <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
+                        <p>${{$session['price']}}</p>
+                        <?php
+
+                        $a = new DateTime(($session['start_time']));
+                        $b = new DateTime($session['end_time']);
+                        $interval = $a->diff($b);
+
+                        $hour = $interval->format("%H:%I");
+
+                        ?>
+                        <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> {{$hour}}</p>
                     </div>
                 </div>
-                <div class="session-card p-3">
+                @endforeach
+                @endif
+                <!-- <div class="session-card p-3">
                     <div class="card-img ">
                         <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                     </div>

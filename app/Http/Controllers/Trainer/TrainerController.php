@@ -267,21 +267,31 @@ class TrainerController extends Controller
         );
     }
     //////// class detail////////
-    public function classDetail($id)
+    public function classDetail($id = '')
     {
-        dd($id);
-
-        $category = Category::where('id', $id)
-            ->with(['session' => function ($query) {
-                $query->where('trainer_id', auth()->user()->id)
-                    ->with('session_Image');
-            }])
-            ->first();
-        if (!$category) {
-            return $this->sendError('Categories not found');
+        if ($id == "") {
+            $category = '';
+            $sessions = Session::where('trainer_id', auth()->user()->id)->with('category', 'session_image')->get();
+            if (!$sessions) {
+                return $this->sendError('session not found');
+            }
+            $sessions = json_decode($sessions, true);
+            // dd($sessions);
+            // return view('pages.trainerSide.session', compact('sessions'));
+        } else {
+            $sessions = '';
+            $category = Category::where('id', $id)
+                ->with(['session' => function ($query) {
+                    $query->where('trainer_id', auth()->user()->id)
+                        ->with('session_image');
+                }])
+                ->first();
+            if (!$category) {
+                return $this->sendError('Categories not found');
+            }
+            $categories = json_decode($category, true);
+            // dd($categories); 
         }
-        $categories = json_decode($category, true);
-        // dd($categories); 
-        return view('pages.trainerSide.session', compact('category'));
+        return view('pages.trainerSide.session', compact('category', 'sessions'));
     }
 }
