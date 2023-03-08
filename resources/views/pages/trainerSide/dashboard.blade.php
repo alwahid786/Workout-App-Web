@@ -1052,8 +1052,8 @@
                             </div>
 
                             <div class="col-12 text-center noti-card-btn">
-                                <a class="btn" href="{{url('/trainer/session-one/'.$past_session['id'])}}">View</a>
-                                <!-- <a href="{{url('/trainer/session-one/'.$upcoming_session['session']['id'])}}"> -->
+                                <a class="btn" href="{{url('/trainer/session-one/'.$past_session['session']['id'].'/'.$past_session['id'])}}">View</a>
+
 
                             </div>
                         </div>

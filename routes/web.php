@@ -55,10 +55,6 @@ Route::post('/upload-image', [UserController::class, 'uploadImage'])->name('uplo
 
 
 Route::middleware('auth')->group(function () {
-    /////////.............trainer...............//////////
-
-
-
 
     //////////////....user................////////////////
 
@@ -97,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
 
     ///// trainer............//////
+    
     Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
     Route::any('/trainer/stepfive', [TrainerController::class, 'showTrainerDetail'])->name('trainer/stepfive');
     Route::any('/trainer/stepthree', [TrainerAuthController::class, 'stepThree'])->name('trainer/stepthree');
