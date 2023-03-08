@@ -192,7 +192,7 @@ class TrainerController extends Controller
     {
 
         // dd($booked_id);
-        
+
         // $session_detail = BookedSession::where('id', $id)->with('session.trainerData', 'session.category', 'session.session_image')->first();
         $session_detail = Session::where('id', $id)->with(['booked_session' => function ($query) use ($booked_id) {
             $query->where('id', $booked_id);
