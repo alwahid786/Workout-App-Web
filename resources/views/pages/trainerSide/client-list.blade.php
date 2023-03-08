@@ -485,15 +485,15 @@
 
 <!-- filter request -->
 <script>
-    function select_by(value) {
+    function search_by(value) {
 
-
-        var search_by = $('.search_by').val();
+        // alert(value)
+        var search_by = value;
         // var search_by = $(this).find('.search_by').val();
         // var search_by = $(this).find('.search_by').map(function() {}).get().join(',');
         //     return $(this).val();
         // var search_by = $(this).val('search_by');
-        alert(search_by);
+        // alert(search_by);
 
         if (search_by != "") {
             $.ajax({
