@@ -276,8 +276,7 @@ class TrainerController extends Controller
                 return $this->sendError('session not found');
             }
             $sessions = json_decode($sessions, true);
-            // dd($sessions);
-            // return view('pages.trainerSide.session', compact('sessions'));
+            
         } else {
             $sessions = '';
             $category = Category::where('id', $id)
@@ -290,7 +289,7 @@ class TrainerController extends Controller
                 return $this->sendError('Categories not found');
             }
             $categories = json_decode($category, true);
-            // dd($categories); 
+            
         }
         return view('pages.trainerSide.session', compact('category', 'sessions'));
     }
