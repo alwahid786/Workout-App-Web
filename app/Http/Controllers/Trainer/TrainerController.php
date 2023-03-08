@@ -171,20 +171,41 @@ class TrainerController extends Controller
         return view('pages.trainerSide.dashboard', compact('today_sessions', 'upcoming_sessions', 'past_sessions', 'rating'));
     }
 
-    public function sessionDetail($id)
+    // public function sessionDetail($id)
+    // {
+
+    //     $session_detail = BookedSession::where('id', $id)->with('session.trainerData', 'session.category', 'session.session_image')->first();
+    //     $rating         = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
+
+    //     if (!$session_detail) {
+    //         return $this->sendError('Session Detail');
+    //     }
+    //     $bookedsession = json_decode($session_detail, true);
+    //     $rating        = json_decode($rating, true);
+    //     // dd($bookedsession);
+    //     // dd($rating);
+
+    //     return view('pages.trainerSide.trainer-session-one', compact('bookedsession', 'rating'));
+    // }
+
+    public function sessionDetail($id, $booked_id = "")
     {
-        $session_detail = BookedSession::where('id', $id)->with('session.trainerData', 'session.category', 'session.session_image')->first();
-        $rating         = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
+
+        // dd($booked_id);
+        
+        // $session_detail = BookedSession::where('id', $id)->with('session.trainerData', 'session.category', 'session.session_image')->first();
+        $session_detail = Session::where('id', $id)->with(['booked_session' => function ($query) use ($booked_id) {
+            $query->where('id', $booked_id);
+        }])->with('category', 'trainerData', 'session_image')->first();
+        $rating         = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
 
         if (!$session_detail) {
             return $this->sendError('Session Detail');
         }
-        $bookedsession = json_decode($session_detail, true);
+        $session = json_decode($session_detail, true);
         $rating        = json_decode($rating, true);
-        // dd($bookedsession);
-        // dd($rating);
-
-        return view('pages.trainerSide.trainer-session-one', compact('bookedsession', 'rating'));
+        // dd($session);
+        return view('pages.trainerSide.trainer-session-one', compact('session', 'rating'));
     }
 
     //////////////.............. total client........../////
@@ -244,5 +265,23 @@ class TrainerController extends Controller
             ],
             'Successfully Search'
         );
+    }
+    //////// class detail////////
+    public function classDetail($id)
+    {
+        dd($id);
+
+        $category = Category::where('id', $id)
+            ->with(['session' => function ($query) {
+                $query->where('trainer_id', auth()->user()->id)
+                    ->with('session_Image');
+            }])
+            ->first();
+        if (!$category) {
+            return $this->sendError('Categories not found');
+        }
+        $categories = json_decode($category, true);
+        // dd($categories); 
+        return view('pages.trainerSide.session', compact('category'));
     }
 }

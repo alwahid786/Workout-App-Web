@@ -37,6 +37,10 @@ class Session extends Model
     {
         return $this->hasMany(SessionImage::class, 'session_id');
     }
+    public function booked_session()
+    {
+        return $this->hasMany(BookedSession::class, 'session_id');
+    }
     // public function trainerLocation()
     // {
     //     return $this->belongsTo(User::class, 'state');

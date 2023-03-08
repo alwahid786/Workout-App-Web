@@ -231,7 +231,7 @@
                 <div class="client-list-card-right">
 
                     <h1>{{$client['user']['name']}}</h1>
-                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt="">{{$client['session']['category']['title']}}</h1>
+                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt=""><a href="{{url('/trainer/session/'.$client['session']['category']['id'])}}">{{$client['session']['category']['title']}}</a></h1>
                     <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">{{$client['session']['day']}}, {{date('h:i',strtotime($client['session']['start_time']))}} {{$client['session']['start_meridiem']}}- {{date('h:i',strtotime($client['session']['end_time']))}} {{$client['session']['end_meridiem']}}</h1>
                     <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">{{$client['user']['workout_location']}}</h1>
                 </div>
@@ -490,7 +490,7 @@
         // alert(value)
         var search_by = value;
         // var search_by = $(this).find('.search_by').val();
-        
+
         // var search_by = $(this).val('search_by');
         // alert(search_by);
 

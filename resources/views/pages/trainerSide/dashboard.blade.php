@@ -306,7 +306,7 @@
         margin-bottom: 0px;
     }
 
-    
+
 
     .upcoming-wrapper::-webkit-scrollbar-thumb {
         background: #E37048;
@@ -877,7 +877,7 @@
                                 </div>
 
                                 <div class="table-cotent py-1 py-md-0">
-                                    <a href="{{url('/trainer/session-one/'.$today_session['id'])}}">
+                                    <a href="{{url('/trainer/session-one/'.$today_session['session']['id'] .'/'.$today_session['id'])}}">
                                         <div class="table-content-value text-center">
                                             <img src="{{asset('public/assets/trainerimages/eye.png')}}" alt="">
                                         </div>
@@ -944,7 +944,7 @@
                                 </div>
 
                                 <div class="table-cotent py-2 py-md-0">
-                                    <a href="{{url('/trainer/session-one/'.$upcoming_session['id'])}}">
+                                    <a href="{{url('/trainer/session-one/'.$upcoming_session['session']['id'].'/'.$upcoming_session['id'])}}">
 
 
                                         <div class="table-content-value text-center">

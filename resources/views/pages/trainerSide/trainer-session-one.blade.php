@@ -659,7 +659,7 @@
 @include('includes.trainerSide.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
-        @if($bookedsession['session']['type']==0)
+        @if($session['type']==0)
         <div class="dashboard-header-left my-4 pt-2 ">
             <h1>My Sessions Detail <span class="d-block"> One to One Session </span></h1>
         </div>
@@ -717,7 +717,7 @@
                                 <div class="trainer-detail-profile-right">
 
                                     <div class="trainer-detail-profile-right-price">
-                                        <h1>${{$bookedsession['session']['price']}}</h1>
+                                        <h1>${{$session['price']}}</h1>
                                     </div>
 
                                 </div>
@@ -740,30 +740,40 @@
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Session</h1>
-                                    <p>{{$bookedsession['session']['category']['title']}}</p>
+                                    <p>{{$session['category']['title']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
+                                    @if($session['booked_session'] == null)
+                                    <h1>Preference</h1>
+                                    @if($session['preference']==0)
+                                    <p>One Time</p>
+                                    @else
+                                    <p>Recurring</p>
+                                    @endif
+                                    
+                                    @else
                                     <h1>Date</h1>
-                                    <p>{{date('d-M-Y',strtotime($bookedsession['session-date']))}}</p>
+                                    <p>{{date('d-M-Y',strtotime($session['booked_session'][0]['session-date']))}}</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col">
                         <div class="row">
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Start Time</h1>
-                                    <p>{{date('h:i',strtotime($bookedsession['session']['start_time']))}} {{$bookedsession['session']['start_meridiem']}}</p>
+                                    <p>{{date('h:i',strtotime($session['start_time']))}} {{$session['start_meridiem']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>End Time</h1>
-                                    <p>{{date('h:i',strtotime($bookedsession['session']['end_time']))}} {{$bookedsession['session']['end_meridiem']}}</p>
+                                    <p>{{date('h:i',strtotime($session['end_time']))}} {{$session['end_meridiem']}}</p>
                                 </div>
                             </div>
                         </div>
@@ -773,7 +783,7 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Location</h1>
-                                    <p>{{$bookedsession['session']['trainer_data']['state']}}</p>
+                                    <p>{{$session['trainer_data']['workout_location']}}</p>
                                 </div>
                             </div>
                         </div>

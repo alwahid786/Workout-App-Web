@@ -106,10 +106,11 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/delete_session/', [TrainerController::class, 'deleteSession'])->name('trainer/delete_session');
     Route::any('/trainer/submit_request/', [TrainerController::class, 'submitTrainerRequest'])->name('trainer/submit_request');
     Route::any('/trainer/dashboard', [TrainerController::class, 'trainerDashboard'])->name('trainer/dashboard');
-    Route::any('/trainer/session-one/{id}', [TrainerController::class, 'sessionDetail'])->name('trainer/session-one');
+    Route::any('/trainer/session-one/{id}/{booked_id?}', [TrainerController::class, 'sessionDetail'])->name('trainer/session-one');
     Route::any('/trainer/clientlist', [TrainerController::class, 'client'])->name('/trainer/clientlist');
     Route::any('/trainer/profile/{id}', [TrainerController::class, 'userDetail'])->name('trainer/profile');
     Route::any('/trainer/client', [TrainerController::class, 'categoryFilter'])->name('trainer/client');
+    Route::any('/trainer/session/{id?}', [TrainerController::class, 'classDetail'])->name('trainer/session');
 
 
     Route::get('/trainer/steptwo', function () {
@@ -314,9 +315,9 @@ Route::get('/trainer/calendar', function () {
 // Route::get('/trainer/clientlist', function () {
 //     return view('pages.trainerSide.client-list');
 // });
-Route::get('/trainer/session', function () {
-    return view('pages.trainerSide.session');
-});
+// Route::get('/trainer/session', function () {
+//     return view('pages.trainerSide.session');
+// });
 Route::get('/trainer/sessiongroup', function () {
     return view('pages.trainerSide.session-group');
 });

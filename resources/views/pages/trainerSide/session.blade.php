@@ -278,10 +278,36 @@
         <div class="col-12 px-0">
 
             <div class="col-12 client-list-heading pb-4">
-                <h1>Sessions</h1>
+                <h1>{{$category['title']}}</h1>
             </div>
             <div class="client-list-row">
+                @foreach($category['session'] as $session)
                 <div class="session-card p-3">
+                    <div class="card-img ">
+                        <img src="{{$session['session_image'][0]['image']}}" alt="">
+                    </div>
+                    <div class="card-heading py-3">
+                        <!-- <h1>Yoga</h1> -->
+                        <a href="{{url('/trainer/session-one/'.$session['id'])}}" class="px-3 px-sm-5">View</a>
+                    </div>
+
+                    <div class="session-left-divider"></div>
+                    <div class="card-bottom-section p-2">
+                        <p>${{$session['price']}}</p>
+                        <?php
+
+                        $a = new DateTime(($session['start_time']));
+                        $b = new DateTime($session['end_time']);
+                        $interval = $a->diff($b);
+
+                        $hour = $interval->format("%H:%I");
+
+                        ?>
+                        <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> {{$hour}}</p>
+                    </div>
+                </div>
+                @endforeach
+                <!-- <div class="session-card p-3">
                     <div class="card-img ">
                         <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                     </div>
@@ -325,22 +351,7 @@
                         <p>$25</p>
                         <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
                     </div>
-                </div>
-                <div class="session-card p-3">
-                    <div class="card-img ">
-                        <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                    </div>
-                    <div class="card-heading py-3">
-                        <h1>Yoga</h1>
-                        <a href="" class="px-3 px-sm-5">View</a>
-                    </div>
-
-                    <div class="session-left-divider"></div>
-                    <div class="card-bottom-section p-2">
-                        <p>$25</p>
-                        <p> <img src="{{asset('public/assets/images/clock.svg')}}" alt=""> 25min</p>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
 

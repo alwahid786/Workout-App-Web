@@ -20,6 +20,6 @@ class Category extends Model
     }
     public function session()
     {
-        return $this->belongsTo(Session::class, 'category_id');
+        return $this->hasMany(Session::class, 'category_id');
     }
 }
