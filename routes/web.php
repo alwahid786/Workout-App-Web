@@ -93,7 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
 
     ///// trainer............//////
-    
+
     Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
     Route::any('/trainer/stepfive', [TrainerController::class, 'showTrainerDetail'])->name('trainer/stepfive');
     Route::any('/trainer/stepthree', [TrainerAuthController::class, 'stepThree'])->name('trainer/stepthree');
@@ -109,11 +109,11 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/client', [TrainerController::class, 'categoryFilter'])->name('trainer/client');
     Route::any('/trainer/session/{id?}', [TrainerController::class, 'classDetail'])->name('trainer/session');
 
+    Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
 
     Route::get('/trainer/steptwo', function () {
         return view('pages.trainerSide.account-step-two');
     });
-    Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
 });
 
 
