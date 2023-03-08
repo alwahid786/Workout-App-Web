@@ -490,8 +490,7 @@
         // alert(value)
         var search_by = value;
         // var search_by = $(this).find('.search_by').val();
-        // var search_by = $(this).find('.search_by').map(function() {}).get().join(',');
-        //     return $(this).val();
+        
         // var search_by = $(this).val('search_by');
         // alert(search_by);
 
