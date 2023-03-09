@@ -626,6 +626,22 @@
         width: 9px !important;
 
     }
+
+    .location-pill {
+        border-radius: 20px;
+        background-color: #f5bfac;
+        border: 1px solid #E37048;
+        padding: 10px;
+        position: relative;
+    }
+
+    .location-pill .remove-location {
+        position: absolute;
+        width: 20px;
+        top: -10;
+        right: -5;
+        cursor: pointer;
+    }
 </style>
 
 @section('content')
@@ -788,12 +804,12 @@
                         <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
                         <div class="price-select-input">
                             <div class="select-outer">
-                                <select class="wide2 s-select currency-select form-control " id="price_unit" name="priceUnit">
-                                    <option value="USD">Home</option>
-                                    <option value="EURO">Gym</option>
-                                    <option value="YEN">Work</option>
-                                    <option value="GBP">Park</option>
-                                    <option value="PKR">Other</option>
+                                <select class="wide2 s-select currency-select form-control " id="locationTag" name="tag">
+                                    <option value="Home">Home</option>
+                                    <option value="Gym">Gym</option>
+                                    <option value="Work">Work</option>
+                                    <option value="Park">Park</option>
+                                    <option value="Other">Other</option>
                                 </select>
                                 <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                             </div>
@@ -801,6 +817,16 @@
                         <i class="fa fa-plus addLocation" style="cursor: pointer;"></i>
                     </div>
                 </div>
+            </div>
+            <div class="col-12 py-3" id="display-location">
+                <!-- <div class="d-flex align-items-center">
+                    <div class="location-pill">
+                        <span>Chestnut Tree Lane</span>
+                        |
+                        <span>Home</span>
+                        <img class="remove-location" src="{{asset('public/assets/images/remove.png')}}" alt="">
+                    </div>
+                </div> -->
             </div>
 
             <div class="col-md-4" data-aos="fade-right">
@@ -963,6 +989,21 @@
             index = $(this).attr('data-src');
             $(this).parent().remove();
             certificateArray.splice(index, 1);
+        })
+
+        // Append Location 
+        $(".addLocation").click(function() {
+            let location = $("#locationInput").val();
+            let tag = $("#locationTag").val();
+            let div = `<div class="d-flex align-items-center">
+                    <div class="location-pill">
+                        <span>${location}</span>
+                        |
+                        <strong style="color: #E37048">${tag}</strong>
+                        <img class="remove-location" src="{{asset('public/assets/images/remove.png')}}" alt="">
+                    </div>
+                </div>`;
+            $("#display-location").append(div);
         })
 
 
