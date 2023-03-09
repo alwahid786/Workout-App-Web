@@ -1169,7 +1169,9 @@
                 imageWrapper.appendChild(imageContainer);
                 imagePreview.appendChild(imageWrapper);
 
-                images.push(file);
+                images.push(
+                    
+                );
 
                 imageCloseButton.addEventListener('click', function() {
                     imageWrapper.remove();

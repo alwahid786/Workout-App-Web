@@ -642,6 +642,11 @@
         right: -5;
         cursor: pointer;
     }
+
+    .closeBtn {
+        border: none;
+        background: transparent;
+    }
 </style>
 
 @section('content')
@@ -865,7 +870,7 @@
             <div class="update-info-qualification-image" id="certificatePreviews">
                 <label style="cursor: pointer;">
                     <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
-                    <input type="file" name="myfile" id="uploadDocInput" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
+                    <input type="file" name="myfile[]" id="choose-file" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
                 </label>
             </div>
         </div>
@@ -941,7 +946,7 @@
         var certificateArray = [];
         var index = 0;
 
-        const fileInput = document.getElementById('uploadDocInput');
+        const fileInput = document.getElementById('choose-file');
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         // Create Link of the image when the file is selected
         fileInput.addEventListener('change', (event) => {
@@ -991,6 +996,13 @@
             certificateArray.splice(index, 1);
         })
 
+        /////// remove tage
+        $(document).on('click', ".remove-location", function() {
+            index = $(this).attr('data-src');
+            $(this).parent().remove();
+            certificateArray.splice(index, 1);
+        })
+
         // Append Location 
         $(".addLocation").click(function() {
             let location = $("#locationInput").val();
@@ -1016,6 +1028,8 @@
         // Call the initMap() function when the Google Maps API has finished loading
         initMap();
 
+
+
     });
 </script>
 <script>
@@ -1023,5 +1037,56 @@
         $("#imageuploadmodal").modal('show')
         $("#imageuploadmodal").css('padding-right', 0)
     }
+</script>
+<script>
+    $(document).ready(function() {
+        var sessionsArray = [];
+        var images = [];
+        var index = 0;
+        // $('.s-select').niceSelect();
+
+        const fileInput = document.getElementById('choose-file');
+        const imagePreview = document.getElementById('img-preview');
+
+        fileInput.addEventListener('change', function(e) {
+            for (let i = 0; i < fileInput.files.length; i++) {
+                const file = fileInput.files[i];
+                const image = new Image();
+                image.src = URL.createObjectURL(file);
+                image.onload = function() {
+                    URL.revokeObjectURL(image.src);
+                };
+
+                const imageWrapper = document.createElement('div');
+                imageWrapper.classList.add('image-wrapper');
+                imageWrapper.classList.add('position-relative');
+
+                const imageCloseButton = document.createElement('a');
+                imageCloseButton.classList.add('image-close-button');
+                imageCloseButton.classList.add('closeBtn');
+                imageCloseButton.setAttribute('type', 'btn');
+                imageCloseButton.setAttribute('href', 'javascript:void(0)');
+                imageCloseButton.innerHTML = `<img class="closeImg" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">`;
+
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
+
+                imageContainer.appendChild(image);
+                imageWrapper.appendChild(imageCloseButton);
+                imageWrapper.appendChild(imageContainer);
+                imagePreview.appendChild(imageWrapper);
+
+                images.push(file);
+                imageCloseButton.addEventListener('click', function() {
+                    imageWrapper.remove();
+                    let index = images.indexOf(file);
+                    if (index > -1) {
+                        images.splice(index, 1);
+                    }
+                    // console.log(images);
+                });
+            }
+        });
+    })
 </script>
 @endsection
