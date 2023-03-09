@@ -16,13 +16,14 @@ use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Session;
 use App\Models\Category;
+use App\Models\CertificateImage;
 use App\Models\SessionImage;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Exception;
-
+use phpseclib3\File\ASN1\Maps\Certificate;
 
 class AuthController extends Controller
 {
@@ -77,15 +78,15 @@ class AuthController extends Controller
     /// update trainer screen 2.............../////
     public function updateProfileStwo(Request $request)
     {
-        $data = $request->all();
-        // dd(auth()->user()->id);
+        // $data = $request->all();
+
         $trainer = User::where('id', auth()->user()->id)->update([
             'date_of_birth' => $request->date_of_birth,
             'emergency_contact' => $request->emergency_contact,
             'gender' => $request->gender,
             'country' => $request->country,
             'state' => $request->state,
-            'workout_location' => $request->workout_location,
+            // 'workout_location' => $request->workout_location,
             'weight' => $request->weight,
             'weight_unit' => $request->weight_unit,
             'height' => $request->height,
@@ -101,6 +102,15 @@ class AuthController extends Controller
             'linkedin_url' => $request->linkedin,
             'page' => 2,
         ]);
+        ///add certificate images
+        // $cert_image = $request->certificate_image;
+        // foreach ($cert_image as $cert_images) {
+        //     $trainer_doc = new CertificateImage();
+        //     $trainer_doc->trainer_id = auth()->user()->id;
+        //     $trainer_doc->caption = $cert_images['caption'];
+        //     $trainer_doc->image = $cert_image['image'];
+        //     $trainer_doc->save();
+        // }
         if (!$trainer) {
             return $this->sendError('User has not registered. Please try again later');
         }

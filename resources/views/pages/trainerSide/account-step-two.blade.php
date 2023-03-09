@@ -901,8 +901,8 @@
                                 <div class="modal-img">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div id="img-preview">
-                                                <img id="modalCertificate" src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
+                                            <div id="img-preview" class="img-preview">
+                                                <!-- <img id="modalCertificate" src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt=""> -->
                                             </div>
                                         </div>
                                         <!-- <div class="col-sm-6 d-flex align-self-end pl-sm-0 py-4 py-sm-0">
@@ -944,6 +944,7 @@
     $(document).ready(function() {
         $('.s-select').niceSelect();
         var certificateArray = [];
+        const location = [];
         var index = 0;
 
         const fileInput = document.getElementById('choose-file');
@@ -997,25 +998,43 @@
         })
 
         /////// remove tage
-        $(document).on('click', ".remove-location", function() {
-            index = $(this).attr('data-src');
-            $(this).parent().remove();
-            certificateArray.splice(index, 1);
-        })
+        // $(document).on('click', ".remove-location", function() {
+        //     index = $(this).attr('data-src');
+        //     $(this).parent().remove();
+
+        // })
 
         // Append Location 
         $(".addLocation").click(function() {
-            let location = $("#locationInput").val();
+            let location_name = $("#locationInput").val();
             let tag = $("#locationTag").val();
             let div = `<div class="d-flex align-items-center">
                     <div class="location-pill">
-                        <span>${location}</span>
+                        <span>${location_name}</span>
                         |
                         <strong style="color: #E37048">${tag}</strong>
-                        <img class="remove-location" src="{{asset('public/assets/images/remove.png')}}" alt="">
+                        <img class="remove-location" src="{{asset('public/assets/images/remove.png')}}"  alt="">
                     </div>
                 </div>`;
+
             $("#display-location").append(div);
+            let obj = {
+                name: location_name,
+                tag: tag
+            }
+            location.push(obj);
+            $(document).on('click', ".remove-location", function() {
+                // index = $(this).attr('data-src');
+                $(this).parent().remove();
+                let index_location = location.indexOf(obj);
+                if (index_location > -1) {
+
+                    location.splice(index_location, 1);
+                }
+                console.log(location);
+            })
+
+
         })
 
 
@@ -1048,6 +1067,7 @@
         const fileInput = document.getElementById('choose-file');
         const imagePreview = document.getElementById('img-preview');
 
+
         fileInput.addEventListener('change', function(e) {
             for (let i = 0; i < fileInput.files.length; i++) {
                 const file = fileInput.files[i];
@@ -1070,6 +1090,7 @@
 
                 const imageContainer = document.createElement('div');
                 imageContainer.classList.add('image-container');
+                image.setAttribute('id', 'modalCertificate');
 
                 imageContainer.appendChild(image);
                 imageWrapper.appendChild(imageCloseButton);
