@@ -696,31 +696,31 @@
 
 <!-- ............Form Section................ -->
 <div class="container pt-5">
-    <form action="{{route('update_profile_two')}}" method="post">
-        @csrf
+    <form>
+
         <div class="row">
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class="">Emergency Contact</label>
-                    <input type="text" class="form-control pl-4 validate" id="inputAddress" name="emergency_contact">
+                    <input type="text" class="form-control pl-4 validate" id="emergency_contact" name="emergency_contact">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Relationship With Emergency Contact</label>
-                    <input type="text" class="form-control pl-4 validate" id="inputAddress" name="relation_emergency">
+                    <input type="text" class="form-control pl-4 validate" id="relation_emergency" name="relation_emergency">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Date of Birth</label>
-                    <input type="date" class="form-control pl-4 validate" id="inputAddress2" name="date_of_birth">
+                    <input type="date" class="form-control pl-4 validate" id="date_of_birth" name="date_of_birth">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Gender</label>
-                    <select class="wide s-select form-control pl-4 validate" name="gender">
+                    <select class="wide s-select form-control pl-4 validate" name="gender" id="gender">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -730,7 +730,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4 validate" id="typeselector" name="country">
+                        <select class="wide s-select form-control pl-4 validate" id="country" name="country">
                             <option value="USA">USA</option>
                             <option value="Australia">Australia</option>
                             <option value="Austria">Austria</option>
@@ -742,7 +742,7 @@
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
-                    <select class="wide s-select form-control pl-4 validate" id="typeselector" name="state">
+                    <select class="wide s-select form-control pl-4 validate" id="state" name="state">
                         <option value="Alaska">Alaska</option>
                         <option value="Washington">Washington</option>
                         <option value="South">New South Wales</option>
@@ -762,13 +762,13 @@
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="kg" type="radio" name="weight_unit" checked>KGs
+                        <input class="color-radio mx-2 weight_unit" value="kg" type="radio" name="weight_unit" checked>KGs
                     </label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="lb" type="radio" name="weight_unit">LBs
+                        <input class="color-radio mx-2 weight_unit" value="lb" type="radio" name="weight_unit">LBs
                     </label>
                     <!-- <input type="text" name="weight" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity"> -->
-                    <input type="text" class="form-control pl-4" id="inputCity" name="weight">
+                    <input type="text" class="form-control pl-4" id="weight" name="weight">
 
 
                 </div>
@@ -782,15 +782,15 @@
 
                     <label for="inputAddress2" class=" ">Height</label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="feet" type="radio" name="height_unit" checked>Feet
+                        <input class="color-radio mx-2 height_unit" value="feet" type="radio" name="height_unit" checked>Feet
                     </label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="cm" type="radio" name="height_unit">CM
+                        <input class="color-radio mx-2 height_unit" value="cm" type="radio" name="height_unit">CM
                     </label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" type="radio" value="inches" name="height_unit">Inches
+                        <input class="color-radio mx-2 height_unit" type="radio" value="inches" name="height_unit">Inches
                     </label>
-                    <input type="text" class="form-control pl-4" id="inputAddress2" name="height">
+                    <input type="text" class="form-control pl-4" id="height" name="height">
                 </div>
 
 
@@ -798,7 +798,7 @@
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
-                    <input type="text" class="form-control pl-4" id="inputCity" name="madical_condition">
+                    <input type="text" class="form-control pl-4" id="madical_condition" name="madical_condition">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
@@ -839,7 +839,7 @@
                     <label for="inputCity" class=" ">Add Facebook URL</label>
                     <div class="input-container">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="inputCity" name="facebook">
+                        <input type="url" class="form-control pl-4" id="facebook" name="facebook">
                     </div>
 
                 </div>
@@ -849,7 +849,7 @@
                     <label for="inputCity" class=" ">Add Insta URL</label>
                     <div class="input-container">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="inputCity" name="instagram">
+                        <input type="url" class="form-control pl-4" id="instagram" name="instagram">
                     </div>
 
                 </div>
@@ -859,7 +859,7 @@
                     <label for="inputCity" class=" ">Add Linkedin URL</label>
                     <div class="input-container">
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="inputCity" name="linkedin">
+                        <input type="url" class="form-control pl-4" id="linkedin" name="linkedin">
                     </div>
 
                 </div>
@@ -876,10 +876,10 @@
         </div>
         <div class="col-12 my-5">
             <div class=" profile-nxt-btn">
-                <!-- <a href="{{url('/trainer/stepthree')}}" class="update-profile-form-btn">Next</a> -->
+                <!-- <a  class="update-profile-form-btn"id="sighnup_submit">Next</a> -->
 
 
-                <button class="button" type="submit">Next</button>
+                <button class="button" type="submit" id="sighnup_submit">Next</button>
             </div>
         </div>
     </form>
@@ -902,7 +902,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div id="img-preview" class="img-preview">
-                                                <!-- <img id="modalCertificate" src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt=""> -->
+                                                <img id="modalCertificate" src="{{asset('public/assets/trainerimages/certificate.svg')}}" alt="">
                                             </div>
                                         </div>
                                         <!-- <div class="col-sm-6 d-flex align-self-end pl-sm-0 py-4 py-sm-0">
@@ -939,13 +939,16 @@
 @section('insertsfooter')
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" async defer></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
         var certificateArray = [];
-        const location = [];
+        var location = [];
         var index = 0;
+        var index2 = 0;
+
 
         const fileInput = document.getElementById('choose-file');
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -995,16 +998,10 @@
             index = $(this).attr('data-src');
             $(this).parent().remove();
             certificateArray.splice(index, 1);
+            console.log(certificateArray);
         })
 
-        /////// remove tage
-        // $(document).on('click', ".remove-location", function() {
-        //     index = $(this).attr('data-src');
-        //     $(this).parent().remove();
-
-        // })
-
-        // Append Location 
+        // // Append Location 
         $(".addLocation").click(function() {
             let location_name = $("#locationInput").val();
             let tag = $("#locationTag").val();
@@ -1013,29 +1010,110 @@
                         <span>${location_name}</span>
                         |
                         <strong style="color: #E37048">${tag}</strong>
-                        <img class="remove-location" src="{{asset('public/assets/images/remove.png')}}"  alt="">
+                        <img class="remove-location" data-src="${index2}" src="{{asset('public/assets/images/remove.png')}}"  alt="">
                     </div>
                 </div>`;
-
             $("#display-location").append(div);
+            // console.log(location);
+            index2++;
             let obj = {
                 name: location_name,
                 tag: tag
             }
             location.push(obj);
+            // get index of remove item
+            //  remove index from location array
             $(document).on('click', ".remove-location", function() {
                 // index = $(this).attr('data-src');
-                $(this).parent().remove();
-                let index_location = location.indexOf(obj);
-                if (index_location > -1) {
+                var test = $(this).parent().remove();
+                var index = $(this).attr('data-src');
 
-                    location.splice(index_location, 1);
-                }
+
+                location.splice(index, 1);
                 console.log(location);
+
             })
 
 
         })
+
+
+        // Signup Form request START HERE 
+        $('#sighnup_submit').on('click', function(e) {
+            e.preventDefault();
+            console.log(certificateArray);
+            // console.log(location);
+            var date_of_birth = $('#date_of_birth').val();
+            var emergency_contact = $('#emergency_contact').val();
+            var gender = $('#gender').val();
+            var country = $('#country').val();
+            var state = $('#state').val();
+            var weight = $('#weight').val();
+            var weight_unit = $(this).find('.weight_unit').val();
+            var height = $('#height').val();
+            var hieght_unit = $(this).find('.height_unit').val();
+            var madical_condition = $('#madical_condition').val();
+            var relationship_emergency_contact = $('#relation_emergency').val();
+            var facebook_url = $('#facebook').val();
+            var instagram_url = $('#instagram').val();
+            var linkedin_url = $('#linkedin').val();
+
+            // var images = JSON.stringify(certificateArray);
+            var certificate_image = certificateArray;
+            // alert(certificate_image);
+            // if (date_of_birth != "" && emergency_contact != "" && gender != "" && country != "") {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                url: `{{route('update_profile_two')}}`,
+                type: "POST",
+                data: {
+                    date_of_birth: date_of_birth,
+                    emergency_contact: emergency_contact,
+                    gender: gender,
+                    country: country,
+                    state: state,
+                    weight: weight,
+                    weight_unit: weight_unit,
+                    height: height,
+                    hieght_unit: hieght_unit,
+                    madical_condition: madical_condition,
+                    relationship_emergency_contact: relationship_emergency_contact,
+                    facebook_url: facebook_url,
+                    instagram_url: instagram_url,
+                    linkedin_url: linkedin_url,
+                    certificate_image: certificate_image,
+                },
+                cache: false,
+                success: function(dataResult) {
+                    alert('success');
+
+                    console.log(dataResult);
+                    if (dataResult.success == true) {
+                        // $('.loaderDiv').hide();
+                        // $('#signupModal').modal('hide');
+                        // $('#loginModal').modal('show');
+                        // toastr.success('Registration Successful!');
+                    } else if (dataResult.success == false) {
+                        // $('.loaderDiv').hide();
+
+                        toastr.error(dataResult.message);
+                    }
+                },
+                error: function(jqXHR, exception) {
+                    $('.loaderDiv').hide();
+                    toastr.error(jqXHR.responseJSON.message);
+                }
+
+            });
+            // } else {
+            //     toastr.error("Please Fill All Fields.");
+            //     $('.loaderDiv').hide();
+            // }
+        });
+        // Signup Form request END HERE 
 
 
         // Integrate map search on input Location 
@@ -1043,12 +1121,8 @@
             var input = document.getElementById('locationInput');
             new google.maps.places.Autocomplete(input);
         }
-
-        // Call the initMap() function when the Google Maps API has finished loading
+        // // Call the initMap() function when the Google Maps API has finished loading
         initMap();
-
-
-
     });
 </script>
 <script>
@@ -1057,11 +1131,64 @@
         $("#imageuploadmodal").css('padding-right', 0)
     }
 </script>
-<script>
+<!-- <script>
+    // Append Location
+    // $('.s-select').niceSelect();
+    // var certificateArray = [];
+    // const location = [];
+    // var index = 0;
+    // var index2 = 0;
+    // $(".addLocation").click(function() {
+    //     let location_name = $("#locationInput").val();
+    //     let tag = $("#locationTag").val();
+    //     let div = `<div class="d-flex align-items-center">
+    //                 <div class="location-pill">
+    //                     <span>${location_name}</span>
+    //                     |
+    //                     <strong style="color: #E37048">${tag}</strong>
+    //                     <img class="remove-location" data-src="${index2}" src="{{asset('public/assets/images/remove.png')}}"  alt="">
+    //                 </div>
+    //             </div>`;
+
+    //     $("#display-location").append(div);
+    //     // console.log(location);
+    //     index2++;
+    //     let obj = {
+    //         name: location_name,
+    //         tag: tag
+    //     }
+    //     location.push(obj);
+    //     // get index of remove item
+    //     //  remove index from location array
+    //     $(document).on('click', ".remove-location", function() {
+    //         // index = $(this).attr('data-src');
+    //         var test = $(this).parent().remove();
+    //         var index = $(this).attr('data-src');
+
+
+    //         location.splice(index, 1);
+    //         console.log(location);
+
+    //     })
+
+
+    // })
+
+
+    // Integrate map search on input Location 
+    // function initMap() {
+    //     var input = document.getElementById('locationInput');
+    //     new google.maps.places.Autocomplete(input);
+    // }
+
+    // Call the initMap() function when the Google Maps API has finished loading
+    // initMap();
+
     $(document).ready(function() {
         var sessionsArray = [];
         var images = [];
         var index = 0;
+
         // $('.s-select').niceSelect();
 
         const fileInput = document.getElementById('choose-file');
@@ -1097,17 +1224,104 @@
                 imageWrapper.appendChild(imageContainer);
                 imagePreview.appendChild(imageWrapper);
 
-                images.push(file);
+                var imgCaption = $("#certificateCaption").val();
+                // console.log(imgCaption);
+                // alert('com');
+                let obj = {
+                    image: file,
+                    caption: imgCaption
+                }
+
+                images.push(obj);
                 imageCloseButton.addEventListener('click', function() {
                     imageWrapper.remove();
-                    let index = images.indexOf(file);
+                    let index = images.indexOf(obj);
                     if (index > -1) {
                         images.splice(index, 1);
                     }
-                    // console.log(images);
+                    console.log(images);
                 });
             }
         });
+
+        //////// insert data in step 2//////////// 
+
+        $('#sighnup_submit').on('click', function(e) {
+            // $('.loaderDiv').show();
+            alert('cp');
+            e.preventDefault();
+            var date_of_birth = $('#date_of_birth').val();
+            var emergency_contact = $('#emergency_contact').val();
+            var gender = $('#gender').val();
+            var country = $('#country').val();
+            var state = $('#state').val();
+            var weight = $('#weight').val();
+            var weight_unit = $(this).find('.weight_unit').val();
+            var height = $('#height').val();
+            var hieght_unit = $(this).find('.height_unit').val();
+            var madical_condition = $('#madical_condition').val();
+            var relationship_emergency_contact = $('#relation_emergency').val();
+            var facebook_url = $('#facebook').val();
+            var instagram_url = $('#instagram').val();
+            var linkedin_url = $('#linkedin').val();
+            console.log(certificate_image);
+            var images = JSON.stringify(images);
+            var certificate_image = images;
+            alert(certificate_image);
+            // if (date_of_birth != "" && emergency_contact != "" && gender != "" && country != "") {
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                url: `{{route('update_profile_two')}}`,
+                type: "POST",
+                data: {
+                    date_of_birth: date_of_birth,
+                    emergency_contact: emergency_contact,
+                    gender: gender,
+                    country: country,
+                    state: state,
+                    weight: weight,
+                    weight_unit: weight_unit,
+                    height: height,
+                    hieght_unit: hieght_unit,
+                    madical_condition: madical_condition,
+                    relationship_emergency_contact: relationship_emergency_contact,
+                    facebook_url: facebook_url,
+                    instagram_url: instagram_url,
+                    linkedin_url: linkedin_url,
+                    certificate_image: certificate_image,
+                },
+                cache: false,
+                success: function(dataResult) {
+                    alert('success');
+
+                    console.log(dataResult);
+                    if (dataResult.success == true) {
+                        // $('.loaderDiv').hide();
+                        // $('#signupModal').modal('hide');
+                        // $('#loginModal').modal('show');
+                        // toastr.success('Registration Successful!');
+                    } else if (dataResult.success == false) {
+                        // $('.loaderDiv').hide();
+
+                        toastr.error(dataResult.message);
+                    }
+                },
+                error: function(jqXHR, exception) {
+                    $('.loaderDiv').hide();
+                    toastr.error(jqXHR.responseJSON.message);
+                }
+
+            });
+            // } else {
+            //     toastr.error("Please Fill All Fields.");
+            //     $('.loaderDiv').hide();
+            // }
+        });
+
     })
-</script>
+</script> -->
+
 @endsection

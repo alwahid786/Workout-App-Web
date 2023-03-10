@@ -102,19 +102,21 @@ class AuthController extends Controller
             'linkedin_url' => $request->linkedin,
             'page' => 2,
         ]);
-        ///add certificate images
-        // $cert_image = $request->certificate_image;
-        // foreach ($cert_image as $cert_images) {
-        //     $trainer_doc = new CertificateImage();
-        //     $trainer_doc->trainer_id = auth()->user()->id;
-        //     $trainer_doc->caption = $cert_images['caption'];
-        //     $trainer_doc->image = $cert_image['image'];
-        //     $trainer_doc->save();
-        // }
+        // /add certificate images
+        $cert_image = $request->certificate_image;
+        // dd($cert_image);
+        foreach ($cert_image as $cert_images) {
+            $trainer_doc = new CertificateImage();
+            $trainer_doc->trainer_id = auth()->user()->id;
+            $trainer_doc->caption = $cert_images['caption'];
+            $trainer_doc->image = $cert_images['image'];
+            $trainer_doc->save();
+        }
         if (!$trainer) {
             return $this->sendError('User has not registered. Please try again later');
         }
-        return Redirect::to(url('/trainer/stepthree'));
+        // return Redirect::to(url('/trainer/stepthree'));
+        return $this->sendResponse($trainer, 'User Registered Successfully!');
     }
     //.........show step three ...//////////
     public function stepThree()
