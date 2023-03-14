@@ -1041,8 +1041,8 @@
         // Signup Form request START HERE 
         $('#sighnup_submit').on('click', function(e) {
             e.preventDefault();
-            console.log(certificateArray);
-            // console.log(location);
+            // console.log(certificateArray);
+            console.log(location);
             var date_of_birth = $('#date_of_birth').val();
             var emergency_contact = $('#emergency_contact').val();
             var gender = $('#gender').val();
@@ -1058,8 +1058,8 @@
             var instagram_url = $('#instagram').val();
             var linkedin_url = $('#linkedin').val();
 
-            // var images = JSON.stringify(certificateArray);
             var certificate_image = certificateArray;
+            var workout_location = location;
             // alert(certificate_image);
             // if (date_of_birth != "" && emergency_contact != "" && gender != "" && country != "") {
             $.ajax({
@@ -1085,17 +1085,16 @@
                     instagram_url: instagram_url,
                     linkedin_url: linkedin_url,
                     certificate_image: certificate_image,
+                    workout_location: workout_location,
                 },
                 cache: false,
                 success: function(dataResult) {
-                    alert('success');
+                    // alert('success');
 
                     console.log(dataResult);
                     if (dataResult.success == true) {
-                        // $('.loaderDiv').hide();
-                        // $('#signupModal').modal('hide');
-                        // $('#loginModal').modal('show');
-                        // toastr.success('Registration Successful!');
+
+                        window.location.href = `{{url('/trainer/stepthree')}}`;
                     } else if (dataResult.success == false) {
                         // $('.loaderDiv').hide();
 

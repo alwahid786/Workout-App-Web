@@ -18,6 +18,7 @@ use App\Models\Session;
 use App\Models\Category;
 use App\Models\CertificateImage;
 use App\Models\SessionImage;
+use App\Models\WorkoutLocation;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Illuminate\Support\Facades\Mail;
@@ -111,6 +112,14 @@ class AuthController extends Controller
             $trainer_doc->caption = $cert_images['caption'];
             $trainer_doc->image = $cert_images['image'];
             $trainer_doc->save();
+        }
+        $locations = $request->workout_location;
+        foreach ($locations as $location) {
+            $workout_location = new WorkoutLocation();
+            $workout_location->tag = $location['tag'];
+            $workout_location->location = $location['name'];
+            $workout_location->trainer_id = auth()->user()->id;
+            $workout_location->save();
         }
         if (!$trainer) {
             return $this->sendError('User has not registered. Please try again later');
