@@ -292,7 +292,7 @@ class TrainerController extends Controller
         }
         return view('pages.trainerSide.session', compact('category', 'sessions'));
     }
-
+    /////////// calender page ////////
     public function calenderSession()
     {
         $session = BookedSession::where('trainer_id', auth()->user()->id)->with('session.category')->get();
