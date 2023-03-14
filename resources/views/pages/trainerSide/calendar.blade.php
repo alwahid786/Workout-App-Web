@@ -330,8 +330,6 @@
 
         });
 
-
-
         calendar.render();
     });
 </script>
