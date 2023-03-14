@@ -1041,8 +1041,7 @@
         // Signup Form request START HERE 
         $('#sighnup_submit').on('click', function(e) {
             e.preventDefault();
-            // console.log(certificateArray);
-            console.log(location);
+
             var date_of_birth = $('#date_of_birth').val();
             var emergency_contact = $('#emergency_contact').val();
             var gender = $('#gender').val();
@@ -1061,56 +1060,55 @@
             var certificate_image = certificateArray;
             var workout_location = location;
             // alert(certificate_image);
-            // if (date_of_birth != "" && emergency_contact != "" && gender != "" && country != "") {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
+            if (date_of_birth != "" && emergency_contact != "" && gender != "" && country != "") {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
 
-                url: `{{route('update_profile_two')}}`,
-                type: "POST",
-                data: {
-                    date_of_birth: date_of_birth,
-                    emergency_contact: emergency_contact,
-                    gender: gender,
-                    country: country,
-                    state: state,
-                    weight: weight,
-                    weight_unit: weight_unit,
-                    height: height,
-                    hieght_unit: hieght_unit,
-                    madical_condition: madical_condition,
-                    relationship_emergency_contact: relationship_emergency_contact,
-                    facebook_url: facebook_url,
-                    instagram_url: instagram_url,
-                    linkedin_url: linkedin_url,
-                    certificate_image: certificate_image,
-                    workout_location: workout_location,
-                },
-                cache: false,
-                success: function(dataResult) {
-                    // alert('success');
+                    url: `{{route('update_profile_two')}}`,
+                    type: "POST",
+                    data: {
+                        date_of_birth: date_of_birth,
+                        emergency_contact: emergency_contact,
+                        gender: gender,
+                        country: country,
+                        state: state,
+                        weight: weight,
+                        weight_unit: weight_unit,
+                        height: height,
+                        hieght_unit: hieght_unit,
+                        madical_condition: madical_condition,
+                        relationship_emergency_contact: relationship_emergency_contact,
+                        facebook_url: facebook_url,
+                        instagram_url: instagram_url,
+                        linkedin_url: linkedin_url,
+                        certificate_image: certificate_image,
+                        workout_location: workout_location,
+                    },
+                    cache: false,
+                    success: function(dataResult) {
+                        // alert('success');
 
-                    console.log(dataResult);
-                    if (dataResult.success == true) {
+                        console.log(dataResult);
+                        if (dataResult.success == true) {
 
-                        window.location.href = `{{url('/trainer/stepthree')}}`;
-                    } else if (dataResult.success == false) {
-                        // $('.loaderDiv').hide();
+                            window.location.href = `{{url('/trainer/stepthree')}}`;
+                        } else if (dataResult.success == false) {
+                            // $('.loaderDiv').hide();
 
-                        toastr.error(dataResult.message);
+                            toastr.error(dataResult.message);
+                        }
+                    },
+                    error: function(jqXHR, exception) {
+                        $('.loaderDiv').hide();
+                        toastr.error(jqXHR.responseJSON.message);
                     }
-                },
-                error: function(jqXHR, exception) {
-                    $('.loaderDiv').hide();
-                    toastr.error(jqXHR.responseJSON.message);
-                }
 
-            });
-            // } else {
-            //     toastr.error("Please Fill All Fields.");
-            //     $('.loaderDiv').hide();
-            // }
+                });
+            } else {
+                toastr.error("Please Fill All Fields.");
+            }
         });
         // Signup Form request END HERE 
 
