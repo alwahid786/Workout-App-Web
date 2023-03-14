@@ -319,7 +319,7 @@
             // expandRows: false,
             // navLinks: false,
             // selectable: false,
-
+            
             events: event,
             eventClick: function(e) {
                 id = e.event.id;
