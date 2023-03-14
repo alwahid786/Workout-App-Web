@@ -320,7 +320,13 @@
             // navLinks: false,
             // selectable: false,
 
-            events: event
+            events: event,
+            eventClick: function(e) {
+                id = e.event.id;
+                url = `{{url('/trainer/session-one')}}`;
+                window.location.href = url + '/' + id;
+
+            }
 
         });
 

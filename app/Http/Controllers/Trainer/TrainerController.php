@@ -301,7 +301,9 @@ class TrainerController extends Controller
         foreach ($sessions as $session) {
             $calender = [
                 'title' => $session['session']['category']['title'],
-                'start' => $session['session-date'] .'T'. $session['session']['start_time'],
+                'start' => $session['session-date'] . 'T' . $session['session']['start_time'],
+                'id' => $session['session']['id'],
+
             ];
             array_push($calArray, $calender);
         }
