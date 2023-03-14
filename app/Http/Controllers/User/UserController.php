@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Traits\ResponseTrait;
 use App\Models\BookedSession;
+use App\Models\Chat;
 use App\Models\Classes;
 use App\Models\ContactUs;
 use App\Models\Customer;
@@ -334,6 +335,14 @@ class UserController extends Controller
                     'is_refunded' => 0
                 )
             );
+            // $chat = Chat::create(
+            //     array(
+            //         'trainer_id' => $request->trainer_id,
+            //         'session_id' => $request->session_id,
+            //         'users' => auth()->user()->id,
+            //     )
+            // );
+
             if ($transaction) {
 
 
