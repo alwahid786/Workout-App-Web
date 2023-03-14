@@ -91,6 +91,7 @@
 
     .fc-event-title {
         color: #ffff;
+
     }
 
     .fc-daygrid-event-harness .fc-event-draggable {
@@ -126,6 +127,23 @@
         min-width: 1000px;
         overflow-x: scroll;
     } */
+    .fc-daygrid-event-harness a {
+        color: #fff !important;
+    }
+
+    .fc-event {
+        background-color: rgba(255, 169, 0, 0.57);
+
+    }
+
+    .fc-daygrid-event-dot {
+        border-color: #fff !important;
+
+    }
+
+    .fc-event:hover {
+        background-color: #E37048 !important;
+    }
 
     @media (min-width: 992px) {
 
@@ -223,6 +241,7 @@
 <script src="{{ asset('public/assets/js/index.global.min.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        var event = @json($calArray);
         var calendarEl = document.getElementById('calendar');
         let draggableEl = document.getElementById('mydraggable');
 
@@ -244,7 +263,7 @@
             },
             defaultDate: '2023-02-07',
             navLinks: true,
-            editable: true,
+            editable: false,
             eventLimit: true,
             dragScroll: true,
             // eventDisplay: 'auto',
@@ -296,44 +315,12 @@
             // windowResizeDelay: 100,
             // longPressDelay: 1000,
             // eventDragMinDistance: 5,
+
             // expandRows: false,
             // navLinks: false,
             // selectable: false,
-            events: [{
-                    // title: 'Gym',
-                    //     start: '2023-02-10T10:30:00',
-                    //     end: '2023-02-12T12:30:00'
-                    // },
 
-                    title: 'Gym',
-                    start: '2023-02-19T14:30:00'
-
-                },
-                {
-                    title: 'Gym',
-                    start: '2023-02-28T14:30:00'
-                },
-                {
-                    title: 'Lunch',
-                    start: '2023-02-15T12:00:00'
-                },
-                {
-                    title: 'Gym',
-                    start: '2023-02-24T14:30:00'
-                },
-                {
-                    title: 'Yoga',
-                    start: '2023-02-18T17:30:00'
-                },
-                {
-                    title: 'Yoga',
-                    start: '2023-02-26T20:00:00'
-                },
-                {
-                    title: 'Yoga',
-                    start: '2023-02-22T07:00:00'
-                },
-            ]
+            events: event
 
         });
 

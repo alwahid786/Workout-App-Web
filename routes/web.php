@@ -107,6 +107,8 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/clientlist', [TrainerController::class, 'client'])->name('/trainer/clientlist');
     Route::any('/trainer/profile/{id}', [TrainerController::class, 'userDetail'])->name('trainer/profile');
     Route::any('/trainer/client', [TrainerController::class, 'categoryFilter'])->name('trainer/client');
+    Route::any('/trainer/calendar', [TrainerController::class, 'calenderSession'])->name('trainer/calendar');
+
     Route::any('/trainer/session/{id?}', [TrainerController::class, 'classDetail'])->name('trainer/session');
 
     Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
@@ -306,9 +308,9 @@ Route::get('/trainer/stepfour-second', function () {
 Route::get('/trainer/dashboardnull', function () {
     return view('pages.trainerSide.dashboard-null');
 });
-Route::get('/trainer/calendar', function () {
-    return view('pages.trainerSide.calendar');
-});
+// Route::get('/trainer/calendar', function () {
+//     return view('pages.trainerSide.calendar');
+// });
 // Route::get('/trainer/clientlist', function () {
 //     return view('pages.trainerSide.client-list');
 // });

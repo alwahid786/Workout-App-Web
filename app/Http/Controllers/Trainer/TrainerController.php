@@ -15,6 +15,7 @@ use App\Models\Session;
 use App\Models\SessionImage;
 use App\Models\TrainerProfile;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Js;
 
 class TrainerController extends Controller
 {
@@ -276,7 +277,6 @@ class TrainerController extends Controller
                 return $this->sendError('session not found');
             }
             $sessions = json_decode($sessions, true);
-            
         } else {
             $sessions = '';
             $category = Category::where('id', $id)
@@ -289,8 +289,24 @@ class TrainerController extends Controller
                 return $this->sendError('Categories not found');
             }
             $categories = json_decode($category, true);
-            
         }
         return view('pages.trainerSide.session', compact('category', 'sessions'));
+    }
+
+    public function calenderSession()
+    {
+        $session = BookedSession::where('trainer_id', auth()->user()->id)->with('session.category')->get();
+        $sessions = json_decode($session, true);
+        $calArray = [];
+        foreach ($sessions as $session) {
+            $calender = [
+                'title' => $session['session']['category']['title'],
+                'start' => $session['session-date'] .'T'. $session['session']['start_time'],
+            ];
+            array_push($calArray, $calender);
+        }
+        // dd($calArray);
+
+        return view('pages.trainerSide.calendar', compact('calArray'));
     }
 }
