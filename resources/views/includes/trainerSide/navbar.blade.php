@@ -596,14 +596,13 @@
                 </a>
             </li>
 
-
-
-
-
-
         </ul>
-
-
 
     </div>
 </nav>
+
+<!-- <script>
+    $(document).ready(function() {
+
+    });
+</script> -->

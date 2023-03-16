@@ -313,4 +313,14 @@ class TrainerController extends Controller
 
         return view('pages.trainerSide.calendar', compact('calArray'));
     }
+    //// navbar notification 
+    public function notification()
+    {
+        $notification = Notification::where(['reciever_id' => auth()->user()->id, 'is_read' => 0])->with('user')->get();
+        if (!$notification) {
+            return $this->sendError('There is no Data');
+        }
+        $notifications=json_decode($notification,true);
+        return $this->sendResponse(['notification'=>$notifications],'Get notification successfully');
+    }
 }
