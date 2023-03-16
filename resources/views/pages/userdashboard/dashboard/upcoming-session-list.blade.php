@@ -42,7 +42,7 @@
                 @foreach($upcomingsession as $upcoming_session)
                 <div class="col-lg-6 my-2">
                     <div class="class-left-banner px-2 py-3">
-                        <img class="class-banner-img" src="{{$upcoming_session['session']['session_image'][1]['image']}}" alt="">
+                        <img class="class-banner-img" src="{{$upcoming_session['session']['session_image'][0]['image']}}" alt="">
                         <div class="class-banner-content banner-content pt-3">
                             <h1>{{$upcoming_session['session']['class']['category']['title']}}</h1>
                             <div class="class-banner-content-right">
