@@ -19,6 +19,7 @@ use App\Models\Customer;
 use App\Models\Review;
 use App\Models\Transactions;
 use App\Models\Session as ModelsSession;
+use App\Http\Traits\NotificationTrait;
 use Carbon\Carbon;
 use DateTime;
 use Stripe;
@@ -33,6 +34,7 @@ use Stevebauman\Location\Facades\Location;
 
 class UserController extends Controller
 {
+    use NotificationTrait;
     use ResponseTrait;
     ///////// category Trainer Api...../////////
     public function getTrainerCategory(Request $request)
@@ -325,6 +327,43 @@ class UserController extends Controller
                     'trainer_id'   => $request->trainer_id,
                 )
             );
+            $chat = new Chat();
+            if ($booksession->id != $chat->session_id) {
+                // dd($request->trainer_id, $booksession->id);
+                $create_chat = Chat::create(
+                    array(
+                        'trainer_id' => $request->trainer_id,
+                        'session_id' => $booksession->id,
+                        'users' => auth()->user()->id,
+                        'status' => 1,
+                        'type' => 1,
+
+                    )
+                );
+            } else {
+                // dd($booksession->id);
+                $chat::where('session_id', $booksession->id)->update(['users' =>  auth()->user()->id]);
+                // $existingUsers = explode(',', $chat->users);
+                // if (!in_array(auth()->user()->id, $existingUsers)) {
+                //     // Add the new user's ID to the array of existing users
+                //     $existingUsers[] = auth()->user()->id;
+
+                //     // Join the updated array of users with a comma and update the users column
+
+                //     $chat->update(['users' => implode(',', auth()->user()->id)]);
+                // }
+            }
+            // Notification 
+            if ($booksession) {
+
+                $reciever_id = $request->trainer_id;
+                $type_id = $request->session_id;
+                $noti_type = 'booked_session';
+                $noti_text = 'your session is booked';
+                $notification = $this->sendNotification($reciever_id, $type_id, $noti_type, $noti_text);
+            }
+
+
             // Save data to transactions 
             $transaction = Transactions::create(
                 array(
@@ -335,13 +374,6 @@ class UserController extends Controller
                     'is_refunded' => 0
                 )
             );
-            // $chat = Chat::create(
-            //     array(
-            //         'trainer_id' => $request->trainer_id,
-            //         'session_id' => $request->session_id,
-            //         'users' => auth()->user()->id,
-            //     )
-            // );
 
             if ($transaction) {
 

@@ -10,6 +10,7 @@ use App\Models\BookedSession;
 use App\Models\Category;
 use App\Models\Classes;
 use App\Models\ClassImage;
+use App\Models\Notification;
 use App\Models\Review;
 use App\Models\Session;
 use App\Models\SessionImage;
@@ -159,7 +160,7 @@ class TrainerController extends Controller
         $upcoming_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', '>', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
         $past_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', '<', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
         $rating         = Review::where('trainer_id', auth()->user()->id)->with('user:id,name,profile_img')->get();
-
+        $notification = Notification::where(['reciever_id' => auth()->user()->id, 'is_read' => 0])->with('user')->get();
         if (!$today_sessions) {
             return $this->sendError('No Data found against ID');
         }
@@ -167,9 +168,10 @@ class TrainerController extends Controller
         $upcoming_sessions = json_decode($upcoming_sessions, true);
         $past_sessions = json_decode($past_sessions, true);
         $rating        = json_decode($rating, true);
+        $notifications        = json_decode($notification, true);
 
-        // dd($rating);
-        return view('pages.trainerSide.dashboard', compact('today_sessions', 'upcoming_sessions', 'past_sessions', 'rating'));
+        // dd($notifications);
+        return view('pages.trainerSide.dashboard', compact('today_sessions', 'upcoming_sessions', 'past_sessions', 'rating', 'notifications'));
     }
 
     // public function sessionDetail($id)

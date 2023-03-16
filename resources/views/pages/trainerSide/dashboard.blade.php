@@ -961,25 +961,32 @@
 
                 </div>
             </div>
+
             <div class="col-xl-4 mt-4 mt-xl-0">
                 <div class="notification-container py-3">
                     <div class="dashboard-session-heading px-3 pb-2">
                         <h1>Notification</h1>
                     </div>
                     <div class="notification-container-inner">
+
+                        @if($notifications!= null)
+                        @foreach($notifications as $notification)
                         <div class="noti-card py-3 my-2 px-0">
                             <div class="left-notification pr-2 pl-3">
-                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
+                                <img src="{{$notification['user']['profile_img']}}" alt="">
                             </div>
                             <div class="right-notification pr-3">
-                                <h1><span>Dayut Carlotte</span> send you request for Nutrition sessions</h1>
+                                <h1><span>{{$notification['user']['name']}}</span> {{$notification['noti_text']}}</h1>
                                 <div class="right-notification-btn px-0">
                                     <button class="m-2" data-toggle="modal" data-target="#acceptModal">Accept</button>
                                     <button class="m-2" data-toggle="modal" data-target="#rejectModal">Reject</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="noti-card py-3 my-2 px-0">
+                        @endforeach
+                        @else
+                        @endif
+                        <!-- <div class="noti-card py-3 my-2 px-0">
                             <div class="left-notification pr-2 pl-3">
                                 <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                             </div>
@@ -1000,7 +1007,7 @@
                                     (2pm-4pm)</h1>
 
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
 
