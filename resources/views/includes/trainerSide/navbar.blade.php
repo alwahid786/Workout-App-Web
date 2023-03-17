@@ -1,3 +1,11 @@
+<?php
+
+use App\Models\Notification;
+
+$notification = Notification::where(['reciever_id' => auth()->user()->id, 'is_read' => 0])->with('user')->get();
+$notifications = json_decode($notification, true);
+
+?>
 <style>
     * {
         margin: 0;
@@ -463,12 +471,14 @@
                 <div class="dropdown chat-link">
                     <a class="nav-link   dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" href="#"> <img src="{{asset('public/assets/images/notification-icon-w.svg')}}" alt="image"></a>
                     <div class="dropdown-menu notification-dropdown" aria-labelledby="dropdownMenuButton">
+                        @if($notifications!= null)
+                        @foreach($notifications as $notification)
 
                         <a class=" notification-area" href="{{url('/trainer/request')}}">
                             <div class="notification-profile d-flex py-3">
-                                <img src="{{asset('public/assets/images/rating-right.png')}}">
+                                <img src="{{$notification['user']['profile_img']}}">
                                 <div>
-                                    <p class="pl-3 pb-1"><span>Dayut Carlotte</span> send you request for Nutrition sessions</p>
+                                    <p class="pl-3 pb-1"><span>{{$notification['user']['name']}}</span> {{$notification['noti_text']}}</p>
                                     <div class="notification-btns pl-3">
                                         <button>Accept</button>
                                         <button>Reject</button>
@@ -477,7 +487,10 @@
 
                             </div>
                         </a>
-                        <a class=" notification-area" href="{{url('/trainer/request')}}">
+                        @endforeach
+                        @else
+                        @endif
+                        <!-- <a class=" notification-area" href="{{url('/trainer/request')}}">
                             <div class="notification-profile d-flex py-3">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
                                 <div>
@@ -501,7 +514,7 @@
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
                                 <p class="pl-3"><span>Dayut Carlotte</span> your Nutritions session wil be on 12 Nov 2022 (2pm-4pm)</p>
                             </div>
-                        </a>
+                        </a> -->
 
                     </div>
                 </div>
