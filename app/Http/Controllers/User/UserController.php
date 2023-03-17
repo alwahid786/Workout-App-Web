@@ -89,7 +89,7 @@ class UserController extends Controller
             Session::flash('error', 'Something went wrong, please try again later.');
             return redirect()->back();
         }
-        flash()->success('Profile Updated Successfuly!');
+        // flash()->success('Profile Updated Successfuly!');
         return view('pages.website.update-profile');
     }
 
