@@ -1,3 +1,12 @@
+<?php
+
+use Carbon\Carbon;
+
+$currentDate =
+
+Carbon::now()->format('d-M-Y');;
+
+?>
 <style>
     .logout-dropdown a:hover {
         background-color: #E37048;
@@ -12,6 +21,7 @@
 <nav class="navbar navbar-z navbar-expand-lg navbar-dark  navbar-header px-4 px-lg-0">
     <a class="navbar-brand logo-header pl-lg-3" data-aos="fade-right" href="{{url('dashboard')}}">
         <img src="{{asset('public/assets/images/d-logo.svg')}}" alt="image">
+
     </a>
     <button class="navbar-toggler navbar-toggler-btn" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span><i class="fa fa-bars" aria-hidden="true"></i></span>
@@ -19,8 +29,8 @@
 
     <div class="collapse navbar-collapse nav-main pl-0" id="navbarCollapse">
         <div class="nav-profile-name pl-lg-3 ">
-            <h1>Welcome, John Smith </h1>
-            <p>Wed, 23 Nov 2022</p>
+            <h1>Welcome, {{auth()->user()->name}} </h1>
+            <p>{{$currentDate}}</p>
         </div>
         <div class="m-lg-auto left-inner-addon user-search-box">
             <input class="form-control" type="search" placeholder="Search">
@@ -71,7 +81,12 @@
             <li class="nav-item mr-lg-4 my-2 my-lg-0">
                 <div class="dropdown dropdown-logout">
                     <button class="p-0 btn  dropdown-toggle log-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if(auth()->user()->profile_img==null)
                         <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                        @else
+                        <img src="{{auth()->user()->profile_img}}" alt="image">
+
+                        @endif
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu logout-dropdown" aria-labelledby="dropdownMenuButton">
