@@ -1190,9 +1190,22 @@
                                             </div>
                                             <div class="session-card-content">
                                                 <div class="session-profile-left py-2">
-                                                    <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
-                                                    <p class="pl-3">{{$bookedsession['session']['class']['trainer']['name']}}</p>
+
+                                                    <!-- <p class="px-4">Location : London</p> -->
+                                                    <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i> London</p>
+
                                                 </div>
+
+                                            </div>
+                                            <div class="session-card-content">
+                                                <div class="session-profile-left py-2">
+                                                    <img src="{{$bookedsession['session']['class']['trainer']['profile_img']}}" alt="">
+                                                    <p class="pl-3">{{$bookedsession['session']['class']['trainer']['name']}}</p>
+                                                    <!-- <p class="px-4">Location : London</p> -->
+                                                    <!-- <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i></p> -->
+
+                                                </div>
+
                                                 <div class="session-anchor-right">
                                                     <a href="{{url('/userdashboard/sessionone/'.$bookedsession['session']['id'])}}">View</a>
                                                 </div>
