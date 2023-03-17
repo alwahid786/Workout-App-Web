@@ -90,7 +90,8 @@ class UserController extends Controller
             return redirect()->back();
         }
         // flash()->success('Profile Updated Successfuly!');
-        return view('pages.website.update-profile');
+        // return view('pages.website.update-profile');
+        return redirect()->route('dashboard');
     }
 
     ///   stripe payment .....///////
