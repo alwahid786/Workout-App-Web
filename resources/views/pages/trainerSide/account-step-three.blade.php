@@ -955,8 +955,8 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Sub-Category</label>
-                    <input type="text" class="form-control pl-4" id="sub_category" placeholder="Enter Sub-Category" name="subCategory">
+                    <label for="inputAddress" class=" ">Category Description</label>
+                    <input type="text" class="form-control pl-4" id="sub_category" placeholder="Enter Category Description" name="subCategory">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -1170,7 +1170,7 @@
                 imagePreview.appendChild(imageWrapper);
 
                 images.push(
-                    
+
                 );
 
                 imageCloseButton.addEventListener('click', function() {
