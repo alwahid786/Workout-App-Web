@@ -1,12 +1,3 @@
-<?php
-
-use Carbon\Carbon;
-
-$currentDate =
-
-Carbon::now()->format('d-M-Y');;
-
-?>
 <style>
     .logout-dropdown a:hover {
         background-color: #E37048;
@@ -30,7 +21,7 @@ Carbon::now()->format('d-M-Y');;
     <div class="collapse navbar-collapse nav-main pl-0" id="navbarCollapse">
         <div class="nav-profile-name pl-lg-3 ">
             <h1>Welcome, {{auth()->user()->name}} </h1>
-            <p>{{$currentDate}}</p>
+            <p>{{ now()->format('d-M-Y') }}</p>
         </div>
         <div class="m-lg-auto left-inner-addon user-search-box">
             <input class="form-control" type="search" placeholder="Search">
