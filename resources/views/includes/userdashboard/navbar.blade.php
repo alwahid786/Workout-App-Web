@@ -123,7 +123,7 @@
                         <img class="nav-w" src="{{asset('public/assets/images/search-w.svg')}}" alt="image">
                     </div>
 
-                    Search
+                    Search Session
                 </a>
             </li>
             <li class="nav-item">

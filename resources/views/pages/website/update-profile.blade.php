@@ -290,10 +290,11 @@
                     <input type="text" class="form-control py-4 " value="{{auth()->user()->height ?? ''}}" name="height" id="inputAddress2">
                 </div>
             </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
+            <div class="col-md-12 pb-3" data-aos="fade-right" >
+                <div class="form-outline pro-form">
                     <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
                     <input type="text" name="madical_condition" value="{{auth()->user()->madical_condition	 ?? ''}}" class="form-control py-4" id="inputCity">
+                    <!-- <textarea type="text" maxlength="256" name="madical_condition" rows="4" value="" class="form-control " id="inputCity">{{auth()->user()->madical_condition ?? ''}}</textarea> -->
                 </div>
             </div>
             <div class="col-12" data-aos="fade-up">
