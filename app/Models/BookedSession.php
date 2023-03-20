@@ -15,7 +15,8 @@ class BookedSession extends Model
         'customer_id',
         'is_completed',
         'session-date',
-        'trainer_id'
+        'trainer_id',
+        'status'
     ];
     public function session()
     {
