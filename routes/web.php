@@ -110,6 +110,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/calendar', [TrainerController::class, 'calenderSession'])->name('trainer/calendar');
 
     Route::any('/trainer/session/{id?}', [TrainerController::class, 'classDetail'])->name('trainer/session');
+    Route::any('/trainer/session/action', [TrainerController::class, 'actionSession'])->name('trainer/session/action');
 
     Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
 
@@ -181,9 +182,9 @@ Route::get('/dashboard/categories', function () {
 Route::get('/dashboard/mapgroup', function () {
     return view('pages.userdashboard.explore.map-view-group');
 });
-Route::get('/dashboard/payment', function () {
-    return view('pages.userdashboard.explore.payment');
-});
+// Route::get('/dashboard/payment', function () {
+//     return view('pages.userdashboard.explore.payment');
+// });
 Route::get('/dashboard/trainer-detail', function () {
     return view('pages.userdashboard.explore.trainer-detail');
 });

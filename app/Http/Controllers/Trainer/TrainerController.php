@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Notification;
+use App\Models\RejectSession;
 use App\Models\Review;
 use App\Models\Session;
 use App\Models\SessionImage;
@@ -320,7 +321,30 @@ class TrainerController extends Controller
         if (!$notification) {
             return $this->sendError('There is no Data');
         }
-        $notifications=json_decode($notification,true);
-        return $this->sendResponse(['notification'=>$notifications],'Get notification successfully');
+        $notifications = json_decode($notification, true);
+        return $this->sendResponse(['notification' => $notifications], 'Get notification successfully');
+    }
+
+    public function actionSession(Request $request)
+    {
+        dd('coming');
+
+        if ($request->accept == 1) {
+            $accept = BookedSession::where('id', $request->booked_session_id)->update([
+                'status' => 1
+            ]);
+            Notification::where('type_id', $request->booked_session_id)->update([
+                'is_read' => 1
+            ]);
+        }
+        $reject_session = RejectSession::create([
+            'trainer_id' => $request->trainer_id,
+            'user_id' => $request->user_id,
+            'booked_session_id' => $request->booked_session_id,
+            'reason' => $request->reason,
+        ]);
+        Notification::where('type_id', $request->booked_session_id)->update([
+            'is_read' => 1
+        ]);
     }
 }
