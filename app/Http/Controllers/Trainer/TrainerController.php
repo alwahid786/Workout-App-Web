@@ -325,26 +325,28 @@ class TrainerController extends Controller
         return $this->sendResponse(['notification' => $notifications], 'Get notification successfully');
     }
 
+    /////////trainer responce
     public function actionSession(Request $request)
     {
-        dd('coming');
-
+        // dd($request->user_id);
         if ($request->accept == 1) {
             $accept = BookedSession::where('id', $request->booked_session_id)->update([
                 'status' => 1
             ]);
-            Notification::where('type_id', $request->booked_session_id)->update([
+            Notification::where(['type_id' => $request->booked_session_id, 'sender_id' => $request->user_id])->update([
+                'is_read' => 1
+            ]);
+        } else {
+            $reject_session = RejectSession::create([
+                'trainer_id' => $request->trainer_id,
+                'user_id' => $request->user_id,
+                'booked_session_id' => $request->booked_session_id,
+                'reason' => $request->reason,
+            ]);
+            Notification::where(['type_id' => $request->booked_session_id, 'sender_id' => $request->user_id])->update([
                 'is_read' => 1
             ]);
         }
-        $reject_session = RejectSession::create([
-            'trainer_id' => $request->trainer_id,
-            'user_id' => $request->user_id,
-            'booked_session_id' => $request->booked_session_id,
-            'reason' => $request->reason,
-        ]);
-        Notification::where('type_id', $request->booked_session_id)->update([
-            'is_read' => 1
-        ]);
+        return redirect()->back();
     }
 }

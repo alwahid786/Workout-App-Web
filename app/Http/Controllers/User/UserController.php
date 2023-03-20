@@ -300,10 +300,10 @@ class UserController extends Controller
     {
         $customerId = $request->customer;
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
+        // dd(env('STRIPE_SECRET'));
 
         try {
-
+            // dd($customerId);
             $payment = \Stripe\Charge::create(
                 array(
                     "amount"   => $request->amount * 100,
@@ -311,6 +311,8 @@ class UserController extends Controller
                     "customer" => $customerId
                 )
             );
+
+            // dd($payment);
 
             if ($payment['status'] = "succeeded") {
                 $status = true;

@@ -110,7 +110,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/calendar', [TrainerController::class, 'calenderSession'])->name('trainer/calendar');
 
     Route::any('/trainer/session/{id?}', [TrainerController::class, 'classDetail'])->name('trainer/session');
-    Route::any('/trainer/session/action', [TrainerController::class, 'actionSession'])->name('trainer/session/action');
+    Route::any('/trainer/response/', [TrainerController::class, 'actionSession'])->name('session');
 
     Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
 

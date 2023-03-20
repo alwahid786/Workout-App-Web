@@ -685,6 +685,24 @@
         justify-content: center;
     }
 
+    .modal-btn button {
+        background: #E37048;
+        border: none;
+        box-shadow: none !important;
+        outline: none;
+        color: white !important;
+        border-radius: 10px;
+        width: 25%;
+        font-size: 1.4rem;
+        max-width: 200px;
+        width: 100%;
+        font-size: 0.8rem;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .update-profile-form-btn {
         text-decoration: none;
         color: #fff;
@@ -978,28 +996,20 @@
                             <div class="right-notification pr-3">
                                 <h1><span>{{$notification['user']['name']}}</span> {{$notification['noti_text']}}</h1>
                                 <div class="right-notification-btn px-0">
-                                    <!-- <input type="hidden" value="1" id="accept"> -->
-                                    <button class="m-2" data-toggle="modal" data-target="#acceptModal" id="accept_btn">Accept</button>
-                                    <button class="m-2" data-toggle="modal" data-target="#rejectModal" id="reject_btn">Reject</button>
+                                    <input class="session_id" type="hidden" value="{{$notification['type_id']}}">
+                                    <input class="sender_id" type="hidden" value="{{$notification['sender_id']}}">
+                                    <input class="reciever_id" type="hidden" value="{{$notification['reciever_id']}}">
+                                    <button class="m-2  accept_session_id" data-toggle="modal" data-target="#acceptModal">Accept</button>
+
+                                    <button class="m-2 reject_session_id" data-toggle="modal" data-target="#rejectModal" id="reject_btn">Reject</button>
                                 </div>
                             </div>
                         </div>
                         @endforeach
                         @else
                         @endif
-                        <!-- <div class="noti-card py-3 my-2 px-0">
-                            <div class="left-notification pr-2 pl-3">
-                                <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
-                            </div>
-                            <div class="right-notification pr-3">
-                                <h1><span>Dayut Carlotte</span> send you request for Nutrition sessions</h1>
-                                <div class="right-notification-btn px-0">
-                                    <button class="m-2" data-toggle="modal" data-target="#acceptModal">Accept</button>
-                                    <button class="m-2" data-toggle="modal" data-target="#rejectModal">Reject</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="noti-card accept-noti-card py-3 my-2 px-0">
+
+                        <!-- <div class="noti-card accept-noti-card py-3 my-2 px-0">
                             <div class="left-notification pr-2 pl-3">
                                 <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                             </div>
@@ -1186,6 +1196,7 @@
 
 
 <!-- .................Confrim Modal............... -->
+
 <div class="modal fade" id="acceptModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content signupModalDialogue">
@@ -1196,8 +1207,13 @@
                 <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
                 <p class="mb-0 py-3">Do you really want to Accept <br> this request?</p>
                 <div class=" modal-btn text-sm-right text-center">
-                    <!-- <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a> -->
-                    <button class="update-profile-form-btn btn" data-dismiss="modal">Confirm</button>
+                    <form action="{{route('session')}}" method="post">
+                        @csrf
+                        <input type="hidden" value="1" name="accept">
+                        <input type="hidden" name="booked_session_id" id="session_accept">
+                        <input type="hidden" name="user_id" id="sender_id">
+                        <button class="update-profile-form-btn btn" type="submit">Confirm</button>
+                    </form>
 
                 </div>
             </div>
@@ -1212,15 +1228,23 @@
             <div class="modalHeader px-2 pt-2 pb-2 d-flex justify-content-end align-items-center">
                 <img class="cross-icon" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
             </div>
-            <div class="modal-body text-center sucess-modal ">
-                <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
-                <p class="mb-0 py-3">Do you really want to Reject<br> this request?</p>
-                <p class="text-left mb-0" style="font-weight:500;">Reason</p>
-                <textarea class="form-control mb-3"></textarea>
-                <div class=" modal-btn text-sm-right text-center">
-                    <a href="#" class="update-profile-form-btn btn" data-dismiss="modal">Confirm</a>
+            <form action="{{route('session')}}" method="post">
+                <div class="modal-body text-center sucess-modal ">
+                    <img style="width:40%;margin:0 auto" src="{{asset('public/assets/trainerimages/q-modal.svg')}}" alt="">
+                    <p class="mb-0 py-3">Do you really want to Reject<br> this request?</p>
+                    <p class="text-left mb-0" style="font-weight:500;">Reason</p>
+                    <textarea class="form-control mb-3" name="reason"></textarea>
+                    <div class=" modal-btn text-sm-right text-center">
+                        @csrf
+
+                        <input type="text" name="booked_session_id" id="session_reject">
+                        <input type="text" name="user_id" id="sender_id_reject">
+                        <input type="text" name="trainer_id" id="reject_reciever_id">
+                        <button class="update-profile-form-btn btn" type="submit">Confirm</button>
+                        <!-- <button class="update-profile-form-btn btn" data-dismiss="modal">Confirm</button> -->
+                    </div>
                 </div>
-            </div>
+            </form>
 
 
         </div>
@@ -1277,7 +1301,32 @@
         $('.up').hide(500);
         $('.down').show(500);
 
-    })
+    });
+
+    $('.accept_session_id').click(function() {
+        var session_id = $(this).parent().find('.session_id').val();
+        var sender_id = $(this).parent().find('.sender_id').val();
+        var reciever_id = $(this).parent().find('.reciever_id').val();
+
+
+        $("#session_accept").val(session_id);
+        $("#sender_id").val(sender_id);
+        $("#reciever_id").val(reciever_id);
+
+
+    });
+    $('.reject_session_id').click(function() {
+        var session_id = $(this).parent().find('.session_id').val();
+        var sender_id = $(this).parent().find('.sender_id').val();
+        var reciever_id = $(this).parent().find('.reciever_id').val();
+
+
+        $("#session_reject").val(session_id);
+        $("#sender_id_reject").val(sender_id);
+        $("#reject_reciever_id").val(reciever_id);
+
+
+    });
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
