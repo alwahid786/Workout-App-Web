@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Trainer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\NotificationTrait;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
@@ -22,6 +23,7 @@ use Illuminate\Support\Js;
 class TrainerController extends Controller
 {
     use ResponseTrait;
+    use NotificationTrait;
     public function showTrainerDetail()
     {
         $trainer = User::where('id', auth()->user()->id)->with('trainer_profile', 'session.category', 'session.session_image')->first();
@@ -336,6 +338,11 @@ class TrainerController extends Controller
             Notification::where(['type_id' => $request->booked_session_id, 'sender_id' => $request->user_id])->update([
                 'is_read' => 1
             ]);
+            $reciever_id = $request->user_id;
+            $type_id = $request->booked_session_id;
+            $noti_type = 'accept_request';
+            $noti_text = 'your request is Accepted';
+            $notification = $this->sendNotification($reciever_id, $type_id, $noti_type, $noti_text);
         } else {
             $reject_session = RejectSession::create([
                 'trainer_id' => $request->trainer_id,
@@ -346,6 +353,11 @@ class TrainerController extends Controller
             Notification::where(['type_id' => $request->booked_session_id, 'sender_id' => $request->user_id])->update([
                 'is_read' => 1
             ]);
+            $reciever_id = $request->user_id;
+            $type_id = $request->booked_session_id;
+            $noti_type = 'reject_request';
+            $noti_text = 'your request is Rejected';
+            $notification = $this->sendNotification($reciever_id, $type_id, $noti_type, $noti_text);
         }
         return redirect()->back();
     }

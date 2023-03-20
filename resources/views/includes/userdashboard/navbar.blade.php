@@ -1,3 +1,11 @@
+<?php
+
+use App\Models\Notification;
+
+$notification = Notification::where(['reciever_id' => auth()->user()->id, 'is_read' => 0])->with('user')->get();
+$notifications = json_decode($notification, true);
+
+?>
 <style>
     .logout-dropdown a:hover {
         background-color: #E37048;
@@ -35,12 +43,31 @@
                 <div class="dropdown chat-link">
                     <a class="nav-link   dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" href="#"> <img src="{{asset('public/assets/images/notification-icon-w.svg')}}" alt="image"></a>
                     <div class="dropdown-menu notification-dropdown" aria-labelledby="dropdownMenuButton">
+                        @if($notifications!= null)
+                        @foreach($notifications as $notification)
+                        <a class=" notification-area" href="#">
+                            <div class="notification-profile d-flex py-3">
+                                <img src="{{asset('public/assets/images/rating-right.png')}}">
+                                <p class="pl-3"><span>{{$notification['user']['name']}}</span>{{$notification['noti_text']}} 
+                                    </p>
+                            </div>
+                        </a>
+                        @endforeach
+                        @else
+                        @endif
+                        <!-- <a class=" notification-area" href="#">
+                            <div class="notification-profile d-flex py-3">
+                                <img src="{{asset('public/assets/images/rating-right.png')}}">
+                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
+                                    view to edit</p>
+                            </div>
+                        </a>
+                        <a class=" notification-area" href="#">
+                            <div class="notification-profile d-flex py-3">
+                                <img src="{{asset('public/assets/images/rating-right.png')}}">
+                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
+                                    view to edit</p>
 
-                        <a class=" notification-area" href="#">
-                            <div class="notification-profile d-flex py-3">
-                                <img src="{{asset('public/assets/images/rating-right.png')}}">
-                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
-                                    view to edit</p>
                             </div>
                         </a>
                         <a class=" notification-area" href="#">
@@ -49,22 +76,7 @@
                                 <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
                                     view to edit</p>
                             </div>
-                        </a>
-                        <a class=" notification-area" href="#">
-                            <div class="notification-profile d-flex py-3">
-                                <img src="{{asset('public/assets/images/rating-right.png')}}">
-                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
-                                    view to edit</p>
-
-                            </div>
-                        </a>
-                        <a class=" notification-area" href="#">
-                            <div class="notification-profile d-flex py-3">
-                                <img src="{{asset('public/assets/images/rating-right.png')}}">
-                                <p class="pl-3"><span>John Smith</span>wants to update his <br>access level from
-                                    view to edit</p>
-                            </div>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
 

@@ -1237,9 +1237,9 @@
                     <div class=" modal-btn text-sm-right text-center">
                         @csrf
 
-                        <input type="text" name="booked_session_id" id="session_reject">
-                        <input type="text" name="user_id" id="sender_id_reject">
-                        <input type="text" name="trainer_id" id="reject_reciever_id">
+                        <input type="hidden" name="booked_session_id" id="session_reject">
+                        <input type="hidden" name="user_id" id="sender_id_reject">
+                        <input type="hidden" name="trainer_id" id="reject_reciever_id">
                         <button class="update-profile-form-btn btn" type="submit">Confirm</button>
                         <!-- <button class="update-profile-form-btn btn" data-dismiss="modal">Confirm</button> -->
                     </div>
