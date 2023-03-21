@@ -786,13 +786,13 @@ class UserController extends Controller
         if (!$chat_lists) {
             return $this->sendError('No Data found against ID');
         }
-        $chatView='';
-        
+        $chatView = '';
+
         $chat_lists = json_decode($chat_lists, true);
 
         return view('pages.userdashboard.chat.chat', compact('chat_lists', 'chatView'));
     }
-
+    ///////........messages shoe.............////////
     public function messages($id)
     {
         // dd('hiaha');

@@ -348,9 +348,7 @@
             e.preventDefault();
             var id = $(this).attr('data-id');
 
-            // var formData = {
-            //     company_name: $(this).attr('data-id'),
-            // };
+            
             var type = "POST";
             var url = "{{ route('user.message', ':id') }}";
             url = url.replace(':id', id);
