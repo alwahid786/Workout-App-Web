@@ -765,4 +765,27 @@ class UserController extends Controller
             'error' => 'No file uploaded'
         ]);
     }
+
+    public function chatList()
+    {
+        // $chat_lists = Chat::whereIn('users', [auth()->user()->id])->with('session.category', 'session.session_image')->get();
+        $userId = auth()->user()->id;
+
+        $chat_lists = Chat::where(function ($query) use ($userId) {
+            $query->where('users', 'LIKE', '%,' . $userId . ',%')
+                ->orWhere('users', 'LIKE', $userId . ',%')
+                ->orWhere('users', 'LIKE', '%,' . $userId)
+                ->orWhere('users', '=', $userId);
+        })
+        ->with('session.category', 'session.session_image')
+        ->get();
+
+        // dd('com');
+        if (!$chat_lists) {
+            return $this->sendError('No Data found against ID');
+        }
+        $chat_lists = json_decode($chat_lists, true);
+        // dd($chat_lists);
+        return view('pages.userdashboard.chat.chat', compact('chat_lists'));
+    }
 }

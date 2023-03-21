@@ -91,6 +91,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
     Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
     Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
+    Route::any('/chat', [UserController::class, 'chatList'])->name('user.chat');
 
     ///// trainer............//////
 
@@ -251,9 +252,9 @@ Route::get('/payment/paymentdetail', function () {
     return view('pages.userdashboard.payment.payment-detail');
 });
 //chat
-Route::get('/chat', function () {
-    return view('pages.userdashboard.chat.chat');
-});
+// Route::get('/chat', function () {
+//     return view('pages.userdashboard.chat.chat');
+// });
 
 
 // trainerside

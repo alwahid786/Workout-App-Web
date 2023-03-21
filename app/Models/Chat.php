@@ -16,4 +16,8 @@ class Chat extends Model
         'type',
         'session_date'
     ];
+    public function session()
+    {
+        return $this->belongsTo(Session::class, 'session_id');
+    }
 }
