@@ -300,7 +300,7 @@ class UserController extends Controller
     {
         $customerId = $request->customer;
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // dd(env('STRIPE_SECRET'));
+        // dd($request->customer);
 
         try {
             // dd($customerId);
@@ -319,7 +319,6 @@ class UserController extends Controller
             } else {
                 $status = false;
             }
-            // dd($request->session_date);
             $booksession = BookedSession::create(
                 array(
                     'session_id'   => $request->session_id,
@@ -330,32 +329,35 @@ class UserController extends Controller
                     'trainer_id'   => $request->trainer_id,
                 )
             );
-            $chat = new Chat();
-            if ($booksession->id != $chat->session_id) {
-                // dd($request->trainer_id, $booksession->id);
+
+            $chat = Chat::where(['session_id' => $request->session_id, 'session_date' => $request->session_date])->first();
+
+            if (!empty($chat->users)) {
+                $existingUsers = explode(',', $chat->users);
+                if (!in_array(auth()->user()->id, $existingUsers)) {
+
+                    $existingUsers[] = auth()->user()->id;
+
+                    $update = $chat->update(['users' => implode(',', $existingUsers)]);
+                    // dd($existingUsers);
+                }
+            } else {
+
+
                 $create_chat = Chat::create(
                     array(
                         'trainer_id' => $request->trainer_id,
-                        'session_id' => $booksession->id,
+                        'session_id' => $request->session_id,
                         'users' => auth()->user()->id,
                         'status' => 1,
                         'type' => 1,
+                        'session_date' => $request->session_date,
+
 
                     )
                 );
-            } else {
-                // dd($booksession->id);
-                $chat::where('session_id', $booksession->id)->update(['users' =>  auth()->user()->id]);
-                // $existingUsers = explode(',', $chat->users);
-                // if (!in_array(auth()->user()->id, $existingUsers)) {
-                //     // Add the new user's ID to the array of existing users
-                //     $existingUsers[] = auth()->user()->id;
-
-                //     // Join the updated array of users with a comma and update the users column
-
-                //     $chat->update(['users' => implode(',', auth()->user()->id)]);
-                // }
             }
+
             // Notification 
             if ($booksession) {
 

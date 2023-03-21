@@ -456,8 +456,8 @@ $notifications = json_decode($notification, true);
 
     <div class="collapse navbar-collapse nav-main pl-0" id="navbarCollapse">
         <div class="nav-profile-name pl-lg-3 ">
-            <h1>Welcome, John Smith </h1>
-            <p>Wed, 23 Nov 2022</p>
+            <h1>Welcome, {{auth()->user()->name}} </h1>
+            <p>{{ now()->format('d-M-Y') }}</p>
         </div>
         <div class="m-lg-auto left-inner-addon user-search-box">
             <input class="form-control" type="search" placeholder="Search">

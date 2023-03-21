@@ -13,6 +13,7 @@ class Chat extends Model
         'trainer_id',
         'session_id',
         'status',
-        'type'
+        'type',
+        'session_date'
     ];
 }
