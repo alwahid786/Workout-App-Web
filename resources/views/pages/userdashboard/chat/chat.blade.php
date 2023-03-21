@@ -15,8 +15,8 @@
                 <div class="chat-box-left p-2">
                     @if($chat_lists != null)
                     @foreach($chat_lists as $chat_list)
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
+                    <div class="chat-card my-3 message_box" data-id="{{$chat_list['id']}}">
+                        <div class=" chat-box-left-img">
                             <img src="{{$chat_list['session']['session_image'][0]['image']}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
@@ -208,8 +208,16 @@
                         <h1>John Smith</h1>
                         <button id="chat-screen"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
-                    <div class="chat-box-right-body px-5">
-                        <div class="recevier-card my-2">
+
+                    <div id="chatList" class="chat-box-right-body px-5">
+                        @if($chatView!=null)
+                        <?= $chatView['chatView']; ?>
+                        @endif
+
+
+
+
+                        <!-- <div class="recevier-card my-2">
                             <p>Lorem ipsum is a placeholder text commonly used to demonstrate
 
                             </p>
@@ -283,7 +291,7 @@
                             </p>
                             <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="image">
                             <span>Seen by... 6:53 Pm</span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="chat-box-right-footer pt-3 pb-1">
                         <form class="form-inline">
@@ -326,8 +334,61 @@
         //     $('.chat-box-right').css('display', 'block');
         // }
     })
+
+    $(document).ready(function() {
+
+        $(".message_box").click(function(e) {
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var id = $(this).attr('data-id');
+
+            // var formData = {
+            //     company_name: $(this).attr('data-id'),
+            // };
+            var type = "POST";
+            var url = "{{ route('user.message', ':id') }}";
+            url = url.replace(':id', id);
+
+            // alert(url)
+            $.ajax({
+                type: type,
+                url: url,
+
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data.chatView);
+                    $("#chatList").html(data.chatView);
+
+                },
+                error: function(data) {
+                    alert('hi');
+                    console.log(data);
+                }
+            });
+        });
+
+    });
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(6)').addClass('active')
+
+    // $('.reject_session_id').click(function() {
+    //     var session_id = $(this).parent().find('.session_id').val();
+    //     var sender_id = $(this).parent().find('.sender_id').val();
+    //     var reciever_id = $(this).parent().find('.reciever_id').val();
+
+
+    //     $("#session_reject").val(session_id);
+    //     $("#sender_id_reject").val(sender_id);
+    //     $("#reject_reciever_id").val(reciever_id);
+
+
+    // });
 </script>
 @endsection

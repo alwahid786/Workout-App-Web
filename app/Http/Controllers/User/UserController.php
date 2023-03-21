@@ -20,6 +20,7 @@ use App\Models\Review;
 use App\Models\Transactions;
 use App\Models\Session as ModelsSession;
 use App\Http\Traits\NotificationTrait;
+use App\Models\Message;
 use Carbon\Carbon;
 use DateTime;
 use Stripe;
@@ -765,9 +766,10 @@ class UserController extends Controller
             'error' => 'No file uploaded'
         ]);
     }
-
+    ////...........chat list.........../////
     public function chatList()
     {
+        // dd('hi');
         // $chat_lists = Chat::whereIn('users', [auth()->user()->id])->with('session.category', 'session.session_image')->get();
         $userId = auth()->user()->id;
 
@@ -777,15 +779,36 @@ class UserController extends Controller
                 ->orWhere('users', 'LIKE', '%,' . $userId)
                 ->orWhere('users', '=', $userId);
         })
-        ->with('session.category', 'session.session_image')
-        ->get();
+            ->with('session.category', 'session.session_image')
+            ->get();
 
-        // dd('com');
+
         if (!$chat_lists) {
             return $this->sendError('No Data found against ID');
         }
+        $chatView='';
+        
         $chat_lists = json_decode($chat_lists, true);
-        // dd($chat_lists);
-        return view('pages.userdashboard.chat.chat', compact('chat_lists'));
+
+        return view('pages.userdashboard.chat.chat', compact('chat_lists', 'chatView'));
+    }
+
+    public function messages($id)
+    {
+        // dd('hiaha');
+        $chatDetails = Message::where('chat_id', $id)->get();
+
+        $chatDetails = json_decode($chatDetails, true);
+        // dd($chatDetails[0]['text']);
+        $chatView = View::make('pages.userdashboard.chat.messagelist', [
+            'chatDetails' => $chatDetails,
+
+            // 'category'       => $trainerDetails[0]['title']
+        ])->render();
+
+        return [
+            'chatView' => $chatView,
+
+        ];
     }
 }
