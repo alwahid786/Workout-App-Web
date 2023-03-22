@@ -10,6 +10,7 @@
         padding-top: 6rem;
         padding-bottom: 6rem;
         text-align: center;
+
     }
 
     .hero-left-content h1 {
@@ -345,22 +346,207 @@
 
 
     .Transforming-img img {
-        height: 100%;
         width: 100%;
-        max-height: 600px;
+        max-width: 400px;
+        margin: 0 auto;
+        max-height: 300px;
         object-fit: cover;
+        border-radius: 30px;
+    }
+
+    /* new-section */
+    .trophy-icon i {
+        color: #E37048;
+        font-size: 2rem;
+    }
+
+    .about-section-two {
+        max-width: 1500px;
+        border-bottom: 1px solid #80808047;
+    }
+
+
+    .about-section-two h1 {
+        color: #111418;
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: normal !important;
+        font-family: "Poppins", sans-serif !important;
+    }
+
+    .about-section-two p {
+        font-size: 18px !important;
+        font-weight: 300 !important;
+        font-family: "Poppins", sans-serif !important;
+    }
+
+    @media screen and (max-width:1366px) {
+        .about-section-two {
+            max-width: 1000px;
+        }
+    }
+
+    .ceo-title-section {
+        display: flex;
+        align-items: center;
+        max-width: 1500px;
+        margin: 0 auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .ceo-title-section img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .ceo-profile h1 {
+        font-size: 2rem;
+        color: #E37048;
+        font-weight: 700;
+    }
+
+    .ceo-profile p {
+        font-size: 1.2rem;
+        color: #111418;
+        font-weight: 400;
+
+    }
+
+    .ceo-content-section {
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 2rem 3rem;
+        border-radius: 10px;
+    }
+
+    @media screen and (max-width:576px) {
+        .ceo-content-section {
+            padding: 2rem 1rem;
+        }
+
+        .ceo-content-text p {
+            text-align: center;
+        }
+
+        .ceo-content-icon {
+            text-align: center;
+        }
+    }
+
+    .quote-message p {
+        font-size: 22px !important;
+        font-weight: 300 !important;
+        line-height: 32px !important;
+        margin-bottom: 0px;
+        color: #111418;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        padding-bottom: 2.5rem;
+    }
+
+    .quote-message p sub,
+    .quote-message p sup {
+        color: #E37048;
+    }
+
+    .ceo-content-text p {
+        font-size: 0.9rem;
+        color: #00000080;
+    }
+
+    .ceo-content-icon img {
+        width: 50px;
+    }
+
+    @media screen and (max-width:1366px) {
+        .ceo-content-section {
+            box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .ceo-title-section {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    }
+
+    .hero-section {
+        max-width: 1500px;
+        margin: 0 auto;
+        background: transparent !important;
+    }
+
+    .per-heading h1 {
+        color: #111418;
+        font-size: 2rem;
+    }
+
+    .per-heading p {
+        color: #111418;
+        font-size: 0.9rem;
+    }
+
+    @media screen and (max-width:1366px) {
+        .hero-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: transparent !important;
+        }
     }
 </style>
 @include('includes.website.navbar')
 <div class="container-fluid hero-section-about">
     <div class="container-fluid hero-section-wrapper-about" data-aos="fade-left">
         <div class="col-12 hero-left text-center text-md-left">
-            <div class="hero-left-content my-sm-5 px-sm-5 text-center">
-                <h1 class="my-4">About Us</h1>
-                <p>With WorkitPT, clients can filter through a list of sessions provided by various personal trainers for any form of exercise or sport they wish to partake in and simply sign up for the session, agree a time and a location, then get to work!</p>
+            <div class="hero-left-content my-sm-5 px-sm-5 text-center text-md-left">
+                <h1 class="my-4">ABOUT US</h1>
+                <p class="col-md-6 pl-0">With WorkitPT, clients can filter through a list of sessions provided by various personal trainers for any form of exercise or sport they wish to partake in and simply sign up for the session, agree a time and a location, then get to work!</p>
             </div>
         </div>
 
+    </div>
+</div>
+<div class="container-fluid about-section-two text-center py-5 my-3">
+    <div class="trophy-icon ">
+        <i class="fa fa-trophy" aria-hidden="true"></i>
+    </div>
+    <h1 class="py-4 mb-0">What makes us different</h1>
+    <p class="mb-0">Regardless of your current fitness level or experience, you can expect a fully personalised fitness programme. R1:1 sessions mean more time for you. TruBe trainers are trained in everything from kickboxing to ballet fit, each trainer has been cherry-picked through a rigorous selection process, so you can be confident you have the best of the best and the best workout routine at home.</p>
+</div>
+<div class="container-fluid pt-5 py-sm-5">
+    <div class="ceo-section">
+        <div class="ceo-title-section ">
+            <img src="{{asset('public/assets/images/Transforming personal training.png')}}" alt="">
+            <div class="ceo-profile pl-3">
+                <h1>John Smith</h1>
+                <p>Founder and CEO of WORKITPT</p>
+            </div>
+        </div>
+        <div class="ceo-content-section my-5">
+            <div class="quote-message">
+                <p><sup><i class="fa fa-quote-left" aria-hidden="true"></i></sup> It’s so important to listen to yourself and be true to where you want to be as a person. <sub><i class="fa fa-quote-right" aria-hidden="true"></i></sub></p>
+            </div>
+            <div class="ceo-content-text">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor consequuntur doloremque expedita vitae! Minus sequi quibusdam porro! Laudantium, cupiditate aspernatur.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum pariatur dolorum inventore cum officia explicabo aperiam, quod odio ratione reprehenderit a laudantium in ipsa nemo dolor ducimus quidem, ab laboriosam repellat quasi quam molestias eligendi ut? Veniam quae repellat, non quo at ducimus labore commodi tempore numquam sunt sit debitis.</p>
+
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, nesciunt.</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, minima, quod consectetur quaerat tempore quidem voluptates nihil vel aliquam enim fugiat veniam quam quae sunt quos nemo provident, veritatis mollitia?</p>
+            </div>
+            <div class="ceo-content-icon">
+                <img src="{{asset('public/assets/images/dumbbell.png')}}" alt="">
+            </div>
+        </div>
     </div>
 </div>
 
@@ -368,12 +554,12 @@
     <div class="container-fluid">
         <div class="left-section-par ">
             <div class="row">
-                <div class="col-md-6 my-auto text-center py-5 py-md-0">
+                <div class="col-md-6 my-auto text-center py-5 py-md-0 per-heading">
 
-                    <h1 class="pb-2 pb-md-5 mb-0 text-light">Transforming Personal Training</h1>
+                    <h1 class="pb-2 pb-md-3 mb-0">Transforming Personal Training</h1>
                     <p class="mb-0">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
                 </div>
-                <div class="col-md-6 Transforming-img px-0">
+                <div class="col-md-6 Transforming-img px-0 text-center my-auto">
                     <img src="{{asset('public/assets/images/Transforming personal training.png')}}" alt="">
 
                 </div>
@@ -382,28 +568,28 @@
 
     </div>
 </section>
-<!-- ..............Section End................. -->
-
-<section class="make-diff-section ">
-    <div class="container-fluid">
-        <div class="make-diff-content " data-aos="fade-up" data-aos-delay="100">
+<section class="hero-section about-us-mobile py-5">
+    <div class="container-fluid py-3">
+        <div class="left-section-par ">
             <div class="row">
-                <div class="col-md-6 modern-approach-img px-0 order-2 order-md-1">
+                <div class="col-md-6 Transforming-img px-0 text-center my-auto">
                     <img src="{{asset('public/assets/images/modern aproach.png')}}" alt="">
+
                 </div>
-                <div class="col-md-6 my-auto text-center py-5 py-md-0 order-1 order-md-2">
+                <div class="col-md-6 my-auto text-center py-5 py-md-0 per-heading">
+
                     <h1 class="pb-2 pb-md-5 mb-0">A Modern Approach</h1>
                     <p class="mb-0">It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
-
                 </div>
-            </div>
 
+            </div>
         </div>
 
     </div>
 </section>
+<!-- ..............Section End................. -->
 
-<!-- ......................Section End.................................. -->
+
 
 <footer>
     <div class="container-fluid footerSection">
@@ -913,9 +1099,9 @@
 <script>
     $('.nav-list .nav-item:nth-of-type(2)').addClass('active');
 </script>
-<script>
+<!-- <script>
     $('.nav-lists .nav-item:nth-of-type(3)').addClass('active')
-</script>
+</script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script>
