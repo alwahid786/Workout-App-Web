@@ -36,10 +36,10 @@
     }
 
     ?>
-    <div class="categories-card-exp">
+    <!-- <div class="categories-card-exp">
         <p class="text-center">Available 4 hrs/day</p>
         <p class="text-center">5+ Years Experience</p>
-    </div>
+    </div> -->
     <div class="text-center my-4">
         <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail/'.$trainerDetail['trainer']['id'])}}">View Detail</a>
     </div>
