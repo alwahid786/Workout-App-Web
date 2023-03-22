@@ -15,7 +15,7 @@
                 <div class="chat-box-left p-2">
                     @if($chat_lists != null)
                     @foreach($chat_lists as $chat_list)
-                    <div class="chat-card my-3 message_box" data-id="{{$chat_list['id']}}">
+                    <div class="chat-card my-3 message_box sender_box" data-id="{{$chat_list['id']}}">
                         <div class=" chat-box-left-img">
                             <img src="{{$chat_list['session']['session_image'][0]['image']}}" alt="image">
                         </div>
@@ -295,10 +295,11 @@
                     </div>
                     <div class="chat-box-right-footer pt-3 pb-1">
                         <form class="form-inline">
+                            <input type="hidden" id="chat_id" name="chat_id">
                             <div class="form-group mx-sm-3 mb-2">
-                                <input type="text" class="form-control" id="message" placeholder="Type here">
+                                <input type="text" class="form-control" id="text" placeholder="Type here">
                             </div>
-                            <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            <button type="submit" class="btn btn-primary mb-2" id="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                             </button>
                         </form>
                     </div>
@@ -347,8 +348,9 @@
             });
             e.preventDefault();
             var id = $(this).attr('data-id');
+            $("#chat_id").val(id);
 
-            
+
             var type = "POST";
             var url = "{{ route('user.message', ':id') }}";
             url = url.replace(':id', id);
@@ -360,7 +362,7 @@
 
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data.chatView);
+                    // console.log(data.chatView);
                     $("#chatList").html(data.chatView);
 
                 },
@@ -369,8 +371,50 @@
                     console.log(data);
                 }
             });
-        });
 
+
+
+
+        });
+        $("#submit").click(function(e) {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var chat_id = $('#chat_id').val();
+            var text = $('#text').val();
+            alert(text);
+
+            // alert(chat_id);
+            var type = "POST";
+            var url = "{{ route('user.send_message') }}";
+
+
+            // alert(url)
+            $.ajax({
+                type: type,
+                url: url,
+                data: {
+
+                    chat_id: chat_id,
+                    text: text,
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+
+
+                },
+                error: function(data) {
+                    alert('hi');
+                    // console.log(data);
+                }
+            });
+        });
     });
 </script>
 <script>

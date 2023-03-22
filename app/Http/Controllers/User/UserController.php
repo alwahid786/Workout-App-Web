@@ -795,19 +795,35 @@ class UserController extends Controller
     ///////........messages shoe.............////////
     public function messages($id)
     {
-        // dd('hiaha');
+
         $chatDetails = Message::where('chat_id', $id)->get();
 
         $chatDetails = json_decode($chatDetails, true);
-        // dd($chatDetails[0]['text']);
+
         $chatView = View::make('pages.userdashboard.chat.messagelist', [
             'chatDetails' => $chatDetails,
 
-            // 'category'       => $trainerDetails[0]['title']
         ])->render();
 
         return [
             'chatView' => $chatView,
+
+        ];
+    }
+    /////// insert message from user/////
+    public function sendMessage(Request $request)
+    {
+        // dd($request->chat_id);
+        $message = Message::create([
+            'chat_id' => $request->chat_id,
+            'sender_id' => auth()->user()->id,
+            'text' => $request->text
+        ]);
+        if (!$message) {
+            return $this->sendError('No Data found against ID');
+        }
+        return [
+            'message' => $message,
 
         ];
     }
