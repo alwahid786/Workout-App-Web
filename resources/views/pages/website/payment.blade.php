@@ -95,12 +95,12 @@
     .profile-nxt-btn button:hover,
     .profile-nxt-btn button:focus,
     .profile-nxt-btn button:active {
-        background: rgba(227, 112, 72, 0.6);
+        background: #E37048;
         border: none;
         box-shadow: none;
         outline: none;
         color: white;
-        padding: 35px 0;
+        padding: 20px 0;
         border-radius: 15px;
         text-align: center;
         width: 60%;
@@ -576,7 +576,8 @@
         </div>
         <div class="col-12 my-5">
             <div class=" profile-nxt-btn">
-                <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</a>
+                <!-- <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</a> -->
+                <button class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</button>
             </div>
         </div>
     </div>

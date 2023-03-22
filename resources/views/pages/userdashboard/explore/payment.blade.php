@@ -356,7 +356,7 @@
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
         <div class="dashboard-header-left mx-4 py-3">
-            <h1><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> Payment </h1>
+            <h1> Payment </h1>
         </div>
         <div class="main-form-section">
             <div class="form-payment-heading mx-3 mt-3">
