@@ -15,7 +15,7 @@
                 <div class="chat-box-left p-2">
                     @if($chat_lists != null)
                     @foreach($chat_lists as $chat_list)
-                    <div class="chat-card my-3 message_box sender_box" data-id="{{$chat_list['id']}}">
+                    <div class="chat-card my-3 message_box " data-id="{{$chat_list['id']}}">
                         <div class=" chat-box-left-img">
                             <img src="{{$chat_list['session']['session_image'][0]['image']}}" alt="image">
                         </div>
@@ -31,175 +31,7 @@
                     @endforeach
                     @else
                     @endif
-                    <!-- <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
 
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>John Smith </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                            </div>
-
-                        </div>
-                    </div> -->
 
                 </div>
 
@@ -386,7 +218,6 @@
             e.preventDefault();
             var chat_id = $('#chat_id').val();
             var text = $('#text').val();
-            alert(text);
 
             // alert(chat_id);
             var type = "POST";

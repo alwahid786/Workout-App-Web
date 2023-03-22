@@ -364,12 +364,14 @@
             </div>
             <div class="chat-box">
                 <div class="chat-box-left p-2">
-                    <div class="chat-card my-3">
+                    @if($chatlist != null)
+                    @foreach($chatlist as $chat_list)
+                    <div class="chat-card my-3 message_box " data-id="{{$chat_list['id']}}">
                         <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
+                            <img src="{{$chat_list['session']['session_image'][0]['image']}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
-                            <h1>Monday Yoga </h1>
+                            <h1>{{$chat_list['session']['category']['title']}} </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
@@ -379,7 +381,10 @@
 
                         </div>
                     </div>
-                    <div class="chat-card my-3">
+                    @endforeach
+                    @else
+                    @endif
+                    <!-- <div class="chat-card my-3">
                         <div class="chat-box-left-img">
                             <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
                         </div>
@@ -393,186 +398,8 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Monday Yoga </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-repeat ml-4" aria-hidden="true"></i>
+                    </div> -->
 
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Sunday therapy </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Monday Yoga </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Sunday therapy </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-repeat ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Monday Yoga </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Sunday therapy </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Monday Yoga </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Sunday therapy </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Sunday therapy </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Monday Yoga </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Sunday therapy </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="chat-card my-3">
-                        <div class="chat-box-left-img">
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="chat-box-left-content pl-2">
-                            <h1>Monday Yoga </h1>
-                            <div class="chat-box-left-content-inner d-flex">
-                                <p>Book Hockey stadium</p>
-                                <p>6:53Pm</p>
-                                <i class="fa fa-stop-circle ml-4" aria-hidden="true"></i>
-                            </div>
-
-                        </div>
-                    </div>
 
                 </div>
 
@@ -581,89 +408,19 @@
                         <h1>Monday Yoga</h1>
                         <button id="chat-screen"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
-                    <div class="chat-box-right-body px-5">
-                        <div class="recevier-card my-2">
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="sender-card ml-auto my-2">
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-                                Lorem ipsum is a placeholder text commonly used to demonstrate
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-                                Lorem ipsum is a placeholder text commonly used to demonstrate
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="image">
-                            <span>Seen by... 6:53 Pm</span>
-                        </div>
-                        <div class="recevier-card my-2">
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="sender-card ml-auto my-2">
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-                                Lorem ipsum is a placeholder text commonly used to demonstrate
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-                                Lorem ipsum is a placeholder text commonly used to demonstrate
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="image">
-                            <span>Seen by... 6:53 Pm</span>
-                        </div>
-                        <div class="recevier-card my-2">
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="image">
-                        </div>
-                        <div class="sender-card ml-auto my-2">
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-                                Lorem ipsum is a placeholder text commonly used to demonstrate
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-                                Lorem ipsum is a placeholder text commonly used to demonstrate
-                            </p>
-                            <p>Lorem ipsum is a placeholder text commonly used to demonstrate
-
-                            </p>
-                            <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="image">
-                            <span>Seen by... 6:53 Pm</span>
-                        </div>
+                    <div class="chat-box-right-body px-5 " id="chatList">
+                        @if($chatView!=null)
+                        <?= $chatView['chatView']; ?>
+                        @endif
                     </div>
                     <div class="chat-box-right-footer pt-3 pb-1">
                         <form class="form-inline">
+                            <input type="hidden" id="chat_id" name="chat_id">
+
                             <div class="form-group mx-sm-3 mb-2">
-                                <input type="text" class="form-control" id="message" placeholder="Type here">
+                                <input type="text" class="form-control" id="text" placeholder="Type here" id>
                             </div>
-                            <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            <button type="submit" class="btn btn-primary mb-2" id="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                             </button>
                         </form>
                     </div>
@@ -700,6 +457,87 @@
     })
 </script>
 <script>
-    $('.sidenav .nav-item:nth-of-type(5)').addClass('active')
+    $('.sidenav .nav-item:nth-of-type(5)').addClass('active');
+
+    $(document).ready(function() {
+
+        $(".message_box").click(function(e) {
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var id = $(this).attr('data-id');
+            $("#chat_id").val(id);
+
+
+            var type = "POST";
+            var url = "{{ route('user.message', ':id') }}";
+            url = url.replace(':id', id);
+
+            // alert(url)
+            $.ajax({
+                type: type,
+                url: url,
+
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data.chatView);
+                    $("#chatList").html(data.chatView);
+
+                },
+                error: function(data) {
+                    alert('hi');
+                    console.log(data);
+                }
+            });
+
+
+
+
+        });
+        $("#submit").click(function(e) {
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var chat_id = $('#chat_id').val();
+            var text = $('#text').val();
+           
+
+            // alert(chat_id);
+            var type = "POST";
+            var url = "{{ route('user.send_message') }}";
+
+
+            // alert(url)
+            $.ajax({
+                type: type,
+                url: url,
+                data: {
+
+                    chat_id: chat_id,
+                    text: text,
+                },
+                cache: false,
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+
+
+                },
+                error: function(data) {
+                    alert('hi');
+                    // console.log(data);
+                }
+            });
+        });
+    });
 </script>
 @endsection

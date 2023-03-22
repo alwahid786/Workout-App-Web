@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Traits\ResponseTrait;
 use App\Models\BookedSession;
 use App\Models\Category;
+use App\Models\Chat;
 use App\Models\Classes;
 use App\Models\ClassImage;
 use App\Models\Notification;
@@ -360,5 +361,21 @@ class TrainerController extends Controller
             $notification = $this->sendNotification($reciever_id, $type_id, $noti_type, $noti_text);
         }
         return redirect()->back();
+    }
+
+
+    /////// trainer chat list...........///////
+    public function trainerChatList()
+    {
+        $chatlist = Chat::where('trainer_id', auth()->user()->id)->with('session.category', 'session.session_image')->get();
+        if (!$chatlist) {
+            return $this->sendError('No Data found against ID');
+        }
+        $chatView = '';
+
+        $chatlist = json_decode($chatlist, true);
+        // dd($chatlist);
+
+        return view('pages.trainerSide.message', compact('chatlist', 'chatView'));
     }
 }
