@@ -160,9 +160,23 @@ class TrainerController extends Controller
     ////.............trainer.dashboard.............///
     public function trainerDashboard()
     {
-        $today_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
-        $upcoming_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', '>', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
-        $past_sessions = BookedSession::where('trainer_id', auth()->user()->id)->where('session-date', '<', now()->format('Y-m-d'))->with('session.category', 'session.session_image')->get();
+        $today_sessions = BookedSession::where([
+            ['trainer_id', '=', auth()->user()->id],
+            ['session-date', '=', now()->format('Y-m-d')],
+            ['status', '=', 1],
+        ])->with('session.category', 'session.session_image')->get();
+
+        $upcoming_sessions = BookedSession::where([
+            ['trainer_id', '=', auth()->user()->id],
+            ['session-date', '>', now()->format('Y-m-d')],
+            ['status', '=', 1],
+        ])->with('session.category', 'session.session_image')->get();
+
+        $past_sessions = BookedSession::where([
+            ['trainer_id', '=', auth()->user()->id],
+            ['session-date', '<', now()->format('Y-m-d')],
+            ['status', '=', 1],
+        ])->with('session.category', 'session.session_image')->get();
         $rating         = Review::where('trainer_id', auth()->user()->id)->with('user:id,name,profile_img')->get();
         $notification = Notification::where(['reciever_id' => auth()->user()->id, 'is_read' => 0])->with('user')->get();
         if (!$today_sessions) {
