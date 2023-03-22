@@ -505,7 +505,7 @@
                                         </div>
                                     </div>
                                     <div class="trainer-class-times">
-                                        <h3>{{date('h',strtotime($session['start_time']))}} {{$session['start_meridiem']}}</h3>
+                                        <h3>{{date('h',strtotime($session['start_time']))}}{{$session['start_meridiem']}}</h3>
                                     </div>
                                     <div class="trainer-class-time-border"></div>
                                 </div>

@@ -596,7 +596,7 @@
                                     </div>
                                 </div>
 
-                               @if($currentSession['session']['type'] == 1)
+                                @if($currentSession['session']['type'] == 1)
                                 <div class="table-cotent py-2 py-md-0">
                                     <div class="table-content-value text-center">
                                         <div class="trainer-class-time-card-right workout-table-img">
@@ -622,9 +622,9 @@
                         @endforeach
                         @else
                         <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <strong class="text-danger text-center">No Session Booked For Today. </strong>
-                                <div class="workout-table-border workout-table-border-red"></div>
-                            </div>
+                            <strong class="text-danger text-center">No Session Booked For Today. </strong>
+                            <div class="workout-table-border workout-table-border-red"></div>
+                        </div>
                         @endif
                     </div>
                 </div>
@@ -682,9 +682,9 @@
                         @endforeach
                         @else
                         <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
-                                <strong class="text-danger text-center">There Is No Upcoming Session.</strong>
-                                <div class="workout-table-border workout-table-border-red"></div>
-                            </div>
+                            <strong class="text-danger text-center">There Is No Upcoming Session.</strong>
+                            <div class="workout-table-border workout-table-border-red"></div>
+                        </div>
                         @endif
                     </div>
                 </div>
@@ -795,8 +795,8 @@
                         @endforeach
                         @else
                         <div class="workout-right-session-card  px-3 py-4 my-3">
-                                <strong class="text-danger text-center">There Is No Past Session.</strong>
-                            </div>
+                            <strong class="text-danger text-center">There Is No Past Session.</strong>
+                        </div>
                         @endif
                     </div>
 
@@ -867,21 +867,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
 <script>
     jQuery(document).ready(function() {
-        $(".workout-right-session-card").on('mouseover', function(){
+        $(".workout-right-session-card").on('mouseover', function() {
             $(this).addClass('workout-card-right-active')
         });
-        $(".workout-right-session-card").on('mouseout', function(){
+        $(".workout-right-session-card").on('mouseout', function() {
             $(this).removeClass('workout-card-right-active')
         });
 
-        const dates = @json($sessionDates); 
+        const dates = @json($sessionDates);
         setTimeout(() => {
-            const elementsToHighlight = document.querySelectorAll('fc-day-top'); 
-            $(dates).each(function(i,e){
+            const elementsToHighlight = document.querySelectorAll('fc-day-top');
+            $(dates).each(function(i, e) {
                 a = $(`td.fc-day-top[data-date=${e}]`);
-                a.css('background-color', '#ffa50054');
+                a.css('background-color', '#FDD9CE');
                 a.css('border-radius', '10px');
                 a.css('cursor', 'pointer');
+                // a.css('color', '#ffffff');
             });
         }, 2000);
 
@@ -926,7 +927,7 @@
                     center: 'title,,agendaWeek,month,agendaDay',
                     right: 'next'
                 },
-                
+
                 eventRender: function(event, element) {
                     if (event.icon) {
                         element.find(".fc-title").prepend("<i class='fa fa-" + event.icon + "'></i>");
