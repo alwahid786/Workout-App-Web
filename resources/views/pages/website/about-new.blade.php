@@ -381,7 +381,7 @@
         font-family: "Poppins", sans-serif !important;
     }
 
-    @media screen and (max-width:1400px) {
+    @media screen and (max-width:1566px) {
         .about-section-two {
             max-width: 1000px;
         }
@@ -465,7 +465,7 @@
         width: 50px;
     }
 
-    @media screen and (max-width:1400px) {
+    @media screen and (max-width:1566px) {
         .ceo-content-section {
             box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
             max-width: 1000px;
@@ -496,7 +496,7 @@
         font-size: 0.9rem;
     }
 
-    @media screen and (max-width:1400px) {
+    @media screen and (max-width:1566px) {
         .hero-section {
             max-width: 1000px;
             margin: 0 auto;
@@ -526,7 +526,7 @@
 <div class="container-fluid pt-5 py-sm-5">
     <div class="ceo-section">
         <div class="ceo-title-section ">
-            <img src="{{asset('public/assets/images/Transforming personal training.png')}}" alt="">
+            <img src="{{asset('public/assets/images/payment-hero.webp')}}" alt="">
             <div class="ceo-profile pl-3">
                 <h1>John Smith</h1>
                 <p>Founder and CEO of WORKITPT</p>
@@ -560,7 +560,7 @@
                     <p class="mb-0">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
                 </div>
                 <div class="col-md-6 Transforming-img px-0 text-center my-auto">
-                    <img src="{{asset('public/assets/images/Transforming personal training.png')}}" alt="">
+                    <img src="{{asset('public/assets/images/gym-ones.jpg')}}" alt="">
 
                 </div>
             </div>
@@ -572,11 +572,11 @@
     <div class="container-fluid py-3">
         <div class="left-section-par ">
             <div class="row">
-                <div class="col-md-6 Transforming-img px-0 text-center my-auto">
-                    <img src="{{asset('public/assets/images/modern aproach.png')}}" alt="">
+                <div class="col-md-6 Transforming-img px-0 text-center my-auto order-2 order-md-1">
+                    <img src="{{asset('public/assets/images/gym-two.jpg')}}" alt="">
 
                 </div>
-                <div class="col-md-6 my-auto text-center py-5 py-md-0 per-heading">
+                <div class="col-md-6 my-auto text-center py-5 py-md-0 per-heading order-1 order-md-2">
 
                     <h1 class="pb-2 pb-md-5 mb-0">A Modern Approach</h1>
                     <p class="mb-0">It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
