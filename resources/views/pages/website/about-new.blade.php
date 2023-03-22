@@ -381,7 +381,7 @@
         font-family: "Poppins", sans-serif !important;
     }
 
-    @media screen and (max-width:1366px) {
+    @media screen and (max-width:1400px) {
         .about-section-two {
             max-width: 1000px;
         }
@@ -465,7 +465,7 @@
         width: 50px;
     }
 
-    @media screen and (max-width:1366px) {
+    @media screen and (max-width:1400px) {
         .ceo-content-section {
             box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
             max-width: 1000px;
@@ -496,7 +496,7 @@
         font-size: 0.9rem;
     }
 
-    @media screen and (max-width:1366px) {
+    @media screen and (max-width:1400px) {
         .hero-section {
             max-width: 1000px;
             margin: 0 auto;
