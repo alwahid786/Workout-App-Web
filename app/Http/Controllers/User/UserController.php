@@ -813,7 +813,7 @@ class UserController extends Controller
     /////// insert message from user/////
     public function sendMessage(Request $request)
     {
-        // dd($request->chat_id);
+        
         $message = Message::create([
             'chat_id' => $request->chat_id,
             'sender_id' => auth()->user()->id,
