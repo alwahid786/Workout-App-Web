@@ -93,7 +93,11 @@
                      cache: false,
                      success: function(dataResult) {
                          console.log(dataResult);
-                         window.location.href = `{{url('/dashboard')}}`;
+                         if (dataResult.data.update_status == 0) {
+                             window.location.href = `{{url('profile')}}`;
+                         } else {
+                             window.location.href = `{{url('/dashboard')}}`;
+                         }
                      },
                      error: function(jqXHR, exception) {
                          $('.loaderDiv').hide();
