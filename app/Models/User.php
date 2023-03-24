@@ -41,7 +41,8 @@ class User extends Authenticatable
         'insta_id',
         'facebook_id',
         'weight_unit',
-        'hieght_unit'
+        'hieght_unit',
+        'update_status'
     ];
 
     /**

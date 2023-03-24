@@ -290,7 +290,7 @@
                     <input type="text" class="form-control py-4 " value="{{auth()->user()->height ?? ''}}" name="height" id="inputAddress2">
                 </div>
             </div>
-            <div class="col-md-12 pb-3" data-aos="fade-right" >
+            <div class="col-md-12 pb-3" data-aos="fade-right">
                 <div class="form-outline pro-form">
                     <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
                     <input type="text" name="madical_condition" value="{{auth()->user()->madical_condition	 ?? ''}}" class="form-control py-4" id="inputCity">
@@ -303,6 +303,7 @@
                     <textarea class="form-control" maxlength="256" name="about" id="textAreaExample1" rows="4">{{auth()->user()->about ?? ''}}</textarea>
                 </div>
             </div>
+            <input type="hidden" name="update_status" value="1">
             <div class="col-12 my-5">
                 <div class=" profile-nxt-btn">
                     <!-- <a href="#" class="update-profile-form-btn">Next</a> -->
