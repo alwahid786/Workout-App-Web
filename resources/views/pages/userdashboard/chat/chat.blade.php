@@ -323,6 +323,6 @@
     })
 </script>
 <script>
-    $('.sidenav .nav-item:nth-of-type(6)').addClass('active')
+    $('.sidenav .nav-item:nth-of-type(7)').addClass('active')
 </script>
 @endsection

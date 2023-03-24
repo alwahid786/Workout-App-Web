@@ -533,6 +533,6 @@
 @endsection
 @section('insertsfooter')
 <script>
-    $('.sidenav .nav-item:nth-of-type(5)').addClass('active')
+    $('.sidenav .nav-item:nth-of-type(6)').addClass('active')
 </script>
 @endsection
