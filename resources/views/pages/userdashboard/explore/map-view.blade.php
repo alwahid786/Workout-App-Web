@@ -421,12 +421,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                                <div class="filter-left-select-heading drop-icon-parent">
-                                    <h1>Location</h1>
+                            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2 ">
+                                <div class="filter-left-select-heading drop-icon-parent ">
+                                    <h1>District</h1>
                                     <div class="drop-icon">
                                         <select class="wide s-select form-control " id="workout_location">
-                                            <option selected value="{{$currentUserInfo->regionName}}" class="locationOption">{{$currentUserInfo->regionName}}</option>
+                                            <option selected value="{{$currentUserInfo->regionName}}" class="locationOption">Sahiwal</option>
+                                        </select>
+                                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2 ">
+
+                                <div class="filter-left-select-heading drop-icon-parent ">
+                                    <h1>City</h1>
+                                    <div class="drop-icon">
+                                        <select class="wide s-select form-control " id="workout_location">
+                                            <option selected value="{{$currentUserInfo->regionName}}" class="locationOption">Lahore</option>
                                         </select>
                                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                                     </div>
@@ -592,14 +606,14 @@
         $(".fc-col-header-cell-cushion").click(function() {
             var day = $(this).find(">:first-child").text();
             var data = {
-                    category: category,
-                    location: location,
-                    type: type,
-                    price: price,
-                    radius: radius,
-                    session_type: session_type,
-                    day: day
-                }
+                category: category,
+                location: location,
+                type: type,
+                price: price,
+                radius: radius,
+                session_type: session_type,
+                day: day
+            }
         });
         $(".applyFilterBtn").on('click', function() {
             let category = $('#workout_category').val();
@@ -609,13 +623,13 @@
             let radius = $('#workout_radius').val();
             let session_type = $('#session_type').val();
             var data = {
-                    category: category,
-                    location: location,
-                    type: type,
-                    price: price,
-                    radius: radius,
-                    session_type: session_type,
-                };
+                category: category,
+                location: location,
+                type: type,
+                price: price,
+                radius: radius,
+                session_type: session_type,
+            };
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
