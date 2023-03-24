@@ -243,7 +243,7 @@
             {
                 breakpoint: 1550,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 3,
                     slidesToScroll: 1
                 }
             },
@@ -255,14 +255,14 @@
                 }
             },
             {
-                breakpoint: 730,
+                breakpoint: 991,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1
                 }
             },
             {
-                breakpoint: 576,
+                breakpoint: 676,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1

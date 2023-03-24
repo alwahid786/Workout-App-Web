@@ -1890,6 +1890,11 @@ h2 {
   transform: translate(0%, -50%) !important;
 }
 
+/* .fc-today {
+  background-color: #e37048 !important;
+
+} */
+
 .fc-today span {
   color: white !important;
   background-color: #e37048;
@@ -1942,4 +1947,9 @@ h2 {
   .fc-center div h2 {
     top: 60px;
   }
+}
+
+.fc-content-skeleton table thead tr .fc-today {
+  background-color: #E37048 !important;
+  border-radius: 10px !important;
 }

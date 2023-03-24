@@ -249,19 +249,6 @@
     });
 </script>
 <script>
-    $('.sidenav .nav-item:nth-of-type(6)').addClass('active')
-
-    // $('.reject_session_id').click(function() {
-    //     var session_id = $(this).parent().find('.session_id').val();
-    //     var sender_id = $(this).parent().find('.sender_id').val();
-    //     var reciever_id = $(this).parent().find('.reciever_id').val();
-
-
-    //     $("#session_reject").val(session_id);
-    //     $("#sender_id_reject").val(sender_id);
-    //     $("#reject_reciever_id").val(reciever_id);
-
-
-    // });
+    $('.sidenav .nav-item:nth-of-type(7)').addClass('active')
 </script>
 @endsection

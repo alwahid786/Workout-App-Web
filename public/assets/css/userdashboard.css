@@ -970,9 +970,9 @@ body {
 
 .category-left h1 {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     white-space: nowrap;
-    max-width: 125px;
+    max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
     padding-bottom: 0.3rem;
@@ -992,7 +992,9 @@ body {
 
 .category-right img {
     width: 100px;
-    height: 180px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 13px;
     margin-left: auto;
 }
 
