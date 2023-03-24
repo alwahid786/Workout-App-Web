@@ -17,7 +17,7 @@
                     @foreach($chat_lists as $chat_list)
                     <div class="chat-card my-3 message_box " data-id="{{$chat_list['id']}}">
                         <div class=" chat-box-left-img">
-                            <img src="{{$chat_list['session']['session_image'][0]['image']}}" alt="image">
+                            <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
                             <h1>{{$chat_list['session']['category']['title']}}</h1>
