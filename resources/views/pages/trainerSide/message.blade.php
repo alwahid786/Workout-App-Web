@@ -371,6 +371,8 @@
                             <img src="{{$chat_list['session']['session_image'][0]['image']}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
+                            <input class="category" type="hidden" value="{{$chat_list['session']['session_image'][0]['image']}}">
+
                             <h1>{{$chat_list['session']['category']['title']}} </h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
@@ -416,6 +418,8 @@
                     <div class="chat-box-right-footer pt-3 pb-1">
                         <form class="form-inline">
                             <input type="hidden" id="chat_id" name="chat_id">
+                            <input type="hidden" id="category" name="category">
+
 
                             <div class="form-group mx-sm-3 mb-2">
                                 <input type="text" class="form-control" id="text" placeholder="Type here" id>
@@ -509,7 +513,7 @@
             e.preventDefault();
             var chat_id = $('#chat_id').val();
             var text = $('#text').val();
-           
+
 
             // alert(chat_id);
             var type = "POST";

@@ -796,10 +796,10 @@ class UserController extends Controller
     public function messages($id)
     {
 
-        $chatDetails = Message::where('chat_id', $id)->get();
+        $chatDetails = Message::where('chat_id', $id)->with('chat.session.category')->get();
 
         $chatDetails = json_decode($chatDetails, true);
-
+        // dd($chatDetails);
         $chatView = View::make('pages.userdashboard.chat.messagelist', [
             'chatDetails' => $chatDetails,
 
