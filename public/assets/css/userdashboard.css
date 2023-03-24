@@ -1337,6 +1337,7 @@ body {
 /* class detail */
 .class-left-banner {
     background: white;
+    height: 100%;
     /* border-radius: 10px; */
 }
 
@@ -1381,6 +1382,24 @@ body {
 
 .class-banner-content-right-time p {
     margin-bottom: 0px;
+}
+
+@media screen and (max-width:576px) {
+    .class-banner-content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+    }
+
+    .class-banner-content>h1 {
+        width: 100%;
+    }
+
+    .class-banner-content-right {
+        width: 100%;
+        justify-content: start;
+    }
 }
 
 .trainer-detail-wrapper {
