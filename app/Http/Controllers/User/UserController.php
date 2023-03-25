@@ -516,16 +516,27 @@ class UserController extends Controller
         return view('pages.userdashboard.explore.categories', compact('class', 'trainersView'));
     }
     //////// dashoboard category show specific category trainer.........//////////
-    public function category_trainer($id)
+    public function category_trainer($id, $search = null)
     {
+        if (!is_null($search)) {
+            $trainerDetails = Category::where('id', $id)
+                ->with([
+                    'trainerCategory.classSession:id,class_id,start_time,end_time,price',
+                    'trainerCategory.trainer'
+                ])
+                ->whereHas('trainerCategory.trainer', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                })
+                ->get();
+        } else {
 
-        $trainerDetails = Category::where('id', $id)->with([
-            'trainerCategory.classSession:id,class_id,start_time,end_time,price',
-            'trainerCategory.trainer'
-        ])->get();
+            $trainerDetails = Category::where('id', $id)->with([
+                'trainerCategory.classSession:id,class_id,start_time,end_time,price',
+                'trainerCategory.trainer'
+            ])->get();
+        }
 
         $trainerDetails = json_decode($trainerDetails, true);
-
         $trainersView = View::make('pages.userdashboard.explore.trainers_list', [
             'trainerDetails' => $trainerDetails[0]['trainer_category'],
             'category'       => $trainerDetails[0]['title']
@@ -537,10 +548,13 @@ class UserController extends Controller
         ];
     }
     /////..render view to categories.blad. php......../////
-    public function get_sessions_list($id)
+    public function get_sessions_list(Request $request, $id)
     {
-
-        $trainersView = $this->category_trainer($id);
+        if ($request->has('search')) {
+            $trainersView = $this->category_trainer($id, $request->search);
+        } else {
+            $trainersView = $this->category_trainer($id);
+        }
 
         return $this->sendResponse(
             $trainersView,

@@ -173,21 +173,78 @@
         }
 
     }
+
+    .dashboard-header .dropdown button {
+        border: 1px solid #E37048;
+        border-radius: 8px;
+        background-color: transparent;
+        color: #E37048;
+    }
+
+    .dashboard-header .dropdown button:hover {
+        border: 1px solid #8D8D8D;
+        border-radius: 8px;
+        background-color: #E37048;
+        color: white;
+    }
+
+    .dashboard-header .dropdown button:focus,
+    .dashboard-header .dropdown button:active {
+        outline: none !important;
+        box-shadow: none !important;
+        background-color: #E37048 !important;
+    }
+
+    .search-section input {
+        border: 1px solid #E37048;
+        border-radius: 8px;
+        background-color: transparent;
+        color: #686767;
+    }
+
+    .search-section input:focus,
+    .search-section input:active {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .search-section button {
+        border: 1px solid #E37048;
+        border-radius: 8px;
+        background-color: #E37048;
+        color: white;
+    }
+
+    .search-section button:focus,
+    .search-section button:active {
+        outline: none;
+        box-shadow: none;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="category-section px-sm-3">
             <div class="dashboard-header ">
-                <div class="dashboard-header-left">
+                <div class="dashboard-header-left d-flex justify-content-between align-items-baseline">
                     <h1>Categories</h1>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Browse Categories
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            @foreach($class as $categories)
+                            <a class="dropdown-item catergory-card-y" data-id="{{$categories['id']}}" href="javascript:void(0)">{{$categories['title']}}</a>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
 
                     @foreach($class as $categories)
                     <div class="col catergory-card-img">
 
-                        <div class="catergory-card catergory-card-yellow p-2" data-id="{{$categories['id']}}">
+                        <div class="catergory-card catergory-card-yellow catergory-card-y p-2" data-id="{{$categories['id']}}">
                             <div class="category-left">
                                 <h1>{{$categories['title']}}</h1>
                                 <p>{{$categories['description']}}</p>
@@ -203,12 +260,12 @@
 
                 </div>
             </div>
-            <div class="dashboard-header-left categories-heading my-4 ">
+            <div class="dashboard-header-left categories-heading mt-4 d-flex justify-content-between align-items-center" style="margin-bottom:0 !important">
                 <h1 id="trainerCategory">{{$trainersView['category']}} Trainers</h1>
-            </div>
-            <div id="trainerList" class="categories-grid-section pb-3">
-                <?= $trainersView['trainersView']; ?>
 
+            </div>
+            <div id="trainerList">
+                <?= $trainersView['trainersView']; ?>
             </div>
         </div>
     </div>
@@ -218,6 +275,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js"></script>
+
+
 <script>
     const slickSettingsss = {
         arrows: true,
@@ -279,8 +338,7 @@
     $('.sidenav .nav-item:nth-of-type(5)').addClass('active')
 </script>
 <script>
-    $(".catergory-card-yellow").click(function(e) {
-
+    $(".catergory-card-y").click(function(e) {
 
         $.ajaxSetup({
             headers: {
@@ -310,13 +368,40 @@
             }
         });
     });
+    $(document).on('click', '#searchBtn', function(e) {
+        let search = $("#searchBox").val();
+        let category = $("#catId").val();
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        e.preventDefault();
+        var type = "POST";
+        var url = "{{ route('get_sessions_list', ':id') }}";
+        url = url.replace(':id', category);
+        $.ajax({
+            type: type,
+            url: url,
+            data: {
+                search: search
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log(`${data.data['category']} here`);
+                $("#trainerList").html(data.data['trainersView']);
+                $("#trainerCategory").html(`${data.data['category']}  Trainers`);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    })
     $('.catergory-card-img').click(function() {
 
         $('.catergory-card-img').find('.catergory-card-yellow').css("border", "none");
         $(this).find('.catergory-card-yellow').css("border", "4px solid black");
-
-
     });
 </script>
 @endsection
