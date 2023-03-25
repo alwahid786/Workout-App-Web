@@ -4,6 +4,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
 <style>
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+        background-color: white !important;
+    }
+
     .loaderDiv {
         display: none;
         position: fixed;
@@ -26,13 +32,13 @@
 
     .login-email-field-red {
         background: #FFDEDE !important;
-        border: 2px solid #FF0000 !important;
+        border: 1px solid red !important;
         color: #FF0000 !important;
     }
 
     .login-email-field-green {
         background: #EAF3CD !important;
-        border: 2px solid #151C00 !important;
+        border: 1px solid green !important;
         color: #151C00 !important;
     }
 
@@ -230,13 +236,11 @@
         border: 1px solid red !important;
         background: #f8dede !important;
         color: red !important;
-        font-weight: 600 !important;
     }
 
     .successInput {
         border: 1px solid green !important;
         color: green !important;
-        font-weight: 600 !important;
         background: #eaf3cd !important;
     }
 
@@ -272,6 +276,10 @@
         left: 10px;
         font-size: 13px;
         opacity: 1;
+    }
+
+    .right-inner-addon i{
+        cursor:pointer;
     }
 </style>
 @include('includes.website.navbar')
@@ -654,7 +662,7 @@
                 <div class="modalContent py-3 ">
                     <input type="text" class="mb-2 modal-input" placeholder="First Name" id="first_name">
                     <input type="text" class="mb-2 modal-input" placeholder="Last Name" id="last_name">
-                    <input type="text" class="mb-2 modal-input" placeholder="Email" id="email">
+                    <input type="email" class="mb-2 modal-input" autocomplete="off" autocorrect="off" autocapitalize="none" placeholder=" Email" id="email">
                     <div class="right-inner-addon mb-2">
                         <input type="password" class=" modal-input signpassInput" placeholder="Password" id="password">
                         <i id="signhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
@@ -684,9 +692,9 @@
             <hr>
             <form action="">
                 <div class="modalContent py-3 ">
-                    <input type="text" class="mb-2 modal-input" placeholder="Email" id="login_email">
+                    <input type="email" autocomplete="off" autocorrect="off" autocapitalize="none" class="mb-2 modal-input" placeholder="Email" id="login_email">
                     <div class="right-inner-addon mb-2">
-                        <input type="password" class=" modal-input passInput" placeholder="Password" id="login_password">
+                        <input type="password" class="modal-input passInput" placeholder="Password" autocomplete="off" autocorrect="off" autocapitalize="none" id="login_password">
                         <i id="loginhidePass" class="fa fa-eye-slash" aria-hidden="true"></i>
                         <i id="loginshowPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>

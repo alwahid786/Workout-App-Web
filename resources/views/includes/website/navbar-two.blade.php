@@ -225,7 +225,7 @@
                     <div class="dropdown dropdown-logout">
                         <button class="p-0 btn btn-secondary dropdown-toggle log-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @if(auth()->user()->profile_img == null)
-                            <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <img src="{{asset('public/assets/images/unknown-user.png')}}" alt="image">
                             @else
                             <img src="{{ auth()->user()->profile_img}}" alt="image">
                             @endif

@@ -16,6 +16,15 @@ $notifications = json_decode($notification, true);
     .setting-drop-sub {
         padding-left: 70px;
     }
+
+    .no-notifications{
+        color:#E37048;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
 </style>
 <nav class="navbar navbar-z navbar-expand-lg navbar-dark  navbar-header px-4 px-lg-0">
     <a class="navbar-brand logo-header pl-lg-3" data-aos="fade-right" href="{{url('dashboard')}}">
@@ -48,12 +57,15 @@ $notifications = json_decode($notification, true);
                         <a class=" notification-area" href="#">
                             <div class="notification-profile d-flex py-3">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
-                                <p class="pl-3"><span>{{$notification['user']['name']}}</span>{{$notification['noti_text']}} 
-                                    </p>
+                                <p class="pl-3"><span>{{$notification['user']['name']}}</span>{{$notification['noti_text']}}
+                                </p>
                             </div>
                         </a>
                         @endforeach
                         @else
+                        <div class="no-notifications">
+                            No Notifications!
+                        </div>
                         @endif
                         <!-- <a class=" notification-area" href="#">
                             <div class="notification-profile d-flex py-3">

@@ -52,7 +52,7 @@
     .pro-form input,
     .pro-form textarea {
         background: rgba(249, 249, 249, 0.2);
-        border: 1px solid #CECECE !important;
+        border: 1px solid #CECECE;
         box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
         border-radius: 10px !important;
     }
@@ -169,7 +169,7 @@
     }
 </style>
 @include('includes.website.navbar-two')
-<form action="{{route('updateProfile')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('updateProfile')}}" method="post" enctype="multipart/form-data" id="updateProfileForm">
     @csrf
     <div class="container-fluid hero-section ">
         <div class="container hero-section-wrapper" data-aos="fade-left">
@@ -183,7 +183,7 @@
                 <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0 profile-hero-right">
                     <div id="img-preview">
                         @if(auth()->user()->profile_img == null)
-                        <img src="{{asset('public/assets/images/payment-hero.webp')}}" alt="image">
+                        <img src="{{asset('public/assets/images/unknown-user.png')}}" alt="image">
                         @else
                         <img src="{{ auth()->user()->profile_img}}" alt="image">
                         @endif
@@ -202,31 +202,31 @@
         <div class="row">
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Contact</label>
+                    <label for="inputAddress" class=" ">Contact <span style="color: red">*</span></label>
                     <input type="text" name="phone" value="{{auth()->user()->phone ?? ''}}" class="form-control py-4 decimal-only" id="inputAddress">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Emergency Contact</label>
+                    <label for="inputAddress" class=" ">Emergency Contact <span style="color: red">*</span></label>
                     <input type="text" name="emergency_contact" value="{{auth()->user()->emergency_contact ?? ''}}" class="form-control py-4 decimal-only" id="inputAddress">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Relationship With Emergency Contact</label>
+                    <label for="inputAddress2" class=" ">Relationship With Emergency Contact <span style="color: red">*</span></label>
                     <input type="text" name="relationship_emergency_contact" value="{{auth()->user()->relationship_emergency_contact	 ?? ''}}" class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Date of Birth</label>
+                    <label for="inputAddress2" class=" ">Date of Birth <span style="color: red">*</span></label>
                     <input type="date" name="date_of_birth" class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputCity" class=" ">Gender</label>
+                    <label for="inputCity" class=" ">Gender <span style="color: red">*</span></label>
                     <!-- <input type="text" name="gender" value="{{auth()->user()->gender ?? ''}}" class="form-control py-4" id="inputCity"> -->
                     <!-- <input type="text" class="form-control py-4" id="inputCity"> -->
                     <select name="" class="form-control py-2 pro-form-select" id="inputCity">
@@ -238,26 +238,26 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
-                    <input type="text" name="country" value="{{auth()->user()->country ?? ''}}" class="form-control py-4" id="inputAddress2">
+                    <input type="text" name="country" data-class="no-validation" value="{{auth()->user()->country ?? ''}}" class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
-                    <input type="text" name="state" value="{{auth()->user()->state ?? ''}}" class="form-control py-4" id="inputCity">
+                    <input type="text" name="state" data-class="no-validation" value="{{auth()->user()->state ?? ''}}" class="form-control py-4" id="inputCity">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Workout Location</label>
-                    <input type="text" name="workout_location" value="{{auth()->user()->workout_location ?? ''}}" class="form-control py-4" id="inputAddress2">
+                    <input type="text" name="workout_location" data-class="no-validation" value="{{auth()->user()->workout_location ?? ''}}" class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2 " value="kg" type="radio" name="weight_unit" <?php if (auth()->user()->weight_unit == 'kg') {
+                        <input class="color-radio mx-2 " value="kg" type="radio" name="weight_unit" <?php if (auth()->user()->weight_unit == 'kg' || auth()->user()->weight_unit == null) {
                                                                                                         echo 'checked';
                                                                                                     } ?>>KGs
                     </label>
@@ -266,14 +266,14 @@
                                                                                                         echo 'checked';
                                                                                                     } ?>>LBs
                     </label>
-                    <input type="text" name="weight" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity">
+                    <input type="text" name="weight" data-class="no-validation" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Height</label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="feet" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'feet') {
+                        <input class="color-radio mx-2" value="feet" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'feet' || auth()->user()->hieght_unit == null) {
                                                                                                             echo 'checked';
                                                                                                         } ?>>Feet
                     </label>
@@ -287,19 +287,19 @@
                                                                                                             echo 'checked';
                                                                                                         } ?>>Inches
                     </label>
-                    <input type="text" class="form-control py-4 " value="{{auth()->user()->height ?? ''}}" name="height" id="inputAddress2">
+                    <input type="text" class="form-control py-4 " data-class="no-validation" value="{{auth()->user()->height ?? ''}}" name="height" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-12 pb-3" data-aos="fade-right">
                 <div class="form-outline pro-form">
-                    <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
+                    <label for="inputCity" class=" ">Any Known Medical Conditions? <span style="color: red">*</span></label>
                     <input type="text" name="madical_condition" value="{{auth()->user()->madical_condition	 ?? ''}}" class="form-control py-4" id="inputCity">
                     <!-- <textarea type="text" maxlength="256" name="madical_condition" rows="4" value="" class="form-control " id="inputCity">{{auth()->user()->madical_condition ?? ''}}</textarea> -->
                 </div>
             </div>
             <div class="col-12" data-aos="fade-up">
                 <div class="form-outline pro-form">
-                    <label class="form-label" for="textAreaExample">Tell Us About yourself <span>(256)</span></label>
+                    <label class="form-label" for="textAreaExample">Tell Us About yourself <span style="color: red">*</span><span>(256)</span></label>
                     <textarea class="form-control" maxlength="256" name="about" id="textAreaExample1" rows="4">{{auth()->user()->about ?? ''}}</textarea>
                 </div>
             </div>
@@ -307,8 +307,8 @@
             <div class="col-12 my-5">
                 <div class=" profile-nxt-btn">
                     <!-- <a href="#" class="update-profile-form-btn">Next</a> -->
-                    <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
-                    <button class="update-profile-form-btn" type="submit">Next</button>
+                    <input type="hidden" data-class="no-validation" value="{{auth()->user()->id}}" name="user_id">
+                    <button class="update-profile-form-btn" type="submit" data-class="no-validation">Next</button>
                 </div>
             </div>
 
@@ -318,7 +318,7 @@
     </div>
 </form>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(document).ready(function() {
         const chooseFile = document.getElementById("profile_img");
@@ -361,6 +361,41 @@
             //if a decimal has been added, disable the "."-button
 
         });
+
+        // Contact Us Form Submission Function
+        $("#updateProfileForm").submit(function(e) {
+            e.preventDefault();
+            validation = validateForm();
+            if (validation) {
+                $("#updateProfileForm")[0].submit();
+            } else {
+                swal({
+                    title: "Some Fields Missing",
+                    text: "Please fill all fields.",
+                    icon: "error",
+                });
+            }
+        })
+
+        function validateForm() {
+            let errorCount = 0;
+            $("form#updateProfileForm :input").each(function() {
+                let val = $(this).val();
+                if (val == '' && $(this).attr('data-class') !== 'no-validation') {
+                    errorCount++
+                    $(this).css('border', '1px solid red');
+                } else if ($(this).is('select') && val == '' && $(this).attr('data-class') !== 'no-validation') {
+                    errorCount++
+                    $(this).css('border', '1px solid red');
+                } else {
+                    $(this).css('border', '1px solid #CECECE');
+                }
+            });
+            if (errorCount > 0) {
+                return false;
+            }
+            return true;
+        }
     });
 </script>
 @endsection
