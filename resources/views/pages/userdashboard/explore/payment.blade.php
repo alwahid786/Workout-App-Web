@@ -355,12 +355,9 @@
 
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
-        <div class="dashboard-header-left mx-4 py-3">
-            <h1> Payment </h1>
-        </div>
         <div class="main-form-section">
             <div class="form-payment-heading mx-3 mt-3">
-                <h2 class="mx-3 pt-3 ">Choose a payment Method</h2>
+                <h2 class="mx-3 pt-3 ">Choose a Payment Card</h2>
             </div>
             <div class="d-payment-card pb-5">
                 <div class="d-payment-card-wrapper">
@@ -385,7 +382,7 @@
                     </div>
                     @endforeach
                     <div class="mt-4">
-                        <a href="{{url('/payments')}}">
+                        <a href="{{url('/payments?role=payment')}}">
                             <div class="credit-card-wrapper-right">
                                 <div class="credit-card-wrapper-right-inner text-center">
                                     <img src="{{asset('public/assets/images/card-plus.svg')}}" alt="">

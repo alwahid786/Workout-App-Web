@@ -499,7 +499,7 @@
                 <div class="form-check text-sm-center py-2 py-sm-3" data-aos="zoom-in">
                     <div class="form-box">
                         <label>
-                            <input type="radio" name="paymentradio">
+                            <input checked type="radio" name="paymentradio">
                             <div class="circle"></div>
 
                             <span>Credit or Debit Card</span>
@@ -511,7 +511,6 @@
                 </div>
             </div>
             <div class="col-md-6 mt-4 mt-md-0 ">
-
                 <div class="form-check text-sm-center py-2 py-sm-3" data-aos="zoom-in">
                     <div class="form-box">
                         <label>
@@ -552,7 +551,7 @@
         </div>
         <div class="col-lg-6 mt-4 mt-lg-0">
             <h1 class="mb-4 " id="payment-form-h">Payment Details</h1>
-            <form action="{{url('/payment_intent')}}" method="POST">
+            <form action="{{url('/payment_intent')}}" method="POST" id="paymentForm">
                 @csrf
                 <div class="form-group payment-form">
                     <label for="exampleInputEmail1" class="payment-form-label">Card Holder</label>
@@ -561,8 +560,7 @@
                 <div class="form-group payment-form ">
                     <label for="exampleInputPassword1" class="payment-form-label">Card Number</label>
                     <div class="form-wrapper">
-
-                        <input type="text" class="form-control" placeholder="1234 -5678-8123-1234" name="card_number">
+                        <input type="text" class="form-control" placeholder="1234 -5678-8123-1234" id="cardNumber" name="cardNumber">
                         <img src="{{asset('public/assets/images/credit-card.svg')}}" alt="">
                         <img src="{{asset('public/assets/images/visa.svg')}}" alt="">
                     </div>
@@ -570,16 +568,44 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="form-group payment-form">
-                            <label for="exampleInputPassword1" class="payment-form-label">Valid Through</label>
-                            <input type="text" id="datepickertwo" class="form-control" placeholder="2/22" name="valid_through">
+                            <label for="exampleInputPassword1" class="payment-form-label">Expiry Month</label>
+                            <input type="text" id="datepickerMonth" autocomplete="off" class="form-control" placeholder="06" name="expiryMonth">
+                            <!-- <select name="" id="">
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select> -->
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group payment-form">
-                            <label for="exampleInputPassword1 " class="payment-form-label">CVV</label>
-                            <input type="text" class="form-control" placeholder="201" name="cvc">
+                            <label for="exampleInputPassword1 " class="payment-form-label">Expiry Year</label>
+                            <input type="text" id="datepickerYear" autocomplete="off" class="form-control" placeholder="2030" name="expiryYear">
                         </div>
                     </div>
+                    @if(request()->has('role'))
+                    <input type="hidden" name="role" value="<?php echo request()->query('role'); ?>">
+                    @endif
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group payment-form">
+                            <label for="exampleInputPassword1" class="payment-form-label">CVV</label>
+                            <input type="text" class="form-control" placeholder="123" id="cvv" name="cvv">
+                        </div>
+                    </div>
+                    @if(request()->has('role'))
+                    <input type="hidden" name="role" value="<?php echo request()->query('role'); ?>">
+                    @endif
                 </div>
         </div>
 
@@ -588,7 +614,8 @@
         <div class=" profile-nxt-btn">
             <!-- <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</a> -->
             <!-- <button class="update-profile-form-btn" type="submit" name="submit">Complete</button> -->
-            <button class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</button>
+            <!-- <button class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</button> -->
+            <button class="update-profile-form-btn" type="submit">Complete</button>
         </div>
     </div>
 </div>
@@ -607,18 +634,25 @@
             <div class="modal-body text-center sucess-modal">
                 <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
                 <h1 class="mt-2">Success!</h1>
-                <p>Your Profile has been created<br>
-                    successfully</p>
+                <p>Your card has been linked Successfully!</p>
             </div>
 
 
         </div>
     </div>
 </div>
+@if(session()->has('successModalOpen'))
+<script>
+    $(document).ready(function() {
+        $("#sucessModal").modal('show');
+    });
+</script>
+@endif
 
 @endsection
 @section('insertfooter')
 <script src="{{ asset('public/assets/js/year-select.js') }}"></script>
+
 <script>
     $('.yearselect').yearselect({
         start: 2016,
@@ -628,7 +662,12 @@
 
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script>
-    $("#datepickertwo").datepicker({});
+    $("#datepickerMonth").datepicker({
+        dateFormat: 'mm'
+    });
+    $("#datepickerYear").datepicker({
+        dateFormat: 'yy'
+    });
 </script>
 
 

@@ -10,7 +10,7 @@
 
     .dashboard-header-left span {
         color: #3F3F3F;
-        font-weight: 300;
+        font-weight: 400;
         font-size: 16px;
     }
 
@@ -384,6 +384,10 @@
         outline: none !important;
         box-shadow: none !important;
     }
+
+    h1 span {
+        display: inline;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -392,7 +396,7 @@
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="">
                     <div class="dashboard-header-left">
-                        <h1>Search <span class="pl-1"> <span id="sessionType">One to One</span> Session</span></h1>
+                        <h1 class="d-flex">Search <span class="pl-1"> <span id="sessionType">One to One</span> Session</span></h1>
                     </div>
                 </div>
                 <div class="">
@@ -405,7 +409,7 @@
         </div>
         <div class="filter-section py-4 px-2">
             <div class="row">
-                <div class="col-xl-6">
+                {{--<div class="col-xl-6">
                     <div class=" filter-menu">
                         <div class=" filter-menu-right">
                             <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
@@ -415,125 +419,238 @@
                                         <select class="wide s-select form-control" id="workout_category">
                                             @foreach($categories as $category)
                                             <option value="{{$category['id']}}" data-src="{{$category['title']}}">{{$category['title']}}</option>
-                                            @endforeach
-                                        </select>
-                                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                                <div class="filter-left-select-heading drop-icon-parent">
-                                    <h1>Location</h1>
-                                    <div class="drop-icon">
-                                        <select class="wide s-select form-control " id="workout_location">
-                                            <option selected value="{{$currentUserInfo->regionName}}" class="locationOption">{{$currentUserInfo->regionName}}</option>
-                                        </select>
-                                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                    </div>
+                @endforeach
+                </select>
+                <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+            </div>
+        </div>
+    </div>
+    <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+        <div class="filter-left-select-heading drop-icon-parent">
+            <h1>Location</h1>
+            <div class="drop-icon">
+                <select class="wide s-select form-control " id="workout_location">
+                    <option selected value="{{$currentUserInfo->regionName}}" class="locationOption">{{$currentUserInfo->regionName}}</option>
+                </select>
+                <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+            </div>
 
-                                </div>
-                            </div>
-                            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                                <div class="filter-left-select-heading drop-icon-parent">
-                                    <h1>Class Type</h1>
-                                    <div class="drop-icon">
+        </div>
+    </div>
+    <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+        <div class="filter-left-select-heading drop-icon-parent">
+            <h1>Class Type</h1>
+            <div class="drop-icon">
 
-                                        <select class="wide s-select form-control" id="workout_type">
-                                            <option value="0">One to One</option>
-                                            <option value="1">Group</option>
-                                        </select>
-                                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                <select class="wide s-select form-control" id="workout_type">
+                    <option value="0">One to One</option>
+                    <option value="1">Group</option>
+                </select>
+                <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
 
 
-                                    </div>
+            </div>
 
-                                </div>
-                            </div>
-                            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                                <div class="filter-left-select-heading drop-icon-parent">
-                                    <h1>Price Range</h1>
-                                    <div class="drop-icon drop-icon-thre">
-                                        <select class="wide s-select form-control " id="workout_price">
-                                            <option value="85">$85 to $200</option>
-                                            <option value="200">$200 to $400</option>
-                                            <option value="400">$400 to $800</option>
-                                            <option value="800">$800++</option>
-                                        </select>
-                                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        </div>
+    </div>
+    <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+        <div class="filter-left-select-heading drop-icon-parent">
+            <h1>Price Range</h1>
+            <div class="drop-icon drop-icon-thre">
+                <select class="wide s-select form-control " id="workout_price">
+                    <option value="85">$85 to $200</option>
+                    <option value="200">$200 to $400</option>
+                    <option value="400">$400 to $800</option>
+                    <option value="800">$800++</option>
+                </select>
+                <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="col-xl-6">
+    <div class="row">
+        <div class="col-sm-6 week-calendar">
+            <div id="calendar"></div>
+        </div>
+        <div class="col-sm-3 range-filter">
+            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
+                <h1>Session Type</h1>
+                <div class="drop-icon input-location">
+                    <select class="wide s-select form-control" id="session_type">
+                        <option value="0">Online</option>
+                        <option value="1">In-person</option>
+                    </select>
+                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                 </div>
-                <div class="col-xl-6">
-                    <div class="row">
-                        <div class="col-sm-6 week-calendar">
-                            <div id="calendar"></div>
-                        </div>
-                        <div class="col-sm-3 range-filter">
-                            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
-                                <h1>Session Type</h1>
-                                <div class="drop-icon input-location">
-                                    <select class="wide s-select form-control" id="session_type">
-                                        <option value="0">Online</option>
-                                        <option value="1">In-person</option>
-                                    </select>
-                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                </div>
 
 
-                            </div>
-                        </div>
-                        <div class="col-sm-3 range-filter">
-                            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
-                                <h1>Range</h1>
-                                <div class="drop-icon input-location">
-                                    <select class="wide s-select form-control" id="workout_radius">
-                                        <option value="3">3KM</option>
-                                        <option value="5">5KM</option>
-                                        <option value="8">8KM</option>
-                                        <option value="10">10KM</option>
-                                        <option value="15">15KM</option>
-                                        <option value="20">20KM</option>
-                                    </select>
-                                    <!-- <input type="text" readonly style="cursor: pointer;" placeholder="Enter Location"> -->
-                                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
-                                </div>
-                            </div>
+            </div>
+        </div>
+        <div class="col-sm-3 range-filter">
+            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
+                <h1>Range</h1>
+                <div class="drop-icon input-location">
+                    <select class="wide s-select form-control" id="workout_radius">
+                        <option value="3">3KM</option>
+                        <option value="5">5KM</option>
+                        <option value="8">8KM</option>
+                        <option value="10">10KM</option>
+                        <option value="15">15KM</option>
+                        <option value="20">20KM</option>
+                    </select>
+                    <!-- <input type="text" readonly style="cursor: pointer;" placeholder="Enter Location"> -->
+                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                </div>
+            </div>
 
-                        </div>
+        </div>
+    </div>
+</div>--}}
+<div class="col-12">
+    <div class=" filter-menu">
+        <div class=" filter-menu-right">
+            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                <div class="filter-left-select-heading drop-icon-parent">
+                    <h1>Workout Type</h1>
+                    <div class="drop-icon">
+                        <select class="wide s-select form-control" id="workout_category">
+                            @foreach($categories as $category)
+                            <option value="{{$category['id']}}" data-src="{{$category['title']}}">{{$category['title']}}</option>
+                            @endforeach
+                        </select>
+                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                     </div>
                 </div>
             </div>
-            <div class="col text-right my-2 pr-0">
-                <div class="filter-section-btn py-2">
-                    <a href="javascript:void(0)" class="applyFilterBtn">Apply</a>
+            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                <div class="filter-left-select-heading drop-icon-parent">
+                    <h1>Area</h1>
+                    <div class="drop-icon">
+                        <select class="wide s-select form-control " id="workout_location">
+                            <option value="Hong Kong Island">Hong Kong Island</option>
+                            <option value="Kowloon">Kowloon</option>
+                            <option value="New Territories">New Territories</option>
+                        </select>
+                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                    </div>
+
                 </div>
             </div>
-            <div class="col py-2 map-section px-0">
-                <div id="map"></div>
-                <div class="map-card p-2 mt-3">
+            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                <div class="filter-left-select-heading drop-icon-parent">
+                    <h1>District</h1>
+                    <div class="drop-icon">
+                        <select class="wide s-select form-control" id="city">
+                            <option value="">Select city</option>
+                        </select>
+                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                    </div>
+                </div>
+            </div>
+            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                <div class="filter-left-select-heading drop-icon-parent">
+                    <h1>Class Type</h1>
+                    <div class="drop-icon">
 
-                    <div class="map-card-left">
-                        <div class="map-card-img">
-                            <img class="trainerImg_mapcard" src="{{asset('public/assets/images/rating-right.png')}}">
-                        </div>
-                        <div class="map-card-profile pl-3">
-                            <h1 class="sessionName_mapcard">Stretching </h1>
-                            <p class="name trainerName_mapcard">John Smith</p>
-                            <div class="rating-star py-1">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                            </div>
-                            <div class="location-pin pb-3">
-                                <i class="fa fa-map-marker pr-2" aria-hidden="true"></i>
-                                <p class="trainerLocation_mapcard">Park Gardens</p>
-                            </div>
-                            <!-- <div class="image-counter">
+                        <select class="wide s-select form-control" id="workout_type">
+                            <option value="0">One to One</option>
+                            <option value="1">Group</option>
+                        </select>
+                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                <div class="filter-left-select-heading drop-icon-parent">
+                    <h1>Price Range</h1>
+                    <div class="drop-icon drop-icon-thre">
+                        <select class="wide s-select form-control " id="workout_price">
+                            <option value="85">$85 to $200</option>
+                            <option value="200">$200 to $400</option>
+                            <option value="400">$400 to $800</option>
+                            <option value="800">$800++</option>
+                        </select>
+                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12 mt-3">
+    <div class="row">
+        <div class="col-sm-6 week-calendar">
+            <div id="calendar"></div>
+        </div>
+        <div class="col-sm-3 range-filter">
+            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
+                <h1>Session Type</h1>
+                <div class="drop-icon input-location">
+                    <select class="wide s-select form-control" id="session_type">
+                        <option value="0">Online</option>
+                        <option value="1">In-person</option>
+                    </select>
+                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-sm-3 range-filter">
+            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
+                <h1>Range</h1>
+                <div class="drop-icon input-location">
+                    <select class="wide s-select form-control" id="workout_radius">
+                        <option value="3">3KM</option>
+                        <option value="5">5KM</option>
+                        <option value="8">8KM</option>
+                        <option value="10">10KM</option>
+                        <option value="15">15KM</option>
+                        <option value="20">20KM</option>
+                    </select>
+                    <!-- <input type="text" readonly style="cursor: pointer;" placeholder="Enter Location"> -->
+                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="col text-right my-2 pr-0">
+    <div class="filter-section-btn py-2">
+        <a href="javascript:void(0)" class="applyFilterBtn">Apply</a>
+    </div>
+</div>
+<div class="col py-2 map-section px-0">
+    <div id="map"></div>
+    <div class="map-card p-2 mt-3">
+
+        <div class="map-card-left">
+            <div class="map-card-img">
+                <img class="trainerImg_mapcard" src="{{asset('public/assets/images/rating-right.png')}}">
+            </div>
+            <div class="map-card-profile pl-3">
+                <h1 class="sessionName_mapcard">Stretching </h1>
+                <p class="name trainerName_mapcard">John Smith</p>
+                <div class="rating-star py-1">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+                <div class="location-pin pb-3">
+                    <i class="fa fa-map-marker pr-2" aria-hidden="true"></i>
+                    <p class="trainerLocation_mapcard">Park Gardens</p>
+                </div>
+                <!-- <div class="image-counter">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
                                 <img src="{{asset('public/assets/images/rating-right.png')}}">
@@ -542,23 +659,23 @@
                                     <h1>+5</h1>
                                 </div>
                             </div> -->
-                        </div>
-                    </div>
-                    <div class="map-card-right">
-                        <div class="map-card-right-btn mt-4">
-                            <a href="" class="sessionAnchor_mapcard">
-                                Book Now
-                            </a>
-                        </div>
-                    </div>
-                    <div class="">
-                        <img class="map-card-close" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
-                    </div>
-
-                </div>
             </div>
         </div>
+        <div class="map-card-right">
+            <div class="map-card-right-btn mt-4">
+                <a href="" class="sessionAnchor_mapcard">
+                    Book Now
+                </a>
+            </div>
+        </div>
+        <div class="">
+            <img class="map-card-close" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
+        </div>
+
     </div>
+</div>
+</div>
+</div>
 </div>
 
 @endsection
@@ -574,6 +691,32 @@
 </script>
 <script>
     $(document).ready(function() {
+        const citiesByState = {
+            "Hong Kong Island": ["Central", "Eastern", "Southern", "Wan Chai"],
+            "Kowloon": ["Kowloon City", "Kwun Tong", "Sham Shui Po", "Wong Tai Sin", "Yau Tsim Mong"],
+            "New Territories": ["Islands", "Kwai Tsing", "North", "Sai Kung", "Sha Tin", "Tai Po", "Tsuen Wan", "Tuen Mun", "Yuen Long"]
+        };
+
+        $(document).on('change', '#workout_location', function() {
+            const stateDropdown = document.getElementById("workout_location");
+            const cityDropdown = document.getElementById("city");
+            const selectedState = stateDropdown.value;
+            // Remove previous options from city dropdown
+            cityDropdown.options.length = 0;
+            // cityDropdown.options.add(new Option("Select city", ""));
+
+            // If a state is selected, add its cities to the dropdown
+            if (selectedState) {
+                const cities = citiesByState[selectedState];
+                cities.forEach(city => {
+                    const cityOption = document.createElement("option");
+                    cityOption.value = city;
+                    cityOption.text = city;
+                    cityDropdown.appendChild(cityOption);
+                    $('.s-select').niceSelect('update');
+                });
+            }
+        });
         $('.s-select').niceSelect();
         var UserLocationdata = @json($currentUserInfo);
         var locationMap = [
@@ -592,14 +735,14 @@
         $(".fc-col-header-cell-cushion").click(function() {
             var day = $(this).find(">:first-child").text();
             var data = {
-                    category: category,
-                    location: location,
-                    type: type,
-                    price: price,
-                    radius: radius,
-                    session_type: session_type,
-                    day: day
-                }
+                category: category,
+                location: location,
+                type: type,
+                price: price,
+                radius: radius,
+                session_type: session_type,
+                day: day
+            }
         });
         $(".applyFilterBtn").on('click', function() {
             let category = $('#workout_category').val();
@@ -609,13 +752,13 @@
             let radius = $('#workout_radius').val();
             let session_type = $('#session_type').val();
             var data = {
-                    category: category,
-                    location: location,
-                    type: type,
-                    price: price,
-                    radius: radius,
-                    session_type: session_type,
-                };
+                category: category,
+                location: location,
+                type: type,
+                price: price,
+                radius: radius,
+                session_type: session_type,
+            };
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -638,6 +781,9 @@
 
             });
         });
+
+
+
     });
     $('.map-card').hide();
 

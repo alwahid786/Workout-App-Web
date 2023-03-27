@@ -30,8 +30,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Stripe\SearchResult;
 use Stevebauman\Location\Facades\Location;
-
-
+use Illuminate\Support\Facades\URL;
+use Twocheckout\Twocheckout;
 
 class UserController extends Controller
 {
@@ -98,65 +98,88 @@ class UserController extends Controller
     ///   stripe payment .....///////
     public function paymentIntent(Request $request)
     {
+        // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        // $month = date('m', strtotime($request->valid_through));
+        // $year  = date('Y', strtotime($request->valid_through));
+        // $response = \Stripe\Token::create(
+        //     array(
+        //         "card" => array(
+        //             "number"    => $request->input('card_number'),
+        //             "exp_month" => $month,
+        //             "exp_year"  => $year,
+        //             "cvc"       => $request->input('cvc'),
+        //             "name"      => $request->input('name')
+        //         )
+        //     )
+        // );
 
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        // $card_token = $response->id;
+        // $userId     = auth()->user()->id;
 
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        // $customer = $stripe->customers->create([
+        //     'description' => 'Customer create successfully',
+        //     'source'      => $card_token
+        // ]);
 
+        // $ephemeralKey = \Stripe\EphemeralKey::create(
+        //     ['customer' => $customer->id],
+        //     ['stripe_version' => '2020-08-27']
+        // );
 
-        $month = date('m', strtotime($request->valid_through));
-        $year  = date('Y', strtotime($request->valid_through));
+        // Customer::create([
+        //     "card_name"   => $request->input('name'),
+        //     "card_number" => $request->input('card_number'),
+        //     'customer_id' => $customer->id,
+        //     'user_id'     => $userId,
+        //     'type'        => 'CREDIT CARD',
+        //     'valid_thru'  => $month . '/' . $year
+        // ]);
 
+        // $pay_int_res = [
+        //     'result'             => 'Success',
+        //     'message'            => 'Customer create successfully',
+        //     'stripe_publish_key' => env('STRIPE_KEY'),
+        //     // 'payment_intent' => $paymentIntent->client_secret,
+        //     'ephemeral_key'      => $ephemeralKey->secret,
+        //     'customer_id'        => $customer->id
+        // ];
+        // session()->flash('successModalOpen', 'Open Modal');
+        // return redirect()->back();
 
-        $response = \Stripe\Token::create(
-            array(
-                "card" => array(
-                    "number"    => $request->input('card_number'),
-                    "exp_month" => $month,
-                    "exp_year"  => $year,
-                    "cvc"       => $request->input('cvc'),
-                    "name"      => $request->input('name')
-                )
+        $params = array(
+            "sellerId" => "YOUR_SELLER_ID",
+            "privateKey" => "YOUR_PRIVATE_KEY",
+            "demo" => true
+        );
+
+        Twocheckout::privateKey($params['privateKey']);
+        Twocheckout::sellerId($params['sellerId']);
+        Twocheckout::sandbox($params['demo']);
+
+        $token = Twocheckout_Charge::getToken(array(
+            "sellerId" => $params['sellerId'],
+            "currency" => "USD",
+            "total" => "10.00",
+            "billingAddr" => array(
+                "name" => "John Doe",
+                "addrLine1" => "123 Test St",
+                "city" => "Columbus",
+                "state" => "OH",
+                "zipCode" => "43228",
+                "country" => "USA",
+                "email" => "example@test.com",
+                "phoneNumber" => "555-555-5555"
+            ),
+            "token" => array(
+                "cardNum" => $request->input('card_number'),
+                "expMonth" => $request->input('card_exp_month'),
+                "expYear" => $request->input('card_exp_year'),
+                "cvv" => $request->input('card_cvv')
             )
-        );
+        ));
 
-        $card_token = $response->id;
-        $userId     = auth()->user()->id;
-
-
-        $customer = $stripe->customers->create([
-            'description' => 'Customer create successfully',
-            'source'      => $card_token
-        ]);
-
-        $ephemeralKey = \Stripe\EphemeralKey::create(
-            ['customer' => $customer->id],
-            ['stripe_version' => '2020-08-27']
-        );
-
-
-
-        Customer::create([
-            "card_name"   => $request->input('name'),
-            "card_number" => $request->input('card_number'),
-            'customer_id' => $customer->id,
-            'user_id'     => $userId,
-            'type'        => 'CREDIT CARD',
-            'valid_thru'  => $month . '/' . $year
-        ]);
-
-        $pay_int_res = [
-            'result'             => 'Success',
-            'message'            => 'Customer create successfully',
-            'stripe_publish_key' => env('STRIPE_KEY'),
-            // 'payment_intent' => $paymentIntent->client_secret,
-            'ephemeral_key'      => $ephemeralKey->secret,
-            'customer_id'        => $customer->id
-        ];
-
-
-        // return $this->sendResponse($pay_int_res, 'Payment Intent');
-        return view('pages.website.payment');
+        return response()->json(['token' => $token]);
     }
     /////......contact........////
     public function contactUs(ContactUsRequest $request)
@@ -451,8 +474,16 @@ class UserController extends Controller
         }
         $bookedsession = json_decode($session_detail, true);
         $rating        = json_decode($rating, true);
-        // $client = json_decode($client, true);
-        // dd($client);
+        $sessionStart = ModelsSession::where('id', $bookedsession['session_id'])->first('start_time');
+        $sessionTime = $bookedsession['session-date'] . ' ' . $sessionStart['start_time'];
+        $currentTime = Carbon::now();
+        $formattedTime = $currentTime->format('Y-m-d H:i:s');
+        $eventTime = Carbon::parse($sessionTime);
+        if ($eventTime->greaterThanOrEqualTo($formattedTime)) {
+            $bookedsession['is_session_passed'] = true;
+        } else {
+            $bookedsession['is_session_passed'] = false;
+        }
 
         return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession', 'classes', 'rating', 'client'));
     }

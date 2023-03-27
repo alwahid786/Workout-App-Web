@@ -655,7 +655,6 @@
 
     /* ....................Review Rating Star End................. */
 </style>
-
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
     <div class="container-fluid mb-4">
@@ -725,7 +724,8 @@
                                         <img class="rated-badge" src="{{asset('public/assets/images/badge-2.svg')}}" alt="">
                                         <div class="trainer-detail-profile-left-progress py-2 px-2">
                                             <h1>Level</h1>
-                                            <progress id="file" value="72" max="100"> 32% </progress>
+                                            <span class="ml-3" style="color:#E37048; font-size:small; font-weight:500">{{$bookedsession['session']['difficulty_level']}}</span>
+                                            <!-- <progress id="file" value="72" max="100"> 32% </progress> -->
                                         </div>
                                     </div>
                                     <div class="trainer-detail-profile-left-inner-right">
@@ -838,10 +838,13 @@
                     </div>
                     <div class="col text-center">
                         <div class="detail-profile-button">
+                            @if($bookedsession['is_session_passed'] == false)
                             <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
+                            @else
                             <a href="{{url('/dashboard/class-detail/'.$bookedsession['session']['class']['trainer']['id'].'/'.$bookedsession['session']['day'])}}" class="btn mr-sm-4 my-2">Book Again</a>
                             <a href="javascript:void(0)" class="btn mr-sm-4 my-2" data-toggle="modal" data-target="#reviewModal">Review</a>
                             <a href="" class="btn my-2" data-toggle="modal" data-target="#refundModal">Refund</a>
+                            @endif
                         </div>
 
                     </div>
