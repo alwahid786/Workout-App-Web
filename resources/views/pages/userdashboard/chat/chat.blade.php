@@ -14,6 +14,7 @@
             <div class="chat-box">
                 <div class="chat-box-left p-2">
                     @if($chat_lists != null)
+                    @dd($chat_lists);
                     @foreach($chat_lists as $chat_list)
                     <div class="chat-card my-3 message_box " data-id="{{$chat_list['id']}}">
                         <div class=" chat-box-left-img">
