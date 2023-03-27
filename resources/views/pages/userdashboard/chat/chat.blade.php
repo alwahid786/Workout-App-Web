@@ -15,6 +15,7 @@
                 <div class="chat-box-left p-2">
                     @if($chat_lists != null)
                     @foreach($chat_lists as $chat_list)
+                    @dd($chat_list);
                     <div class="chat-card my-3 message_box " data-id="{{$chat_list['id']}}">
                         <div class=" chat-box-left-img">
                             <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="image">
