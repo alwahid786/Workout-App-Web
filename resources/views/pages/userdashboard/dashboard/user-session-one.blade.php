@@ -730,7 +730,7 @@
                                     </div>
                                     <div class="trainer-detail-profile-left-inner-right">
                                         <div class="col trainer-detail-profile-name px-0 pt-2">
-                                            <a href="{{url('/dashboard/trainer-detail')}}">
+                                            <a href="{{url('/dashboard/trainer-detail/'.$bookedsession['session']['class']['trainer']['id'])}}">
                                                 <h1>{{$bookedsession['session']['class']['trainer']['name']}}</h1>
                                             </a>
                                             <div class="trainer-detail-profile-gender">
