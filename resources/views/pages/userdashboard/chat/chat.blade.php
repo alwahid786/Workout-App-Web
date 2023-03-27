@@ -16,12 +16,13 @@
                     @if($chat_lists != null)
 
                     @foreach($chat_lists as $chat_list)
-                    <div class="chat-card my-3 message_box " data-id="{{$chat_list['id']}}">
+                    <div class="chat-card my-3 message_box  div_chat" data-id="{{$chat_list['id']}}">
                         <div class=" chat-box-left-img">
                             <img src="{{$chat_list['session']['session_image']['0']['image']}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
                             <h1>{{$chat_list['session']['category']['title']}}</h1>
+                            <input type="hidden" value="{{$chat_list['session']['category']['title']}}" class="chat_name">
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
                                 <p>6:53Pm</p>
@@ -38,7 +39,7 @@
 
                 <div class="chat-box-right ">
                     <div class="chat-box-right-header px-3 py-2">
-                        <h1>John Smith</h1>
+                        <h1 id="title"></h1>
                         <button id="chat-screen"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </div>
 
@@ -251,5 +252,10 @@
 </script>
 <script>
     $('.sidenav .nav-item:nth-of-type(7)').addClass('active')
+
+    $(".message_box").click(function(e) {
+        var category = $(this).parent().find('.chat_name').val();
+        $('#title').text(category);
+    });
 </script>
 @endsection

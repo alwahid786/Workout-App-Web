@@ -17,8 +17,8 @@ $notifications = json_decode($notification, true);
         padding-left: 70px;
     }
 
-    .no-notifications{
-        color:#E37048;
+    .no-notifications {
+        color: #E37048;
         font-size: 16px;
         display: flex;
         justify-content: center;
@@ -97,7 +97,9 @@ $notifications = json_decode($notification, true);
                 <div class="dropdown dropdown-logout">
                     <button class="p-0 btn  dropdown-toggle log-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if(auth()->user()->profile_img==null)
-                        <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                        <!-- <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image"> -->
+                        <img src="{{asset('public/assets/images/unknown-user.png')}}" alt="image">
+
                         @else
                         <img src="{{auth()->user()->profile_img}}" alt="image">
 
@@ -147,7 +149,7 @@ $notifications = json_decode($notification, true);
                         <img class="nav-w" src="{{asset('public/assets/images/search-w.svg')}}" alt="image">
                     </div>
 
-                    Search Session
+                    Find Session
                 </a>
             </li>
             <li class="nav-item">
