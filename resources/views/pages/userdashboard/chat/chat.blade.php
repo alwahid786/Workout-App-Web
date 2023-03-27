@@ -253,7 +253,7 @@
 <script>
     $('.sidenav .nav-item:nth-of-type(7)').addClass('active')
 
-    $(".div_chat").click(function(e) {
+    $(".div_chat").click(function() {
         var category = $(this).parent().find('.chat_name').val();
         $('#title').text(category);
     });
