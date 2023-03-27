@@ -20,6 +20,7 @@
                             <img src="{{$chat_list['session']['session_image'][0]['image']}}" alt="image">
                         </div>
                         <div class="chat-box-left-content pl-2">
+                            @dd($chat_list);    
                             <h1>{{$chat_list['session']['category']['title']}}</h1>
                             <div class="chat-box-left-content-inner d-flex">
                                 <p>Book Hockey stadium</p>
