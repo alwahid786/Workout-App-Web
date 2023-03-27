@@ -91,7 +91,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
     Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
     Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
-    Route::any('/chat/{id?}', [UserController::class, 'chatList'])->name('user.chat');
+    Route::any('/chat', [UserController::class, 'chatList'])->name('user.chat');
     Route::any('/message/{id?}', [UserController::class, 'messages'])->name('user.message');
     Route::any('/send_message/', [UserController::class, 'sendMessage'])->name('user.send_message');
 
