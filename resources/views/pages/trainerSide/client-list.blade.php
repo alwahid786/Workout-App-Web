@@ -226,16 +226,16 @@
             @foreach($clients as $client)
             <div class="client-list-card p-3">
                 <div class="client-list-card-left pr-3">
-                    <img src="{{$client['user']['profile_img']}}" alt="">
+                    <a href="{{url('/trainer/profile/'.$client['user']['id'])}}"><img src="{{$client['user']['profile_img']}}" alt=""></a>
                 </div>
                 <div class="client-list-card-right">
 
-                    <h1>{{$client['user']['name']}}</h1>
-                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt=""><a href="{{url('/trainer/session/'.$client['session']['category']['id'])}}">{{$client['session']['category']['title']}}</a></h1>
-                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">{{$client['session']['day']}}, {{date('h:i',strtotime($client['session']['start_time']))}} {{$client['session']['start_meridiem']}}- {{date('h:i',strtotime($client['session']['end_time']))}} {{$client['session']['end_meridiem']}}</h1>
-                    <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">{{$client['user']['workout_location']}}</h1>
+                    <a href="{{url('/trainer/profile/'.$client['user']['id'])}}"> <h1>{{$client['user']['name']}}</h1></a>
+                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c1.png')}}" alt=""><a href="{{url('/trainer/session/'.$client['session']['category']['id'])}}">{{$client['session']['category']['title']}}</a></h1>
+                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c2.png')}}" alt="">{{$client['session']['day']}}, {{date('h:i',strtotime($client['session']['start_time']))}} {{$client['session']['start_meridiem']}}- {{date('h:i',strtotime($client['session']['end_time']))}} {{$client['session']['end_meridiem']}}</h1>
+                        <h1> <img class="mr-2" src="{{asset('public/assets/trainerimages/c3.png')}}" alt="">{{$client['user']['workout_location']}}</h1>
                 </div>
-                <div class="right-dots">
+                <!-- <div class="right-dots">
                     <div class="c-dropdown">
                         <div class="dots px-3">
                             <ul>
@@ -249,7 +249,7 @@
                             <a href="{{url('/trainer/profile/'.$client['user']['id'])}}" class="btn">View</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             @endforeach
             <!-- <div class="client-list-card p-3">
