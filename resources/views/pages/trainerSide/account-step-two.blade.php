@@ -805,7 +805,7 @@
                 <div class="form-group pro-form">
                     <label for="locationInput" class="">Workout Location</label>
                     <div class="location-container">
-                        <input type="text" class="form-control pl-4 validate" id="locationInput" name="workout_location">
+                        <input type="text" class="form-control pl-4 validate" id="locationInput" name="workout_location" placeholder="">
                         <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
                         <div class="price-select-input">
                             <div class="select-outer">

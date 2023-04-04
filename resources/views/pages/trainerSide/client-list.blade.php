@@ -305,10 +305,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            
-            
+            </div>            
             <div class="client-list-card p-3">
                 <div class="client-list-card-left pr-3">
                     <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
