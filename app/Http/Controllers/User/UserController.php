@@ -31,10 +31,7 @@ use Illuminate\Support\Facades\View;
 use Stripe\SearchResult;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\URL;
-use Twocheckout;
-use Twocheckout_Charge;
 
-require_once(base_path('2checkout-php/lib/Twocheckout.php'));
 class UserController extends Controller
 {
     use NotificationTrait;
@@ -100,87 +97,54 @@ class UserController extends Controller
     ///   stripe payment .....///////
     public function paymentIntent(Request $request)
     {
-        // $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // $month = date('m', strtotime($request->valid_through));
-        // $year  = date('Y', strtotime($request->valid_through));
-        // $response = \Stripe\Token::create(
-        //     array(
-        //         "card" => array(
-        //             "number"    => $request->input('card_number'),
-        //             "exp_month" => $month,
-        //             "exp_year"  => $year,
-        //             "cvc"       => $request->input('cvc'),
-        //             "name"      => $request->input('name')
-        //         )
-        //     )
-        // );
-
-        // $card_token = $response->id;
-        // $userId     = auth()->user()->id;
-
-        // $customer = $stripe->customers->create([
-        //     'description' => 'Customer create successfully',
-        //     'source'      => $card_token
-        // ]);
-
-        // $ephemeralKey = \Stripe\EphemeralKey::create(
-        //     ['customer' => $customer->id],
-        //     ['stripe_version' => '2020-08-27']
-        // );
-
-        // Customer::create([
-        //     "card_name"   => $request->input('name'),
-        //     "card_number" => $request->input('card_number'),
-        //     'customer_id' => $customer->id,
-        //     'user_id'     => $userId,
-        //     'type'        => 'CREDIT CARD',
-        //     'valid_thru'  => $month . '/' . $year
-        // ]);
-
-        // $pay_int_res = [
-        //     'result'             => 'Success',
-        //     'message'            => 'Customer create successfully',
-        //     'stripe_publish_key' => env('STRIPE_KEY'),
-        //     // 'payment_intent' => $paymentIntent->client_secret,
-        //     'ephemeral_key'      => $ephemeralKey->secret,
-        //     'customer_id'        => $customer->id
-        // ];
-        // session()->flash('successModalOpen', 'Open Modal');
-        // return redirect()->back();
-
-        $params = array(
-            "sellerId" => "254325512675",
-            "privateKey" => "4D09D40A-68DF-44E3-9BCA-2FDFDA1C73C0",
-            "demo" => true
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $month = date('m', strtotime($request->valid_through));
+        $year  = date('Y', strtotime($request->valid_through));
+        $response = \Stripe\Token::create(
+            array(
+                "card" => array(
+                    "number"    => $request->input('card_number'),
+                    "exp_month" => $month,
+                    "exp_year"  => $year,
+                    "cvc"       => $request->input('cvc'),
+                    "name"      => $request->input('name')
+                )
+            )
         );
 
-        Twocheckout::privateKey($params['privateKey']);
-        Twocheckout::sellerId($params['sellerId']);
+        $card_token = $response->id;
+        $userId     = auth()->user()->id;
 
-        $token = Twocheckout_Charge::getToken(array(
-            "sellerId" => $params['sellerId'],
-            "currency" => "USD",
-            "total" => "10.00",
-            "billingAddr" => array(
-                "name" => "John Doe",
-                "addrLine1" => "123 Test St",
-                "city" => "Columbus",
-                "state" => "OH",
-                "zipCode" => "43228",
-                "country" => "USA",
-                "email" => "example@test.com",
-                "phoneNumber" => "555-555-5555"
-            ),
-            "token" => array(
-                "cardNum" => $request->input('card_number'),
-                "expMonth" => $request->input('card_exp_month'),
-                "expYear" => $request->input('card_exp_year'),
-                "cvv" => $request->input('card_cvv')
-            )
-        ));
+        $customer = $stripe->customers->create([
+            'description' => 'Customer create successfully',
+            'source'      => $card_token
+        ]);
 
-        return response()->json(['token' => $token]);
+        $ephemeralKey = \Stripe\EphemeralKey::create(
+            ['customer' => $customer->id],
+            ['stripe_version' => '2020-08-27']
+        );
+
+        Customer::create([
+            "card_name"   => $request->input('name'),
+            "card_number" => $request->input('card_number'),
+            'customer_id' => $customer->id,
+            'user_id'     => $userId,
+            'type'        => 'CREDIT CARD',
+            'valid_thru'  => $month . '/' . $year
+        ]);
+
+        $pay_int_res = [
+            'result'             => 'Success',
+            'message'            => 'Customer create successfully',
+            'stripe_publish_key' => env('STRIPE_KEY'),
+            // 'payment_intent' => $paymentIntent->client_secret,
+            'ephemeral_key'      => $ephemeralKey->secret,
+            'customer_id'        => $customer->id
+        ];
+        session()->flash('successModalOpen', 'Open Modal');
+        return redirect()->back();
     }
     /////......contact........////
     public function contactUs(ContactUsRequest $request)
