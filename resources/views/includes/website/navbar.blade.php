@@ -35,7 +35,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto nav-list ">
         <li class="nav-item mr-lg-4">
-          <a class="nav-link px-2 trainer-link" href="#"> <span>BEC</span>OME A TRAINER</a>
+          <a class="nav-link px-2 trainer-link" href="{{url('/trainer/login')}}"> <span>BEC</span>OME A TRAINER</a>
         </li>
         <li class="nav-item mr-lg-4 ">
           <a class="nav-link px-2" href="{{url('/about')}}">ABOUT US</a>
