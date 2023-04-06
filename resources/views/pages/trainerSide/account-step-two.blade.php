@@ -647,6 +647,10 @@
         border: none;
         background: transparent;
     }
+    .list{
+        height: 200px;
+        overflow: auto !important;
+    }
 </style>
 
 @section('content')
@@ -730,7 +734,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4 validate" id="country" name="country">
+                        <select class="wide s-select form-control pl-4 validate" onchange="print_state('state',this.selectedIndex);" id="country" name="country">
                             <option value="USA">USA</option>
                             <option value="Australia">Australia</option>
                             <option value="Austria">Austria</option>
@@ -937,6 +941,10 @@
 
 @endsection
 @section('insertsfooter')
+<script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
+<script language="javascript">
+    print_country("country");
+</script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" async defer></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 
@@ -1005,7 +1013,7 @@
         $(".addLocation").click(function() {
             let location_name = $("#locationInput").val();
             let tag = $("#locationTag").val();
-            let div = `<div class="d-flex align-items-center">
+            let div = `<div class="d-flex align-items-center my-2">
                     <div class="location-pill">
                         <span>${location_name}</span>
                         |

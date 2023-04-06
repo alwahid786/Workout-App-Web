@@ -155,7 +155,7 @@ class TrainerController extends Controller
         if (!$trainerProfile) {
             return $this->sendError('No Data found against ID');
         }
-        return redirect()->route('trainer/stepfive')->with(['successCode' => 1]);
+        return redirect()->route('nullDashboard')->with(['successCode' => 1]);
     }
     ////.............trainer.dashboard.............///
     public function trainerDashboard()

@@ -36,6 +36,28 @@
     </div>
 
 </div>
+<!-- modal -->
+<div class="modal fade" id="sucessModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content signupModalDialogue">
+            <div class="modalHeader px-2 pt-2 pb-2 d-flex justify-content-end align-items-center">
+                <img class="cross-icon" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+            </div>
+            <div class="modal-body text-center sucess-modal">
+                <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
+                <h1 class="mt-2">Success!</h1>
+                <p>Your Request to become a trainer has
+                    been send we will respond you in
+                    5 working days!</p>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('insertsfooter')
+@if(session()->has('successCode') && session()->get('successCode') == 1)
+<script>
+    $('#sucessModal').modal('show');
+</script>
+@endif
 @endsection

@@ -1346,10 +1346,10 @@
             errors = 0;
             imageError = 0;
             $("form#createSessionForm :input,form#createSessionForm select").each(function() {
-                    value = $(this).val();
+                value = $(this).val();
 
-                    if (value == '') {
-                        if ($(this).is("input") && $(this).prop("type") !== "date") {
+                if (value == '') {
+                    if ($(this).is("input") && $(this).prop("type") !== "date") {
                         // alert('input');
                         $(this).css('border', '1px solid red');
                         errors++;
@@ -1370,37 +1370,37 @@
                     $(this).next().removeClass('borderRed');
                 }
             });
-        if (errors > 0) {
+            if (errors > 0) {
+                return {
+                    'success': false,
+                    'imageError': imageError
+                };
+            }
             return {
-                'success': false,
+                'success': true,
                 'imageError': imageError
             };
         }
-        return {
-            'success': true,
-            'imageError': imageError
-        };
-    }
 
-    // Save Session API Call 
-    $(document).on('click', "#saveSession", function() {
-        var sessionsData = {
-            allSessions: sessionsArray
-        };
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: "{{ url('api/trainer_detail') }}",
-            type: "POST",
-            data: sessionsData,
-            cache: false,
-            success: function(data) {
-                console.log(data)
-                window.location.href = '/workitpt_web/trainer/stepfive';
-            }
+        // Save Session API Call 
+        $(document).on('click', "#saveSession", function() {
+            var sessionsData = {
+                allSessions: sessionsArray
+            };
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url('api/trainer_detail') }}",
+                type: "POST",
+                data: sessionsData,
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                    window.location.href = '/workitpt_web/trainer/stepfive';
+                }
+            });
         });
-    });
     });
 </script>
 <script>

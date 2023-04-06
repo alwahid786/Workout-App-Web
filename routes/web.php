@@ -8,6 +8,7 @@ use App\Http\Controllers\User\SocialController;
 use App\Http\Controllers\User\MapController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Trainer\TrainerController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -111,6 +112,8 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/profile/{id}', [TrainerController::class, 'userDetail'])->name('trainer/profile');
     Route::any('/trainer/client', [TrainerController::class, 'categoryFilter'])->name('trainer/client');
     Route::any('/trainer/calendar', [TrainerController::class, 'calenderSession'])->name('trainer/calendar');
+
+    Route::post('/2pay/token', [PaymentController::class, 'saveTokenData'])->name('saveTokenData');
 
     Route::any('/trainer/session/{id?}', [TrainerController::class, 'classDetail'])->name('trainer/session');
     Route::any('/trainer/response/', [TrainerController::class, 'actionSession'])->name('session');
@@ -312,7 +315,7 @@ Route::get('/trainer/stepfour-second', function () {
 // });
 Route::get('/trainer/dashboardnull', function () {
     return view('pages.trainerSide.dashboard-null');
-});
+})->name('nullDashboard');
 // Route::get('/trainer/calendar', function () {
 //     return view('pages.trainerSide.calendar');
 // });

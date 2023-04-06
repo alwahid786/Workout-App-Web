@@ -15,7 +15,8 @@ class Customer extends Model
         'status',
         'card_name',
         'card_number',
-        'valid_thru'
+        'valid_thru',
+        'token'
 
     ];
 }

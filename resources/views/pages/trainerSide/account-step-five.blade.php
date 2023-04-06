@@ -2008,9 +2008,10 @@
                 </div>
                 <!-- buttons -->
                 <div class="col-12 step-five-buttons pt-5 pb-3 px-0">
-                    <button class="m-2" data-toggle="modal" data-target="#sucessModal">Submit</button>
-                    <a href="{{route('trainer/submit_request')}}">Submit</a>
-                    <button class="m-2"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>Edit</button>
+                    <a href="{{route('trainer/submit_request')}}">
+                        <button class="m-2" >Submit</button>
+                    </a>
+                    <!-- <button class="m-2"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>Edit</button> -->
                 </div>
             </div>
         </div>
@@ -2034,9 +2035,9 @@
         </div>
     </div>
 </div>
-<div class="custom-modal">
+<!-- <div class="custom-modal">
     <h1>Your request of become a trainer is in review we will update you in 5 working days !</h1>
-</div>
+</div> -->
 <!-- edit modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialogs" role="document">

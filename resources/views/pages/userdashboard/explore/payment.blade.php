@@ -379,6 +379,8 @@
 
                         <input type="hidden" class="customer_id" value="{{$card['customer_id']}}">
                         <input type="hidden" class="id" value="{{$card['id']}}">
+                        <input type="hidden" class="token" value="{{ base64_encode($card['token']) }}">
+
                     </div>
                     @endforeach
                     <div class="mt-4">
@@ -398,18 +400,17 @@
             </div>
             <div class=" profile-nxt-btn mt-5">
                 <!-- <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal" id="sighnup_submit">Pay Now</a> -->
-                <form action="{{route('/stripe/payment')}}" method="post">
+                <form action="{{route('/stripe/payment')}}" method="post" id="payFeesForm">
                     @csrf
                     <input type="hidden" id="customer" name="customer">
                     <input type="hidden" id="customer_id" name="customer_id">
 
                     <input type="hidden" id="session" name="session_id" value="{{$session['id']}}">
-                    <input type="hidden" id="session" name="amount" value="{{$session['price']}}">
+                    <input type="hidden" id="sessionPrice" name="amount" value="{{$session['price']}}">
                     <input type="hidden" id="sessionDate" name="session_date" value="{{$sessiondate}}">
                     <input type="hidden" id="trainer_id" name="trainer_id" value="{{$session['trainer_id']}}">
+                    <input type="hidden" id="tokenAccess" name="payment_token">
 
-
-                    <!-- <a href="#" class="update-profile-form-btn"></a> -->
                     <button class="update-profile-form-btn" type="submit">Pay Now</button>
                 </form>
             </div>
@@ -465,7 +466,7 @@
     $('.credit_card').click(function() {
 
         $('.credit_card').find('.card_img').css("border", "none");
-        $(this).find('.card_img').css("border", "4px solid black");
+        $(this).find('.card_img').css("border", "2px solid black");
 
 
         var customer_id = $(this).find('.customer_id').val();
@@ -474,10 +475,42 @@
         // alert(id);
         $("#customer").val(customer_id);
         $("#customer_id").val(id);
-
-
+        $('#tokenAccess').val($(this).find('.token').val());
 
     });
+    // $(document).on('submit', '#payFeesForm', function(e) {
+    //     e.preventDefault();
+    //     token = $('#tokenAccess').val();
+    //     amount = $('#sessionPrice').val();
+
+    //     // Set up the request data
+    //     const requestData = {
+    //         token: atob(token),
+    //         currency: "USD",
+    //         amount: parseFloat(amount),
+    //         description: "Session Booking Fees"
+    //     };
+
+    //     // Make the API request to charge the payment
+    //     fetch("https://api.2checkout.com/rest/6.0/sales", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Authorization": "4D09D40A-68DF-44E3-9BCA-2FDFDA1C73C0",
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify(requestData)
+    //         })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             // Handle the response
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //             // Handle the error
+    //         });
+
+    // })
 </script>
 
 @endsection

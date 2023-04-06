@@ -31,8 +31,10 @@ use Illuminate\Support\Facades\View;
 use Stripe\SearchResult;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\URL;
-use Twocheckout\Twocheckout;
+use Twocheckout;
+use Twocheckout_Charge;
 
+require_once(base_path('2checkout-php/lib/Twocheckout.php'));
 class UserController extends Controller
 {
     use NotificationTrait;
@@ -148,14 +150,13 @@ class UserController extends Controller
         // return redirect()->back();
 
         $params = array(
-            "sellerId" => "YOUR_SELLER_ID",
-            "privateKey" => "YOUR_PRIVATE_KEY",
+            "sellerId" => "254325512675",
+            "privateKey" => "4D09D40A-68DF-44E3-9BCA-2FDFDA1C73C0",
             "demo" => true
         );
 
         Twocheckout::privateKey($params['privateKey']);
         Twocheckout::sellerId($params['sellerId']);
-        Twocheckout::sandbox($params['demo']);
 
         $token = Twocheckout_Charge::getToken(array(
             "sellerId" => $params['sellerId'],
@@ -322,27 +323,64 @@ class UserController extends Controller
     /////// card payment......///////
     public function cardPayment(Request $request)
     {
-        $customerId = $request->customer;
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // dd($request->customer);
-
         try {
-            // dd($customerId);
-            $payment = \Stripe\Charge::create(
-                array(
-                    "amount"   => $request->amount * 100,
-                    "currency" => "usd",
-                    "customer" => $customerId
-                )
+            $params = array(
+                "sellerId" => "254325512675",
+                "privateKey" => "4D09D40A-68DF-44E3-9BCA-2FDFDA1C73C0",
             );
+            $token = base64_decode($request->payment_token);
+            Twocheckout::privateKey($params['privateKey']);
+            Twocheckout::sellerId($params['sellerId']);
+            Twocheckout::format('json');
 
-            // dd($payment);
+            $charge = Twocheckout_Charge::auth(array(
+                "sellerId" => "254325512675",
+                "merchantOrderId" => uniqid(),
+                "token" => $token,
+                "currency" => "USD",
+                "total" => "10.00",
+                "billingAddr" => array(
+                    "name" => 'Testing Tester',
+                    "addrLine1" => '123 Test St',
+                    "city" => 'Columbus',
+                    "state" => 'OH',
+                    "zipCode" => '43123',
+                    "country" => 'USA',
+                    "email" => 'testingtester@2co.com',
+                    "phoneNumber" => '555-555-5555'
+                ),
+                "shippingAddr" => array(
+                    "name" => 'Testing Tester',
+                    "addrLine1" => '123 Test St',
+                    "city" => 'Columbus',
+                    "state" => 'OH',
+                    "zipCode" => '43123',
+                    "country" => 'USA',
+                    "email" => 'testingtester@2co.com',
+                    "phoneNumber" => '555-555-5555'
+                ),
+                "demo" => "Y"
+            ));
+            dd($charge);
+            return response()->json(['token' => $token]);
 
-            if ($payment['status'] = "succeeded") {
-                $status = true;
-            } else {
-                $status = false;
-            }
+
+            // dd($customerId);
+            // $payment = \Stripe\Charge::create(
+            //     array(
+            //         "amount"   => $request->amount * 100,
+            //         "currency" => "usd",
+            //         "customer" => $customerId
+            //     )
+            // );
+
+            // // dd($payment);
+
+            // if ($payment['status'] = "succeeded") {
+            //     $status = true;
+            // } else {
+            //     $status = false;
+            // }
             $booksession = BookedSession::create(
                 array(
                     'session_id'   => $request->session_id,

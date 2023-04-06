@@ -369,19 +369,19 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Last Name</label>
-                    <input type="text" class="form-control py-4" id="inputAddress" name="last_name">
+                    <input type="text" class="form-control py-4"  name="last_name">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Email</label>
-                    <input type="text" class="form-control py-4" id="inputAddress2" name="email">
+                    <input type="email" class="form-control py-4" id="inputAddress2" name="email">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Contact Number</label>
-                    <input type="text" class="form-control py-4" id="inputAddress2" name="contact_number">
+                    <input type="phone" class="form-control py-4" autocomplete="off"  name="contact_number">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -428,6 +428,15 @@
 @endsection
 @section('insertsfooter')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@if(session()->has('errorCode') && session()->get('errorCode') == "email")
+<script>
+    swal({
+        title: "Email Error",
+        text: "Email Already Exists",
+        icon: "error",
+    });
+</script>
+@endif
 
 <script>
     $(document).ready(function() {
@@ -482,8 +491,6 @@
             return true;
         }
     });
-
-    
 </script>
 <script>
     $('#hidePass').hide();

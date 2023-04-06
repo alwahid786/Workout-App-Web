@@ -545,13 +545,12 @@
                     <p>VALID THRU 12/25</p>
                     <h2>CARDHOLDER NAME</h2>
                 </div>
-
             </div>
-
+            <input type="hidden" id="user_id" value="{{auth()->user()->id}}">
         </div>
         <div class="col-lg-6 mt-4 mt-lg-0">
             <h1 class="mb-4 " id="payment-form-h">Payment Details</h1>
-            <form action="{{url('/payment_intent')}}" method="POST" id="paymentForm">
+            <!-- <form action="{{url('/payment_intent')}}" method="POST" id="paymentForm">
                 @csrf
                 <div class="form-group payment-form">
                     <label for="exampleInputEmail1" class="payment-form-label">Card Holder</label>
@@ -570,20 +569,6 @@
                         <div class="form-group payment-form">
                             <label for="exampleInputPassword1" class="payment-form-label">Expiry Month</label>
                             <input type="text" id="datepickerMonth" autocomplete="off" class="form-control" placeholder="06" name="expiryMonth">
-                            <!-- <select name="" id="">
-                                <option value="01">January</option>
-                                <option value="02">February</option>
-                                <option value="03">March</option>
-                                <option value="04">April</option>
-                                <option value="05">May</option>
-                                <option value="06">June</option>
-                                <option value="07">July</option>
-                                <option value="08">August</option>
-                                <option value="09">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select> -->
                         </div>
                     </div>
                     <div class="col-6">
@@ -607,19 +592,28 @@
                     <input type="hidden" name="role" value="<?php echo request()->query('role'); ?>">
                     @endif
                 </div>
+                <div class="col-12 my-5">
+                    <div class=" profile-nxt-btn">
+                        <button class="update-profile-form-btn" type="submit">Complete</button>
+                    </div>
+                </div>
+            </form> -->
+            <form type="post" id="payment-form">
+                <div class="form-group">
+                    <label for="name" class="label control-label">Name</label>
+                    <input type="text" id="name" class="field form-control">
+                </div>
+
+                <div id="card-element">
+                    <!-- A TCO IFRAME will be inserted here. -->
+                </div>
+
+                <button class="btn btn-primary" type="submit">Complete</button>
+            </form>
         </div>
 
     </div>
-    <div class="col-12 my-5">
-        <div class=" profile-nxt-btn">
-            <!-- <a href="#" class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</a> -->
-            <!-- <button class="update-profile-form-btn" type="submit" name="submit">Complete</button> -->
-            <!-- <button class="update-profile-form-btn" data-toggle="modal" data-target="#sucessModal">Complete</button> -->
-            <button class="update-profile-form-btn" type="submit">Complete</button>
-        </div>
-    </div>
 </div>
-</form>
 
 <!-- </form> -->
 <!-- modal -->
@@ -651,6 +645,75 @@
 
 @endsection
 @section('insertfooter')
+<script type="text/javascript" src="https://2pay-js.2checkout.com/v1/2pay.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script type="text/javascript" src="https://sandbox.2checkout.com/checkout/api/2payjs/v1/2pay.js"></script> -->
+<script>
+    window.addEventListener('load', function() {
+
+        // Initialize the JS Payments SDK client.
+        let jsPaymentClient = new TwoPayClient('254325512675');
+
+        // Define a custom JSON Style
+        let style = {
+            backgroundColor: 'transparent',
+        };
+
+        // Create the component that will hold the card fields.
+        let component = jsPaymentClient.components.create('card');
+
+        // Mount the card fields component in the desired HTML tag. This is where the iframe will be located.
+        component.mount('#card-element');
+
+        // Handle form submission.
+        document.getElementById('payment-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Extract the Name field value
+            const billingDetails = {
+                name: document.querySelector('#name').value
+            };
+
+            // Call the generate method using the component as the first parameter
+            // and the billing details as the second one
+            jsPaymentClient.tokens.generate(component, billingDetails).then((response) => {
+                let userId = $('#user_id').val();
+                let token = response.token;
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    url: `{{route('saveTokenData')}}`,
+                    type: "POST",
+                    data: {
+                        token: token,
+                        user_id: userId
+                    },
+                    cache: false,
+                    success: function(dataResult) {
+                        if (dataResult.success == true) {
+                            swal({
+                                title: "Success",
+                                text: "Your Card has been Successfully linked to WORKITPT.",
+                                icon: "success",
+                            }).then(() => {
+                                window.location.href = `{{url('/dashboard')}}`;
+                            });
+                        }
+                    },
+                    error: function(jqXHR, exception) {
+
+                    }
+                });
+
+            }).catch((error) => {
+                console.error(error);
+            });
+        });
+    });
+</script>
 <script src="{{ asset('public/assets/js/year-select.js') }}"></script>
 
 <script>

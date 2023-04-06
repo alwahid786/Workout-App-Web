@@ -33,6 +33,13 @@ class AuthController extends Controller
     ////// trainer sign up.......///////
     public function trainerSignup(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:users,email',
+        ]);
+        if ($validator->fails()) {
+
+            return redirect()->back()->with(['errorCode' => 'email']);
+        }
         if ($request->has('profile_img')) {
             try {
                 $file = $request->file('profile_img');
@@ -200,7 +207,6 @@ class AuthController extends Controller
     ////////........trainer login........////////
     public function trainerLogin(LoginRequest $request)
     {
-
         $UserData = [
             'email' => $request->email,
             'password' => $request->password,
