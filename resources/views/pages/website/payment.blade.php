@@ -606,15 +606,21 @@
             <div class="modal-body text-center sucess-modal">
                 <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
                 <h1 class="mt-2">Success!</h1>
-                <p>Your Profile has been created<br>
-                    successfully</p>
+                <p>Your Card has been linked to our<br>
+                    System Successfully.</p>
             </div>
 
 
         </div>
     </div>
 </div>
-
+@if(session()->has('successModalOpen'))
+<script>
+    $(document).ready(function() {
+        $("#sucessModal").modal('show');
+    });
+</script>
+@endif
 @endsection
 @section('insertfooter')
 <script src="{{ asset('public/assets/js/year-select.js') }}"></script>
