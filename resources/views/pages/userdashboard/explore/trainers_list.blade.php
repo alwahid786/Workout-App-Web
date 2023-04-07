@@ -8,6 +8,7 @@
 </div>
 <div class="categories-grid-section pb-3">
     @foreach($trainerDetails as $trainerDetail)
+    @if(isset($trainerDetail['trainer']))
     <div class="categories-card p-3">
         <div class="card-img-section ">
             <img src="{{$trainerDetail['trainer']['profile_img']}}" alt="">
@@ -53,6 +54,7 @@
             <a class="categories-card-btn" href="{{url('/dashboard/trainer-detail/'.$trainerDetail['trainer']['id'])}}">View Detail</a>
         </div>
     </div>
+    @endif
     @endforeach
 </div>
 @endif

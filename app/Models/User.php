@@ -77,4 +77,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(TrainerProfile::class, 'user_id');
     }
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'trainer_id');
+    }
 }

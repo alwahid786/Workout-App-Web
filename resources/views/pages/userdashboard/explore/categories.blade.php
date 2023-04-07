@@ -390,7 +390,7 @@
             },
             dataType: 'json',
             success: function(data) {
-                console.log(`${data.data['category']} here`);
+                console.log(`${data.data['trainersView']} here`);
                 $("#trainerList").html(data.data['trainersView']);
                 $("#trainerCategory").html(`${data.data['category']}  Trainers`);
             },

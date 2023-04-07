@@ -515,15 +515,20 @@ class UserController extends Controller
     public function category_trainer($id, $search = null)
     {
         if (!is_null($search)) {
+            // DB::enableQueryLog();
             $trainerDetails = Category::where('id', $id)
                 ->with([
                     'trainerCategory.classSession:id,class_id,start_time,end_time,price',
-                    'trainerCategory.trainer'
+                    'trainerCategory.trainer' => function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    }
                 ])
                 ->whereHas('trainerCategory.trainer', function ($query) use ($search) {
                     $query->where('name', 'like', '%' . $search . '%');
                 })
                 ->get();
+            // $trainerDetails = json_decode($trainerDetails, true);
+
         } else {
 
             $trainerDetails = Category::where('id', $id)->with([
@@ -531,23 +536,35 @@ class UserController extends Controller
                 'trainerCategory.trainer'
             ])->get();
         }
-
+        // dd(json_decode($trainerDetails,true));
         $trainerDetails = json_decode($trainerDetails, true);
-        $trainersView = View::make('pages.userdashboard.explore.trainers_list', [
-            'trainerDetails' => $trainerDetails[0]['trainer_category'],
-            'category'       => $trainerDetails[0]['title']
-        ])->render();
+        if ($trainerDetails != []) {
+            // if (is_null($search)) {
+            $trainersView = View::make('pages.userdashboard.explore.trainers_list', [
+                'trainerDetails' => $trainerDetails[0]['trainer_category'],
+                'category'       => $trainerDetails[0]['title']
+            ])->render();
+            // } else {
+            //     // Handle the case when $search is provided
+            //     // You can modify this block to render the view or take appropriate action
 
-        return [
-            'trainersView' => $trainersView,
-            'category'     => $trainerDetails[0]['title']
-        ];
+            //     $trainersView = 'Search results for: ' . $search;
+            // }
+            return [
+                'trainersView' => $trainersView,
+                'category'     => $trainerDetails[0]['title']
+            ];
+        } else {
+
+            return 'No trainers found.';
+        }
     }
     /////..render view to categories.blad. php......../////
     public function get_sessions_list(Request $request, $id)
     {
-        if ($request->has('search')) {
-            $trainersView = $this->category_trainer($id, $request->search);
+        $search = $request->search;
+        if ($request->search != null) {
+            $trainersView = $this->category_trainer($id, $search);
         } else {
             $trainersView = $this->category_trainer($id);
         }
