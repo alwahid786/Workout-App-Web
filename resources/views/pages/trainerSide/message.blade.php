@@ -460,6 +460,8 @@
         // }
     })
 </script>
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
 <script>
     $('.sidenav .nav-item:nth-of-type(5)').addClass('active');
 
@@ -532,6 +534,25 @@
                 cache: false,
                 dataType: 'json',
                 success: function(data) {
+                    let ip_address = '127.0.0.1';
+                    let socket_port = '3000';
+                    let socket = io(ip_address + ':' + socket_port);
+
+                    console.log("Mubwwn", socket);
+
+                    let chatInput = $('#text');
+                    chatInput.keypress(function(e) {
+                        let message = $(this).html();
+                        
+                        if (e.which === 13 && !e.shiftKey) {
+                            socket.emit('sendChatToServer', message);
+                            chatInput.html('');
+                            return false;
+                        }
+                    });
+                    socket.on('sendChatToClient', (message) => {
+                        $('.chat-content ul').append(`<li>${message}</li>`);
+                    });
                     console.log(data);
 
 
