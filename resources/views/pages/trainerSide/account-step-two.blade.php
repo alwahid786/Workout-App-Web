@@ -751,7 +751,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6" data-aos="fade-right">
+            <!-- <div class="col-md-6" data-aos="fade-right"> -->
                 <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
 
@@ -772,8 +772,8 @@
 
 
                 </div> -->
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
+            <!-- </div> -->
+            <!-- <div class="col-md-6" data-aos="fade-left"> -->
                 <!-- <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Height</label>
 
@@ -794,7 +794,7 @@
                 </div> -->
 
 
-            </div>
+            <!-- </div> -->
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
