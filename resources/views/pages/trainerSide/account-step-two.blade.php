@@ -755,7 +755,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6" data-aos="fade-right">
+            <!-- <div class="col-md-6" data-aos="fade-right"> -->
                 <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
 
@@ -763,7 +763,7 @@
                     <input type="text" class="form-control pl-4" id="inputCity" name="weight">
                 </div> -->
 
-                <div class="form-group pro-form">
+                <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
                     <label class="radio-inline">
                         <input class="color-radio mx-2 weight_unit" value="kg" type="radio" name="weight_unit" checked>KGs
@@ -771,18 +771,18 @@
                     <label class="radio-inline">
                         <input class="color-radio mx-2 weight_unit" value="lb" type="radio" name="weight_unit">LBs
                     </label>
-                    <!-- <input type="text" name="weight" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity"> -->
+                    <input type="text" name="weight" value="{{auth()->user()->weight ?? ''}}" class="form-control py-4 " id="inputCity">
                     <input type="text" class="form-control pl-4" id="weight" name="weight">
 
 
-                </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
+                </div> -->
+            <!-- </div> -->
+            <!-- <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <!-- <label for="inputAddress2" class=" ">Height</label>
+                    <label for="inputAddress2" class=" ">Height</label>
 
 
-                    <input type="text" class="form-control pl-4" id="inputAddress2" name="height"> -->
+                    <input type="text" class="form-control pl-4" id="inputAddress2" name="height">
 
                     <label for="inputAddress2" class=" ">Height</label>
                     <label class="radio-inline">
@@ -798,7 +798,7 @@
                 </div>
 
 
-            </div>
+            </div> -->
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
