@@ -83,6 +83,7 @@ body {
     left: -320px !important;
     border-radius: 10px;
     max-width: 400px;
+    min-width: 360px;
 }
 
 .notification-profile img {
@@ -166,18 +167,18 @@ body {
     left: -130px !important;
 }
 
-@media (max-width: 992px) {
-    .notification-dropdown {
-        left: 0px !important;
-        border-radius: 10px;
-        width: 400px;
-    }
+@media (min-width: 577px) and (max-width: 992px) {
+.notification-dropdown {
+left: 0px !important;
+border-radius: 10px;
+width: 400px;
+}
 }
 
 @media (max-width:576px) {
     .notification-dropdown {
-        width: 270px;
-
+        min-width: 270px;
+        
     }
 
     .notification-profile p {

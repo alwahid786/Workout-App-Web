@@ -388,6 +388,11 @@
     h1 span {
         display: inline;
     }
+
+    .list {
+        height: 200px;
+        overflow: auto !important;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -527,12 +532,17 @@
             </div>
             <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                 <div class="filter-left-select-heading drop-icon-parent">
-                    <h1>Area</h1>
+                    <h1>Country</h1>
                     <div class="drop-icon">
-                        <select class="wide s-select form-control " id="workout_location">
+                        <!-- <select class="wide s-select form-control " id="workout_location">
                             <option value="Hong Kong Island">Hong Kong Island</option>
                             <option value="Kowloon">Kowloon</option>
                             <option value="New Territories">New Territories</option>
+                        </select> -->
+                        <select class="wide s-select form-control" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
+                            <option value="USA">USA</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
                         </select>
                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                     </div>
@@ -541,10 +551,13 @@
             </div>
             <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                 <div class="filter-left-select-heading drop-icon-parent">
-                    <h1>District</h1>
+                    <h1>Area</h1>
                     <div class="drop-icon">
-                        <select class="wide s-select form-control" id="city">
+                        <!-- <select class="wide s-select form-control" id="city">
                             <option value="">Select city</option>
+                        </select> -->
+                        <select class="wide s-select form-control" id="state" name="state">
+                            <option disabled selected>Select Country First</option>
                         </select>
                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                     </div>
@@ -683,7 +696,10 @@
 <!-- <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
-
+<script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
+<script language="javascript">
+    print_country("country");
+</script>
 <script>
     $('.map-card-close').click(() => {
         $('.map-card').hide();
@@ -697,28 +713,29 @@
             "New Territories": ["Islands", "Kwai Tsing", "North", "Sai Kung", "Sha Tin", "Tai Po", "Tsuen Wan", "Tuen Mun", "Yuen Long"]
         };
 
-        $(document).on('change', '#workout_location', function() {
-            const stateDropdown = document.getElementById("workout_location");
-            const cityDropdown = document.getElementById("city");
-            const selectedState = stateDropdown.value;
-            // Remove previous options from city dropdown
-            cityDropdown.options.length = 0;
-            // cityDropdown.options.add(new Option("Select city", ""));
+        // $(document).on('change', '#country', function() {
+        //     const stateDropdown = document.getElementById("country");
+        //     const cityDropdown = document.getElementById("city");
+        //     const selectedState = stateDropdown.value;
+        //     // Remove previous options from city dropdown
+        //     cityDropdown.options.length = 0;
+        //     // cityDropdown.options.add(new Option("Select city", ""));
 
-            // If a state is selected, add its cities to the dropdown
-            if (selectedState) {
-                const cities = citiesByState[selectedState];
-                cities.forEach(city => {
-                    const cityOption = document.createElement("option");
-                    cityOption.value = city;
-                    cityOption.text = city;
-                    cityDropdown.appendChild(cityOption);
-                    $('.s-select').niceSelect('update');
-                });
-            }
-        });
+        //     // If a state is selected, add its cities to the dropdown
+        //     if (selectedState) {
+        //         const cities = citiesByState[selectedState];
+        //         cities.forEach(city => {
+        //             const cityOption = document.createElement("option");
+        //             cityOption.value = city;
+        //             cityOption.text = city;
+        //             cityDropdown.appendChild(cityOption);
+        //             $('.s-select').niceSelect('update');
+        //         });
+        //     }
+        // });
         $('.s-select').niceSelect();
         var UserLocationdata = @json($currentUserInfo);
+        console.log(UserLocationdata);
         var locationMap = [
             [UserLocationdata.latitude, UserLocationdata.longitude]
         ]
@@ -746,14 +763,15 @@
         });
         $(".applyFilterBtn").on('click', function() {
             let category = $('#workout_category').val();
-            let location = $('#workout_location').val();
+            let location = $('#country').val();
+            let state = $('#state').val();
             let type = $('#workout_type').val();
             let price = $('#workout_price').val();
             let radius = $('#workout_radius').val();
             let session_type = $('#session_type').val();
             var data = {
                 category: category,
-                location: location,
+                location: state,
                 type: type,
                 price: price,
                 radius: radius,
@@ -789,6 +807,7 @@
 
     function initMap(e) {
         // The location of Uluru
+        console.log(e);
         var locations = e;
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 10,

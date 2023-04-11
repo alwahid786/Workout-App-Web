@@ -30,8 +30,8 @@ class MapController extends Controller
 
     public function mapViewPage(Request $request)
     {
-        // $ip = $request->ip(); /* Dynamic IP address */
-        $ip = '162.159.24.227'; /* Static IP address */
+        $ip = $request->ip(); /* Dynamic IP address */
+        // $ip = '162.159.24.227'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
         $categories = Category::all();
         return view('pages.userdashboard.explore.map-view', compact('currentUserInfo', 'categories'));

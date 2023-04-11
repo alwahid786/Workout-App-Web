@@ -1,5 +1,7 @@
 @extends('layouts.website.default')
 @section('content')
+<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+
 <style>
     body {
         background-color: #f4f4f4;
@@ -190,7 +192,9 @@
                     </div>
                     <label class="hero-section-upload my-4"> Upload Image
                         <!-- <input type="file" size="60"> -->
-                        <input type="file" size="60" name="files" id="profile_img">
+                        <input type="file" size="60" name="files" <?php if (auth()->user()->profile_img != null) {
+                                                                        echo "data-class='no-validation'";
+                                                                    } ?> id="profile_img">
                     </label>
                 </div>
             </div>
@@ -238,19 +242,28 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
-                    <input type="text" name="country" data-class="no-validation" value="{{auth()->user()->country ?? ''}}" class="form-control py-4" id="inputAddress2">
+                    <!-- <input type="text" name="country" data-class="no-validation" value="{{auth()->user()->country ?? ''}}" class="form-control py-4" id="inputAddress2"> -->
+                    <select class="wide s-select form-control pl-4 validate py-2 pro-form-select" data-class="no-validation" onchange="print_state('state',this.selectedIndex, 'profile');" id="country" name="country">
+                        <option value="USA">USA</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Austria">Austria</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
-                    <input type="text" name="state" data-class="no-validation" value="{{auth()->user()->state ?? ''}}" class="form-control py-4" id="inputCity">
+                    <!-- <input type="text" name="state" data-class="no-validation" value="{{auth()->user()->state ?? ''}}" class="form-control py-4" id="inputCity"> -->
+                    <select class="wide s-select form-control pl-4 validate pro-form-select" data-class="no-validation" id="state" name="state">
+                        <option disabled selected value="Alaska">Select Country First</option>
+
+                    </select>
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Workout Location</label>
-                    <input type="text" name="workout_location" data-class="no-validation" value="{{auth()->user()->workout_location ?? ''}}" class="form-control py-4" id="inputAddress2">
+                    <input type="text" name="workout_location" data-class="no-validation" value="{{auth()->user()->workout_location ?? ''}}" class="form-control py-4" id="workout_location">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -273,20 +286,16 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Height</label>
                     <label class="radio-inline">
-                        <input class="color-radio mx-2" value="feet" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'feet' || auth()->user()->hieght_unit == null) {
+                        <input class="color-radio mx-2" value="feet" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'feet' || auth()->user()->hieght_unit == 'inches' || auth()->user()->hieght_unit == null) {
                                                                                                             echo 'checked';
-                                                                                                        } ?>>Feet
+                                                                                                        } ?>>Feet/Inches
                     </label>
                     <label class="radio-inline">
                         <input class="color-radio mx-2" value="cm" type="radio" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'cm') {
                                                                                                         echo 'checked';
                                                                                                     } ?>>CM
                     </label>
-                    <label class="radio-inline">
-                        <input class="color-radio mx-2" type="radio" value="inches" name="hieght_unit" <?php if (auth()->user()->hieght_unit == 'inches') {
-                                                                                                            echo 'checked';
-                                                                                                        } ?>>Inches
-                    </label>
+
                     <input type="text" class="form-control py-4 " data-class="no-validation" value="{{auth()->user()->height ?? ''}}" name="height" id="inputAddress2">
                 </div>
             </div>
@@ -317,10 +326,25 @@
 
     </div>
 </form>
+
+<script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
+<script language="javascript">
+    print_country("country");
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
+
 <script>
     $(document).ready(function() {
+        // Integrate map search on input Location 
+        function initMap() {
+            var input = document.getElementById('workout_location');
+            new google.maps.places.Autocomplete(input);
+        }
+        // // Call the initMap() function when the Google Maps API has finished loading
+        initMap();
         const chooseFile = document.getElementById("profile_img");
         const imgPreview = document.getElementById("img-preview");
         chooseFile.addEventListener("change", function() {
