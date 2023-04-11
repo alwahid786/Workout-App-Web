@@ -392,4 +392,14 @@ class TrainerController extends Controller
 
         return view('pages.trainerSide.message', compact('chatlist', 'chatView'));
     }
+
+    public function addSession(Request $request)
+    {
+        $category = Category::all();
+        if (!$category) {
+            return $this->sendError('No Data found against ID');
+        }
+        $categories = json_decode($category, true);
+        return view('pages.trainerSide.add-session', compact('categories'));
+    }
 }
