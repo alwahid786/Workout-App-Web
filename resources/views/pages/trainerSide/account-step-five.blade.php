@@ -1688,7 +1688,6 @@
                         </div>
 
                     </div>
-
                     <div class="content-right-profile-body">
                         <div class="profile-body pr-sm-5 mr-lg-5 pr-lg-5">
                             <h1><img src="{{asset('public/assets/trainerimages/message-icon.png')}}" alt="">{{$trainer['email']}}</h1>
@@ -1696,15 +1695,21 @@
                             <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">{{$trainer['phone']}} </h1>
                             <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">{{$trainer['country']}}, {{$trainer['state']}}</h1>
                             <h1 class="mx-3 socialIcons_s mt-4">
-                                <a target="_blank" href="https://www.linkedin.com"><img src="{{asset('public/assets/images/linkedin-color.png')}}" alt=""></a>
-                                <a target="_blank" href="https://www.instagram.com"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
-                                <a target="_blank" href="https://www.facebook.com"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+                                @if($trainer['trainer_profile']['facebook_url'] != null)
+                                <a target="_blank" href="{{$trainer['trainer_profile']['facebook_url']}}"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+                                @endif
+                                @if($trainer['trainer_profile']['linkedin_url'] != null)
+                                <a target="_blank" href="{{$trainer['trainer_profile']['linkedin_url']}}"><img src="{{asset('public/assets/images/linkedin-color.png')}}" alt=""></a>
+                                @endif
+                                @if($trainer['trainer_profile']['instagram_url'] != null)
+                                <a target="_blank" href="{{$trainer['trainer_profile']['instagram_url']}}"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                                @endif
                             </h1>
                         </div>
                         <div class="profile-body">
                             <h1><img src="{{asset('public/assets/trainerimages/heart-icon.png')}}" alt="">{{$trainer['madical_condition']}}</h1>
 
-                            @if($trainer['trainer_profile']['facebook_url']== null)
+                            {{--@if($trainer['trainer_profile']['facebook_url']== null)
 
                             @else
                             <h1><img src="{{asset('public/assets/trainerimages/social-icon.png')}}" alt="">{{$trainer['trainer_profile']['facebook_url']}}</h1>
@@ -1718,7 +1723,7 @@
 
                             @else
                             <h1><img src="{{asset('public/assets/trainerimages/social-icon.png')}}" alt="">{{$trainer['trainer_profile']['linkedin_url']}}</h1>
-                            @endif
+                            @endif--}}
 
 
                             <!-- <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>  -->
@@ -1735,7 +1740,15 @@
                 </div>
                 <div class="content-right-certificate-body">
                     <div class="row py-2">
+                        @foreach($certificates as $certificate)
                         <div class="col-sm-6 col-lg-4 my-2">
+                            <div class="certificate-card p-2">
+                                <img src="{{$certificate['image']}}" alt="">
+                                <p class="pt-2 pb-3">{{$certificate['caption']}}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                        <!-- <div class="col-sm-6 col-lg-4 my-2">
                             <div class="certificate-card p-2">
                                 <img src="{{asset('public/assets/trainerimages/cert.png')}}" alt="">
                                 <p class="pt-2 pb-3">nt. Lorem ipsum may be used as a placeholder </p>
@@ -1746,13 +1759,7 @@
                                 <img src="{{asset('public/assets/trainerimages/cert.png')}}" alt="">
                                 <p class="pt-2 pb-3">nt. Lorem ipsum may be used as a placeholder </p>
                             </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 my-2">
-                            <div class="certificate-card p-2">
-                                <img src="{{asset('public/assets/trainerimages/cert.png')}}" alt="">
-                                <p class="pt-2 pb-3">nt. Lorem ipsum may be used as a placeholder </p>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -2009,7 +2016,7 @@
                 <!-- buttons -->
                 <div class="col-12 step-five-buttons pt-5 pb-3 px-0">
                     <a href="{{route('trainer/submit_request')}}">
-                        <button class="m-2" >Submit</button>
+                        <button class="m-2">Submit</button>
                     </a>
                     <!-- <button class="m-2"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>Edit</button> -->
                 </div>

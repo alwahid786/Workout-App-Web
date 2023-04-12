@@ -105,9 +105,9 @@ class AuthController extends Controller
             // $data
         ]);
         $social = TrainerProfile::where('user_id', auth()->user()->id)->update([
-            'facebook_url' => $request->facebook,
-            'instagram_url' => $request->instagram,
-            'linkedin_url' => $request->linkedin,
+            'facebook_url' => $request->facebook_url,
+            'instagram_url' => $request->instagram_url,
+            'linkedin_url' => $request->linkedin_url,
             'page' => 2,
         ]);
         // /add certificate images

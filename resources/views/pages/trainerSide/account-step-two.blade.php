@@ -647,7 +647,8 @@
         border: none;
         background: transparent;
     }
-    .list{
+
+    .list {
         height: 200px;
         overflow: auto !important;
     }
@@ -756,14 +757,14 @@
             </div>
 
             <!-- <div class="col-md-6" data-aos="fade-right"> -->
-                <!-- <div class="form-group pro-form">
+            <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
 
 
                     <input type="text" class="form-control pl-4" id="inputCity" name="weight">
                 </div> -->
 
-                <!-- <div class="form-group pro-form">
+            <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
                     <label class="radio-inline">
                         <input class="color-radio mx-2 weight_unit" value="kg" type="radio" name="weight_unit" checked>KGs
@@ -947,6 +948,7 @@
 </script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" async defer></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
 <script>
@@ -987,6 +989,14 @@
         $(document).on('click', "#addCertificate", function() {
             var image = $("#modalCertificate").attr('src');
             var imgCaption = $("#certificateCaption").val();
+            if (imgCaption == '') {
+                swal({
+                    title: "Error",
+                    text: "Caption cannot be empty",
+                    icon: "error",
+                });
+                return;
+            }
             let div = `<div class="grid-item py-2 py-sm-0">
                     <img class="deleteCertificate" style="cursor:pointer" data-src="${index}" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
                     <img src="${image}" alt="">
@@ -1115,7 +1125,11 @@
 
                 });
             } else {
-                toastr.error("Please Fill All Fields.");
+                swal({
+                    title: "Error",
+                    text: "Please fill all fields",
+                    icon: "error",
+                });
             }
         });
         // Signup Form request END HERE 

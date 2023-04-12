@@ -17,9 +17,11 @@ use App\Models\RejectSession;
 use App\Models\Review;
 use App\Models\Session;
 use App\Models\SessionImage;
+use App\Models\CertificateImage;
 use App\Models\TrainerProfile;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Js;
+
 
 class TrainerController extends Controller
 {
@@ -32,10 +34,11 @@ class TrainerController extends Controller
         if (!$trainer) {
             return $this->sendError('No Data found against ID');
         }
+        $certificates = CertificateImage::where('trainer_id', auth()->user()->id)->get();
         $trainer  = json_decode($trainer, true);
         $category = json_decode($category, true);
-        // dd($category);
-        return view('pages.trainerSide.account-step-five', compact('trainer', 'category'));
+        $certificates = json_decode($certificates, true);
+        return view('pages.trainerSide.account-step-five', compact('trainer', 'category', 'certificates'));
     }
     /////////////.........update trainer...............//////////////
     public function updateTrainer(Request $request)

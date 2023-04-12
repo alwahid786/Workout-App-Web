@@ -39,6 +39,7 @@ class MapController extends Controller
 
     public function filterMapData(Request $request)
     {
+        dd($request->all());
         $workoutType = $request->type;
         $workoutCategory = $request->category;
         $workoutLocation = $request->location;
