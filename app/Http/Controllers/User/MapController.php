@@ -88,7 +88,6 @@ class MapController extends Controller
                 }
             }, 'category'])->get();
         }
-        dd($sessions);
         $latLng = [];
         $countSessions = 0;
 
@@ -120,6 +119,8 @@ class MapController extends Controller
                 if (!empty($session['trainerData'])) {
                     $countSessions++;
                     $distance = getDistance($latitude, $longitude, $session['trainerData']['latitude'], $session['trainerData']['longitude']);
+                    dd($distance);
+
                     if (!empty($workoutRadius)) {
                         if (
                             $distance <= $workoutRadius
