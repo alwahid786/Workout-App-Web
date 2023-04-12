@@ -119,7 +119,6 @@ class MapController extends Controller
                 if (!empty($session['trainerData'])) {
                     $countSessions++;
                     $distance = getDistance($latitude, $longitude, $session['trainerData']['latitude'], $session['trainerData']['longitude']);
-                    dd($distance);
 
                     if (!empty($workoutRadius)) {
                         if (
@@ -133,6 +132,7 @@ class MapController extends Controller
                 }
             }
         }
+        dd($countSessions . "LATLONG" . $latLng);
         if ($countSessions < 1 || empty($latLng)) {
             return $this->sendError('No Session is available for the applied filter.');
         }
