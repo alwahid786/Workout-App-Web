@@ -39,7 +39,6 @@ class MapController extends Controller
 
     public function filterMapData(Request $request)
     {
-        dd($request->all());
         $workoutType = $request->type;
         $workoutCategory = $request->category;
         $workoutLocation = $request->location;
@@ -93,7 +92,7 @@ class MapController extends Controller
         $countSessions = 0;
 
         // Map Radius Integration 
-        $ip = '162.159.24.227'; /* Static IP address */
+        $ip = $request->ip; /* Static IP address */
         $currentUserInfo = Location::get($ip);
         $latitude = $currentUserInfo->latitude;
         $longitude = $currentUserInfo->longitude;
