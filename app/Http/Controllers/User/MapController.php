@@ -119,16 +119,16 @@ class MapController extends Controller
                 if (!empty($session['trainerData'])) {
                     $countSessions++;
                     $distance = getDistance($latitude, $longitude, $session['trainerData']['latitude'], $session['trainerData']['longitude']);
+                    array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
 
-                    if (!empty($workoutRadius)) {
-                        if (
-                            $distance <= $workoutRadius
-                        ) {
-                            array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
-                        }
-                    } else {
-                        array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
-                    }
+                    // if (!empty($workoutRadius)) {
+                    //     if (
+                    //         $distance <= $workoutRadius
+                    //     ) {
+                    //         array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
+                    //     }
+                    // } else {
+                    // }
                 }
             }
         }
