@@ -88,6 +88,7 @@ class MapController extends Controller
                 }
             }, 'category'])->get();
         }
+        dd($sessions);
         $latLng = [];
         $countSessions = 0;
 
