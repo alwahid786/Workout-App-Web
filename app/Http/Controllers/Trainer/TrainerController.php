@@ -21,6 +21,8 @@ use App\Models\CertificateImage;
 use App\Models\TrainerProfile;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Js;
+use Stevebauman\Location\Facades\Location;
+
 
 
 class TrainerController extends Controller
@@ -43,7 +45,12 @@ class TrainerController extends Controller
     /////////////.........update trainer...............//////////////
     public function updateTrainer(Request $request)
     {
-
+        $ip = $request->ip(); /* Dynamic IP address */
+        // $ip = '162.159.24.227'; /* Static IP address */
+        $currentUserInfo = Location::get($ip);
+        // Extract the latitude and longitude from the location information
+        $latitude = $currentUserInfo->latitude;
+        $longitude = $currentUserInfo->longitude;
         $update = User::where('id', auth()->user()->id)->update(
             [
                 'email' => $request->email,
@@ -52,6 +59,8 @@ class TrainerController extends Controller
                 'phone' => $request->phone,
                 'country' => $request->country,
                 'state' => $request->state,
+                'latitude' => $latitude,
+                'longitude' => $longitude,
             ]
         );
         if (!$update) {

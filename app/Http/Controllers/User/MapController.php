@@ -92,7 +92,7 @@ class MapController extends Controller
         $countSessions = 0;
 
         // Map Radius Integration 
-        $ip = $request->ip; /* Static IP address */
+        $ip = $request->ip(); /* Static IP address */
         $currentUserInfo = Location::get($ip);
         $latitude = $currentUserInfo->latitude;
         $longitude = $currentUserInfo->longitude;
