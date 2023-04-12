@@ -132,7 +132,7 @@ class MapController extends Controller
                 }
             }
         }
-        dd($countSessions . "LATLONG" . $latLng);
+        dd($countSessions);
         if ($countSessions < 1 || empty($latLng)) {
             return $this->sendError('No Session is available for the applied filter.');
         }
