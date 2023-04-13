@@ -19,7 +19,8 @@ class SessionController extends Controller
                 mkdir($path, 0777, true);
             }
             $image->move($path, $filename);
-            $paths[] = public_path('uploads/' . $filename);
+            // $paths[] = public_path('uploads/' . $filename);
+            $paths[] = 'https://' . $_SERVER['HTTP_HOST'] . "/workitpt_web/public/uploads/" . $filename;
         }
 
         $data = $request->except('myfile');

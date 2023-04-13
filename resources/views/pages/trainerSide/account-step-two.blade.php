@@ -647,7 +647,8 @@
         border: none;
         background: transparent;
     }
-    .list{
+
+    .list {
         height: 200px;
         overflow: auto !important;
     }
@@ -700,30 +701,30 @@
 
 <!-- ............Form Section................ -->
 <div class="container pt-5">
-    <form>
+    <form id="stepTwoForm">
 
         <div class="row">
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class="">Emergency Contact</label>
+                    <label for="inputAddress" class="">Emergency Contact <span style="color: red">*</span></label>
                     <input type="text" class="form-control pl-4 validate" id="emergency_contact" name="emergency_contact">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Relationship With Emergency Contact</label>
+                    <label for="inputAddress" class=" ">Relationship With Emergency Contact <span style="color: red">*</span></label>
                     <input type="text" class="form-control pl-4 validate" id="relation_emergency" name="relation_emergency">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Date of Birth</label>
+                    <label for="inputAddress2" class=" ">Date of Birth <span style="color: red">*</span></label>
                     <input type="date" class="form-control pl-4 validate" id="date_of_birth" name="date_of_birth">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputCity" class=" ">Gender</label>
+                    <label for="inputCity" class=" ">Gender <span style="color: red">*</span></label>
                     <select class="wide s-select form-control pl-4 validate" name="gender" id="gender">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -732,9 +733,9 @@
             </div>
             <div class="col-md-6 pb-3" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Country</label>
+                    <label for="inputAddress2" class=" ">Country <span style="color: red">*</span></label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4 validate" onchange="print_state('state',this.selectedIndex);" id="country" name="country">
+                        <select class="wide s-select form-control pl-4 validate" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
                             <option value="USA">USA</option>
                             <option value="Australia">Australia</option>
                             <option value="Austria">Austria</option>
@@ -745,7 +746,7 @@
             </div>
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputCity" class=" ">State</label>
+                    <label for="inputCity" class=" ">State <span style="color: red">*</span></label>
                     <select class="wide s-select form-control pl-4 validate" id="state" name="state">
                         <option value="Alaska">Alaska</option>
                         <option value="Washington">Washington</option>
@@ -756,14 +757,14 @@
             </div>
 
             <!-- <div class="col-md-6" data-aos="fade-right"> -->
-                <!-- <div class="form-group pro-form">
+            <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
 
 
                     <input type="text" class="form-control pl-4" id="inputCity" name="weight">
                 </div> -->
 
-                <!-- <div class="form-group pro-form">
+            <!-- <div class="form-group pro-form">
                     <label for="inputCity" class=" ">Weight</label>
                     <label class="radio-inline">
                         <input class="color-radio mx-2 weight_unit" value="kg" type="radio" name="weight_unit" checked>KGs
@@ -801,7 +802,7 @@
             </div> -->
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputCity" class=" ">Any Known Medical Conditions?</label>
+                    <label for="inputCity" class=" ">Any Known Medical Conditions? <span style="color: red">*</span></label>
                     <input type="text" class="form-control pl-4" id="madical_condition" name="madical_condition">
                 </div>
             </div>
@@ -809,11 +810,11 @@
                 <div class="form-group pro-form">
                     <label for="locationInput" class="">Workout Location</label>
                     <div class="location-container">
-                        <input type="text" class="form-control pl-4 validate" id="locationInput" name="workout_location" placeholder="">
+                        <input type="text" data-class="no-validation" class="form-control pl-4 validate" id="locationInput" name="workout_location" placeholder="">
                         <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
                         <div class="price-select-input">
                             <div class="select-outer">
-                                <select class="wide2 s-select currency-select form-control " id="locationTag" name="tag">
+                                <select data-class="no-validation" class="wide2 s-select currency-select form-control " id="locationTag" name="tag">
                                     <option value="Home">Home</option>
                                     <option value="Gym">Gym</option>
                                     <option value="Work">Work</option>
@@ -843,7 +844,7 @@
                     <label for="inputCity" class=" ">Add Facebook URL</label>
                     <div class="input-container">
                         <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="facebook" name="facebook">
+                        <input type="url" data-class="no-validation" class="form-control pl-4" id="facebook" name="facebook">
                     </div>
 
                 </div>
@@ -853,7 +854,7 @@
                     <label for="inputCity" class=" ">Add Insta URL</label>
                     <div class="input-container">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="instagram" name="instagram">
+                        <input type="url" data-class="no-validation" class="form-control pl-4" id="instagram" name="instagram">
                     </div>
 
                 </div>
@@ -863,7 +864,7 @@
                     <label for="inputCity" class=" ">Add Linkedin URL</label>
                     <div class="input-container">
                         <i class="fa fa-linkedin" aria-hidden="true"></i>
-                        <input type="url" class="form-control pl-4" id="linkedin" name="linkedin">
+                        <input type="url" data-class="no-validation" class="form-control pl-4" id="linkedin" name="linkedin">
                     </div>
 
                 </div>
@@ -874,7 +875,7 @@
             <div class="update-info-qualification-image" id="certificatePreviews">
                 <label style="cursor: pointer;">
                     <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
-                    <input type="file" name="myfile[]" id="choose-file" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
+                    <input type="file" data-class="no-validation" name="myfile[]" id="choose-file" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
                 </label>
             </div>
         </div>
@@ -883,7 +884,7 @@
                 <!-- <a  class="update-profile-form-btn"id="sighnup_submit">Next</a> -->
 
 
-                <button class="button" type="submit" id="sighnup_submit">Next</button>
+                <button class="button" data-class="no-validation" type="submit" id="sighnup_submit">Next</button>
             </div>
         </div>
     </form>
@@ -947,6 +948,7 @@
 </script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" async defer></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
 <script>
@@ -987,6 +989,14 @@
         $(document).on('click', "#addCertificate", function() {
             var image = $("#modalCertificate").attr('src');
             var imgCaption = $("#certificateCaption").val();
+            if (imgCaption == '') {
+                swal({
+                    title: "Error",
+                    text: "Caption cannot be empty",
+                    icon: "error",
+                });
+                return;
+            }
             let div = `<div class="grid-item py-2 py-sm-0">
                     <img class="deleteCertificate" style="cursor:pointer" data-src="${index}" src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
                     <img src="${image}" alt="">
@@ -1049,26 +1059,26 @@
         // Signup Form request START HERE 
         $('#sighnup_submit').on('click', function(e) {
             e.preventDefault();
+            var FormValidation = validateForm();
+            if (FormValidation) {
+                var date_of_birth = $('#date_of_birth').val();
+                var emergency_contact = $('#emergency_contact').val();
+                var gender = $('#gender').val();
+                var country = $('#country').val();
+                var state = $('#state').val();
+                var weight = $('#weight').val();
+                var weight_unit = $(this).find('.weight_unit').val();
+                var height = $('#height').val();
+                var hieght_unit = $(this).find('.height_unit').val();
+                var madical_condition = $('#madical_condition').val();
+                var relationship_emergency_contact = $('#relation_emergency').val();
+                var facebook_url = $('#facebook').val();
+                var instagram_url = $('#instagram').val();
+                var linkedin_url = $('#linkedin').val();
 
-            var date_of_birth = $('#date_of_birth').val();
-            var emergency_contact = $('#emergency_contact').val();
-            var gender = $('#gender').val();
-            var country = $('#country').val();
-            var state = $('#state').val();
-            var weight = $('#weight').val();
-            var weight_unit = $(this).find('.weight_unit').val();
-            var height = $('#height').val();
-            var hieght_unit = $(this).find('.height_unit').val();
-            var madical_condition = $('#madical_condition').val();
-            var relationship_emergency_contact = $('#relation_emergency').val();
-            var facebook_url = $('#facebook').val();
-            var instagram_url = $('#instagram').val();
-            var linkedin_url = $('#linkedin').val();
-
-            var certificate_image = certificateArray;
-            var workout_location = location;
-            // alert(certificate_image);
-            if (date_of_birth != "" && emergency_contact != "" && gender != "" && country != "") {
+                var certificate_image = certificateArray;
+                var workout_location = location;
+                // alert(certificate_image);
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1106,20 +1116,66 @@
                             // $('.loaderDiv').hide();
 
                             toastr.error(dataResult.message);
+                            swal({
+                                title: "Error",
+                                text: dataResult.message,
+                                icon: "error",
+                            });
                         }
                     },
                     error: function(jqXHR, exception) {
                         $('.loaderDiv').hide();
                         toastr.error(jqXHR.responseJSON.message);
+                        swal({
+                            title: "Error",
+                            text: jqXHR.responseJSON.message,
+                            icon: "error",
+                        });
                     }
 
                 });
+                // $("#TrainerSignupForm")[0].submit();
             } else {
-                toastr.error("Please Fill All Fields.");
+                swal({
+                    title: "Some Fields Missing",
+                    text: "Please fill all fields",
+                    icon: "error",
+                });
             }
         });
         // Signup Form request END HERE 
 
+        $("#TrainerSignupForm").submit(function(e) {
+            e.preventDefault();
+            var FormValidation = validateForm();
+            if (FormValidation) {
+                $("#TrainerSignupForm")[0].submit();
+            } else {
+                swal({
+                    title: "Some Fields Missing",
+                    text: "Please fill all fields",
+                    icon: "error",
+                });
+            }
+        })
+
+        // Signup Validations
+        function validateForm() {
+            let errorCount = 0;
+            $("form#stepTwoForm :input").each(function() {
+                let val = $(this).val();
+                if (val == '' && $(this).attr('data-class') !== 'no-validation') {
+                    errorCount++
+                    // $(this).css('border', '1px solid red');
+                } else {
+                    // $(this).css('border', 'none');
+                }
+            });
+            if (errorCount > 0) {
+                return false;
+            }
+            return true;
+        }
 
         // Integrate map search on input Location 
         function initMap() {

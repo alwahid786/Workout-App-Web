@@ -353,7 +353,7 @@
                 <div id="img-preview">
                     <img src="{{asset('public/assets/trainerimages/update-info-left.svg')}}" alt="image">
                 </div>
-                <label class="hero-section-upload my-4"> Upload Image
+                <label class="hero-section-upload my-4"> Upload Image <span style="color: red">*</span>
                     <input type="file" name="profile_img" id="profile-img" size="60">
                 </label>
             </div>
@@ -362,31 +362,31 @@
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">First Name</label>
+                    <label for="inputAddress" class=" ">First Name <span style="color: red">*</span></label>
                     <input type="text" class="form-control py-4" id="inputAddress" name="first_name">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Last Name</label>
-                    <input type="text" class="form-control py-4"  name="last_name">
+                    <label for="inputAddress" class=" ">Last Name <span style="color: red">*</span></label>
+                    <input type="text" class="form-control py-4" name="last_name">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Email</label>
+                    <label for="inputAddress2" class=" ">Email <span style="color: red">*</span></label>
                     <input type="email" class="form-control py-4" id="inputAddress2" name="email">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Contact Number</label>
-                    <input type="phone" class="form-control py-4" autocomplete="off"  name="contact_number">
+                    <label for="inputAddress2" class=" ">Contact Number <span style="color: red">*</span></label>
+                    <input type="phone" class="form-control py-4" autocomplete="off" name="contact_number">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form  mb-2">
-                    <label for="inputAddress2" class=" ">Password</label>
+                    <label for="inputAddress2" class=" ">Password <span style="color: red">*</span></label>
                     <div class="right-inner-addon">
                         <input type="password" class=" modal-input passInput pl-4" id="passInput" aria-autocomplete="list" name="password">
                         <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true" style="display: none;"></i>
@@ -397,7 +397,7 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form right-inner-addon mb-2">
-                    <label for="inputAddress2" class=" ">Confirm Password</label>
+                    <label for="inputAddress2" class=" ">Confirm Password <span style="color: red">*</span></label>
                     <div class="right-inner-addon">
                         <input type="password" class=" modal-input passInput pl-4" id="passInputtwo" name="confirm_password">
                         <i id="hidePasstwo" class="fa fa-eye-slash" aria-hidden="true"></i>

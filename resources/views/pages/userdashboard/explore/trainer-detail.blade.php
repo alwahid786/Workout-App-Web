@@ -203,46 +203,56 @@
     .trainer-name h1 {
         display: block !important;
     }
-     .card-img img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            object-position: top;
-        }
 
-        .card-heading {
-            display: flex;
-            justify-content: space-between;
-        }
-        .card-footer{
-            background: #E37048;
-        }
-        .card{
-            border-radius: 10px !important;
-            height: fit-content;
-        }
-        .card-heading h1, .card p{
-            color: #ffff;
-        }
-        .card-heading h1{
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        a{
-            text-decoration: none !important;
-        }
-        .card:hover .card-img{
-            transform: scaleZ(1.1);
-        }
-        .card-footer div{
-            color: white;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        .card-img{
-            border-radius: 1px;
-            overflow: hidden;
-        }
+    .card-img img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    .card-heading {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card-footer {
+        background: #E37048;
+    }
+
+    .card {
+        border-radius: 10px !important;
+        height: fit-content;
+    }
+
+    .card-heading h1,
+    .card p {
+        color: #ffff;
+    }
+
+    .card-heading h1 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    .card:hover .card-img {
+        transform: scaleZ(1.1);
+    }
+
+    .card-footer div {
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .card-img {
+        border-radius: 1px;
+        overflow: hidden;
+    }
 
     .socialIcons_s img {
         width: 25px !important;
@@ -297,7 +307,7 @@
             </div>
             <div class="col-lg-8 col-xl-9">
                 <div class="dashboard-header-left">
-                    <h1 class="d-block"><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer_detail[0]['name']}}'s Classes</h1>
+                    <h1 class="d-block"><i class="fa fa-angle-left mr-2" aria-hidden="true" onclick="window.history.back()" style="cursor:pointer;"></i> {{$trainer_detail[0]['name']}}'s Classes</h1>
                 </div>
                 <div class="card-grid-section">
                     <!-- Category card starts here  -->
@@ -316,7 +326,7 @@
                                 <div>
                                     {{$count}}
                                 </div>
-                                
+
                             </div>
                         </div>
                     </a>

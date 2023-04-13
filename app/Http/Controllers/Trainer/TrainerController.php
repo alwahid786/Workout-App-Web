@@ -17,9 +17,13 @@ use App\Models\RejectSession;
 use App\Models\Review;
 use App\Models\Session;
 use App\Models\SessionImage;
+use App\Models\CertificateImage;
 use App\Models\TrainerProfile;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Js;
+use Stevebauman\Location\Facades\Location;
+
+
 
 class TrainerController extends Controller
 {
@@ -32,15 +36,21 @@ class TrainerController extends Controller
         if (!$trainer) {
             return $this->sendError('No Data found against ID');
         }
+        $certificates = CertificateImage::where('trainer_id', auth()->user()->id)->get();
         $trainer  = json_decode($trainer, true);
         $category = json_decode($category, true);
-        // dd($category);
-        return view('pages.trainerSide.account-step-five', compact('trainer', 'category'));
+        $certificates = json_decode($certificates, true);
+        return view('pages.trainerSide.account-step-five', compact('trainer', 'category', 'certificates'));
     }
     /////////////.........update trainer...............//////////////
     public function updateTrainer(Request $request)
     {
-
+        $ip = $request->ip(); /* Dynamic IP address */
+        // $ip = '162.159.24.227'; /* Static IP address */
+        $currentUserInfo = Location::get($ip);
+        // Extract the latitude and longitude from the location information
+        $latitude = $currentUserInfo->latitude;
+        $longitude = $currentUserInfo->longitude;
         $update = User::where('id', auth()->user()->id)->update(
             [
                 'email' => $request->email,
@@ -49,6 +59,8 @@ class TrainerController extends Controller
                 'phone' => $request->phone,
                 'country' => $request->country,
                 'state' => $request->state,
+                'latitude' => $latitude,
+                'longitude' => $longitude,
             ]
         );
         if (!$update) {
@@ -391,5 +403,15 @@ class TrainerController extends Controller
         // dd($chatlist);
 
         return view('pages.trainerSide.message', compact('chatlist', 'chatView'));
+    }
+
+    public function addSession(Request $request)
+    {
+        $category = Category::all();
+        if (!$category) {
+            return $this->sendError('No Data found against ID');
+        }
+        $categories = json_decode($category, true);
+        return view('pages.trainerSide.add-session', compact('categories'));
     }
 }

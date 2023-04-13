@@ -890,197 +890,382 @@
         border: 1px solid red !important;
     }
 </style>
+<style>
+    #calendar {
+        height: 70vh;
+    }
+
+    .fc .fc-toolbar {
+        justify-content: start !important;
+    }
+
+    .fc-today-button {
+        margin: 0 1rem !important;
+        background: #ffff !important;
+        color: #E37048 !important;
+        border: none !important;
+        box-shadow: 3px 4px 13px rgba(0, 0, 0, 0.12) !important;
+        border-radius: 5px !important;
+        padding: 7px 25px !important;
+        text-transform: capitalize !important;
+        outline: none !important;
+        /* box-shadow: none !important; */
+
+    }
+
+    .fc-prev-button {
+        border: 1px solid #E37048 !important;
+        background: #ffff !important;
+        color: #E37048 !important;
+        margin-right: 10px !important;
+        border-radius: 6px !important;
+        padding: 10px 6px !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-next-button {
+        border: 1px solid #E37048 !important;
+        background: #ffff !important;
+        color: #E37048 !important;
+        margin-left: 10px !important;
+        border-radius: 6px !important;
+        padding: 10px 6px !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .fc-col-header-cell .fc-scrollgrid-sync-inner a {
+        color: #E37048 !important;
+    }
+
+    .fc-daygrid-day-number {
+        color: black !important;
+        position: absolute !important;
+        left: 0 !important;
+        font-weight: bold !important;
+
+    }
+
+    .fc-daygrid-dot-event {
+        border-radius: 15px !important;
+
+    }
+
+    .fc-daygrid-event-harness a {
+        padding: 5px 23px !important;
+    }
+
+    .fc-daygrid-event-harness {
+        text-align: right;
+    }
+
+    .calendar-container {
+        background-color: #fff;
+        width: max-content;
+        border-radius: 8px;
+        /* height: 650px; */
+        /* width: 1000px; */
+    }
+
+    .fc-event-title-container {
+        background-color: #E37048;
+        border: 1px solid #E37048 !important;
+    }
+
+    .fc-event-title {
+        color: #ffff;
+
+    }
+
+    .fc-daygrid-event-harness .fc-event-draggable {
+        background: rgba(255, 169, 0, 0.57);
+        ;
+    }
+
+    .fc-daygrid-event-harness .fc-event-draggable:hover {
+        background-color: #E37048;
+    }
+
+    .fc-daygrid-event-harness .fc-event-draggable .fc-daygrid-event-dot {
+        display: none;
+    }
+
+    .fc-daygrid-event-harness .fc-event-draggable .fc-event-time {
+        color: #fff;
+    }
+
+    .fc .fc-daygrid-day-frame {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex: 1;
+        margin: auto 0;
+    }
+
+    .fc-daygrid-day-events {
+        width: 70%;
+    }
+
+    /* .fc-view-harness {
+        min-width: 1000px;
+        overflow-x: scroll;
+    } */
+    .fc-daygrid-event-harness a {
+        color: #fff !important;
+    }
+
+    .fc-event {
+        background-color: rgba(255, 169, 0, 0.57);
+
+    }
+
+    .fc-daygrid-event-dot {
+        border-color: #fff !important;
+
+    }
+
+    .fc-event:hover {
+        background-color: #E37048 !important;
+    }
+
+    @media (min-width: 992px) {
+
+        .content-wrapper {
+            margin-left: 220px;
+            margin-top: 90px;
+        }
+
+    }
+
+    body {
+        background-color: #f4f6fa !important;
+    }
+
+    @media screen and (max-width:576px) {
+        .fc .fc-toolbar {
+            flex-direction: column;
+        }
+
+        .fc-toolbar-title {
+            font-size: 1.5rem !important;
+        }
+    }
+
+    .fc-col-header-cell {
+        width: 200px !important;
+    }
+
+    .fc-scrollgrid-sync-table {
+        overflow-x: scroll !important;
+    }
+
+    .fc-scrollgrid-sync-table tbody tr td {
+        width: 200px !important;
+        height: 30px !important;
+    }
+
+    .fc-dayGridMonth-view {
+        overflow-x: scroll;
+    }
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-thumb {
+        background: #E37048 !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+    .fc-dayGridMonth-view::-webkit-scrollbar {
+        width: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+
+    .fc-dayGridMonth-view::-webkit-scrollbar-thumb {
+        background: #E37048 !important;
+        border-radius: 7px !important;
+        height: 7px !important;
+        width: 7px !important;
+    }
+
+    .fc-scroller {
+        overflow: unset !important;
+    }
+
+    .fc .fc-scrollgrid {
+        width: inherit !important;
+    }
+
+    /* 
+    .fc .fc-scrollgrid table {
+        width: 1000px;
+        overflow-x: scroll;
+    } */
+
+    .fc .fc-scrollgrid-liquid {
+        height: 500px !important;
+    }
+</style>
 @section('content')
-<!-- header-section -->
-<div class="container-fluid update-info-header">
-    <div class="container">
-        <div class="update-info-content py-4">
-            <h1>Create Account</h1>
-            <img src="{{asset('public/assets/images/logo.svg')}}" alt="">
-        </div>
-    </div>
-</div>
-<!-- pagination-section -->
-<div class="container-fluid pt-5">
-    <div class="container px-0">
-        <div class="pagination-wrapper px-sm-3">
-            <div class="pagination-container">
-                <div class="pagination-border"></div>
-                <div class="pagination-box active-pagination">
-                    <h1>1</h1>
-                    <p>Personal Information</p>
-                </div>
-                <div class="pagination-box active-pagination">
-                    <h1>2</h1>
-                    <p>Other Information</p>
-                </div>
-                <div class="pagination-box active-pagination">
-                    <h1>3</h1>
-                    <p>Specialty </p>
-                </div>
-                <div class="pagination-box">
-                    <h1>4</h1>
-                    <p>Payment Method</p>
-                </div>
-                <div class="pagination-box">
-                    <h1>5</h1>
-                    <p>View Profile</p>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</div>
-<!-- form-section -->
-<div class="container form-container my-5 py-5">
-    <form id="createSessionForm">
-        <div class="row">
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Select Category</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" value="{{$categories[0]['id']}}" data-src="{{$categories[0]['title']}}" name="category_id" id="category_id">
-                            @foreach($categories as $category)
-                            <option class="categoryOption" value="{{$category['id']}}">{{$category['title']}}</option>
-                            @endforeach
-                            <!-- <option value="yoga">Yoga</option>
+@include('includes.trainerSide.navbar')
+<div class="content-wrapper px-2 py-3">
+    <div class="container form-container mb-5 py-5 bg-white">
+        <form id="createSessionForm">
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Select Category</label>
+                        <div class="select-outer">
+                            <select class="wide s-select form-control pl-4" value="{{$categories[0]['id']}}" data-src="{{$categories[0]['title']}}" name="category_id" id="category_id">
+                                @foreach($categories as $category)
+                                <option class="categoryOption" value="{{$category['id']}}">{{$category['title']}}</option>
+                                @endforeach
+                                <!-- <option value="yoga">Yoga</option>
                             <option value="yoga">Yoga</option>
                             <option value="yoga">Yoga</option> -->
-                        </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                            </select>
+                            <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                        </div>
+                        <input type="hidden" value="{{auth()->user()->id}}" name="trainer_id" id="trainer_id">
                     </div>
-                    <input type="hidden" value="{{auth()->user()->id}}" name="trainer_id" id="trainer_id">
                 </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Category Description</label>
-                    <input type="text" class="form-control pl-4" id="sub_category" placeholder="Enter Category Description" name="subCategory">
-                </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress2" class=" ">Difficulty Level</label>
-                    <div class="difficulty-level">
-                        <input type="text" class="form-control py-2 difficulties" id="beginner" value="Beginner" readonly name="difficulty-level">
-                        <input type="text" class="form-control py-2 difficulties mx-3" id="intermediate" value="Intermediate" readonly name="difficulty-level">
-                        <input type="text" class="form-control py-2 difficulties" id="advanced" value="Advanced" readonly name="difficulty-level">
-                        <input type="hidden" class="form-control py-2" id="difficulty_level" name="difficulty" value="">
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Category Description</label>
+                        <input type="text" class="form-control pl-4" id="sub_category" placeholder="Enter Category Description" name="subCategory">
                     </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress2" class=" ">Difficulty Level</label>
+                        <div class="difficulty-level">
+                            <input type="text" class="form-control py-2 difficulties" id="beginner" value="Beginner" readonly name="difficulty-level">
+                            <input type="text" class="form-control py-2 difficulties mx-3" id="intermediate" value="Intermediate" readonly name="difficulty-level">
+                            <input type="text" class="form-control py-2 difficulties" id="advanced" value="Advanced" readonly name="difficulty-level">
+                            <input type="hidden" class="form-control py-2" id="difficulty_level" name="difficulty" value="">
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
-                <div class="form-group pro-form">
-                    <label for="inputAddress2" class="">Price</label>
-                    <div class="price-outer">
-                        <!-- <div class="price-box">
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress2" class="">Price</label>
+                        <div class="price-outer">
+                            <!-- <div class="price-box">
                             <h1>HKD</h1>
                         </div> -->
-                        <div class="price-select-input">
-                            <div class="select-outer">
-                                <select class="wide s-select currency-select form-control " id="price_unit" name="priceUnit">
-                                    <option value="USD">USD</option>
-                                    <option value="EURO">EURO</option>
-                                    <option value="YEN">YEN</option>
-                                    <option value="GBP">GBP</option>
-                                    <option value="PKR">PKR</option>
-                                </select>
-                                <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                            <div class="price-select-input">
+                                <div class="select-outer">
+                                    <select class="wide s-select currency-select form-control " id="price_unit" name="priceUnit">
+                                        <option value="USD">USD</option>
+                                        <option value="EURO">EURO</option>
+                                        <option value="YEN">YEN</option>
+                                        <option value="GBP">GBP</option>
+                                        <option value="PKR">PKR</option>
+                                    </select>
+                                    <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                                </div>
+                                <input type="text" class="form-control pl-4" id="price" value="100" name="price">
                             </div>
-                            <input type="text" class="form-control pl-4" id="price" value="100" name="price">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6 pb-2" data-aos="fade-right">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Session Type</label>
+                        <div class="select-outer">
+                            <select class="wide s-select form-control pl-4" id="type" name="type">
+                                <option value="0">One to one</option>
+                                <option value="1">Group</option>
+                            </select>
+                            <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 " data-aos="fade-right">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Preference</label>
+                        <div class="select-outer">
+                            <select class="wide s-select form-control pl-4" id="preference" name="preference">
+                                <option value="0">One Time</option>
+                                <option value="1">Recurring</option>
+                            </select>
+                            <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                         </div>
                     </div>
 
                 </div>
-            </div>
-            <div class="col-md-6 pb-2" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Session Type</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="type" name="type">
-                            <option value="0">One to one</option>
-                            <option value="1">Group</option>
-                        </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 " data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Preference</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="preference" name="preference">
-                            <option value="">--Select Preference--</option>
-                            <option value="0">One Time</option>
-                            <option value="1">Recurring</option>
-                        </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Days</label>
-                    <input type="text" readonly value="Monday" class="form-control pl-4" id="sessionDay" placeholder="" name="sessionDay">
-                    <div class="select-outer ">
-                        <select data-class="no-validation" class="wide s-select form-control d-none pl-4" id="day" name="day">
-                            <option value="Mon">Monday</option>
-                            <option value="Tue">Tuesday</option>
-                            <option value="Wed">Wednesday</option>
-                            <option value="Thu">Thursday</option>
-                            <option value="Fri">Friday</option>
-                            <option value="Sat">Saturday</option>
-                            <option value="Sun">Sunday</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Date</label>
-                    <input type="date" class="form-control pl-4" id="sessionDate" placeholder="" name="sessionDate">
-                </div>
-
-            </div>
-            <div class="col-md-6 pb-2" data-aos="fade-right">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Class Type</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="session_type" name="sessionType">
-                            <option value="0">Online</option>
-                            <option value="1">In-person</option>
-                        </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 " data-aos="fade-left">
-                <div class="form-group pro-form">
-                    <label for="inputAddress" class=" ">Time slot</label>
-                    <div class="time-form">
-                        <div class="time-form-field pro-form">
-                            <input type="time" class="form-control py-4" id="startTime" name="startTime" placeholder="">
-                            <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Days</label>
+                        <div class="select-outer">
+                            <select class="wide s-select form-control pl-4" id="day" name="day">
+                                <option value="Mon">Monday</option>
+                                <option value="Tue">Tuesday</option>
+                                <option value="Wed">Wednesday</option>
+                                <option value="Thu">Thursday</option>
+                                <option value="Fri">Friday</option>
+                                <option value="Sat">Saturday</option>
+                                <option value="Sun">Sunday</option>
+                            </select>
+                            <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                         </div>
-                        <div class="time-form-field mx-sm-3 my-4 my-sm-0">
-                            <h1>to</h1>
-                        </div>
-
-                        <div class="time-form-field pro-form mb-3 mb-sm-0 mr-sm-2">
-                            <input type="time" class="form-control py-4 " id="endTime" name="endTime" placeholder="">
-                            <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
-                        </div>
-                        <!-- <button class="">Add</button> -->
                     </div>
-                    <span class="text-danger" id="time-error"></span>
+
                 </div>
-            </div>
-            <!-- <div class="col-lg-6 my-auto" data-aos="fade-left">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Date</label>
+                        <input type="date" class="form-control pl-4" id="sessionDate" placeholder="" name="sessionDate">
+                    </div>
+
+                </div>
+                <div class="col-md-6 pb-2" data-aos="fade-right">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Class Type</label>
+                        <div class="select-outer">
+                            <select class="wide s-select form-control pl-4" id="session_type" name="sessionType">
+                                <option value="0">Online</option>
+                                <option value="1">In-person</option>
+                            </select>
+                            <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 " data-aos="fade-left">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Time slot</label>
+                        <div class="time-form">
+                            <div class="time-form-field pro-form">
+                                <input type="time" class="form-control py-4" id="startTime" name="startTime" placeholder="">
+                                <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
+                            </div>
+                            <div class="time-form-field mx-sm-3 my-4 my-sm-0">
+                                <h1>to</h1>
+                            </div>
+
+                            <div class="time-form-field pro-form mb-3 mb-sm-0 mr-sm-2">
+                                <input type="time" class="form-control py-4 " id="endTime" name="endTime" placeholder="">
+                                <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
+                            </div>
+                            <!-- <button class="">Add</button> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-6 my-auto" data-aos="fade-left">
                 <div class="time-box-outer">
                     <div class="yellow-time time-box-inner m-2">
                         <p class="mb-0">9 am to 10 am</p>
@@ -1090,84 +1275,65 @@
                     </div>
                 </div>
             </div> -->
-            <!-- <div class="col-12">
+                <!-- <div class="col-12">
                 <div class="form-btn my-3 ">
                     <a href="#" class="p-0 btn">Done</a>
                 </div>
             </div> -->
-        </div>
-        <div class="updateinfo-qualification my-4 px-3 ">
-            <h1 class="mb-4">Upload Image</h1>
-            <div class="update-info-qualification-image">
-                <label>
-                    <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
-                    <input type="file" name="myfile[]" id="choose-file" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
-                </label>
-                <div id="img-preview" class="d-flex">
+            </div>
+            <div class="updateinfo-qualification my-4 px-3 ">
+                <h1 class="mb-4">Upload Image</h1>
+                <div class="update-info-qualification-image">
+                    <label>
+                        <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
+                        <input type="file" name="myfile[]" id="choose-file" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
+                    </label>
+                    <div id="img-preview" class="d-flex">
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-btn my-5 ">
-            <button type="submit" id="renderSession" class="">Done</button>
-            <!-- <a href="javascript:void(0)" id="renderSession" class="p-0 btn">Done</a> -->
-        </div>
-    </form>
+            <div class="form-btn my-5 ">
+                <button type="submit" id="renderSession" class="">Done</button>
+                <!-- <a href="javascript:void(0)" id="renderSession" class="p-0 btn">Done</a> -->
+            </div>
+        </form>
 
-</div>
-<div class="container slot-heading">
-    <h1>All Slots</h1>
-</div>
-<div class="container form-container my-5 py-5" id="slotsSection">
+    </div>
+    <div class="container slot-heading">
+        <h1>All Slots</h1>
+    </div>
+    <div class="container form-container my-5 py-5" id="slotsSection">
 
-</div>
-<div class="container next-btn">
-    <div class=" w-100 text-right">
-        <button disabled id="saveSession">Next</button>
+    </div>
+    <div class="container next-btn">
+        <div class=" w-100 text-right">
+            <button disabled id="saveSession">Next</button>
+        </div>
     </div>
 </div>
-
+<!-- modal -->
+<div class="modal fade" id="sucessModal" tabindex="-1" role="dialog" aria-labelledby="signupModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content signupModalDialogue">
+            <div class="modalHeader px-2 pt-2 pb-2 d-flex justify-content-end align-items-center">
+                <img class="cross-icon" style="width: 8%;" data-dismiss="modal" src="{{asset('public/assets/images/x-circle.svg')}}" alt="">
+            </div>
+            <div class="modal-body text-center sucess-modal">
+                <img style="width:60%;margin:0 auto" src="{{asset('public/assets/images/sucess.svg')}}" alt="">
+                <h1 class="mt-2">Success!</h1>
+                <p>Your Request to become a trainer has
+                    been send we will respond you in
+                    5 working days!</p>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('insertsfooter')
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{ asset('public/assets/js/bootstrap-select-coutry.min.js') }}"></script>
-<script>
-    // get the input elements
-    const startTimeInput = document.getElementById('startTime');
-    const endTimeInput = document.getElementById('endTime');
-    const errorSpan = document.getElementById('time-error');
-
-    // add event listener for input change
-    startTimeInput.addEventListener('change', validateTimeInputs);
-    endTimeInput.addEventListener('change', validateTimeInputs);
-
-    function validateTimeInputs() {
-        // get the time values
-        const startTimeValue = startTimeInput.value;
-        const endTimeValue = endTimeInput.value;
-
-        // convert the time values to Date objects
-        const startTime = new Date(`1970-01-01T${startTimeValue}:00Z`);
-        const endTime = new Date(`1970-01-01T${endTimeValue}:00Z`);
-
-        // check if the end time is greater than the start time
-        if (endTime <= startTime) {
-            errorSpan.textContent = 'End time must be greater than start time';
-            return;
-        }
-
-        // check if there is a difference of 30 minutes between the times
-        const timeDiff = (endTime.getTime() - startTime.getTime()) / (1000 * 60);
-        if (timeDiff < 30) {
-            errorSpan.textContent = 'There must be a difference of at least 30 minutes between the times';
-            return;
-        }
-
-        // clear the error message
-        errorSpan.textContent = '';
-    }
-</script>
 <script>
     $(document).ready(function() {
         var sessionsArray = [];
@@ -1227,23 +1393,15 @@
         });
         $(document).on('click', ".categoryOption", function() {
             $('#category_id').attr('data-src', $(this).text());
-
         });
 
         $(document).on('change', '#preference', function() {
             if ($('#preference').val() == 1) {
                 $("#sessionDate").attr('readonly', 'readonly');
-                $('#sessionDay').addClass('d-none');
-                $('#day').removeClass('d-none');
-                $('.s-select').niceSelect('update');
             } else {
                 $("#sessionDate").removeAttr('readonly');
-                $('#day').addClass('d-none');
-                $('#sessionDay').removeClass('d-none');
-                $('.s-select').niceSelect('update');
             }
         })
-
 
         // Render View of Session Slots 
         // $(document).on('click', "#renderSession", function() {
@@ -1303,7 +1461,6 @@
                 return;
             }
             e.preventDefault();
-            $("#img-preview").empty();
             var formData = new FormData(this);
             formData.append('index', index);
             formData.append('categoryName', $('#category_id').attr('data-src'));
@@ -1447,7 +1604,6 @@
                 }
             });
         });
-
     });
 </script>
 <script>
@@ -1544,5 +1700,8 @@
         $('.slot-arrow-two .up-arrow').hide(1000);
         $('.slot-arrow-two .down-arrow').show(1000);
     });
+</script>
+<script>
+    $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
 </script>
 @endsection

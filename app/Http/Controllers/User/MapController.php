@@ -30,8 +30,8 @@ class MapController extends Controller
 
     public function mapViewPage(Request $request)
     {
-        // $ip = $request->ip(); /* Dynamic IP address */
-        $ip = '162.159.24.227'; /* Static IP address */
+        $ip = $request->ip(); /* Dynamic IP address */
+        // $ip = '162.159.24.227'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
         $categories = Category::all();
         return view('pages.userdashboard.explore.map-view', compact('currentUserInfo', 'categories'));
@@ -92,7 +92,7 @@ class MapController extends Controller
         $countSessions = 0;
 
         // Map Radius Integration 
-        $ip = '162.159.24.227'; /* Static IP address */
+        $ip = $request->ip(); /* Static IP address */
         $currentUserInfo = Location::get($ip);
         $latitude = $currentUserInfo->latitude;
         $longitude = $currentUserInfo->longitude;
@@ -119,15 +119,16 @@ class MapController extends Controller
                 if (!empty($session['trainerData'])) {
                     $countSessions++;
                     $distance = getDistance($latitude, $longitude, $session['trainerData']['latitude'], $session['trainerData']['longitude']);
-                    if (!empty($workoutRadius)) {
-                        if (
-                            $distance <= $workoutRadius
-                        ) {
-                            array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
-                        }
-                    } else {
-                        array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
-                    }
+                    array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
+
+                    // if (!empty($workoutRadius)) {
+                    //     if (
+                    //         $distance <= $workoutRadius
+                    //     ) {
+                    //         array_push($latLng, [$session['trainerData']['latitude'], $session['trainerData']['longitude'], $session]);
+                    //     }
+                    // } else {
+                    // }
                 }
             }
         }

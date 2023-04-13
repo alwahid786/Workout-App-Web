@@ -75,7 +75,11 @@
                                     <a href="{{url('/dashboard/trainer-detail/'.$trainer_data['id'])}}" class="">Read More <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="trainer-card-right">
+                                    @if(isset($trainer_data['profile_img']) && $trainer_data['profile_img'] != null)
+                                    <img class="" src="{{$trainer_data['profile_img']}}" alt="image">
+                                    @else
                                     <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                                    @endif
                                     <img class="badge-img" src="{{asset('public/assets/images/badge.svg')}}" alt="image">
                                     <a href="{{url('/dashboard/trainer-detail/'.$trainer_data['id'])}}" class="btn">Book Now</a>
                                 </div>

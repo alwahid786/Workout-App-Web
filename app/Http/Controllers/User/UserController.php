@@ -785,6 +785,7 @@ class UserController extends Controller
             }
             $image->move($path, $filename);
             $path = public_path('uploads/' . $filename);
+            $path = 'https://' . $_SERVER['HTTP_HOST'] . "/workitpt_web/public/uploads/" . $filename;
             return response()->json([
                 'path' => $path
             ]);

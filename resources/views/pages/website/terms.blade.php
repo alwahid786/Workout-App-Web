@@ -224,7 +224,11 @@
         }
     }
 </style>
+@if(isset(auth()->user()->id))
+@include('includes.website.navbar-two')
+@else
 @include('includes.website.navbar')
+@endif
 <div class="container-fluid hero-section">
     <div class="container hero-section-wrapper" data-aos="fade-left">
         <div class="row">
