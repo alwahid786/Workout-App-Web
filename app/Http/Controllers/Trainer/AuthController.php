@@ -145,11 +145,13 @@ class AuthController extends Controller
     {
 
         $category = Category::all();
+        $locations = WorkoutLocation::where('trainer_id', auth()->user()->id)->get();
+        // dd($locations);
         if (!$category) {
             return $this->sendError('No Data found against ID');
         }
         $categories = json_decode($category, true);
-        return view('pages.trainerSide.account-step-three', compact('categories'));
+        return view('pages.trainerSide.account-step-three', compact('categories', 'locations'));
     }
     ///////...........create session.......////
     public function trainerDetail(Request $request)

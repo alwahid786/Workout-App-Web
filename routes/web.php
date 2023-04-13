@@ -113,6 +113,8 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/client', [TrainerController::class, 'categoryFilter'])->name('trainer/client');
     Route::any('/trainer/calendar', [TrainerController::class, 'calenderSession'])->name('trainer/calendar');
     Route::any('/trainer/add-session', [TrainerController::class, 'addSession'])->name('addSession');
+    Route::any('certifacate/delete/{id}', [TrainerController::class, 'delCertificate']);
+
 
     Route::post('/2pay/token', [PaymentController::class, 'saveTokenData'])->name('saveTokenData');
 

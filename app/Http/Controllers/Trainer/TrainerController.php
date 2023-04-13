@@ -74,12 +74,16 @@ class TrainerController extends Controller
     {
         $trainer = User::where('id', auth()->user()->id)->first();
 
+        $certificates = CertificateImage::where('trainer_id', auth()->user()->id)->get();
+        
+
         if (!$trainer) {
             return $this->sendError('No Data found against ID');
         }
         $trainer = json_decode($trainer, true);
+        $certificates = json_decode($certificates, true);
 
-        return view('pages.trainerSide.update-profile', compact('trainer'));
+        return view('pages.trainerSide.update-profile', compact('trainer', 'certificates'));
     }
 
     /////////update session ......../////////
@@ -413,5 +417,15 @@ class TrainerController extends Controller
         }
         $categories = json_decode($category, true);
         return view('pages.trainerSide.add-session', compact('categories'));
+    }
+
+    public function delCertificate($id)
+    {
+        // dd($id);
+        $certificate = CertificateImage::where('id', $id)->delete();
+        if (!$certificate) {
+            return $this->sendError('No Data found against ID');
+        }
+        return redirect()->back();
     }
 }

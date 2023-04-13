@@ -944,9 +944,7 @@
                             @foreach($categories as $category)
                             <option class="categoryOption" value="{{$category['id']}}">{{$category['title']}}</option>
                             @endforeach
-                            <!-- <option value="yoga">Yoga</option>
-                            <option value="yoga">Yoga</option>
-                            <option value="yoga">Yoga</option> -->
+
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
@@ -1095,6 +1093,21 @@
                     <a href="#" class="p-0 btn">Done</a>
                 </div>
             </div> -->
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputAddress" class=" ">Select Location</label>
+                    <div class="select-outer">
+                        <select class="wide s-select form-control pl-4" value="{{$locations[0]['id']}}" name="location_id">
+                            @foreach($locations as $location)
+                            <option class="categoryOption" value="{{$location['id']}}">{{$location['location']}} | {{$location['tag']}}</option>
+                            @endforeach
+
+                        </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                    </div>
+
+                </div>
+            </div>
         </div>
         <div class="updateinfo-qualification my-4 px-3 ">
             <h1 class="mb-4">Upload Image</h1>

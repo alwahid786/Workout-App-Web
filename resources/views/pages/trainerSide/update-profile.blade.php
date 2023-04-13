@@ -292,7 +292,7 @@
         margin: 0 auto;
     }
 
-    .grid-item img:nth-of-type(1) {
+    .grid-item a img:nth-of-type(1) {
         position: absolute;
         height: 22px;
         width: 22px;
@@ -621,7 +621,54 @@
         font-weight: 500;
     }
 
-    
+    /* profile */
+
+    .hero-section-upload:hover {
+        color: white;
+        background: #E37048;
+    }
+
+    @media screen and (max-width:991px) {
+        .hero-section-upload {
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .hero-section-upload {
+        color: #E37048;
+        background: #FFF;
+        border: 1px solid #E37048;
+        border-radius: 7px;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 20px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 204px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .upload-image img {
+        width: 100%;
+        height: 100%;
+        max-width: 250px;
+        max-height: 250px;
+        padding: 15px;
+    }
+
+    .list {
+        height: 200px;
+        overflow: auto !important;
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -641,6 +688,16 @@
     <form action="{{route('trainer/update_profile')}}" method="post">
         @csrf
         <div class="row">
+            <div class="col-md-12 text-center text-lg-left  upload-image py-5 ">
+                <div id="img-preview">
+                    <img src="{{$trainer['profile_img']}}" alt="image">
+                </div>
+                <label class="hero-section-upload my-4 "> Upload Image <span style="color: red">*</span>
+                    <input type="file" name="profile_img" id="profile-img" size="60">
+                </label>
+            </div>
+
+
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form my-2">
                     <label for="inputAddress" class=" ">Email</label>
@@ -671,12 +728,38 @@
                     <input type="text" class="form-control pl-4" name="phone" value="{{$trainer['phone']}}">
                 </div>
             </div>
+
             <div class="col-md-6 pb-3" data-aos="fade-left">
+                <div class="form-group pro-form">
+                    <label for="inputAddress2" class=" ">Country </label>
+                    <div class="select-outer">
+                        <select class="wide s-select form-control pl-4 validate" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
+                            <option value="USA">USA</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                        </select>
+                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 pb-3" data-aos="fade-right">
+                <div class="form-group pro-form">
+                    <label for="inputCity" class=" ">State</label>
+                    <select class="wide s-select form-control pl-4 validate" id="state" name="state">
+                        <option value="Alaska">Alaska</option>
+                        <option value="Washington">Washington</option>
+                        <option value="South">New South Wales</option>
+                        <option value="Tirol">Tirol</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-6 pb-3" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
                     <div class="select-outer">
                         <select class="wide s-select form-control pl-4" id="country" name="country"></select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -685,10 +768,10 @@
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
 
-                    <!-- <select class="wide s-select form-control pl-4" name="state" id="state"></select> -->
+                    <select class="wide s-select form-control pl-4" name="state" id="state"></select>
                     <select class="wide state-select nice-state-select form-control pl-4" name="state" id="state"></select>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>
@@ -696,22 +779,31 @@
             <h1>Certificate</h1>
         </div>
         <div class="updateinfo-qualification my-4 px-0 text-left">
-            <h1 class="mb-4">Upload Image</h1>
+            
             <div class="update-info-qualification-image">
-                <label class="text-center" data-toggle="modal" data-target="#imageuploadmodal">
-                    <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
-                    <input type="file" name="myfile" style="display:none">
-                </label>
+               
+                @foreach($certificates as $certificate)
                 <div class="grid-item py-2 py-sm-0">
+                    <a href="{{url('certifacate/delete/'.$certificate['id'])}}"> <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt=""></a>
+                    <img src="{{$certificate['image']}}" alt="">
+                    <p class="pt-2 pb-3 text-center">{{$certificate['caption']}}</p>
+                </div>
+                @endforeach
+                <div class="updateinfo-qualification my-4 px-3 ">
+                    <h1 class="mb-4">Upload Qualification</h1>
+                    <div class="update-info-qualification-image" id="certificatePreviews">
+                        <label style="cursor: pointer;">
+                            <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
+                            <input type="file" data-class="no-validation" name="myfile[]" id="choose-file" style="display:none" accept="image/png, image/svg, image/jpeg" multiple>
+                        </label>
+                    </div>
+                </div>
+               
+                <!-- <div class="grid-item py-2 py-sm-0">
                     <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
                     <img src="{{asset('public/assets/trainerimages/cert.png')}}" alt="">
                     <p class="pt-2 pb-3">nt. Lorem ipsum may be used as a placeholder </p>
-                </div>
-                <div class="grid-item py-2 py-sm-0">
-                    <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
-                    <img src="{{asset('public/assets/trainerimages/cert.png')}}" alt="">
-                    <p class="pt-2 pb-3">nt. Lorem ipsum may be used as a placeholder </p>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -788,7 +880,11 @@
 
     });
 </script>
-<script language="javascript">
+<!-- <script language="javascript">
     populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+</script> -->
+<script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
+<script language="javascript">
+    print_country("country");
 </script>
 @endsection
