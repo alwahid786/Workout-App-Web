@@ -1018,14 +1018,14 @@
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
-
             </div>
 
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Days</label>
-                    <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="day" name="day">
+                    <input type="text" readonly value="Monday" class="form-control pl-4" id="sessionDay" placeholder="" name="sessionDay">
+                    <div class="select-outer ">
+                        <select data-class="no-validation" class="wide s-select form-control d-none pl-4" id="day" name="day">
                             <option value="Mon">Monday</option>
                             <option value="Tue">Tuesday</option>
                             <option value="Wed">Wednesday</option>
@@ -1034,7 +1034,6 @@
                             <option value="Sat">Saturday</option>
                             <option value="Sun">Sunday</option>
                         </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
 
@@ -1077,6 +1076,7 @@
                         </div>
                         <!-- <button class="">Add</button> -->
                     </div>
+                    <span class="text-danger" id="time-error"></span>
                 </div>
             </div>
             <!-- <div class="col-lg-6 my-auto" data-aos="fade-left">
@@ -1131,6 +1131,42 @@
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{ asset('public/assets/js/bootstrap-select-coutry.min.js') }}"></script>
+<script>
+    // get the input elements
+    const startTimeInput = document.getElementById('startTime');
+    const endTimeInput = document.getElementById('endTime');
+    const errorSpan = document.getElementById('time-error');
+
+    // add event listener for input change
+    startTimeInput.addEventListener('change', validateTimeInputs);
+    endTimeInput.addEventListener('change', validateTimeInputs);
+
+    function validateTimeInputs() {
+        // get the time values
+        const startTimeValue = startTimeInput.value;
+        const endTimeValue = endTimeInput.value;
+
+        // convert the time values to Date objects
+        const startTime = new Date(`1970-01-01T${startTimeValue}:00Z`);
+        const endTime = new Date(`1970-01-01T${endTimeValue}:00Z`);
+
+        // check if the end time is greater than the start time
+        if (endTime <= startTime) {
+            errorSpan.textContent = 'End time must be greater than start time';
+            return;
+        }
+
+        // check if there is a difference of 30 minutes between the times
+        const timeDiff = (endTime.getTime() - startTime.getTime()) / (1000 * 60);
+        if (timeDiff < 30) {
+            errorSpan.textContent = 'There must be a difference of at least 30 minutes between the times';
+            return;
+        }
+
+        // clear the error message
+        errorSpan.textContent = '';
+    }
+</script>
 <script>
     $(document).ready(function() {
         var sessionsArray = [];
@@ -1195,8 +1231,14 @@
         $(document).on('change', '#preference', function() {
             if ($('#preference').val() == 1) {
                 $("#sessionDate").attr('readonly', 'readonly');
+                $('#sessionDay').addClass('d-none');
+                $('#day').removeClass('d-none');
+                $('.s-select').niceSelect('update');
             } else {
                 $("#sessionDate").removeAttr('readonly');
+                $('#day').addClass('d-none');
+                $('#sessionDay').removeClass('d-none');
+                $('.s-select').niceSelect('update');
             }
         })
 
@@ -1258,6 +1300,7 @@
                 return;
             }
             e.preventDefault();
+            $("#img-preview").empty();
             var formData = new FormData(this);
             formData.append('index', index);
             formData.append('categoryName', $('#category_id').attr('data-src'));
@@ -1401,6 +1444,7 @@
                 }
             });
         });
+
     });
 </script>
 <script>
