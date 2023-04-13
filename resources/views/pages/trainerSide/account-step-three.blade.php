@@ -1012,6 +1012,7 @@
                     <label for="inputAddress" class=" ">Preference</label>
                     <div class="select-outer">
                         <select class="wide s-select form-control pl-4" id="preference" name="preference">
+                            <option value="">--Select Preference--</option>
                             <option value="0">One Time</option>
                             <option value="1">Recurring</option>
                         </select>
@@ -1025,7 +1026,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Days</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" id="day" name="day">
+                        <select class="wide s-select form-control pl-4 day" id="day" name="day">
                             <option value="Mon">Monday</option>
                             <option value="Tue">Tuesday</option>
                             <option value="Wed">Wednesday</option>
@@ -1190,15 +1191,22 @@
         });
         $(document).on('click', ".categoryOption", function() {
             $('#category_id').attr('data-src', $(this).text());
+
         });
 
         $(document).on('change', '#preference', function() {
             if ($('#preference').val() == 1) {
                 $("#sessionDate").attr('readonly', 'readonly');
+                $("#day").removeAttr("disabled", "disabled");
+                // ('#day').prop('disabled', false);
             } else {
                 $("#sessionDate").removeAttr('readonly');
+                $('#day').attr("disabled", "disabled");
+                // ('#day').prop('disabled', true);
+                $('#day').niceSelect('update');
             }
         })
+
 
         // Render View of Session Slots 
         // $(document).on('click', "#renderSession", function() {

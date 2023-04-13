@@ -191,6 +191,9 @@
                 <img class="d-block d-md-none" src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
                 <h3 class="pt-5 pb-0">Enter <br> <span>New Password</span> </h3>
             </div>
+            @if(Session::has('message'))
+            <p style="background-color:rgb(255, 102, 102); color:#fff" class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
             <form class="mt-3" action="{{route('trainer/newPassword')}}" method="post">
                 @csrf
                 <div class="form-group form-field">

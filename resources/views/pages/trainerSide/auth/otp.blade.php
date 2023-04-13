@@ -285,6 +285,9 @@
                 <img class="d-block d-md-none" src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
                 <h3 class="pt-5 pb-0">OTP <br> <span>Code</span> </h3>
             </div>
+            @if(Session::has('message'))
+            <p style="background-color:rgb(255, 102, 102); color:#fff" class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
             <div class="verification-code">
                 <div class="verification-code--inputs">
                     <input type="text" maxlength="1" class="ml-0 otpone" name="otp1" id="otp1" />
@@ -307,6 +310,7 @@
                 </form>
                 <!-- <p>Resend Code</p> -->
             </div>
+
             <form action="{{route('trainer/sendOtp')}}" method="post" id="form">
                 @csrf
                 <input type="hidden" value="{{$email}}" name="email">

@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Exception;
 use phpseclib3\File\ASN1\Maps\Certificate;
+use Illuminate\Session\Store as SessionStore;
+use App\Rules\WithoutSpace;
 
 class AuthController extends Controller
 {
@@ -205,14 +207,24 @@ class AuthController extends Controller
         return $this->sendResponse([], 'Trainer Detail insert Successfully!');
     }
     ////////........trainer login........////////
-    public function trainerLogin(LoginRequest $request)
+    public function trainerLogin(Request $request, Exception $exception)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => ["required", new WithoutSpace],
+            'password' => 'required|min:8'
+        ]);
+        if ($validator->fails()) {
+            session()->flash('message', implode(",", $validator->errors()->all()) . $exception->getMessage());
+
+            return redirect()->back();
+        }
         $UserData = [
             'email' => $request->email,
             'password' => $request->password,
         ];
         if (!auth()->attempt($UserData)) {
-            return $this->sendError('Try again. Wrong password.Try again or click forget password to reset your password.');
+            session()->flash('message', 'Try again. Wrong password.Try again or click forget password to reset your password.' . $exception->getMessage());
+            return redirect()->back();
         }
         $authUser = auth()->user();
         $authUser->token = $authUser->createToken('API Token')->accessToken;
@@ -237,12 +249,22 @@ class AuthController extends Controller
     }
     ///////////...forget password..........///////
 
-    public function trainerSendOtp(VerifyEmailRequest $request)
+    public function trainerSendOtp(Request $request, Exception $exception)
     {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|exists:users,email|max:255'
+
+        ]);
+        if ($validator->fails()) {
+            session()->flash('message', implode(",", $validator->errors()->all()) . $exception->getMessage());
+            return redirect()->back();
+        }
         $email = $request->email;
         $otp = rand(100000, 999999);
         if (!User::where('email', $request->email)->update(['otp_code' => $otp])) {
-            return $this->sendError('Unable to proccess. Please try again later');
+            // return $this->sendError('Unable to proccess. Please try again later');
+            session()->flash('message', 'Unable to proccess. Please try again later' . $exception->getMessage());
+            return redirect()->back();
         }
         Mail::to($request->email)->send(new VerifyEmail($otp));
 
@@ -251,7 +273,7 @@ class AuthController extends Controller
     }
 
     ///////........verify otp...........//////////
-    public function verifyOtp(Request $request)
+    public function verifyOtp(Request $request, Exception $exception)
     {
         $email = $request->email;
         $validator = Validator::make($request->all(), [
@@ -259,27 +281,35 @@ class AuthController extends Controller
             'otp_code' => 'required'
         ]);
         if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+            session()->flash('message', implode(",", $validator->errors()->all()) . $exception->getMessage());
+            return view('pages.trainerSide.auth.otp', compact('email'));
         }
         if (!User::where([['email', '=', $request->email], ['otp_code', '=', $request->otp_code]])->exists()) {
-            return $this->sendError('Invalid Code.');
+            // return $this->sendError('Invalid Code.');
+            session()->flash('message', 'Invalid Code.' . $exception->getMessage());
+            return view('pages.trainerSide.auth.otp', compact('email'));
         }
         return view('pages.trainerSide.auth.newpassword', compact('email'));
     }
 
-    public function newPassword(Request $request)
+    public function newPassword(Request $request, Exception $exception)
     {
+        $email = $request->email;
 
         $validator = Validator::make($request->all(), [
             'password' => 'required|confirmed|min:8',
             'email' => 'required|email|exists:users,email'
         ]);
+
         if ($validator->fails()) {
-            return $this->sendError('Password should not be less than 8 digits and must match.', $validator->errors());
+            session()->flash('message', implode(",", $validator->errors()->all()) . $exception->getMessage());
+            return view('pages.trainerSide.auth.newpassword', compact('email'));
         }
 
         if (!User::where('email', $request->email)->update(['otp_code' => Null, 'password' => bcrypt($request->password)])) {
-            return $this->sendError('Unable to process. Please try again later.');
+            // return $this->sendError('Unable to process. Please try again later.');
+            session()->flash('message', 'Unable to process. Please try again later.' . $exception->getMessage());
+            return view('pages.trainerSide.auth.newpassword', compact('email'));
         }
         return Redirect::to(url('/trainer/login'));
     }

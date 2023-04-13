@@ -279,6 +279,9 @@
                 <img class="d-none d-md-block" src="{{asset('public/assets/images/logo.svg')}}" alt="">
                 <img class="d-block d-md-none" src="{{asset('public/assets/trainerimages/logo-f.svg')}}" alt="">
             </div>
+            @if(Session::has('message'))
+            <p style="background-color:rgb(255, 102, 102); color:#fff" class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            @endif
             <form class="mt-5" action="{{route('trainer/login')}}" method="post">
                 @csrf
                 <div class="form-group form-field">

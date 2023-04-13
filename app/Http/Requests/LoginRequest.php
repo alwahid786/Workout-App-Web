@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Http\Traits\ResponseTrait;
 use App\Rules\WithoutSpace;
+use Exception;
 
 class LoginRequest extends FormRequest
 {
@@ -38,6 +39,8 @@ class LoginRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         $errors = $this->sendError(implode(",", $validator->errors()->all()));
-        throw new HttpResponseException($errors, 422);
+        // throw new HttpResponseException($errors, 422);
+        session()->flash('message', implode(",", $validator->errors()->all()));
+        // return redirect()->back();
     }
 }

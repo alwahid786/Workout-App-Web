@@ -31,9 +31,9 @@ Route::get('/home', function () {
 /////////.........trainer......../////////////
 Route::post('/trainer_signup', [TrainerAuthController::class, 'trainerSignup']);
 Route::post('/trainer/login', [TrainerAuthController::class, 'trainerLogin'])->name('trainer/login');
-Route::post('/trainer/forgotPassword', [TrainerAuthController::class, 'trainerSendOtp'])->name('trainer/forgotPassword');
-Route::post('/trainer/sendOtp', [TrainerAuthController::class, 'verifyOtp'])->name('trainer/sendOtp');
-Route::post('/trainer/newPassword', [TrainerAuthController::class, 'newPassword'])->name('trainer/newPassword');
+Route::any('/trainer/forgotPassword', [TrainerAuthController::class, 'trainerSendOtp'])->name('trainer/forgotPassword');
+Route::any('/trainer/sendOtp', [TrainerAuthController::class, 'verifyOtp'])->name('trainer/sendOtp');
+Route::any('/trainer/newPassword', [TrainerAuthController::class, 'newPassword'])->name('trainer/newPassword');
 /////////.............user........./////////
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
