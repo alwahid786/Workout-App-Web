@@ -194,7 +194,6 @@ class AuthController extends Controller
     // }
     public function trainerDetail(Request $request)
     {
-        // dd($request->allSessions);
         // $class = Classes::create(
         //     [
         //         'category_id' => $request->category_id,
@@ -221,9 +220,12 @@ class AuthController extends Controller
             $session_data->sub_category = $session['subCategory'];
             $session_data->preference = $session['preference'];
             $session_data->price_unit = $session['priceUnit'];
-
-            $session_data->day = $session['day'];
-            $session_data->session_date = $session['sessionDate']; //new
+            if ($session['preference'] == 0) {
+                $session_data->day = $session['sessionDay'];
+                $session_data->session_date = $session['sessionDate']; //new
+            } else {
+                $session_data->day = $session['day'];
+            }
             $session_data->class_id = $class->id;
             $session_data->price = $session['price'];
             $session_data->difficulty_level = $session['difficulty'];
@@ -232,6 +234,7 @@ class AuthController extends Controller
             $session_data->end_time = $session['endTime'];
             $session_data->start_meridiem = $startMeridiem;
             $session_data->end_meridiem = $endMeridiem;
+            $session_data ->location_id = $session['location_id'];
             $session_data->save();
 
             foreach ($session['images'] as  $session_image) {
