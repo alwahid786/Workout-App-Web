@@ -114,6 +114,7 @@ Route::middleware('auth')->group(function () {
     Route::any('/trainer/calendar', [TrainerController::class, 'calenderSession'])->name('trainer/calendar');
     Route::any('/trainer/add-session', [TrainerController::class, 'addSession'])->name('addSession');
     Route::any('certifacate/delete/{id}', [TrainerController::class, 'delCertificate']);
+    Route::any('/stripe_connect', [TrainerController::class, 'connect_stripe']);
 
 
     Route::post('/2pay/token', [PaymentController::class, 'saveTokenData'])->name('saveTokenData');
@@ -292,7 +293,9 @@ Route::get('/trainer/forgetpassword', function () {
 Route::get('/trainer/stepone', function () {
     return view('pages.trainerSide.account-step-one');
 });
-
+Route::get('/trainer/pending', function () {
+    return view('pages.trainerSide.pending');
+});
 // Route::get('/trainer/steptwo', function () {
 //     return view('pages.trainerSide.account-step-two');
 // });

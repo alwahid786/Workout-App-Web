@@ -75,7 +75,7 @@ class TrainerController extends Controller
         $trainer = User::where('id', auth()->user()->id)->first();
 
         $certificates = CertificateImage::where('trainer_id', auth()->user()->id)->get();
-        
+
 
         if (!$trainer) {
             return $this->sendError('No Data found against ID');
@@ -418,7 +418,7 @@ class TrainerController extends Controller
         $categories = json_decode($category, true);
         return view('pages.trainerSide.add-session', compact('categories'));
     }
-
+    ///////delete certificate///////
     public function delCertificate($id)
     {
         // dd($id);
@@ -427,5 +427,12 @@ class TrainerController extends Controller
             return $this->sendError('No Data found against ID');
         }
         return redirect()->back();
+    }
+    ///stripe connection ///
+    public function connect_stripe(Request $request)
+    {
+        $data = "https://connect.stripe.com/express/oauth/authorize?redirect_uri=" . config('app.stripe_redirected_url') . "&client_id=" . config('app.stripe_client_id') . "&scope=read_write&state=" . bcrypt('123456');;
+        return redirect($data);
+        // dd($data);        // return $this->sendResponse($data, 'success');
     }
 }

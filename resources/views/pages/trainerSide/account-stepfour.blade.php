@@ -202,7 +202,7 @@
     <div class="stripe-wrapper text-center">
         <h1 class="pb-4">stripe</h1>
         <p class="pb-4">Connect Stripe For Payment</p>
-        <a href="{{url('/trainer/stepfours')}}" class="btn">Continue</a>
+        <a href="{{url('/stripe_connect')}}" class="btn">Continue</a>
     </div>
 </div>
 @endsection

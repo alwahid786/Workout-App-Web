@@ -2009,8 +2009,8 @@
 
                     </div>
                     <div class="profile-body pr-sm-5 mr-lg-5 pr-lg-5">
-                        <h1 class="py-2"><img src="{{asset('public/assets/trainerimages/message-icon.png')}}" alt="">johnsmith@gmail.com</h1>
-                        <h1 class="py-2"><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">+23-123-123 </h1>
+                        <h1 class="py-2"><img src="{{asset('public/assets/trainerimages/message-icon.png')}}" alt="">{{$trainer['email']}}</h1>
+                        <h1 class="py-2"><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">{{$trainer['phone']}}</h1>
                     </div>
                 </div>
                 <!-- buttons -->

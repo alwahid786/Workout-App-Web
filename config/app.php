@@ -14,6 +14,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'stripe_redirected_url' => env('STRIPE_URL'),
+    'stripe_client_id' => env('STRIPE_CLIENT_ID'),
 
     /*
     |--------------------------------------------------------------------------
