@@ -3,11 +3,11 @@
     <div class="slot-vertical-icon my-2 text-right">
         <img class="dot-toggle-icon-one" src="{{asset('public/assets/trainerimages/slotverticalicon.svg')}}" alt="">
         <div class="icon-div icon-div-one box">
-            <div class="icon-edit py-3 icon-div-inner editSlot" data-role="edit{{$data['index']}}">
+            <!-- <div class="icon-edit py-3 icon-div-inner editSlot" data-role="edit{{$data['index']}}">
                 <i class="fa fa-pencil-square-o pr-2" aria-hidden="true"></i>
 
                 <h1>Edit</h1>
-            </div>
+            </div> -->
             <div class="icon-del py-3 icon-div-inner deleteSlot" data-role="delete{{$data['index']}}">
                 <i class="fa fa-trash pr-2" aria-hidden="true"></i>
 
@@ -38,7 +38,13 @@
         <div class="timing-stack timing-stack-one px-3 my-3">
             <div class="timing-stack-inner">
                 <div class="week-name">
-                    <h1>{{$data['day']}}:</h1>
+                    <h1>
+                        @if($data['preference'] == 0)
+                        {{$data['sessionDay']}}:
+                        @else
+                        {{$data['day']}}:
+                        @endif
+                    </h1>
                 </div>
                 <div class="stack-time">
                     <div class="time-stack-outer px-4 ">
@@ -91,6 +97,16 @@
                         </div>
 
                     </div>
+                    @if($data['preference'] == 0)
+                    <div class="col-md-6">
+                        <div class="w-100 d-md-flex align-items-center">
+                            <h1>Date:</h1>
+                            <span>
+                                {{$data['sessionDate']}}
+                            </span>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

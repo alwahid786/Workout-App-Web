@@ -937,7 +937,7 @@
     <form id="createSessionForm">
         <div class="row">
             <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form">
+                <div class="form-group pro-form categoryForm">
                     <label for="inputAddress" class=" ">Select Category</label>
                     <div class="select-outer">
                         <select class="wide s-select form-control pl-4" value="{{$categories[0]['id']}}" data-src="{{$categories[0]['title']}}" name="category_id" id="category_id">
@@ -1010,11 +1010,9 @@
                     <label for="inputAddress" class=" ">Preference</label>
                     <div class="select-outer">
                         <select class="wide s-select form-control pl-4" id="preference" name="preference">
-                            <option value="">--Select Preference--</option>
                             <option value="0">One Time</option>
                             <option value="1">Recurring</option>
                         </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
             </div>
@@ -1093,21 +1091,20 @@
                     <a href="#" class="p-0 btn">Done</a>
                 </div>
             </div> -->
+            @if(isset($locations) & !empty($locations))
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Select Location</label>
                     <div class="select-outer">
                         <select class="wide s-select form-control pl-4" value="{{$locations[0]['id']}}" name="location_id">
                             @foreach($locations as $location)
-                            <option class="categoryOption" value="{{$location['id']}}">{{$location['location']}} | {{$location['tag']}}</option>
+                            <option class="categoryOptions" value="{{$location['id']}}">{{$location['location']}} | {{$location['tag']}}</option>
                             @endforeach
-
                         </select>
-                        <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
-
                 </div>
             </div>
+            @endif
         </div>
         <div class="updateinfo-qualification my-4 px-3 ">
             <h1 class="mb-4">Upload Image</h1>
@@ -1192,6 +1189,7 @@
         const imagePreview = document.getElementById('img-preview');
 
         fileInput.addEventListener('change', function(e) {
+            debugger;
             for (let i = 0; i < fileInput.files.length; i++) {
                 const file = fileInput.files[i];
                 const image = new Image();
@@ -1238,26 +1236,50 @@
             $(".difficulties").removeClass('activeDifficulty');
             $(this).addClass('activeDifficulty');
         });
-        $(document).on('click', ".categoryOption", function() {
+        $(document).on('click', ".categoryForm .option", function() {
             $('#category_id').attr('data-src', $(this).text());
-
         });
 
         $(document).on('change', '#preference', function() {
             if ($('#preference').val() == 1) {
                 $("#sessionDate").attr('readonly', 'readonly');
                 $('#sessionDay').addClass('d-none');
+                $('#sessionDay').attr('data-class', 'no-validation');
+                $('#sessionDate').attr('data-class', 'no-validation');
                 $('#day').removeClass('d-none');
+                $('#day').removeAttr('data-class');
                 $('.s-select').niceSelect('update');
             } else {
                 $("#sessionDate").removeAttr('readonly');
                 $('#day').addClass('d-none');
+                $('#day').attr('data-class', 'no-validation');
                 $('#sessionDay').removeClass('d-none');
+                $('#sessionDay').removeAttr('data-class');
+                $('#sessionDate').removeAttr('data-class');
                 $('.s-select').niceSelect('update');
             }
         })
 
+        const dateInput = document.getElementById("sessionDate");
+        const dayNameElement = document.getElementById("sessionDay");
 
+        dateInput.addEventListener("input", function() {
+            const date = new Date(dateInput.value);
+            const today = new Date();
+            if (date < today) {
+                dateInput.value = '';
+                swal({
+                    title: "Date Error",
+                    text: "Please set a future date",
+                    icon: "error",
+                });
+            } else {
+                const dayName = date.toLocaleString('en-us', {
+                    weekday: 'long'
+                });
+                dayNameElement.value = dayName;
+            }
+        });
         // Render View of Session Slots 
         // $(document).on('click', "#renderSession", function() {
         // validation = validateForm();
@@ -1316,7 +1338,6 @@
                 return;
             }
             e.preventDefault();
-            $("#img-preview").empty();
             var formData = new FormData(this);
             formData.append('index', index);
             formData.append('categoryName', $('#category_id').attr('data-src'));
@@ -1349,8 +1370,9 @@
         $(document).on('click', ".deleteSlot", function() {
             let rawIndex = $(this).attr('data-role');
             var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
+            alert(index)
             sessionsArray.splice(index, 1);
-            $(this).parent().parent().parent().parent().remove();
+            $(this).parent().parent().parent().remove();
             if (sessionsArray.length < 1) {
                 $("#saveSession").attr('disabled', 'disabled');
             }
@@ -1396,7 +1418,8 @@
             images.splice(0, images.length - 1);
             $("#difficulty").val('');
             $('.difficulties').removeClass('activeDifficulty');
-
+            $("#img-preview").empty();
+            $('#choose-file').val('');
         }
 
         // Form Validations 
@@ -1408,16 +1431,14 @@
                 value = $(this).val();
 
                 if (value == '') {
-                    if ($(this).is("input") && $(this).prop("type") !== "date") {
+                    if ($(this).is("input") && $(this).attr("data-class") !== "no-validation") {
                         // alert('input');
-                        $(this).css('border', '1px solid red');
+                        // $(this).css('border', '1px solid red');
                         errors++;
 
                     } else if ($(this).is("select")) {
-                        console.log($(this));
-                        $(this).next().addClass('borderRed');
+                        // $(this).next().addClass('borderRed');
                         errors++;
-
                     }
 
                     if ($(this).is("input[type='file']")) {
@@ -1425,8 +1446,8 @@
                         imageError++;
                     }
                 } else {
-                    $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
-                    $(this).next().removeClass('borderRed');
+                    // $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
+                    // $(this).next().removeClass('borderRed');
                 }
             });
             if (errors > 0) {
