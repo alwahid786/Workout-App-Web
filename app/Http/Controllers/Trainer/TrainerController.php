@@ -204,7 +204,7 @@ class TrainerController extends Controller
         $rating        = json_decode($rating, true);
         $notifications        = json_decode($notification, true);
 
-        // dd($notifications);
+        // dd(now()->format('d-m-y'));
         return view('pages.trainerSide.dashboard', compact('today_sessions', 'upcoming_sessions', 'past_sessions', 'rating', 'notifications'));
     }
 
@@ -435,5 +435,4 @@ class TrainerController extends Controller
         return redirect($data);
         // dd($data);        // return $this->sendResponse($data, 'success');
     }
-   
 }

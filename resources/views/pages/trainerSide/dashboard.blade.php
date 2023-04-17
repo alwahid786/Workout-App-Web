@@ -1137,7 +1137,7 @@
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i> -->
-                                    <p>{{$session_rating['rating']}}</p>
+                                    <!-- <p>{{$session_rating['rating']}}</p> -->
                                 </div>
                             </div>
 
