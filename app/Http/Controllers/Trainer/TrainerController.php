@@ -435,4 +435,5 @@ class TrainerController extends Controller
         return redirect($data);
         // dd($data);        // return $this->sendResponse($data, 'success');
     }
+   
 }

@@ -250,7 +250,11 @@ class AuthController extends Controller
         }
         if ($page['page'] == 5 && $page['status'] == 2) {
 
-            return Redirect::to(url('/trainer/dashboard'));
+            return Redirect::to(url('/trainer/pending'));
+        }
+        if ($page['page'] == 5 && $page['status'] == 0) {
+
+            return Redirect::to(url('/trainer/pending'));
         }
     }
     ///////////...forget password..........///////

@@ -1031,6 +1031,7 @@
                     <div class="recent-session-wrapper p-3">
                         @if($past_sessions == null)
                         @else
+                        
                         @foreach($past_sessions as $past_session)
                         <div class="recent-session-card recent-session-card-active py-3 my-2">
                             @if($past_session['session']['session_type'] == 0)
