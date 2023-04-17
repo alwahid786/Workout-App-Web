@@ -9,6 +9,8 @@ use App\Http\Controllers\User\MapController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\Trainer\TrainerController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Middleware\IsTrainer;
+use App\Http\Middleware\IsUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,76 +61,80 @@ Route::middleware('auth')->group(function () {
 
     //////////////....user................////////////////
 
+    Route::middleware(IsUser::class)->group(function () {
 
-    Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::any('/latest/sessions', [UserController::class, 'getTrainerCategory'])->name('trainers');
-    Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
-    Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
-    Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
-    Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('userdashboard/session');
-    Route::any('/filter/session', [UserController::class, 'SearchResult'])->name('filter/session');
-    Route::any('/dashboard/trainer', [UserController::class, 'usersTrainer'])->name('dashboard/trainer');
-    Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
+        Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
+        Route::any('/latest/sessions', [UserController::class, 'getTrainerCategory'])->name('trainers');
+        Route::any('/trainers/{id}', [UserController::class, 'getSpecificTrainer']);
+        Route::any('/update/profile', [UserController::class, 'updateProfile'])->name('updateProfile');
+        Route::any('/payment_intent', [UserController::class, 'paymentIntent'])->name('payment_intent');
+        Route::any('/userdashboard/session', [UserController::class, 'getBookedSession'])->name('userdashboard/session');
+        Route::any('/filter/session', [UserController::class, 'SearchResult'])->name('filter/session');
+        Route::any('/dashboard/trainer', [UserController::class, 'usersTrainer'])->name('dashboard/trainer');
+        Route::any('/userdashboard', [UserController::class, 'UserBookedSession'])->name('/userdashboard');
 
-    Route::any('/dashboard', [UserController::class, 'dashbord'])->name('dashboard');
-    // Route::post('categories/trainer/{id}', [UserController::class, 'category_trainer'])->name('categories/trainer');
-    Route::any('/dashboard/categories/{id}', [UserController::class, 'categoryDetail'])->name('/dashboard/categories');
-    Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');
-    Route::any('/userdashboard/session/{id}', [UserController::class, 'sessionDetails'])->name('sessionDetails');
+        Route::any('/dashboard', [UserController::class, 'dashbord'])->name('dashboard');
+        // Route::post('categories/trainer/{id}', [UserController::class, 'category_trainer'])->name('categories/trainer');
+        Route::any('/dashboard/categories/{id}', [UserController::class, 'categoryDetail'])->name('/dashboard/categories');
+        Route::any('/userdashboard/sessionone/{id}', [UserController::class, 'viewSession'])->name('/userdashboard/sessionone');
+        Route::any('/userdashboard/session/{id}', [UserController::class, 'sessionDetails'])->name('sessionDetails');
 
-    Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
-    Route::any('/dashboard/trainer-sessions/{id}/{trainerId}', [UserController::class, 'trainerSessionDetail']);
-    Route::any('/dashboard/class-detail/{id}/{day}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
-    Route::any('class_detail', [UserController::class, 'classDetails'])->name('classDetails');
-    Route::any('/get_day_session', [UserController::class, 'getDaySession'])->name('get_day_session');
-    Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('dashboard/payment');
-    Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
-    Route::any('/dashboard/map', [MapController::class, 'mapViewPage'])->name('mapViewPage');
-    Route::any('/dashboard/filterMapData', [MapController::class, 'filterMapData'])->name('filterMapData');
+        Route::any('/dashboard/trainer-detail/{id}', [UserController::class, 'trainer_detail'])->name('/dashboard/trainer-detail');
+        Route::any('/dashboard/trainer-sessions/{id}/{trainerId}', [UserController::class, 'trainerSessionDetail']);
+        Route::any('/dashboard/class-detail/{id}/{day}', [UserController::class, 'class_detail'])->name('/dashboard/class-detail');
+        Route::any('class_detail', [UserController::class, 'classDetails'])->name('classDetails');
+        Route::any('/get_day_session', [UserController::class, 'getDaySession'])->name('get_day_session');
+        Route::any('/dashboard/payment', [UserController::class, 'showCard'])->name('dashboard/payment');
+        Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
+        Route::any('/dashboard/map', [MapController::class, 'mapViewPage'])->name('mapViewPage');
+        Route::any('/dashboard/filterMapData', [MapController::class, 'filterMapData'])->name('filterMapData');
 
-    Route::any('get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('get_sessions_list');
-    Route::any('/rating', [UserController::class, 'ratingStar'])->name('rating');
-    Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
-    Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
-    Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
-    Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
-    Route::any('/chat', [UserController::class, 'chatList'])->name('user.chat');
-    Route::any('/message/{id?}', [UserController::class, 'messages'])->name('user.message');
-    Route::any('/send_message/', [UserController::class, 'sendMessage'])->name('user.send_message');
-
+        Route::any('get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('get_sessions_list');
+        Route::any('/rating', [UserController::class, 'ratingStar'])->name('rating');
+        Route::any('/payment', [UserController::class, 'userPaymentsList'])->name('userPaymentsList');
+        Route::any('/userdashboard/pastsession', [UserController::class, 'allPastSession'])->name('userdashboard/pastsession');
+        Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
+        Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
+        Route::any('/chat', [UserController::class, 'chatList'])->name('user.chat');
+        Route::any('/message/{id?}', [UserController::class, 'messages'])->name('user.message');
+        Route::any('/send_message/', [UserController::class, 'sendMessage'])->name('user.send_message');
+    });
     ///// trainer............//////
+    Route::middleware(IsTrainer::class)->group(function () {
 
-    Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
-    Route::any('/trainer/stepfive', [TrainerController::class, 'showTrainerDetail'])->name('trainer/stepfive');
-    Route::any('/trainer/stepthree', [TrainerAuthController::class, 'stepThree'])->name('trainer/stepthree');
-    Route::any('/trainer/update_profile/', [TrainerController::class, 'updateTrainer'])->name('trainer/update_profile');
-    Route::any('/trainer/updateprofile/', [TrainerController::class, 'showupdate'])->name('trainer/updateprofile');
-    Route::any('/trainer/update_session/', [TrainerController::class, 'updateSession'])->name('trainer/update_session');
-    Route::any('/trainer/delete_session/', [TrainerController::class, 'deleteSession'])->name('trainer/delete_session');
-    Route::any('/trainer/submit_request/', [TrainerController::class, 'submitTrainerRequest'])->name('trainer/submit_request');
-    Route::any('/trainer/dashboard', [TrainerController::class, 'trainerDashboard'])->name('trainer/dashboard');
-    Route::any('/trainer/session-one/{id}/{booked_id?}', [TrainerController::class, 'sessionDetail'])->name('trainer/session-one');
-    Route::any('/trainer/clientlist', [TrainerController::class, 'client'])->name('/trainer/clientlist');
-    Route::any('/trainer/profile/{id}', [TrainerController::class, 'userDetail'])->name('trainer/profile');
-    Route::any('/trainer/client', [TrainerController::class, 'categoryFilter'])->name('trainer/client');
-    Route::any('/trainer/calendar', [TrainerController::class, 'calenderSession'])->name('trainer/calendar');
-    Route::any('/trainer/add-session', [TrainerController::class, 'addSession'])->name('addSession');
-    Route::any('certifacate/delete/{id}', [TrainerController::class, 'delCertificate']);
-    Route::any('/stripe_connect', [TrainerController::class, 'connect_stripe']);
+        Route::any('/update_profile_two', [TrainerAuthController::class, 'updateProfileStwo'])->name('update_profile_two');
+        Route::any('/trainer/stepfive', [TrainerController::class, 'showTrainerDetail'])->name('trainer/stepfive');
+        Route::any('/trainer/stepthree', [TrainerAuthController::class, 'stepThree'])->name('trainer/stepthree');
+        Route::any('/trainer/update_profile/', [TrainerController::class, 'updateTrainer'])->name('trainer/update_profile');
+        Route::any('/trainer/updateprofile/', [TrainerController::class, 'showupdate'])->name('trainer/updateprofile');
+        Route::any('/trainer/update_session/', [TrainerController::class, 'updateSession'])->name('trainer/update_session');
+        Route::any('/trainer/delete_session/', [TrainerController::class, 'deleteSession'])->name('trainer/delete_session');
+        Route::any('/trainer/submit_request/', [TrainerController::class, 'submitTrainerRequest'])->name('trainer/submit_request');
+        Route::any('/trainer/dashboard', [TrainerController::class, 'trainerDashboard'])->name('trainer/dashboard');
+        Route::any('/trainer/session-one/{id}/{booked_id?}', [TrainerController::class, 'sessionDetail'])->name('trainer/session-one');
+        Route::any('/trainer/clientlist', [TrainerController::class, 'client'])->name('/trainer/clientlist');
+        Route::any('/trainer/profile/{id}', [TrainerController::class, 'userDetail'])->name('trainer/profile');
+        Route::any('/trainer/client', [TrainerController::class, 'categoryFilter'])->name('trainer/client');
+        Route::any('/trainer/calendar', [TrainerController::class, 'calenderSession'])->name('trainer/calendar');
+        Route::any('/trainer/add-session', [TrainerController::class, 'addSession'])->name('addSession');
+        Route::any('certifacate/delete/{id}', [TrainerController::class, 'delCertificate']);
+        Route::any('/stripe_connect', [TrainerController::class, 'connect_stripe']);
 
 
-    Route::post('/2pay/token', [PaymentController::class, 'saveTokenData'])->name('saveTokenData');
+        Route::post('/2pay/token', [PaymentController::class, 'saveTokenData'])->name('saveTokenData');
 
-    Route::any('/trainer/session/{id?}', [TrainerController::class, 'classDetail'])->name('trainer/session');
-    Route::any('/trainer/response/', [TrainerController::class, 'actionSession'])->name('session');
+        Route::any('/trainer/session/{id?}', [TrainerController::class, 'classDetail'])->name('trainer/session');
+        Route::any('/trainer/response/', [TrainerController::class, 'actionSession'])->name('session');
 
-    Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
-    Route::any('/trainer/chat', [TrainerController::class, 'trainerChatList'])->name('trainer.chat');
+        Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
+        Route::any('/trainer/chat', [TrainerController::class, 'trainerChatList'])->name('trainer.chat');
 
-    Route::get('/trainer/steptwo', function () {
-        return view('pages.trainerSide.account-step-two');
+        Route::get('/trainer/steptwo', function () {
+            return view('pages.trainerSide.account-step-two');
+        });
     });
 });
+
 
 
 Route::get('/trainers/yoga', function () {
