@@ -1594,13 +1594,13 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{ url('api/trainer_detail') }}",
+                url: "{{ url('/add_session') }}",
                 type: "POST",
                 data: sessionsData,
                 cache: false,
                 success: function(data) {
                     console.log(data)
-                    window.location.href = '/workitpt_web/trainer/stepfive';
+                    window.location.href = '/workitpt_web/trainer/add-session';
                 }
             });
         });

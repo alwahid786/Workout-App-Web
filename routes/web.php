@@ -120,6 +120,7 @@ Route::middleware('auth')->group(function () {
         Route::any('certifacate/delete/{id}', [TrainerController::class, 'delCertificate']);
         Route::any('/stripe_connect', [TrainerController::class, 'connect_stripe']);
 
+        Route::post('/add_session', [AuthController::class, 'addSession']);
 
         Route::post('/2pay/token', [PaymentController::class, 'saveTokenData'])->name('saveTokenData');
 

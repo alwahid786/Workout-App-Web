@@ -22,5 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 // Route::post('/trainer_register', [AuthController::class, 'trainerSignup']);
 Route::post('/trainer_detail', [AuthController::class, 'trainerDetail']);
+// Route::post('/add_session', [AuthController::class, 'addSession']);
 Route::post('/add_category', [AdminController::class, 'addCategory']);
 Route::post('/trainer_staus', [AdminController::class, 'trainerStaus']);
