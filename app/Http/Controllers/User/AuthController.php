@@ -239,7 +239,7 @@ class AuthController extends Controller
 
             foreach ($session['images'] as  $session_image) {
                 $images = new SessionImage();
-                $images->image = $session_image; //
+                $images->image = $session_image; 
                 $images->session_id = $session_data->id;
                 $images->save();
             }
