@@ -676,19 +676,15 @@
 
             </div>
             <div class="row js-slick-carousel">
-                <!-- foreach($bookedsession['session']['session_image'] as $image)
+
+                @foreach($session['session_image'] as $image)
                 <div class="col">
                     <div class="session-detail-img">
-                        <img src="$image['image']" alt="">
+                        <img src="{{$image['image']}}" alt="">
                     </div>
                 </div>
-                endforeach -->
-                <div class="col">
-                    <div class="session-detail-img">
-                        <img src="{{asset('public/assets/images/sessioneight.jpg')}}" alt="">
-                    </div>
-                </div>
-                <div class="col">
+                @endforeach
+                <!-- <div class="col">
                     <div class="session-detail-img">
                         <img src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                     </div>
@@ -702,7 +698,7 @@
                     <div class="session-detail-img">
                         <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
@@ -752,7 +748,7 @@
                                     @else
                                     <p>Recurring</p>
                                     @endif
-                                    
+
                                     @else
                                     <h1>Date</h1>
                                     <p>{{date('d-M-Y',strtotime($session['booked_session'][0]['session-date']))}}</p>
@@ -778,12 +774,19 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col">
                         <div class="row">
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Location</h1>
-                                    <p>{{$session['trainer_data']['workout_location']}}</p>
+                                    <p>{{$session['location']['tag']}} | {{$session['location']['location']}}</p>
+                                </div>
+                            </div>
+                            <div class="col-6 my-4 pl-0">
+                                <div class="session-inner-content">
+                                    <h1>Difficulty Level</h1>
+                                    <p>{{$session['difficulty_level']}}</p>
                                 </div>
                             </div>
                         </div>
@@ -823,7 +826,7 @@
 
 
 
-                                    <p>{{$session_rating['rating']}}</p>
+                                    <!-- <p>{{$session_rating['rating']}}</p> -->
                                 </div>
                             </div>
                             <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
