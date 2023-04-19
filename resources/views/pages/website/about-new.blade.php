@@ -537,11 +537,11 @@
                 <p><sup><i class="fa fa-quote-left" aria-hidden="true"></i></sup> It’s so important to listen to yourself and be true to where you want to be as a person. <sub><i class="fa fa-quote-right" aria-hidden="true"></i></sub></p>
             </div>
             <div class="ceo-content-text">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor consequuntur doloremque expedita vitae! Minus sequi quibusdam porro! Laudantium, cupiditate aspernatur.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum pariatur dolorum inventore cum officia explicabo aperiam, quod odio ratione reprehenderit a laudantium in ipsa nemo dolor ducimus quidem, ab laboriosam repellat quasi quam molestias eligendi ut? Veniam quae repellat, non quo at ducimus labore commodi tempore numquam sunt sit debitis.</p>
+                <p>As the founder of our workout site, I am proud to lead a team of dedicated trainers and fitness enthusiasts who are passionate about helping individuals achieve their fitness goals. Our site was created with the vision of providing a platform where people can access high-quality fitness programs and training sessions from experienced professionals, regardless of their location or fitness level.</p>
+                <p>For many years, I have been involved in the fitness industry, and have witnessed firsthand the transformative power of regular exercise and a healthy lifestyle. I have seen how fitness can improve not only physical health, but also mental health, self-confidence, and overall quality of life. It is this belief in the power of fitness that inspired me to create this platform and offer people the opportunity to access quality fitness training.</p>
 
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, nesciunt.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, minima, quod consectetur quaerat tempore quidem voluptates nihil vel aliquam enim fugiat veniam quam quae sunt quos nemo provident, veritatis mollitia?</p>
+                <p>Our site is built on the principles of personalized training, convenience, and accessibility. We believe that every individual deserves the opportunity to achieve their fitness goals, regardless of their schedule or location. With our platform, users can book personalized training sessions with experienced trainers, and access a variety of workouts that can be done from the comfort of their own home or at their local gym.</p>
+                <p>At our workout site, we are committed to providing a world-class fitness experience, and helping individuals unlock their full potential. Whether you're just starting out on your fitness journey or you're an experienced athlete, our team of trainers is here to support you every step of the way. We invite you to join our community of fitness enthusiasts and experience the power of personalized training for yourself.</p>
             </div>
             <div class="ceo-content-icon">
                 <img src="{{asset('public/assets/images/dumbbell.png')}}" alt="">
