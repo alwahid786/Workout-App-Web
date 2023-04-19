@@ -481,27 +481,90 @@
     }
 
     .hero-section {
-        max-width: 1500px;
+        /* max-width: 1500px; */
         margin: 0 auto;
-        background: transparent !important;
+        /* background: transparent !important; */
+    }
+    .per-heading1{
+        display: flex;
+        justify-content:flex-start;
+        align-items:center;
+        background: url({{asset('public/assets/images/gym-one-gradiant.png')}});
+        height:45rem;
+        background-size: cover;
+    }
+    .per-heading1-left{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        width:50%;
     }
 
-    .per-heading h1 {
-        color: #111418;
+    .per-heading1 h1 {
+        color: white;
         font-size: 2rem;
     }
 
-    .per-heading p {
-        color: #111418;
+    .per-heading1 p {
+        color: white;
         font-size: 0.9rem;
+        width:75%;
+    }
+
+    .per-heading2{
+        display: flex;
+        justify-content:flex-start;
+        align-items:center;
+        background: url({{asset('public/assets/images/gym-two-gradiant.png')}});
+        height:45rem;
+        background-size: cover;
+    }
+    .per-heading2-left{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        width:50%;
+    }
+
+    .per-heading2 h1 {
+        color: white;
+        font-size: 2rem;
+        
+    }
+
+    .per-heading2 p {
+        color: white;
+        font-size: 0.9rem;
+        width:75%;
     }
 
     @media screen and (max-width:1566px) {
         .hero-section {
-            max-width: 1000px;
-            margin: 0 auto;
             background: transparent !important;
         }
+    }
+    @media screen and (max-width:768px) {
+        .per-heading1{
+            justify-content:center;
+        }
+        .per-heading2{
+            justify-content:center;
+        }
+        .per-heading2-left{
+        width:80%;
+    }
+    .per-heading1-left{
+        width:80%;
+    }
+    }
+    @media screen and (max-width:576px) {
+    
+        .per-heading2-left{
+        width:100%;
+    }
+    .per-heading1-left{
+        width:100%;
+    }
     }
 </style>
 @include('includes.website.navbar')
@@ -537,11 +600,11 @@
                 <p><sup><i class="fa fa-quote-left" aria-hidden="true"></i></sup> It’s so important to listen to yourself and be true to where you want to be as a person. <sub><i class="fa fa-quote-right" aria-hidden="true"></i></sub></p>
             </div>
             <div class="ceo-content-text">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor consequuntur doloremque expedita vitae! Minus sequi quibusdam porro! Laudantium, cupiditate aspernatur.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum pariatur dolorum inventore cum officia explicabo aperiam, quod odio ratione reprehenderit a laudantium in ipsa nemo dolor ducimus quidem, ab laboriosam repellat quasi quam molestias eligendi ut? Veniam quae repellat, non quo at ducimus labore commodi tempore numquam sunt sit debitis.</p>
+                <p>As the founder of our workout site, I am proud to lead a team of dedicated trainers and fitness enthusiasts who are passionate about helping individuals achieve their fitness goals. Our site was created with the vision of providing a platform where people can access high-quality fitness programs and training sessions from experienced professionals, regardless of their location or fitness level.</p>
+                <p>For many years, I have been involved in the fitness industry, and have witnessed firsthand the transformative power of regular exercise and a healthy lifestyle. I have seen how fitness can improve not only physical health, but also mental health, self-confidence, and overall quality of life. It is this belief in the power of fitness that inspired me to create this platform and offer people the opportunity to access quality fitness training.</p>
 
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, nesciunt.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, minima, quod consectetur quaerat tempore quidem voluptates nihil vel aliquam enim fugiat veniam quam quae sunt quos nemo provident, veritatis mollitia?</p>
+                <p>Our site is built on the principles of personalized training, convenience, and accessibility. We believe that every individual deserves the opportunity to achieve their fitness goals, regardless of their schedule or location. With our platform, users can book personalized training sessions with experienced trainers, and access a variety of workouts that can be done from the comfort of their own home or at their local gym.</p>
+                <p>At our workout site, we are committed to providing a world-class fitness experience, and helping individuals unlock their full potential. Whether you're just starting out on your fitness journey or you're an experienced athlete, our team of trainers is here to support you every step of the way. We invite you to join our community of fitness enthusiasts and experience the power of personalized training for yourself.</p>
             </div>
             <div class="ceo-content-icon">
                 <img src="{{asset('public/assets/images/dumbbell.png')}}" alt="">
@@ -554,14 +617,13 @@
     <div class="container-fluid">
         <div class="left-section-par ">
             <div class="row">
-                <div class="col-md-6 my-auto text-center py-5 py-md-0 per-heading">
-
-                    <h1 class="pb-2 pb-md-3 mb-0">Transforming Personal Training</h1>
-                    <p class="mb-0">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
-                </div>
-                <div class="col-md-6 Transforming-img px-0 text-center my-auto">
-                    <img src="{{asset('public/assets/images/gym-ones.jpg')}}" alt="">
-
+                <div class="col-md-12 my-auto text-center px-0 py-5 py-md-0 ">
+                    <div class="per-heading1">
+                        <div class="per-heading1-left">
+                            <h1 class="pb-2 pb-md-3 mb-0">Transforming Personal Training</h1>
+                            <p class="mb-0">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -572,15 +634,21 @@
     <div class="container-fluid py-3">
         <div class="left-section-par ">
             <div class="row">
-                <div class="col-md-6 Transforming-img px-0 text-center my-auto order-2 order-md-1">
+            <div class="col-md-12 my-auto text-center px-0 py-5 py-md-0 ">
+                    <div class="per-heading2">
+                        <div class="per-heading2-left">
+                        <h1 class="pb-2 pb-md-5 mb-0">A Modern Approach</h1>
+                        <p class="mb-0">It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
+                    </div>
+                </div>
+            </div>
+                <!-- <div class="col-md-6 Transforming-img px-0 text-center my-auto order-2 order-md-1">
                     <img src="{{asset('public/assets/images/gym-two.jpg')}}" alt="">
 
                 </div>
                 <div class="col-md-6 my-auto text-center py-5 py-md-0 per-heading order-1 order-md-2">
 
-                    <h1 class="pb-2 pb-md-5 mb-0">A Modern Approach</h1>
-                    <p class="mb-0">It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
-                </div>
+                </div> -->
 
             </div>
         </div>

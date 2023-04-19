@@ -278,8 +278,8 @@
         opacity: 1;
     }
 
-    .right-inner-addon i{
-        cursor:pointer;
+    .right-inner-addon i {
+        cursor: pointer;
     }
 </style>
 @include('includes.website.navbar')
@@ -289,12 +289,12 @@
             <div class="col-md-6 order-2 order-md-1 hero-left text-center text-md-left">
                 <div class="hero-left-content">
                     <h1>The personal<span>Training you</span><span>Deserve</span></h1>
-                    <p class="pb-4 pt-3">Book personal training experience.</p>
+                    <p class="pb-4 pt-3">Experience the power of personalized training and unlock your full potential with our expert trainers.</p>
                     <a href="" class="btn modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0">
-                <img src="{{asset('public/assets/images/payment-hero.webp')}}" alt="image">
+                <img src="{{asset('public/assets/images/img-3.jpg')}}" alt="image">
             </div>
         </div>
     </div>
@@ -310,9 +310,7 @@
                         <img class="hover-image" src="{{asset('public/assets/images/card-icon-three-w.svg')}}" alt="image">
                     </div>
                     <h1 class="py-3">Experience</h1>
-                    <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a
-                        typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
-                        final copy is available.
+                    <p>Our trainers have a proven track record of success, having worked with clients from a variety of industries and backgrounds. They understand the unique challenges that individuals and organizations face, and are equipped with the skills and tools necessary to help them overcome these obstacles.
                     </p>
                     <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
                 </div>
@@ -324,9 +322,7 @@
                         <img class="hover-image" src="{{asset('public/assets/images/card-icon-one-w.svg')}}" alt="image">
                     </div>
                     <h1 class="py-3">Coach Trainer</h1>
-                    <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a
-                        typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
-                        final copy is available.
+                    <p>Whether you are looking to become a coach yourself or are interested in enhancing your existing coaching skills, our experienced coach trainers are here to help you succeed. We provide comprehensive training programs that cover all aspects of coaching.
                     </p>
                     <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
                 </div>
@@ -338,9 +334,9 @@
                         <img class="hover-image" src="{{asset('public/assets/images/card-icon-two-w.svg')}}" alt="image">
                     </div>
                     <h1 class="py-3">Nutritional diet</h1>
-                    <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a
-                        typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
-                        final copy is available.
+                    <p>Our nutritional diet program offers personalized meal plans tailored to each individual's unique needs and goals. Our trainers take a holistic approach to nutrition, taking into account factors such as dietary preferences, lifestyle, and health conditions to create a comprehensive plan that is both effective and sustainable.
+
+
                     </p>
                     <a href="#" class="modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-1" aria-hidden="true"></i></a>
                 </div>
@@ -360,9 +356,7 @@
                         <i class="fa fa-star" aria-hidden="true"></i>
                     </div>
                     <h2 class="pb-2">Satisfied Customers</h2>
-                    <p class="col-md-8 pl-0">Lorem ipsum is a placeholder text commonly used to demonstrate the visual
-                        form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used
-                        as a placeholder before final copy is available.
+                    <p class="col-md-8 pl-0">At our business, customer satisfaction is our top priority. We are dedicated to providing exceptional service and delivering results that exceed our customers' expectations. We are proud to have a track record of satisfied customers who have seen real results from working with us.
                     </p>
                     <!-- <a href="" class="btn pl-0 modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a> -->
 
@@ -372,7 +366,7 @@
             </div>
             <div class="col-md-6 mt-3">
                 <div class="rating-right py-3" data-aos="zoom-in">
-                    <img class="mb-3" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                    <img class="mb-3" src="{{asset('public/assets/images/img-2.jpg')}}" alt="image">
                     <h1 class="col-sm-8 pl-0">Get In shape and training at the gym or home</h1>
                 </div>
             </div>
@@ -389,8 +383,7 @@
         <div class="col-lg-4 slider-left-outer">
             <div class="slider-left pl-lg-5 text-center text-lg-left" data-aos="zoom-out">
                 <h1 class="pb-2 pb-sm-3">Session </h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.</p>
+                <p>Our training sessions are designed to be engaging, informative, and effective. Our experienced trainers provide personalized instruction that is tailored to each individual's unique needs and goals.</p>
             </div>
 
         </div>
@@ -494,9 +487,7 @@
             <div class="col-lg-4 gallery-content-wrapper" data-aos="zoom-out-right">
                 <div class="gallery-content text-center text-lg-left py-4 py-lg-0">
                     <h1 class="pb-4">Search Our<span>Upcoming</span><span>Workouts</span> </h1>
-                    <p>Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a
-                        typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before
-                        final copy is available.
+                    <p>At our fitness center, we are constantly searching for new and innovative workouts to help our clients achieve their fitness goals. We are excited to announce that we have a lineup of upcoming workouts that will be delivered by our experienced trainers.
                     </p>
                     <a href="" class="btn pl-0 modal-view" data-toggle="modal" data-target="#loginModal">Read More <i class="fa fa-long-arrow-right pl-2" aria-hidden="true"></i></a>
                 </div>

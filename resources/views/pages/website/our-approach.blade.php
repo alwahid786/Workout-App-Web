@@ -15,6 +15,12 @@
         font-size: 1rem;
         padding-bottom: 10px;
     }
+    .about-content ul{
+        list-style-type: none
+    }
+    .about-content li{
+        padding: 0.1rem 0.5rem;
+    }
 
     @media screen and (max-width:576px) {
         .about-content h1 {
@@ -158,6 +164,16 @@
         right: 20%;
         transform: translate(-50%, 0%);
     }
+    .hero-section-wrapper{
+        padding-bottom: 3rem;
+    }
+    .approch-steps{
+        text-align:center;
+        color: #E37048;
+        font-size: 1.5rem;
+        padding-top:2rem;
+        font-weight:700;
+    }
 
     @media screen and (max-width:1330px) {
 
@@ -237,13 +253,23 @@
     </div>
 </div>
 <div class="container">
+    <div class="approch-steps">HOW IT WORKS</div>
     <div class="about-content">
-        <h1>Heading</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vitae similique nulla asperiores doloremque suscipit laborum mollitia? Voluptates veniam minus ipsa modi optio consequatur eaque, sapiente aspernatur eligendi adipisci dolorem, cumque libero numquam nulla quibusdam quasi facere recusandae eum quo rem aliquam exercitationem totam! Quidem, placeat illo autem porro optio voluptates voluptate repellendus recusandae laborum odit nemo, magnam, omnis a animi beatae ab consequuntur accusantium. Libero in voluptatum, ut natus sapiente, cum dolore laborum cupiditate illo possimus unde, neque illum perferendis quibusdam! Ab at nisi vitae optio quia id, exercitationem quae. Ipsum nihil ut unde aliquam omnis excepturi ex dolorem dolor nisi reprehenderit nobis accusantium velit, impedit saepe similique nesciunt! Consectetur recusandae rerum esse sunt odio. Minus, repellendus. In fugiat dolorem aut maxime minima aliquam dolore provident magni odit delectus earum consequatur, vel iure molestiae mollitia quidem autem facere nostrum voluptas? Doloribus magnam praesentium odio ab animi ipsum quos id.</p>
+        <h1>Create a profile</h1>
+        <ul>
+        <li>Contact Information: This includes basic information such as name, email address, phone number, and mailing address.</li>    
+        <li>Demographic Information: This includes information such as age, gender, income, and education level.</li>
+        <li>Personal Preferences: This includes information such as hobbies, interests, and preferred communication methods.</li>
+        <!-- Peronsal information, goals, interest etc -->
+     </ul>
     </div>
     <div class="about-content">
-        <h1>Heading</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vitae similique nulla asperiores doloremque suscipit laborum mollitia? Voluptates veniam minus ipsa modi optio consequatur eaque, sapiente aspernatur eligendi adipisci dolorem, cumque libero numquam nulla quibusdam quasi facere recusandae eum quo rem aliquam exercitationem totam! Quidem, placeat illo autem porro optio voluptates voluptate repellendus recusandae laborum odit nemo, magnam, omnis a animi beatae ab consequuntur accusantium. Libero in voluptatum, ut natus sapiente, cum dolore laborum cupiditate illo possimus unde, neque illum perferendis quibusdam! Ab at nisi vitae optio quia id, exercitationem quae. Ipsum nihil ut unde aliquam omnis excepturi ex dolorem dolor nisi reprehenderit nobis accusantium velit, impedit saepe similique nesciunt! Consectetur recusandae rerum esse sunt odio. Minus, repellendus. In fugiat dolorem aut maxime minima aliquam dolore provident magni odit delectus earum consequatur, vel iure molestiae mollitia quidem autem facere nostrum voluptas? Doloribus magnam praesentium odio ab animi ipsum quos id.</p>
+        <h1>Search for a session</h1>
+        <p>Use our advance filtering capabilities, search for a session that fits your needs and most relevant to your goals </p>
+    </div>
+    <div class="about-content pb-4">
+        <h1>Start training</h1>
+        <p>Once payment is completed, the money is held in an Escrow account until the training is completed.</p>
     </div>
 </div>
 <!-- Footer Section  -->
