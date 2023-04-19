@@ -158,6 +158,14 @@
         right: 20%;
         transform: translate(-50%, 0%);
     }
+.hero-section-wrapper{
+    padding-bottom: 3rem !important;
+}
+   
+    .services-slogon p{
+        font-size:1rem;
+        padding-top: 2rem;
+    }
 
     @media screen and (max-width:1330px) {
 
@@ -230,20 +238,24 @@
         <div class="row">
             <div class="col- hero-left text-center text-md-left">
                 <div class="hero-left-content">
-                    <h1>Services</h1>
+                    <h1>Services</h1> 
+                    <p>Get your workout in and stay in shape anywhere anytime.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="container">
-    <div class="about-content">
-        <h1>Heading</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vitae similique nulla asperiores doloremque suscipit laborum mollitia? Voluptates veniam minus ipsa modi optio consequatur eaque, sapiente aspernatur eligendi adipisci dolorem, cumque libero numquam nulla quibusdam quasi facere recusandae eum quo rem aliquam exercitationem totam! Quidem, placeat illo autem porro optio voluptates voluptate repellendus recusandae laborum odit nemo, magnam, omnis a animi beatae ab consequuntur accusantium. Libero in voluptatum, ut natus sapiente, cum dolore laborum cupiditate illo possimus unde, neque illum perferendis quibusdam! Ab at nisi vitae optio quia id, exercitationem quae. Ipsum nihil ut unde aliquam omnis excepturi ex dolorem dolor nisi reprehenderit nobis accusantium velit, impedit saepe similique nesciunt! Consectetur recusandae rerum esse sunt odio. Minus, repellendus. In fugiat dolorem aut maxime minima aliquam dolore provident magni odit delectus earum consequatur, vel iure molestiae mollitia quidem autem facere nostrum voluptas? Doloribus magnam praesentium odio ab animi ipsum quos id.</p>
+    <div class="services-slogon">
+        <p>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition </p>
     </div>
-    <div class="about-content">
-        <h1>Heading</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vitae similique nulla asperiores doloremque suscipit laborum mollitia? Voluptates veniam minus ipsa modi optio consequatur eaque, sapiente aspernatur eligendi adipisci dolorem, cumque libero numquam nulla quibusdam quasi facere recusandae eum quo rem aliquam exercitationem totam! Quidem, placeat illo autem porro optio voluptates voluptate repellendus recusandae laborum odit nemo, magnam, omnis a animi beatae ab consequuntur accusantium. Libero in voluptatum, ut natus sapiente, cum dolore laborum cupiditate illo possimus unde, neque illum perferendis quibusdam! Ab at nisi vitae optio quia id, exercitationem quae. Ipsum nihil ut unde aliquam omnis excepturi ex dolorem dolor nisi reprehenderit nobis accusantium velit, impedit saepe similique nesciunt! Consectetur recusandae rerum esse sunt odio. Minus, repellendus. In fugiat dolorem aut maxime minima aliquam dolore provident magni odit delectus earum consequatur, vel iure molestiae mollitia quidem autem facere nostrum voluptas? Doloribus magnam praesentium odio ab animi ipsum quos id.</p>
+    <div class="about-content pb-3">
+        <h1>Online training</h1>
+        <p>Whether you have a busy schedule, need someone to hold you accountable or want some fitness or nutrition related advice, our online training sessions with our experienced instructors will guide you to achieving the results you desire. During these sessions you will be able to discuss your goals, results and get any of your fitness or nutrition related questions answered by real professionals</p>
+    </div>
+    <div class="about-content pb-5">
+        <h1>In person training</h1>
+        <p>Workit personal trainers are able to provide 1-on-1 training sessions curated to your needs and goals. Based on your preferences, trainers can meet you at a nearby park or your home, all you need is at least 4m x 4m space for your workouts. These sessions range from general cardio, strength and HIIT workouts, Kickboxing, and even certain sports like swimming, basketball and more.</p>
     </div>
 </div>
 <!-- Footer Section  -->
