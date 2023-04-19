@@ -233,7 +233,7 @@ class TrainerController extends Controller
         // $session_detail = BookedSession::where('id', $id)->with('session.trainerData', 'session.category', 'session.session_image')->first();
         $session_detail = Session::where('id', $id)->with(['booked_session' => function ($query) use ($booked_id) {
             $query->where('id', $booked_id);
-        }])->with('category', 'trainerData', 'session_image')->first();
+        }])->with('category', 'trainerData', 'session_image', 'location')->first();
         $rating         = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
 
         if (!$session_detail) {
