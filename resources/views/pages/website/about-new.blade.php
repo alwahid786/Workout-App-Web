@@ -481,27 +481,90 @@
     }
 
     .hero-section {
-        max-width: 1500px;
+        /* max-width: 1500px; */
         margin: 0 auto;
-        background: transparent !important;
+        /* background: transparent !important; */
+    }
+    .per-heading1{
+        display: flex;
+        justify-content:flex-start;
+        align-items:center;
+        background: url({{asset('public/assets/images/gym-one-gradiant.png')}});
+        height:45rem;
+        background-size: cover;
+    }
+    .per-heading1-left{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        width:50%;
     }
 
-    .per-heading h1 {
-        color: #111418;
+    .per-heading1 h1 {
+        color: white;
         font-size: 2rem;
     }
 
-    .per-heading p {
-        color: #111418;
+    .per-heading1 p {
+        color: white;
         font-size: 0.9rem;
+        width:75%;
+    }
+
+    .per-heading2{
+        display: flex;
+        justify-content:flex-start;
+        align-items:center;
+        background: url({{asset('public/assets/images/gym-two-gradiant.png')}});
+        height:45rem;
+        background-size: cover;
+    }
+    .per-heading2-left{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        width:50%;
+    }
+
+    .per-heading2 h1 {
+        color: white;
+        font-size: 2rem;
+        
+    }
+
+    .per-heading2 p {
+        color: white;
+        font-size: 0.9rem;
+        width:75%;
     }
 
     @media screen and (max-width:1566px) {
         .hero-section {
-            max-width: 1000px;
-            margin: 0 auto;
             background: transparent !important;
         }
+    }
+    @media screen and (max-width:768px) {
+        .per-heading1{
+            justify-content:center;
+        }
+        .per-heading2{
+            justify-content:center;
+        }
+        .per-heading2-left{
+        width:80%;
+    }
+    .per-heading1-left{
+        width:80%;
+    }
+    }
+    @media screen and (max-width:576px) {
+    
+        .per-heading2-left{
+        width:100%;
+    }
+    .per-heading1-left{
+        width:100%;
+    }
     }
 </style>
 @include('includes.website.navbar')
@@ -554,14 +617,13 @@
     <div class="container-fluid">
         <div class="left-section-par ">
             <div class="row">
-                <div class="col-md-6 my-auto text-center py-5 py-md-0 per-heading">
-
-                    <h1 class="pb-2 pb-md-3 mb-0">Transforming Personal Training</h1>
-                    <p class="mb-0">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
-                </div>
-                <div class="col-md-6 Transforming-img px-0 text-center my-auto">
-                    <img src="{{asset('public/assets/images/gym-ones.jpg')}}" alt="">
-
+                <div class="col-md-12 my-auto text-center px-0 py-5 py-md-0 ">
+                    <div class="per-heading1">
+                        <div class="per-heading1-left">
+                            <h1 class="pb-2 pb-md-3 mb-0">Transforming Personal Training</h1>
+                            <p class="mb-0">Our curated list of personal trainers are able to provide quality services ranging from weight loss advice, nutrition advice, 1 on 1 training sessions, fitness mentoring and coaching, online coaching, group sessions and more. We help our clients connect with high quality professional trainers who can meet their needs and are available in-person or online.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -572,15 +634,21 @@
     <div class="container-fluid py-3">
         <div class="left-section-par ">
             <div class="row">
-                <div class="col-md-6 Transforming-img px-0 text-center my-auto order-2 order-md-1">
+            <div class="col-md-12 my-auto text-center px-0 py-5 py-md-0 ">
+                    <div class="per-heading2">
+                        <div class="per-heading2-left">
+                        <h1 class="pb-2 pb-md-5 mb-0">A Modern Approach</h1>
+                        <p class="mb-0">It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
+                    </div>
+                </div>
+            </div>
+                <!-- <div class="col-md-6 Transforming-img px-0 text-center my-auto order-2 order-md-1">
                     <img src="{{asset('public/assets/images/gym-two.jpg')}}" alt="">
 
                 </div>
                 <div class="col-md-6 my-auto text-center py-5 py-md-0 per-heading order-1 order-md-2">
 
-                    <h1 class="pb-2 pb-md-5 mb-0">A Modern Approach</h1>
-                    <p class="mb-0">It’s essential for us that our clients get the training they deserve, without the hassle of committing to a year or a certain package. Rather than do things the typical way, we’ve created a system designed around our clients’ needs that holds them and their trainers accountable and committed to achieving the desired results. </p>
-                </div>
+                </div> -->
 
             </div>
         </div>
