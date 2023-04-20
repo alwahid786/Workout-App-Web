@@ -159,59 +159,68 @@
         right: 20%;
         transform: translate(-50%, 0%);
     }
-.hero-section-wrapper{
-    padding-bottom: 3rem !important;
-}
-   
-    .services-slogon p{
-        font-size:1rem;
+
+    .hero-section-wrapper {
+        padding-bottom: 3rem !important;
+    }
+
+    .services-slogon p {
+        font-size: 1rem;
         padding-top: 2rem;
     }
-.testimonial{
-    display: flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items: center;
-}
-.testimonial-head{
-    color: #E37048;
-    margin-bottom: 0px;
-    font-size: 1.5rem;
-    /* padding-top: 10px; */
-    padding-bottom: 7px;
-    width:100%;
-}
-.client1{
-    background-color:#f3eeee;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;        
-    width: 280px;
-    border-radius:10px;
-    padding:1rem;
 
-}
-.client1 p{
-    font-size: 1rem;
-    font-style: italic;
-}
-.client1 h1{
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-.checked {
-  color: orange;
-}
-.feedback-wrapper{
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    width:100%;
-}
-@media screen and (max-width:767px) {
-    .feedback-wrapper{
-    flex-direction:column
+    .testimonial {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-}
-}
+    .testimonial-head {
+        color: #E37048;
+        margin-bottom: 0px;
+        font-size: 1.5rem;
+        /* padding-top: 10px; */
+        padding-bottom: 7px;
+        width: 100%;
+    }
+
+    .client1 {
+        background-color: #f3eeee;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        width: 280px;
+        border-radius: 10px;
+        padding: 1rem;
+
+    }
+
+    .client1 p {
+        font-size: 1rem;
+        font-style: italic;
+    }
+
+    .client1 h1 {
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .feedback-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    @media screen and (max-width:767px) {
+        .feedback-wrapper {
+            flex-direction: column
+        }
+    }
+
     @media screen and (max-width:1330px) {
 
         .dot-left-one {
@@ -283,7 +292,7 @@
         <div class="row">
             <div class="col- hero-left text-center text-md-left">
                 <div class="hero-left-content">
-                    <h1>Services</h1> 
+                    <h1>Services</h1>
                     <p>Get your workout in and stay in shape anywhere anytime.</p>
                 </div>
             </div>
@@ -303,45 +312,45 @@
     </div>
     <div class="testimonial pb-5">
         <h1 class="testimonial-head">Testimonial</h1>
-        <div class="feedback-wrapper pt-3 " data-aos="zoom-in" data-aos-delay="100"> 
-        <div class="client1">
-            <p><q>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition</q> </p>
-            <h1>Carlos A,Workitpt Client</h1>
-            <div>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+        <div class="feedback-wrapper pt-3 " data-aos="zoom-in" data-aos-delay="100">
+            <div class="client1">
+                <p><q>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition. I now experience a significant improvement in my physical and mental well-being.</q> </p>
+                <h1>Carlos A, Workitpt Client</h1>
+                <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
             </div>
-        </div>
-        <div class="client1 mx-4 my-4 my-md-0">
-            <p><q>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition</q> </p>
-            <h1>Carlos A,Workitpt Client</h1>
-            <div>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                
+            <div class="client1 mx-4 my-4 my-md-0">
+                <p><q>I was struggling with chronic pain and low energy levels, and it was affecting my productivity at work. However, with the guidance of WorkitPT, I was able to make significant changes to my diet and exercise routine.</q> </p>
+                <h1>Curan Jay, Workitpt Client</h1>
+                <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+
+                </div>
             </div>
-        </div>
-        <div class="client1">
-            <p><q>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition</q> </p>
-            <h1>Carlos A,Workitpt Client</h1>
-            <div>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+            <div class="client1">
+                <p><q>As someone who is always on the go, I found it challenging to maintain a healthy lifestyle while juggling a busy work schedule. However, WorkitPT provided me with personalized fitness and nutrition plans that fit seamlessly into my routine.</q> </p>
+                <h1>Khabib Karim, Workitpt Client</h1>
+                <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
             </div>
-        </div>
 
         </div>
-       
-        
+
+
     </div>
 </div>
 <!-- Footer Section  -->
@@ -349,7 +358,7 @@
     <div class="container-fluid footerSection">
         <div class="row px-sm-5 px-2">
             <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
-            <a class="navbar-brand web-logo" href="{{url('/home')}}"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
+                <a class="navbar-brand web-logo" href="{{url('/home')}}"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
                 <!-- <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p> -->
                 <p class="mt-3">At WorkitPT, we want you to get the training you deserve</p>
                 <p class="text-md-white"><strong>Follow Us</strong></p>
