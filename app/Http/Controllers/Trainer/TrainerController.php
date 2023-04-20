@@ -167,11 +167,13 @@ class TrainerController extends Controller
     ////.....submit trainer request .............//////
     public function submitTrainerRequest()
     {
-        $trainerProfile = TrainerProfile::where('user_id', auth()->user()->id)->update(['status' => 1, 'page' => 5]);
+        $trainerProfile = TrainerProfile::where('user_id', auth()->user()->id)->update(['page' => 5]);
         if (!$trainerProfile) {
             return $this->sendError('No Data found against ID');
         }
-        return redirect()->route('nullDashboard')->with(['successCode' => 1]);
+        return Redirect::to(url('/trainer/pending'));
+
+        // return redirect()->route('nullDashboard');
     }
     ////.............trainer.dashboard.............///
     public function trainerDashboard()
