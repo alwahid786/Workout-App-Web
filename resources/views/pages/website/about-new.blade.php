@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
 <style>
     .hero-section-about {
-        background-image: url("{{asset('public/assets/trainerimages/about-us.jpg')}}");
+        background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("{{asset('public/assets/trainerimages/about_us_cover.jpg')}}");
         background-repeat: no-repeat;
         background-size: cover;
         padding-top: 6rem;
@@ -15,7 +15,7 @@
 
     .hero-left-content h1 {
         font-size: 3.9rem;
-        color: #ffff;
+        color: white;
         font-weight: bold;
     }
 
@@ -23,6 +23,7 @@
         font-size: 22px;
         font-weight: 300;
         line-height: 32px;
+        
     }
 
     .left-section-par p {
@@ -663,7 +664,7 @@
     <div class="container-fluid footerSection">
         <div class="row px-sm-5 px-2">
             <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
-                <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
+                <a class="navbar-brand web-logo" href="{{url('/home')}}"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
                 <!-- <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p> -->
                 <p class="mt-3">At WorkitPT, we want you to get the training you deserve</p>
                 <p class="text-md-white"><strong>Follow Us</strong></p>

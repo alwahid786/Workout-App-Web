@@ -1,5 +1,6 @@
 @extends('layouts.website.default')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     .about-content h1 {
         color: #E37048;
@@ -166,7 +167,51 @@
         font-size:1rem;
         padding-top: 2rem;
     }
+.testimonial{
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+}
+.testimonial-head{
+    color: #E37048;
+    margin-bottom: 0px;
+    font-size: 1.5rem;
+    /* padding-top: 10px; */
+    padding-bottom: 7px;
+    width:100%;
+}
+.client1{
+    background-color:#f3eeee;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;        
+    width: 280px;
+    border-radius:10px;
+    padding:1rem;
 
+}
+.client1 p{
+    font-size: 1rem;
+    font-style: italic;
+}
+.client1 h1{
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.checked {
+  color: orange;
+}
+.feedback-wrapper{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width:100%;
+}
+@media screen and (max-width:767px) {
+    .feedback-wrapper{
+    flex-direction:column
+
+}
+}
     @media screen and (max-width:1330px) {
 
         .dot-left-one {
@@ -247,15 +292,56 @@
 </div>
 <div class="container">
     <div class="services-slogon">
-        <p>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition </p>
     </div>
-    <div class="about-content pb-3">
+    <div class="about-content py-3">
         <h1>Online training</h1>
         <p>Whether you have a busy schedule, need someone to hold you accountable or want some fitness or nutrition related advice, our online training sessions with our experienced instructors will guide you to achieving the results you desire. During these sessions you will be able to discuss your goals, results and get any of your fitness or nutrition related questions answered by real professionals</p>
     </div>
-    <div class="about-content pb-5">
+    <div class="about-content pb-4">
         <h1>In person training</h1>
         <p>Workit personal trainers are able to provide 1-on-1 training sessions curated to your needs and goals. Based on your preferences, trainers can meet you at a nearby park or your home, all you need is at least 4m x 4m space for your workouts. These sessions range from general cardio, strength and HIIT workouts, Kickboxing, and even certain sports like swimming, basketball and more.</p>
+    </div>
+    <div class="testimonial pb-5">
+        <h1 class="testimonial-head">Testimonial</h1>
+        <div class="feedback-wrapper pt-3 " data-aos="zoom-in" data-aos-delay="100"> 
+        <div class="client1">
+            <p><q>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition</q> </p>
+            <h1>Carlos A,Workitpt Client</h1>
+            <div>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+            </div>
+        </div>
+        <div class="client1 mx-4 my-4 my-md-0">
+            <p><q>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition</q> </p>
+            <h1>Carlos A,Workitpt Client</h1>
+            <div>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                
+            </div>
+        </div>
+        <div class="client1">
+            <p><q>I underestimated how hard it would be adjusting to working from home, but with Workit PT's help, I was able to prioritize my health, fitness and nutrition</q> </p>
+            <h1>Carlos A,Workitpt Client</h1>
+            <div>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+            </div>
+        </div>
+
+        </div>
+       
+        
     </div>
 </div>
 <!-- Footer Section  -->
@@ -263,8 +349,9 @@
     <div class="container-fluid footerSection">
         <div class="row px-sm-5 px-2">
             <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
-                <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
-                <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p>
+            <a class="navbar-brand web-logo" href="{{url('/home')}}"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
+                <!-- <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p> -->
+                <p class="mt-3">At WorkitPT, we want you to get the training you deserve</p>
                 <p class="text-md-white"><strong>Follow Us</strong></p>
                 <div class="d-flex justify-content-between align-items-center mt-3 footer-social-icons">
                     <a href="https://www.facebook.com/">

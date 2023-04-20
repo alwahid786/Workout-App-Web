@@ -174,6 +174,39 @@
         padding-top:2rem;
         font-weight:700;
     }
+    .steps-container{
+        display:flex;
+        justify-content:space-around
+    }
+    .step1{
+        /* background:red; */
+        /* border:1px solid #E37048; */
+        width:280px;
+        height:280px;
+        display:flex;
+        flex-direction:column;
+        align-items:center
+    }
+    .step1 h2{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#E37048;
+        font-size:1.5rem;
+        height: 2.4rem;
+        width:2.4rem;
+        border-radius:50%;
+        margin-bottom:1.4rem;
+        color:white;
+    }
+    .step1 h1{
+        font-size:1.1rem;
+        font-weight:600;
+    }
+    .step1 p{
+        font-size:1rem;
+        text-align:center
+    }
 
     @media screen and (max-width:1330px) {
 
@@ -254,13 +287,29 @@
 </div>
 <div class="container">
     <div class="approch-steps">HOW IT WORKS</div>
-    <div class="about-content">
+    <div class="steps-container" data-aos="zoom-in-down" data-aos-delay="100">
+        <div class="step1 pt-5">
+        <h2>1</h2>
+        <h1>Create a profile</h1>
+        <p>Personal Information, goals, interest etc</p>
+        </div>
+        <div class="step1 pt-5">
+        <h2>2</h2>
+        <h1>Search for a session</h1>
+        <p>Use our advance filtering capabilities, search for a session that fits your needs and most relevant to your goals </p>
+        </div>
+        <div class="step1 pt-5">
+        <h2>3</h2>
+        <h1>Start Training</h1>
+        <p>Once payment is completed, the money is held in an Escrow account until the training is completed.</p>
+        </div>
+    </div>
+    <!-- <div class="about-content">
         <h1>Create a profile</h1>
         <ul>
         <li>Contact Information: This includes basic information such as name, email address, phone number, and mailing address.</li>    
         <li>Demographic Information: This includes information such as age, gender, income, and education level.</li>
         <li>Personal Preferences: This includes information such as hobbies, interests, and preferred communication methods.</li>
-        <!-- Peronsal information, goals, interest etc -->
      </ul>
     </div>
     <div class="about-content">
@@ -270,15 +319,16 @@
     <div class="about-content pb-4">
         <h1>Start training</h1>
         <p>Once payment is completed, the money is held in an Escrow account until the training is completed.</p>
-    </div>
+    </div> -->
 </div>
 <!-- Footer Section  -->
 <footer>
     <div class="container-fluid footerSection">
         <div class="row px-sm-5 px-2">
             <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
-                <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
-                <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p>
+            <a class="navbar-brand web-logo" href="{{url('/home')}}"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
+                <!-- <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p> -->
+                <p class="mt-3">At WorkitPT, we want you to get the training you deserve</p>
                 <p class="text-md-white"><strong>Follow Us</strong></p>
                 <div class="d-flex justify-content-between align-items-center mt-3 footer-social-icons">
                     <a href="https://www.facebook.com/">
