@@ -22,6 +22,7 @@ use App\Models\TrainerProfile;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Js;
 use Stevebauman\Location\Facades\Location;
+use App\Models\WorkoutLocation;
 
 
 
@@ -417,8 +418,10 @@ class TrainerController extends Controller
         if (!$category) {
             return $this->sendError('No Data found against ID');
         }
+        $locations = WorkoutLocation::where('trainer_id', auth()->user()->id)->get();
         $categories = json_decode($category, true);
-        return view('pages.trainerSide.add-session', compact('categories'));
+        $locations = json_decode($locations, true);
+        return view('pages.trainerSide.add-session', compact('categories', 'locations'));
     }
     ///////delete certificate///////
     public function delCertificate($id)

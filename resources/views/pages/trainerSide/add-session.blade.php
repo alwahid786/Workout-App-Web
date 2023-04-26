@@ -1119,20 +1119,19 @@
 @section('content')
 @include('includes.trainerSide.navbar')
 <div class="content-wrapper px-2 py-3">
-    <div class="container form-container mb-5 py-5 bg-white">
+    <div class="container form-container mb-5 pb-5 pt-3 bg-white">
+        <h1 class="text-center mb-5" style="color: #e37048"><strong>Add Session</strong></h1>
         <form id="createSessionForm">
             <div class="row">
                 <div class="col-md-6" data-aos="fade-right">
                     <div class="form-group pro-form">
                         <label for="inputAddress" class=" ">Select Category</label>
-                        <div class="select-outer">
+                        <div class="select-outer categorySelect">
                             <select class="wide s-select form-control pl-4" value="{{$categories[0]['id']}}" data-src="{{$categories[0]['title']}}" name="category_id" id="category_id">
                                 @foreach($categories as $category)
                                 <option class="categoryOption" value="{{$category['id']}}">{{$category['title']}}</option>
                                 @endforeach
-                                <!-- <option value="yoga">Yoga</option>
-                            <option value="yoga">Yoga</option>
-                            <option value="yoga">Yoga</option> -->
+
                             </select>
                             <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                         </div>
@@ -1210,8 +1209,9 @@
                 <div class="col-md-6" data-aos="fade-right">
                     <div class="form-group pro-form">
                         <label for="inputAddress" class=" ">Days</label>
-                        <div class="select-outer">
-                            <select class="wide s-select form-control pl-4" id="day" name="day">
+                        <input type="text" readonly value="Monday" class="form-control pl-4" id="sessionDay" placeholder="" name="sessionDay">
+                        <div class="select-outer ">
+                            <select data-class="no-validation" class="wide s-select form-control d-none pl-4" id="day" name="day">
                                 <option value="Mon">Monday</option>
                                 <option value="Tue">Tuesday</option>
                                 <option value="Wed">Wednesday</option>
@@ -1220,7 +1220,6 @@
                                 <option value="Sat">Saturday</option>
                                 <option value="Sun">Sunday</option>
                             </select>
-                            <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                         </div>
                     </div>
 
@@ -1263,6 +1262,7 @@
                             </div>
                             <!-- <button class="">Add</button> -->
                         </div>
+                        <span class="text-danger" id="time-error"></span>
                     </div>
                 </div>
                 <!-- <div class="col-lg-6 my-auto" data-aos="fade-left">
@@ -1280,6 +1280,20 @@
                     <a href="#" class="p-0 btn">Done</a>
                 </div>
             </div> -->
+                @if(isset($locations) & !empty($locations))
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="form-group pro-form">
+                        <label for="inputAddress" class=" ">Select Location</label>
+                        <div class="select-outer">
+                            <select class="wide s-select form-control pl-4" value="{{$locations[0]['id']}}" name="location_id">
+                                @foreach($locations as $location)
+                                <option class="categoryOptions" value="{{$location['id']}}">{{$location['location']}} | {{$location['tag']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
             <div class="updateinfo-qualification my-4 px-3 ">
                 <h1 class="mb-4">Upload Image</h1>
@@ -1335,16 +1349,57 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{ asset('public/assets/js/bootstrap-select-coutry.min.js') }}"></script>
 <script>
+    // get the input elements
+    const startTimeInput = document.getElementById('startTime');
+    const endTimeInput = document.getElementById('endTime');
+    const errorSpan = document.getElementById('time-error');
+
+    // add event listener for input change
+    startTimeInput.addEventListener('change', validateTimeInputs);
+    endTimeInput.addEventListener('change', validateTimeInputs);
+
+    function validateTimeInputs() {
+        // get the time values
+        const startTimeValue = startTimeInput.value;
+        const endTimeValue = endTimeInput.value;
+
+        // convert the time values to Date objects
+        const startTime = new Date(`1970-01-01T${startTimeValue}:00Z`);
+        const endTime = new Date(`1970-01-01T${endTimeValue}:00Z`);
+
+        // check if the end time is greater than the start time
+        if (endTime <= startTime) {
+            errorSpan.textContent = 'End time must be greater than start time';
+            return;
+        }
+
+        // check if there is a difference of 30 minutes between the times
+        const timeDiff = (endTime.getTime() - startTime.getTime()) / (1000 * 60);
+        if (timeDiff < 30) {
+            errorSpan.textContent = 'There must be a difference of at least 30 minutes between the times';
+            return;
+        }
+
+        // clear the error message
+        errorSpan.textContent = '';
+    }
+</script>
+<script>
     $(document).ready(function() {
         var sessionsArray = [];
         var images = [];
         var index = 0;
         $('.s-select').niceSelect();
 
+        $(".categorySelect .option").click(function() {
+            $("#category_id").attr('data-src', $(this).text());
+        })
+
         const fileInput = document.getElementById('choose-file');
         const imagePreview = document.getElementById('img-preview');
 
         fileInput.addEventListener('change', function(e) {
+            debugger;
             for (let i = 0; i < fileInput.files.length; i++) {
                 const file = fileInput.files[i];
                 const image = new Image();
@@ -1391,18 +1446,50 @@
             $(".difficulties").removeClass('activeDifficulty');
             $(this).addClass('activeDifficulty');
         });
-        $(document).on('click', ".categoryOption", function() {
+        $(document).on('click', ".categoryForm .option", function() {
             $('#category_id').attr('data-src', $(this).text());
         });
 
         $(document).on('change', '#preference', function() {
             if ($('#preference').val() == 1) {
                 $("#sessionDate").attr('readonly', 'readonly');
+                $('#sessionDay').addClass('d-none');
+                $('#sessionDay').attr('data-class', 'no-validation');
+                $('#sessionDate').attr('data-class', 'no-validation');
+                $('#day').removeClass('d-none');
+                $('#day').removeAttr('data-class');
+                $('.s-select').niceSelect('update');
             } else {
                 $("#sessionDate").removeAttr('readonly');
+                $('#day').addClass('d-none');
+                $('#day').attr('data-class', 'no-validation');
+                $('#sessionDay').removeClass('d-none');
+                $('#sessionDay').removeAttr('data-class');
+                $('#sessionDate').removeAttr('data-class');
+                $('.s-select').niceSelect('update');
             }
         })
 
+        const dateInput = document.getElementById("sessionDate");
+        const dayNameElement = document.getElementById("sessionDay");
+
+        dateInput.addEventListener("input", function() {
+            const date = new Date(dateInput.value);
+            const today = new Date();
+            if (date < today) {
+                dateInput.value = '';
+                swal({
+                    title: "Date Error",
+                    text: "Please set a future date",
+                    icon: "error",
+                });
+            } else {
+                const dayName = date.toLocaleString('en-us', {
+                    weekday: 'long'
+                });
+                dayNameElement.value = dayName;
+            }
+        });
         // Render View of Session Slots 
         // $(document).on('click', "#renderSession", function() {
         // validation = validateForm();
@@ -1493,8 +1580,9 @@
         $(document).on('click', ".deleteSlot", function() {
             let rawIndex = $(this).attr('data-role');
             var index = parseInt(rawIndex.match(/\d+$/)[0], 10);
+            alert(index)
             sessionsArray.splice(index, 1);
-            $(this).parent().parent().parent().parent().remove();
+            $(this).parent().parent().parent().remove();
             if (sessionsArray.length < 1) {
                 $("#saveSession").attr('disabled', 'disabled');
             }
@@ -1540,7 +1628,8 @@
             images.splice(0, images.length - 1);
             $("#difficulty").val('');
             $('.difficulties').removeClass('activeDifficulty');
-
+            $("#img-preview").empty();
+            $('#choose-file').val('');
         }
 
         // Form Validations 
@@ -1552,16 +1641,14 @@
                 value = $(this).val();
 
                 if (value == '') {
-                    if ($(this).is("input") && $(this).prop("type") !== "date") {
+                    if ($(this).is("input") && $(this).attr("data-class") !== "no-validation") {
                         // alert('input');
-                        $(this).css('border', '1px solid red');
+                        // $(this).css('border', '1px solid red');
                         errors++;
 
                     } else if ($(this).is("select")) {
-                        console.log($(this));
-                        $(this).next().addClass('borderRed');
+                        // $(this).next().addClass('borderRed');
                         errors++;
-
                     }
 
                     if ($(this).is("input[type='file']")) {
@@ -1569,8 +1656,8 @@
                         imageError++;
                     }
                 } else {
-                    $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
-                    $(this).next().removeClass('borderRed');
+                    // $(this).css('border', '1px solid rgba(0, 0, 0, 0.2)');
+                    // $(this).next().removeClass('borderRed');
                 }
             });
             if (errors > 0) {
@@ -1594,16 +1681,23 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{ url('/add_session') }}",
+                url: "{{ url('api/trainer_detail') }}",
                 type: "POST",
                 data: sessionsData,
                 cache: false,
                 success: function(data) {
                     console.log(data)
-                    window.location.href = '/workitpt_web/trainer/add-session';
+                    swal({
+                        title: "Success",
+                        text: "Session's Added Successfully!",
+                        icon: "success",
+                    }).then(function() {
+                        location.reload();
+                    });
                 }
             });
         });
+
     });
 </script>
 <script>
@@ -1700,8 +1794,5 @@
         $('.slot-arrow-two .up-arrow').hide(1000);
         $('.slot-arrow-two .down-arrow').show(1000);
     });
-</script>
-<script>
-    $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
 </script>
 @endsection
