@@ -871,7 +871,7 @@
             </div>
         </div>
         <div class="updateinfo-qualification my-4 px-3 ">
-            <h1 class="mb-4">Upload Qualification</h1>
+            <h1 class="mb-4">Upload Qualification <span style="color: red">*</span></h1>
             <div class="update-info-qualification-image" id="certificatePreviews">
                 <label style="cursor: pointer;">
                     <img src="{{asset('public/assets/trainerimages/uploadimg.svg')}}">
@@ -1061,6 +1061,14 @@
             e.preventDefault();
             var FormValidation = validateForm();
             if (FormValidation) {
+                if (certificateArray.length < 1) {
+                    swal({
+                        title: "Error",
+                        text: "Add atleast 1 Qualification/Certificate",
+                        icon: "error",
+                    });
+                    return;
+                }
                 var date_of_birth = $('#date_of_birth').val();
                 var emergency_contact = $('#emergency_contact').val();
                 var gender = $('#gender').val();
@@ -1125,7 +1133,7 @@
                     },
                     error: function(jqXHR, exception) {
                         $('.loaderDiv').hide();
-                        toastr.error(jqXHR.responseJSON.message);
+                        // toastr.error(jqXHR.responseJSON.message);
                         swal({
                             title: "Error",
                             text: jqXHR.responseJSON.message,
