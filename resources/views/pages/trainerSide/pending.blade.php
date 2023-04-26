@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Requested Approval</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
         /* padding: 8px; */
         border-radius: 10px;
         border: none;
-        background-color: #F58D1A;
+        background-color: #e37048;
     }
 </style>
 
@@ -35,8 +35,8 @@
         <div class="d-flex justify-content-center align-items-center flex-column ">
             <img class="py-4" src="http://localhost/workitpt_web/public/assets/images/d-logo.svg" alt="image">
             <h3 class="text-center py-3">We're evaluating your profile</h3>
-            <p class="text-center">Your profile will be activated in 3 - 5 Working days. you will be notified about profile status through your provided email. </p>
-            <a href="#"><button class="text-light px-5 py-1">Logout</button></a>
+            <p class="text-center">Your profile will be activated in 3 - 5 Working days, You will be notified about profile status through your provided email. </p>
+            <a href="{{url('/logout')}}"><button class="text-light px-5 py-2">Logout</button></a>
         </div>
     </section>
 

@@ -1735,9 +1735,9 @@
                 <div class="col-12 content-right-certificate-header px-0">
                     <h1 class="py-3 pl-sm-3">Certificates :</h1>
                 </div>
-                <div class="col-12 content-right-certificate-btn px-0 text-right">
+                <!-- <div class="col-12 content-right-certificate-btn px-0 text-right">
                     <a class="btn" href="{{url('/trainer/updateprofile')}}" class="btn"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>Edit</a>
-                </div>
+                </div> -->
                 <div class="content-right-certificate-body">
                     <div class="row py-2">
                         @foreach($certificates as $certificate)
