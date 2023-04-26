@@ -23,8 +23,6 @@ class IsTrainer
         if (auth()->user()->user_type == 'trainer') {
             return $next($request);
         }
-        // session()->flash('message', 'You donot have trainer Access' . $exception->getMessage());
-
         return Redirect::to(url('/trainer/login'));
     }
 }
