@@ -772,6 +772,8 @@
                     <div class="col text-right workout-right-session-btn">
                         <a href="{{url('/userdashboard/pastsession')}}">View All</a>
                     </div>
+                    
+
                     <div class="workout-right-inner-session pr-2">
                         @if(!empty($past_session))
                         @foreach($past_session as $pastSession)

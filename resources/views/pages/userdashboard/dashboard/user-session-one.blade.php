@@ -676,15 +676,16 @@
             </div>
             <div class="row js-slick-carousel">
 
-                <!-- foreach($bookedsession['session']['session_image'] as $image)
+                @foreach($bookedsession['session']['session_image'] as $image)
                 <div class="col">
                     <div class="session-detail-img">
-                        <img src="$image['image']" alt="">
+                        <img src="{{$image['image']}}" alt="">
+
                     </div>
                 </div>
-                endforeach -->
+                @endforeach
 
-                <div class="col">
+                <!-- <div class="col">
                     <div class="session-detail-img">
                         <img src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
                     </div>
@@ -708,7 +709,7 @@
                     <div class="session-detail-img">
                         <img src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -752,12 +753,19 @@
 
                             </div>
                             <div class="trainer-detail-profile-inner-right my-auto text-right">
+                                @if($bookedsession['session']['preference']==1)
                                 <div class="trainer-class-time-card-right">
                                     <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
                                     <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
                                     <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionfour.jpg')}}" alt="">
 
                                 </div>
+                                @else
+                                <div class="trainer-class-time-card-right">
+                                    <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
+
+                                </div>
+                                @endif
                             </div>
 
                         </div>
@@ -772,10 +780,10 @@
                                         <p>Clients</p>
                                         <h1>{{$client}}</h1>
                                     </div>
-                                    <div class="trainer-detail-profile-right-classes text-center">
+                                    <!-- <div class="trainer-detail-profile-right-classes text-center">
                                         <p>Classes</p>
                                         <h1>{{$classes}}</h1>
-                                    </div>
+                                    </div> -->
                                     <!-- <div class="trainer-detail-profile-right-price">
                                         <h1>$100</h1>
                                     </div> -->
@@ -831,7 +839,8 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Location</h1>
-                                    <p>{{$bookedsession['session']['class']['trainer']['workout_location']}}</p>
+
+                                    <p>{{$bookedsession['session']['location']['tag']}} | {{$bookedsession['session']['location']['location']}} </p>
                                 </div>
                             </div>
                         </div>
@@ -877,7 +886,7 @@
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i>
                                     <i class="fa fa-star pr-1" aria-hidden="true"></i> -->
-                                    <p>{{$session_rating['rating']}}</p>
+                                    <!-- <p>{{$session_rating['rating']}}</p> -->
                                 </div>
                             </div>
                             <div class="feedback-message px-2 px-sm-3 py-4 mt-2">
