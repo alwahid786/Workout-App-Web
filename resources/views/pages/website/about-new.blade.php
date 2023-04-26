@@ -4,9 +4,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
 <style>
     .hero-section-about {
-        background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("{{asset('public/assets/trainerimages/about_us_cover.jpg')}}");
+        background:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("{{asset('public/assets/trainerimages/aboutUs_3.jpg')}}");
         background-repeat: no-repeat;
         background-size: cover;
+        /* background-position: center center; */
+        background-position: 10% 40%;
         padding-top: 6rem;
         padding-bottom: 6rem;
         text-align: center;

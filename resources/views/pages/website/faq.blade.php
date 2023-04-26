@@ -15,6 +15,10 @@
         font-size: 1rem;
         padding-bottom: 10px;
     }
+    .hero-section-wrapper{
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+    }
 
     @media screen and (max-width:576px) {
         .about-content h1 {
@@ -226,7 +230,7 @@
 
     h2 {
         color: #282F35;
-        font-family: 'Josefin Sans', Arial, sans-serif;
+        font-family: "Poppins", sans-serif !important;
         font-size: 18px;
         letter-spacing: 1px;
         margin: 0;
@@ -235,14 +239,19 @@
 
     p {
         color: #666666;
-        font-family: 'Malgun Gothic', Arial, sans-serif;
+        font-family: "Poppins", sans-serif !important;
         font-size: 14px;
         line-height: 1.5;
         margin: 20px;
+        
     }
-
+  
+.footer-text{
+    font-size: 16px !important;
+margin-left: 0 !important;
+}
     .container {
-        max-width: 640px;
+        /* max-width: 640px; */
         margin: 0 auto;
     }
 
@@ -331,7 +340,7 @@
         <div class="row">
             <div class="col- hero-left text-center text-md-left">
                 <div class="hero-left-content">
-                    <h1>FAQ's</h1>
+                    <h1>Frequently Asked Questions</h1>
                 </div>
             </div>
         </div>
@@ -343,42 +352,111 @@
             <ul class="acc">
                 <li>
                     <button class="acc_ctrl">
-                        <h2>Yoga</h2>
+                        <h2>What is Workitpt?</h2>
                     </button>
                     <div class="acc_panel">
-                        <p>GM Holden Ltd, commonly known as Holden, is an Australian automaker that operates in Australasia and is headquartered in Port Melbourne, Victoria. The company was founded in 1856 as a saddlery manufacturer in South Australia.</p>
+                        <p>Workitpt is an online platform that connects personal trainers with customers for both online and in-person training, group or one-on-one, for many different sports. Users can browse available sessions by location, time, sport and more, and book sessions with trainers directly through the platform. Trainers can post sessions and plan their schedules in advance, as well as accept payments through the platform. Workitpt is dedicated to providing a convenient, accessible and reliable way for users to connect with top-quality trainers and achieve their fitness goals. Learn more about Workitpt <a href="{{url('/about')}}">here</a> </p>
                     </div>
                 </li>
                 <li>
                     <button class="acc_ctrl">
-                        <h2>Stretching Outdoors</h2>
+                        <h2>How does Workitpt ensure the quality of its trainers?</h2>
                     </button>
                     <div class="acc_panel">
-                        <p>The Ford Motor Company (commonly referred to as simply Ford) is an American multinational automaker headquartered in Dearborn, Michigan, a suburb of Detroit. It was founded by Henry Ford and incorporated on June 16, 1903.</p>
+                        <p> Workitpt conducts a thorough vetting process for all trainers on the platform, including background checks and verification of certifications. We also collect user reviews and ratings to ensure that our trainers are providing a high level of service.</p>
                     </div>
                 </li>
                 <li>
                     <button class="acc_ctrl">
-                        <h2>Body Building</h2>
+                        <h2>How do I book a session with a trainer?</h2>
                     </button>
                     <div class="acc_panel">
-                        <p>Toyota Motor Corporation is a Japanese automotive manufacturer which was founded by Kiichiro Toyoda in 1937 as a spinoff from his father's company Toyota Industries, which is currently headquartered in Toyota, Aichi Prefecture, Japan.</p>
+                        <p>To book a session with a trainer, use our filtering <a href="{{url('/dashboard/map')}}">feature</a> to browse the location, time, and sport you're interested in on the Workitpt platform. Once you've found a session that works for you, click "Book Now" to reserve your spot. A booking notification will be sent to the trainer. Once confirmed, you'll be prompted to enter your payment information to confirm the booking.</p>
                     </div>
                 </li>
                 <li>
                     <button class="acc_ctrl">
-                        <h2>Gymnastics</h2>
+                        <h2>What types of sports and activities are available on Workitpt?</h2>
                     </button>
                     <div class="acc_panel">
-                        <p>Toyota Motor Corporation is a Japanese automotive manufacturer which was founded by Kiichiro Toyoda in 1937 as a spinoff from his father's company Toyota Industries, which is currently headquartered in Toyota, Aichi Prefecture, Japan.</p>
+                        <p>Workitpt offers a wide range of sports and activities, including but not limited to: yoga, weightlifting, boxing, running, swimming, and cycling. We're always adding new activities based on user demand, so if there's something you're interested in that isn't currently offered, let us <a href="{{url('home')}}#contact-us">know!</a></p>
                     </div>
                 </li>
                 <li>
                     <button class="acc_ctrl">
-                        <h2>Running</h2>
+                        <h2>How do I pay for my session?</h2>
                     </button>
                     <div class="acc_panel">
-                        <p>Toyota Motor Corporation is a Japanese automotive manufacturer which was founded by Kiichiro Toyoda in 1937 as a spinoff from his father's company Toyota Industries, which is currently headquartered in Toyota, Aichi Prefecture, Japan.</p>
+                        <p>Payments for Workitpt sessions are made through our secure online platform. Once you've booked a session, you'll be prompted to enter your payment information. You won't be charged until the session has been confirmed by the trainer.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>What if I need to cancel or reschedule a session?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>If you need to cancel or reschedule a session, simply go to your account page and select the session you'd like to modify. You can cancel or reschedule up to 2 hours before the session start time without penalty. If you cancel within 2 hours of the session start time, you may be subject to a cancellation fee.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>How do I become a trainer on Workitpt?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>If you're interested in becoming a trainer on Workitpt, simply visit our website and fill out the application <a href="{{url('/trainer/login')}}">form</a>. We'll review your application and get back to you as soon as possible. Please note that we have strict requirements for trainers, including certification and background checks.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>Can I book a session with a trainer for a group of people?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Yes, however each participant will have to login and book the session themselves. Simply find a group session posted by the trainer and sign up for it, then inform the rest of the group to do the same. Please note that some trainers may have a maximum group size, so be sure to check the session details before booking. The messaging feature will be enabled with the trainer once you book the session and confirm your attendance.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>How do I know if a trainer is available at a specific time?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Trainers on Workitpt set their own schedules and post the sessions they're available for. You can browse available sessions by selecting the location, time, and sport you're interested in.</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>What if I have more questions or concerns?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>If you have any questions or concerns about using Workitpt, please don't hesitate to reach out to our customer support team. You can contact us through the website <a href="{{url('home')}}#contact-us">here</a>. We're always happy to help!</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="acc_ctrl">
+                        <h2>How does Workitpt ensure the safety of its users during in-person training sessions?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Workitpt takes the safety of its users very seriously. We require all trainers to follow appropriate safety protocols and guidelines, including those related to COVID-19. We also recommend that users take necessary precautions, such as wearing masks and maintaining social distancing during in-person sessions. If you have any concerns about safety, please don't hesitate to contact us.</p>
+                    </div>
+                </li><li>
+                    <button class="acc_ctrl">
+                        <h2>Can I book a session for both virtual and in-person training?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Yes, you can book sessions for both virtual and in-person training on the Workitpt platform. Simply select the type of training you're interested in when browsing available sessions. Please note that some trainers may only offer one type of training, so be sure to check the session details before booking.</p>
+                    </div>
+                </li><li>
+                    <button class="acc_ctrl">
+                        <h2>Can I book multiple sessions with a trainer in advance?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Yes, you can book multiple sessions with a trainer in advance by looking at their calendar and schedule on the Workitpt platform. This allows you to guarantee your spot in multiple sessions and plan your training schedule in advance. Please note that some trainers may have limited availability, so it's important to book early to secure your spot.</p>
+                    </div>
+                </li><li>
+                    <button class="acc_ctrl">
+                        <h2>How much does it cost to use Workitpt?</h2>
+                    </button>
+                    <div class="acc_panel">
+                        <p>Workitpt is free to use for customers looking to browse and book sessions with trainers. Trainers pay a small percentage of their earnings to Workitpt as a service fee, and customers are charged a 2% service fee on each session they book. However, we understand that some users may not be able to afford the full cost of training sessions. If you're experiencing financial hardship, please contact us to discuss your options. Workitpt is committed to providing affordable and accessible fitness training for all users.</p>
                     </div>
                 </li>
             </ul>
@@ -391,9 +469,9 @@
     <div class="container-fluid footerSection">
         <div class="row px-sm-5 px-2">
             <div class="col-xl-4 offset-xl-1 col-md-6 text-md-left text-center" data-aos="fade-up" data-aos-delay="100">
-                <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
-                <p class="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minima debitis reprehenderit quasi unde eum libero fuga impedit molestiae et.</p>
-                <p class="text-md-white"><strong>Follow Us</strong></p>
+                <a class="navbar-brand web-logo" href="{{url('/home')}}"> <img src="{{asset('public/assets/images/logo-f.svg')}}" alt="image"></a>
+                <p class="footer-text mt-3">At WorkitPT, we want you to get the training you deserve</p>
+                <p class="footer-text  -md-white"><strong>Follow Us</strong></p>
                 <div class="d-flex justify-content-between align-items-center mt-3 footer-social-icons">
                     <a href="https://www.facebook.com/">
                         <div class="footer-icon-outer">
