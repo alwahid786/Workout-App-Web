@@ -819,7 +819,7 @@
                             <div class="col-6 my-1 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Date</h1>
-                                    <p>{{date('d-m-Y', strtotime($bookedsession['session-date']));}}</p>
+                                    <p>{{date('d-m-Y', strtotime($bookedsession['session-date']))}}</p>
                                 </div>
                             </div>
                         </div>
@@ -829,13 +829,13 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Start Time</h1>
-                                    <p>{{$bookedsession['session']['start_time']}}</p>
+                                    <p>{{date('h:i',strtotime($bookedsession['session']['start_time']))}} {{$bookedsession['session']['start_meridiem']}}</p>
                                 </div>
                             </div>
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>End Time</h1>
-                                    <p>{{$bookedsession['session']['end_time']}}</p>
+                                    <p>{{date('h:i',strtotime($bookedsession['session']['end_time']))}} {{$bookedsession['session']['end_meridiem']}}</p>
                                 </div>
                             </div>
                         </div>
