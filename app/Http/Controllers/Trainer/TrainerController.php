@@ -23,7 +23,7 @@ use App\Models\WorkoutLocation;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Js;
 use Stevebauman\Location\Facades\Location;
-use App\Models\WorkoutLocation;
+// use App\Models\WorkoutLocation;
 
 
 
