@@ -758,12 +758,18 @@
                                     <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
                                     <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/sessionthree.jpg')}}" alt="">
                                     <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/sessionfour.jpg')}}" alt="">
-
+                                    <!-- <p>Recurring</p> -->
+                                </div>
+                                <div>
+                                    <p class="text-left">Recurring</p>
                                 </div>
                                 @else
                                 <div class="trainer-class-time-card-right">
                                     <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/sessiontwo.jpg')}}" alt="">
 
+                                </div>
+                                <div>
+                                    <p class="text-left">One Time</p>
                                 </div>
                                 @endif
                             </div>
