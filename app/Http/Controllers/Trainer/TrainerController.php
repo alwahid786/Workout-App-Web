@@ -47,6 +47,7 @@ class TrainerController extends Controller
     /////////////.........update trainer...............//////////////
     public function updateTrainer(Request $request)
     {
+        // dd($request->all());
         // $ip = $request->ip(); /* Dynamic IP address */
         $ip = '162.159.24.227'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
@@ -55,7 +56,7 @@ class TrainerController extends Controller
         $longitude = $currentUserInfo->longitude;
         $update = User::where('id', auth()->user()->id)->update(
             [
-                'email' => $request->email,
+                'password' => bcrypt($request->password),
                 'date_of_birth' => $request->date_of_birth,
                 'gender' => $request->gender,
                 'phone' => $request->phone,
@@ -63,6 +64,9 @@ class TrainerController extends Controller
                 'state' => $request->state,
                 'latitude' => $latitude,
                 'longitude' => $longitude,
+                'about' => $request->about,
+                'emergency_contact' => $request->emergency_contact,
+                'relationship_emergency_contact' => $request->relationship_emergency_contact
             ]
         );
         if (!$update) {
@@ -80,9 +84,9 @@ class TrainerController extends Controller
                 $workout_location->trainer_id = auth()->user()->id;
                 $workout_location->save();
             }
-            if ($request->pass) {
-                return redirect()->back();
-            }
+        }
+        if ($request->pass == 1) {
+            return redirect()->back();
         }
         return redirect()->route('trainer/stepfive');
     }
@@ -90,10 +94,11 @@ class TrainerController extends Controller
 
     public function showupdate()
     {
-        $trainer = User::where('id', auth()->user()->id)->first();
+        $trainer = User::where('id', auth()->user()->id)->with('trainer_profile')->first();
 
         $certificates = CertificateImage::where('trainer_id', auth()->user()->id)->get();
         $lacation = WorkoutLocation::where('trainer_id', auth()->user()->id)->get();
+
 
         if (!$trainer) {
             return $this->sendError('No Data found against ID');

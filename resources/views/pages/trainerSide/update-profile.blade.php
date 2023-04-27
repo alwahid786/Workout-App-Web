@@ -764,6 +764,25 @@
         right: -5;
         cursor: pointer;
     }
+
+    .right-inner-addon {
+        position: relative;
+    }
+
+    .right-inner-addon input {
+        padding-right: 35px !important;
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        outline: none !important;
+    }
+
+    .right-inner-addon i {
+        color: #B5B5B5;
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -793,10 +812,20 @@
             </div>
 
 
-            <div class="col-md-6" data-aos="fade-right">
+            <!-- <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form my-2">
-                    <label for="inputAddress" class=" ">Email</label>
-                    <input type="email" class="form-control pl-4" name="email" readonly value="{{$trainer['email']}}">
+                    <label for="inputAddress" class=" ">Password</label>
+                    <input type="password" class="form-control pl-4" name="password">
+                </div>
+            </div> -->
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form  mb-2">
+                    <label for="inputAddress2" class=" ">Password <span style="color: red">*</span></label>
+                    <div class="right-inner-addon">
+                        <input type="password" class=" modal-input passInput pl-4" id="passInput" aria-autocomplete="list" name="password">
+                        <i id="hidePass" class="fa fa-eye-slash" aria-hidden="true" style="display: none;"></i>
+                        <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -848,6 +877,24 @@
                     </select>
                 </div>
             </div>
+            <div class="col-md-6 " data-aos="fade-right">
+                <div class="form-group pro-form my-2">
+                    <label for="inputAddress" class=" ">Emergency Contact</label>
+                    <input type="text" class="form-control pl-4" name="emergency_contact" value="{{$trainer['emergency_contact']}}">
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form my-2">
+                    <label for="inputAddress" class=" ">Relation with Emergency Contact</label>
+                    <input type="text" class="form-control pl-4" name="relationship_emergency_contact" value="{{$trainer['relationship_emergency_contact']}}">
+                </div>
+            </div>
+            <div class="col-12" data-aos="fade-up">
+                <div class="form-outline pro-form">
+                    <label class="form-label" for="textAreaExample">Tell Us About yourself <span>(256 Characters)</span></label>
+                    <textarea class="form-control" maxlength="256" id="textAreaExample1" name="about" rows="4"></textarea>
+                </div>
+            </div>
 
             <!-- <div class="col-md-6 pb-3" data-aos="fade-left">
                 <div class="form-group pro-form">
@@ -870,7 +917,7 @@
 
 
         </div>
-        <div class="col-12 update-profile-heading pl-0">
+        <div class="col-12 update-profile-heading pl-0 pt-2">
             <h1>Certificate</h1>
         </div>
         <div class="updateinfo-qualification my-4 px-0 text-left">
@@ -901,6 +948,7 @@
                 </div> -->
 
             </div>
+            @if(isset($trainer)&& $trainer['trainer_profile']['status']==1)
             <div class="col-12 update-profile-heading pl-0">
                 <h1>Location</h1>
             </div>
@@ -952,6 +1000,8 @@
         </div>
         <input id="workout_location" type="hidden" name="workout_location">
         <input type="hidden" name="pass" value="1">
+
+        @endif
         <div class="form-btn my-5 ">
             <!-- <a href="{{url('/trainer/stepfive')}}" class="p-0 btn">Update</a> -->
 
@@ -1080,13 +1130,27 @@
         // // Call the initMap() function when the Google Maps API has finished loading
         initMap();
 
-        // $(".addLocation").click(function() {
-
-        //     //// input location///////
-        //     var locations = $(this).find('#locationInput').val();
-        //     consol.log('locations');
-        //     $('#workout_location').val(locations);
-        // });
+        $('#hidePass').hide();
+        $('#showPass').click(function() {
+            $('#showPass').hide();
+            $('#hidePass').show();
+            var passInput = $("#passInput");
+            if (passInput.attr('type') === 'password') {
+                passInput.attr('type', 'text');
+            } else {
+                passInput.attr('type', 'password');
+            }
+        })
+        $('#hidePass').on('click', function() {
+            $('#hidePass').hide();
+            $('#showPass').show();
+            var passInput = $("#passInput");
+            if (passInput.attr('type') === 'password') {
+                passInput.attr('type', 'text');
+            } else {
+                passInput.attr('type', 'password');
+            }
+        })
     });
 </script>
 <!-- <script language="javascript">
