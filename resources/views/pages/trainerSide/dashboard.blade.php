@@ -856,6 +856,9 @@
                             <h1>Your Today’s Session</h1>
                         </div>
                         @if($today_sessions==null)
+                        <div class="text-center text-danger">
+                            <h6>No Sessions for Today!</h6>
+                        </div>
                         @else
                         @foreach($today_sessions as $today_session)
 
@@ -920,12 +923,15 @@
                     </div>
                     <div class="col-12 workout-today-section py-2">
                         <div class="upcoming-header pt-2 pb-1">
-                            <h1>Upcoming Seesions</h1>
+                            <h1>Upcoming Sessions</h1>
                         </div>
 
                         <div class="workout-today-wrapper upcoming-wrapper pr-2">
                             <!-- table -->
                             @if($upcoming_sessions == null)
+                            <div class="text-center text-danger">
+                                <h6>No Sessions Ahead!</h6>
+                            </div>
                             @else
                             @foreach($upcoming_sessions as $upcoming_session)
                             <div class="workout-table-body d-flex justify-content-around pl-4 pr-3 my-4 my-md-3 py-4">
@@ -983,7 +989,7 @@
             <div class="col-xl-4 mt-4 mt-xl-0">
                 <div class="notification-container py-3">
                     <div class="dashboard-session-heading px-3 pb-2">
-                        <h1>Notification</h1>
+                        <h1>Requests</h1>
                     </div>
                     <div class="notification-container-inner">
 
@@ -1007,6 +1013,9 @@
                         </div>
                         @endforeach
                         @else
+                        <div class="text-center text-danger">
+                            <h6>No Requests!</h6>
+                        </div>
                         @endif
 
                         <!-- <div class="noti-card accept-noti-card py-3 my-2 px-0">
@@ -1030,8 +1039,11 @@
                     </div>
                     <div class="recent-session-wrapper p-3">
                         @if($past_sessions == null)
+                        <div class="text-center text-danger">
+                            <h6>No Sessions!</h6>
+                        </div>
                         @else
-                        
+
                         @foreach($past_sessions as $past_session)
                         <div class="recent-session-card recent-session-card-active py-3 my-2">
                             @if($past_session['session']['session_type'] == 0)
@@ -1110,6 +1122,7 @@
                         <h1>Clients Feedback</h1>
                     </div>
                     <div class="feedback-section-wrapper p-3">
+                        @if(isset($rating) && !empty($rating))
                         @foreach($rating as $session_rating)
 
                         <div class="feedback-card my-2">
@@ -1147,6 +1160,11 @@
                             </div>
                         </div>
                         @endforeach
+                        @else
+                        <div class="text-center text-danger">
+                            <h6>No Feedback Yet!</h6>
+                        </div>
+                        @endif
                         <!-- <div class="feedback-card my-2">
                             <div class="feedback-profile">
                                 <img class="mr-2" src="{{asset('public/assets/images/sessionfive.jpg')}}" alt="">
@@ -1273,7 +1291,7 @@
         },
         series: [{
             name: 'sales',
-            data: [125, 125, 125, 125, 125, 125, 125]
+            data: [0, 0, 0, 0, 0, 0, 0]
         }],
         xaxis: {
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
