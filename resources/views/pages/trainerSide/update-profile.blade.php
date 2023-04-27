@@ -669,6 +669,101 @@
         height: 200px;
         overflow: auto !important;
     }
+
+    .price-select-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+    }
+
+    .price-select-input .select-outer {
+        width: 100%;
+
+    }
+
+    .price-select-input .nice-select.wide2 {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+
+    .price-select-input input {
+        width: 80%;
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+    }
+
+    .pro-form .price-select-input .nice-select.wide2 {
+        border-radius: none !important;
+        height: 100% !important;
+    }
+
+    .price-select-input .nice-select:after {
+        border-bottom: 2px solid #848484;
+        border-right: 2px solid #848484;
+        content: '';
+        display: block;
+        height: 9px !important;
+        margin-top: -4px;
+        pointer-events: none;
+        position: absolute;
+        right: 15% !important;
+        top: 50%;
+        -webkit-transform-origin: 66% 66%;
+        -ms-transform-origin: 66% 66%;
+        transform-origin: 66% 66%;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        width: 9px !important;
+
+    }
+
+    .location-container {
+        display: flex;
+        width: 100%;
+    }
+
+    .location-container i {
+        color: white;
+        min-width: 50px;
+        text-align: center;
+        background-color: #E37048;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-right-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        font-size: 1.3rem;
+    }
+
+    .location-container .fa-instagram {
+        /* background-color: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); */
+        background: #000;
+    }
+
+    .location-container input {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+
+    .location-pill {
+        border-radius: 20px;
+        background-color: #f5bfac;
+        border: 1px solid #E37048;
+        padding: 10px;
+        position: relative;
+    }
+
+    .location-pill .remove-location {
+        position: absolute;
+        width: 20px;
+        top: -10;
+        right: -5;
+        cursor: pointer;
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -779,9 +874,9 @@
             <h1>Certificate</h1>
         </div>
         <div class="updateinfo-qualification my-4 px-0 text-left">
-            
+
             <div class="update-info-qualification-image">
-               
+
                 @foreach($certificates as $certificate)
                 <div class="grid-item py-2 py-sm-0">
                     <a href="{{url('certifacate/delete/'.$certificate['id'])}}"> <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt=""></a>
@@ -798,7 +893,7 @@
                         </label>
                     </div>
                 </div>
-               
+
                 <!-- <div class="grid-item py-2 py-sm-0">
                     <img src="{{asset('public/assets/trainerimages/cross-icon.svg')}}" alt="">
                     <img src="{{asset('public/assets/trainerimages/cert.png')}}" alt="">
@@ -806,7 +901,57 @@
                 </div> -->
 
             </div>
+            <div class="col-12 update-profile-heading pl-0">
+                <h1>Location</h1>
+            </div>
+            @foreach($locations as $location)
+            <div class="col-12 py-1">
+                <div class="d-flex align-items-center my-2">
+                    <div class="location-pill">
+                        <span>{{$location['location']}}</span>
+                        |
+                        <strong style="color: #E37048">{{$location['tag']}}</strong>
+                        <a href="{{url('location/delete/'.$location['id'])}}"><img class="remove-location" src="{{asset('public/assets/images/remove.png')}}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="form-group pro-form">
+                    <label for="locationInput" class="">Workout Location</label>
+                    <div class="location-container">
+                        <input type="text" data-class="no-validation" class="form-control pl-4 validate" id="locationInput" placeholder="">
+                        <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
+                        <div class="price-select-input">
+                            <div class="select-outer">
+                                <select data-class="no-validation" class="wide2 s-select currency-select form-control " id="locationTag" name="tag">
+                                    <option value="Home">Home</option>
+                                    <option value="Gym">Gym</option>
+                                    <option value="Work">Work</option>
+                                    <option value="Park">Park</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
+                            </div>
+                        </div>
+                        <i class="fa fa-plus addLocation" style="cursor: pointer;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 py-3" id="display-location">
+                <!-- <div class="d-flex align-items-center">
+                    <div class="location-pill">
+                        <span>Chestnut Tree Lane</span>
+                        |
+                        <span>Home</span>
+                        <img class="remove-location" src="{{asset('public/assets/images/remove.png')}}" alt="">
+                    </div>
+                </div> -->
+            </div>
         </div>
+        <input id="workout_location" type="hidden" name="workout_location">
+        <input type="hidden" name="pass" value="1">
         <div class="form-btn my-5 ">
             <!-- <a href="{{url('/trainer/stepfive')}}" class="p-0 btn">Update</a> -->
 
@@ -873,11 +1018,75 @@
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script type="text/javascript" src="{{ asset('public/assets/List_Country_State-master/countries.js') }}"></script>
 <!-- <script src="countries.js"></script> -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
+
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
         $('.state-slect').addClass('.nice-state-select');
 
+        // // Append Location 
+        var location = [];
+        var index2 = 0;
+        $(".addLocation").click(function() {
+            let location_name = $("#locationInput").val();
+            let tag = $("#locationTag").val();
+            let div = `<div class="d-flex align-items-center my-2">
+                        <div class="location-pill">
+                            <span>${location_name}</span>
+                            |
+                            <strong style="color: #E37048">${tag}</strong>
+                            <img class="remove-location" data-src="${index2}" src="{{asset('public/assets/images/remove.png')}}"  alt="">
+                        </div>
+                    </div>`;
+            $("#display-location").append(div);
+            // console.log(location);
+            index2++;
+            let obj = {
+                name: location_name,
+                tag: tag
+            }
+            location.push(obj);
+            // get index of remove item
+            //  remove index from location array
+            $(document).on('click', ".remove-location", function() {
+                // index = $(this).attr('data-src');
+                var test = $(this).parent().remove();
+                var index = $(this).attr('data-src');
+
+
+                location.splice(index, 1);
+                console.log(location);
+
+            })
+
+
+            // var locations = [];
+            // var locationArray = Object.entries(location);
+
+
+            // locationArray = JSON.stringify(location);
+            // $('#workout_location').val(locationArray);
+            $('#workout_location').val(JSON.stringify(location));
+            console.log($('#workout_location').val());
+        })
+
+
+        // Integrate map search on input Location 
+        function initMap() {
+            var input = document.getElementById('locationInput');
+            new google.maps.places.Autocomplete(input);
+        }
+        // // Call the initMap() function when the Google Maps API has finished loading
+        initMap();
+
+        // $(".addLocation").click(function() {
+
+        //     //// input location///////
+        //     var locations = $(this).find('#locationInput').val();
+        //     consol.log('locations');
+        //     $('#workout_location').val(locations);
+        // });
     });
 </script>
 <!-- <script language="javascript">

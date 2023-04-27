@@ -527,7 +527,7 @@ $notifications = json_decode($notification, true);
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu logout-dropdown py-0" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item text-center py-3" href="{{(url('/profile'))}}"><i class="fa fa-user" aria-hidden="true"></i>Update Profile</a>
+                        <a class="dropdown-item text-center py-3" href="{{(url('trainer/updateprofile'))}}"><i class="fa fa-user" aria-hidden="true"></i>Update Profile</a>
                         <a class="dropdown-item text-center py-3" href="{{(url('/trainer/login'))}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
 
                     </div>

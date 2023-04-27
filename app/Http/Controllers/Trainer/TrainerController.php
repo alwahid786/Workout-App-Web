@@ -19,6 +19,7 @@ use App\Models\Session;
 use App\Models\SessionImage;
 use App\Models\CertificateImage;
 use App\Models\TrainerProfile;
+use App\Models\WorkoutLocation;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Js;
 use Stevebauman\Location\Facades\Location;
@@ -45,8 +46,8 @@ class TrainerController extends Controller
     /////////////.........update trainer...............//////////////
     public function updateTrainer(Request $request)
     {
-        $ip = $request->ip(); /* Dynamic IP address */
-        // $ip = '162.159.24.227'; /* Static IP address */
+        // $ip = $request->ip(); /* Dynamic IP address */
+        $ip = '162.159.24.227'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
         // Extract the latitude and longitude from the location information
         $latitude = $currentUserInfo->latitude;
@@ -66,6 +67,22 @@ class TrainerController extends Controller
         if (!$update) {
             return $this->sendError('No Data found against ID');
         }
+        $locations = $request->workout_location;
+        if (!empty($locations)) {
+            // $locations = array_map('intval', explode(',', $locations));
+            $locations = json_decode($locations, true);
+            // dd($locations);
+            foreach ($locations as $location) {
+                $workout_location = new WorkoutLocation();
+                $workout_location->tag = $location['tag'];
+                $workout_location->location = $location['name'];
+                $workout_location->trainer_id = auth()->user()->id;
+                $workout_location->save();
+            }
+            if ($request->pass) {
+                return redirect()->back();
+            }
+        }
         return redirect()->route('trainer/stepfive');
     }
     //............show trainer profile in update page..............//
@@ -75,15 +92,16 @@ class TrainerController extends Controller
         $trainer = User::where('id', auth()->user()->id)->first();
 
         $certificates = CertificateImage::where('trainer_id', auth()->user()->id)->get();
-
+        $lacation = WorkoutLocation::where('trainer_id', auth()->user()->id)->get();
 
         if (!$trainer) {
             return $this->sendError('No Data found against ID');
         }
         $trainer = json_decode($trainer, true);
         $certificates = json_decode($certificates, true);
+        $locations = json_decode($lacation, true);
 
-        return view('pages.trainerSide.update-profile', compact('trainer', 'certificates'));
+        return view('pages.trainerSide.update-profile', compact('trainer', 'certificates', 'locations'));
     }
 
     /////////update session ......../////////
@@ -426,6 +444,16 @@ class TrainerController extends Controller
         // dd($id);
         $certificate = CertificateImage::where('id', $id)->delete();
         if (!$certificate) {
+            return $this->sendError('No Data found against ID');
+        }
+        return redirect()->back();
+    }
+
+    ////////delete Location..........//////
+    public function delLocation($id)
+    {
+        $location = WorkoutLocation::where('id', $id)->delete();
+        if (!$location) {
             return $this->sendError('No Data found against ID');
         }
         return redirect()->back();
