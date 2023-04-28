@@ -582,7 +582,8 @@
                     </div>
                 </div>
         </div>
-
+        <input type="hidden" value="{{decrypt($session_id)}}" name="session_id">
+        <input type="hidden" value="{{decrypt($session_date)}}" name="session_date">
     </div>
     <div class="col-12 my-5">
         <div class=" profile-nxt-btn">

@@ -98,6 +98,8 @@ Route::middleware('auth')->group(function () {
         Route::any('/chat', [UserController::class, 'chatList'])->name('user.chat');
         Route::any('/message/{id?}', [UserController::class, 'messages'])->name('user.message');
         Route::any('/send_message/', [UserController::class, 'sendMessage'])->name('user.send_message');
+        Route::any('/payments/{session_id}/{session_date}', [UserController::class, 'createCard']);
+
         Route::get('/profile', function () {
             return view('pages.website.update-profile');
         });
@@ -148,9 +150,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/trainers/yoga', function () {
     return view('pages.website.specific-trainers-web');
 });
-Route::get('/payments', function () {
-    return view('pages.website.payment');
-});
+// Route::get('/payments/{session_id}/{session_date}', function () {
+//     return view('pages.website.payment');
+// });
 
 Route::get('/about', function () {
     return view('pages.website.about-new');

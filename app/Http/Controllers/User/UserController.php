@@ -97,6 +97,7 @@ class UserController extends Controller
     ///   stripe payment .....///////
     public function paymentIntent(Request $request)
     {
+
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $month = date('m', strtotime($request->valid_through));
@@ -143,8 +144,18 @@ class UserController extends Controller
             'ephemeral_key'      => $ephemeralKey->secret,
             'customer_id'        => $customer->id
         ];
+        $card           = Customer::where('user_id', auth()->user()->id)->get();
+        $session_detail = ModelsSession::where('id', $request->session_id)->first();
+
+
+        $card_detail = json_decode($card, true);
+        $session     = json_decode($session_detail, true);
+        $sessiondate = $request->session_date;
+
+
         session()->flash('successModalOpen', 'Open Modal');
-        return redirect()->back();
+        return view('pages.userdashboard.explore.payment', compact('card_detail', 'session', 'sessiondate'));
+        // return redirect()->back();
     }
     /////......contact........////
     public function contactUs(ContactUsRequest $request)
@@ -854,5 +865,12 @@ class UserController extends Controller
             'message' => $message,
 
         ];
+    }
+    public function createCard($session_id, $session_date)
+    {
+        if (!$session_id) {
+            return $this->sendError('No Data found against ID');
+        }
+        return view('pages.website.payment', compact('session_id', 'session_date'));
     }
 }

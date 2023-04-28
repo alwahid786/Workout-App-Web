@@ -384,7 +384,7 @@
                     </div>
                     @endforeach
                     <div class="mt-4">
-                        <a href="{{url('/payments?role=payment')}}">
+                        <a href="{{url('/payments/'.encrypt($session['id']).'/'.encrypt($sessiondate))}}">
                             <div class="credit-card-wrapper-right">
                                 <div class="credit-card-wrapper-right-inner text-center">
                                     <img src="{{asset('public/assets/images/card-plus.svg')}}" alt="">
