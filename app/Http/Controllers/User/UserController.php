@@ -508,8 +508,11 @@ class UserController extends Controller
         $user             = json_decode($user_detail, true);
         $rawQuery         = json_decode($rawQuery, true);
         $sessionDates     = json_decode($sessionDates, true);
-        $user = BookedSession::where('user_id', auth()->user()->id)->get();
-        if (!$user) {
+        $user = BookedSession::where([
+            ['user_id', auth()->user()->id],
+            ['status', '=', 1]
+        ])->first();
+        if (empty($user)) {
             return view('pages.userdashboard.dashboard.dashboard-null');
         }
         return view('pages.userdashboard.dashboard.user-dashboard', compact('current_session', 'upcoming_session', 'total_upcomingsession', 'past_session', 'total_pastsession', 'user', 'total_trainer', 'sessionDates'));
