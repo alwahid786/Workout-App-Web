@@ -845,7 +845,7 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Location</h1>
-
+                                    
                                     <p>{{$bookedsession['session']['location']['tag']}} | {{$bookedsession['session']['location']['location']}} </p>
                                 </div>
                             </div>

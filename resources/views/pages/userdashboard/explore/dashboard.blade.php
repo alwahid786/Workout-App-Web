@@ -223,7 +223,7 @@
                                     <p>{{$category_data['description']}} </p>
                                 </div>
                                 <div class="category-right">
-                                    <img class="" src="{{asset('public/assets/images/cate-one.svg')}}" alt="image">
+                                    <img class="" src="{{$category_data['image']}}" alt="image">
                                 </div>
                             </div>
                         </a>
