@@ -48,8 +48,8 @@ class TrainerController extends Controller
     public function updateTrainer(Request $request)
     {
         // dd($request->all());
-        // $ip = $request->ip(); /* Dynamic IP address */
-        $ip = '162.159.24.227'; /* Static IP address */
+        $ip = $request->ip(); /* Dynamic IP address */
+        // $ip = '162.159.24.227'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
         // Extract the latitude and longitude from the location information
         $latitude = $currentUserInfo->latitude;
