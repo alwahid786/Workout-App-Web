@@ -712,7 +712,7 @@ class UserController extends Controller
     public function sessionDetails($id)
     {
         $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
-        $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
+        // $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
         $rating         = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
 
         if (!$session_detail) {
@@ -720,7 +720,7 @@ class UserController extends Controller
         }
         $bookedsession = json_decode($session_detail, true);
         $rating        = json_decode($rating, true);
-        return view('pages.userdashboard.payment.payment-detail', compact('bookedsession', 'classes', 'rating'));
+        return view('pages.userdashboard.payment.payment-detail', compact('bookedsession', 'rating'));
     }
     ////////.......get user trainer........///////
     public function usersTrainerbk()

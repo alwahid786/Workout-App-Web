@@ -520,7 +520,7 @@
                                     </div>
                                     <div class="trainer-detail-profile-right-classes text-center">
                                         <p>Classes</p>
-                                        <h1>{{$classes}}</h1>
+                                        <h1></h1>
                                     </div>
 
                                 </div>
