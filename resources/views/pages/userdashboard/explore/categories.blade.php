@@ -241,11 +241,15 @@
                     </div>
                 </div>
                 <div class="row js-slick-carouselss px-1 category-slider">
-
+                    <?php
+                    $colors = ["catergory-card-yellow", "catergory-card-blue", "catergory-card-green", "catergory-card-purple"];
+                    $counter = 0;
+                    ?>
                     @foreach($class as $categories)
+
                     <div class="col catergory-card-img">
 
-                        <div class="catergory-card catergory-card-yellow catergory-card-y p-2" data-id="{{$categories['id']}}">
+                        <div class="catergory-card <?php echo $colors[$counter]; ?> catergory-card-y p-2" data-id="{{$categories['id']}}">
                             <div class="category-left">
                                 <h1>{{$categories['title']}}</h1>
                                 <p>{{$categories['description']}}</p>
@@ -257,6 +261,12 @@
 
 
                     </div>
+                    <?php
+                    $counter++;
+                    if ($counter >= count($colors)) {
+                        $counter = 0;
+                    }
+                    ?>
                     @endforeach
 
                 </div>
