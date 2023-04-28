@@ -467,13 +467,25 @@ class UserController extends Controller
     public function UserBookedSession()
     {
         $user_detail    = BookedSession::where('user_id', '=', auth()->user()->id)->with('user')->first();
-        $currentsession = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', now()->format('Y-m-d'))->with('session.class.category', 'session.class.trainer', 'session.location')->get();
+        $currentsession = BookedSession::where([
+            ['user_id', '=', auth()->user()->id],
+            ['session-date', now()->format('Y-m-d')],
+            ['status', '=', 1]
+        ])->with('session.class.category', 'session.class.trainer', 'session.location')->get();
         // $total_currentsession = $currentsession->count();
 
-        $upcomingsession       = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '>', now()->format('Y-m-d'))->with('session.class.category', 'session.class.trainer', 'session.location')->get();
+        $upcomingsession       = BookedSession::where([
+            ['user_id', '=', auth()->user()->id],
+            ['session-date', '>', now()->format('Y-m-d')],
+            ['status', '=', 1]
+        ])->with('session.class.category', 'session.class.trainer', 'session.location')->get();
         $total_upcomingsession = $upcomingsession->count();
 
-        $pastsession       = BookedSession::where('user_id', '=', auth()->user()->id)->where('session-date', '<', now()->format('Y-m-d'))->with('session.class.category', 'session.class.trainer', 'session.location')->get();
+        $pastsession       = BookedSession::where([
+            ['user_id', '=', auth()->user()->id],
+            ['session-date', '<', now()->format('Y-m-d')],
+            ['status', '=', 1]
+        ])->with('session.class.category', 'session.class.trainer', 'session.location')->get();
         $total_pastsession = $pastsession->count();
 
         $rawQuery      = DB::table('booked_sessions')
@@ -712,7 +724,7 @@ class UserController extends Controller
     public function sessionDetails($id)
     {
         $session_detail = BookedSession::where('session_id', $id)->with('session.class.trainer', 'session.class.category', 'session.session_image')->first();
-        
+
         // $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
         $rating         = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
 
