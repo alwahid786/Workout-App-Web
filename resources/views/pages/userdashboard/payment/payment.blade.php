@@ -189,6 +189,7 @@
                 </div>
 
                 <div class="payment-table">
+                  
                     @if(isset($payments) && !empty($payments))
                     @foreach($payments as $payment)
                     <div class="past-session-table-body d-flex justify-content-around px-3 my-4 my-md-0 py-4">

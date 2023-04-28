@@ -512,7 +512,7 @@
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div class="col-sm-6 my-4 pl-0">
+                            <!-- <div class="col-sm-6 my-4 pl-0">
                                 <div class="trainer-detail-profile-right">
                                     <div class="trainer-detail-profile-right-client text-center">
                                         <p>Clients</p>
@@ -524,7 +524,7 @@
                                     </div>
 
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-sm-6 my-4 pl-0">
                                 <div class="trainer-detail-profile-right-price">
                                     <h1>${{$bookedsession['session']['price']}}</h1>
@@ -566,7 +566,7 @@
                     </div>
                     <div class="col pl-0 text-center">
                         <div class="detail-profile-button">
-                            <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a>
+                            <!-- <a href="{{url('/chat')}}" class="btn mr-sm-4 my-2">Message</a> -->
                             <a href="" class="btn my-2" data-toggle="modal" data-target="#refundModal">Refund</a>
                         </div>
                     </div>
