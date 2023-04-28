@@ -711,7 +711,7 @@ class UserController extends Controller
 
     public function sessionDetails($id)
     {
-        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.class.classImage')->first();
+        $session_detail = BookedSession::where('id', $id)->with('session.class.trainer', 'session.class.category', 'session.session_image')->first();
         // $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
         $rating         = Review::where('session_id', $id)->with('user:id,name,profile_img')->get();
 
