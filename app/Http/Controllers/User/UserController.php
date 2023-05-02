@@ -21,6 +21,7 @@ use App\Models\Transactions;
 use App\Models\Session as ModelsSession;
 use App\Http\Traits\NotificationTrait;
 use App\Models\Message;
+use App\Models\TrainerProfile;
 use Carbon\Carbon;
 use DateTime;
 use Stripe;
@@ -710,10 +711,15 @@ class UserController extends Controller
                 'description' => $request->description,
             ]
         );
+
         if (!$rating) {
             return $this->sendError('Process Fail');
         }
+        $total_count = Review::where('trainer_id', $request->trainer_id)->count();
+        $total_review = Review::where('trainer_id', $request->trainer_id)->sum('rating');
 
+        
+        TrainerProfile::where('user_id', $request->trainer_id)->update(['avg_rating' => $total_review / $total_count]);
         return redirect()->back();
     }
 

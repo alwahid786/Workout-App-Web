@@ -210,7 +210,7 @@
                     </div>
 
                 </div>
-               
+
                 <div class="row js-slick-carouselss px-1 category-slider">
                     @if($category == null)
                     .......................................
