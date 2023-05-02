@@ -405,7 +405,7 @@
                     <input type="hidden" id="customer" name="customer">
                     <input type="hidden" id="customer_id" name="customer_id">
 
-                    <input type="text" id="session" name="session_id" value="{{$session['id']}}">
+                    <input type="hidden" id="session" name="session_id" value="{{$session['id']}}">
                     <input type="hidden" id="sessionPrice" name="amount" value="{{$session['price']}}">
                     <input type="hidden" id="sessionDate" name="session_date" value="{{$sessiondate}}">
                     <input type="hidden" id="trainer_id" name="trainer_id" value="{{$session['trainer_id']}}">
