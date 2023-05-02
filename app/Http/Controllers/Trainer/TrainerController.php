@@ -213,7 +213,7 @@ class TrainerController extends Controller
             ['session-date', '>', now()->format('Y-m-d')],
             ['status', '=', 1],
         ])->with('session.category', 'session.session_image')->get();
-
+        // dd($upcoming_sessions);
         $past_sessions = BookedSession::where([
             ['trainer_id', '=', auth()->user()->id],
             ['session-date', '<', now()->format('Y-m-d')],
@@ -389,6 +389,7 @@ class TrainerController extends Controller
     {
         // dd($request->user_id);
         if ($request->accept == 1) {
+            dd($request->booked_session_id);
             $accept = BookedSession::where('id', $request->booked_session_id)->update([
                 'status' => 1
             ]);
