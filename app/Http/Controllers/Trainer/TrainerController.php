@@ -389,7 +389,7 @@ class TrainerController extends Controller
     {
         // dd($request->user_id);
         if ($request->accept == 1) {
-            dd($request->booked_session_id);
+            // dd($request->booked_session_id);
             $accept = BookedSession::where('id', $request->booked_session_id)->update([
                 'status' => 1
             ]);

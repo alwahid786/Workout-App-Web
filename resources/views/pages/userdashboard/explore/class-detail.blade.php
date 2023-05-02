@@ -480,7 +480,7 @@
                                 @if(isset($class_detail) && !empty($class_detail))
                                 <!-- Loop div starts here  -->
                                 @foreach($class_detail[0]['session'] as $session)
-
+                               
                                 <div class="trainer-class-time-card-box my-2 " style="cursor: pointer;">
                                     <div class="trainer-class-time-card trainer-class-active px-2 py-2 pr-3 sessionDiv_d" data-src="{{$session['id']}}">
                                         <div class="trainer-class-time-card-left">
@@ -538,8 +538,8 @@
 </div>
 <form action="{{route('dashboard/payment')}}" id="bookSessionForm" method="post">
     @csrf
-    <input type="hidden" name="session_id" id="sessionId" value="">
-    <input type="hidden" name="session_date" id="sessionDate" value="">
+    <input type="text" name="session_id" id="sessionId" value="">
+    <input type="text" name="session_date" id="sessionDate" value="">
     <!-- <input type="hidden" name="trainerid" value="{{$class_detail[0]['trainer']['id']}}"> -->
 </form>
 @endsection

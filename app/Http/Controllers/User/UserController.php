@@ -300,7 +300,7 @@ class UserController extends Controller
     {
         $customerId = $request->customer;
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // dd($request->customer);
+        dd($request->session_id);
 
         try {
             // dd($customerId);
