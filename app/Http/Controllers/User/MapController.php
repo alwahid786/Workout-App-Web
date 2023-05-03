@@ -92,7 +92,7 @@ class MapController extends Controller
                 if (!empty($whereLocation)) {
                     $q->where($whereLocation);
                 }
-            })->whereBetween('price', $wherePrice)->with(['trainerData','category'])->get();
+            })->whereBetween('price', $wherePrice)->with(['trainerData','category', 'location'])->get();
         }
         $latLng = [];
         $countSessions = 0;
