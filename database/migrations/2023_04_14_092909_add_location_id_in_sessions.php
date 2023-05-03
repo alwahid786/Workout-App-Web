@@ -14,7 +14,8 @@ class AddLocationIdInSessions extends Migration
     public function up()
     {
         Schema::table('sessions', function (Blueprint $table) {
-            $table->unsignedBigInteger('location_id');
+            // $table->dropColumn('location_id');
+            // $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('workout_locations')->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -27,7 +28,7 @@ class AddLocationIdInSessions extends Migration
     public function down()
     {
         Schema::table('sessions', function (Blueprint $table) {
-            $table->dropColumn('location_id');
+            $table->dropForeign(['location_id']);
         });
     }
 }
