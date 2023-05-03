@@ -539,10 +539,11 @@
                             <option value="Kowloon">Kowloon</option>
                             <option value="New Territories">New Territories</option>
                         </select> -->
-                        <select class="wide s-select form-control" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
-                            <option value="USA">USA</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Austria">Austria</option>
+                        <select class="wide s-select form-control" onchange="get_states(this)" id="country" name="country">
+                        @foreach($countries as $country)   
+                        <option value="">Select Country</option>
+                        <option value="{{$country}}">{{$country}}</option>
+                            @endforeach
                         </select>
                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                     </div>
@@ -696,10 +697,10 @@
 <!-- <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script> -->
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
-<script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
+<!-- <script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
 <script language="javascript">
     print_country("country");
-</script>
+</script> -->
 <script>
     $('.map-card-close').click(() => {
         $('.map-card').hide();
@@ -763,7 +764,7 @@
         });
         $(".applyFilterBtn").on('click', function() {
             let category = $('#workout_category').val();
-            let location = $('#country').val();
+            let country = $('#country').val();
             let state = $('#state').val();
             let type = $('#workout_type').val();
             let price = $('#workout_price').val();
@@ -771,7 +772,8 @@
             let session_type = $('#session_type').val();
             var data = {
                 category: category,
-                location: state,
+                state: state,
+                country: country,
                 type: type,
                 price: price,
                 radius: radius,
@@ -888,6 +890,36 @@
             let div2 = "<div>" + parts[1] + "</div>";
             $(this).html(div2 + div1)
         })
+    }
+
+    function get_states(that){
+        country = $(that).val();
+        if(country==''){
+            $("#state").val('');
+        }
+        $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: `{{route('getStatesByCountry')}}`,
+                type: "POST",
+                data: {
+                    country: country
+                },
+                cache: false,
+                success: function(response) {
+                    if (response.success == true) {
+                       $("#state").html(response.data.html);
+                       $('.s-select').niceSelect('update');
+                    } else {
+                        toastr.error(response.message);
+                    }
+                },
+                error: function(jqXHR, exception) {
+                    toastr.error(jqXHR.responseJSON.message);
+                }
+
+            });
     }
 </script>
 <script>

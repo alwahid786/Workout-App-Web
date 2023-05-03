@@ -182,7 +182,8 @@ class UserController extends Controller
         }
         $all_trainer = $all_trainer->where('user_type', '=', 'trainer')->with('session.category')->get();
         // Classes::with('session', 'category')->get();
-        $class_detail = Classes::with(['category', 'session', 'trainer'])->get();
+        $class_detail = Classes::whereHas('session')->with(['category', 'session', 'trainer'])->get();
+        // echo '<pre>';print_r($class_detail->toArray());exit;
         $all_category = Category::get();
         if (!$all_trainer) {
             return $this->sendError('Dashboard');

@@ -129,6 +129,8 @@ class AuthController extends Controller
             foreach ($locations as $location) {
                 $workout_location = new WorkoutLocation();
                 $workout_location->tag = $location['tag'];
+                $workout_location->country = $location['country'];
+                $workout_location->area = $location['area'];
                 $workout_location->location = $location['name'];
                 $workout_location->trainer_id = auth()->user()->id;
                 $workout_location->save();

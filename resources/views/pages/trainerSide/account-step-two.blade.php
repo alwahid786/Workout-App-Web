@@ -809,6 +809,8 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="locationInput" class="">Workout Location</label>
+                        <input type="hidden" name="location_area" id="location_area">
+                        <input type="hidden" name="location_country" id="location_country">
                     <div class="location-container">
                         <input type="text" data-class="no-validation" class="form-control pl-4 validate" id="locationInput" name="workout_location" placeholder="">
                         <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
@@ -1022,6 +1024,8 @@
         // // Append Location 
         $(".addLocation").click(function() {
             let location_name = $("#locationInput").val();
+            let location_area = $("#location_area").val();
+            let location_country = $("#location_country").val();
             let tag = $("#locationTag").val();
             let div = `<div class="d-flex align-items-center my-2">
                     <div class="location-pill">
@@ -1036,8 +1040,11 @@
             index2++;
             let obj = {
                 name: location_name,
+                area: location_area,
+                country: location_country,
                 tag: tag
             }
+                console.log(obj);
             location.push(obj);
             // get index of remove item
             //  remove index from location array
@@ -1048,7 +1055,6 @@
 
 
                 location.splice(index, 1);
-                console.log(location);
 
             })
 
@@ -1188,7 +1194,26 @@
         // Integrate map search on input Location 
         function initMap() {
             var input = document.getElementById('locationInput');
-            new google.maps.places.Autocomplete(input);
+            // new google.maps.places.Autocomplete(input);
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function() {
+                $("#location_area").val('');
+                $("#location_country").val('');
+                var place = autocomplete.getPlace();
+                console.log(place.address_components);
+                // Loop through the address components to find the administrative_area_level_2 value
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var addressComponent = place.address_components[i];
+                    var addressType = addressComponent.types[0];
+
+                    if (addressType === 'administrative_area_level_1') {
+                       $("#location_area").val(addressComponent.long_name);
+                    }else  if (addressType === 'country') {
+                       $("#location_country").val(addressComponent.long_name);
+                    }
+                }
+            });
         }
         // // Call the initMap() function when the Google Maps API has finished loading
         initMap();
