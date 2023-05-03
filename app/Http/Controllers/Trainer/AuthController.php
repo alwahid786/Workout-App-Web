@@ -132,6 +132,8 @@ class AuthController extends Controller
                 $workout_location->country = $location['country'];
                 $workout_location->area = $location['area'];
                 $workout_location->location = $location['name'];
+                $workout_location->latitude = $location['latitude'];
+                $workout_location->longitude = $location['longitude'];
                 $workout_location->trainer_id = auth()->user()->id;
                 $workout_location->save();
             }

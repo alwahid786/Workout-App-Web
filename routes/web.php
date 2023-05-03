@@ -320,9 +320,11 @@ Route::get('/trainer/pending', function () {
 Route::get('/trainer/stepfour', function () {
     return view('pages.trainerSide.account-stepfour');
 });
-Route::get('/trainer/stepfours', function () {
-    return view('pages.trainerSide.account-stepfour-second');
-});
+// Route::get('/trainer/stepfours', function () {
+//     return view('pages.trainerSide.account-stepfour-second');
+// });
+Route::any('//trainer/stepfours', [TrainerController::class, 'stepFour']);
+
 // Route::get('/trainer/stepfive', function () {
 //     return view('pages.trainerSide.account-step-five');
 // });

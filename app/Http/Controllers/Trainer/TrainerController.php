@@ -20,9 +20,13 @@ use App\Models\SessionImage;
 use App\Models\CertificateImage;
 use App\Models\TrainerProfile;
 use App\Models\WorkoutLocation;
+use Exception;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Js;
 use Stevebauman\Location\Facades\Location;
+use Stripe\OAuth;
+use Stripe\Stripe;
+use Stripe\StripeClient;
 // use App\Models\WorkoutLocation;
 
 
@@ -31,6 +35,11 @@ class TrainerController extends Controller
 {
     use ResponseTrait;
     use NotificationTrait;
+    private $stripe;
+    public function __construct()
+    {
+        Stripe::setApiKey('sk_test_51N3eXuFZvDqqLmCo3gY7OWYqbrt0YpIXLhcRJdvcXcsuRrXCw8eEJCCKOpeCK7xtkTnX9aLuX7X16O7XvSVxoVEI00wGWvFyt1');
+    }
     public function showTrainerDetail()
     {
         $trainer = User::where('id', auth()->user()->id)->with('trainer_profile', 'session.category', 'session.session_image')->first();
@@ -474,4 +483,50 @@ class TrainerController extends Controller
         return redirect($data);
         // dd($data);        // return $this->sendResponse($data, 'success');
     }
+
+    public function stepFour()
+    {
+        if(isset($_GET['code'])){
+            $token = $this->getToken($_GET['code']);
+            if(!empty($token['error'])) {
+               return $this->sendError($token['error']);
+            }
+            $connectedAccountId = $token->stripe_user_id;
+            $account = $this->getAccount($connectedAccountId);
+            if(!empty($account['error'])) {
+                return $this->sendError($account['error']);
+            }
+        }
+        return view('pages.trainerSide.account-stepfour-second');
+     }
+
+     private function getToken($code)
+     {
+         $token = null;
+         try {
+             $token = OAuth::token([
+                 'grant_type' => 'authorization_code',
+                 'code' => $code,
+             ]);
+         } catch (Exception $e) {
+             $token['error'] = $e->getMessage();
+         }
+         return $token;
+     }
+ 
+     private function getAccount($connectedAccountId)
+     {
+         $account = null;
+         try {
+             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+ 
+             $account = $stripe->accounts->retrieve(
+                 $connectedAccountId,
+                 []
+             );
+         } catch (Exception $e) {
+             $account['error'] = $e->getMessage();
+         }
+         return $account;
+     }
 }

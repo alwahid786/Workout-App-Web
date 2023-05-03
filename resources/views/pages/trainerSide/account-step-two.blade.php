@@ -811,6 +811,8 @@
                     <label for="locationInput" class="">Workout Location</label>
                         <input type="hidden" name="location_area" id="location_area">
                         <input type="hidden" name="location_country" id="location_country">
+                        <input type="hidden" name="location_lat" id="location_lat">
+                        <input type="hidden" name="location_long" id="location_long">
                     <div class="location-container">
                         <input type="text" data-class="no-validation" class="form-control pl-4 validate" id="locationInput" name="workout_location" placeholder="">
                         <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
@@ -1026,6 +1028,8 @@
             let location_name = $("#locationInput").val();
             let location_area = $("#location_area").val();
             let location_country = $("#location_country").val();
+            let location_lat = $("#location_lat").val();
+            let location_long = $("#location_long").val();
             let tag = $("#locationTag").val();
             let div = `<div class="d-flex align-items-center my-2">
                     <div class="location-pill">
@@ -1042,6 +1046,8 @@
                 name: location_name,
                 area: location_area,
                 country: location_country,
+                latitude: location_lat,
+                longitude: location_long,
                 tag: tag
             }
                 console.log(obj);
@@ -1201,7 +1207,9 @@
                 $("#location_area").val('');
                 $("#location_country").val('');
                 var place = autocomplete.getPlace();
-                console.log(place.address_components);
+                       $("#location_lat").val(place.geometry.location.lat());
+                       $("#location_long").val(place.geometry.location.lng());
+                // console.log(place.address_components);
                 // Loop through the address components to find the administrative_area_level_2 value
                 for (var i = 0; i < place.address_components.length; i++) {
                     var addressComponent = place.address_components[i];
