@@ -540,9 +540,9 @@
                             <option value="New Territories">New Territories</option>
                         </select> -->
                         <select class="wide s-select form-control" onchange="get_states(this)" id="country" name="country">
-                        @foreach($countries as $country)   
-                        <option value="">Select Country</option>
-                        <option value="{{$country}}">{{$country}}</option>
+                            @foreach($countries as $country)
+                            <option value="">Select Country</option>
+                            <option value="{{$country}}">{{$country}}</option>
                             @endforeach
                         </select>
                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
@@ -790,6 +790,7 @@
                 success: function(response) {
                     if (response.success == true) {
                         locationMap = response.data.latLngArray;
+                        console.log(locationMap)
                         initMap(locationMap);
                     } else {
                         toastr.error(response.message);
@@ -892,34 +893,34 @@
         })
     }
 
-    function get_states(that){
+    function get_states(that) {
         country = $(that).val();
-        if(country==''){
+        if (country == '') {
             $("#state").val('');
         }
         $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: `{{route('getStatesByCountry')}}`,
-                type: "POST",
-                data: {
-                    country: country
-                },
-                cache: false,
-                success: function(response) {
-                    if (response.success == true) {
-                       $("#state").html(response.data.html);
-                       $('.s-select').niceSelect('update');
-                    } else {
-                        toastr.error(response.message);
-                    }
-                },
-                error: function(jqXHR, exception) {
-                    toastr.error(jqXHR.responseJSON.message);
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: `{{route('getStatesByCountry')}}`,
+            type: "POST",
+            data: {
+                country: country
+            },
+            cache: false,
+            success: function(response) {
+                if (response.success == true) {
+                    $("#state").html(response.data.html);
+                    $('.s-select').niceSelect('update');
+                } else {
+                    toastr.error(response.message);
                 }
+            },
+            error: function(jqXHR, exception) {
+                toastr.error(jqXHR.responseJSON.message);
+            }
 
-            });
+        });
     }
 </script>
 <script>
