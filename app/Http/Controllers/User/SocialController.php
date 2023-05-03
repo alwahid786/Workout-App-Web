@@ -24,7 +24,10 @@ class SocialController extends Controller
         if ($finduser == true) {
             // update socialite user
             Auth::login($finduser);
-            return redirect()->route('trainers');
+            if ($finduser->update_status = 0) {
+                return redirect('/profile');
+            }
+            return redirect('/dashboard');
         } else {
             $createNewUser = User::create([
                 'name' => $user->name,
@@ -34,7 +37,7 @@ class SocialController extends Controller
                 'google_id' => $user->id
             ]);
             Auth::login($createNewUser);
-            return redirect()->route('trainers');
+            return redirect('/profile');
         }
     }
 
@@ -50,7 +53,10 @@ class SocialController extends Controller
         if ($finduser == true) {
             // update socialite user
             Auth::login($finduser);
-            return redirect()->route('trainers');
+            if ($finduser->update_status = 0) {
+                return redirect('/profile');
+            }
+            return redirect('/dashboard');
         } else {
             $createNewUser = User::create([
                 'name' => $user->name,
@@ -71,7 +77,8 @@ class SocialController extends Controller
     }
     public function handleInstagramCallback()
     {
-        $user = Socialite::with('instagram')->user();
+        $user = Socialite::driver('instagram')->user();
+        dd($user);
         $finduser = User::where('email', $user->email)->first();
         if ($finduser == true) {
             // update socialite user

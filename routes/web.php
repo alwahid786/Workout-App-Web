@@ -56,7 +56,6 @@ Route::post('/contact', [UserController::class, 'contactUs']);
 // Create Image Path for Certificates 
 Route::post('/upload-image', [UserController::class, 'uploadImage'])->name('uploadImage');
 
-
 Route::middleware('auth')->group(function () {
 
     //////////////....user................////////////////

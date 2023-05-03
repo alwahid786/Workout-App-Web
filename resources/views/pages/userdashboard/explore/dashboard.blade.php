@@ -106,7 +106,7 @@
                 <div class="col">
                     <div class="session-card p-2">
                         <div class="session-card-img">
-                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <img class="" src="{{$classes['session']['session_image'][0]['image']}}" alt="image">
                             <div class="session-card-amount">
                                 <h1>${{$classes['session']['price']}}</h1>
                             </div>
@@ -158,11 +158,10 @@
                 ....................
                 @else
                 @foreach($trainers as $trainer_data)
-
                 <div class="col">
                     <div class="session-card p-2">
                         <div class="session-card-img">
-                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <img class="" src="{{$trainer_data['profile_img']}}" alt="image">
                             <div class="session-card-amount">
                                 <h1>$100</h1>
                             </div>
