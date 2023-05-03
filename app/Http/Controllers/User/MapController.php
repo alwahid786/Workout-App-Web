@@ -86,7 +86,7 @@ class MapController extends Controller
                 if (!empty($whereLocation)) {
                     $q->where($whereLocation);
                 }
-            })->with(['trainerData','category'])->get();
+            })->with(['trainerData','category', 'location'])->get();
         } else {
             $sessions = ModelsSession::where($whereCategory)->whereHas('location', function($q) use($whereLocation){
                 if (!empty($whereLocation)) {
@@ -125,7 +125,7 @@ class MapController extends Controller
                 if (!empty($session['trainerData'])) {
                     $countSessions++;
                     $distance = getDistance($latitude, $longitude, $session['trainerData']['latitude'], $session['trainerData']['longitude']);
-                    array_push($latLng, ['22.3185673', '114.1796057', $session]);
+                    array_push($latLng, [$session['location']['latitude'], $session['location']['longitude'], $session]);
 
                     // if (!empty($workoutRadius)) {
                     //     if (
