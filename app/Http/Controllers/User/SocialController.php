@@ -72,6 +72,7 @@ class SocialController extends Controller
     public function handleInstagramCallback()
     {
         $user = Socialite::driver('instagram')->user();
+        dd($user);
         $finduser = User::where('email', $user->email)->first();
         if ($finduser == true) {
             // update socialite user
