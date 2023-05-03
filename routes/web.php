@@ -87,6 +87,7 @@ Route::middleware('auth')->group(function () {
         Route::any('/stripe/payment', [UserController::class, 'cardPayment'])->name('/stripe/payment');
         Route::any('/dashboard/map', [MapController::class, 'mapViewPage'])->name('mapViewPage');
         Route::any('/dashboard/filterMapData', [MapController::class, 'filterMapData'])->name('filterMapData');
+        Route::any('/dashboard/getStatesByCountry', [MapController::class, 'getStatesByCountry'])->name('getStatesByCountry');
 
         Route::any('get_sessions_list/{id}', [UserController::class, 'get_sessions_list'])->name('get_sessions_list');
         Route::any('/rating', [UserController::class, 'ratingStar'])->name('rating');

@@ -16,6 +16,7 @@ use App\Models\Classes;
 use App\Models\ContactUs;
 use App\Models\Customer;
 use App\Models\Session as ModelsSession;
+use App\Models\WorkoutLocation;
 use Carbon\Carbon;
 use DateTime;
 use Stripe;
@@ -34,14 +35,16 @@ class MapController extends Controller
         // $ip = '162.159.24.227'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
         $categories = Category::all();
-        return view('pages.userdashboard.explore.map-view', compact('currentUserInfo', 'categories'));
+        $countries = WorkoutLocation::groupBy('country')->pluck('country')->toArray();
+        return view('pages.userdashboard.explore.map-view', compact('currentUserInfo', 'categories', 'countries'));
     }
 
     public function filterMapData(Request $request)
     {
         $workoutType = $request->type;
         $workoutCategory = $request->category;
-        $workoutLocation = $request->location;
+        $workoutLocationCountry = $request->country;
+        $workoutLocationState = $request->state;
         $workoutPrice = $request->price;
         $workoutRadius = $request->radius;
         $sessionType = $request->session_type;
@@ -55,8 +58,11 @@ class MapController extends Controller
         if ($workoutCategory != null) {
             $whereCategory['category_id'] = $workoutCategory;
         }
-        if ($workoutLocation != null) {
-            $whereLocation['state'] =  $workoutLocation;
+        if ($workoutLocationCountry != null) {
+            $whereLocation['country'] =  $workoutLocationCountry;
+        }
+        if ($workoutLocationState != null) {
+            $whereLocation['area'] =  $workoutLocationState;
         }
         if ($workoutPrice != null) {
             if ($workoutPrice == 85) {
@@ -76,21 +82,21 @@ class MapController extends Controller
             $whereCategory['day'] =  $sessionDay;
         }
         if (empty($wherePrice)) {
-            $sessions = ModelsSession::where($whereCategory)->with(['trainerData' => function ($query) use ($whereLocation) {
+            $sessions = ModelsSession::where($whereCategory)->whereHas('location', function($q) use($whereLocation){
                 if (!empty($whereLocation)) {
-                    $query->where($whereLocation);
+                    $q->where($whereLocation);
                 }
-            }, 'category'])->get();
+            })->with(['trainerData','category'])->get();
         } else {
-            $sessions = ModelsSession::where($whereCategory)->whereBetween('price', $wherePrice)->with(['trainerData' => function ($query) use ($whereLocation) {
+            $sessions = ModelsSession::where($whereCategory)->whereHas('location', function($q) use($whereLocation){
                 if (!empty($whereLocation)) {
-                    $query->where($whereLocation);
+                    $q->where($whereLocation);
                 }
-            }, 'category'])->get();
+            })->whereBetween('price', $wherePrice)->with(['trainerData','category'])->get();
         }
         $latLng = [];
         $countSessions = 0;
-
+        // $ip = '162.159.24.227';
         // Map Radius Integration 
         $ip = $request->ip(); /* Static IP address */
         $currentUserInfo = Location::get($ip);
@@ -139,5 +145,25 @@ class MapController extends Controller
         $success['sessions'] = $sessions;
         $success['latLngArray'] = $latLng;
         return $this->sendResponse($success, 'Search Completed, Found Following Sessions.');
+    }
+
+
+
+    
+    public function getStatesByCountry(Request $request)
+    {
+       $states = WorkoutLocation::where('country', $request->country)->groupBy('area')->pluck('area')->toArray();
+       $html = '<option value="">Select Country First</option>';
+       
+       if(!empty($states)){
+        $html = '';
+        foreach($states as $state){
+            $html.= '<option value="'.$state.'">'.$state.'</option>';
+        }
+       }
+    //    dd($html);
+        return $this->sendResponse([
+            'html' => $html
+        ], 'States');
     }
 }
