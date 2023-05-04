@@ -41,11 +41,14 @@ class MapController extends Controller
 
     public function filterMapData(Request $request)
     {
+        // dd($request->max);
         $workoutType = $request->type;
         $workoutCategory = $request->category;
         $workoutLocationCountry = $request->country;
         $workoutLocationState = $request->state;
-        $workoutPrice = $request->price;
+        // $workoutPrice = $request->price;
+        $workoutPriceMin = $request->min;
+        $workoutPriceMax = $request->max;
         $workoutRadius = $request->radius;
         $sessionType = $request->session_type;
         $sessionDay = $request->day;
@@ -64,17 +67,14 @@ class MapController extends Controller
         if ($workoutLocationState != null) {
             $whereLocation['area'] =  $workoutLocationState;
         }
-        if ($workoutPrice != null) {
-            if ($workoutPrice == 85) {
-                $wherePrice = [85, 200];
-            } elseif ($workoutPrice == 200) {
-                $wherePrice = [200, 400];
-            } elseif ($workoutPrice == 400) {
-                $wherePrice = [400, 800];
-            } elseif ($workoutPrice == 800) {
-                $wherePrice = [800, 100000];
-            }
+        if ($workoutPriceMin != null) {
+            $wherePrice[] = ['price', '>=', $workoutPriceMin];
         }
+        if ($workoutPriceMax != null) {
+
+            $wherePrice[] = ['price', '<=', $workoutPriceMax];
+        }
+        // dd($wherePrice);
         if ($sessionType != null) {
             $whereCategory['session_type'] =  $sessionType;
         }
@@ -82,17 +82,18 @@ class MapController extends Controller
             $whereCategory['day'] =  $sessionDay;
         }
         if (empty($wherePrice)) {
-            $sessions = ModelsSession::where($whereCategory)->whereHas('location', function($q) use($whereLocation){
+            $sessions = ModelsSession::where($whereCategory)->whereHas('location', function ($q) use ($whereLocation) {
                 if (!empty($whereLocation)) {
                     $q->where($whereLocation);
                 }
-            })->with(['trainerData','category', 'location'])->get();
+            })->with(['trainerData', 'category', 'location'])->get();
         } else {
-            $sessions = ModelsSession::where($whereCategory)->whereHas('location', function($q) use($whereLocation){
+            $sessions = ModelsSession::where($whereCategory)->whereHas('location', function ($q) use ($whereLocation) {
                 if (!empty($whereLocation)) {
                     $q->where($whereLocation);
                 }
-            })->whereBetween('price', $wherePrice)->with(['trainerData','category', 'location'])->get();
+            })->where($wherePrice)->with(['trainerData', 'category', 'location'])->get();
+            // dd($sessions);
         }
         $latLng = [];
         $countSessions = 0;
@@ -150,19 +151,19 @@ class MapController extends Controller
 
 
 
-    
+
     public function getStatesByCountry(Request $request)
     {
-       $states = WorkoutLocation::where('country', $request->country)->groupBy('area')->pluck('area')->toArray();
-       $html = '<option value="">Select Country First</option>';
-       
-       if(!empty($states)){
-        $html = '';
-        foreach($states as $state){
-            $html.= '<option value="'.$state.'">'.$state.'</option>';
+        $states = WorkoutLocation::where('country', $request->country)->groupBy('area')->pluck('area')->toArray();
+        $html = '<option value="">Select Country First</option>';
+
+        if (!empty($states)) {
+            $html = '';
+            foreach ($states as $state) {
+                $html .= '<option value="' . $state . '">' . $state . '</option>';
+            }
         }
-       }
-    //    dd($html);
+        //    dd($html);
         return $this->sendResponse([
             'html' => $html
         ], 'States');
