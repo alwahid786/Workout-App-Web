@@ -301,10 +301,10 @@ class UserController extends Controller
     {
         $customerId = $request->customer;
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // dd($request->session_id);
+        // dd($request->session_date);
 
         try {
-            // dd($customerId);
+            // dd($request->amount);
             $payment = \Stripe\Charge::create(
                 array(
                     "amount"   => $request->amount * 100,

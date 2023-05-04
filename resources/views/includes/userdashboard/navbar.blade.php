@@ -25,6 +25,41 @@ $notifications = json_decode($notification, true);
         align-items: center;
         margin: 10px;
     }
+ .dropdown-submenu {
+  position: relative;
+}
+.main-dropdown{
+    left:-92px !important;
+}
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: -183px;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}
+.submenu2{
+    left: -162px !important;
+}
+.submenu1-toggle, .submenu2-toggle{
+    cursor: pointer !important;
+}
+@media (max-width: 991px){
+    .submenu1{
+        border: none !important;
+        margin-left: 1rem !important;
+    }
+    .submenu2{
+        border: none !important;
+        margin-left: 1rem !important;
+    }
+}
 </style>
 <nav class="navbar navbar-z navbar-expand-lg navbar-dark  navbar-header px-4 px-lg-0">
     <a class="navbar-brand logo-header pl-lg-3" data-aos="fade-right" href="{{url('dashboard')}}">
@@ -95,9 +130,39 @@ $notifications = json_decode($notification, true);
             </li>
             <li class="nav-item mr-lg-4 my-2 my-lg-0">
                 <div class="dropdown dropdown-logout">
+                    <button class="nav-link dropdown-toggle log-link p-0" type="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @if(auth()->user()->profile_img==null)
+                        <!-- <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image"> -->
+                        <img src="{{asset('public/assets/images/unknown-user.png')}}" alt="image">
+
+                        @else
+                        <img src="{{auth()->user()->profile_img}}" alt="image">
+
+                        @endif
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu main-dropdown" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle submenu1-toggle" >Setting<i class="fa fa-angle-down pl-3" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu submenu1">
+                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle submenu2-toggle" >Profile<i class="fa fa-angle-down pl-3" aria-hidden="true"></i></a>
+                            <ul class="dropdown-menu submenu2">
+                                <li><a class="dropdown-item" href="{{(url('/profile'))}}">Update Profile</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="{{url('/payment')}}">List Of Payment</a></li>
+                        <li><a class="dropdown-item" href="{{(url('/term'))}}">Terms & Condition</a></li>
+                        <li><a class="dropdown-item" href="{{(url('/approach-l'))}}">Privacy Policy</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+            </ul>
+        </div>
+    </li>
+            <!-- <li class="nav-item mr-lg-4 my-2 my-lg-0">
+                <div class="dropdown dropdown-logout">
                     <button class="p-0 btn  dropdown-toggle log-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if(auth()->user()->profile_img==null)
-                        <!-- <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image"> -->
+                        <img src="{{asset('public/assets/images/rating-right.png')}}" alt="image"> 
                         <img src="{{asset('public/assets/images/unknown-user.png')}}" alt="image">
 
                         @else
@@ -117,7 +182,7 @@ $notifications = json_decode($notification, true);
 
                     </div>
                 </div>
-            </li>
+            </li> -->
 
         </ul>
         <ul class="navbar-nav mr-auto sidenav pt-lg-5" id="navAccordion" data-aos="fade-up">
@@ -227,4 +292,23 @@ $notifications = json_decode($notification, true);
     $('.logout-btn').mouseenter(() => {
         $('.setting-drop').addClass('d-none');
     });
+</script>
+<script>
+    $(document).ready(function(){
+        $('.log-link').on('click', function(e) {
+            $('.submenu1').removeClass("show");
+        $('.submenu2').removeClass("show");
+        });
+        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+            if (!$(this).next().hasClass('show')) {
+                $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+            }
+            var $subMenu = $(this).next(".dropdown-menu");
+            $subMenu.toggleClass('show');
+            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+                $('.dropdown-submenu .show').removeClass("show");
+            });
+            return false;
+});
+});
 </script>

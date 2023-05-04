@@ -125,6 +125,8 @@ Route::middleware('auth')->group(function () {
         Route::any('certifacate/delete/{id}', [TrainerController::class, 'delCertificate']);
         Route::any('location/delete/{id}', [TrainerController::class, 'delLocation']);
         Route::any('/stripe_connect', [TrainerController::class, 'connect_stripe']);
+        Route::any('/message/{id?}', [TrainerController::class, 'messages'])->name('trainer.message');
+        Route::any('/send_message/', [TrainerController::class, 'sendMessage'])->name('trainer.send_message');
 
         Route::post('/add_session', [AuthController::class, 'addSession']);
 
@@ -144,6 +146,9 @@ Route::middleware('auth')->group(function () {
         // Route::get('/profile', function () {
         //     return view('pages.website.update-profile');
         // });
+        Route::get('/trainer/dashboardnull', function () {
+            return view('pages.trainerSide.dashboard-null');
+        })->name('nullDashboard');
     });
 });
 
@@ -337,9 +342,7 @@ Route::get('/trainer/stepfour-second', function () {
 // Route::get('/trainer/dashboard', function () {
 //     return view('pages.trainerSide.dashboard');
 // });
-Route::get('/trainer/dashboardnull', function () {
-    return view('pages.trainerSide.dashboard-null');
-})->name('nullDashboard');
+
 // Route::get('/trainer/calendar', function () {
 //     return view('pages.trainerSide.calendar');
 // });

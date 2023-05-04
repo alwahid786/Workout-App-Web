@@ -138,7 +138,10 @@
         text-decoration: none;
         color: #fff;
     }
-
+.catergory-card:hover{
+    cursor: pointer;
+  
+}
     @media screen and (max-width:576px) {
         .categories-card-btn {
             font-size: 0.8rem;
@@ -173,6 +176,13 @@
             font-size: 0.8rem;
         }
 
+    }
+    @media screen and (max-width:422px) {
+
+        .dashboard-header-left-top{
+            flex-direction: column !important;
+            row-gap: 1rem;
+        }
     }
 
     .dashboard-header .dropdown button {
@@ -227,10 +237,10 @@
     <div class="container-fluid">
         <div class="category-section px-sm-3">
             <div class="dashboard-header ">
-                <div class="dashboard-header-left d-flex justify-content-between align-items-baseline">
+                <div class="dashboard-header-left dashboard-header-left-top d-flex  justify-content-between align-items-center">
                     <h1>Categories</h1>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             Browse Categories <i class="fa fa-chevron-down" aria-hidden="true"></i>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -240,7 +250,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row js-slick-carouselss px-1 category-slider">
+                <div class="row js-slick-carouselss px-1 category-slider mt-3">
                     <?php
                     $colors = ["catergory-card-yellow", "catergory-card-blue", "catergory-card-green", "catergory-card-purple"];
                     $counter = 0;
@@ -410,9 +420,9 @@
         });
     })
     $('.catergory-card-img').click(function() {
-
-        $('.catergory-card-img').find('.catergory-card-yellow').css("border", "none");
-        $(this).find('.catergory-card-yellow').css("border", "4px solid black");
+        // $('.catergory-card-img').find('.catergory-card-yellow').css("border", "none");
+        $(this).find('.catergory-card-yellow').css("border", "2px solid black");
     });
+   
 </script>
 @endsection

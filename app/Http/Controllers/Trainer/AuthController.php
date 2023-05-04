@@ -240,6 +240,9 @@ class AuthController extends Controller
         $authUser = auth()->user();
         $authUser->token = $authUser->createToken('API Token')->accessToken;
         $page = TrainerProfile::where('user_id', auth()->user()->id)->first();
+        if ($page == null) {
+            return redirect()->back();
+        }
         if ($page['page'] == 1) {
             return Redirect::to(url('/trainer/steptwo'));
         }
