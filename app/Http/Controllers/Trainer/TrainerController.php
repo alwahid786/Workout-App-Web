@@ -19,6 +19,7 @@ use App\Models\Session;
 use App\Models\SessionImage;
 use App\Models\CertificateImage;
 use App\Models\TrainerProfile;
+use App\Models\Withdraw;
 use App\Models\WorkoutLocation;
 use Exception;
 use Illuminate\Support\Facades\Redirect;
@@ -486,47 +487,79 @@ class TrainerController extends Controller
 
     public function stepFour()
     {
-        if(isset($_GET['code'])){
+        if (isset($_GET['code'])) {
             $token = $this->getToken($_GET['code']);
-            if(!empty($token['error'])) {
-               return $this->sendError($token['error']);
+            if (!empty($token['error'])) {
+                return $this->sendError($token['error']);
             }
             $connectedAccountId = $token->stripe_user_id;
             $account = $this->getAccount($connectedAccountId);
-            if(!empty($account['error'])) {
+            if (!empty($account['error'])) {
                 return $this->sendError($account['error']);
             }
         }
         return view('pages.trainerSide.account-stepfour-second');
-     }
+    }
 
-     private function getToken($code)
-     {
-         $token = null;
-         try {
-             $token = OAuth::token([
-                 'grant_type' => 'authorization_code',
-                 'code' => $code,
-             ]);
-         } catch (Exception $e) {
-             $token['error'] = $e->getMessage();
-         }
-         return $token;
-     }
- 
-     private function getAccount($connectedAccountId)
-     {
-         $account = null;
-         try {
-             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
- 
-             $account = $stripe->accounts->retrieve(
-                 $connectedAccountId,
-                 []
-             );
-         } catch (Exception $e) {
-             $account['error'] = $e->getMessage();
-         }
-         return $account;
-     }
+    private function getToken($code)
+    {
+        $token = null;
+        try {
+            $token = OAuth::token([
+                'grant_type' => 'authorization_code',
+                'code' => $code,
+            ]);
+        } catch (Exception $e) {
+            $token['error'] = $e->getMessage();
+        }
+        return $token;
+    }
+
+    private function getAccount($connectedAccountId)
+    {
+        $account = null;
+        try {
+            $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
+            $account = $stripe->accounts->retrieve(
+                $connectedAccountId,
+                []
+            );
+        } catch (Exception $e) {
+            $account['error'] = $e->getMessage();
+        }
+        return $account;
+    }
+
+    public function trainerPayments(Request $request)
+    {
+        $loginId = auth()->user()->id;
+        // $totalEarning = BookedSession::where('trainer_id' , $loginId)->with('session')->get();
+        $totalEarning = Session::whereHas(
+            'booked_session',
+            function ($q) use ($loginId) {
+                $q->where('trainer_id', $loginId);
+            }
+        )->sum('price');
+        $withdraws = Withdraw::where(['trainer_id' => $loginId])->sum('amount');
+        $allWithdraws = Withdraw::where(['trainer_id' => $loginId])->get();
+        $wallet = $totalEarning - $withdraws;
+        return view('pages.trainerSide.payment', compact('totalEarning', 'wallet', 'allWithdraws'));
+    }
+
+    public function trainerWithdraw(Request $request)
+    {
+        $amount = base64_decode($request->amount);
+        $loginId = auth()->user()->id;
+        $withdraw = new Withdraw();
+        $withdraw->trainer_id = $loginId;
+        $withdraw->amount = $amount + 0.99;
+        $withdraw->status = 'pending';
+        $withdraw->fees = 0.99;
+        $status = $withdraw->save();
+        if ($status) {
+            return $this->sendResponse([], 'Request Submitted Successfully.');
+        }
+        return $this->sendError('Error sending request. Please try again after some time.');
+    }
 }

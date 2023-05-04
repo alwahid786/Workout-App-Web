@@ -135,6 +135,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('render/sessionSlot', [SessionController::class, 'renderSessions'])->name('session.render');
         Route::any('/trainer/chat', [TrainerController::class, 'trainerChatList'])->name('trainer.chat');
+        Route::any('/trainer/payment', [TrainerController::class, 'trainerPayments'])->name('trainerPayments');
+        Route::any('/trainer/withdraw', [TrainerController::class, 'trainerWithdraw'])->name('withdraw');
 
         Route::get('/trainer/steptwo', function () {
             return view('pages.trainerSide.account-step-two');
@@ -359,9 +361,14 @@ Route::get('/trainer/request', function () {
 // Route::get('/trainer/chat', function () {
 //     return view('pages.trainerSide.message');
 // });
-Route::get('/trainer/payment', function () {
-    return view('pages.trainerSide.payment');
-});
+
+
+
+
+
+// Route::get('/trainer/payment', function () {
+//     return view('pages.trainerSide.payment');
+// });
 Route::get('/trainer/paymentdetail', function () {
     return view('pages.trainerSide.payment-detail');
 });
