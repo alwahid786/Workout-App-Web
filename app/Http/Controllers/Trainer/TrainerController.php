@@ -20,6 +20,7 @@ use App\Models\SessionImage;
 use App\Models\CertificateImage;
 use App\Models\Message;
 use App\Models\TrainerProfile;
+use App\Models\Withdraw;
 use App\Models\WorkoutLocation;
 use Exception;
 use Illuminate\Support\Facades\Redirect;
@@ -567,5 +568,36 @@ class TrainerController extends Controller
             'chatView' => $chatView,
 
         ];
+    }
+    public function trainerPayments(Request $request)
+    {
+        $loginId = auth()->user()->id;
+        // $totalEarning = BookedSession::where('trainer_id' , $loginId)->with('session')->get();
+        $totalEarning = Session::whereHas(
+            'booked_session',
+            function ($q) use ($loginId) {
+                $q->where('trainer_id', $loginId);
+            }
+        )->sum('price');
+        $withdraws = Withdraw::where(['trainer_id' => $loginId])->sum('amount');
+        $allWithdraws = Withdraw::where(['trainer_id' => $loginId])->get();
+        $wallet = $totalEarning - $withdraws;
+        return view('pages.trainerSide.payment', compact('totalEarning', 'wallet', 'allWithdraws'));
+    }
+
+    public function trainerWithdraw(Request $request)
+    {
+        $amount = base64_decode($request->amount);
+        $loginId = auth()->user()->id;
+        $withdraw = new Withdraw();
+        $withdraw->trainer_id = $loginId;
+        $withdraw->amount = $amount + 0.99;
+        $withdraw->status = 'pending';
+        $withdraw->fees = 0.99;
+        $status = $withdraw->save();
+        if ($status) {
+            return $this->sendResponse([], 'Request Submitted Successfully.');
+        }
+        return $this->sendError('Error sending request. Please try again after some time.');
     }
 }

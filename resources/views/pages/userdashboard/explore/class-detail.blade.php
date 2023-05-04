@@ -569,7 +569,6 @@
         var startTimeOfSession = @json($class_detail[0]['class_session'][0]['start_time']);
         var sessionDay = @json($class_detail[0]['class_session'][0]['day']);
         var active;
-
         $("#owl-carousel-images").owlCarousel({
             items: 1,
             loop: true

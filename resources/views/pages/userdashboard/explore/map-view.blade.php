@@ -746,7 +746,9 @@
         //         });
         //     }
         // });
-        $('.s-select').niceSelect();
+        $('.s-select').niceSelect({
+            search: true
+        });
         var UserLocationdata = @json($currentUserInfo);
         console.log(UserLocationdata);
         var locationMap = [

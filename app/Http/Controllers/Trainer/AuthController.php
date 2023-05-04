@@ -184,8 +184,9 @@ class AuthController extends Controller
             $session_data->limit = $sessions['limit'];
             $session_data->preference = $sessions['preference'];
             $session_data->price_unit = $sessions['price_unit'];
-
-            $session_data->day = $sessions['day'];
+            $day = date('D', strtotime($sessions['day']));
+            $session_data->day = $day;
+            // $session_data->day = $sessions['day'];
             $session_data->class_id = $class->id;
             $session_data->price = $sessions['price'];
             $session_data->difficulty_level = $sessions['difficulty_level'];
