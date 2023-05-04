@@ -2,7 +2,12 @@
 <!-- <link rel="stylesheet" href="{{asset('public/assets/trainercss/steptwo.css')}}">
 <link rel="stylesheet" href="{{asset('public/assets/trainercss/pagination.css')}}"> -->
 <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{{asset('public/assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css')}}">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <style>
     * {
         margin: 0;
@@ -588,6 +593,10 @@
 
     }
 
+    .select-outer {
+        position: relative !important;
+    }
+
     .price-select-input .nice-select.wide2 {
         border-top-right-radius: 0px !important;
         border-bottom-right-radius: 0px !important;
@@ -627,6 +636,18 @@
 
     }
 
+    .dropdown-menu {
+        max-height: 290px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .bs-searchbox .form-control {
+        height: 48px !important;
+    }
+
     .location-pill {
         border-radius: 20px;
         background-color: #f5bfac;
@@ -651,6 +672,48 @@
     .list {
         height: 200px;
         overflow: auto !important;
+    }
+
+    .bootstrap-select {
+        width: 100% !important;
+    }
+
+    .dropdown-toggle {
+        height: 65px !important;
+        display: block;
+        width: 100% !important;
+        /* height: calc(1.5em + 0.75rem + 2px) !important; */
+        padding: 0.375rem 0.75rem !important;
+        font-size: 1rem !important;
+        font-weight: 400 !important;
+        line-height: 1.5;
+        color: #495057 !important;
+        background-color: #fff !important;
+        background-clip: padding-box;
+        border: 1px solid #ced4da !important;
+        border-radius: 0.25rem !important;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .dropdown-toggle:focus,
+    .dropdown-toggle:active {
+        border: none !important;
+        outline: none !important;
+    }
+
+    .filter-option {
+        display: flex;
+        align-items: center;
+    }
+
+    .bootstrap-select>.dropdown-toggle:after {
+        /* display: none; */
+    }
+
+    @media (max-width:390px) {
+        .inner {
+            width: 290px !important;
+        }
     }
 </style>
 
@@ -735,11 +798,19 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country <span style="color: red">*</span></label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4 validate" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
+                        <!-- <select class="wide s-select form-control pl-4 validate" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
                             <option value="USA">USA</option>
                             <option value="Australia">Australia</option>
                             <option value="Austria">Austria</option>
+                        </select> -->
+                        <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
+                            <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                            <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                            <option data-tokens="frosting">Sugar, Spice and all things nice</option>
                         </select>
+
+
+
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
@@ -809,10 +880,10 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="locationInput" class="">Workout Location</label>
-                        <input type="hidden" name="location_area" id="location_area">
-                        <input type="hidden" name="location_country" id="location_country">
-                        <input type="hidden" name="location_lat" id="location_lat">
-                        <input type="hidden" name="location_long" id="location_long">
+                    <input type="hidden" name="location_area" id="location_area">
+                    <input type="hidden" name="location_country" id="location_country">
+                    <input type="hidden" name="location_lat" id="location_lat">
+                    <input type="hidden" name="location_long" id="location_long">
                     <div class="location-container">
                         <input type="text" data-class="no-validation" class="form-control pl-4 validate" id="locationInput" name="workout_location" placeholder="">
                         <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
@@ -954,7 +1025,20 @@
 <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<!-- Latest compiled and minified JavaScript -->
+<script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files
+<script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/i18n/defaults-*.min.js')}}"></script> -->
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+
+
 <script>
     $(document).ready(function() {
         $('.s-select').niceSelect();
@@ -1050,7 +1134,7 @@
                 longitude: location_long,
                 tag: tag
             }
-                console.log(obj);
+            console.log(obj);
             location.push(obj);
             // get index of remove item
             //  remove index from location array
@@ -1207,8 +1291,8 @@
                 $("#location_area").val('');
                 $("#location_country").val('');
                 var place = autocomplete.getPlace();
-                       $("#location_lat").val(place.geometry.location.lat());
-                       $("#location_long").val(place.geometry.location.lng());
+                $("#location_lat").val(place.geometry.location.lat());
+                $("#location_long").val(place.geometry.location.lng());
                 // console.log(place.address_components);
                 // Loop through the address components to find the administrative_area_level_2 value
                 for (var i = 0; i < place.address_components.length; i++) {
@@ -1216,15 +1300,19 @@
                     var addressType = addressComponent.types[0];
 
                     if (addressType === 'administrative_area_level_1') {
-                       $("#location_area").val(addressComponent.long_name);
-                    }else  if (addressType === 'country') {
-                       $("#location_country").val(addressComponent.long_name);
+                        $("#location_area").val(addressComponent.long_name);
+                    } else if (addressType === 'country') {
+                        $("#location_country").val(addressComponent.long_name);
                     }
                 }
             });
         }
         // // Call the initMap() function when the Google Maps API has finished loading
         initMap();
+        $('.selectpicker').selectpicker();
+        // $(function() {
+        //     $('select').selectpicker();
+        // });
     });
 </script>
 <script>
@@ -1424,6 +1512,13 @@
         });
 
     })
+</script> -->
+<!-- <script>
+    $(document).ready(function() {
+        
+       
+    });
+
 </script> -->
 
 @endsection
