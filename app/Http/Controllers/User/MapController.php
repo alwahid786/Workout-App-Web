@@ -86,13 +86,13 @@ class MapController extends Controller
                 if (!empty($whereLocation)) {
                     $q->where($whereLocation);
                 }
-            })->with(['trainerData','category'])->get();
+            })->with(['trainerData','category', 'location'])->get();
         } else {
             $sessions = ModelsSession::where($whereCategory)->whereHas('location', function($q) use($whereLocation){
                 if (!empty($whereLocation)) {
                     $q->where($whereLocation);
                 }
-            })->whereBetween('price', $wherePrice)->with(['trainerData','category'])->get();
+            })->whereBetween('price', $wherePrice)->with(['trainerData','category', 'location'])->get();
         }
         $latLng = [];
         $countSessions = 0;
@@ -119,13 +119,14 @@ class MapController extends Controller
         {
             return $deg * (M_PI / 180);
         }
+        dd($sessions);
         if (count($sessions) > 0) {
             foreach ($sessions as $session) {
                 // dd($session['trainerData']);
                 if (!empty($session['trainerData'])) {
                     $countSessions++;
                     $distance = getDistance($latitude, $longitude, $session['trainerData']['latitude'], $session['trainerData']['longitude']);
-                    array_push($latLng, ['22.3185673', '114.1796057', $session]);
+                    array_push($latLng, [$session['location']['latitude'], $session['location']['longitude'], $session]);
 
                     // if (!empty($workoutRadius)) {
                     //     if (

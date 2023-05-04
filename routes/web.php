@@ -142,6 +142,9 @@ Route::middleware('auth')->group(function () {
         // Route::get('/profile', function () {
         //     return view('pages.website.update-profile');
         // });
+        Route::get('/trainer/dashboardnull', function () {
+            return view('pages.trainerSide.dashboard-null');
+        })->name('nullDashboard');
     });
 });
 
@@ -335,9 +338,7 @@ Route::get('/trainer/stepfour-second', function () {
 // Route::get('/trainer/dashboard', function () {
 //     return view('pages.trainerSide.dashboard');
 // });
-Route::get('/trainer/dashboardnull', function () {
-    return view('pages.trainerSide.dashboard-null');
-})->name('nullDashboard');
+
 // Route::get('/trainer/calendar', function () {
 //     return view('pages.trainerSide.calendar');
 // });
