@@ -18,6 +18,7 @@ use App\Models\Review;
 use App\Models\Session;
 use App\Models\SessionImage;
 use App\Models\CertificateImage;
+use App\Models\Message;
 use App\Models\TrainerProfile;
 use App\Models\WorkoutLocation;
 use Exception;
@@ -27,6 +28,8 @@ use Stevebauman\Location\Facades\Location;
 use Stripe\OAuth;
 use Stripe\Stripe;
 use Stripe\StripeClient;
+use Illuminate\Support\Facades\View;
+
 // use App\Models\WorkoutLocation;
 
 
@@ -38,7 +41,7 @@ class TrainerController extends Controller
     private $stripe;
     public function __construct()
     {
-        Stripe::setApiKey('sk_test_51N3eXuFZvDqqLmCo3gY7OWYqbrt0YpIXLhcRJdvcXcsuRrXCw8eEJCCKOpeCK7xtkTnX9aLuX7X16O7XvSVxoVEI00wGWvFyt1');
+        Stripe::setApiKey(env('STRIPE_SECRET'));
     }
     public function showTrainerDetail()
     {
@@ -486,47 +489,83 @@ class TrainerController extends Controller
 
     public function stepFour()
     {
-        if(isset($_GET['code'])){
+        if (isset($_GET['code'])) {
             $token = $this->getToken($_GET['code']);
-            if(!empty($token['error'])) {
-               return $this->sendError($token['error']);
+            if (!empty($token['error'])) {
+                return $this->sendError($token['error']);
             }
             $connectedAccountId = $token->stripe_user_id;
             $account = $this->getAccount($connectedAccountId);
-            if(!empty($account['error'])) {
+            if (!empty($account['error'])) {
                 return $this->sendError($account['error']);
             }
         }
         return view('pages.trainerSide.account-stepfour-second');
-     }
+    }
 
-     private function getToken($code)
-     {
-         $token = null;
-         try {
-             $token = OAuth::token([
-                 'grant_type' => 'authorization_code',
-                 'code' => $code,
-             ]);
-         } catch (Exception $e) {
-             $token['error'] = $e->getMessage();
-         }
-         return $token;
-     }
- 
-     private function getAccount($connectedAccountId)
-     {
-         $account = null;
-         try {
-             $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
- 
-             $account = $stripe->accounts->retrieve(
-                 $connectedAccountId,
-                 []
-             );
-         } catch (Exception $e) {
-             $account['error'] = $e->getMessage();
-         }
-         return $account;
-     }
+    private function getToken($code)
+    {
+        $token = null;
+        try {
+            $token = OAuth::token([
+                'grant_type' => 'authorization_code',
+                'code' => $code,
+            ]);
+        } catch (Exception $e) {
+            $token['error'] = $e->getMessage();
+        }
+        return $token;
+    }
+
+    private function getAccount($connectedAccountId)
+    {
+        $account = null;
+        try {
+            $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+
+            $account = $stripe->accounts->retrieve(
+                $connectedAccountId,
+                []
+            );
+        } catch (Exception $e) {
+            $account['error'] = $e->getMessage();
+        }
+        return $account;
+    }
+
+    public function sendMessage(Request $request)
+    {
+
+        $message = Message::create([
+            'chat_id' => $request->chat_id,
+            'sender_id' => auth()->user()->id,
+            'text' => $request->text
+        ]);
+        if (!$message) {
+            return $this->sendError('No Data found against ID');
+        }
+        return [
+            'message' => $message,
+
+        ];
+    }
+
+    ///////........messages shoe.............////////
+    public function messages($id)
+    {
+
+        $chatDetails = Message::where('chat_id', $id)->with('chat.session.category')->get();
+
+        $chatDetails = json_decode($chatDetails, true);
+        // dd($chatDetails);
+        $chatView = View::make('pages.userdashboard.chat.messagelist', [
+            'chatDetails' => $chatDetails,
+
+        ])->render();
+
+        return [
+            'chatView' => $chatView,
+
+        ];
+    }
 }

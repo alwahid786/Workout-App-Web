@@ -460,7 +460,7 @@
     </div>
     <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
         <div class="filter-left-select-heading drop-icon-parent">
-            <h1>Price Range</h1>
+            <h1>Price Range1wwww</h1>
             <div class="drop-icon drop-icon-thre">
                 <select class="wide s-select form-control " id="workout_price">
                     <option value="85">$85 to $200</option>
@@ -468,6 +468,7 @@
                     <option value="400">$400 to $800</option>
                     <option value="800">$800++</option>
                 </select>
+
                 <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
             </div>
         </div>
@@ -584,12 +585,23 @@
                 <div class="filter-left-select-heading drop-icon-parent">
                     <h1>Price Range</h1>
                     <div class="drop-icon drop-icon-thre">
-                        <select class="wide s-select form-control " id="workout_price">
+                        <!-- <select class="wide s-select form-control " id="workout_price">
                             <option value="85">$85 to $200</option>
                             <option value="200">$200 to $400</option>
                             <option value="400">$400 to $800</option>
                             <option value="800">$800++</option>
-                        </select>
+                        </select> -->
+                        <div class="price-input  row">
+                            <div class="col-6 form-group">
+                                <input class="form-control" type="text" name="min" placeholder="min" id="price_min">
+
+                            </div>
+                            <div class="col-6 form-group">
+                                <input class="form-control" type="text" name="max" placeholder="max" id="price_max">
+
+                            </div>
+                        </div>
+                        <!-- <input type="text" placeholder="minimim"> -->
                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                     </div>
                 </div>
@@ -768,6 +780,8 @@
             let state = $('#state').val();
             let type = $('#workout_type').val();
             let price = $('#workout_price').val();
+            let min = $('#price_min').val();
+            let max = $('#price_max').val();
             let radius = $('#workout_radius').val();
             let session_type = $('#session_type').val();
             var data = {
@@ -776,6 +790,8 @@
                 country: country,
                 type: type,
                 price: price,
+                min: min,
+                max: max,
                 radius: radius,
                 session_type: session_type,
             };
