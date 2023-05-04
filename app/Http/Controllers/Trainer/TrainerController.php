@@ -38,7 +38,7 @@ class TrainerController extends Controller
     private $stripe;
     public function __construct()
     {
-        Stripe::setApiKey('sk_test_51N3eXuFZvDqqLmCo3gY7OWYqbrt0YpIXLhcRJdvcXcsuRrXCw8eEJCCKOpeCK7xtkTnX9aLuX7X16O7XvSVxoVEI00wGWvFyt1');
+        Stripe::setApiKey(env('STRIPE_SECRET'));
     }
     public function showTrainerDetail()
     {
