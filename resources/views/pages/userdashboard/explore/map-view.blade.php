@@ -2,7 +2,10 @@
 @section('content')
 <!-- <link rel="stylesheet" href="{{asset('public/assets/css/mobiscroll.javascript.min.css')}}"> -->
 <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css')}}">
 <script src="{{asset('public/assets/fullcalendar/dist/index.global.min.js')}}"></script>
+
+
 <style>
     .user-search-box {
         display: block;
@@ -540,7 +543,9 @@
                             <option value="Kowloon">Kowloon</option>
                             <option value="New Territories">New Territories</option>
                         </select> -->
-                        <select class="wide s-select form-control" onchange="get_states(this)" id="country" name="country">
+                        <!-- <select class="selectpicker wide  form-control" data-live-search="true" onchange="get_states(this)" id="country" name="country"> -->
+                        <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
+
                             @foreach($countries as $country)
                             <option value="">Select Country</option>
                             <option value="{{$country}}">{{$country}}</option>
@@ -707,8 +712,14 @@
 @endsection
 @section('insertsfooter')
 <!-- <script src="{{ asset('public/assets/js/mobiscroll.javascript.min.js') }}"></script> -->
-<script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<script src="{{asset('public/assets/js/jquery.nice-select.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" defer></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 <!-- <script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
 <script language="javascript">
     print_country("country");
@@ -821,6 +832,7 @@
             });
         });
 
+        $('.selectpicker').selectpicker();
 
 
     });
