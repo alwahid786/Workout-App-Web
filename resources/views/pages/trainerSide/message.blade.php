@@ -479,7 +479,7 @@
 
 
             var type = "POST";
-            var url = "{{ route('user.message', ':id') }}";
+            var url = "{{ route('trainer.message', ':id') }}";
             url = url.replace(':id', id);
 
             // alert(url)
@@ -494,7 +494,7 @@
 
                 },
                 error: function(data) {
-                    alert('hi');
+                    // alert('hi');
                     console.log(data);
                 }
             });
@@ -517,7 +517,7 @@
 
             // alert(chat_id);
             var type = "POST";
-            var url = "{{ route('user.send_message') }}";
+            var url = "{{route('trainer.send_message')}}";
 
 
             // alert(url)
@@ -537,7 +537,7 @@
 
                 },
                 error: function(data) {
-                    alert('hi');
+                    // alert('hi');
                     // console.log(data);
                 }
             });

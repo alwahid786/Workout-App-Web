@@ -125,6 +125,8 @@ Route::middleware('auth')->group(function () {
         Route::any('certifacate/delete/{id}', [TrainerController::class, 'delCertificate']);
         Route::any('location/delete/{id}', [TrainerController::class, 'delLocation']);
         Route::any('/stripe_connect', [TrainerController::class, 'connect_stripe']);
+        Route::any('/message/{id?}', [TrainerController::class, 'messages'])->name('trainer.message');
+        Route::any('/send_message/', [TrainerController::class, 'sendMessage'])->name('trainer.send_message');
 
         Route::post('/add_session', [AuthController::class, 'addSession']);
 
