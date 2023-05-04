@@ -120,7 +120,7 @@ class MapController extends Controller
         {
             return $deg * (M_PI / 180);
         }
-        dd($sessions);
+        // dd($sessions);
         if (count($sessions) > 0) {
             foreach ($sessions as $session) {
                 // dd($session['trainerData']);
