@@ -1,6 +1,7 @@
 @extends('layouts.website.default')
 @section('content')
 <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css')}}">
 
 <style>
     body {
@@ -233,28 +234,30 @@
                     <label for="inputCity" class=" ">Gender <span style="color: red">*</span></label>
                     <!-- <input type="text" name="gender" value="{{auth()->user()->gender ?? ''}}" class="form-control py-4" id="inputCity"> -->
                     <!-- <input type="text" class="form-control py-4" id="inputCity"> -->
+
                     <select name="" class="form-control py-2 pro-form-select" id="inputCity">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </div>
             </div>
-            <div class="col-md-6" data-aos="fade-left">
+            <div class="col-md-6" >
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
+                    
                     <!-- <input type="text" name="country" data-class="no-validation" value="{{auth()->user()->country ?? ''}}" class="form-control py-4" id="inputAddress2"> -->
-                    <select class="wide s-select form-control pl-4 validate py-2 pro-form-select" data-class="no-validation" onchange="print_state('state',this.selectedIndex, 'profile');" id="country" name="country">
+                    <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex, 'profile');" id="country" name="country">
                         <option value="USA">USA</option>
                         <option value="Australia">Australia</option>
                         <option value="Austria">Austria</option>
                     </select>
                 </div>
             </div>
-            <div class="col-md-6" data-aos="fade-right">
+            <div class="col-md-6" >
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
                     <!-- <input type="text" name="state" data-class="no-validation" value="{{auth()->user()->state ?? ''}}" class="form-control py-4" id="inputCity"> -->
-                    <select class="wide s-select form-control pl-4 validate pro-form-select" data-class="no-validation" id="state" name="state">
+                    <select class="selectpicker " data-live-search="true" id="state" name="state">
                         <option disabled selected value="Alaska">Select Country First</option>
 
                     </select>
@@ -327,17 +330,19 @@
     </div>
 </form>
 
-<script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
-<script language="javascript">
-    print_country("country");
-</script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
-
+<script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
+<script language="javascript">
+    print_country("country");
+</script>
 <script>
     $(document).ready(function() {
+        $('.selectpicker').selectpicker();
         // Integrate map search on input Location 
         function initMap() {
             var input = document.getElementById('workout_location');

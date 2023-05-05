@@ -396,6 +396,80 @@
         height: 200px;
         overflow: auto !important;
     }
+    .dropdown-toggle{
+        /* height: 65px; */
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .filter-option-inner , .filter-option-inner-inner{
+        height: 100%;
+    }
+    .filter-option-inner-inner{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+    color: black;
+    text-align: center;
+    width: 100% !important;
+    }
+  
+    .bootstrap-select .dropdown-toggle{
+        height: 65px;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .bootstrap-select{
+        background: #F9F9FB !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .dropdown-item:hover, .dropdown-item.active.selected{
+        background: #E37048 !important;
+        color: white !important;
+    }
+    .dropdown-item .text:hover{
+        background-color: #E37048 !important;
+    }
+    .btn-light.dropdown-toggle{
+        background-color: #F9F9FB !important; 
+    }
+   
+    .bootstrap-select .dropdown-toggle:focus{
+    
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    .price-range-group{
+        margin-bottom: 0;
+    }
+    .price-min-input, .price-max-input{
+        height: 65px;
+        text-align: center;
+        padding: 1rem 0 !important;
+        border: none !important;
+        background: #F9F9FB !important;
+        border: 2px solid transparent !important;
+        font-weight: 500;
+    color: black !important;
+    }
+    .price-min-input:focus, .price-max-input:focus{
+        background: white !important;
+        border: 2px solid #F9F9FB !important;
+        box-shadow: none !important;
+    }
+    @media screen and (max-width:576px) {
+        .bootstrap-select{
+            width: 100% !important;
+        }
+        .dropdown-menu{
+        max-width: 260px !important; 
+    }
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -546,10 +620,10 @@
                         <!-- <select class="selectpicker wide  form-control" data-live-search="true" onchange="get_states(this)" id="country" name="country"> -->
                         <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
 
-                            @foreach($countries as $country)
+                            <!-- @foreach($countries as $country)
                             <option value="">Select Country</option>
                             <option value="{{$country}}">{{$country}}</option>
-                            @endforeach
+                            @endforeach -->
                         </select>
                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                     </div>
@@ -563,7 +637,7 @@
                         <!-- <select class="wide s-select form-control" id="city">
                             <option value="">Select city</option>
                         </select> -->
-                        <select class="wide s-select form-control" id="state" name="state">
+                        <select class="selectpicker " data-live-search="true" id="state" name="state">
                             <option disabled selected>Select Country First</option>
                         </select>
                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
@@ -597,12 +671,12 @@
                             <option value="800">$800++</option>
                         </select> -->
                         <div class="price-input  row">
-                            <div class="col-6 form-group">
-                                <input class="form-control" type="text" name="min" placeholder="min" id="price_min">
+                            <div class="col-6 form-group price-range-group pr-1">
+                                <input class="form-control price-min-input" type="text" name="min" placeholder="min" id="price_min">
 
                             </div>
-                            <div class="col-6 form-group">
-                                <input class="form-control" type="text" name="max" placeholder="max" id="price_max">
+                            <div class="col-6 form-group price-range-group pl-1">
+                                <input class="form-control price-max-input" type="text" name="max" placeholder="max" id="price_max">
 
                             </div>
                         </div>
@@ -717,13 +791,13 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-<!-- <script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script> -->
+<script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
 <script language="javascript">
     print_country("country");
-</script> -->
+</script>
 <script>
     $('.map-card-close').click(() => {
         $('.map-card').hide();
@@ -760,7 +834,7 @@
         $('.s-select').niceSelect({
             search: true
         });
-        var UserLocationdata = @json($currentUserInfo);
+        var UserLocationdata = json($currentUserInfo);
         console.log(UserLocationdata);
         var locationMap = [
             [UserLocationdata.latitude, UserLocationdata.longitude]

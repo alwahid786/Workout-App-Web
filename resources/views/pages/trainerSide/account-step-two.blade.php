@@ -6,7 +6,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="{{asset('public/assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css')}}">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <style>
     * {
@@ -798,19 +797,9 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country <span style="color: red">*</span></label>
                     <div class="select-outer">
-                        <!-- <select class="wide s-select form-control pl-4 validate" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
-                            <option value="USA">USA</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Austria">Austria</option>
-                        </select> -->
                         <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
-                            <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                            <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                            <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                         
                         </select>
-
-
-
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
                 </div>
@@ -818,14 +807,14 @@
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State <span style="color: red">*</span></label>
-                    <select class="wide s-select form-control pl-4 validate" id="state" name="state">
-                        <option value="Alaska">Alaska</option>
-                        <option value="Washington">Washington</option>
+                    <select class="selectpicker" data-live-search="true"  id="state" name="state">
+                        <!-- <option value="Washington">Washington</option>
                         <option value="South">New South Wales</option>
-                        <option value="Tirol">Tirol</option>
+                        <option value="Tirol">Tirol</option> -->
                     </select>
                 </div>
             </div>
+          
 
             <!-- <div class="col-md-6" data-aos="fade-right"> -->
             <!-- <div class="form-group pro-form">
@@ -1022,26 +1011,24 @@
     print_country("country");
 </script>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&callback=initMap&v=weekly" async defer></script> -->
-<script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script>
+<!-- <script src="{{ asset('public/assets/js/jquery.nice-select.js') }}"></script> -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
+<!-- <script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script> -->
 
 <!-- (Optional) Latest compiled and minified JavaScript translation files
 <script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/i18n/defaults-*.min.js')}}"></script> -->
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
-
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
 
 <script>
     $(document).ready(function() {
-        $('.s-select').niceSelect();
+        $('.selectpicker').selectpicker();
         var certificateArray = [];
         var location = [];
         var index = 0;
@@ -1309,13 +1296,13 @@
         }
         // // Call the initMap() function when the Google Maps API has finished loading
         initMap();
-        $('.selectpicker').selectpicker();
+      
+
         // $(function() {
         //     $('select').selectpicker();
         // });
     });
-</script>
-<script>
+
     function openModal() {
         $("#imageuploadmodal").modal('show')
         $("#imageuploadmodal").css('padding-right', 0)

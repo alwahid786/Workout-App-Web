@@ -197,7 +197,7 @@ position: relative;
 </style>
 <nav class="navbar navbar-bg navbar-expand-lg navbar-light">
     <div class="container-fluid px-sm-5" data-aos="fade-right">
-        <a class="navbar-brand web-logo" href="#"> <img src="{{asset('public/assets/images/logo.svg')}}" alt="image"></a>
+        <a class="navbar-brand web-logo" href="{{url('dashboard')}}"> <img src="{{asset('public/assets/images/logo.svg')}}" alt="image"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-btn"><i class="fa fa-bars" aria-hidden="true"></i></span>
         </button>

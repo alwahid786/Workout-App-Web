@@ -220,8 +220,8 @@ $notifications = json_decode($notification, true);
             <li class="nav-item">
                 <a href="{{url('/userdashboard/session')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
+                        <img class="nav-y" src="{{asset('public/assets/images/session-g-new.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/session-w-new.svg')}}" alt="image">
                     </div>
 
                     Workout Session
@@ -230,8 +230,8 @@ $notifications = json_decode($notification, true);
             <li class="nav-item">
                 <a href="{{url('/dashboard/categories/1')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
+                        <img class="nav-y" src="{{asset('public/assets/images/category-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/category-w.svg')}}" alt="image">
                     </div>
                     Categories
                 </a>
@@ -239,8 +239,8 @@ $notifications = json_decode($notification, true);
             <li class="nav-item">
                 <a href="{{url('/dashboard/trainer')}}" class=" nav-link sidenav-item ">
                     <div class="nav-link-image-outer mr-1">
-                        <img class="nav-y" src="{{asset('public/assets/images/session-g.svg')}}" alt="image">
-                        <img class="nav-w" src="{{asset('public/assets/images/session-w.svg')}}" alt="image">
+                        <img class="nav-y" src="{{asset('public/assets/images/trainer-g.svg')}}" alt="image">
+                        <img class="nav-w" src="{{asset('public/assets/images/trainer-w.svg')}}" alt="image">
                     </div>
                     My Trainers
                 </a>
