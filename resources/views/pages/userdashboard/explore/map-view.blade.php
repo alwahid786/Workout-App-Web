@@ -1056,7 +1056,10 @@
             success: function(response) {
                 if (response.success == true) {
                     $("#state").html(response.data.html);
-                    $('.s-select').niceSelect('update');
+                    $("#state").selectpicker("refresh");
+                    $(".selectpicker").selectpicker("refresh");
+                    // $('.s-select').niceSelect('update');+
+
                 } else {
                     toastr.error(response.message);
                 }

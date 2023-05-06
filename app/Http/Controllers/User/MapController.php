@@ -155,7 +155,7 @@ class MapController extends Controller
     public function getStatesByCountry(Request $request)
     {
         $states = WorkoutLocation::where('country', $request->country)->groupBy('area')->pluck('area')->toArray();
-        $html = '<option value="">Select Country First</option>';
+        $html = '<option value="">Select State</option>';
 
         if (!empty($states)) {
             $html = '';
