@@ -888,7 +888,7 @@
                                 <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                             </div>
                         </div>
-                        Add
+                        <i class="fa fa-plus addLocation" style="cursor: pointer;"></i>
                     </div>
                 </div>
             </div>
