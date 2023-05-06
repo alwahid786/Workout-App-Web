@@ -797,7 +797,7 @@
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country <span style="color: red">*</span></label>
                     <div class="select-outer">
-                        <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
+                        <select class="selectpicker " data-class="no-validation" data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
 
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
@@ -807,7 +807,7 @@
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State <span style="color: red">*</span></label>
-                    <select class="selectpicker" data-live-search="true" id="state" name="state">
+                    <select class="selectpicker" data-class="no-validation" data-live-search="true" id="state" name="state">
                         <!-- <option value="Washington">Washington</option>
                         <option value="South">New South Wales</option>
                         <option value="Tirol">Tirol</option> -->
@@ -869,10 +869,10 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="locationInput" class="">Workout Location <span style="color: red">*</span></label>
-                    <input type="hidden" name="location_area" id="location_area">
-                    <input type="hidden" name="location_country" id="location_country">
-                    <input type="hidden" name="location_lat" id="location_lat">
-                    <input type="hidden" name="location_long" id="location_long">
+                    <input type="hidden" data-class="no-validation" name="location_area" id="location_area">
+                    <input type="hidden" data-class="no-validation" name="location_country" id="location_country">
+                    <input type="hidden" data-class="no-validation" name="location_lat" id="location_lat">
+                    <input type="hidden" data-class="no-validation" name="location_long" id="location_long">
                     <div class="location-container">
                         <input type="text" data-class="no-validation" class="form-control pl-4 validate" id="locationInput" name="workout_location" placeholder="">
                         <!-- <input type="url" class="form-control pl-4" id="inputCity" name="facebook"> -->
@@ -1237,7 +1237,7 @@
             } else {
                 swal({
                     title: "Some Fields Missing",
-                    text: "Please fill all fields",
+                    text: "Please fill all fieldsss",
                     icon: "error",
                 });
             }
@@ -1263,7 +1263,8 @@
             let errorCount = 0;
             $("form#stepTwoForm :input").each(function() {
                 let val = $(this).val();
-                if (val == '' && $(this).attr('data-class') !== 'no-validation') {
+                if (val == '' && $(this).attr('data-class') !== 'no-validation' && $(this).prop('type') !== 'button' && $(this).prop('type') !== 'search') {
+                    alert($(this).prop('type'));
                     errorCount++
                     // $(this).css('border', '1px solid red');
                 } else {
