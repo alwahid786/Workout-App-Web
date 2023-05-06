@@ -396,58 +396,70 @@
         height: 200px;
         overflow: auto !important;
     }
-    .dropdown-toggle{
+
+    .dropdown-toggle {
         /* height: 65px; */
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
     }
-    .filter-option-inner , .filter-option-inner-inner{
+
+    .filter-option-inner,
+    .filter-option-inner-inner {
         height: 100%;
     }
-    .filter-option-inner-inner{
+
+    .filter-option-inner-inner {
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 500;
-    color: black;
-    text-align: center;
-    width: 100% !important;
+        color: black;
+        text-align: center;
+        width: 100% !important;
     }
-  
-    .bootstrap-select .dropdown-toggle{
+
+    .bootstrap-select .dropdown-toggle {
         height: 65px;
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
     }
-    .bootstrap-select{
+
+    .bootstrap-select {
         background: #F9F9FB !important;
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
     }
-    .dropdown-item:hover, .dropdown-item.active.selected{
+
+    .dropdown-item:hover,
+    .dropdown-item.active.selected {
         background: #E37048 !important;
         color: white !important;
     }
-    .dropdown-item .text:hover{
+
+    .dropdown-item .text:hover {
         background-color: #E37048 !important;
     }
-    .btn-light.dropdown-toggle{
-        background-color: #F9F9FB !important; 
+
+    .btn-light.dropdown-toggle {
+        background-color: #F9F9FB !important;
     }
-   
-    .bootstrap-select .dropdown-toggle:focus{
-    
+
+    .bootstrap-select .dropdown-toggle:focus {
+
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
     }
-    .price-range-group{
+
+    .price-range-group {
         margin-bottom: 0;
     }
-    .price-min-input, .price-max-input{
+
+    .price-min-input,
+    .price-max-input {
         height: 65px;
         text-align: center;
         padding: 1rem 0 !important;
@@ -455,20 +467,24 @@
         background: #F9F9FB !important;
         border: 2px solid transparent !important;
         font-weight: 500;
-    color: black !important;
+        color: black !important;
     }
-    .price-min-input:focus, .price-max-input:focus{
+
+    .price-min-input:focus,
+    .price-max-input:focus {
         background: white !important;
         border: 2px solid #F9F9FB !important;
         box-shadow: none !important;
     }
+
     @media screen and (max-width:576px) {
-        .bootstrap-select{
+        .bootstrap-select {
             width: 100% !important;
         }
-        .dropdown-menu{
-        max-width: 260px !important; 
-    }
+
+        .dropdown-menu {
+            max-width: 260px !important;
+        }
     }
 </style>
 @include('includes.userdashboard.navbar')
@@ -620,10 +636,10 @@
                         <!-- <select class="selectpicker wide  form-control" data-live-search="true" onchange="get_states(this)" id="country" name="country"> -->
                         <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
 
-                            <!-- @foreach($countries as $country)
+                            @foreach($countries as $country)
                             <option value="">Select Country</option>
                             <option value="{{$country}}">{{$country}}</option>
-                            @endforeach -->
+                            @endforeach
                         </select>
                         <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
                     </div>
@@ -796,7 +812,7 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script> -->
 <script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
 <script language="javascript">
-    print_country("country");
+    // print_country("country");
 </script>
 <script>
     $('.map-card-close').click(() => {
