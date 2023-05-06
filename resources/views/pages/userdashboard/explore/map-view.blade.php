@@ -676,16 +676,16 @@
 
                 </div>
             </div>
-            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+            <!-- <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
                 <div class="filter-left-select-heading drop-icon-parent">
                     <h1>Price Range</h1>
                     <div class="drop-icon drop-icon-thre">
-                        <!-- <select class="wide s-select form-control " id="workout_price">
+                        <select class="wide s-select form-control " id="workout_price">
                             <option value="85">$85 to $200</option>
                             <option value="200">$200 to $400</option>
                             <option value="400">$400 to $800</option>
                             <option value="800">$800++</option>
-                        </select> -->
+                        </select>
                         <div class="price-input  row">
                             <div class="col-6 form-group price-range-group pr-1">
                                 <input class="form-control price-min-input" type="text" name="min" placeholder="min" id="price_min">
@@ -696,11 +696,11 @@
 
                             </div>
                         </div>
-                        <!-- <input type="text" placeholder="minimim"> -->
-                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                        <input type="text" placeholder="minimim">
+                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -724,7 +724,7 @@
             </div>
         </div>
         <div class="col-sm-3 range-filter">
-            <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
+            <!-- <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                 <h1>Range</h1>
                 <div class="drop-icon input-location">
                     <select class="wide s-select form-control" id="workout_radius">
@@ -735,8 +735,33 @@
                         <option value="15">15KM</option>
                         <option value="20">20KM</option>
                     </select>
-                    <!-- <input type="text" readonly style="cursor: pointer;" placeholder="Enter Location"> -->
-                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                    <input type="text" readonly style="cursor: pointer;" placeholder="Enter Location">
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </div>
+            </div> -->
+            <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
+                <div class="filter-left-select-heading drop-icon-parent">
+                    <h1>Price Range</h1>
+                    <div class="drop-icon drop-icon-thre">
+                        <!-- <select class="wide s-select form-control " id="workout_price">
+                            <option value="85">$85 to $200</option>
+                            <option value="200">$200 to $400</option>
+                            <option value="400">$400 to $800</option>
+                            <option value="800">$800++</option>
+                        </select> -->
+                        <div class="price-input  row">
+                            <div class="col-6 form-group price-range-group pr-1">
+                                <input class="form-control price-min-input" type="text" name="min" placeholder="min" id="price_min">
+
+                            </div>
+                            <div class="col-6 form-group price-range-group pl-1">
+                                <input class="form-control price-max-input" type="text" name="max" placeholder="max" id="price_max">
+
+                            </div>
+                        </div>
+                        <!-- <input type="text" placeholder="minimim"> -->
+                        <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                    </div>
                 </div>
             </div>
 
