@@ -798,7 +798,7 @@
                     <label for="inputAddress2" class=" ">Country <span style="color: red">*</span></label>
                     <div class="select-outer">
                         <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
-                         
+
                         </select>
                         <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                     </div>
@@ -807,14 +807,14 @@
             <div class="col-md-6 pb-3" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State <span style="color: red">*</span></label>
-                    <select class="selectpicker" data-live-search="true"  id="state" name="state">
+                    <select class="selectpicker" data-live-search="true" id="state" name="state">
                         <!-- <option value="Washington">Washington</option>
                         <option value="South">New South Wales</option>
                         <option value="Tirol">Tirol</option> -->
                     </select>
                 </div>
             </div>
-          
+
 
             <!-- <div class="col-md-6" data-aos="fade-right"> -->
             <!-- <div class="form-group pro-form">
@@ -888,7 +888,7 @@
                                 <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                             </div>
                         </div>
-                        <i class="fa fa-plus addLocation" style="cursor: pointer;"></i>
+                        Add
                     </div>
                 </div>
             </div>
@@ -1152,6 +1152,14 @@
                     });
                     return;
                 }
+                if (location.length < 1) {
+                    swal({
+                        title: "Error",
+                        text: "Add atleast 1 Location",
+                        icon: "error",
+                    });
+                    return;
+                }
                 var date_of_birth = $('#date_of_birth').val();
                 var emergency_contact = $('#emergency_contact').val();
                 var gender = $('#gender').val();
@@ -1296,7 +1304,7 @@
         }
         // // Call the initMap() function when the Google Maps API has finished loading
         initMap();
-      
+
 
         // $(function() {
         //     $('select').selectpicker();
