@@ -868,7 +868,7 @@
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
-                    <label for="locationInput" class="">Workout Location</label>
+                    <label for="locationInput" class="">Workout Location <span style="color: red">*</span></label>
                     <input type="hidden" name="location_area" id="location_area">
                     <input type="hidden" name="location_country" id="location_country">
                     <input type="hidden" name="location_lat" id="location_lat">
@@ -1244,19 +1244,19 @@
         });
         // Signup Form request END HERE 
 
-        $("#TrainerSignupForm").submit(function(e) {
-            e.preventDefault();
-            var FormValidation = validateForm();
-            if (FormValidation) {
-                $("#TrainerSignupForm")[0].submit();
-            } else {
-                swal({
-                    title: "Some Fields Missing",
-                    text: "Please fill all fields",
-                    icon: "error",
-                });
-            }
-        })
+        // $("#TrainerSignupForm").submit(function(e) {
+        //     e.preventDefault();
+        //     var FormValidation = validateForm();
+        //     if (FormValidation) {
+        //         $("#TrainerSignupForm")[0].submit();
+        //     } else {
+        //         swal({
+        //             title: "Some Fields Missing",
+        //             text: "Please fill all fields",
+        //             icon: "error",
+        //         });
+        //     }
+        // })
 
         // Signup Validations
         function validateForm() {
