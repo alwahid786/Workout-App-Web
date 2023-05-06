@@ -634,7 +634,7 @@
                             <option value="New Territories">New Territories</option>
                         </select> -->
                         <!-- <select class="selectpicker wide  form-control" data-live-search="true" onchange="get_states(this)" id="country" name="country"> -->
-                        <select class="selectpicker " data-live-search="true" id="country" name="country">
+                        <select class="selectpicker " data-live-search="true" id="country" onchange="get_states(this)" name="country">
 
                             @foreach($countries as $country)
                             <option value="">Select Country</option>
