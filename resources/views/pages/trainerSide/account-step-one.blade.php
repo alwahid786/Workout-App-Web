@@ -537,4 +537,22 @@
         }
     })
 </script>
+
+<!-- <script>
+    $("#passInput").on('keyup', function() {
+        let values = $("#passInput").val();
+        if (values.length >= 8) {
+            // $("#passInput").removeClass('login-email-field-red');
+            // $(".passInput").addClass('login-email-field-green');
+            // $('.right-inner-addon i').css('color', '#151C00')
+            alert('password');
+        } else {
+            // $(".passInput").removeClass('login-email-field-green');
+            // $(".passInput").addClass('login-email-field-red');
+            // $('.right-inner-addon i').css('color', '#FF0000');
+            alert('password must be 8 charactors');
+        }
+
+    })
+</script> -->
 @endsection

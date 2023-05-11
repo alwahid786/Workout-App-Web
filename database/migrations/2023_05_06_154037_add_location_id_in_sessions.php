@@ -14,8 +14,9 @@ class AddLocationIdInSessions extends Migration
     public function up()
     {
         Schema::table('sessions', function (Blueprint $table) {
-            $table->unsignedBigInteger('location_id');
-            $table->foreign('location_id')->references('id')->on('workout_locations')->onUpdate('cascade')->onDelete('cascade');
+            $table->dropForeign('location_id');
+            // $table->unsignedBigInteger('??location_id');
+            // $table->foreign('location_id')->references('id')->on('workout_locations')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

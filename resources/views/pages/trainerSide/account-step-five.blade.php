@@ -1616,6 +1616,18 @@
     .socialIcons_s img {
         width: 35px !important;
     }
+
+    .loaderDiv {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75) url("../../../../../workitpt_web/public/assets/images/loader.svg") no-repeat center center;
+        z-index: 99999;
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -1694,7 +1706,7 @@
                     <div class="content-right-profile-body">
                         <div class="profile-body pr-sm-5 mr-lg-5 pr-lg-5">
                             <h1><img src="{{asset('public/assets/trainerimages/message-icon.png')}}" alt="">{{$trainer['email']}}</h1>
-                            <h1><img src="{{asset('public/assets/trainerimages/user-icon.png')}}" alt="">{{$trainer['gender']}}, {{$trainer['height']}} {{$trainer['hieght_unit']}} , {{$trainer['weight']}} {{$trainer['weight_unit']}}</h1>
+                            <h1><img src="{{asset('public/assets/trainerimages/user-icon.png')}}" alt="">{{$trainer['gender']}}</h1>
                             <h1><img src="{{asset('public/assets/trainerimages/phone-icon.png')}}" alt="">{{$trainer['phone']}} </h1>
                             <h1><img src="{{asset('public/assets/trainerimages/location-icon.png')}}" alt="">{{$trainer['country']}}, {{$trainer['state']}}</h1>
                             <h1 class="mx-3 socialIcons_s mt-4">
@@ -2161,6 +2173,8 @@
                                 <label for="inputAddress" class=" ">Class Type</label>
                                 <div class="select-outer">
                                     <select class="wide s-select form-control pl-4" id="session_type" name="sessionType">
+
+                                        <option value="">--select--</option>
                                         <option value="0">Online</option>
                                         <option value="1">In-person</option>
                                     </select>
@@ -2198,12 +2212,26 @@
                                         <input type="time" class="form-control py-4 " id="endTime" name="endTime" placeholder="">
                                         <!-- <img src="{{asset('public/assets/images/clock-icon.png')}}" alt=""> -->
                                     </div>
+
                                     <!-- <button class="">Add</button> -->
                                 </div>
 
                             </div>
                         </div>
-
+                        @if(isset($locations) & !empty($locations))
+                        <div class="col-md-6" data-aos="fade-right" id="s_location">
+                            <div class="form-group pro-form">
+                                <label for="inputAddress" class=" ">Select Location</label>
+                                <div class="select-outer">
+                                    <select class="wide s-select form-control pl-4" value="{{$locations[0]['id']}}" name="location" id="location_id">
+                                        @foreach($locations as $location)
+                                        <option class="categoryOptions" value="{{$location['id']}}">{{$location['location']}} | {{$location['tag']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                     <div class="updateinfo-qualification my-4 px-3 ">
                         <h1 class="mb-4">Upload Image</h1>
@@ -2394,9 +2422,21 @@
                 $("#sessionDate").removeAttr('readonly');
             }
         })
+        //////// session type////
+        $(document).on('change', '#session_type', function() {
+            if ($('#session_type').val() == 0) {
 
+                $("#s_location").addClass('d-none');
+
+            } else {
+                $("#s_location").removeClass('d-none');
+
+
+            }
+        })
 
         $('#createSessionForm').submit(function(e) {
+
             validation = validateForm(e);
             if (validation.success == false) {
                 e.preventDefault();
@@ -2430,6 +2470,7 @@
                 processData: false,
                 contentType: false,
                 success: function(data) {
+
                     $('#slotsSection').append(data.html);
                     sessionsArray.push(data.data);
                     index++
@@ -2543,6 +2584,9 @@
 
         // Save Session API Call 
         $(document).on('click', "#saveSession", function() {
+            $('.loaderDiv').show();
+
+
             var sessionsData = {
                 allSessions: sessionsArray
             };
@@ -2556,6 +2600,7 @@
                 cache: false,
                 success: function(data) {
                     console.log(data)
+                    $('.loaderDiv').hide();
                     window.location.href = '/workitpt_web/trainer/stepfive';
                 }
             });

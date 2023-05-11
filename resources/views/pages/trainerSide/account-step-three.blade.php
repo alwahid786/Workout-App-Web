@@ -889,9 +889,22 @@
     .borderRed {
         border: 1px solid red !important;
     }
+
+    .loaderDiv {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75) url("../../../../../workitpt_web/public/assets/images/loader.svg") no-repeat center center;
+        z-index: 99999;
+    }
 </style>
 @section('content')
 <!-- header-section -->
+
 <div class="container-fluid update-info-header">
     <div class="container">
         <div class="update-info-content py-4">
@@ -1047,6 +1060,7 @@
                     <label for="inputAddress" class=" ">Class Type</label>
                     <div class="select-outer">
                         <select class="wide s-select form-control pl-4" id="session_type" name="sessionType">
+                            <option value="">--select--</option>
                             <option value="0">Online</option>
                             <option value="1">In-person</option>
                         </select>
@@ -1092,11 +1106,11 @@
                 </div>
             </div> -->
             @if(isset($locations) & !empty($locations))
-            <div class="col-md-6" data-aos="fade-right">
+            <div class="col-md-6" data-aos="fade-right" id="s_location">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Select Location</label>
                     <div class="select-outer">
-                        <select class="wide s-select form-control pl-4" value="{{$locations[0]['id']}}" name="location_id">
+                        <select class="wide s-select form-control pl-4" value="{{$locations[0]['id']}}" name="location_id" id="location_id">
                             @foreach($locations as $location)
                             <option class="categoryOptions" value="{{$location['id']}}">{{$location['location']}} | {{$location['tag']}}</option>
                             @endforeach
@@ -1180,6 +1194,8 @@
 </script>
 <script>
     $(document).ready(function() {
+        // $('.loaderDiv').show();
+
         var sessionsArray = [];
         var images = [];
         var index = 0;
@@ -1189,7 +1205,7 @@
         const imagePreview = document.getElementById('img-preview');
 
         fileInput.addEventListener('change', function(e) {
-            debugger;
+            
             for (let i = 0; i < fileInput.files.length; i++) {
                 const file = fileInput.files[i];
                 const image = new Image();
@@ -1257,6 +1273,19 @@
                 $('#sessionDay').removeAttr('data-class');
                 $('#sessionDate').removeAttr('data-class');
                 $('.s-select').niceSelect('update');
+            }
+        })
+
+
+        $(document).on('change', '#session_type', function() {
+            if ($('#session_type').val() == 0) {
+
+                $("#s_location").addClass('d-none');
+
+            } else {
+                $("#s_location").removeClass('d-none');
+
+
             }
         })
 
@@ -1464,6 +1493,7 @@
 
         // Save Session API Call 
         $(document).on('click', "#saveSession", function() {
+            $('.loaderDiv').show();
             var sessionsData = {
                 allSessions: sessionsArray
             };
@@ -1477,6 +1507,7 @@
                 cache: false,
                 success: function(data) {
                     console.log(data)
+                    $('.loaderDiv').hide();
                     window.location.href = '/workitpt_web/trainer/stepfour';
                 }
             });

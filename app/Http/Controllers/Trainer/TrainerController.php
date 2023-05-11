@@ -48,6 +48,8 @@ class TrainerController extends Controller
     {
         $trainer = User::where('id', auth()->user()->id)->with('trainer_profile', 'session.category', 'session.session_image')->first();
         $category = Category::get();
+        $locations = WorkoutLocation::where('trainer_id', auth()->user()->id)->get();
+
         if (!$trainer) {
             return $this->sendError('No Data found against ID');
         }
@@ -55,21 +57,22 @@ class TrainerController extends Controller
         $trainer  = json_decode($trainer, true);
         $category = json_decode($category, true);
         $certificates = json_decode($certificates, true);
-        return view('pages.trainerSide.account-step-five', compact('trainer', 'category', 'certificates'));
+        $locations = json_decode($locations, true);
+        return view('pages.trainerSide.account-step-five', compact('trainer', 'category', 'certificates', 'locations'));
     }
     /////////////.........update trainer...............//////////////
     public function updateTrainer(Request $request)
     {
         // dd($request->all());
         $ip = $request->ip(); /* Dynamic IP address */
-        // $ip = '162.159.24.227'; /* Static IP address */
+        $ip = '162.159.24.227'; /* Static IP address */
         $currentUserInfo = Location::get($ip);
         // Extract the latitude and longitude from the location information
         $latitude = $currentUserInfo->latitude;
         $longitude = $currentUserInfo->longitude;
         $update = User::where('id', auth()->user()->id)->update(
             [
-                'password' => bcrypt($request->password),
+                // 'password' => bcrypt($request->password),
                 'date_of_birth' => $request->date_of_birth,
                 'gender' => $request->gender,
                 'phone' => $request->phone,
@@ -98,8 +101,10 @@ class TrainerController extends Controller
                 $workout_location->save();
             }
         }
+        // dd($request->pass);
         if ($request->pass == 1) {
-            return redirect()->back();
+            // return redirect()->back();
+            return redirect()->route('trainer/dashboard');
         }
         return redirect()->route('trainer/stepfive');
     }
@@ -126,7 +131,11 @@ class TrainerController extends Controller
     /////////update session ......../////////
     public function updateSession(Request $request)
     {
-
+        if ($request->loction) {
+            $location = $request->loction;
+        } else {
+            $location = "";
+        }
         // Session::where('id', $request->session_id)->delete();
         $images = $request->file('myfile');
         $paths = [];
@@ -156,7 +165,6 @@ class TrainerController extends Controller
             'price_unit' => $request->price_unit,
 
             'day' => $request->day,
-
             'price' => $request->price,
             'difficulty_level' => $request->difficulty_level,
             'type' => $request->type,
@@ -164,8 +172,7 @@ class TrainerController extends Controller
             'end_time' => $request->endTime,
             'start_meridiem' => $startMeridiem,
             'end_meridiem' => $endMeridiem,
-
-
+            'location_id' => $location
         ]);
         if (!$session) {
             return $this->sendError('No Data found against ID');
@@ -294,7 +301,7 @@ class TrainerController extends Controller
         }
         $clients = json_decode($clients, true);
         $categories = json_decode($categories, true);
-        // dd($client);
+
         return view('pages.trainerSide.client-list', compact('clients', 'categories'));
     }
     //////////........user detail.........//////

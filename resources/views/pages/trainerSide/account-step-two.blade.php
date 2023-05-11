@@ -707,6 +707,18 @@
 
     
 
+    .loaderDiv {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75) url("../../../../../workitpt_web/public/assets/images/loader.svg") no-repeat center center;
+        z-index: 99999;
+    }
+
     @media (max-width:390px) {
         .inner {
             width: 290px !important;
@@ -1140,6 +1152,8 @@
         // Signup Form request START HERE 
         $('#sighnup_submit').on('click', function(e) {
             e.preventDefault();
+            $('.loaderDiv').show();
+
             var FormValidation = validateForm();
             if (FormValidation) {
                 if (certificateArray.length < 1) {
@@ -1207,6 +1221,8 @@
 
                         console.log(dataResult);
                         if (dataResult.success == true) {
+
+                            $('.loaderDiv').hide();
 
                             window.location.href = `{{url('/trainer/stepthree')}}`;
                         } else if (dataResult.success == false) {

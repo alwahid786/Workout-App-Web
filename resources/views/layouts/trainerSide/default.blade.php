@@ -13,6 +13,9 @@
 </head>
 
 <body>
+    <div class="loaderDiv">
+        <!-- <img src="{{asset('public/assets/images/loader.svg')}}" alt=""> -->
+    </div>
     @yield('content')
     @include('includes.trainerSide.footer')
     @yield('insertsfooter')
