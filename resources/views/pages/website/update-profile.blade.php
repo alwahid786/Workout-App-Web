@@ -1,7 +1,9 @@
 @extends('layouts.website.default')
 @section('content')
-<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<!-- <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}"> -->
 <link rel="stylesheet" href="{{asset('public/assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css')}}">
+<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
 
 <style>
     body {
@@ -188,7 +190,9 @@
                         @if(auth()->user()->profile_img == null)
                         <img src="{{asset('public/assets/images/unknown-user.png')}}" alt="image">
                         @else
-                        <img src="{{ auth()->user()->profile_img}}" alt="image">
+                        <!-- <img src="{{ auth()->user()->profile_img}}" alt="image"> -->
+                        <img src="{{asset('public/assets/images/unknown-user.png')}}" alt="image">
+
                         @endif
                     </div>
                     <label class="hero-section-upload my-4"> Upload Image
@@ -214,19 +218,19 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress" class=" ">Emergency Contact <span style="color: red">*</span></label>
-                    <input type="text" name="emergency_contact" value="{{auth()->user()->emergency_contact ?? ''}}" class="form-control py-4 decimal-only" id="inputAddress">
+                    <input type="phone" name="emergency_contact" value="{{auth()->user()->emergency_contact ?? ''}}" class="form-control py-4 decimal-only" id="inputAddress">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Relationship With Emergency Contact <span style="color: red">*</span></label>
-                    <input type="text" name="relationship_emergency_contact" value="{{auth()->user()->relationship_emergency_contact	 ?? ''}}" class="form-control py-4" id="inputAddress2">
+                    <input type="phone" name="relationship_emergency_contact" value="{{auth()->user()->relationship_emergency_contact	 ?? ''}}" class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Date of Birth <span style="color: red">*</span></label>
-                    <input type="date" name="date_of_birth" class="form-control py-4" id="inputAddress2">
+                    <input type="date" name="date_of_birth" min='1899-01-01' max='2013-12-31' class="form-control py-4" id="inputAddress2">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
@@ -241,25 +245,27 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-6" >
+            <div class="col-md-6">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Country</label>
-                    
+
                     <!-- <input type="text" name="country" data-class="no-validation" value="{{auth()->user()->country ?? ''}}" class="form-control py-4" id="inputAddress2"> -->
-                    <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex, 'profile');" id="country" name="country">
+                    <!-- <select class="selectpicker " data-live-search="true" onchange="print_state('state',this.selectedIndex, 'profile');" id="country" name="country"> -->
+                    <select class="selectpicker" data-class="no-validation" data-live-search="true" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
+
                         <option value="USA">USA</option>
                         <option value="Australia">Australia</option>
                         <option value="Austria">Austria</option>
                     </select>
                 </div>
             </div>
-            <div class="col-md-6" >
+            <div class="col-md-6">
                 <div class="form-group pro-form">
                     <label for="inputCity" class=" ">State</label>
                     <!-- <input type="text" name="state" data-class="no-validation" value="{{auth()->user()->state ?? ''}}" class="form-control py-4" id="inputCity"> -->
-                    <select class="selectpicker " data-live-search="true" id="state" name="state">
+                    <!-- <select class="selectpicker " data-live-search="true" id="state" name="state"> -->
+                    <select class="selectpicker" data-class="no-validation" data-live-search="true" id="state" name="state">
                         <option disabled selected value="Alaska">Select Country First</option>
-
                     </select>
                 </div>
             </div>
@@ -331,18 +337,24 @@
 </form>
 
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script> -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script> -->
 <script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
 <script language="javascript">
     print_country("country");
 </script>
+<script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
+
 <script>
     $(document).ready(function() {
-        $('.selectpicker').selectpicker();
+        // $('.selectpicker').selectpicker();
+
+        // $('.selectpicker').selectpicker();
         // Integrate map search on input Location 
         function initMap() {
             var input = document.getElementById('workout_location');
@@ -352,8 +364,10 @@
         initMap();
         const chooseFile = document.getElementById("profile_img");
         const imgPreview = document.getElementById("img-preview");
+
         chooseFile.addEventListener("change", function() {
             getImgData();
+            console.log(chooseFile);
         });
 
         function getImgData() {
@@ -425,6 +439,8 @@
             }
             return true;
         }
+        $('.selectpicker').selectpicker();
+
     });
 </script>
 @endsection

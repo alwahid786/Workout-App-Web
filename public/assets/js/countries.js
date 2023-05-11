@@ -1,20 +1,20 @@
 /*
-	*	By: Baqir Farooq
-	*	baqirfarooq@gmail.com
+    *	By: Baqir Farooq
+    *	baqirfarooq@gmail.com
 
-	*	Description:
-	*	Inserts Countries & States as Dropdown List
-	*	How to Use:
+    *	Description:
+    *	Inserts Countries & States as Dropdown List
+    *	How to Use:
 
-		In Head/Footer section:
-		<script type= "text/javascript" src = "countries.js"></script>
-		In Body Section:
-		Select Country:   <select onchange="print_state('state',this.selectedIndex);" id="country" name ="country"></select>
-		City/District/State: <select name ="state" id ="state"></select>
-		<script language="javascript">print_country("country");</script>	
-	*
-	*	Aurthor's Website: https://baqirfarooq.wordpress.com/
-	*
+        In Head/Footer section:
+        <script type= "text/javascript" src = "countries.js"></script>
+        In Body Section:
+        Select Country:   <select onchange="print_state('state',this.selectedIndex);" id="country" name ="country"></select>
+        City/District/State: <select name ="state" id ="state"></select>
+        <script language="javascript">print_country("country");</script>	
+    *
+    *	Aurthor's Website: https://baqirfarooq.wordpress.com/
+    *
 */
 
 var country_arr = new Array(
@@ -446,7 +446,7 @@ s_a[98] = "Heard Island and McDonald Islands";
 s_a[99] = "Holy See (Vatican City)";
 s_a[100] =
     "Atlantida|Choluteca|Colon|Comayagua|Copan|Cortes|El Paraiso|Francisco Morazan|Gracias a Dios|Intibuca|Islas de la Bahia|La Paz|Lempira|Ocotepeque|Olancho|Santa Barbara|Valle|Yoro";
-s_a[101] = "Hong Kong";
+s_a[101] = "Hong Kong|Central And Western District|North District|Sham Shui Po|Kowloon City|Kowloon|Southern|Kowloon Peninsula|New Territories|Eastern District|Sha Tin|Sai Kung|Yau Tsim Mong";
 s_a[102] = "Howland Island";
 s_a[103] =
     "Bacs-Kiskun|Baranya|Bekes|Bekescsaba|Borsod-Abauj-Zemplen|Budapest|Csongrad|Debrecen|Dunaujvaros|Eger|Fejer|Gyor|Gyor-Moson-Sopron|Hajdu-Bihar|Heves|Hodmezovasarhely|Jasz-Nagykun-Szolnok|Kaposvar|Kecskemet|Komarom-Esztergom|Miskolc|Nagykanizsa|Nograd|Nyiregyhaza|Pecs|Pest|Somogy|Sopron|Szabolcs-Szatmar-Bereg|Szeged|Szekesfehervar|Szolnok|Szombathely|Tatabanya|Tolna|Vas|Veszprem|Veszprem|Zala|Zalaegerszeg";

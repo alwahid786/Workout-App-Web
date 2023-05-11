@@ -818,7 +818,7 @@
                     <input type="password" class="form-control pl-4" name="password">
                 </div>
             </div> -->
-            <div class="col-md-6" data-aos="fade-right">
+            <!-- <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form  mb-2">
                     <label for="inputAddress2" class=" ">Password <span style="color: red">*</span></label>
                     <div class="right-inner-addon">
@@ -827,7 +827,7 @@
                         <i id="showPass" class="fa fa-eye" aria-hidden="true"></i>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-6" data-aos="fade-right">
                 <div class="form-group pro-form my-2">
                     <label for="inputAddress" class=" ">Date of Birth</label>
@@ -1040,12 +1040,9 @@
                                     </div>
 
 
-
                                 </div>
                             </div>
                         </div>
-
-
 
 
                         <div class="form-outline pro-form my-5">
