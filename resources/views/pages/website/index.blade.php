@@ -294,7 +294,7 @@
                 </div>
             </div>
             <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0">
-                <img src="{{asset('public/assets/images/aboutUs_1.jpg')}}" alt="image">
+                <img src="{{asset('public/assets/images/aboutUs_2.jpg')}}" alt="image">
             </div>
         </div>
     </div>
