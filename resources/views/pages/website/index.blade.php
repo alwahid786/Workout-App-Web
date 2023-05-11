@@ -294,7 +294,7 @@
                 </div>
             </div>
             <div class="col-md-6 order-1 order-md-2 hero-right text-center mb-5 mb-md-0">
-                <img src="{{asset('public/assets/images/aboutUs_2.jpg')}}" alt="image">
+                <!-- <img src="{{asset('public/assets/images/aboutUs_2.jpg')}}" alt="image"> -->
             </div>
         </div>
     </div>
@@ -366,7 +366,7 @@
             </div>
             <div class="col-md-6 mt-3">
                 <div class="rating-right py-3" data-aos="zoom-in">
-                    <img class="mb-3" style="object-position: 0% 66%" src="{{asset('public/assets/images/aboutUs_4.jpg')}}" alt="image">
+                    <!-- <img class="mb-3" style="object-position: 0% 66%" src="{{asset('public/assets/images/aboutUs_4.jpg')}}" alt="image"> -->
                     <h1 class="col-sm-8 pl-0">Get In shape and training at the gym or home</h1>
                 </div>
             </div>
@@ -394,7 +394,7 @@
                 <div class="col">
                     <div class="trainer-card py-2 px-3">
                         <div class="trainer-card-left">
-                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <!-- <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image"> -->
                         </div>
                         <div class="trainer-card-right pl-4">
                             <div class="trainer-rating">
@@ -422,7 +422,7 @@
                 <div class="col">
                     <div class="trainer-card py-2 px-3">
                         <div class="trainer-card-left">
-                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <!-- <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image"> -->
                         </div>
                         <div class="trainer-card-right pl-4">
                             <div class="trainer-rating">
@@ -450,7 +450,7 @@
                 <div class="col">
                     <div class="trainer-card py-2 px-3">
                         <div class="trainer-card-left">
-                            <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image">
+                            <!-- <img class="" src="{{asset('public/assets/images/rating-right.png')}}" alt="image"> -->
                         </div>
                         <div class="trainer-card-right pl-4">
                             <div class="trainer-rating">
