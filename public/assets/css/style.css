@@ -781,7 +781,7 @@ body {
 }
 
 .gallery-image-one {
-    /* background-image: url("../images/gallery-one.svg"); */
+    background-image: url("../images/gallery-one.svg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -790,7 +790,7 @@ body {
 }
 
 .gallery-image-two {
-    /* background-image: url("../images/gallery-two.svg"); */
+    background-image: url("../images/gallery-two.svg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -799,7 +799,7 @@ body {
 }
 
 .gallery-image-three {
-    /* background-image: url("../images/gallery-three.svg"); */
+    background-image: url("../images/gallery-three.svg");
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
@@ -808,7 +808,7 @@ body {
 }
 
 .gallery-image-four {
-    /* background-image: url("../images/gallery-four.svg"); */
+    background-image: url("../images/gallery-four.svg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -848,7 +848,7 @@ body {
 
 @media screen and (min-width: 992px) {
     .gallery-image-two {
-        /* background-image: url("../images/gallery-two.svg"); */
+        background-image: url("../images/gallery-two.svg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -856,7 +856,7 @@ body {
     }
 
     .gallery-image-three {
-        /* background-image: url("../images/gallery-three.svg"); */
+        background-image: url("../images/gallery-three.svg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -864,7 +864,7 @@ body {
     }
 
     .gallery-image-four {
-        /* background-image: url("../images/gallery-four.svg"); */
+        background-image: url("../images/gallery-four.svg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
