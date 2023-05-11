@@ -51,3 +51,4 @@
   </div>
 
 </nav>
+ <script src="{{ asset('public/assets/js/jquery.js') }}"></script>
