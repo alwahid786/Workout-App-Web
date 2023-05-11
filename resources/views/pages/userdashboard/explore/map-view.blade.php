@@ -440,7 +440,7 @@ height: 80px !important;
         width: 100% !important;
     }
 
-    .dropdown-item:hover,
+    .dropdown-item:hover,.dropdown-item.active,
     .dropdown-item.active.selected {
         background: #E37048 !important;
         color: white !important;

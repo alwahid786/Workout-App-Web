@@ -209,7 +209,13 @@
     border-radius: 10px !important;
 
     }
-
+    .bootstrap-select .dropdown-toggle:active {
+        background: rgba(249, 249, 249, 0.2) !important;
+    
+    border: 1px solid #CECECE !important;
+    box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 10px !important;
+}
     .bootstrap-select {
         background: rgba(249, 249, 249, 0.2) !important;
         border: none !important;
@@ -219,7 +225,7 @@
       
     }
 
-    .dropdown-item:hover,
+    .dropdown-item:hover, .dropdown-item.active,
     .dropdown-item.active.selected {
         background: #E37048 !important;
         color: white !important;

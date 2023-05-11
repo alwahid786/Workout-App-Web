@@ -492,7 +492,7 @@
         display: flex;
         justify-content:flex-start;
         align-items:center;
-        background: url({{asset('public/assets/images/gym-one-gradiant.png')}});
+        background: url("{{asset('public/assets/images/gym-one-gradiant.png')}}");
         height:45rem;
         background-size: cover;
     }
@@ -518,8 +518,8 @@
         display: flex;
         justify-content:flex-start;
         align-items:center;
-        background: url({{asset('public/assets/images/gym-two-gradiant.png')}});
-        height:45rem;
+        background: url("{{asset('public/assets/images/gym-two-gradiant.png')}}");
+        height: 45rem;
         background-size: cover;
     }
     .per-heading2-left{
