@@ -705,9 +705,7 @@
         align-items: center;
     }
 
-    .bootstrap-select>.dropdown-toggle:after {
-        /* display: none; */
-    }
+    
 
     .loaderDiv {
         display: none;

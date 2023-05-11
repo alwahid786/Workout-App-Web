@@ -1,6 +1,8 @@
 @extends('layouts.website.default')
 @section('content')
 <!-- <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}"> -->
+<link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="{{asset('public/assets/bootstrap-select-1.13.14/dist/css/bootstrap-select.min.css')}}">
 <link rel="stylesheet" href="{{asset('public/assets/css/nice-select.css')}}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
@@ -157,20 +159,94 @@
         border: 1px solid #E37048;
     }
 
-
-
     input[type=radio].color-radio {
         accent-color: #E37048;
         border: 1px solid #E37048;
         transform: scale(1.5);
         background: transparent !important;
     }
-
+    .select-country{
+        display: flex;
+        flex-direction: column;
+    }
+   
     @media screen and (min-width:768px) {
         input[type=radio].color-radio {
             transform: scale(1.5);
         }
 
+    }
+    .gender-select{
+        background: rgba(249, 249, 249, 0.2);
+    }
+    .dropdown-toggle {
+        /* height: 65px; */
+        /* border: none !important;
+        outline: none !important;
+        box-shadow: none !important; */
+    }
+
+    .filter-option-inner,
+    .filter-option-inner-inner {
+        height: 100%;
+    }
+
+    .filter-option-inner-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 500;
+        color: black;
+        text-align: center;
+        width: 100% !important;
+    }
+
+    .bootstrap-select .dropdown-toggle {
+        height: 65px;
+        background: rgba(249, 249, 249, 0.2) !important;
+    border: 1px solid #CECECE;
+    box-shadow: 0px 4px 22px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 10px !important;
+
+    }
+
+    .bootstrap-select {
+        background: rgba(249, 249, 249, 0.2) !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        width: 100% !important;
+      
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item.active.selected {
+        background: #E37048 !important;
+        color: white !important;
+    }
+
+    .dropdown-item .text:hover {
+        background-color: #E37048 !important;
+    }
+
+    .btn-light.dropdown-toggle {
+        background-color: #F9F9FB !important;
+    }
+
+    .bootstrap-select .dropdown-toggle:focus {
+
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    @media screen and (max-width:576px) {
+        .bootstrap-select {
+            width: 100% !important;
+        }
+
+        .dropdown-menu {
+            max-width: 290px !important;
+        }
     }
 </style>
 @include('includes.website.navbar-two')
@@ -239,7 +315,7 @@
                     <!-- <input type="text" name="gender" value="{{auth()->user()->gender ?? ''}}" class="form-control py-4" id="inputCity"> -->
                     <!-- <input type="text" class="form-control py-4" id="inputCity"> -->
 
-                    <select name="" class="form-control py-2 pro-form-select" id="inputCity">
+                    <select name="" class="form-control py-2 pro-form-select gender-select" id="inputCity">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -267,6 +343,7 @@
                     <select class="selectpicker" data-class="no-validation" data-live-search="true" id="state" name="state">
                         <option disabled selected value="Alaska">Select Country First</option>
                     </select>
+                   
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-left">
@@ -336,19 +413,19 @@
     </div>
 </form>
 
-
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script> -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script> -->
-<script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
+@include('includes.website.footer')
 <script type="text/javascript" src="{{asset('public/assets/js/countries.js')}}"></script>
 <script language="javascript">
     print_country("country");
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6NS5JQ0bHHnlcqiHLU2BktDTr9l22ZeY&v=3.exp&sensor=false&libraries=places"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
 <script src="{{asset('public/assets/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js')}}"></script>
+
 
 <script>
     $(document).ready(function() {

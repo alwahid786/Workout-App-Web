@@ -391,7 +391,13 @@
     h1 span {
         display: inline;
     }
+    .drop-icon .list{
+        height: 160px !important;
 
+    }
+.workout_type_menu .list{
+height: 80px !important;
+}
     .list {
         height: 200px;
         overflow: auto !important;
@@ -431,6 +437,7 @@
         border: none !important;
         outline: none !important;
         box-shadow: none !important;
+        width: 100% !important;
     }
 
     .dropdown-item:hover,
@@ -661,9 +668,9 @@
                 </div>
             </div>
             <div class="filter-menu-inner mt-2 mt-sm-0 px-sm-2">
-                <div class="filter-left-select-heading drop-icon-parent">
+                <div class="filter-left-select-heading drop-icon-parent ">
                     <h1>Class Type</h1>
-                    <div class="drop-icon">
+                    <div class="drop-icon workout_type_menu">
 
                         <select class="wide s-select form-control" id="workout_type">
                             <option value="0">One to One</option>

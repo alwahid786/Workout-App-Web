@@ -783,6 +783,9 @@
         top: 50%;
         transform: translate(-50%, -50%);
     }
+    #img-preview img{
+        object-fit: cover;
+    }
 </style>
 @section('content')
 <!-- header-section -->
@@ -802,7 +805,7 @@
     <form action="{{route('trainer/update_profile')}}" method="post">
         @csrf
         <div class="row">
-            <div class="col-md-12 text-center text-lg-left  upload-image py-5 ">
+            <div class="col-md-12 text-center text-lg-left  upload-image py-5 mb-5">
                 <div id="img-preview">
                     <img src="{{$trainer['profile_img']}}" alt="image">
                 </div>
@@ -829,7 +832,7 @@
                 </div>
             </div> -->
             <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form my-2">
+                <div class="form-group pro-form mb-2">
                     <label for="inputAddress" class=" ">Date of Birth</label>
                     <input type="date" class="form-control pl-4" name="date_of_birth" value="{{$trainer['date_of_birth']}}">
                 </div>
@@ -853,8 +856,8 @@
                 </div>
             </div>
 
-            <div class="col-md-6 pb-3" data-aos="fade-left">
-                <div class="form-group pro-form">
+            <div class="col-md-6" data-aos="fade-left">
+                <div class="form-group pro-form my-2">
                     <label for="inputAddress2" class=" ">Country </label>
                     <div class="select-outer">
                         <select class="wide s-select form-control pl-4 validate" onchange="print_state('state',this.selectedIndex,'step2');" id="country" name="country">
@@ -866,8 +869,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 pb-3" data-aos="fade-right">
-                <div class="form-group pro-form">
+            <div class="col-md-6" data-aos="fade-right">
+                <div class="form-group pro-form my-2">
                     <label for="inputCity" class=" ">State</label>
                     <select class="wide s-select form-control pl-4 validate" id="state" name="state">
                         <option value="Alaska">Alaska</option>
@@ -878,19 +881,19 @@
                 </div>
             </div>
             <div class="col-md-6 " data-aos="fade-right">
-                <div class="form-group pro-form my-2">
+                <div class="form-group pro-form mt-3">
                     <label for="inputAddress" class=" ">Emergency Contact</label>
                     <input type="text" class="form-control pl-4" name="emergency_contact" value="{{$trainer['emergency_contact']}}">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
-                <div class="form-group pro-form my-2">
-                    <label for="inputAddress" class=" ">Relation with Emergency Contact</label>
+                <div class="form-group pro-form mt-3">
+                    <label for="inputAddress " class=" ">Relation with Emergency Contact</label>
                     <input type="text" class="form-control pl-4" name="relationship_emergency_contact" value="{{$trainer['relationship_emergency_contact']}}">
                 </div>
             </div>
             <div class="col-12" data-aos="fade-up">
-                <div class="form-outline pro-form">
+                <div class="form-outline pro-form my-2">
                     <label class="form-label" for="textAreaExample">Tell Us About yourself <span>(256 Characters)</span></label>
                     <textarea class="form-control" maxlength="256" id="textAreaExample1" name="about" rows="4"></textarea>
                 </div>
