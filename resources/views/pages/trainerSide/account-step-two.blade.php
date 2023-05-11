@@ -705,9 +705,7 @@
         align-items: center;
     }
 
-    .bootstrap-select>.dropdown-toggle:after {
-        /* display: none; */
-    }
+    
 
     @media (max-width:390px) {
         .inner {

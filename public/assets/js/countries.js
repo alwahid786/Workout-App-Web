@@ -719,9 +719,10 @@ function print_country(country_id) {
 
 function print_state(state_id, state_index, opt) {
     if (opt == "step2") {
+        console.log(state_id);
         var option_str2 = document.getElementById(state_id);
         option_str2.length = 0; // Fixed by Julian Wood
-        option_str2.options[0] = new Option("Select State", "");
+        option_str2.options[0] = new Option("Select State", "-1");
         option_str2.options.length = 0;
         var state_arr = s_a[state_index].split("|");
         for (var i = 0; i < state_arr.length; i++) {
@@ -730,6 +731,7 @@ function print_state(state_id, state_index, opt) {
                 state_arr[i]
             );
         }
+
         $("#state").selectpicker("refresh");
         $(".selectpicker").selectpicker("refresh");
         // state_arr.forEach((stateData) => {
@@ -741,16 +743,29 @@ function print_state(state_id, state_index, opt) {
         //     $(".s-select").niceSelect("update");
         // });
     } else if (opt == "profile") {
-        var option_str = document.getElementById(state_id);
-        option_str.length = 0; // Fixed by Julian Woods
-        option_str.options[0] = new Option("Select State", "");
-        option_str.selectedIndex = 0;
+        // var option_str = document.getElementById(state_id);
+        // option_str.length = 0; // Fixed by Julian Woods
+        // option_str.options[0] = new Option("Select State", "");
+        // option_str.selectedIndex = 0;
+        // var state_arr = s_a[state_index].split("|");
+        // for (var i = 0; i < state_arr.length; i++) {
+        //     option_str.options[option_str.length] = new Option(
+        //         state_arr[i],
+        //         state_arr[i]
+        //     );
+        // }
+        var option_str2 = document.getElementById(state_id);
+        option_str2.length = 0; // Fixed by Julian Wood
+        option_str2.options[0] = new Option("Select State", "");
+        option_str2.options.length = 0;
         var state_arr = s_a[state_index].split("|");
         for (var i = 0; i < state_arr.length; i++) {
-            option_str.options[option_str.length] = new Option(
+            option_str2.options[option_str2.length] = new Option(
                 state_arr[i],
                 state_arr[i]
             );
         }
+
+        // $(".selectpicker").selectpicker("refresh");
     }
 }

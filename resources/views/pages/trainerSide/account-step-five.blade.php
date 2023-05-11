@@ -27,6 +27,7 @@
         border-radius: 10px;
         width: 100%;
         height: 300px;
+        object-fit: cover;
     }
 
     .content-left-section h1 {
@@ -141,6 +142,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        
+
     }
 
     @media screen and (max-width:576px) {
@@ -1681,9 +1684,9 @@
                 <div class="content-right-profile p-3">
                     <div class="row">
                         <div class="col-sm-6 content-right-profile-header px-0">
-                            <h1 class="py-3">{{$trainer['name']}}</h1>
+                            <h1 class="p-3 ">{{$trainer['name']}}</h1>
                         </div>
-                        <div class="my-auto col-sm-6 content-right-certificate-btn px-0 text-right">
+                        <div class="my-auto col-sm-6 content-right-certificate-btn pr-3 text-right">
                             <a class="btn" href="{{url('/trainer/updateprofile')}}" class="btn"><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>Edit</a>
                         </div>
 
