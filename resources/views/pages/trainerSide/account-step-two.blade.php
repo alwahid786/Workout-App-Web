@@ -705,7 +705,7 @@
         align-items: center;
     }
 
-    
+
 
     .loaderDiv {
         display: none;
@@ -791,7 +791,7 @@
             <div class="col-md-6" data-aos="fade-left">
                 <div class="form-group pro-form">
                     <label for="inputAddress2" class=" ">Date of Birth <span style="color: red">*</span></label>
-                    <input type="date" class="form-control pl-4 validate" id="date_of_birth" name="date_of_birth">
+                    <input type="date" class="form-control pl-4 validate" min='1899-01-01' max='2013-12-31' id="date_of_birth" name="date_of_birth">
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-right">
