@@ -167,6 +167,9 @@ Route::get('/about', function () {
 Route::get('/faq', function () {
     return view('pages.website.faq');
 });
+Route::get('/faq-l', function () {
+    return view('pages.website.faq-l');
+});
 Route::get('/services', function () {
     return view('pages.website.services');
 });

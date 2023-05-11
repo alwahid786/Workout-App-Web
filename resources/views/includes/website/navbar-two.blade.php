@@ -213,7 +213,7 @@ position: relative;
                     <a class="nav-link px-2" href="{{url('/about-l')}}">About Us</a>
                 </li>
                 <li class="nav-item mr-lg-4 ">
-                    <a class="nav-link px-2" href="{{url('/faq')}}">FAQ's</a>
+                    <a class="nav-link px-2" href="{{url('/faq-l')}}">FAQ's</a>
                 </li>
                 <li class="nav-item mr-lg-4 chat-link">
                     <a class="nav-link px-2" href="{{url('chat')}}"> <img src="{{asset('public/assets/images/chat-icon.svg')}}" alt="image"></a>
