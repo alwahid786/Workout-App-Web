@@ -147,6 +147,15 @@
 
 @endsection
 @section('insertsfooter')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+<script script>
+    // var socket = io.connect('http://localhost:6379');
+    // socket.on('message', function(data) {
+    //     data = jQuery.parseJSON(data);
+    //     console.log(data)
+    //     // $("#messages").append("<strong>" + data.user + ":</strong><p>" + data.message + "</p>");
+    // });
+</script>
 <script>
     $('.chat-card').click(function() {
         $('.chat-box-left').removeClass('chat-box-right-block');
@@ -184,31 +193,31 @@
             var id = $(this).attr('data-id');
             $("#chat_id").val(id);
 
-
             var type = "POST";
-            var url = "{{ route('user.message', ':id') }}";
-            url = url.replace(':id', id);
+            // var url = {
+            //     {
+            //         route('usermessage')
+            //     }
+            // };
+            // url = url.replace(':id', id);
 
             // alert(url)
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 type: type,
-                url: url,
-
-                dataType: 'json',
+                url: 'http://localhost/workitpt_web/message/'.id,
+                cache: false,
                 success: function(data) {
                     // console.log(data.chatView);
-                    $("#chatList").html(data.chatView);
+                    // $("#chatList").html(data.chatView);
 
                 },
                 error: function(data) {
-                    alert('hi');
                     console.log(data);
                 }
             });
-
-
-
-
         });
         $("#submit").click(function(e) {
 
@@ -223,29 +232,31 @@
 
             // alert(chat_id);
             var type = "POST";
-            var url = "{{ route('user.send_message') }}";
-
 
             // alert(url)
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 type: type,
-                url: url,
+                url: 'http://localhost/workitpt_web/user/send_message',
                 data: {
-
                     chat_id: chat_id,
                     text: text,
                 },
                 cache: false,
-                dataType: 'json',
                 success: function(data) {
-                    console.log(data);
+                    var socket = io.connect('http://localhost:6379');
 
+                    socket.emit('message', data.message.text);
+
+                    // Listen for incoming messages
+                    socket.on('message', (message) => {
+                        console.log('Received message:', message);
+                    });
 
                 },
-                error: function(data) {
-                    alert('hi');
-                    // console.log(data);
-                }
+                error: function(data) {}
             });
         });
     });

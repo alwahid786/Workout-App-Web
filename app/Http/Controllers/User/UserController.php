@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\View;
 use Stripe\SearchResult;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Support\Facades\URL;
+use PRedis;
 
 class UserController extends Controller
 {
@@ -98,7 +99,6 @@ class UserController extends Controller
     ///   stripe payment .....///////
     public function paymentIntent(Request $request)
     {
-
         $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $month = date('m', strtotime($request->valid_through));
@@ -718,7 +718,7 @@ class UserController extends Controller
         $total_count = Review::where('trainer_id', $request->trainer_id)->count();
         $total_review = Review::where('trainer_id', $request->trainer_id)->sum('rating');
 
-        
+
         TrainerProfile::where('user_id', $request->trainer_id)->update(['avg_rating' => $total_review / $total_count]);
         return redirect()->back();
     }
@@ -875,18 +875,21 @@ class UserController extends Controller
     /////// insert message from user/////
     public function sendMessage(Request $request)
     {
+        // $redis = PRedis::connection();
+        // $data = ['message' => $request->text, 'user' => auth()->user()->id];
 
+        // return response()->json(['success' => true]);
         $message = Message::create([
             'chat_id' => $request->chat_id,
             'sender_id' => auth()->user()->id,
             'text' => $request->text
         ]);
+        // $redis->publish('message', json_encode($message));
         if (!$message) {
             return $this->sendError('No Data found against ID');
         }
         return [
             'message' => $message,
-
         ];
     }
     public function createCard($session_id, $session_date)

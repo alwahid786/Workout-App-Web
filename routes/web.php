@@ -96,8 +96,8 @@ Route::middleware('auth')->group(function () {
         Route::any('/userdashboard/upcomingsessionlist', [UserController::class, 'upcomingSession'])->name('userdashboard/upcomingsessionlist');
         Route::any('/search/trainers', [UserController::class, 'trainerSearch'])->name('search/trainers');
         Route::any('/chat', [UserController::class, 'chatList'])->name('user.chat');
-        Route::any('/message/{id?}', [UserController::class, 'messages'])->name('user.message');
-        Route::any('/send_message/', [UserController::class, 'sendMessage'])->name('user.send_message');
+        Route::any('/message/{id?}', [UserController::class, 'messages'])->name('usermessage');
+        Route::any('/user/send_message/', [UserController::class, 'sendMessage'])->name('usersendmessage');
         Route::any('/payments/{session_id}/{session_date}', [UserController::class, 'createCard']);
 
         Route::get('/profile', function () {
