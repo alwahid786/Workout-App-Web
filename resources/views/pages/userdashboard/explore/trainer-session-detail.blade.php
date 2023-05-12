@@ -246,10 +246,10 @@
 </div>--}}
 <div class="col-12">
     <div class="dashboard-header-left">
-        <h1 style="text-transform: capitalize; display: block"><i class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer[0]['name']}}'s Sessions</h1>
+        <h1 style="text-transform: capitalize; display: block"><i onclick="window.history.back()" style="cursor: pointer;" class="fa fa-angle-left mr-2" aria-hidden="true"></i> {{$trainer[0]['name']}}'s Sessions</h1>
     </div>
     <div class="card-grid-section">
-        
+
         @if(isset($sessions) && !empty($sessions))
         @foreach($sessions as $session)
         <div class="session-card p-3">
@@ -290,7 +290,7 @@
         </div>
         @endforeach
         @endif
-        
+
     </div>
 </div>
 </div>

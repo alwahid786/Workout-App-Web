@@ -16,6 +16,9 @@
         "postcss": "^8.1.14"
     },
     "dependencies": {
-        "country-state-picker": "^1.1.5"
+        "country-state-picker": "^1.1.5",
+        "express": "^4.18.2",
+        "redis": "^4.6.6",
+        "socket.io": "^4.6.1"
     }
 }

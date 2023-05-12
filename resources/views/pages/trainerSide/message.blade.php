@@ -437,6 +437,8 @@
 </div>
 @endsection
 @section('insertsfooter')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+
 <script>
     $('.chat-card').click(function() {
         $('.chat-box-left').removeClass('chat-box-right-block');
@@ -532,14 +534,17 @@
                 cache: false,
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
+                    var socket = io.connect('http://localhost:6379');
 
+                    socket.emit('message', data.message.text);
+
+                    // Listen for incoming messages
+                    socket.on('message', (message) => {
+                        console.log('Received message:', message);
+                    });
 
                 },
-                error: function(data) {
-                    // alert('hi');
-                    // console.log(data);
-                }
+                error: function(data) {}
             });
         });
     });
