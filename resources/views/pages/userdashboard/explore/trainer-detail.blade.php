@@ -265,26 +265,56 @@
             <div class="col-lg-4 col-xl-3">
                 <div class="sessions-left-section py-5 px-2">
                     <div class="session-profile-image text-center">
-                        <img src="{{$trainer_detail[0]['profile_img']}}" alt="">
+                        <img src="{{$trainer_detail['profile_img']}}" alt="">
                     </div>
                     <div class="sessions-profile-con text-center">
                         <div class="dashboard-header-left pt-3 trainer-name">
-                            <h1>{{$trainer_detail[0]['name']}}</h1>
+                            <h1>{{$trainer_detail['name']}}</h1>
                         </div>
-                        <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>{{$trainer_detail[0]['workout_location']}},{{$trainer_detail[0]['state']}}, {{$trainer_detail[0]['country']}}</p>
+                        <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>{{$trainer_detail['workout_location']}},{{$trainer_detail['state']}}, {{$trainer_detail['country']}}</p>
                         <div class="rating-stars pb-5">
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
-                            <i class="fa fa-star " aria-hidden="true"></i>
+
+                            <?php $rating = $trainer_detail['trainer_profile']['avg_rating']; ?>
+                            @if($rating >= 4.5)
+                            <?php for ($i = 0; $i < 5; $i++) { ?>
+                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                            <?php } ?>
+
+                            @elseif($rating >= 3.5)
+                            <?php for ($i = 0; $i < 4; $i++) { ?>
+                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                            <?php } ?>
+
+                            @elseif($rating >= 2.5)
+                            <?php for ($i = 0; $i < 3; $i++) { ?>
+                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                            <?php } ?>
+
+                            @elseif($rating >= 1.5)
+                            <?php for ($i = 0; $i < 2; $i++) { ?>
+                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                            <?php } ?>
+
+                            @elseif($rating >= 0.5)
+                            <?php for ($i = 0; $i < 1; $i++) { ?>
+                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                            <?php } ?>
+                            @endif
+
                         </div>
                     </div>
                     <div class="d-flex justify-content-center align-items-center">
                         <h1 class="mx-3 socialIcons_s ">
-                            <a target="_blank" href="https://www.linkedin.com"><img src="{{asset('public/assets/images/linkedin-color.png')}}" alt=""></a>
-                            <a target="_blank" href="https://www.instagram.com"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                            @if(empty($trainer_detail['trainer_profile']['facebook_url']))
                             <a target="_blank" href="https://www.facebook.com"><img src="{{asset('public/assets/images/fb-color.svg')}}" alt=""></a>
+
+                            @endif
+                            @if(empty($trainer_detail['trainer_profile']['instagram_url']))
+                            <a target="_blank" href="https://www.instagram.com"><img src="{{asset('public/assets/images/insta-color.svg')}}" alt=""></a>
+                            @endif
+                            @if(empty($trainer_detail['trainer_profile']['linkedin_url']))
+                            <a target="_blank" href="https://www.linkedin.com"><img src="{{asset('public/assets/images/linkedin-color.png')}}" alt=""></a>
+                            @endif
                         </h1>
                     </div>
                     <div class="session-left-divider"></div>
@@ -293,7 +323,7 @@
                             <h1>About Trainer</h1>
                         </div>
                         <div class="session-bottom-par">
-                            <p>{{$trainer_detail[0]['about']}}</p>
+                            <p>{{$trainer_detail['about']}}</p>
                             <!-- <p>Lorem ipsum is a placeholder text
                                 commonly used to demonstrate the
                                 visual form of a document or a type
@@ -307,14 +337,14 @@
             </div>
             <div class="col-lg-8 col-xl-9">
                 <div class="dashboard-header-left">
-                    <h1 class="d-block"><i class="fa fa-angle-left mr-2" aria-hidden="true" onclick="window.history.back()" style="cursor:pointer;"></i> {{$trainer_detail[0]['name']}}'s Classes</h1>
+                    <h1 class="d-block"><i class="fa fa-angle-left mr-2" aria-hidden="true" onclick="window.history.back()" style="cursor:pointer;"></i> {{$trainer_detail['name']}}'s Classes</h1>
                 </div>
                 <div class="card-grid-section">
                     <!-- Category card starts here  -->
                     @if(isset($sessions) && !empty($sessions))
                     @foreach($sessions as $category)
                     <?php $count = count($category) - 2; ?>
-                    <a href="{{url('/dashboard/trainer-sessions/'.$category['category_id'].'/'.$trainer_detail[0]['id'])}}" style="height:fit-content">
+                    <a href="{{url('/dashboard/trainer-sessions/'.$category['category_id'].'/'.$trainer_detail['id'])}}" style="height:fit-content">
                         <div class="card">
                             <div class="card-img">
                                 <img class="card-img" src="{{asset('public/assets/images/gallery-one.svg')}}" alt="">

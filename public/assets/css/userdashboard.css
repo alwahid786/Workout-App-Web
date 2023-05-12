@@ -1422,7 +1422,7 @@ body {
     width: 100%;
 }
 
-.trainer-detail-profile-left-progress h1 {
+.trainer-detail-profile-left-progress h1  {
     font-size: 0.7rem;
     color: black;
     margin-bottom: 0px;

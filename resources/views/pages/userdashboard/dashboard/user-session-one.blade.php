@@ -741,11 +741,32 @@
                                             </div>
                                         </div>
                                         <div class="rating-star">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <?php $trainer_rating = $bookedsession['session']['class']['trainer']['trainer_profile']['avg_rating']; ?>
+                                            @if($trainer_rating >= 4.5)
+                                            <?php for ($i = 0; $i < 5; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+
+                                            @elseif($trainer_rating >= 3.5)
+                                            <?php for ($i = 0; $i < 4; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+
+                                            @elseif($trainer_rating >= 2.5)
+                                            <?php for ($i = 0; $i < 3; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+
+                                            @elseif($trainer_rating >= 1.5)
+                                            <?php for ($i = 0; $i < 2; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+
+                                            @elseif($trainer_rating >= 0.5)
+                                            <?php for ($i = 0; $i < 1; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+                                            @endif
                                         </div>
                                     </div>
 
@@ -845,7 +866,7 @@
                             <div class="col-6 my-4 pl-0">
                                 <div class="session-inner-content">
                                     <h1>Location</h1>
-                                    
+
                                     <p>{{$bookedsession['session']['location']['tag']}} | {{$bookedsession['session']['location']['location']}} </p>
                                 </div>
                             </div>

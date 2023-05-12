@@ -716,7 +716,7 @@ height: 80px !important;
         <div class="col-sm-6 week-calendar">
             <div id="calendar"></div>
         </div>
-        <div class="col-sm-3 range-filter">
+        <!-- <div class="col-sm-3 range-filter">
             <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                 <h1>Session Type</h1>
                 <div class="drop-icon input-location">
@@ -724,13 +724,13 @@ height: 80px !important;
                         <option value="0">Online</option>
                         <option value="1">In-person</option>
                     </select>
-                    <!-- <i class="fa fa-sort-desc" aria-hidden="true"></i> -->
+                    <i class="fa fa-sort-desc" aria-hidden="true"></i>
                 </div>
 
 
             </div>
-        </div>
-        <div class="col-sm-3 range-filter">
+        </div> -->
+        <div class="col-sm-6 range-filter">
             <!-- <div class="filter-left-select-heading mt-2 mt-xl-0 drop-icon-parent">
                 <h1>Range</h1>
                 <div class="drop-icon input-location">

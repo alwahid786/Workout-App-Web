@@ -16,7 +16,7 @@
             foreach ($trainerDetail['class_session'] as $session) {
                 $price += $session['price'];
             } ?>
-            <p>{{$price}}</p>
+            <!-- <p>{{$price}}</p> -->
         </div>
         <div class="categories-card-heading py-3">
             <div class="heading-left-section">
@@ -25,11 +25,37 @@
                 <p>{{$category}} Sepcialist</p>
             </div>
             <div class="rating-stars pb-5">
+                <?php $rating = $trainerDetail['trainer']['trainer_profile']['avg_rating']; ?>
+                @if($rating >= 4.5)
+                <?php for ($i = 0; $i < 5; $i++) { ?>
+                    <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                <?php } ?>
+
+                @elseif($rating >= 3.5)
+                <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                <?php } ?>
+
+                @elseif($rating >= 2.5)
+                <?php for ($i = 0; $i < 3; $i++) { ?>
+                    <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                <?php } ?>
+
+                @elseif($rating >= 1.5)
+                <?php for ($i = 0; $i < 2; $i++) { ?>
+                    <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                <?php } ?>
+
+                @elseif($rating >= 0.5)
+                <?php for ($i = 0; $i < 1; $i++) { ?>
+                    <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                <?php } ?>
+                @endif
+                <!-- <i class="fa fa-star " aria-hidden="true"></i>
                 <i class="fa fa-star " aria-hidden="true"></i>
                 <i class="fa fa-star " aria-hidden="true"></i>
                 <i class="fa fa-star " aria-hidden="true"></i>
-                <i class="fa fa-star " aria-hidden="true"></i>
-                <i class="fa fa-star " aria-hidden="true"></i>
+                <i class="fa fa-star " aria-hidden="true"></i> -->
             </div>
         </div>
         <div class="categories-card-text">

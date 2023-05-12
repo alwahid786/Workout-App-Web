@@ -243,6 +243,15 @@
         background-color: #F6CD8B;
         cursor: pointer;
     }
+
+    .trainer-detail-profile-left-progress p {
+        font-size: 0.7rem !important;
+        color: black;
+        margin-bottom: 0px !important;
+        /* text-transform: uppercase; */
+        padding-left: 2px;
+        color: #E37048;
+    }
 </style>
 @include('includes.userdashboard.navbar')
 <div class="content-wrapper">
@@ -321,14 +330,37 @@
                                         <img class="mr-2" src="{{$trainer['profile_img']}}" alt="">
                                         <div class="trainer-detail-profile-left-progress py-2 px-2">
                                             <h1>Level</h1>
-                                            <progress id="file" value="72" max="100"> 32% </progress>
+                                            <!-- <progress id="file" value="72" max="100"> 32% </progress> -->
+                                            <p>{{$most_used_difficulty_level}}</p>
+
                                         </div>
                                         <div class="rating-star">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <?php $rating = $trainer['trainer_profile']['avg_rating']; ?>
+                                            @if($rating >= 4.5)
+                                            <?php for ($i = 0; $i < 5; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+
+                                            @elseif($rating >= 3.5)
+                                            <?php for ($i = 0; $i < 4; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+
+                                            @elseif($rating >= 2.5)
+                                            <?php for ($i = 0; $i < 3; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+
+                                            @elseif($rating >= 1.5)
+                                            <?php for ($i = 0; $i < 2; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+
+                                            @elseif($rating >= 0.5)
+                                            <?php for ($i = 0; $i < 1; $i++) { ?>
+                                                <i class="fa fa-star gold pr-1" aria-hidden="true"></i>
+                                            <?php } ?>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col trainer-detail-profile-name px-0 pt-2">
@@ -494,6 +526,11 @@
                                             </div>
                                         </div>
                                         <div class="trainer-class-time-card-right">
+
+                                            @if($class_detail[0]['session'][0]['type']==0)
+                                            <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
+                                            @else
+
                                             <img class="trainer-class-time-card-right-one" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             <img class="trainer-class-time-card-right-two" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
                                             <img class="trainer-class-time-card-right-three" src="{{asset('public/assets/images/session-one.jpg')}}" alt="">
@@ -502,6 +539,7 @@
                                             <div class="trainer-class-time-card-right-counter">
                                                 <h1>+5</h1>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="trainer-class-times">
@@ -705,7 +743,7 @@
         // Get Session detail in Card on Left 
         $(document).on('click', '.sessionDiv_d', function() {
             $("#sessionId").val($(this).attr('data-src'));
-            $('.loaderDiv').show();
+            // $('.loaderDiv').show();
             class_id = $(this).attr('data-src');
             $('.sessionDiv_d').removeClass('trainer-class-active');
             $(this).addClass('trainer-class-active');
@@ -940,7 +978,7 @@
     });
 </script>
 <script>
-    $('.sidenav .nav-item:nth-of-type(1)').addClass('active')
+    $('.sidenav .nav-item:nth-of-type(3)').addClass('active')
 </script>
 <script>
     $('.session').click(function() {

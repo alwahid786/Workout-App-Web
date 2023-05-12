@@ -142,7 +142,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
 
     }
 
@@ -2325,17 +2325,33 @@
     })
     $('.stack-timing-one').hide();
     $('.slot-arrow-one .up-arrow').hide();
-    $('.slot-arrow-one .down-arrow').click(function() {
-        $('.stack-timing-one').show(1000);
-        $('.slot-arrow-one .up-arrow').show(1000);
-        $('.slot-arrow-one .down-arrow').hide(1000);
+    // $('.slot-arrow-one .down-arrow').click(function() {
+    //     $('.stack-timing-one').show(1000);
+    //     $('.slot-arrow-one .up-arrow').show(1000);
+    //     $('.slot-arrow-one .down-arrow').hide(1000);
 
+    // });
+    $('.slot-arrow-one .down-arrow').click(function() {
+        const cardBody = $(this).closest('.slot-wrapper').find('.stack-timing-one');
+        const dropIcon = $(this).closest('.slot-wrapper').find('.slot-arrow-one .up-arrow');
+        const upIcon = $(this).closest('.slot-wrapper').find('.slot-arrow-one .down-arrow');
+        cardBody.show(1000);
+        dropIcon.show(1000);
+        upIcon.hide(1000);
     });
     $('.slot-arrow-one .up-arrow').click(function() {
-        $('.stack-timing-one').hide(1000);
-        $('.slot-arrow-one .up-arrow').hide(1000);
-        $('.slot-arrow-one .down-arrow').show(1000);
+        const cardBody = $(this).closest('.slot-wrapper').find('.stack-timing-one');
+        const dropIcon = $(this).closest('.slot-wrapper').find('.slot-arrow-one .up-arrow');
+        const upIcon = $(this).closest('.slot-wrapper').find('.slot-arrow-one .down-arrow');
+        cardBody.hide(1000);
+        dropIcon.hide(1000);
+        upIcon.show(1000);
     });
+    // $('.slot-arrow-one .up-arrow').click(function() {
+    //     $('.stack-timing-one').hide(1000);
+    //     $('.slot-arrow-one .up-arrow').hide(1000);
+    //     $('.slot-arrow-one .down-arrow').show(1000);
+    // });
     // two
     $('.stack-timing-two').hide();
     $('.slot-arrow-two .up-arrow').hide();

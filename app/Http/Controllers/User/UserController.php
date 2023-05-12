@@ -180,9 +180,9 @@ class UserController extends Controller
         if ($request->has('search_by') && !empty($request->search_by)) {
             $all_trainer->where('name', 'Like', '%' . $request->search_by . '%')->get();
         }
-        $all_trainer = $all_trainer->where('user_type', '=', 'trainer')->with('session.category')->get();
+        $all_trainer = $all_trainer->where('user_type', '=', 'trainer')->with('trainer_profile', 'session.category')->get();
         // Classes::with('session', 'category')->get();
-        $class_detail = Classes::whereHas('session')->with(['category', 'session', 'session.session_image', 'trainer'])->get();
+        $class_detail = Classes::whereHas('session')->with(['category', 'session', 'session.session_image', 'trainer.trainer_profile'])->get();
         $all_category = Category::get();
         if (!$all_trainer) {
             return $this->sendError('Dashboard');
@@ -220,7 +220,7 @@ class UserController extends Controller
     /////....user side trainer detail......../////
     public function trainer_detail(Request $request, $id)
     {
-        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session', 'class.classImage'])->get();
+        $trainer = User::where('id', '=', $id)->with(['class.category', 'class.session', 'class.classImage', 'trainer_profile'])->first();
         // if (!$trainer) {
         //     return $this->sendError('Trainer Detail');
         // }
@@ -256,7 +256,11 @@ class UserController extends Controller
     {
         $class         = Classes::where(['trainer_id' => $id])->with('classSession', 'classSession.Category', 'trainer', 'category')->get();
         $classes_count = ModelsSession::where('trainer_id', '=', $id)->count();
-        $trainer       = User::where('id', $id)->first();
+        $trainer       = User::where('id', $id)->with('trainer_profile')->first();
+        $most_used_difficulty_level = ModelsSession::select('difficulty_level', DB::raw('count(*) as total'))
+            ->groupBy('difficulty_level')
+            ->orderByDesc('total')
+            ->first()->difficulty_level;
         if (count($class) > 0) {
             foreach ($class as $session) {
                 $session['session'] = ModelsSession::where(['day' => $day, 'trainer_id' => $id])->with('category', 'session_image')->get();
@@ -277,7 +281,7 @@ class UserController extends Controller
         $class_detail = json_decode($class, true);
         $review       = json_decode($review, true);
 
-        return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession', 'classes_count', 'trainer', 'review', 'client'));
+        return view('pages.userdashboard.explore.class-detail', compact('class_detail', 'classSession', 'classes_count', 'trainer', 'review', 'client', 'most_used_difficulty_level'));
     }
     //////customer card detail........./////////
 
@@ -437,12 +441,11 @@ class UserController extends Controller
     //////// view booked session.........//////
     public function viewSession($id)
     {
-        $session_detail = BookedSession::where('session_id', $id)->with('session.class.trainer', 'session.class.category', 'session.session_image', 'session.location')->first();
+        $session_detail = BookedSession::where('session_id', $id)->with('session.class.trainer.trainer_profile', 'session.class.category', 'session.session_image', 'session.location')->first();
         // dd($session_detail);
         $classes        = ModelsSession::where('trainer_id', '=', $session_detail['session']['class']['trainer']['id'])->count();
         $rating         = Review::where('session_id', $session_detail['session']['id'])->with('user:id,name,profile_img')->get();
         $client         = BookedSession::where('trainer_id', $session_detail['session']['class']['trainer']['id'])->groupBy('user_id')->get();
-
         $client = $client->count();
 
 
@@ -461,6 +464,7 @@ class UserController extends Controller
         } else {
             $bookedsession['is_session_passed'] = false;
         }
+        // dd($rating);
 
         return view('pages.userdashboard.dashboard.user-session-one', compact('bookedsession', 'classes', 'rating', 'client'));
     }
@@ -561,7 +565,7 @@ class UserController extends Controller
 
             $trainerDetails = Category::where('id', $id)->with([
                 'trainerCategory.classSession:id,class_id,start_time,end_time,price',
-                'trainerCategory.trainer'
+                'trainerCategory.trainer.trainer_profile'
             ])->get();
         }
         // dd(json_decode($trainerDetails,true));
@@ -718,7 +722,7 @@ class UserController extends Controller
         $total_count = Review::where('trainer_id', $request->trainer_id)->count();
         $total_review = Review::where('trainer_id', $request->trainer_id)->sum('rating');
 
-        
+
         TrainerProfile::where('user_id', $request->trainer_id)->update(['avg_rating' => $total_review / $total_count]);
         return redirect()->back();
     }
