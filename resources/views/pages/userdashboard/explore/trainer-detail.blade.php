@@ -4,7 +4,6 @@
     .sessions-left-section {
         background: #fff;
         border-radius: 10px;
-        height: 90vh;
         overflow-y: scroll;
     }
 
@@ -263,7 +262,7 @@
     <div class="container-fluid mb-4">
         <div class="row">
             <div class="col-lg-4 col-xl-3">
-                <div class="sessions-left-section py-5 px-2">
+                <div class="sessions-left-section pt-5 pb-2 px-2">
                     <div class="session-profile-image text-center">
                         <img src="{{$trainer_detail['profile_img']}}" alt="">
                     </div>
