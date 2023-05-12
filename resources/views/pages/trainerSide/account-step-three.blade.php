@@ -1000,7 +1000,7 @@
                                 </select>
                                 <!-- <i class="fa fa-chevron-down" aria-hidden="true"></i> -->
                             </div>
-                            <input type="text" class="form-control pl-4" id="price" value="100" name="price">
+                            <input type="number" class="form-control pl-4" id="price" value="100" name="price">
                         </div>
                     </div>
 
@@ -1497,6 +1497,7 @@
             var sessionsData = {
                 allSessions: sessionsArray
             };
+            console.log(sessionsData)
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

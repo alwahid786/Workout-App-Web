@@ -4,7 +4,6 @@
     .sessions-left-section {
         background: #fff;
         border-radius: 10px;
-        height: 90vh;
         overflow-y: scroll;
     }
 
@@ -263,7 +262,7 @@
     <div class="container-fluid mb-4">
         <div class="row">
             <div class="col-lg-4 col-xl-3">
-                <div class="sessions-left-section py-5 px-2">
+                <div class="sessions-left-section pt-5 pb-2 px-2">
                     <div class="session-profile-image text-center">
                         <img src="{{$trainer_detail[0]['profile_img']}}" alt="">
                     </div>
@@ -271,8 +270,8 @@
                         <div class="dashboard-header-left pt-3 trainer-name">
                             <h1>{{$trainer_detail[0]['name']}}</h1>
                         </div>
-                        <p><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>{{$trainer_detail[0]['workout_location']}},{{$trainer_detail[0]['state']}}, {{$trainer_detail[0]['country']}}</p>
-                        <div class="rating-stars pb-5">
+                        <p class="mb-1"><i class="fa fa-map-marker pr-2" aria-hidden="true"></i>{{$trainer_detail[0]['workout_location']}}{{$trainer_detail[0]['state']}} {{$trainer_detail[0]['country']}}</p>
+                        <div class="rating-stars py-1">
                             <i class="fa fa-star " aria-hidden="true"></i>
                             <i class="fa fa-star " aria-hidden="true"></i>
                             <i class="fa fa-star " aria-hidden="true"></i>
